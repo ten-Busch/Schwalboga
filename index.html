@@ -1,0 +1,965 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Friendly Pokemon Tournament Hub</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Audiowide&family=Chakra+Petch:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="page-shell">
+      <main>
+        <section class="pokedex-panel" id="pokedex">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">Database</p>
+              <h2>Pokédex</h2>
+            </div>
+            <div class="section-header-tools">
+              <div class="theme-toggle-wrap">
+                <button
+                  class="theme-toggle"
+                  id="theme-toggle"
+                  type="button"
+                  aria-pressed="false"
+                  aria-label="Dunkelmodus umschalten"
+                >
+                  <span class="theme-toggle-track" aria-hidden="true">
+                    <span class="theme-toggle-thumb"></span>
+                  </span>
+                  <span class="theme-toggle-label">Dark Mode</span>
+                </button>
+                <img
+                  class="theme-toggle-mascot"
+                  id="theme-toggle-mascot"
+                  alt="Solrock icon"
+                  src="https://play.pokemonshowdown.com/sprites/gen5/solrock.png"
+                  width="32"
+                  height="32"
+                  loading="lazy"
+                />
+              </div>
+            </div>
+          </div>
+
+          <div class="toolbar">
+            <div class="search-actions">
+              <label class="search-field" for="pokemon-search">
+                <span class="search-field-label-row">
+                  <span>Search</span>
+                  <button
+                    class="search-expand-button"
+                    id="search-expand-button"
+                    type="button"
+                    aria-expanded="false"
+                    aria-controls="search-advanced-tools"
+                    aria-label="Expand search tools"
+                  >&#9662;</button>
+                </span>
+                <input
+                  id="pokemon-search"
+                  type="search"
+                  placeholder="Search by number, name, or type"
+                  autocomplete="off"
+                />
+              </label>
+              <div class="sort-controls">
+                <label class="sort-field" for="sort-field">
+                  <span>Sortierung</span>
+                  <select id="sort-field">
+                    <option value="dex">Dex Number</option>
+                    <option value="name">Alphabetisch</option>
+                    <option value="cost">Punktekosten</option>
+                    <option value="hp">KP</option>
+                    <option value="atk">Angriff</option>
+                    <option value="def">Verteidigung</option>
+                    <option value="spa">Spez. Angriff</option>
+                    <option value="spd">Spez. Vert</option>
+                    <option value="special-bulk">Spez. Bulk</option>
+                    <option value="physical-bulk">Phys. Bulk</option>
+                    <option value="spe">Initiative</option>
+                  </select>
+                </label>
+                <label class="sort-field sort-direction-field" for="sort-direction">
+                  <span>Reihenfolge</span>
+                  <select id="sort-direction">
+                    <option value="asc">Aufsteigend</option>
+                    <option value="desc">Absteigend</option>
+                  </select>
+                </label>
+              </div>
+              <button class="details-button" id="details-search-button" type="button">Detailsuche</button>
+            </div>
+            <div class="search-advanced-tools" id="search-advanced-tools" hidden>
+              <button class="details-button" id="expert-search-button" type="button">Expertensuche</button>
+            </div>
+            <p class="results-count" id="results-count">Loading entries...</p>
+          </div>
+
+          <div class="tool-panel">
+            <div class="tool-panel-heading">Tools</div>
+            <div class="tool-panel-actions">
+              <button class="details-button" id="replacement-finder-button" type="button">Ersatzfinder</button>
+              <button class="details-button" id="core-finder-button" type="button">Core Sucher</button>
+              <button class="details-button" id="budget-planner-button" type="button">Budget Planer</button>
+              <button class="details-button" id="rule-checker-button" type="button">Regel Checker</button>
+              <button class="details-button" id="speed-tiers-button" type="button">Speed Tiers</button>
+            </div>
+          </div>
+
+          <div class="filter-panel">
+            <label class="format-filter" for="format-filter">
+              <span>Format:</span>
+              <select id="format-filter">
+                <option value="normal">Normal</option>
+                <option value="low-power">Low Power</option>
+                <option value="uber">Uber</option>
+              </select>
+            </label>
+
+            <div class="tri-filter-group">
+              <button class="tri-filter" id="z-captain-filter" type="button" data-state="any" data-filter="z">
+                <span class="tri-filter-mark" aria-hidden="true"></span>
+                <span class="tri-filter-label">Z-Captain</span>
+              </button>
+              <button class="tri-filter" id="tera-captain-filter" type="button" data-state="any" data-filter="tera">
+                <span class="tri-filter-mark" aria-hidden="true"></span>
+                <span class="tri-filter-label">Tera-Captain</span>
+              </button>
+              <button class="tri-filter" id="mega-filter" type="button" data-state="any" data-filter="mega">
+                <span class="tri-filter-mark" aria-hidden="true"></span>
+                <span class="tri-filter-label">Mega</span>
+              </button>
+              <button class="tri-filter" id="gmax-filter" type="button" data-state="any" data-filter="gmax">
+                <span class="tri-filter-mark" aria-hidden="true"></span>
+                <span class="tri-filter-label">GMAX</span>
+              </button>
+            </div>
+            <div class="hide-filter-group">
+              <label class="hide-filter"><input id="hide-unreleased" type="checkbox" checked /> Hide Unreleased</label>
+              <label class="hide-filter"><input id="hide-impossible" type="checkbox" checked /> Hide Impossible</label>
+              <label class="hide-filter"><input id="hide-untiered" type="checkbox" checked /> Hide Untiered</label>
+              <label class="hide-filter"><input id="hide-dividers" type="checkbox" /> Hide Dividers</label>
+              <label class="simple-view-toggle-control">
+                <input id="simple-view-toggle" type="checkbox" />
+                <span class="simple-view-toggle-track" aria-hidden="true">
+                  <span class="simple-view-toggle-thumb"></span>
+                </span>
+                <span class="simple-view-toggle-label">Einfache Ansicht</span>
+              </label>
+            </div>
+          </div>
+
+          <div class="search-summary" id="search-summary" hidden></div>
+
+          <div class="pokedex-grid" id="pokedex-grid" aria-live="polite"></div>
+        </section>
+      </main>
+
+      <button class="scroll-top-button" id="scroll-top-button" type="button" hidden>
+        Nach oben
+      </button>
+    </div>
+
+    <template id="pokemon-card-template">
+      <article class="pokemon-card">
+        <div class="card-surface-effect" aria-hidden="true"></div>
+        <div class="card-border-effect" aria-hidden="true"></div>
+        <p class="pokemon-number"></p>
+        <p class="pokemon-cost"></p>
+        <div class="form-badge-stack"></div>
+        <img class="pokemon-sprite" alt="" loading="lazy" />
+        <div class="type-list"></div>
+        <h3 class="pokemon-name"></h3>
+        <p class="pokemon-sort-value" hidden></p>
+      </article>
+    </template>
+
+    <div class="details-modal" id="details-modal" hidden>
+      <div class="details-backdrop" data-close-modal="true"></div>
+      <section class="details-dialog" aria-labelledby="details-title" aria-modal="true" role="dialog">
+        <div class="details-header">
+          <div>
+            <p class="eyebrow">Erweiterte Suche</p>
+            <h2 id="details-title">Detailsuche</h2>
+          </div>
+          <button class="details-close" id="details-close" type="button" aria-label="Close">×</button>
+        </div>
+        <div class="details-body">
+          <label class="details-field">
+            <span>Name</span>
+            <input id="details-name" type="text" placeholder="Pokémonname eingeben" />
+          </label>
+
+          <div class="details-field">
+            <span>Fähigkeiten</span>
+            <div class="token-filter">
+              <div class="token-field">
+                <div class="token-list" id="ability-token-list"></div>
+                <input id="ability-input" type="text" placeholder="Fähigkeit suchen" />
+              </div>
+              <select id="ability-mode">
+                <option value="all">Alle</option>
+                <option value="any">Eine aus</option>
+              </select>
+            </div>
+            <div class="suggestion-list" id="ability-suggestions"></div>
+          </div>
+
+          <div class="details-field">
+            <span>Bestimmte Attacken</span>
+            <div class="token-filter">
+              <div class="token-field">
+                <div class="token-list" id="move-token-list"></div>
+                <input id="move-input" type="text" placeholder="Attacke suchen" />
+              </div>
+              <select id="move-mode">
+                <option value="all">Alle</option>
+                <option value="any">Eine aus</option>
+              </select>
+            </div>
+            <div class="suggestion-list" id="move-suggestions"></div>
+          </div>
+
+          <div class="details-field">
+            <span>Coverage</span>
+            <div class="coverage-list" id="coverage-list"></div>
+          </div>
+
+          <div class="details-field">
+            <div class="details-field-heading">
+              <span>Basiswerte</span>
+              <label class="stat-mode-toggle" for="stat-search-mode">
+                <span>Suche mit</span>
+                <select id="stat-search-mode">
+                  <option value="base">Basiswerten</option>
+                  <option value="real">Echten Werten</option>
+                </select>
+              </label>
+            </div>
+            <div class="stat-range-grid" id="stat-range-grid">
+              <div class="stat-range-row" data-stat="hp">
+                <span>KP</span>
+                <input type="number" min="1" max="999" placeholder="Min" data-role="min" />
+                <input type="number" min="1" max="999" placeholder="Max" data-role="max" />
+              </div>
+              <div class="stat-range-row" data-stat="atk">
+                <span>Angriff</span>
+                <input type="number" min="1" max="999" placeholder="Min" data-role="min" />
+                <input type="number" min="1" max="999" placeholder="Max" data-role="max" />
+              </div>
+              <div class="stat-range-row" data-stat="def">
+                <span>Verteidigung</span>
+                <input type="number" min="1" max="999" placeholder="Min" data-role="min" />
+                <input type="number" min="1" max="999" placeholder="Max" data-role="max" />
+              </div>
+              <div class="stat-range-row" data-stat="spa">
+                <span>Spez. Angriff</span>
+                <input type="number" min="1" max="999" placeholder="Min" data-role="min" />
+                <input type="number" min="1" max="999" placeholder="Max" data-role="max" />
+              </div>
+              <div class="stat-range-row" data-stat="spd">
+                <span>Spez. Vert</span>
+                <input type="number" min="1" max="999" placeholder="Min" data-role="min" />
+                <input type="number" min="1" max="999" placeholder="Max" data-role="max" />
+              </div>
+              <div class="stat-range-row" data-stat="spe">
+                <span>Initiative</span>
+                <input type="number" min="1" max="999" placeholder="Min" data-role="min" />
+                <input type="number" min="1" max="999" placeholder="Max" data-role="max" />
+              </div>
+            </div>
+          </div>
+
+          <div class="details-field">
+            <span>Zusatzfilter</span>
+            <div class="utility-filters">
+              <div class="utility-row">
+                <label class="utility-label" data-info-anchor="speed-control-info"><input id="speed-control-enabled" type="checkbox" /> Speed Control</label>
+                <select id="speed-control-mode">
+                  <option value="tailwind">Tailwind</option>
+                  <option value="webs">Webs</option>
+                  <option value="any">Irgendeine</option>
+                </select>
+              </div>
+              <div class="utility-row">
+                <label class="utility-label" data-info-anchor="hazards-info"><input id="hazards-enabled" type="checkbox" /> Hazards</label>
+                <select id="hazards-mode">
+                  <option value="rocks">Rocks</option>
+                  <option value="webs">Webs</option>
+                  <option value="spikes">Spikes</option>
+                  <option value="tspikes">T-Spikes</option>
+                  <option value="damage">Schaden</option>
+                </select>
+              </div>
+              <div class="utility-row">
+                <label class="utility-label" data-info-anchor="pivot-info"><input id="pivot-enabled" type="checkbox" /> Pivot</label>
+                <select id="pivot-mode">
+                  <option value="offense">Offensiv</option>
+                  <option value="defense">Defensiv</option>
+                  <option value="any">Irgendeine</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <div class="details-field">
+            <span>Defensive Coverage</span>
+            <div class="defensive-grid" id="defensive-coverage-grid"></div>
+          </div>
+        </div>
+        <div class="details-footer">
+          <button class="details-secondary" id="details-reset" type="button">Zurücksetzen</button>
+          <button class="details-secondary" id="details-cancel" type="button">Abbrechen</button>
+          <button class="details-primary" id="details-submit" type="button">Suchen</button>
+        </div>
+      </section>
+    </div>
+
+    <div class="details-modal" id="expert-search-modal" hidden>
+      <div class="details-backdrop" data-close-expert-search="true"></div>
+      <section class="details-dialog expert-search-dialog" aria-labelledby="expert-search-title" aria-modal="true" role="dialog">
+        <div class="details-header">
+          <div>
+            <p class="eyebrow">Erweiterte Suche</p>
+            <h2 id="expert-search-title">Expertensuche</h2>
+          </div>
+          <button class="details-close" id="expert-search-close" type="button" aria-label="Close">×</button>
+        </div>
+        <div class="details-body">
+          <div class="detail-section expert-search-panel">
+            <div class="detail-section-heading expert-search-heading">
+              <div>
+                <h3>Syntaxbasierte Suche</h3>
+                <p class="replacement-intro">Gib eine Suchsyntax ein. Erst mit Enter oder einem Klick auf Suchen werden die Karten erzeugt.</p>
+              </div>
+              <button class="details-secondary" id="expert-search-syntax-toggle" type="button">Syntax</button>
+            </div>
+            <div class="expert-search-syntax" id="expert-search-syntax" hidden>
+              <p><code>mega:yes</code>, <code>mega:no</code>, <code>gmax:yes</code>, <code>gmax:no</code></p>
+              <p><code>ability:</code>, <code>move:</code>, <code>type:</code> mit <code>(A,B,C)</code>, <code>(A+B+C)</code> und <code>(A!,B,C)</code></p>
+              <p><code>atk:100</code>, <code>atk&gt;100</code>, <code>cost&lt;=10</code>, <code>dex=150</code></p>
+              <p><code>legal:normal</code>, <code>legal:uber</code>, <code>legal:"low power"</code></p>
+              <p><code>captain:z</code>, <code>captain:(z+tera)</code>, <code>captain:(z,tera)</code></p>
+              <p><code>name:venusaur</code> inkludiert Formen, <code>name=venusaur</code> ist exakt</p>
+              <p><code>resist:fire</code>, <code>immune:ground</code>, <code>nfe:true</code>, <code>lc:false</code></p>
+              <p><code>speedcontrol:tailwind</code>, <code>speedcontrol:webs</code>, <code>speedcontrol:all</code></p>
+              <p><code>hazards:rocks</code>, <code>hazards:webs</code>, <code>hazards:spikes</code>, <code>hazards:tspikes</code>, <code>hazards:damage</code></p>
+              <p><code>pivots:offense</code>, <code>pivots:defense</code>, <code>pivots:all</code></p>
+            </div>
+            <label class="details-field">
+              <span>Suchsyntax</span>
+              <input id="expert-search-input" type="text" placeholder='z. B. mega:no type:(fire+flying) cost&lt;=15' autocomplete="off" />
+            </label>
+            <p class="expert-search-feedback" id="expert-search-feedback" hidden></p>
+          </div>
+        </div>
+        <div class="details-footer">
+          <button class="details-secondary" id="expert-search-clear" type="button">Zurücksetzen</button>
+          <button class="details-primary" id="expert-search-submit" type="button">Suchen</button>
+        </div>
+      </section>
+    </div>
+
+    <div class="pokemon-detail-modal" id="pokemon-detail-modal" hidden>
+      <div class="detail-backdrop" data-close-detail="true"></div>
+      <section class="detail-dialog" aria-labelledby="pokemon-detail-title" aria-modal="true" role="dialog">
+        <div class="detail-screen-effect" aria-hidden="true"></div>
+        <div class="detail-header">
+          <button class="detail-nav detail-nav-prev" id="detail-prev" type="button" aria-label="Vorheriges Pokémon" hidden>
+            <img id="detail-prev-sprite" alt="" loading="lazy" />
+          </button>
+          <h2 id="pokemon-detail-title"></h2>
+          <button class="detail-nav detail-nav-next" id="detail-next" type="button" aria-label="Nächstes Pokémon" hidden>
+            <img id="detail-next-sprite" alt="" loading="lazy" />
+          </button>
+          <button class="detail-close" id="pokemon-detail-close" type="button" aria-label="Close">×</button>
+          <button class="details-secondary detail-header-action" id="detail-replacement-button" type="button">Ersatzfinder</button>
+        </div>
+
+        <div class="detail-body">
+          <section class="detail-top-panel" id="detail-top-panel"></section>
+
+          <section class="detail-section">
+            <div class="detail-section-heading">
+              <h3>Fähigkeiten</h3>
+            </div>
+            <div class="detail-abilities" id="detail-abilities"></div>
+          </section>
+
+          <section class="detail-section">
+            <div class="detail-section-heading">
+              <h3>Tier-Liste</h3>
+            </div>
+            <div class="detail-ribbons" id="detail-tier-list"></div>
+          </section>
+
+          <section class="detail-section">
+            <div class="detail-section-heading">
+              <h3>Hinweise</h3>
+            </div>
+            <div class="detail-ribbons" id="detail-ribbons"></div>
+          </section>
+
+          <section class="detail-section" id="detail-family-section">
+            <div class="detail-section-heading">
+              <h3 id="detail-family-title">Familie</h3>
+            </div>
+            <div class="detail-sprite-links" id="detail-family"></div>
+          </section>
+
+          <section class="detail-section" id="detail-distant-relatives-section" hidden>
+            <div class="detail-section-heading">
+              <h3>Ferne Verwandte</h3>
+            </div>
+            <div class="detail-sprite-links" id="detail-distant-relatives"></div>
+          </section>
+
+          <section class="detail-section">
+            <div class="detail-section-heading">
+              <h3>Variationen</h3>
+            </div>
+            <div class="detail-sprite-links" id="detail-variations"></div>
+          </section>
+
+          <section class="detail-section">
+            <div class="detail-section-heading">
+              <h3>Elementare Defensive</h3>
+            </div>
+            <div class="detail-weakness-grid" id="detail-weakness-grid"></div>
+          </section>
+
+          <section class="detail-section">
+            <div class="detail-section-heading">
+              <h3>Attacken</h3>
+              <div class="detail-move-filters">
+                <input id="detail-move-search" type="search" placeholder="Nach Name oder Typ suchen" />
+                <select id="detail-move-category">
+                  <option value="all">Alle</option>
+                  <option value="Physical">Physical</option>
+                  <option value="Special">Special</option>
+                  <option value="Status">Status</option>
+                </select>
+              </div>
+            </div>
+            <div class="detail-move-table-wrap">
+              <table class="detail-move-table">
+                <thead>
+                  <tr>
+                    <th>Name</th>
+                    <th>Typ</th>
+                    <th>Kat.</th>
+                    <th>Power</th>
+                    <th>Genauigkeit</th>
+                    <th>Beschreibung</th>
+                  </tr>
+                </thead>
+                <tbody id="detail-move-table-body"></tbody>
+              </table>
+            </div>
+          </section>
+
+          <section class="detail-section" id="detail-similar-pokemon-section" hidden>
+            <div class="detail-section-heading">
+              <h3>Ähnliche Pokémon</h3>
+            </div>
+            <div class="detail-similar-actions">
+              <button class="details-secondary" id="detail-similar-load-button" type="button">Ähnliche Pokémon laden</button>
+            </div>
+            <div class="detail-similar-pokemon-list" id="detail-similar-pokemon"></div>
+          </section>
+        </div>
+      </section>
+    </div>
+
+    <div class="details-modal" id="replacement-picker-modal" hidden>
+      <div class="details-backdrop" data-close-replacement-picker="true"></div>
+      <section class="details-dialog replacement-picker-dialog" aria-labelledby="replacement-picker-title" aria-modal="true" role="dialog">
+        <div class="details-header">
+          <div>
+            <p class="eyebrow">Ersatzfinder</p>
+            <h2 id="replacement-picker-title">Pokémon auswählen</h2>
+          </div>
+          <button class="details-close" id="replacement-picker-close" type="button" aria-label="Close">×</button>
+        </div>
+        <div class="details-body">
+          <label class="details-field">
+            <span>Pokémon</span>
+            <input id="replacement-picker-input" type="text" placeholder="Pokémonname eingeben" autocomplete="off" />
+          </label>
+          <div class="suggestion-list" id="replacement-picker-suggestions"></div>
+        </div>
+        <div class="details-footer">
+          <button class="details-secondary" id="replacement-picker-cancel" type="button">Abbrechen</button>
+          <button class="details-primary" id="replacement-picker-submit" type="button">Ok</button>
+        </div>
+      </section>
+    </div>
+
+    <div class="pokemon-detail-modal replacement-finder-modal" id="replacement-finder-modal" hidden>
+      <div class="detail-backdrop" data-close-replacement-finder="true"></div>
+      <section class="detail-dialog replacement-finder-dialog" aria-labelledby="replacement-finder-title" aria-modal="true" role="dialog">
+        <div class="detail-header">
+          <h2 id="replacement-finder-title">Ersatzfinder</h2>
+          <button class="detail-close" id="replacement-finder-close" type="button" aria-label="Close">×</button>
+        </div>
+
+        <div class="detail-body">
+          <section class="detail-top-panel replacement-target-panel" id="replacement-target-panel"></section>
+
+          <section class="detail-section">
+            <div class="detail-section-heading replacement-section-heading">
+              <div>
+                <h3>Anleitung</h3>
+                <p class="replacement-intro">
+                  Wähle die Aspekte auch, die dir wichtig sind. Grün = wenig Priorität, gelb = mittlere Priorität, rot = hohe Priorität. Drücke dann auf "Suchen" um potentielle Ersatz-Mons zu finden.
+                  Bedenke: Desto mehr und höhere Prioritäten du setzt, desto weniger Ergebnisse wirst du finden!
+                </p>
+              </div>
+              <button class="details-primary replacement-search-button" id="replacement-run-search" type="button">Suchen</button>
+            </div>
+          </section>
+
+          <section class="detail-section">
+            <div class="detail-section-heading">
+              <h3>Basiswerte</h3>
+            </div>
+            <p class="replacement-section-note">
+              Grün: Werte in der Nähe sind nett. Gelb: maximal 10% Abweichung. Rot: der Ersatz darf in dem Wert nicht niedriger sein.
+            </p>
+            <div class="replacement-stat-grid" id="replacement-stat-grid"></div>
+          </section>
+
+          <section class="detail-section">
+            <div class="detail-section-heading">
+              <h3>Typen</h3>
+            </div>
+            <p class="replacement-section-note">
+              Grün: gleicher Typ ist ein Bonus. Gelb und Rot: dieser Typ muss vorhanden sein.
+            </p>
+            <div class="replacement-chip-grid" id="replacement-types"></div>
+          </section>
+
+          <section class="detail-section">
+            <div class="detail-section-heading">
+              <h3>Fähigkeiten</h3>
+            </div>
+            <div class="replacement-chip-grid" id="replacement-abilities"></div>
+          </section>
+
+          <section class="detail-section">
+            <div class="detail-section-heading">
+              <h3>Kosten</h3>
+            </div>
+            <p class="replacement-section-note">
+              Grün: bis zu 4 Punkte teurer ist noch okay. Gelb: wichtige Kostengrenzen wie 5, 10 und 15 dürfen nicht überschritten werden. Rot: darf nicht teurer als das Ziel sein.
+            </p>
+            <div class="replacement-chip-grid" id="replacement-cost"></div>
+          </section>
+
+          <section class="detail-section" id="replacement-weather-section" hidden>
+            <div class="detail-section-heading">
+              <h3>Wetter / Terrain</h3>
+            </div>
+            <p class="replacement-section-note">
+              Grün: das gleiche Wetter ist wünschenswert. Gelb und Rot: das gleiche Wetter muss vorhanden sein. Bei Hagel und Schnee zählen Grün und Gelb auch jeweils als ähnlich zueinander.
+            </p>
+            <div class="replacement-chip-grid" id="replacement-weather"></div>
+          </section>
+
+          <section class="detail-section">
+            <div class="detail-section-heading">
+              <h3>Elementare Defensive</h3>
+            </div>
+            <p class="replacement-section-note">
+              Grün: ähnliche Resistenz ist gut. Gelb: darf höchstens eine Stufe schlechter sein. Rot: muss mindestens genauso gut oder besser sein.
+            </p>
+            <div class="replacement-defense-grid" id="replacement-defenses"></div>
+          </section>
+
+          <section class="detail-section">
+            <div class="detail-section-heading">
+              <h3>Attacken</h3>
+            </div>
+            <p class="replacement-section-note">
+              Grün: ähnliche Attacken helfen beim Ranking. Gelb: es braucht mindestens eine Attacke mit gleichem Typ und gleicher Kategorie, bei Schadensattacken höchstens 20 Stärke Unterschied. Rot: Statusattacken müssen exakt gleich sein, Schadensattacken brauchen mindestens gleiche Stärke.
+            </p>
+            <div class="replacement-move-grid" id="replacement-moves"></div>
+          </section>
+
+          <section class="detail-section" id="replacement-results-section" hidden>
+            <div class="detail-section-heading">
+              <h3>Gefundene Pokémon</h3>
+            </div>
+            <div class="replacement-results-list" id="replacement-results"></div>
+          </section>
+        </div>
+      </section>
+    </div>
+
+    <div class="details-modal" id="core-finder-modal" hidden>
+      <div class="details-backdrop" data-close-core-finder="true"></div>
+      <section class="details-dialog core-finder-dialog" aria-labelledby="core-finder-title" aria-modal="true" role="dialog">
+        <div class="details-header">
+          <div>
+            <p class="eyebrow">Tools</p>
+            <h2 id="core-finder-title">Defensiver Core-Sucher</h2>
+          </div>
+          <button class="details-close" id="core-finder-close" type="button" aria-label="Close">×</button>
+        </div>
+        <div class="details-body">
+          <section class="detail-section">
+            <div class="detail-section-heading">
+              <h3>Beschreibung</h3>
+            </div>
+            <p class="replacement-intro">
+              Wähle ob du einen 3er oder 4er Core willst und wähle bis zu drei Pokémon aus. Das Tool sucht dir ein Pokémon, dass die Schwächen ausgleicht.
+            </p>
+            <label class="details-field core-finder-mode-field">
+              <span>Core-Typ:</span>
+              <select id="core-finder-mode">
+                <option value="3">Dreier Core</option>
+                <option value="4">Vierer Core</option>
+              </select>
+            </label>
+            <label class="hide-filter core-finder-pivot-toggle">
+              <input id="core-finder-pivot-chain" type="checkbox" />
+              Pivot Chain
+            </label>
+          </section>
+
+          <section class="detail-section">
+            <div class="detail-section-heading">
+              <h3>Auswahl</h3>
+            </div>
+            <div class="core-finder-slots" id="core-finder-slots"></div>
+          </section>
+
+          <section class="detail-section" id="core-finder-results-section" hidden>
+            <div class="detail-section-heading">
+              <h3>Ergebnisse</h3>
+            </div>
+            <div class="core-finder-results" id="core-finder-results"></div>
+          </section>
+        </div>
+      </section>
+    </div>
+
+    <div class="details-modal" id="core-finder-exception-modal" hidden>
+      <div class="details-backdrop" data-close-core-finder-exception="true"></div>
+      <section class="details-dialog replacement-picker-dialog" aria-labelledby="core-finder-exception-title" aria-modal="true" role="dialog">
+        <div class="details-header">
+          <div>
+            <p class="eyebrow">Core Sucher</p>
+            <h2 id="core-finder-exception-title">Kein exakter Core gefunden</h2>
+          </div>
+          <button class="details-close" id="core-finder-exception-close" type="button" aria-label="Close">×</button>
+        </div>
+        <div class="details-body">
+          <p class="replacement-intro" id="core-finder-exception-message"></p>
+        </div>
+        <div class="details-footer">
+          <button class="details-secondary" id="core-finder-exception-cancel" type="button">Abbrechen</button>
+          <button class="details-primary" id="core-finder-exception-submit" type="button">Trotzdem suchen</button>
+        </div>
+      </section>
+    </div>
+
+    <div class="details-modal" id="budget-planner-modal" hidden>
+      <div class="details-backdrop" data-close-budget-planner="true"></div>
+      <section class="details-dialog budget-planner-dialog" aria-labelledby="budget-planner-title" aria-modal="true" role="dialog">
+        <div class="details-header">
+          <div>
+            <p class="eyebrow">Tools</p>
+            <h2 id="budget-planner-title">Budget Planer</h2>
+          </div>
+          <button class="details-close" id="budget-planner-close" type="button" aria-label="Close">×</button>
+        </div>
+        <div class="details-body">
+          <section class="detail-section">
+            <div class="detail-section-heading">
+              <div>
+                <h3>Planung</h3>
+                <p class="replacement-intro">Wähle ein Format, stelle dein Team zusammen und behalte Budget, Captains und Rollen im Blick.</p>
+              </div>
+              <div class="budget-planner-header-actions">
+                <button class="details-secondary" id="budget-planner-costs-button" type="button">Kosten-Tabelle</button>
+                <button class="details-secondary" id="budget-planner-captain-costs-button" type="button">Captain Cost</button>
+                <button class="details-secondary" id="budget-planner-zoom-button" type="button">Zoom</button>
+              </div>
+            </div>
+            <div class="budget-planner-topbar">
+              <label class="details-field budget-planner-format-field">
+                <span>Format</span>
+                <select id="budget-planner-format">
+                  <option value="normal">Normal</option>
+                  <option value="low-power">Low Power</option>
+                  <option value="uber">Uber</option>
+                </select>
+              </label>
+              <div class="budget-planner-budget-box">
+                <span class="budget-planner-budget-label">Budget</span>
+                <div class="budget-planner-budget-display">
+                  <strong id="budget-planner-budget">
+                    <span id="budget-planner-budget-remaining">90</span>
+                    <span class="budget-planner-budget-separator"> / </span>
+                    <span id="budget-planner-budget-total">90</span>
+                  </strong>
+                  <img class="budget-planner-budget-mascot" id="budget-planner-budget-mascot" alt="" hidden />
+                </div>
+              </div>
+            </div>
+            <p class="budget-planner-feedback" id="budget-planner-feedback" hidden></p>
+          </section>
+
+          <section class="detail-section">
+            <div class="detail-section-heading">
+              <h3>Team</h3>
+            </div>
+            <div class="budget-planner-slots" id="budget-planner-slots"></div>
+          </section>
+
+          <section class="detail-section">
+            <div class="detail-section-heading">
+              <h3>Sterne</h3>
+            </div>
+            <div class="budget-planner-stars" id="budget-planner-stars"></div>
+          </section>
+
+          <section class="detail-section">
+            <div class="detail-section-heading">
+              <h3>Defensive Matrix</h3>
+            </div>
+            <div class="budget-planner-type-matrix-wrap" id="budget-planner-type-matrix-wrap"></div>
+          </section>
+
+          <section class="detail-section">
+            <div class="detail-section-heading">
+              <h3>Stat Matrix</h3>
+            </div>
+            <div class="budget-planner-stat-matrix-wrap" id="budget-planner-stat-matrix-wrap"></div>
+          </section>
+
+          <section class="detail-section">
+            <div class="detail-section-heading">
+              <h3>Team Checks</h3>
+            </div>
+            <div class="budget-planner-feature-grid" id="budget-planner-feature-grid"></div>
+          </section>
+        </div>
+      </section>
+    </div>
+
+    <div class="details-modal" id="budget-planner-zoom-modal" hidden>
+      <div class="details-backdrop" data-close-budget-planner-zoom="true"></div>
+      <section class="details-dialog replacement-picker-dialog budget-planner-subdialog" aria-labelledby="budget-planner-zoom-title" aria-modal="true" role="dialog">
+        <div class="details-header">
+          <div>
+            <p class="eyebrow">Budget Planer</p>
+            <h2 id="budget-planner-zoom-title">Team Zoom</h2>
+          </div>
+          <button class="details-close" id="budget-planner-zoom-close" type="button" aria-label="Close">×</button>
+        </div>
+        <div class="details-body">
+          <div class="budget-planner-zoom-grid" id="budget-planner-zoom-grid"></div>
+        </div>
+        <div class="details-footer">
+          <button class="details-secondary" id="budget-planner-zoom-cancel" type="button">Schließen</button>
+          <button class="details-primary" id="budget-planner-download-png" type="button">PNG herunterladen</button>
+        </div>
+      </section>
+    </div>
+
+    <div class="details-modal" id="budget-planner-costs-modal" hidden>
+      <div class="details-backdrop" data-close-budget-planner-costs="true"></div>
+      <section class="details-dialog replacement-picker-dialog budget-planner-subdialog" aria-labelledby="budget-planner-costs-title" aria-modal="true" role="dialog">
+        <div class="details-header">
+          <div>
+            <p class="eyebrow">Budget Planer</p>
+            <h2 id="budget-planner-costs-title">Kostenübersicht</h2>
+          </div>
+          <button class="details-close" id="budget-planner-costs-close" type="button" aria-label="Close">×</button>
+        </div>
+        <div class="details-body">
+          <div class="budget-planner-costs-table-wrap" id="budget-planner-costs-table-wrap"></div>
+        </div>
+        <div class="details-footer">
+          <button class="details-secondary" id="budget-planner-costs-cancel" type="button">Schließen</button>
+          <button class="details-primary" id="budget-planner-download-text" type="button">TXT herunterladen</button>
+        </div>
+      </section>
+    </div>
+
+    <div class="details-modal" id="budget-planner-captain-costs-modal" hidden>
+      <div class="details-backdrop" data-close-budget-planner-captain-costs="true"></div>
+      <section class="details-dialog replacement-picker-dialog budget-planner-subdialog" aria-labelledby="budget-planner-captain-costs-title" aria-modal="true" role="dialog">
+        <div class="details-header">
+          <div>
+            <p class="eyebrow">Budget Planer</p>
+            <h2 id="budget-planner-captain-costs-title">Captain Costs</h2>
+          </div>
+          <button class="details-close" id="budget-planner-captain-costs-close" type="button" aria-label="Close">×</button>
+        </div>
+        <div class="details-body">
+          <pre class="budget-planner-costs-text" id="budget-planner-captain-costs-text"></pre>
+        </div>
+        <div class="details-footer">
+          <button class="details-secondary" id="budget-planner-captain-costs-cancel" type="button">Schließen</button>
+        </div>
+      </section>
+    </div>
+
+    <div class="details-modal" id="rule-checker-modal" hidden>
+      <div class="details-backdrop" data-close-rule-checker="true"></div>
+      <section class="details-dialog rule-checker-dialog" aria-labelledby="rule-checker-title" aria-modal="true" role="dialog">
+        <div class="details-header">
+          <div>
+            <p class="eyebrow">Tools</p>
+            <h2 id="rule-checker-title">Regel Checker</h2>
+          </div>
+          <button class="details-close" id="rule-checker-close" type="button" aria-label="Close">&times;</button>
+        </div>
+        <div class="details-body">
+          <section class="detail-section">
+            <div class="detail-section-heading">
+              <div>
+                <h3>Pokémon Pool</h3>
+                <p class="replacement-intro">Wähle bis zu 12 Pokémon aus. Unten bearbeitest du dann 6 größere Sets aus diesem Pool.</p>
+              </div>
+              <div class="rule-checker-header-actions">
+                <label class="details-field rule-checker-format-field">
+                  <span>Format</span>
+                  <select id="rule-checker-format">
+                    <option value="low-power">Low Power</option>
+                    <option value="normal" selected>Normal</option>
+                    <option value="uber">Uber</option>
+                  </select>
+                </label>
+                <button class="details-secondary" id="rule-checker-import-budget" type="button">Aus Budget Planer übernehmen</button>
+              </div>
+            </div>
+            <div class="rule-checker-picker">
+              <label class="details-field">
+                <span>Pokémon hinzufügen</span>
+                <input id="rule-checker-picker-input" type="search" placeholder="Search Pokémon" autocomplete="off" />
+              </label>
+              <div class="suggestion-list" id="rule-checker-picker-suggestions"></div>
+            </div>
+            <div class="rule-checker-roster" id="rule-checker-roster"></div>
+          </section>
+
+          <section class="detail-section">
+            <div class="detail-section-heading">
+              <h3>Set Vorschau</h3>
+              <button class="details-primary" id="rule-checker-validate" type="button">Legalit&auml;t pr&uuml;fen</button>
+            </div>
+            <div class="rule-checker-team-grid" id="rule-checker-team-grid"></div>
+          </section>
+
+          <section class="detail-section" id="rule-checker-results-section" hidden>
+            <div class="detail-section-heading">
+              <h3>Gebrochene Regeln</h3>
+            </div>
+            <div class="rule-checker-results" id="rule-checker-results"></div>
+          </section>
+        </div>
+      </section>
+    </div>
+
+    <div class="details-modal" id="speed-tiers-modal" hidden>
+      <div class="details-backdrop" data-close-speed-tiers="true"></div>
+      <section class="details-dialog speed-tiers-dialog" aria-labelledby="speed-tiers-title" aria-modal="true" role="dialog">
+        <div class="details-header">
+          <div>
+            <p class="eyebrow">Tools</p>
+            <h2 id="speed-tiers-title">Speed Tiers</h2>
+          </div>
+          <button class="details-close" id="speed-tiers-close" type="button" aria-label="Close">&times;</button>
+        </div>
+        <div class="details-body">
+          <section class="detail-section">
+            <div class="detail-section-heading">
+              <div>
+                <h3>Vergleich</h3>
+                <p class="replacement-intro">Füge Pokémon hinzu und ziehe sie zwischen Eigenes Team und Gegnerisches Team, um ihre relevanten Speed Tiers zu vergleichen.</p>
+              </div>
+            </div>
+            <div class="speed-tiers-picker">
+              <label class="details-field">
+                <span>Pokémon hinzufügen</span>
+                <input id="speed-tiers-picker-input" type="search" placeholder="Search Pokémon" autocomplete="off" />
+              </label>
+              <div class="suggestion-list" id="speed-tiers-picker-suggestions"></div>
+            </div>
+            <div class="speed-tiers-toggle-row">
+              <label class="hide-filter"><input id="speed-tiers-scarf" type="checkbox" /> Scarf</label>
+              <label class="hide-filter"><input id="speed-tiers-tailwind" type="checkbox" /> Tailwind</label>
+              <label class="hide-filter"><input id="speed-tiers-trick-room" type="checkbox" /> Trick Room</label>
+              <label class="details-field speed-tiers-weather-field">
+                <span>Wetter</span>
+                <select id="speed-tiers-weather">
+                  <option value="neutral">Neutral</option>
+                  <option value="sun">Sun</option>
+                  <option value="rain">Rain</option>
+                  <option value="hail">Hail</option>
+                  <option value="snow">Snow</option>
+                  <option value="sand">Sand</option>
+                </select>
+              </label>
+            </div>
+          </section>
+
+          <section class="detail-section">
+            <div class="speed-tiers-teams">
+              <div class="speed-tiers-team-column">
+                <h3>Own Team</h3>
+                <div class="speed-tiers-team-dropzone" id="speed-tiers-own-team"></div>
+              </div>
+              <div class="speed-tiers-team-column">
+                <h3>Enemy Team</h3>
+                <div class="speed-tiers-team-dropzone" id="speed-tiers-enemy-team"></div>
+              </div>
+            </div>
+          </section>
+
+          <section class="detail-section">
+            <div class="detail-section-heading">
+              <h3>Ranks</h3>
+            </div>
+            <div class="speed-tiers-ranks" id="speed-tiers-ranks"></div>
+          </section>
+        </div>
+      </section>
+    </div>
+
+    <div class="details-modal" id="speed-tiers-gap-modal" hidden>
+      <div class="details-backdrop" data-close-speed-tiers-gap="true"></div>
+      <section class="details-dialog replacement-picker-dialog" aria-labelledby="speed-tiers-gap-title" aria-modal="true" role="dialog">
+        <div class="details-header">
+          <div>
+            <p class="eyebrow">Speed Tiers</p>
+            <h2 id="speed-tiers-gap-title">Gap Finder</h2>
+          </div>
+          <button class="details-close" id="speed-tiers-gap-close" type="button" aria-label="Close">&times;</button>
+        </div>
+        <div class="details-body">
+          <label class="details-field">
+            <span>Pokémon</span>
+            <select id="speed-tiers-gap-pokemon"></select>
+          </label>
+          <div class="speed-tiers-gap-results" id="speed-tiers-gap-results"></div>
+        </div>
+      </section>
+    </div>
+
+    <script src="data/pokedex-data.js" defer></script>
+    <script src="data/rule-checker-items.js" defer></script>
+    <script src="app.js" defer></script>
+  </body>
+</html>

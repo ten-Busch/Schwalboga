@@ -1,0 +1,11 @@
+{
+  "name": "friendly-pokemon-tournaments-pokedex",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Static Pokemon tournament prep site for GitHub Pages.",
+  "scripts": {
+    "build": "node ./scripts/build-pokedex-data.js",
+    "build:pokedex": "node ./scripts/build-pokedex-data.js",
+    "start": "npx serve ."
+  }
+}
