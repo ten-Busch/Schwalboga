@@ -103,11 +103,17 @@ const teraIconPath = 'Type Icons/Tera_Icon.png';
 const zIconPath = 'Type Icons/Z_Icon.png';
 const boosterIconPath = 'Type Icons/booster_icon.png';
 const shellIconPath = 'Type Icons/shell.png';
+const shedTailIconPath = 'Type Icons/Tail.png';
+const lastRespectsIconPath = 'Type Icons/PokeGhost.webp';
+const rageFistIconPath = 'Type Icons/Punch.png';
+const revivalBlessingIconPath = 'Type Icons/maxrevive.png';
 
 const pokedexGrid = document.querySelector('#pokedex-grid');
 const searchInput = document.querySelector('#pokemon-search');
 const sortField = document.querySelector('#sort-field');
 const sortDirection = document.querySelector('#sort-direction');
+const sortFieldSecondary = document.querySelector('#sort-field-secondary');
+const sortDirectionSecondary = document.querySelector('#sort-direction-secondary');
 const resultsCount = document.querySelector('#results-count');
 const searchSummary = document.querySelector('#search-summary');
 const template = document.querySelector('#pokemon-card-template');
@@ -126,8 +132,11 @@ const replacementFinderButton = document.querySelector('#replacement-finder-butt
 const coreFinderButton = document.querySelector('#core-finder-button');
 const budgetPlannerButton = document.querySelector('#budget-planner-button');
 const ruleCheckerButton = document.querySelector('#rule-checker-button');
+const stefansPdfButton = document.querySelector('#stefans-pdf-button');
+const changelogButton = document.querySelector('#changelog-button');
 const themeToggle = document.querySelector('#theme-toggle');
 const themeToggleMascot = document.querySelector('#theme-toggle-mascot');
+const legendButton = document.querySelector('#legend-button');
 const scrollTopButton = document.querySelector('#scroll-top-button');
 const detailsModal = document.querySelector('#details-modal');
 const detailsClose = document.querySelector('#details-close');
@@ -208,6 +217,15 @@ const replacementMoves = document.querySelector('#replacement-moves');
 const replacementRunSearch = document.querySelector('#replacement-run-search');
 const replacementResultsSection = document.querySelector('#replacement-results-section');
 const replacementResults = document.querySelector('#replacement-results');
+const stefansPdfModal = document.querySelector('#stefans-pdf-modal');
+const stefansPdfClose = document.querySelector('#stefans-pdf-close');
+const changelogModal = document.querySelector('#changelog-modal');
+const changelogClose = document.querySelector('#changelog-close');
+const changelogTabs = [...document.querySelectorAll('.changelog-tab')];
+const changelogPanels = [...document.querySelectorAll('.changelog-panel')];
+const legendModal = document.querySelector('#legend-modal');
+const legendClose = document.querySelector('#legend-close');
+const toolHelpToggles = [...document.querySelectorAll('.tool-help-toggle')];
 const coreFinderModal = document.querySelector('#core-finder-modal');
 const coreFinderClose = document.querySelector('#core-finder-close');
 const coreFinderMode = document.querySelector('#core-finder-mode');
@@ -279,6 +297,142 @@ const speedTiersGapPokemon = document.querySelector('#speed-tiers-gap-pokemon');
 const speedTiersGapResults = document.querySelector('#speed-tiers-gap-results');
 
 const triStateOrder = ['any', 'include', 'exclude'];
+const detailSubtitleByName = new Map([
+  ['Nihilego', 'UB-01 Symbiont'],
+  ['Buzzwole', 'UB-02 Absorption'],
+  ['Pheromosa', 'UB-02 Beauty'],
+  ['Xurkitree', 'UB-03 Lightning'],
+  ['Celesteela', 'UB-04 Blaster'],
+  ['Kartana', 'UB-04 Blade'],
+  ['Guzzlord', 'UB-05 Glutton'],
+  ['Poipole', 'UB Adhesive'],
+  ['Naganadel', 'UB Stinger'],
+  ['Stakataka', 'UB Assembly'],
+  ['Blacephalon', 'UB Burst'],
+  ['Koraidon', 'Winged King'],
+  ['Miraidon', 'Iron Serpent'],
+]);
+const customCostOverrides = new Map([
+  ['Carkol', 2],
+  ['Eevee', 4],
+  ['Munchlax', 3],
+  ['Houndstone', 7],
+  ['Magmortar', 7],
+  ['Malamar', 7],
+  ['Tauros', 8],
+  ['Tauros-Paldea-Combat', 8],
+  ['Zangoose', 8],
+  ['Flamigo', 9],
+  ['Medicham', 9],
+  ['Mismagius', 9],
+  ['Slowbro-Galar', 11],
+  ['Tauros-Paldea-Blaze', 9],
+  ['Tauros-Paldea-Aqua', 10],
+  ['Lucario', 11],
+  ['Sinistcha', 11],
+  ['Blastoise', 12],
+  ['Garganacl', 13],
+  ['Heracross', 13],
+  ['Staraptor', 13],
+  ['Zoroark-Hisui', 13],
+  ['Darmanitan', 14],
+  ['Amoonguss', 14],
+  ['Ferrothorn', 15],
+  ['Thundurus', 15],
+  ['Gliscor', 18],
+]);
+const customRibbonEntriesByName = new Map([
+  ['Wormadam', [{ symbol: 'i', text: 'Das Draften dieses Pokémon umfasst alle Formen.' }]],
+  ['Eevee-Z', [{ icon: zIconPath, text: 'Darf nicht Extreme-Evoboost als Z-Attacke nutzen!', warning: true }]],
+]);
+const toolHelpContentById = {
+  'replacement-finder-help': [
+    'Suche Ersatz für [selected Pokémon]. Clicke auf Basiswerte, Typen (unten), Fähigkeit, Kosten, Wetter, Element Defensive und/oder Attacken um diese als niedrige Priorität auszuwählen. Klicke eins davon nochmal um die Priorität auf mittel oder hoch zu erhöhen und ein viertes Mal um sie abzuwählen. Drücke dann auf den leuchtenden "Suchen" button in der Anleitung, und das Tool versucht dir ein Ähnliches Pokémon zu suchen.',
+    'Was genau die Priorität aussagt, findest du in den einzelnen Abschnitten. Für weitere Hinweise siehe den Abschnitt "Anleitung". Bei Bugs und weiteren Fragen melde dich bei Tobi.',
+  ],
+  'core-finder-help': [
+    'Dieses Tool sucht dir anhand einer unvollständigen Gruppe an Pokémon eines oder zwei raus, damit du für möglichst viele offensive Typen einen Switch-In hast.',
+    'Du kannst entweder einen Dreier-Core mit einem, oder einen Vierer-Core mit bis zu zwei Pokémon vervollständigen lassen. Wenn du "Pivot-Chain" aktivierst, versucht das Tool zu erzwingen, dass alle Pokemon Voltswitch, U-Turn, Parting Shot, etc haben.',
+    'Falls deine vor-eingestellten Pokémon keinen perfekten Core zulassen, wird dich das Tool warnen, du kannst aber mit den gewählten Pokémon trotzdem nach dem bestmöglichen Core suchen.',
+    'Bedenke: Das Tool zieht auch Fähigkeiten in Betracht! Bronzong wird als 0x Boden angezeigt, in der Annahme dass es dabei Levitate als Fähigkeit nutzt. Bei Bugs und weiteren Fragen melde dich bei Tobi.',
+  ],
+  'budget-planner-help': [
+    'Wähle aus, welches Format du spielst und wähle dann in "Team" aus, welche Pokémon du haben möchtest und ob es ein Z/Tera-Captain sein soll und welcher Typ. Unter "Planung" siehst du, wie viele Punkte du noch zur Verfügung hast, sowie deine Defensive Coverage und die Werte. Unter "Team Checks" sind ein paar Checks gelistet wie Hazard Removal oder Speed Control, die man evtl im Team haben möchte - diese sind nur als Hilfe gegeben, du musst hier nichts erfüllen.',
+    'Wenn du fertig bist kannst du über die Kosten-Tabelle eine Text-Datei des geplanted Drafts ansehen und runterladen, oder unter Zoom eine hübschere Ansicht des Teams sehen (wenn du diese Runterlädst werden die Sprites allerdings nicht angezeigt). Unter Captain Cost kannst du jederzeit die Kosten für Tera und Z-Steine ansehen. Bei Bugs und weiteren Fragen melde dich bei Tobi.',
+  ],
+  'rule-checker-help': [
+    'Gib unter "Pokémon Pool" dein gewünschtes Format ein und importiere entweder das Team, dass du zuletzt im Budget Planer offen hattest (Seite schließen löscht das Team hier), oder gib deinen Draft in der Zeile "Pokémon hinzufügen" ein. Danach kannst du bei "Set Vorschau" Pokémon aus deinem Draft per Drop-Down auswählen und ihre Sets eingeben. Wenn du dann auf Leglität Prüfen klickst, zeigt dir der Checker eventuelle Regelverstöße an.',
+    'Bei Bugs und weiteren Fragen melde dich bei Tobi.',
+  ],
+  'speed-tiers-help': [
+    'Füge die Pokémon unter "Pokémon hinzufügen" hinzu, die du vergleichen willst. Diese werden standardmäßig unter Own Team gelistet, über den Pfeil nach rechts kannst du sie auf das andere Team verschieben (das ändert nur die Farbe in der Liste unten für bessere Übersicht, es hat keinen Einfluss auf die Berechnung).',
+    'Das Ranking zeigt dir dann für alle gewählten Pokémon ein Set mit minimalem Speed, neutralem Wesen und maximalem Speed an. Pro Pokémon kannst du die Speed-Werte um -6 bis +6 ändern. Im "Vergleich" kannst du auch Scarf, Tailwind, Trickroom und Wetter anstellen. Dieses fügt Sets mit diesen Faktoren für alle Pokémon dem Ranking hinzu.',
+    'Wenn du auf eines der + klickst, zeigt dir das Tool alle Sets des gewählten Pokémon, mit dem es hier outspeeden kann (wenn du Trick Room aktiviert hast auch wie es "out-slowen" kann). Das Tool schaut rein auf Werte, es kann dir also auch Extremfälle wie Scarf Trick Room anzeigen!',
+    'Bei Bugs und weiteren Fragen melde dich bei Tobi.',
+  ],
+  'stefans-pdf-help': [
+    'Hier kannst du Stefans originale Pdf ansehen, indem die Regeln des Punkte-Systems und die Punkte-Tiers angezeigt werden. Du kannst die Pdf auch herunterladen.',
+  ],
+};
+customRibbonEntriesByName.set('Wormadam', [{ symbol: 'i', text: 'Das Draften dieses Pok\u00e9mon umfasst alle Formen.' }]);
+Object.assign(toolHelpContentById, {
+  'replacement-finder-help': [
+    'Suche Ersatz f\u00fcr [selected Pok\u00e9mon]. Clicke auf Basiswerte, Typen (unten), F\u00e4higkeit, Kosten, Wetter, Element Defensive und/oder Attacken um diese als niedrige Priorit\u00e4t auszuw\u00e4hlen. Klicke eins davon nochmal um die Priorit\u00e4t auf mittel oder hoch zu erh\u00f6hen und ein viertes Mal um sie abzuw\u00e4hlen. Dr\u00fccke dann auf den leuchtenden "Suchen" button in der Anleitung, und das Tool versucht dir ein \u00c4hnliches Pok\u00e9mon zu suchen.',
+    'Was genau die Priorit\u00e4t aussagt, findest du in den einzelnen Abschnitten. F\u00fcr weitere Hinweise siehe den Abschnitt "Anleitung". Bei Bugs und weiteren Fragen melde dich bei Tobi.',
+  ],
+  'core-finder-help': [
+    'Dieses Tool sucht dir anhand einer unvollst\u00e4ndigen Gruppe an Pok\u00e9mon eines oder zwei raus, damit du f\u00fcr m\u00f6glichst viele offensive Typen einen Switch-In hast.',
+    'Du kannst entweder einen Dreier-Core mit einem, oder einen Vierer-Core mit bis zu zwei Pok\u00e9mon vervollst\u00e4ndigen lassen. Wenn du "Pivot-Chain" aktivierst, versucht das Tool zu erzwingen, dass alle Pokemon Voltswitch, U-Turn, Parting Shot, etc haben.',
+    'Falls deine vor-eingestellten Pok\u00e9mon keinen perfekten Core zulassen, wird dich das Tool warnen, du kannst aber mit den gew\u00e4hlten Pok\u00e9mon trotzdem nach dem bestm\u00f6glichen Core suchen.',
+    'Bedenke: Das Tool zieht auch F\u00e4higkeiten in Betracht! Bronzong wird als 0x Boden angezeigt, in der Annahme dass es dabei Levitate als F\u00e4higkeit nutzt. Bei Bugs und weiteren Fragen melde dich bei Tobi.',
+  ],
+  'budget-planner-help': [
+    'W\u00e4hle aus, welches Format du spielst und w\u00e4hle dann in "Team" aus, welche Pok\u00e9mon du haben m\u00f6chtest und ob es ein Z/Tera-Captain sein soll und welcher Typ. Unter "Planung" siehst du, wie viele Punkte du noch zur Verf\u00fcgung hast, sowie deine Defensive Coverage und die Werte. Unter "Team Checks" sind ein paar Checks gelistet wie Hazard Removal oder Speed Control, die man evtl im Team haben m\u00f6chte - diese sind nur als Hilfe gegeben, du musst hier nichts erf\u00fcllen.',
+    'Wenn du fertig bist kannst du \u00fcber die Kosten-Tabelle eine Text-Datei des geplanted Drafts ansehen und runterladen, oder unter Zoom eine h\u00fcbschere Ansicht des Teams sehen (wenn du diese Runterl\u00e4dst werden die Sprites allerdings nicht angezeigt). Unter Captain Cost kannst du jederzeit die Kosten f\u00fcr Tera und Z-Steine ansehen. Bei Bugs und weiteren Fragen melde dich bei Tobi.',
+  ],
+  'rule-checker-help': [
+    'Gib unter "Pok\u00e9mon Pool" dein gew\u00fcnschtes Format ein und importiere entweder das Team, dass du zuletzt im Budget Planer offen hattest (Seite schlie\u00dfen l\u00f6scht das Team hier), oder gib deinen Draft in der Zeile "Pok\u00e9mon hinzuf\u00fcgen" ein. Danach kannst du bei "Set Vorschau" Pok\u00e9mon aus deinem Draft per Drop-Down ausw\u00e4hlen und ihre Sets eingeben. Wenn du dann auf Leglit\u00e4t Pr\u00fcfen klickst, zeigt dir der Checker eventuelle Regelverst\u00f6\u00dfe an.',
+    'Bei Bugs und weiteren Fragen melde dich bei Tobi.',
+  ],
+  'speed-tiers-help': [
+    'F\u00fcge die Pok\u00e9mon unter "Pok\u00e9mon hinzuf\u00fcgen" hinzu, die du vergleichen willst. Diese werden standardm\u00e4\u00dfig unter Own Team gelistet, \u00fcber den Pfeil nach rechts kannst du sie auf das andere Team verschieben (das \u00e4ndert nur die Farbe in der Liste unten f\u00fcr bessere \u00dcbersicht, es hat keinen Einfluss auf die Berechnung).',
+    'Das Ranking zeigt dir dann f\u00fcr alle gew\u00e4hlten Pok\u00e9mon ein Set mit minimalem Speed, neutralem Wesen und maximalem Speed an. Pro Pok\u00e9mon kannst du die Speed-Werte um -6 bis +6 \u00e4ndern. Im "Vergleich" kannst du auch Scarf, Tailwind, Trickroom und Wetter anstellen. Dieses f\u00fcgt Sets mit diesen Faktoren f\u00fcr alle Pok\u00e9mon dem Ranking hinzu.',
+    'Wenn du auf eines der + klickst, zeigt dir das Tool alle Sets des gew\u00e4hlten Pok\u00e9mon, mit dem es hier outspeeden kann (wenn du Trick Room aktiviert hast auch wie es "out-slowen" kann). Das Tool schaut rein auf Werte, es kann dir also auch Extremf\u00e4lle wie Scarf Trick Room anzeigen!',
+    'Bei Bugs und weiteren Fragen melde dich bei Tobi.',
+  ],
+});
+const tierChangelogEntries = [
+  ['Carkol', '1', '2', 'Punktekosten angepasst'],
+  ['Eevee', '1', '4', 'Bestehende Version angepasst'],
+  ['Eevee', 'Neu', '1', 'Neue Version mit Z-Hinweis'],
+  ['Munchlax', '4', '3', 'Punktekosten angepasst'],
+  ['Houndstone', '6', '7', 'Punktekosten angepasst'],
+  ['Magmortar', '6', '7', 'Punktekosten angepasst'],
+  ['Malamar', '6', '7', 'Punktekosten angepasst'],
+  ['Tauros', '7', '8', 'Punktekosten angepasst'],
+  ['Tauros-Paldea-Combat', '7', '8', 'Punktekosten angepasst'],
+  ['Zangoose', '7', '8', 'Punktekosten angepasst'],
+  ['Flamigo', '8', '9', 'Punktekosten angepasst'],
+  ['Medicham', '8', '9', 'Punktekosten angepasst'],
+  ['Mismagius', '7', '9', 'Punktekosten angepasst'],
+  ['Slowbro-Galar', '9', '11', 'Punktekosten angepasst'],
+  ['Tauros-Paldea-Blaze', '8', '9', 'Punktekosten angepasst'],
+  ['Tauros-Paldea-Aqua', '9', '10', 'Punktekosten angepasst'],
+  ['Lucario', '10', '11', 'Punktekosten angepasst'],
+  ['Sinistcha', '10', '11', 'Punktekosten angepasst'],
+  ['Blastoise', '13', '12', 'Punktekosten angepasst'],
+  ['Garganacl', '12', '13', 'Punktekosten angepasst'],
+  ['Heracross', '12', '13', 'Punktekosten angepasst'],
+  ['Staraptor', '12', '13', 'Punktekosten angepasst'],
+  ['Zoroark-Hisui', '12', '13', 'Punktekosten angepasst'],
+  ['Darmanitan', '13', '14', 'Punktekosten angepasst'],
+  ['Amoonguss', '—', '14', 'Neu bepreist'],
+  ['Blastoise-Mega', 'Neu', '—', 'Neue untiered Version mit Shell Smash'],
+  ['Ferrothorn', '—', '15', 'Neu bepreist'],
+  ['Thundurus-Incarnate', '—', '15', 'Neu bepreist'],
+  ['Gliscor', '19', '18', 'Punktekosten angepasst'],
+  ['Blaziken', 'Neu', '19', 'Neue Version mit erlaubtem Speed Boost'],
+];
 const meta = window.POKEDEX_META ?? { abilities: [], moves: [], movesById: {} };
 const abilityOptions = (meta.abilities ?? []).map((name) => ({ id: normalizeText(name), name }));
 const moveOptions = meta.moves ?? [];
@@ -520,14 +674,20 @@ const moveRuleMap = {
 const shellSmashAllowedPokemon = new Set([
   'Clamperl',
   'Magcargo',
+  'Crustle',
+  'Carracosta',
   'Gorebyss',
   'Huntail',
-  'Tortunator',
+  'Turtonator',
   'Omastar',
   'Barbaracle',
-  'Dreadnaw',
+  'Drednaw',
   'Cloyster',
+  'Polteageist',
+  'Torterra',
+  'Torkoal',
   'Blastoise',
+  'Blastoise-Mega-Shell-Smash',
   'Shuckle',
 ]);
 
@@ -935,6 +1095,130 @@ function getSpecialNameVariant(pokemon) {
   return null;
 }
 
+function getDetailSubtitle(pokemon) {
+  if (pokemon.name.startsWith('Necrozma')) return 'UB Black';
+  return detailSubtitleByName.get(pokemon.name) ?? null;
+}
+
+function getPokemonDisplayName(pokemon) {
+  return pokemon.displayName ?? pokemon.name;
+}
+
+function getReplacementHelpNameElement() {
+  return document.querySelector('#replacement-help-name');
+}
+
+function createDetailSubtitleElement(pokemon) {
+  const subtitle = getDetailSubtitle(pokemon);
+  if (!subtitle) return null;
+  const element = document.createElement('p');
+  element.className = 'detail-subtitle';
+  element.textContent = subtitle;
+  return element;
+}
+
+function initializeToolHelpToggles() {
+  for (const button of toolHelpToggles) {
+    const targetId = button.dataset.helpTarget;
+    if (!targetId) continue;
+    const panel = document.getElementById(targetId);
+    if (!panel) continue;
+    button.addEventListener('click', () => {
+      const willExpand = panel.hidden;
+      panel.hidden = !willExpand;
+      button.setAttribute('aria-expanded', String(willExpand));
+    });
+  }
+}
+
+function initializeStaticToolContent() {
+  for (const [id, paragraphs] of Object.entries(toolHelpContentById)) {
+    const panel = document.getElementById(id);
+    if (!panel) continue;
+    const nodes = paragraphs.map((text, index) => {
+      const paragraph = document.createElement('p');
+      paragraph.className = 'tool-help-text';
+      if (id === 'replacement-finder-help' && index === 0) {
+        const [before, after] = text.split('[selected Pok\u00e9mon]');
+        paragraph.append(document.createTextNode(before));
+        const name = document.createElement('span');
+        name.id = 'replacement-help-name';
+        name.textContent = '[selected Pok\u00e9mon]';
+        paragraph.append(name);
+        paragraph.append(document.createTextNode(after ?? ''));
+      } else {
+        paragraph.textContent = text;
+      }
+      return paragraph;
+    });
+    panel.replaceChildren(...nodes);
+  }
+
+  const pdfOpenLink = stefansPdfModal?.querySelector('.details-secondary');
+  if (pdfOpenLink) pdfOpenLink.textContent = 'Im neuen Tab \u00f6ffnen';
+  if (stefansPdfClose) stefansPdfClose.innerHTML = '&times;';
+  if (changelogClose) changelogClose.innerHTML = '&times;';
+
+  const tierTab = document.querySelector('#changelog-tab-tier');
+  if (tierTab) tierTab.textContent = 'Tier-\u00c4nderungen';
+
+  const tierPanel = document.querySelector('#changelog-panel-tier');
+  if (tierPanel) {
+    const entry = document.createElement('article');
+    entry.className = 'changelog-entry';
+    const title = document.createElement('h3');
+    title.textContent = '2026-04-19';
+    const wrap = document.createElement('div');
+    wrap.className = 'changelog-table-wrap';
+    const table = document.createElement('table');
+    table.className = 'changelog-table';
+    const formatCost = (value) => (value === '—' ? '\u2014' : value);
+    table.innerHTML = `
+      <thead>
+        <tr>
+          <th>Pok\u00e9mon</th>
+          <th>Alte Kosten</th>
+          <th>Neue Kosten</th>
+          <th>Begr\u00fcndung</th>
+        </tr>
+      </thead>
+      <tbody>
+        ${tierChangelogEntries.map(([name, oldCost, newCost, reason]) => `
+          <tr>
+            <td>${name}</td>
+            <td>${formatCost(oldCost)}</td>
+            <td>${formatCost(newCost)}</td>
+            <td>${reason}</td>
+          </tr>
+        `).join('')}
+      </tbody>
+    `;
+    wrap.append(table);
+    entry.append(title, wrap);
+    tierPanel.replaceChildren(entry);
+  }
+
+  const sitePanel = document.querySelector('#changelog-panel-site');
+  if (sitePanel) {
+    const entry = document.createElement('article');
+    entry.className = 'changelog-entry';
+    const title = document.createElement('h3');
+    title.textContent = 'Seiten Updates';
+    const date = document.createElement('p');
+    date.className = 'changelog-date';
+    date.textContent = '2026-04-19';
+    const list = document.createElement('ul');
+    list.className = 'changelog-list';
+    ['Dark Mode Ausnahmen gefixed', 'Changelogs hinzugef\u00fcgt', 'Hilfe-Buttons hinzugef\u00fcgt', 'Stefans PDF verlinkt']
+      .forEach((text) => {
+        const item = document.createElement('li');
+        item.textContent = text;
+        list.append(item);
+      });
+    entry.append(title, date, list);
+    sitePanel.replaceChildren(entry);
+  }
+}
 function getStoredTheme() {
   const storedTheme = window.localStorage.getItem(themeStorageKey);
   return storedTheme === 'dark' ? 'dark' : 'light';
@@ -985,6 +1269,76 @@ function getPokemonFlags(pokemon) {
   };
 }
 
+function addMoveToPokemon(pokemon, moveId, methods = ['9M']) {
+  const nextMoveIds = new Set(pokemon.moveIds ?? []);
+  nextMoveIds.add(moveId);
+  pokemon.moveIds = [...nextMoveIds];
+  const learnset = { ...(pokemon.learnset ?? {}) };
+  const existingMethods = learnset[moveId] ?? [];
+  learnset[moveId] = [...new Set([...existingMethods, ...methods])];
+  pokemon.learnset = learnset;
+}
+
+function pokemonLearnsMove(pokemon, moveId) {
+  return Object.prototype.hasOwnProperty.call(getEffectiveLearnset(pokemon), moveId);
+}
+
+function getSpecialMoveBadges(pokemon) {
+  if (pokemon.name === 'Smeargle') return [];
+  const moveBadges = [
+    {
+      moveId: 'lastrespects',
+      src: lastRespectsIconPath,
+      alt: 'Last Respects',
+    },
+    {
+      moveId: 'ragefist',
+      src: rageFistIconPath,
+      alt: 'Rage Fist',
+    },
+    {
+      moveId: 'revivalblessing',
+      src: revivalBlessingIconPath,
+      alt: 'Revival Blessing',
+    },
+    {
+      moveId: 'shellsmash',
+      src: shellIconPath,
+      alt: 'Shell Smash',
+    },
+    {
+      moveId: 'shedtail',
+      src: shedTailIconPath,
+      alt: 'Shed Tail',
+    },
+  ];
+
+  return moveBadges.flatMap((badge) => {
+    if (badge.skip?.(pokemon)) return [];
+    if (!pokemonLearnsMove(pokemon, badge.moveId)) return [];
+    const ruleInfo = getMoveRuleInfo(badge.moveId, pokemon);
+    return [{
+      src: badge.src,
+      alt: badge.alt,
+      illegal: ruleInfo?.severity === 'illegal',
+    }];
+  });
+}
+
+function createFormBadgeNode(badge) {
+  const badgeWrap = document.createElement('span');
+  badgeWrap.className = 'form-badge-wrapper';
+  if (badge.warning) badgeWrap.classList.add('is-warning');
+  if (badge.illegal) badgeWrap.classList.add('is-illegal');
+  const badgeElement = document.createElement('img');
+  badgeElement.className = 'form-badge';
+  badgeElement.src = badge.src;
+  badgeElement.alt = badge.alt;
+  badgeElement.loading = 'lazy';
+  badgeWrap.append(badgeElement);
+  return badgeWrap;
+}
+
 function isSpeedTopTwoStat(pokemon) {
   const stats = Object.entries(pokemon.baseStats ?? {})
     .filter(([, value]) => Number.isFinite(value))
@@ -1028,7 +1382,11 @@ function buildFormBadges(pokemon) {
   if (flags.tera) badges.push({ src: teraIconPath, alt: 'Tera' });
   if (flags.z) badges.push({ src: zIconPath, alt: 'Z-Move' });
   if (flags.booster) badges.push({ src: boosterIconPath, alt: 'Booster Energy' });
-  if (shellSmashAllowedPokemon.has(pokemon.name)) badges.push({ src: shellIconPath, alt: 'Shell Smash legal' });
+  badges.push(...getSpecialMoveBadges(pokemon));
+  if (pokemonHasTag(pokemon, 'z-warning') && flags.z) {
+    const zBadge = badges.find((badge) => badge.alt === 'Z-Move');
+    if (zBadge) zBadge.warning = true;
+  }
   return badges;
 }
 
@@ -1441,7 +1799,13 @@ function compileExpertSearch(rawQuery) {
 
 function matchesPokemonFilters(pokemon, query, triStates, options = {}) {
   const { ignoreUntiered = false } = options;
-  const searchable = [pokemon.displayNumber, pokemon.name, pokemon.types.join(' '), String(pokemon.num)].join(' ').toLowerCase();
+  const searchable = [
+    pokemon.displayNumber,
+    pokemon.name,
+    getPokemonDisplayName(pokemon),
+    pokemon.types.join(' '),
+    String(pokemon.num),
+  ].join(' ').toLowerCase();
   if (query && !searchable.includes(query)) return false;
   if (hideUnreleased.checked && pokemon.unreleased) return false;
   if (hideImpossible.checked && pokemon.impossible) return false;
@@ -1458,7 +1822,7 @@ function matchesPokemonFilters(pokemon, query, triStates, options = {}) {
 }
 
 function getSortValue(pokemon, field) {
-  if (field === 'name') return pokemon.name;
+  if (field === 'name') return getPokemonDisplayName(pokemon);
   if (field === 'cost') return pokemon.cost;
   if (field === 'special-bulk') {
     const hp = pokemon.baseStats?.hp;
@@ -1495,7 +1859,8 @@ function getSortDisplayValue(pokemon, field) {
   return null;
 }
 
-function comparePokemon(left, right, field, direction) {
+function comparePokemon(left, right, field, direction, options = {}) {
+  const { useFallback = true } = options;
   const multiplier = direction === 'desc' ? -1 : 1;
   const leftValue = getSortValue(left, field);
   const rightValue = getSortValue(right, field);
@@ -1503,6 +1868,7 @@ function comparePokemon(left, right, field, direction) {
   const rightMissing = rightValue === null || rightValue === undefined;
 
   if (leftMissing && rightMissing) {
+    if (!useFallback) return 0;
     if (left.num !== right.num) return left.num - right.num;
     return left.sourceIndex - right.sourceIndex;
   }
@@ -1517,6 +1883,27 @@ function comparePokemon(left, right, field, direction) {
   }
 
   if (comparison !== 0) return comparison * multiplier;
+  if (!useFallback) return 0;
+  if (left.num !== right.num) return left.num - right.num;
+  return left.sourceIndex - right.sourceIndex;
+}
+
+function comparePokemonWithSecondary(left, right) {
+  const primaryComparison = comparePokemon(left, right, sortField.value, sortDirection.value, { useFallback: false });
+  if (primaryComparison !== 0) return primaryComparison;
+
+  const secondaryField = sortFieldSecondary?.value ?? '';
+  if (secondaryField) {
+    const secondaryComparison = comparePokemon(
+      left,
+      right,
+      secondaryField,
+      sortDirectionSecondary?.value ?? 'asc',
+      { useFallback: false },
+    );
+    if (secondaryComparison !== 0) return secondaryComparison;
+  }
+
   if (left.num !== right.num) return left.num - right.num;
   return left.sourceIndex - right.sourceIndex;
 }
@@ -1542,7 +1929,7 @@ function applyAllFilters() {
         matchesPokemonFilters(hiddenPokemon, query, triStates, { ignoreUntiered: true }),
       );
     });
-  filtered.sort((left, right) => comparePokemon(left, right, sortField.value, sortDirection.value));
+  filtered.sort(comparePokemonWithSecondary);
 
   renderPokemonList(filtered, format);
   renderSearchSummary();
@@ -1651,7 +2038,7 @@ function createSimplePokemonCell(pokemon, format) {
   if (flags.mega && !isIllegal) cell.classList.add('is-mega');
   cell.tabIndex = 0;
   cell.setAttribute('role', 'button');
-  cell.setAttribute('aria-label', `${pokemon.name} details`);
+  cell.setAttribute('aria-label', `${getPokemonDisplayName(pokemon)} details`);
 
   const cost = document.createElement('span');
   cost.className = 'pokemon-simple-cost';
@@ -1659,23 +2046,21 @@ function createSimplePokemonCell(pokemon, format) {
 
   const name = document.createElement('span');
   name.className = 'pokemon-simple-name';
-  name.textContent = pokemon.name;
+  name.textContent = getPokemonDisplayName(pokemon);
 
   const badges = document.createElement('span');
   badges.className = 'pokemon-simple-badges';
-  if (flags.z) {
+  for (const badgeData of buildFormBadges(pokemon)) {
     const icon = document.createElement('img');
-    icon.src = zIconPath;
-    icon.alt = 'Z-Captain';
+    icon.src = badgeData.src;
+    icon.alt = badgeData.alt;
     icon.loading = 'lazy';
-    badges.append(icon);
-  }
-  if (flags.tera) {
-    const icon = document.createElement('img');
-    icon.src = teraIconPath;
-    icon.alt = 'Tera-Captain';
-    icon.loading = 'lazy';
-    badges.append(icon);
+    const badge = document.createElement('span');
+    badge.className = 'pokemon-simple-badge';
+    if (badgeData.warning) badge.classList.add('is-warning');
+    if (badgeData.illegal) badge.classList.add('is-illegal');
+    badge.append(icon);
+    badges.append(badge);
   }
 
   cell.append(cost, name, badges);
@@ -1791,7 +2176,7 @@ function createPokemonCard(pokemon, format) {
   card.style.setProperty('--card-type-secondary', borderColors.secondary);
   card.tabIndex = 0;
   card.setAttribute('role', 'button');
-  card.setAttribute('aria-label', `${pokemon.name} details`);
+  card.setAttribute('aria-label', `${getPokemonDisplayName(pokemon)} details`);
   number.textContent = pokemon.displayNumber;
   applyCostStyling(cost, pokemon.cost ?? null, card);
   if (pokemon.cost !== null && pokemon.cost > formatThreshold) card.classList.add('is-over-format');
@@ -1805,22 +2190,17 @@ function createPokemonCard(pokemon, format) {
   }
 
   for (const badge of buildFormBadges(pokemon)) {
-    const badgeElement = document.createElement('img');
-    badgeElement.className = 'form-badge';
-    badgeElement.src = badge.src;
-    badgeElement.alt = badge.alt;
-    badgeElement.loading = 'lazy';
-    badgeStack.append(badgeElement);
+    badgeStack.append(createFormBadgeNode(badge));
   }
   if (!badgeStack.children.length) badgeStack.remove();
 
   sprite.src = pokemon.sprite;
-  sprite.alt = `${pokemon.name} sprite`;
+  sprite.alt = `${getPokemonDisplayName(pokemon)} sprite`;
   sprite.addEventListener('error', () => {
     sprite.src = 'data:image/svg+xml;charset=UTF-8,' + encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 72 72"><rect width="72" height="72" rx="18" fill="#f0e3d1"/><text x="36" y="42" text-anchor="middle" font-size="16" font-family="Arial, sans-serif" fill="#8f2d23">?</text></svg>');
   }, { once: true });
 
-  name.textContent = pokemon.name;
+  name.textContent = getPokemonDisplayName(pokemon);
   if (specialNameVariant === 'quark') name.classList.add('is-quark-name');
   if (specialNameVariant === 'proto') name.classList.add('is-proto-name');
   const sortDisplayValue = getSortDisplayValue(pokemon, sortField.value);
@@ -2060,6 +2440,9 @@ function renderSearchSummary() {
 
   chips.push(`Format: ${formatFilter.options[formatFilter.selectedIndex].text}`);
   chips.push(`Sortierung: ${sortField.options[sortField.selectedIndex].text} (${sortDirection.value === 'desc' ? 'Absteigend' : 'Aufsteigend'})`);
+  if (sortFieldSecondary?.value) {
+    chips.push(`Sekundär: ${sortFieldSecondary.options[sortFieldSecondary.selectedIndex].text} (${sortDirectionSecondary?.value === 'desc' ? 'Absteigend' : 'Aufsteigend'})`);
+  }
   if (searchInput.value.trim()) chips.push(`Suche: ${searchInput.value.trim()}`);
   if (appliedAdvancedSearch.name) chips.push(`Name: ${appliedAdvancedSearch.name}`);
   if (appliedAdvancedSearch.abilities.length) {
@@ -2296,12 +2679,14 @@ function getAbilitySlotLabel(slot) {
 
 function getFamilyMembers(pokemon) {
   const family = [];
+  const wormadamNames = ['Wormadam', 'Wormadam-Sandy', 'Wormadam-Trash'];
   const initialNames = [
     pokemon.name,
     pokemon.baseSpecies ?? null,
     pokemon.changesFrom ?? null,
     pokemon.linkedTo ?? null,
   ].filter(Boolean);
+  if (wormadamNames.includes(pokemon.name)) initialNames.push(...wormadamNames);
   const queue = initialNames
     .map((name) => pokemonByName.get(name))
     .filter(Boolean);
@@ -2401,7 +2786,7 @@ function createCoreFinderPreviewCard(pokemon) {
 
   number.textContent = pokemon.displayNumber;
   applyCostStyling(cost, pokemon.cost ?? null, card);
-  badgeStack.replaceChildren(...buildFormBadges(pokemon));
+  badgeStack.replaceChildren(...buildFormBadges(pokemon).map(createFormBadgeNode));
   setSpriteWithFallback(sprite, pokemon.sprite, `${pokemon.name} sprite`);
   for (const type of pokemon.types ?? []) {
     const icon = document.createElement('img');
@@ -2609,7 +2994,7 @@ function createCoreFinderDefenseMatrix(pokemon) {
   const card = document.createElement('div');
   card.className = 'core-finder-matrix-card';
   const title = document.createElement('h4');
-  title.textContent = pokemon.name;
+  title.textContent = getPokemonDisplayName(pokemon);
   const grid = document.createElement('div');
   grid.className = 'core-finder-defense-grid';
   for (const type of battleTypes) {
@@ -3311,6 +3696,8 @@ function openReplacementFinder(name) {
   const pokemon = pokemonByName.get(name);
   if (!pokemon) return;
   replacementFinderTargetName = pokemon.name;
+  const replacementHelpName = getReplacementHelpNameElement();
+  if (replacementHelpName) replacementHelpName.textContent = getPokemonDisplayName(pokemon);
   replacementFinderPriorities = new Map();
   renderReplacementFinder(pokemon);
   replacementFinderModal.hidden = false;
@@ -3318,6 +3705,45 @@ function openReplacementFinder(name) {
 
 function closeReplacementFinder() {
   replacementFinderModal.hidden = true;
+}
+
+function openStefansPdf() {
+  stefansPdfModal.hidden = false;
+}
+
+function closeStefansPdf() {
+  stefansPdfModal.hidden = true;
+}
+
+function openLegend() {
+  if (legendModal) legendModal.hidden = false;
+}
+
+function closeLegend() {
+  if (legendModal) legendModal.hidden = true;
+}
+
+function setActiveChangelogTab(tabKey) {
+  for (const tab of changelogTabs) {
+    const isActive = tab.dataset.tab === tabKey;
+    tab.classList.toggle('is-active', isActive);
+    tab.setAttribute('aria-selected', String(isActive));
+  }
+
+  for (const panel of changelogPanels) {
+    const isActive = panel.dataset.tabPanel === tabKey;
+    panel.hidden = !isActive;
+    panel.style.display = isActive ? '' : 'none';
+  }
+}
+
+function openChangelog(initialTab = 'site') {
+  setActiveChangelogTab(initialTab);
+  changelogModal.hidden = false;
+}
+
+function closeChangelog() {
+  changelogModal.hidden = true;
 }
 
 function submitReplacementPicker() {
@@ -3599,7 +4025,7 @@ function renderReplacementResults(target, results) {
     const body = document.createElement('div');
     body.className = 'replacement-result-content';
     const title = document.createElement('strong');
-    title.textContent = result.pokemon.name;
+  title.textContent = getPokemonDisplayName(result.pokemon);
     const typeLine = document.createElement('p');
     typeLine.className = 'replacement-result-types';
     typeLine.textContent = (result.pokemon.types ?? []).join(' / ');
@@ -3661,6 +4087,8 @@ function getRibbonEntries(pokemon) {
   const flags = getPokemonFlags(pokemon);
   const abilityNames = pokemon.abilityDetails.map((ability) => ability.name);
   const ribbons = [];
+  const customRibbons = customRibbonEntriesByName.get(pokemon.name) ?? [];
+  ribbons.push(...customRibbons);
 
   if (flags.mega) {
     ribbons.push({
@@ -3797,6 +4225,12 @@ function getSereneGraceSeverity(pokemon) {
 }
 
 function getAbilityRuleInfo(abilityName, pokemon) {
+  if (abilityName === 'Speed Boost' && pokemon.name === 'Blaziken') {
+    return {
+      severity: 'illegal',
+      text: 'Speed Boost ist auf dieser Blaziken-Version nicht erlaubt.',
+    };
+  }
   if (abilityName === 'Serene Grace') {
     const severity = getSereneGraceSeverity(pokemon);
     if (!severity) return null;
@@ -3820,6 +4254,20 @@ function getMoveRuleInfo(moveId, pokemon) {
   };
 
   let resolvedRule = baseRule;
+
+  if (moveId === 'shedtail' && pokemon.name === 'Cyclizar') {
+    resolvedRule = mergeRule(resolvedRule, {
+      severity: 'illegal',
+      text: 'Shed Tail ist auf Cyclizar nicht erlaubt.',
+    });
+  }
+
+  if (moveId === 'revivalblessing' && pokemon.name === 'Pawmot') {
+    resolvedRule = mergeRule(resolvedRule, {
+      severity: 'illegal',
+      text: 'Revival Blessing ist auf Pawmot nicht erlaubt.',
+    });
+  }
 
   if (moveId === 'shellsmash' && !shellSmashAllowedPokemon.has(pokemon.name)) {
     resolvedRule = mergeRule(resolvedRule, {
@@ -4167,7 +4615,7 @@ function renderPokemonDetail(pokemon) {
       pokemonDetailModal.classList.remove('is-rotom-static');
     }, 720);
   }
-  detailTitle.textContent = pokemon.name;
+  detailTitle.textContent = getPokemonDisplayName(pokemon);
   detailTitle.classList.remove('is-quark-name', 'is-proto-name', 'is-porygon-glitching');
   const detailNameVariant = getSpecialNameVariant(pokemon);
   if (detailNameVariant === 'quark') detailTitle.classList.add('is-quark-name');
@@ -4238,11 +4686,12 @@ function renderPokemonDetail(pokemon) {
     metaWrap.className = 'detail-top-meta';
     const title = document.createElement('h3');
     title.className = 'detail-top-title';
-    title.textContent = form.name;
+    title.textContent = getPokemonDisplayName(form);
     const formNameVariant = getSpecialNameVariant(form);
     if (formNameVariant === 'quark') title.classList.add('is-quark-name');
     if (formNameVariant === 'proto') title.classList.add('is-proto-name');
     if (form.name === pokemon.name) activeTopTitle = title;
+    const subtitle = createDetailSubtitleElement(form);
 
     const typeList = document.createElement('div');
     typeList.className = 'detail-type-list';
@@ -4287,7 +4736,8 @@ function renderPokemonDetail(pokemon) {
       value.append(range);
     });
 
-    metaWrap.append(title, typeList, statGrid);
+    if (subtitle) metaWrap.append(title, subtitle, typeList, statGrid);
+    else metaWrap.append(title, typeList, statGrid);
 
     if (showTopDefenses) {
       const defenseGrid = document.createElement('div');
@@ -6055,6 +6505,12 @@ function runRuleCheckerValidation() {
         abilitySlots: [[entry.slotIndex, entry.slot.ability]],
       });
     }
+    if (entry.pokemon.name === 'Blaziken' && entry.slot.ability === 'Speed Boost') {
+      addRuleCheckerViolation('Speed Boost ist nur auf der 19-Punkte-Version von Blaziken erlaubt.', {
+        cardSlots: [entry.slotIndex],
+        abilitySlots: [[entry.slotIndex, entry.slot.ability]],
+      });
+    }
     for (const move of entry.selectedMoves) {
       const ruleInfo = getMoveRuleInfo(move.id, entry.pokemon);
       if (ruleInfo?.text.includes('Genauigkeits-Clause')) {
@@ -6934,6 +7390,80 @@ function injectCustomPokemonEntries(entries) {
     tags: Array.isArray(entry.tags) ? [...entry.tags] : [],
   }));
   const byName = new Map(list.map((entry) => [entry.name, entry]));
+  for (const [name, cost] of customCostOverrides.entries()) {
+    const entry = byName.get(name);
+    if (entry) {
+      entry.cost = cost;
+      if (cost !== null && cost !== undefined) entry.untiered = false;
+    }
+  }
+
+  const eevee = byName.get('Eevee');
+  if (eevee && !byName.has('Eevee-Z')) {
+    list.push({
+      ...eevee,
+      sourceIndex: (eevee.sourceIndex ?? list.length) + 0.25,
+      name: 'Eevee-Z',
+      displayName: 'Eevee',
+      cost: 1,
+      untiered: false,
+      tags: [...new Set([...(eevee.tags ?? []), 'z-warning'])],
+    });
+  }
+
+  const blaziken = byName.get('Blaziken');
+  if (blaziken && !byName.has('Blaziken-Speed-Boost')) {
+    list.push({
+      ...blaziken,
+      sourceIndex: (blaziken.sourceIndex ?? list.length) + 0.25,
+      name: 'Blaziken-Speed-Boost',
+      displayName: 'Blaziken',
+      cost: 19,
+      untiered: false,
+    });
+  }
+
+  const blastoiseMega = byName.get('Blastoise-Mega');
+  if (blastoiseMega) {
+    blastoiseMega.moveIds = (blastoiseMega.moveIds ?? []).filter((moveId) => moveId !== 'shellsmash');
+    if (blastoiseMega.learnset?.shellsmash) {
+      const nextLearnset = { ...blastoiseMega.learnset };
+      delete nextLearnset.shellsmash;
+      blastoiseMega.learnset = nextLearnset;
+    }
+    if (!byName.has('Blastoise-Mega-Shell-Smash')) {
+      const variant = {
+        ...blastoiseMega,
+        sourceIndex: (blastoiseMega.sourceIndex ?? list.length) + 0.25,
+        name: 'Blastoise-Mega-Shell-Smash',
+        displayName: 'Blastoise-Mega',
+        cost: null,
+        untiered: true,
+        tags: [...new Set([...(blastoiseMega.tags ?? [])])],
+      };
+      addMoveToPokemon(variant, 'shellsmash', ['9M']);
+      list.push(variant);
+    }
+  }
+
+  const drednaw = byName.get('Drednaw');
+  if (drednaw) addMoveToPokemon(drednaw, 'shellsmash', ['9M']);
+  const gorebyss = byName.get('Gorebyss');
+  if (gorebyss) addMoveToPokemon(gorebyss, 'shellsmash', ['9M']);
+  const torterra = byName.get('Torterra');
+  if (torterra) addMoveToPokemon(torterra, 'shellsmash', ['9M']);
+
+  const minior = byName.get('Minior');
+  if (minior) {
+    minior.hidden = false;
+    minior.linkedTo = null;
+  }
+  const miniorMeteor = byName.get('Minior-Meteor');
+  if (miniorMeteor) {
+    miniorMeteor.hidden = true;
+    miniorMeteor.linkedTo = 'Minior';
+  }
+
   const annihilape = byName.get('Annihilape');
   if (annihilape && !byName.has('Annihilape-Fist')) {
     list.push({
@@ -7007,6 +7537,8 @@ function initializeAdvancedSearch() {
     options: moveOptions,
   });
 
+initializeToolHelpToggles();
+initializeStaticToolContent();
 detailsButton.addEventListener('click', openDetailsModal);
 expertSearchButton?.addEventListener('click', openExpertSearchModal);
 searchExpandButton?.addEventListener('click', () => setSearchAdvancedExpanded(!isSearchAdvancedExpanded));
@@ -7016,6 +7548,9 @@ budgetPlannerButton?.addEventListener('click', openBudgetPlanner);
 ruleCheckerButton?.addEventListener('click', () => {
   void openRuleChecker();
 });
+stefansPdfButton?.addEventListener('click', openStefansPdf);
+changelogButton?.addEventListener('click', () => openChangelog('site'));
+legendButton?.addEventListener('click', openLegend);
 themeToggle?.addEventListener('click', toggleTheme);
   detailsClose.addEventListener('click', closeDetailsModal);
   detailsCancel.addEventListener('click', closeDetailsModal);
@@ -7069,6 +7604,21 @@ themeToggle?.addEventListener('click', toggleTheme);
     if (event.target.dataset.closeReplacementFinder === 'true') closeReplacementFinder();
   });
   replacementRunSearch?.addEventListener('click', runReplacementFinderSearch);
+  stefansPdfClose?.addEventListener('click', closeStefansPdf);
+  stefansPdfModal?.addEventListener('click', (event) => {
+    if (event.target.dataset.closeStefansPdf === 'true') closeStefansPdf();
+  });
+  legendClose?.addEventListener('click', closeLegend);
+  legendModal?.addEventListener('click', (event) => {
+    if (event.target.dataset.closeLegend === 'true') closeLegend();
+  });
+  changelogClose?.addEventListener('click', closeChangelog);
+  changelogModal?.addEventListener('click', (event) => {
+    if (event.target.dataset.closeChangelog === 'true') closeChangelog();
+  });
+  changelogTabs.forEach((tab) => {
+    tab.addEventListener('click', () => setActiveChangelogTab(tab.dataset.tab ?? 'site'));
+  });
   coreFinderClose?.addEventListener('click', closeCoreFinder);
   coreFinderModal?.addEventListener('click', (event) => {
     if (event.target.dataset.closeCoreFinder === 'true') closeCoreFinder();
@@ -7250,6 +7800,8 @@ initializeAdvancedSearch();
 searchInput.addEventListener('input', applyAllFilters);
 sortField.addEventListener('change', applyAllFilters);
 sortDirection.addEventListener('change', applyAllFilters);
+sortFieldSecondary?.addEventListener('change', applyAllFilters);
+sortDirectionSecondary?.addEventListener('change', applyAllFilters);
 formatFilter.addEventListener('change', applyAllFilters);
 hideUnreleased.addEventListener('change', applyAllFilters);
 hideImpossible.addEventListener('change', applyAllFilters);
@@ -7269,5 +7821,6 @@ window.addEventListener('resize', updateScrollTopButtonVisibility);
 setSearchAdvancedExpanded(false);
 updateScrollTopButtonVisibility();
 loadPokedex();
+
 
 

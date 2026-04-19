@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -19,7 +19,7 @@
           <div class="section-heading">
             <div>
               <p class="eyebrow">Database</p>
-              <h2>Pokédex</h2>
+              <h2>PokÃ©dex</h2>
             </div>
             <div class="section-header-tools">
               <div class="theme-toggle-wrap">
@@ -44,6 +44,7 @@
                   height="32"
                   loading="lazy"
                 />
+                <button class="details-button" id="legend-button" type="button">Legende</button>
               </div>
             </div>
           </div>
@@ -93,6 +94,30 @@
                     <option value="desc">Absteigend</option>
                   </select>
                 </label>
+                <label class="sort-field" for="sort-field-secondary">
+                  <span>SekundÃ¤r</span>
+                  <select id="sort-field-secondary">
+                    <option value="">Keine</option>
+                    <option value="dex">Dex Number</option>
+                    <option value="name">Alphabetisch</option>
+                    <option value="cost">Punktekosten</option>
+                    <option value="hp">KP</option>
+                    <option value="atk">Angriff</option>
+                    <option value="def">Verteidigung</option>
+                    <option value="spa">Spez. Angriff</option>
+                    <option value="spd">Spez. Vert</option>
+                    <option value="special-bulk">Spez. Bulk</option>
+                    <option value="physical-bulk">Phys. Bulk</option>
+                    <option value="spe">Initiative</option>
+                  </select>
+                </label>
+                <label class="sort-field sort-direction-field" for="sort-direction-secondary">
+                  <span>2. Reihenfolge</span>
+                  <select id="sort-direction-secondary">
+                    <option value="asc">Aufsteigend</option>
+                    <option value="desc">Absteigend</option>
+                  </select>
+                </label>
               </div>
               <button class="details-button" id="details-search-button" type="button">Detailsuche</button>
             </div>
@@ -110,6 +135,8 @@
               <button class="details-button" id="budget-planner-button" type="button">Budget Planer</button>
               <button class="details-button" id="rule-checker-button" type="button">Regel Checker</button>
               <button class="details-button" id="speed-tiers-button" type="button">Speed Tiers</button>
+              <button class="details-button" id="stefans-pdf-button" type="button">Stefans Pdf</button>
+              <button class="details-button" id="changelog-button" type="button">Changelog</button>
             </div>
           </div>
 
@@ -189,20 +216,20 @@
             <p class="eyebrow">Erweiterte Suche</p>
             <h2 id="details-title">Detailsuche</h2>
           </div>
-          <button class="details-close" id="details-close" type="button" aria-label="Close">×</button>
+          <button class="details-close" id="details-close" type="button" aria-label="Close">Ã—</button>
         </div>
         <div class="details-body">
           <label class="details-field">
             <span>Name</span>
-            <input id="details-name" type="text" placeholder="Pokémonname eingeben" />
+            <input id="details-name" type="text" placeholder="PokÃ©monname eingeben" />
           </label>
 
           <div class="details-field">
-            <span>Fähigkeiten</span>
+            <span>FÃ¤higkeiten</span>
             <div class="token-filter">
               <div class="token-field">
                 <div class="token-list" id="ability-token-list"></div>
-                <input id="ability-input" type="text" placeholder="Fähigkeit suchen" />
+                <input id="ability-input" type="text" placeholder="FÃ¤higkeit suchen" />
               </div>
               <select id="ability-mode">
                 <option value="all">Alle</option>
@@ -315,7 +342,7 @@
           </div>
         </div>
         <div class="details-footer">
-          <button class="details-secondary" id="details-reset" type="button">Zurücksetzen</button>
+          <button class="details-secondary" id="details-reset" type="button">ZurÃ¼cksetzen</button>
           <button class="details-secondary" id="details-cancel" type="button">Abbrechen</button>
           <button class="details-primary" id="details-submit" type="button">Suchen</button>
         </div>
@@ -330,7 +357,7 @@
             <p class="eyebrow">Erweiterte Suche</p>
             <h2 id="expert-search-title">Expertensuche</h2>
           </div>
-          <button class="details-close" id="expert-search-close" type="button" aria-label="Close">×</button>
+          <button class="details-close" id="expert-search-close" type="button" aria-label="Close">Ã—</button>
         </div>
         <div class="details-body">
           <div class="detail-section expert-search-panel">
@@ -361,7 +388,7 @@
           </div>
         </div>
         <div class="details-footer">
-          <button class="details-secondary" id="expert-search-clear" type="button">Zurücksetzen</button>
+          <button class="details-secondary" id="expert-search-clear" type="button">ZurÃ¼cksetzen</button>
           <button class="details-primary" id="expert-search-submit" type="button">Suchen</button>
         </div>
       </section>
@@ -372,14 +399,14 @@
       <section class="detail-dialog" aria-labelledby="pokemon-detail-title" aria-modal="true" role="dialog">
         <div class="detail-screen-effect" aria-hidden="true"></div>
         <div class="detail-header">
-          <button class="detail-nav detail-nav-prev" id="detail-prev" type="button" aria-label="Vorheriges Pokémon" hidden>
+          <button class="detail-nav detail-nav-prev" id="detail-prev" type="button" aria-label="Vorheriges PokÃ©mon" hidden>
             <img id="detail-prev-sprite" alt="" loading="lazy" />
           </button>
           <h2 id="pokemon-detail-title"></h2>
-          <button class="detail-nav detail-nav-next" id="detail-next" type="button" aria-label="Nächstes Pokémon" hidden>
+          <button class="detail-nav detail-nav-next" id="detail-next" type="button" aria-label="NÃ¤chstes PokÃ©mon" hidden>
             <img id="detail-next-sprite" alt="" loading="lazy" />
           </button>
-          <button class="detail-close" id="pokemon-detail-close" type="button" aria-label="Close">×</button>
+          <button class="detail-close" id="pokemon-detail-close" type="button" aria-label="Close">Ã—</button>
           <button class="details-secondary detail-header-action" id="detail-replacement-button" type="button">Ersatzfinder</button>
         </div>
 
@@ -388,7 +415,7 @@
 
           <section class="detail-section">
             <div class="detail-section-heading">
-              <h3>Fähigkeiten</h3>
+              <h3>FÃ¤higkeiten</h3>
             </div>
             <div class="detail-abilities" id="detail-abilities"></div>
           </section>
@@ -467,10 +494,10 @@
 
           <section class="detail-section" id="detail-similar-pokemon-section" hidden>
             <div class="detail-section-heading">
-              <h3>Ähnliche Pokémon</h3>
+              <h3>Ã„hnliche PokÃ©mon</h3>
             </div>
             <div class="detail-similar-actions">
-              <button class="details-secondary" id="detail-similar-load-button" type="button">Ähnliche Pokémon laden</button>
+              <button class="details-secondary" id="detail-similar-load-button" type="button">Ã„hnliche PokÃ©mon laden</button>
             </div>
             <div class="detail-similar-pokemon-list" id="detail-similar-pokemon"></div>
           </section>
@@ -484,14 +511,14 @@
         <div class="details-header">
           <div>
             <p class="eyebrow">Ersatzfinder</p>
-            <h2 id="replacement-picker-title">Pokémon auswählen</h2>
+            <h2 id="replacement-picker-title">PokÃ©mon auswÃ¤hlen</h2>
           </div>
-          <button class="details-close" id="replacement-picker-close" type="button" aria-label="Close">×</button>
+          <button class="details-close" id="replacement-picker-close" type="button" aria-label="Close">Ã—</button>
         </div>
         <div class="details-body">
           <label class="details-field">
-            <span>Pokémon</span>
-            <input id="replacement-picker-input" type="text" placeholder="Pokémonname eingeben" autocomplete="off" />
+            <span>PokÃ©mon</span>
+            <input id="replacement-picker-input" type="text" placeholder="PokÃ©monname eingeben" autocomplete="off" />
           </label>
           <div class="suggestion-list" id="replacement-picker-suggestions"></div>
         </div>
@@ -506,11 +533,18 @@
       <div class="detail-backdrop" data-close-replacement-finder="true"></div>
       <section class="detail-dialog replacement-finder-dialog" aria-labelledby="replacement-finder-title" aria-modal="true" role="dialog">
         <div class="detail-header">
-          <h2 id="replacement-finder-title">Ersatzfinder</h2>
-          <button class="detail-close" id="replacement-finder-close" type="button" aria-label="Close">×</button>
+          <div class="tool-modal-heading">
+            <h2 id="replacement-finder-title">Ersatzfinder</h2>
+            <button class="tool-help-toggle" type="button" data-help-target="replacement-finder-help" aria-expanded="false">(Hilfe)</button>
+          </div>
+          <button class="detail-close" id="replacement-finder-close" type="button" aria-label="Close">Ã—</button>
         </div>
 
         <div class="detail-body">
+          <section class="detail-section tool-help-inline" id="replacement-finder-help" hidden>
+            <p class="tool-help-text">Suche Ersatz fÃ¼r <span id="replacement-help-name">[selected PokÃ©mon]</span>. Clicke auf Basiswerte, Typen (unten), FÃ¤higkeit, Kosten, Wetter, Element Defensive und/oder Attacken um diese als niedrige PrioritÃ¤t auszuwÃ¤hlen. Klicke eins davon nochmal um die PrioritÃ¤t auf mittel oder hoch zu erhÃ¶hen und ein viertes Mal um sie abzuwÃ¤hlen. DrÃ¼cke dann auf den leuchtenden "Suchen" button in der Anleitung, und das Tool versucht dir ein Ã„hnliches PokÃ©mon zu suchen.</p>
+            <p class="tool-help-text">Was genau die PrioritÃ¤t aussagt, findest du in den einzelnen Abschnitten. FÃ¼r weitere Hinweise siehe den Abschnitt "Anleitung". Bei Bugs und weiteren Fragen melde dich bei Tobi.</p>
+          </section>
           <section class="detail-top-panel replacement-target-panel" id="replacement-target-panel"></section>
 
           <section class="detail-section">
@@ -518,8 +552,8 @@
               <div>
                 <h3>Anleitung</h3>
                 <p class="replacement-intro">
-                  Wähle die Aspekte auch, die dir wichtig sind. Grün = wenig Priorität, gelb = mittlere Priorität, rot = hohe Priorität. Drücke dann auf "Suchen" um potentielle Ersatz-Mons zu finden.
-                  Bedenke: Desto mehr und höhere Prioritäten du setzt, desto weniger Ergebnisse wirst du finden!
+                  WÃ¤hle die Aspekte auch, die dir wichtig sind. GrÃ¼n = wenig PrioritÃ¤t, gelb = mittlere PrioritÃ¤t, rot = hohe PrioritÃ¤t. DrÃ¼cke dann auf "Suchen" um potentielle Ersatz-Mons zu finden.
+                  Bedenke: Desto mehr und hÃ¶here PrioritÃ¤ten du setzt, desto weniger Ergebnisse wirst du finden!
                 </p>
               </div>
               <button class="details-primary replacement-search-button" id="replacement-run-search" type="button">Suchen</button>
@@ -531,7 +565,7 @@
               <h3>Basiswerte</h3>
             </div>
             <p class="replacement-section-note">
-              Grün: Werte in der Nähe sind nett. Gelb: maximal 10% Abweichung. Rot: der Ersatz darf in dem Wert nicht niedriger sein.
+              GrÃ¼n: Werte in der NÃ¤he sind nett. Gelb: maximal 10% Abweichung. Rot: der Ersatz darf in dem Wert nicht niedriger sein.
             </p>
             <div class="replacement-stat-grid" id="replacement-stat-grid"></div>
           </section>
@@ -541,14 +575,14 @@
               <h3>Typen</h3>
             </div>
             <p class="replacement-section-note">
-              Grün: gleicher Typ ist ein Bonus. Gelb und Rot: dieser Typ muss vorhanden sein.
+              GrÃ¼n: gleicher Typ ist ein Bonus. Gelb und Rot: dieser Typ muss vorhanden sein.
             </p>
             <div class="replacement-chip-grid" id="replacement-types"></div>
           </section>
 
           <section class="detail-section">
             <div class="detail-section-heading">
-              <h3>Fähigkeiten</h3>
+              <h3>FÃ¤higkeiten</h3>
             </div>
             <div class="replacement-chip-grid" id="replacement-abilities"></div>
           </section>
@@ -558,7 +592,7 @@
               <h3>Kosten</h3>
             </div>
             <p class="replacement-section-note">
-              Grün: bis zu 4 Punkte teurer ist noch okay. Gelb: wichtige Kostengrenzen wie 5, 10 und 15 dürfen nicht überschritten werden. Rot: darf nicht teurer als das Ziel sein.
+              GrÃ¼n: bis zu 4 Punkte teurer ist noch okay. Gelb: wichtige Kostengrenzen wie 5, 10 und 15 dÃ¼rfen nicht Ã¼berschritten werden. Rot: darf nicht teurer als das Ziel sein.
             </p>
             <div class="replacement-chip-grid" id="replacement-cost"></div>
           </section>
@@ -568,7 +602,7 @@
               <h3>Wetter / Terrain</h3>
             </div>
             <p class="replacement-section-note">
-              Grün: das gleiche Wetter ist wünschenswert. Gelb und Rot: das gleiche Wetter muss vorhanden sein. Bei Hagel und Schnee zählen Grün und Gelb auch jeweils als ähnlich zueinander.
+              GrÃ¼n: das gleiche Wetter ist wÃ¼nschenswert. Gelb und Rot: das gleiche Wetter muss vorhanden sein. Bei Hagel und Schnee zÃ¤hlen GrÃ¼n und Gelb auch jeweils als Ã¤hnlich zueinander.
             </p>
             <div class="replacement-chip-grid" id="replacement-weather"></div>
           </section>
@@ -578,7 +612,7 @@
               <h3>Elementare Defensive</h3>
             </div>
             <p class="replacement-section-note">
-              Grün: ähnliche Resistenz ist gut. Gelb: darf höchstens eine Stufe schlechter sein. Rot: muss mindestens genauso gut oder besser sein.
+              GrÃ¼n: Ã¤hnliche Resistenz ist gut. Gelb: darf hÃ¶chstens eine Stufe schlechter sein. Rot: muss mindestens genauso gut oder besser sein.
             </p>
             <div class="replacement-defense-grid" id="replacement-defenses"></div>
           </section>
@@ -588,17 +622,146 @@
               <h3>Attacken</h3>
             </div>
             <p class="replacement-section-note">
-              Grün: ähnliche Attacken helfen beim Ranking. Gelb: es braucht mindestens eine Attacke mit gleichem Typ und gleicher Kategorie, bei Schadensattacken höchstens 20 Stärke Unterschied. Rot: Statusattacken müssen exakt gleich sein, Schadensattacken brauchen mindestens gleiche Stärke.
+              GrÃ¼n: Ã¤hnliche Attacken helfen beim Ranking. Gelb: es braucht mindestens eine Attacke mit gleichem Typ und gleicher Kategorie, bei Schadensattacken hÃ¶chstens 20 StÃ¤rke Unterschied. Rot: Statusattacken mÃ¼ssen exakt gleich sein, Schadensattacken brauchen mindestens gleiche StÃ¤rke.
             </p>
             <div class="replacement-move-grid" id="replacement-moves"></div>
           </section>
 
           <section class="detail-section" id="replacement-results-section" hidden>
             <div class="detail-section-heading">
-              <h3>Gefundene Pokémon</h3>
+              <h3>Gefundene PokÃ©mon</h3>
             </div>
             <div class="replacement-results-list" id="replacement-results"></div>
           </section>
+        </div>
+      </section>
+    </div>
+
+    <div class="details-modal" id="stefans-pdf-modal" hidden>
+      <div class="details-backdrop" data-close-stefans-pdf="true"></div>
+      <section class="details-dialog stefans-pdf-dialog" aria-labelledby="stefans-pdf-title" aria-modal="true" role="dialog">
+        <div class="details-header">
+          <div class="tool-modal-heading">
+            <p class="eyebrow">Tools</p>
+            <h2 id="stefans-pdf-title">Stefans Pdf</h2>
+            <button class="tool-help-toggle" type="button" data-help-target="stefans-pdf-help" aria-expanded="false">(Hilfe)</button>
+          </div>
+          <button class="details-close" id="stefans-pdf-close" type="button" aria-label="Close">&times;</button>
+        </div>
+        <div class="details-body stefans-pdf-body">
+          <section class="detail-section tool-help-inline" id="stefans-pdf-help" hidden>
+            <p class="tool-help-text">Hier kannst du Stefans originale Pdf ansehen, indem die Regeln des Punkte-Systems und die Punkte-Tiers angezeigt werden. Du kannst die Pdf auch herunterladen.</p>
+          </section>
+          <div class="stefans-pdf-actions">
+            <a class="details-primary" id="stefans-pdf-download" download href="files/Pok%C3%A9maniac%27s%20Draft%20League%20(April%202026).pdf">Herunterladen</a>
+            <a class="details-secondary" href="files/Pok%C3%A9maniac%27s%20Draft%20League%20(April%202026).pdf" target="_blank" rel="noopener noreferrer">Im neuen Tab Ã¶ffnen</a>
+          </div>
+          <iframe class="stefans-pdf-frame" id="stefans-pdf-frame" src="files/Pok%C3%A9maniac%27s%20Draft%20League%20(April%202026).pdf" title="Stefans Pdf"></iframe>
+        </div>
+      </section>
+    </div>
+
+    <div class="details-modal" id="changelog-modal" hidden>
+      <div class="details-backdrop" data-close-changelog="true"></div>
+      <section class="details-dialog changelog-dialog" aria-labelledby="changelog-title" aria-modal="true" role="dialog">
+        <div class="details-header">
+          <div class="tool-modal-heading">
+            <p class="eyebrow">Tools</p>
+            <h2 id="changelog-title">Changelog</h2>
+          </div>
+          <button class="details-close" id="changelog-close" type="button" aria-label="Close">&times;</button>
+        </div>
+        <div class="details-body changelog-body">
+          <div class="changelog-tabs" role="tablist" aria-label="Changelog Tabs">
+            <button class="changelog-tab is-active" id="changelog-tab-tier" type="button" role="tab" aria-selected="true" aria-controls="changelog-panel-tier" data-tab="tier">Tier-Ã„nderungen</button>
+            <button class="changelog-tab" id="changelog-tab-site" type="button" role="tab" aria-selected="false" aria-controls="changelog-panel-site" data-tab="site">Seiten Updates</button>
+          </div>
+
+          <section class="changelog-panel" id="changelog-panel-tier" role="tabpanel" aria-labelledby="changelog-tab-tier" data-tab-panel="tier">
+            <article class="changelog-entry">
+              <h3>Vorlage</h3>
+              <p class="changelog-date">Datum der Ã„nderung</p>
+              <ul class="changelog-list">
+                <li>[Old Cost] -> [New Cost]</li>
+              </ul>
+            </article>
+          </section>
+
+          <section class="changelog-panel" id="changelog-panel-site" role="tabpanel" aria-labelledby="changelog-tab-site" data-tab-panel="site" hidden>
+            <article class="changelog-entry">
+              <h3>Seiten Updates</h3>
+              <p class="changelog-date">2026-04-19</p>
+              <ul class="changelog-list">
+                <li>Dark Mode Ausnahmen gefixed</li>
+                <li>Changelogs hinzugefÃ¼gt</li>
+                <li>Hilfe-Buttons hinzugefÃ¼gt</li>
+                <li>Stefans PDF verlinkt</li>
+              </ul>
+            </article>
+          </section>
+        </div>
+      </section>
+    </div>
+
+    <div class="details-modal" id="legend-modal" hidden>
+      <div class="details-backdrop" data-close-legend="true"></div>
+      <section class="details-dialog legend-dialog" aria-labelledby="legend-title" aria-modal="true" role="dialog">
+        <header class="detail-header">
+          <div class="tool-modal-heading">
+            <div>
+              <p class="eyebrow">Tools</p>
+              <h2 id="legend-title">Legende</h2>
+            </div>
+          </div>
+          <button class="details-close" id="legend-close" type="button" aria-label="Close">Ã—</button>
+        </header>
+        <div class="detail-body">
+          <div class="legend-list">
+            <div class="legend-item">
+              <span class="legend-icon"><img class="form-badge" src="Type Icons/Mega-Entwicklung_Icon.png" alt="Mega Icon" /></span>
+              <p>Dieses PokÃ©mon ist eine Mega-Entwicklung.</p>
+            </div>
+            <div class="legend-item">
+              <span class="legend-icon"><img class="form-badge" src="Type Icons/Gigantamax_Icon.png" alt="Gigantamax Icon" /></span>
+              <p>Dieses Pokémon ist eine Gigantamax-Form and darf diese einsetzen.</p>
+            </div>
+            <div class="legend-item">
+              <span class="legend-icon"><img class="form-badge" src="Type Icons/Tera_Icon.png" alt="Tera Icon" /></span>
+              <p>Dieses PokÃ©mon darf ein Tera-Captain sein.</p>
+            </div>
+            <div class="legend-item">
+              <span class="legend-icon"><img class="form-badge" src="Type Icons/Z_Icon.png" alt="Z Icon" /></span>
+              <p>Dieses PokÃ©mon darf ein Z-Captain sein.</p>
+            </div>
+            <div class="legend-item">
+              <span class="legend-icon form-badge-wrapper is-warning"><img class="form-badge" src="Type Icons/Z_Icon.png" alt="Z Icon mit Warnung" /></span>
+              <p>Dieses PokÃ©mon darf mit EinschrÃ¤nkungen ein Z-Captain sein.</p>
+            </div>
+            <div class="legend-item">
+              <span class="legend-icon"><img class="form-badge" src="Type Icons/maxrevive.png" alt="Revival Blessing Icon" /></span>
+              <p>Dieses PokÃ©mon darf Revival Blessing einsetzen.</p>
+            </div>
+            <div class="legend-item">
+              <span class="legend-icon"><img class="form-badge" src="Type Icons/Punch.png" alt="Rage Fist Icon" /></span>
+              <p>Dieses PokÃ©mon darf Rage Fist einsetzen.</p>
+            </div>
+            <div class="legend-item">
+              <span class="legend-icon"><img class="form-badge" src="Type Icons/PokeGhost.webp" alt="Last Respects Icon" /></span>
+              <p>Dieses PokÃ©mon darf Last Respects einsetzen.</p>
+            </div>
+            <div class="legend-item">
+              <span class="legend-icon"><img class="form-badge" src="Type Icons/shell.png" alt="Shell Smash Icon" /></span>
+              <p>Dieses PokÃ©mon darf Shell Smash einsetzen.</p>
+            </div>
+            <div class="legend-item">
+              <span class="legend-icon"><img class="form-badge" src="Type Icons/Tail.png" alt="Shed Tail Icon" /></span>
+              <p>Dieses Pokémon darf Shell Smash einsetzen.</p>
+            </div>
+            <div class="legend-item">
+              <span class="legend-icon form-badge-wrapper is-illegal"><img class="form-badge" src="Type Icons/maxrevive.png" alt="Illegales Move-Icon" /></span>
+              <p>Dieses PokÃ©mon darf (move) nicht einsetzen.</p>
+            </div>
+          </div>
         </div>
       </section>
     </div>
@@ -607,19 +770,26 @@
       <div class="details-backdrop" data-close-core-finder="true"></div>
       <section class="details-dialog core-finder-dialog" aria-labelledby="core-finder-title" aria-modal="true" role="dialog">
         <div class="details-header">
-          <div>
+          <div class="tool-modal-heading">
             <p class="eyebrow">Tools</p>
             <h2 id="core-finder-title">Defensiver Core-Sucher</h2>
+            <button class="tool-help-toggle" type="button" data-help-target="core-finder-help" aria-expanded="false">(Hilfe)</button>
           </div>
-          <button class="details-close" id="core-finder-close" type="button" aria-label="Close">×</button>
+          <button class="details-close" id="core-finder-close" type="button" aria-label="Close">Ã—</button>
         </div>
         <div class="details-body">
+          <section class="detail-section tool-help-inline" id="core-finder-help" hidden>
+            <p class="tool-help-text">Dieses Tool sucht dir anhand einer unvollstÃ¤ndigen Gruppe an PokÃ©mon eines oder zwei raus, damit du fÃ¼r mÃ¶glichst viele offensive Typen einen Switch-In hast.</p>
+            <p class="tool-help-text">Du kannst entweder einen Dreier-Core mit einem, oder einen Vierer-Core mit bis zu zwei PokÃ©mon vervollstÃ¤ndigen lassen. Wenn du "Pivot-Chain" aktivierst, versucht das Tool zu erzwingen, dass alle Pokemon Voltswitch, U-Turn, Parting Shot, etc haben.</p>
+            <p class="tool-help-text">Falls deine vor-eingestellten PokÃ©mon keinen perfekten Core zulassen, wird dich das Tool warnen, du kannst aber mit den gewÃ¤hlten PokÃ©mon trotzdem nach dem bestmÃ¶glichen Core suchen.</p>
+            <p class="tool-help-text">Bedenke: Das Tool zieht auch FÃ¤higkeiten in Betracht! Bronzong wird als 0x Boden angezeigt, in der Annahme dass es dabei Levitate als FÃ¤higkeit nutzt. Bei Bugs und weiteren Fragen melde dich bei Tobi.</p>
+          </section>
           <section class="detail-section">
             <div class="detail-section-heading">
               <h3>Beschreibung</h3>
             </div>
             <p class="replacement-intro">
-              Wähle ob du einen 3er oder 4er Core willst und wähle bis zu drei Pokémon aus. Das Tool sucht dir ein Pokémon, dass die Schwächen ausgleicht.
+              WÃ¤hle ob du einen 3er oder 4er Core willst und wÃ¤hle bis zu drei PokÃ©mon aus. Das Tool sucht dir ein PokÃ©mon, dass die SchwÃ¤chen ausgleicht.
             </p>
             <label class="details-field core-finder-mode-field">
               <span>Core-Typ:</span>
@@ -659,7 +829,7 @@
             <p class="eyebrow">Core Sucher</p>
             <h2 id="core-finder-exception-title">Kein exakter Core gefunden</h2>
           </div>
-          <button class="details-close" id="core-finder-exception-close" type="button" aria-label="Close">×</button>
+          <button class="details-close" id="core-finder-exception-close" type="button" aria-label="Close">Ã—</button>
         </div>
         <div class="details-body">
           <p class="replacement-intro" id="core-finder-exception-message"></p>
@@ -675,18 +845,23 @@
       <div class="details-backdrop" data-close-budget-planner="true"></div>
       <section class="details-dialog budget-planner-dialog" aria-labelledby="budget-planner-title" aria-modal="true" role="dialog">
         <div class="details-header">
-          <div>
+          <div class="tool-modal-heading">
             <p class="eyebrow">Tools</p>
             <h2 id="budget-planner-title">Budget Planer</h2>
+            <button class="tool-help-toggle" type="button" data-help-target="budget-planner-help" aria-expanded="false">(Hilfe)</button>
           </div>
-          <button class="details-close" id="budget-planner-close" type="button" aria-label="Close">×</button>
+          <button class="details-close" id="budget-planner-close" type="button" aria-label="Close">Ã—</button>
         </div>
         <div class="details-body">
+          <section class="detail-section tool-help-inline" id="budget-planner-help" hidden>
+            <p class="tool-help-text">WÃ¤hle aus, welches Format du spielst und wÃ¤hle dann in "Team" aus, welche PokÃ©mon du haben mÃ¶chtest und ob es ein Z/Tera-Captain sein soll und welcher Typ. Unter "Planung" siehst du, wie viele Punkte du noch zur VerfÃ¼gung hast, sowie deine Defensive Coverage und die Werte. Unter "Team Checks" sind ein paar Checks gelistet wie Hazard Removal oder Speed Control, die man evtl im Team haben mÃ¶chte - diese sind nur als Hilfe gegeben, du musst hier nichts erfÃ¼llen.</p>
+            <p class="tool-help-text">Wenn du fertig bist kannst du Ã¼ber die Kosten-Tabelle eine Text-Datei des geplanted Drafts ansehen und runterladen, oder unter Zoom eine hÃ¼bschere Ansicht des Teams sehen (wenn du diese RunterlÃ¤dst werden die Sprites allerdings nicht angezeigt). Unter Captain Cost kannst du jederzeit die Kosten fÃ¼r Tera und Z-Steine ansehen. Bei Bugs und weiteren Fragen melde dich bei Tobi.</p>
+          </section>
           <section class="detail-section">
             <div class="detail-section-heading">
               <div>
                 <h3>Planung</h3>
-                <p class="replacement-intro">Wähle ein Format, stelle dein Team zusammen und behalte Budget, Captains und Rollen im Blick.</p>
+                <p class="replacement-intro">WÃ¤hle ein Format, stelle dein Team zusammen und behalte Budget, Captains und Rollen im Blick.</p>
               </div>
               <div class="budget-planner-header-actions">
                 <button class="details-secondary" id="budget-planner-costs-button" type="button">Kosten-Tabelle</button>
@@ -764,13 +939,13 @@
             <p class="eyebrow">Budget Planer</p>
             <h2 id="budget-planner-zoom-title">Team Zoom</h2>
           </div>
-          <button class="details-close" id="budget-planner-zoom-close" type="button" aria-label="Close">×</button>
+          <button class="details-close" id="budget-planner-zoom-close" type="button" aria-label="Close">Ã—</button>
         </div>
         <div class="details-body">
           <div class="budget-planner-zoom-grid" id="budget-planner-zoom-grid"></div>
         </div>
         <div class="details-footer">
-          <button class="details-secondary" id="budget-planner-zoom-cancel" type="button">Schließen</button>
+          <button class="details-secondary" id="budget-planner-zoom-cancel" type="button">SchlieÃŸen</button>
           <button class="details-primary" id="budget-planner-download-png" type="button">PNG herunterladen</button>
         </div>
       </section>
@@ -782,15 +957,15 @@
         <div class="details-header">
           <div>
             <p class="eyebrow">Budget Planer</p>
-            <h2 id="budget-planner-costs-title">Kostenübersicht</h2>
+            <h2 id="budget-planner-costs-title">KostenÃ¼bersicht</h2>
           </div>
-          <button class="details-close" id="budget-planner-costs-close" type="button" aria-label="Close">×</button>
+          <button class="details-close" id="budget-planner-costs-close" type="button" aria-label="Close">Ã—</button>
         </div>
         <div class="details-body">
           <div class="budget-planner-costs-table-wrap" id="budget-planner-costs-table-wrap"></div>
         </div>
         <div class="details-footer">
-          <button class="details-secondary" id="budget-planner-costs-cancel" type="button">Schließen</button>
+          <button class="details-secondary" id="budget-planner-costs-cancel" type="button">SchlieÃŸen</button>
           <button class="details-primary" id="budget-planner-download-text" type="button">TXT herunterladen</button>
         </div>
       </section>
@@ -804,13 +979,13 @@
             <p class="eyebrow">Budget Planer</p>
             <h2 id="budget-planner-captain-costs-title">Captain Costs</h2>
           </div>
-          <button class="details-close" id="budget-planner-captain-costs-close" type="button" aria-label="Close">×</button>
+          <button class="details-close" id="budget-planner-captain-costs-close" type="button" aria-label="Close">Ã—</button>
         </div>
         <div class="details-body">
           <pre class="budget-planner-costs-text" id="budget-planner-captain-costs-text"></pre>
         </div>
         <div class="details-footer">
-          <button class="details-secondary" id="budget-planner-captain-costs-cancel" type="button">Schließen</button>
+          <button class="details-secondary" id="budget-planner-captain-costs-cancel" type="button">SchlieÃŸen</button>
         </div>
       </section>
     </div>
@@ -819,18 +994,23 @@
       <div class="details-backdrop" data-close-rule-checker="true"></div>
       <section class="details-dialog rule-checker-dialog" aria-labelledby="rule-checker-title" aria-modal="true" role="dialog">
         <div class="details-header">
-          <div>
+          <div class="tool-modal-heading">
             <p class="eyebrow">Tools</p>
             <h2 id="rule-checker-title">Regel Checker</h2>
+            <button class="tool-help-toggle" type="button" data-help-target="rule-checker-help" aria-expanded="false">(Hilfe)</button>
           </div>
           <button class="details-close" id="rule-checker-close" type="button" aria-label="Close">&times;</button>
         </div>
         <div class="details-body">
+          <section class="detail-section tool-help-inline" id="rule-checker-help" hidden>
+            <p class="tool-help-text">Gib unter "PokÃ©mon Pool" dein gewÃ¼nschtes Format ein und importiere entweder das Team, dass du zuletzt im Budget Planer offen hattest (Seite schlieÃŸen lÃ¶scht das Team hier), oder gib deinen Draft in der Zeile "PokÃ©mon hinzufÃ¼gen" ein. Danach kannst du bei "Set Vorschau" PokÃ©mon aus deinem Draft per Drop-Down auswÃ¤hlen und ihre Sets eingeben. Wenn du dann auf LeglitÃ¤t PrÃ¼fen klickst, zeigt dir der Checker eventuelle RegelverstÃ¶ÃŸe an.</p>
+            <p class="tool-help-text">Bei Bugs und weiteren Fragen melde dich bei Tobi.</p>
+          </section>
           <section class="detail-section">
             <div class="detail-section-heading">
               <div>
-                <h3>Pokémon Pool</h3>
-                <p class="replacement-intro">Wähle bis zu 12 Pokémon aus. Unten bearbeitest du dann 6 größere Sets aus diesem Pool.</p>
+                <h3>PokÃ©mon Pool</h3>
+                <p class="replacement-intro">WÃ¤hle bis zu 12 PokÃ©mon aus. Unten bearbeitest du dann 6 grÃ¶ÃŸere Sets aus diesem Pool.</p>
               </div>
               <div class="rule-checker-header-actions">
                 <label class="details-field rule-checker-format-field">
@@ -841,13 +1021,13 @@
                     <option value="uber">Uber</option>
                   </select>
                 </label>
-                <button class="details-secondary" id="rule-checker-import-budget" type="button">Aus Budget Planer übernehmen</button>
+                <button class="details-secondary" id="rule-checker-import-budget" type="button">Aus Budget Planer Ã¼bernehmen</button>
               </div>
             </div>
             <div class="rule-checker-picker">
               <label class="details-field">
-                <span>Pokémon hinzufügen</span>
-                <input id="rule-checker-picker-input" type="search" placeholder="Search Pokémon" autocomplete="off" />
+                <span>PokÃ©mon hinzufÃ¼gen</span>
+                <input id="rule-checker-picker-input" type="search" placeholder="Search PokÃ©mon" autocomplete="off" />
               </label>
               <div class="suggestion-list" id="rule-checker-picker-suggestions"></div>
             </div>
@@ -876,24 +1056,31 @@
       <div class="details-backdrop" data-close-speed-tiers="true"></div>
       <section class="details-dialog speed-tiers-dialog" aria-labelledby="speed-tiers-title" aria-modal="true" role="dialog">
         <div class="details-header">
-          <div>
+          <div class="tool-modal-heading">
             <p class="eyebrow">Tools</p>
             <h2 id="speed-tiers-title">Speed Tiers</h2>
+            <button class="tool-help-toggle" type="button" data-help-target="speed-tiers-help" aria-expanded="false">(Hilfe)</button>
           </div>
           <button class="details-close" id="speed-tiers-close" type="button" aria-label="Close">&times;</button>
         </div>
         <div class="details-body">
+          <section class="detail-section tool-help-inline" id="speed-tiers-help" hidden>
+            <p class="tool-help-text">FÃ¼ge die PokÃ©mon unter "PokÃ©mon hinzufÃ¼gen" hinzu, die du vergleichen willst. Diese werden standardmÃ¤ÃŸig unter Own Team gelistet, Ã¼ber den Pfeil nach rechts kannst du sie auf das andere Team verschieben (das Ã¤ndert nur die Farbe in der Liste unten fÃ¼r bessere Ãœbersicht, es hat keinen Einfluss auf die Berechnung).</p>
+            <p class="tool-help-text">Das Ranking zeigt dir dann fÃ¼r alle gewÃ¤hlten PokÃ©mon ein Set mit minimalem Speed, neutralem Wesen und maximalem Speed an. Pro PokÃ©mon kannst du die Speed-Werte um -6 bis +6 Ã¤ndern. Im "Vergleich" kannst du auch Scarf, Tailwind, Trickroom und Wetter anstellen. Dieses fÃ¼gt Sets mit diesen Faktoren fÃ¼r alle PokÃ©mon dem Ranking hinzu.</p>
+            <p class="tool-help-text">Wenn du auf eines der + klickst, zeigt dir das Tool alle Sets des gewÃ¤hlten PokÃ©mon, mit dem es hier outspeeden kann (wenn du Trick Room aktiviert hast auch wie es "out-slowen" kann). Das Tool schaut rein auf Werte, es kann dir also auch ExtremfÃ¤lle wie Scarf Trick Room anzeigen!</p>
+            <p class="tool-help-text">Bei Bugs und weiteren Fragen melde dich bei Tobi.</p>
+          </section>
           <section class="detail-section">
             <div class="detail-section-heading">
               <div>
                 <h3>Vergleich</h3>
-                <p class="replacement-intro">Füge Pokémon hinzu und ziehe sie zwischen Eigenes Team und Gegnerisches Team, um ihre relevanten Speed Tiers zu vergleichen.</p>
+                <p class="replacement-intro">FÃ¼ge PokÃ©mon hinzu und ziehe sie zwischen Eigenes Team und Gegnerisches Team, um ihre relevanten Speed Tiers zu vergleichen.</p>
               </div>
             </div>
             <div class="speed-tiers-picker">
               <label class="details-field">
-                <span>Pokémon hinzufügen</span>
-                <input id="speed-tiers-picker-input" type="search" placeholder="Search Pokémon" autocomplete="off" />
+                <span>PokÃ©mon hinzufÃ¼gen</span>
+                <input id="speed-tiers-picker-input" type="search" placeholder="Search PokÃ©mon" autocomplete="off" />
               </label>
               <div class="suggestion-list" id="speed-tiers-picker-suggestions"></div>
             </div>
@@ -950,7 +1137,7 @@
         </div>
         <div class="details-body">
           <label class="details-field">
-            <span>Pokémon</span>
+            <span>PokÃ©mon</span>
             <select id="speed-tiers-gap-pokemon"></select>
           </label>
           <div class="speed-tiers-gap-results" id="speed-tiers-gap-results"></div>
@@ -963,3 +1150,4 @@
     <script src="app.js" defer></script>
   </body>
 </html>
+

@@ -461,6 +461,11 @@ body.dark-mode .tri-filter {
   color: var(--ink);
 }
 
+body.dark-mode .legend-item {
+  border-color: rgba(201, 214, 255, 0.16);
+  background: rgba(10, 16, 29, 0.72);
+}
+
 body.dark-mode .scroll-top-button {
   border-color: rgba(201, 214, 255, 0.18);
   background: rgba(10, 16, 29, 0.92);
@@ -917,11 +922,48 @@ body.dark-mode .pokemon-detail-modal:not(.is-dialga-retro):not(.is-gholdengo-the
   min-width: 34px;
 }
 
+.pokemon-simple-badge {
+  position: relative;
+  display: inline-flex;
+}
+
 .pokemon-simple-badges img {
   width: 18px;
   height: 18px;
   object-fit: contain;
   filter: drop-shadow(0 1px 2px rgba(31, 34, 51, 0.18));
+}
+
+.pokemon-simple-badge.is-warning::after,
+.form-badge-wrapper.is-warning::after {
+  content: '!';
+  position: absolute;
+  top: -4px;
+  right: -4px;
+  display: grid;
+  place-items: center;
+  width: 12px;
+  height: 12px;
+  border-radius: 999px;
+  background: #c62828;
+  color: #fff;
+  font-size: 0.62rem;
+  font-weight: 800;
+  line-height: 1;
+  box-shadow: 0 1px 4px rgba(31, 34, 51, 0.24);
+}
+
+.pokemon-simple-badge.is-illegal,
+.form-badge-wrapper.is-illegal,
+.legend-icon.is-illegal {
+  border-radius: 999px;
+  box-shadow: 0 0 0 2px rgba(192, 35, 46, 0.95);
+}
+
+.pokemon-simple-badge.is-illegal img,
+.form-badge-wrapper.is-illegal .form-badge,
+.legend-icon.is-illegal .form-badge {
+  filter: grayscale(1) brightness(0.92);
 }
 
 .pokemon-simple-divider {
@@ -1497,6 +1539,11 @@ body.dark-mode .pokemon-detail-modal:not(.is-dialga-retro):not(.is-gholdengo-the
   display: flex;
   flex-direction: column;
   gap: 6px;
+}
+
+.form-badge-wrapper {
+  position: relative;
+  display: inline-flex;
 }
 
 .form-badge {
@@ -5637,3 +5684,289 @@ body.dark-mode .replacement-priority-badge.is-high {
   z-index: 2;
   z-index: 2;
   z-index: 2;
+
+.tool-panel-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: center;
+}
+
+.tool-modal-heading {
+  display: grid;
+  gap: 4px;
+}
+
+.legend-dialog {
+  width: min(720px, calc(100vw - 32px));
+}
+
+.legend-list {
+  display: grid;
+  gap: 14px;
+}
+
+.legend-item {
+  display: grid;
+  grid-template-columns: 44px minmax(0, 1fr);
+  align-items: center;
+  gap: 14px;
+  padding: 12px 14px;
+  border-radius: 16px;
+  border: 1px solid rgba(31, 34, 51, 0.08);
+  background: rgba(255, 255, 255, 0.78);
+}
+
+.legend-icon {
+  display: inline-grid;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+}
+
+.legend-item p {
+  margin: 0;
+}
+
+.tool-help-toggle {
+  justify-self: start;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: var(--muted);
+  font: inherit;
+  font-size: 0.84rem;
+  cursor: pointer;
+}
+
+.tool-help-toggle:hover {
+  color: var(--ink);
+  text-decoration: underline;
+}
+
+.tool-help-inline {
+  display: grid;
+  gap: 8px;
+}
+
+.tool-help-inline[hidden] {
+  display: none !important;
+}
+
+.tool-help-text {
+  margin: 0;
+  font-size: 0.94rem;
+  line-height: 1.6;
+  color: var(--ink);
+}
+
+.tool-help-list {
+  margin: 0;
+  padding-left: 18px;
+  display: grid;
+  gap: 6px;
+  font-size: 0.85rem;
+  line-height: 1.45;
+  color: var(--ink);
+  font-family: 'IBM Plex Mono', monospace;
+}
+
+.detail-subtitle {
+  margin: -6px 0 2px;
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.stefans-pdf-dialog {
+  width: min(1280px, calc(100% - 28px));
+}
+
+.stefans-pdf-body {
+  display: grid;
+  gap: 16px;
+}
+
+.stefans-pdf-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.stefans-pdf-frame {
+  width: 100%;
+  min-height: 72vh;
+  border: 1px solid rgba(31, 34, 51, 0.12);
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.92);
+}
+
+.changelog-dialog {
+  width: min(980px, calc(100% - 28px));
+}
+
+.changelog-body {
+  display: grid;
+  gap: 18px;
+}
+
+.changelog-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.changelog-tab {
+  min-height: 42px;
+  padding: 0 18px;
+  border: 1px solid rgba(31, 34, 51, 0.12);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.84);
+  color: var(--ink);
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.changelog-tab.is-active {
+  border-color: rgba(217, 79, 61, 0.28);
+  background: rgba(255, 233, 227, 0.96);
+  color: #9f2214;
+}
+
+.changelog-panel {
+  display: grid;
+}
+
+.changelog-panel[hidden] {
+  display: none !important;
+}
+
+.changelog-entry {
+  padding: 18px 20px;
+  border: 1px solid rgba(31, 34, 51, 0.1);
+  border-radius: 20px;
+  background: rgba(255, 253, 249, 0.92);
+}
+
+.changelog-entry h3 {
+  margin: 0 0 8px;
+  font-family: 'Chakra Petch', sans-serif;
+  font-size: 1.1rem;
+}
+
+.changelog-date {
+  margin: 0 0 12px;
+  color: var(--muted);
+  font-weight: 700;
+}
+
+.changelog-list {
+  margin: 0;
+  padding-left: 20px;
+  display: grid;
+  gap: 8px;
+}
+
+.changelog-table-wrap {
+  overflow-x: auto;
+}
+
+.changelog-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.changelog-table th,
+.changelog-table td {
+  padding: 12px 10px;
+  border-bottom: 1px solid rgba(31, 34, 51, 0.1);
+  text-align: left;
+  vertical-align: top;
+}
+
+.changelog-table th {
+  font-size: 0.82rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+body.dark-mode .tool-help-list,
+body.dark-mode .tool-help-text,
+body.dark-mode .detail-subtitle {
+  color: var(--ink);
+}
+
+body.dark-mode .tool-help-toggle {
+  color: rgba(209, 218, 241, 0.78);
+}
+
+body.dark-mode .tool-help-inline,
+body.dark-mode .changelog-entry,
+body.dark-mode .stefans-pdf-frame {
+  border-color: rgba(201, 214, 255, 0.14);
+  background: rgba(18, 26, 42, 0.88);
+  color: var(--ink);
+}
+
+body.dark-mode .changelog-tab {
+  border-color: rgba(201, 214, 255, 0.16);
+  background: rgba(18, 26, 42, 0.88);
+  color: var(--ink);
+}
+
+body.dark-mode .changelog-tab.is-active {
+  border-color: rgba(255, 143, 143, 0.24);
+  background: rgba(89, 28, 28, 0.92);
+  color: #ffd5d5;
+}
+
+body.dark-mode .changelog-date {
+  color: rgba(209, 218, 241, 0.78);
+}
+
+body.dark-mode .changelog-table th,
+body.dark-mode .changelog-table td {
+  border-bottom-color: rgba(201, 214, 255, 0.12);
+}
+
+body.dark-mode .changelog-table th {
+  color: rgba(209, 218, 241, 0.78);
+}
+
+body.dark-mode .replacement-finder-modal:not(.is-dialga-retro):not(.is-gholdengo-theme) .detail-header,
+body.dark-mode .replacement-finder-modal:not(.is-dialga-retro):not(.is-gholdengo-theme) .detail-close {
+  border-color: rgba(201, 214, 255, 0.14);
+  background: rgba(18, 26, 42, 0.94);
+  color: var(--ink);
+}
+
+body.dark-mode .replacement-finder-modal:not(.is-dialga-retro):not(.is-gholdengo-theme) .detail-header h2,
+body.dark-mode .replacement-finder-modal:not(.is-dialga-retro):not(.is-gholdengo-theme) .detail-top-title,
+body.dark-mode .replacement-finder-modal:not(.is-dialga-retro):not(.is-gholdengo-theme) .detail-section-heading h3,
+body.dark-mode .replacement-finder-modal:not(.is-dialga-retro):not(.is-gholdengo-theme) .replacement-priority-label,
+body.dark-mode .replacement-finder-modal:not(.is-dialga-retro):not(.is-gholdengo-theme) .replacement-result-content strong {
+  color: var(--ink);
+}
+
+body.dark-mode .replacement-finder-modal:not(.is-dialga-retro):not(.is-gholdengo-theme) .replacement-sprite-wrap {
+  background: rgba(24, 35, 57, 0.92);
+}
+
+body.dark-mode .replacement-finder-modal:not(.is-dialga-retro):not(.is-gholdengo-theme) .replacement-target-copy,
+body.dark-mode .replacement-finder-modal:not(.is-dialga-retro):not(.is-gholdengo-theme) .detail-top-meta p,
+body.dark-mode .replacement-finder-modal:not(.is-dialga-retro):not(.is-gholdengo-theme) .replacement-intro,
+body.dark-mode .replacement-finder-modal:not(.is-dialga-retro):not(.is-gholdengo-theme) .replacement-section-note,
+body.dark-mode .replacement-finder-modal:not(.is-dialga-retro):not(.is-gholdengo-theme) .replacement-priority-meta,
+body.dark-mode .replacement-finder-modal:not(.is-dialga-retro):not(.is-gholdengo-theme) .replacement-result-types {
+  color: rgba(209, 218, 241, 0.78);
+}
+
+@media (max-width: 720px) {
+  .stefans-pdf-frame {
+    min-height: 58vh;
+  }
+}
