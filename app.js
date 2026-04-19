@@ -107,6 +107,8 @@ const shedTailIconPath = 'Type Icons/Tail.png';
 const lastRespectsIconPath = 'Type Icons/PokeGhost.webp';
 const rageFistIconPath = 'Type Icons/Punch.png';
 const revivalBlessingIconPath = 'Type Icons/maxrevive.png';
+const legendaryIconPath = 'Type Icons/Masterball.png';
+const mythicIconPath = 'Type Icons/Cherish Ball.png';
 
 const pokedexGrid = document.querySelector('#pokedex-grid');
 const searchInput = document.querySelector('#pokemon-search');
@@ -311,6 +313,115 @@ const detailSubtitleByName = new Map([
   ['Blacephalon', 'UB Burst'],
   ['Koraidon', 'Winged King'],
   ['Miraidon', 'Iron Serpent'],
+]);
+const legendaryTagSpecies = new Set([
+  'Articuno',
+  'Zapdos',
+  'Moltres',
+  'Raikou',
+  'Entei',
+  'Suicune',
+  'Regirock',
+  'Regice',
+  'Registeel',
+  'Latias',
+  'Latios',
+  'Uxie',
+  'Mesprit',
+  'Azelf',
+  'Heatran',
+  'Regigigas',
+  'Cresselia',
+  'Cobalion',
+  'Terrakion',
+  'Virizion',
+  'Tornadus',
+  'Thundurus',
+  'Landorus',
+  'Type: Null',
+  'Silvally',
+  'Tapu Koko',
+  'Tapu Lele',
+  'Tapu Bulu',
+  'Tapu Fini',
+  'Nihilego',
+  'Buzzwole',
+  'Pheromosa',
+  'Xurkitree',
+  'Celesteela',
+  'Kartana',
+  'Guzzlord',
+  'Poipole',
+  'Naganadel',
+  'Stakataka',
+  'Blacephalon',
+  'Kubfu',
+  'Urshifu',
+  'Regieleki',
+  'Regidrago',
+  'Glastrier',
+  'Spectrier',
+  'Enamorus',
+  'Wo-Chien',
+  'Chien-Pao',
+  'Ting-Lu',
+  'Chi-Yu',
+  'Okidogi',
+  'Munkidori',
+  'Fezandipiti',
+  'Ogerpon',
+  'Mewtwo',
+  'Lugia',
+  'Ho-Oh',
+  'Kyogre',
+  'Groudon',
+  'Rayquaza',
+  'Dialga',
+  'Palkia',
+  'Giratina',
+  'Reshiram',
+  'Zekrom',
+  'Kyurem',
+  'Xerneas',
+  'Yveltal',
+  'Zygarde',
+  'Cosmog',
+  'Cosmoem',
+  'Solgaleo',
+  'Lunala',
+  'Necrozma',
+  'Zacian',
+  'Zamazenta',
+  'Eternatus',
+  'Calyrex',
+  'Koraidon',
+  'Miraidon',
+  'Terapagos',
+]);
+const mythicTagSpecies = new Set([
+  'Mew',
+  'Celebi',
+  'Jirachi',
+  'Deoxys',
+  'Phione',
+  'Manaphy',
+  'Darkrai',
+  'Shaymin',
+  'Arceus',
+  'Victini',
+  'Keldeo',
+  'Meloetta',
+  'Genesect',
+  'Diancie',
+  'Hoopa',
+  'Volcanion',
+  'Magearna',
+  'Marshadow',
+  'Zeraora',
+  'Meltan',
+  'Melmetal',
+  'Zarude',
+  'Pecharunt',
 ]);
 const customCostOverrides = new Map([
   ['Carkol', 2],
@@ -693,6 +804,13 @@ const shellSmashAllowedPokemon = new Set([
 
 function pokemonHasTag(pokemon, tag) {
   return Array.isArray(pokemon?.tags) && pokemon.tags.includes(tag);
+}
+
+function pokemonMatchesTaggedSpecies(pokemon, speciesSet) {
+  if (!pokemon || !speciesSet) return false;
+  return speciesSet.has(pokemon.name) ||
+    speciesSet.has(pokemon.baseSpecies ?? '') ||
+    speciesSet.has(pokemon.changesFrom ?? '');
 }
 
 const themeStorageKey = 'friendly-pokemon-theme';
@@ -1117,6 +1235,27 @@ function createDetailSubtitleElement(pokemon) {
   return element;
 }
 
+function createDetailTagIconsElement(pokemon) {
+  const tagConfigs = [
+    { tag: 'Legendary', src: legendaryIconPath, alt: 'Legendary icon', label: 'Legendary' },
+    { tag: 'Mythic', src: mythicIconPath, alt: 'Mythical icon', label: 'Mythical' },
+  ].filter((config) => pokemonHasTag(pokemon, config.tag));
+  if (!tagConfigs.length) return null;
+
+  const wrap = document.createElement('div');
+  wrap.className = 'detail-tag-icons';
+  for (const config of tagConfigs) {
+    const icon = document.createElement('img');
+    icon.className = 'detail-tag-icon';
+    icon.src = config.src;
+    icon.alt = config.alt;
+    icon.title = config.label;
+    icon.loading = 'lazy';
+    wrap.append(icon);
+  }
+  return wrap;
+}
+
 function initializeToolHelpToggles() {
   for (const button of toolHelpToggles) {
     const targetId = button.dataset.helpTarget;
@@ -1236,6 +1375,64 @@ function applyTheme(theme) {
     const mascot = themeMascotByMode[currentTheme];
     themeToggleMascot.src = mascot.src;
     themeToggleMascot.alt = mascot.alt;
+  }
+}
+
+function initializeStaticUiLabels() {
+  const setText = (selector, text) => {
+    const element = document.querySelector(selector);
+    if (element) element.textContent = text;
+  };
+  const setHtml = (selector, html) => {
+    const element = document.querySelector(selector);
+    if (element) element.innerHTML = html;
+  };
+  const setAttr = (selector, attribute, value) => {
+    const element = document.querySelector(selector);
+    if (element) element.setAttribute(attribute, value);
+  };
+
+  setText('.pokedex-panel .section-heading h2', 'Pokédex');
+  setText('label[for="sort-field-secondary"] > span', 'Sekundär');
+  setAttr('#details-name', 'placeholder', 'Pokémonname eingeben');
+  setText('label[for="ability-input"] > span', 'Fähigkeiten');
+  setAttr('#ability-input', 'placeholder', 'Fähigkeit suchen');
+  setText('#details-reset', 'Zurücksetzen');
+  setText('#expert-search-clear', 'Zurücksetzen');
+  setAttr('#detail-prev', 'aria-label', 'Vorheriges Pokémon');
+  setAttr('#detail-next', 'aria-label', 'Nächstes Pokémon');
+  setText('#pokemon-detail-modal .detail-section:nth-of-type(2) .detail-section-heading h3', 'Fähigkeiten');
+  setText('#detail-similar-pokemon-section .detail-section-heading h3', 'Ähnliche Pokémon');
+  setText('#detail-similar-load-button', 'Ähnliche Pokémon laden');
+  setText('#replacement-picker-title', 'Pokémon auswählen');
+  setText('label[for="replacement-picker-input"] > span', 'Pokémon');
+  setAttr('#replacement-picker-input', 'placeholder', 'Pokémonname eingeben');
+  setText('#stefans-pdf-modal .details-secondary', 'Im neuen Tab öffnen');
+  setHtml('#details-close', '&times;');
+  setHtml('#expert-search-close', '&times;');
+  setHtml('#pokemon-detail-close', '&times;');
+  setHtml('#replacement-picker-close', '&times;');
+  setHtml('#replacement-finder-close', '&times;');
+  setHtml('#legend-close', '&times;');
+  setHtml('#core-finder-close', '&times;');
+  setHtml('#core-finder-exception-close', '&times;');
+  setHtml('#budget-planner-close', '&times;');
+  setHtml('#budget-planner-zoom-close', '&times;');
+  setHtml('#budget-planner-costs-close', '&times;');
+  setHtml('#budget-planner-captain-costs-close', '&times;');
+
+  const legendTexts = [...document.querySelectorAll('#legend-modal .legend-item p')];
+  if (legendTexts.length >= 10) {
+    legendTexts[0].textContent = 'Dieses Pokémon ist eine Mega-Entwicklung.';
+    legendTexts[1].textContent = 'Dieses Pokémon ist eine Gigantamax-Form und darf diese einsetzen.';
+    legendTexts[2].textContent = 'Dieses Pokémon darf ein Tera-Captain sein.';
+    legendTexts[3].textContent = 'Dieses Pokémon darf ein Z-Captain sein.';
+    legendTexts[4].textContent = 'Dieses Pokémon darf mit Einschränkungen ein Z-Captain sein.';
+    legendTexts[5].textContent = 'Dieses Pokémon darf Revival Blessing einsetzen.';
+    legendTexts[6].textContent = 'Dieses Pokémon darf Rage Fist einsetzen.';
+    legendTexts[7].textContent = 'Dieses Pokémon darf Last Respects einsetzen.';
+    legendTexts[8].textContent = 'Dieses Pokémon darf Shell Smash einsetzen.';
+    legendTexts[9].textContent = 'Dieses Pokémon darf Shed Tail einsetzen.';
   }
 }
 
@@ -3440,7 +3637,7 @@ function renderSimilarPokemonSection(pokemon) {
     title.textContent = entry.pokemon.name;
     const cost = document.createElement('span');
     cost.className = 'detail-similar-card-cost';
-    cost.textContent = `${entry.pokemon.cost ?? 'â€”'} Punkte`;
+      cost.textContent = `${entry.pokemon.cost ?? '—'} Punkte`;
     titleRow.append(title, cost);
 
     const typeRow = document.createElement('div');
@@ -4684,6 +4881,10 @@ function renderPokemonDetail(pokemon) {
 
     const metaWrap = document.createElement('div');
     metaWrap.className = 'detail-top-meta';
+    const headingWrap = document.createElement('div');
+    headingWrap.className = 'detail-top-heading';
+    const titleTextWrap = document.createElement('div');
+    titleTextWrap.className = 'detail-top-heading-text';
     const title = document.createElement('h3');
     title.className = 'detail-top-title';
     title.textContent = getPokemonDisplayName(form);
@@ -4692,6 +4893,11 @@ function renderPokemonDetail(pokemon) {
     if (formNameVariant === 'proto') title.classList.add('is-proto-name');
     if (form.name === pokemon.name) activeTopTitle = title;
     const subtitle = createDetailSubtitleElement(form);
+    const tagIcons = createDetailTagIconsElement(form);
+    if (tagIcons) headingWrap.append(tagIcons);
+    titleTextWrap.append(title);
+    if (subtitle) titleTextWrap.append(subtitle);
+    headingWrap.append(titleTextWrap);
 
     const typeList = document.createElement('div');
     typeList.className = 'detail-type-list';
@@ -4736,8 +4942,7 @@ function renderPokemonDetail(pokemon) {
       value.append(range);
     });
 
-    if (subtitle) metaWrap.append(title, subtitle, typeList, statGrid);
-    else metaWrap.append(title, typeList, statGrid);
+    metaWrap.append(headingWrap, typeList, statGrid);
 
     if (showTopDefenses) {
       const defenseGrid = document.createElement('div');
@@ -7479,6 +7684,12 @@ function injectCustomPokemonEntries(entries) {
       sprite: annihilape.sprite,
     });
   }
+  for (const entry of list) {
+    const nextTags = new Set(Array.isArray(entry.tags) ? entry.tags : []);
+    if (pokemonMatchesTaggedSpecies(entry, legendaryTagSpecies)) nextTags.add('Legendary');
+    if (pokemonMatchesTaggedSpecies(entry, mythicTagSpecies)) nextTags.add('Mythic');
+    entry.tags = [...nextTags];
+  }
   return list;
 }
 
@@ -7539,6 +7750,7 @@ function initializeAdvancedSearch() {
 
 initializeToolHelpToggles();
 initializeStaticToolContent();
+initializeStaticUiLabels();
 detailsButton.addEventListener('click', openDetailsModal);
 expertSearchButton?.addEventListener('click', openExpertSearchModal);
 searchExpandButton?.addEventListener('click', () => setSearchAdvancedExpanded(!isSearchAdvancedExpanded));
