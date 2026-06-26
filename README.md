@@ -1,4 +1,4 @@
-# Friendly Pokemon Tournaments
+# Pokémaniacs
 
 Static tournament-prep site built for GitHub Pages.
 
