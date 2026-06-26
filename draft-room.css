@@ -1263,6 +1263,15 @@ body.is-board-view .draft-matrix-table td.is-defense-4 {
   justify-content: flex-end;
 }
 
+.draft-decision-options .draft-custom-cost-field,
+.draft-custom-cost-feedback {
+  flex: 1 0 100%;
+}
+
+.draft-custom-cost-feedback {
+  color: #ffd7d7;
+}
+
 body.is-board-view {
   background: #101626;
   color: #edf3ff;

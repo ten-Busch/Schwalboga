@@ -321,6 +321,7 @@ function createDefaultState() {
     turnIndex: 0,
     swapIndex: 0,
     picks: [],
+    customCosts: {},
     pendingDecision: null,
     latestReveal: null,
     boardMode: 'rosters',
@@ -396,6 +397,30 @@ function getDraftBudget() {
   return draftBudgetByFormat[draftState.format] ?? draftBudgetByFormat.normal;
 }
 
+function getDraftCustomCosts() {
+  if (!draftState.customCosts || typeof draftState.customCosts !== 'object') draftState.customCosts = {};
+  return draftState.customCosts;
+}
+
+function getDraftCustomCost(name) {
+  const value = Number(getDraftCustomCosts()[name]);
+  return Number.isFinite(value) && value > 0 ? value : null;
+}
+
+function setDraftCustomCost(name, cost) {
+  getDraftCustomCosts()[name] = cost;
+}
+
+function getEffectivePokemonCost(pokemonOrName) {
+  const pokemon = typeof pokemonOrName === 'string' ? pokemonByName.get(pokemonOrName) : pokemonOrName;
+  if (!pokemon) return null;
+  return getDraftCustomCost(pokemon.name) ?? pokemon.cost ?? null;
+}
+
+function pokemonNeedsDraftCost(pokemon) {
+  return Boolean(pokemon && (pokemon.cost === null || pokemon.cost === undefined) && getDraftCustomCost(pokemon.name) === null);
+}
+
 function getNudelsternThreshold() {
   return draftNudelsternThresholdByFormat[draftState.format] ?? draftNudelsternThresholdByFormat.normal;
 }
@@ -413,12 +438,13 @@ function isGmaxPokemonName(name) {
 }
 
 function getPokemonFlags(pokemon) {
+  const cost = getEffectivePokemonCost(pokemon);
   const mega = isMegaPokemonName(pokemon.name);
   return {
     mega,
     gmax: isGmaxPokemonName(pokemon.name),
-    tera: pokemon.cost !== null && pokemon.cost <= 5,
-    z: !mega && pokemon.cost !== null && pokemon.cost <= 10,
+    tera: cost !== null && cost <= 5,
+    z: !mega && cost !== null && cost <= 10,
   };
 }
 
@@ -493,13 +519,14 @@ function draftHasWormholeEffect(pokemon) {
 }
 
 function getRevealBallPath(pokemon) {
+  const cost = getEffectivePokemonCost(pokemon);
   if (draftHasWormholeEffect(pokemon)) return 'assets/balls/ultraball.png';
   if (pokemonMatchesSpeciesSet(pokemon, draftLegendarySpecies)) return 'assets/balls/masterball.png';
   if (pokemonMatchesSpeciesSet(pokemon, draftMythicSpecies)) return 'assets/balls/cherishball.png';
-  if (pokemon.cost === 1) return 'assets/balls/egg.png';
-  if (pokemon.cost >= 2 && pokemon.cost <= 5) return 'assets/balls/pokeball.png';
-  if (pokemon.cost >= 6 && pokemon.cost <= 10) return 'assets/balls/superball.png';
-  if (pokemon.cost >= 11) return 'assets/balls/hyperball.png';
+  if (cost === 1) return 'assets/balls/egg.png';
+  if (cost >= 2 && cost <= 5) return 'assets/balls/pokeball.png';
+  if (cost >= 6 && cost <= 10) return 'assets/balls/superball.png';
+  if (cost >= 11) return 'assets/balls/hyperball.png';
   return 'assets/balls/pokeball.png';
 }
 
@@ -576,7 +603,7 @@ function getMinimumCostToReachNine(player) {
   const needed = Math.max(0, 9 - player.pokemon.length);
   if (!needed) return 0;
   return getAvailablePokemonForPlayer(player)
-    .map((pokemon) => pokemon.cost)
+    .map((pokemon) => getEffectivePokemonCost(pokemon))
     .filter((cost) => Number.isFinite(cost))
     .sort((left, right) => left - right)
     .slice(0, needed)
@@ -587,7 +614,7 @@ function playerCannotReachNinePokemon(player) {
   if (player.pokemon.length >= 9) return false;
   const needed = 9 - player.pokemon.length;
   const affordableCount = getAvailablePokemonForPlayer(player)
-    .filter((pokemon) => pokemon.cost <= getPlayerRemaining(player))
+    .filter((pokemon) => getEffectivePokemonCost(pokemon) <= getPlayerRemaining(player))
     .length;
   return affordableCount < needed || getMinimumCostToReachNine(player) > getPlayerRemaining(player);
 }
@@ -664,10 +691,12 @@ function isPokemonGloballyPicked(name, exceptPlayerId = null, exceptPokemonName 
 function getPokemonLegality(player, pokemon, options = {}) {
   const reasons = [];
   const decisions = [];
+  const cost = getEffectivePokemonCost(pokemon);
+  const needsCustomCost = pokemonNeedsDraftCost(pokemon);
   if (!pokemon) reasons.push('Nicht gefunden.');
-  if (pokemon?.cost === null || pokemon?.cost === undefined) reasons.push('Keine gueltigen Punktekosten.');
+  if (!needsCustomCost && (cost === null || cost === undefined)) reasons.push('Keine gueltigen Punktekosten.');
   if (pokemon?.unreleased || pokemon?.impossible) reasons.push('Nicht draftbar.');
-  if (pokemon?.cost > getMaxPokemonCost()) reasons.push(`In diesem Format nur bis ${getMaxPokemonCost()} Punkte.`);
+  if (cost > getMaxPokemonCost()) reasons.push(`In diesem Format nur bis ${getMaxPokemonCost()} Punkte.`);
   if (player.pokemon.length >= 12) reasons.push('Pokemon-Slots voll.');
   if (getPlayerSlotCount(player) >= 14) reasons.push('Alle Slots voll.');
 
@@ -676,7 +705,7 @@ function getPokemonLegality(player, pokemon, options = {}) {
     reasons.push('Mega/Gmax-Slot bereits belegt.');
   }
 
-  if (pokemon?.cost && getPlayerSpent(player) + pokemon.cost > getDraftBudget()) {
+  if (cost && getPlayerSpent(player) + cost > getDraftBudget()) {
     reasons.push('Budget wuerde ueberschritten.');
   }
 
@@ -700,14 +729,16 @@ function getPokemonLegality(player, pokemon, options = {}) {
     legal: reasons.length === 0,
     reasons,
     decisions,
+    needsCustomCost,
   };
 }
 
 function getAvailablePokemonForPlayer(player) {
   return allPokemon.filter((pokemon) => {
-    if (pokemon.cost === null || pokemon.cost === undefined) return false;
+    const cost = getEffectivePokemonCost(pokemon);
+    if (cost === null || cost === undefined) return false;
     if (pokemon.unreleased || pokemon.impossible) return false;
-    if (pokemon.cost > getMaxPokemonCost()) return false;
+    if (cost > getMaxPokemonCost()) return false;
     if (isPokemonGloballyPicked(pokemon.name)) return false;
     const flags = getPokemonFlags(pokemon);
     if ((flags.mega || flags.gmax) && player?.megaGmaxSlot) return false;
@@ -724,15 +755,17 @@ function getFilteredPokemonEntries(player, query, options = {}) {
 
   return allPokemon
     .filter((pokemon) => {
-      if (normalizedQuery && !normalizeText(`${pokemon.name} ${(pokemon.types ?? []).join(' ')} ${pokemon.cost ?? ''}`).includes(normalizedQuery)) return false;
+      const cost = getEffectivePokemonCost(pokemon);
+      const costLabel = cost ?? (pokemonNeedsDraftCost(pokemon) ? 'untiered kosten festlegen' : '');
+      if (normalizedQuery && !normalizeText(`${pokemon.name} ${(pokemon.types ?? []).join(' ')} ${costLabel}`).includes(normalizedQuery)) return false;
       if (type && !(pokemon.types ?? []).includes(type)) return false;
-      if (Number.isFinite(maxCost) && maxCost > 0 && (pokemon.cost ?? Infinity) > maxCost) return false;
+      if (Number.isFinite(maxCost) && maxCost > 0 && (cost ?? Infinity) > maxCost) return false;
       const flags = getPokemonFlags(pokemon);
       if (special === 'tera' && !flags.tera) return false;
       if (special === 'z' && !flags.z) return false;
       if (special === 'mega-gmax' && !flags.mega && !flags.gmax) return false;
-      const legality = player ? getPokemonLegality(player, pokemon) : { legal: pokemon.cost !== null, reasons: [] };
-      if (special === 'affordable' && (!legality.legal || (pokemon.cost ?? Infinity) > getPlayerRemaining(player))) return false;
+      const legality = player ? getPokemonLegality(player, pokemon) : { legal: getEffectivePokemonCost(pokemon) !== null || pokemonNeedsDraftCost(pokemon), reasons: [] };
+      if (special === 'affordable' && (!legality.legal || (cost ?? Infinity) > getPlayerRemaining(player))) return false;
       if (!showIllegal && !legality.legal) return false;
       return true;
     })
@@ -833,6 +866,71 @@ function showDecision(title, copy, options) {
   });
 }
 
+function showCustomCostDecision(pokemon) {
+  return new Promise((resolve) => {
+    draftState.pendingDecision = {
+      title: 'Punktekosten festlegen',
+      copy: `${getPokemonDisplayName(pokemon)} hat noch keine Punktekosten. Lege einen Wert nur fuer diesen Draft fest.`,
+    };
+    saveDraftState();
+    nodes.decisionTitle.textContent = 'Punktekosten festlegen';
+    nodes.decisionCopy.textContent = `${getPokemonDisplayName(pokemon)} hat noch keine Punktekosten. Lege einen Wert nur fuer diesen Draft fest.`;
+    nodes.decisionOptions.innerHTML = '';
+
+    const label = createElement('label', 'draft-field draft-custom-cost-field');
+    label.append(createElement('span', '', 'Punktekosten'));
+    const input = document.createElement('input');
+    input.type = 'number';
+    input.min = '1';
+    input.max = '40';
+    input.step = '1';
+    input.placeholder = 'z.B. 7';
+    label.append(input);
+
+    const feedback = createElement('p', 'draft-custom-cost-feedback');
+    feedback.hidden = true;
+
+    const applyButton = document.createElement('button');
+    applyButton.type = 'button';
+    applyButton.className = 'draft-primary';
+    applyButton.textContent = 'Kosten uebernehmen';
+    applyButton.addEventListener('click', () => {
+      const cost = Math.trunc(Number(input.value));
+      if (!Number.isFinite(cost) || cost < 1 || cost > 40) {
+        feedback.hidden = false;
+        feedback.textContent = 'Bitte gib Kosten zwischen 1 und 40 ein.';
+        return;
+      }
+      nodes.decisionModal.hidden = true;
+      draftState.pendingDecision = null;
+      setDraftCustomCost(pokemon.name, cost);
+      saveDraftState();
+      resolve(cost);
+    });
+
+    const cancelButton = document.createElement('button');
+    cancelButton.type = 'button';
+    cancelButton.className = 'draft-secondary';
+    cancelButton.textContent = 'Abbrechen';
+    cancelButton.addEventListener('click', () => {
+      nodes.decisionModal.hidden = true;
+      draftState.pendingDecision = null;
+      saveDraftState();
+      resolve(null);
+    });
+
+    input.addEventListener('keydown', (event) => {
+      if (event.key !== 'Enter') return;
+      event.preventDefault();
+      applyButton.click();
+    });
+
+    nodes.decisionOptions.append(label, feedback, applyButton, cancelButton);
+    nodes.decisionModal.hidden = false;
+    input.focus();
+  });
+}
+
 async function askCaptain(player, pokemon, kind) {
   const flags = getPokemonFlags(pokemon);
   if (kind === 'tera' && (!flags.tera || player.teraCaptain)) return false;
@@ -853,6 +951,11 @@ async function attemptPokemonPick(name) {
   const player = getParticipant(getCurrentPlayerId());
   const pokemon = pokemonByName.get(name);
   if (!player || !pokemon) return;
+  if (pokemonNeedsDraftCost(pokemon)) {
+    const customCost = await showCustomCostDecision(pokemon);
+    if (customCost === null) return;
+  }
+  const pokemonCost = getEffectivePokemonCost(pokemon);
   const legality = getPokemonLegality(player, pokemon);
   if (!legality.legal) {
     await showInfoDecision('Pick nicht moeglich', legality.reasons.join(' '));
@@ -885,7 +988,7 @@ async function attemptPokemonPick(name) {
 
   const wantsTera = await askCaptain(player, pokemon, 'tera');
   const wantsZ = await askCaptain(player, pokemon, 'z');
-  const projectedRemaining = getPlayerRemaining(player) - (pokemon.cost ?? 0);
+  const projectedRemaining = getPlayerRemaining(player) - (pokemonCost ?? 0);
   if (projectedRemaining === 0 && playerHasPendingCaptainType(player, {
     teraCaptain: wantsTera ? pokemon.name : player.teraCaptain,
     zCaptain: wantsZ ? pokemon.name : player.zCaptain,
@@ -902,9 +1005,10 @@ async function attemptPokemonPick(name) {
   }
   player.pokemon.push({
     name: pokemon.name,
-    cost: pokemon.cost,
+    cost: pokemonCost,
     duplicateOverride: starPayments.some((payment) => payment.kind === 'duplicate'),
     jahresklauselPaid: starPayments.some((payment) => payment.kind === 'jahresklausel'),
+    customCost: pokemon.cost === null || pokemon.cost === undefined ? pokemonCost : undefined,
   });
   const flags = getPokemonFlags(pokemon);
   if (flags.mega) player.megaGmaxSlot = 'mega';
@@ -1012,15 +1116,16 @@ function getAvailableSwapPokemon(player, removedPick, query) {
   const search = normalizeText(query);
   return allPokemon
     .filter((pokemon) => {
-      if (pokemon.cost === null || pokemon.cost === undefined) return false;
+      const cost = getEffectivePokemonCost(pokemon);
+      if (cost === null || cost === undefined) return false;
       if (normalizeText(pokemon.name) === normalizeText(removedPick.name)) return false;
-      if (pokemon.cost > (removedPick.cost ?? 0)) return false;
-      if (pokemon.cost > getMaxPokemonCost()) return false;
+      if (cost > (removedPick.cost ?? 0)) return false;
+      if (cost > getMaxPokemonCost()) return false;
       if (isPokemonGloballyPicked(pokemon.name, player.id, removedPick.name)) return false;
       const flags = getPokemonFlags(pokemon);
       if ((flags.mega || flags.gmax) && player.megaGmaxSlot && !removedWasMegaGmax) return false;
       if (!search) return true;
-      return normalizeText(`${pokemon.name} ${(pokemon.types ?? []).join(' ')} ${pokemon.cost}`).includes(search);
+      return normalizeText(`${pokemon.name} ${(pokemon.types ?? []).join(' ')} ${cost}`).includes(search);
     })
     .slice(0, 80);
 }
@@ -1045,7 +1150,7 @@ async function attemptSwapPick(name) {
   }
   pushUndoState(`${player.name} swappt ${removedPick.name}`);
   player.nudelsterne -= 2;
-  player.pokemon.splice(removedIndex, 1, { name: replacement.name, cost: replacement.cost, swappedIn: true });
+  player.pokemon.splice(removedIndex, 1, { name: replacement.name, cost: getEffectivePokemonCost(replacement), swappedIn: true });
   recalculateMegaGmaxSlot(player);
   player.finalSwap = { from: removedPick.name, to: replacement.name, cost: 2 };
   draftState.picks.push({ kind: 'swap', playerId: player.id, from: removedPick.name, to: replacement.name, at: new Date().toISOString() });
@@ -1081,10 +1186,12 @@ function exportDraft() {
     exportedAt: new Date().toISOString(),
     format: draftState.format,
     draftDate: draftState.draftDate,
+    customCosts: { ...getDraftCustomCosts() },
     players: draftState.participants.map((player) => ({
       name: player.name,
       sprite: player.sprite,
       pokemon: player.pokemon.map((pick) => pick.name),
+      pokemonWithCosts: player.pokemon.map((pick) => ({ name: pick.name, cost: pick.cost, customCost: pick.customCost ?? null })),
       teraCaptain: player.teraCaptain,
       teraType: player.teraType,
       teraTypePaidWith: player.teraTypePaidWith,
@@ -1351,8 +1458,10 @@ function createPokemonResultButton(pokemon, legality, onClick) {
   sprite.loading = 'lazy';
   const meta = createElement('span', 'draft-pokemon-meta');
   const title = createElement('strong', '', getPokemonDisplayName(pokemon));
-  const details = createElement('span', '', `${pokemon.cost ?? '-'} Punkte | ${(pokemon.types ?? []).join(' / ')}`);
-  const reason = createElement('span', 'draft-pokemon-reason', legality.legal ? 'Pick' : legality.reasons[0]);
+  const cost = getEffectivePokemonCost(pokemon);
+  const costText = cost === null ? 'Kosten festlegen' : `${cost} Punkte`;
+  const details = createElement('span', '', `${costText} | ${(pokemon.types ?? []).join(' / ')}`);
+  const reason = createElement('span', 'draft-pokemon-reason', legality.legal ? (legality.needsCustomCost ? 'Kosten festlegen' : 'Pick') : legality.reasons[0]);
   meta.append(title, details, reason);
   button.append(sprite, meta);
   button.addEventListener('click', onClick);
@@ -1504,11 +1613,11 @@ function createBoardModeTabs() {
 function renderAvailabilityPool() {
   const activePlayer = getParticipant(getCurrentPlayerId()) ?? draftState.participants[0] ?? null;
   const pool = getAvailablePokemonForPlayer(activePlayer)
-    .sort((left, right) => (right.cost ?? 0) - (left.cost ?? 0) || left.name.localeCompare(right.name));
+    .sort((left, right) => (getEffectivePokemonCost(right) ?? 0) - (getEffectivePokemonCost(left) ?? 0) || left.name.localeCompare(right.name));
   const wrap = createElement('section', 'draft-availability-pool');
   const groups = new Map();
   for (const pokemon of pool) {
-    const key = String(pokemon.cost ?? '-');
+    const key = String(getEffectivePokemonCost(pokemon) ?? '-');
     if (!groups.has(key)) groups.set(key, []);
     groups.get(key).push(pokemon);
   }
