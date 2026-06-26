@@ -1662,7 +1662,15 @@ function getJumpRailValueLabel(pokemon, field) {
   return getPokemonDisplayName(pokemon).slice(0, 3).toUpperCase();
 }
 
-function getJumpRailTargetsFromPokemon() {
+function getJumpRailThresholds(field) {
+  if (field === 'cost') return [5, 10, 15, 20, 25, 30];
+  if (['hp', 'atk', 'def', 'spa', 'spd', 'spe'].includes(field)) {
+    return [25, 50, 75, 100, 125, 150, 175, 200, 225, 250];
+  }
+  return [];
+}
+
+function getJumpRailTargetsFromPositions() {
   const field = sortField.value;
   const entries = currentRenderedPokemon;
   if (!entries.length) return [];
@@ -1688,35 +1696,12 @@ function getJumpRailTargetsFromPokemon() {
     .filter(Boolean);
 }
 
-function getJumpRailThresholds(field) {
-  if (field === 'cost') return [5, 10, 15, 20, 25, 30];
-  if (['hp', 'atk', 'def', 'spa', 'spd', 'spe'].includes(field)) {
-    return [25, 50, 75, 100, 125, 150, 175, 200, 225, 250];
-  }
-  return [];
-}
-
-function getJumpRailTargetsFromDividers() {
-  const dividers = sortDirection.value === 'desc' ? [...pokedexGenerationDividers].reverse() : [...pokedexGenerationDividers];
-  return dividers.map((divider) => {
-    const pokemon = currentRenderedPokemon.find((entry) => isPokemonWithinDividerRange(entry.num, divider));
-    if (!pokemon) return null;
-    const element = pokedexGrid.querySelector(`[data-pokemon-name="${CSS.escape(pokemon.name)}"]`);
-    if (!element) return null;
-    return {
-      element,
-      label: divider.name,
-      shortLabel: divider.name.replace('Generation ', 'Gen'),
-    };
-  }).filter(Boolean);
-}
-
 function getJumpRailTargetsFromPokemon() {
   const field = sortField.value;
   const entries = currentRenderedPokemon;
   if (!entries.length) return [];
   const thresholds = getJumpRailThresholds(field);
-  if (!thresholds.length) return [];
+  if (!thresholds.length) return getJumpRailTargetsFromPositions();
   const direction = sortDirection.value === 'desc' ? 'desc' : 'asc';
   const usedNames = new Set();
   return thresholds.map((threshold) => {
@@ -1744,7 +1729,6 @@ function getJumpRailTargets() {
     const dividerTargets = getJumpRailTargetsFromDividers();
     if (dividerTargets.length) return dividerTargets;
   }
-  if (sortField.value === 'physical-bulk' || sortField.value === 'special-bulk') return [];
   return getJumpRailTargetsFromPokemon();
 }
 
