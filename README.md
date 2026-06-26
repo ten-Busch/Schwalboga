@@ -41,6 +41,21 @@ This updates:
 
 - `data/pokedex-data.js`
 
+## Change Pokemon point costs
+
+Run the interactive cost editor from the repository root:
+
+```bash
+npm run change:cost
+```
+
+It lets you search for a Pokemon, previews its characteristics, asks for the new cost and a required reason, then updates:
+
+- `punktekosten.ts`
+- `data/point-cost-history.js`
+- `data/changelog-data.js`
+- `data/pokedex-data.js` (rebuilt automatically)
+
 ## Local preview
 
 You can preview locally with:

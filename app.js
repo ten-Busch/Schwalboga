@@ -586,6 +586,7 @@ const tierChangelogEntries = [
   ['Blaziken', 'Neu', '19', 'Neue Version mit erlaubtem Speed Boost'],
 ];
 const changelogData = window.CHANGELOG_DATA ?? { tier: [], site: [] };
+const pointCostHistory = Array.isArray(window.POINT_COST_HISTORY) ? window.POINT_COST_HISTORY : [];
 const meta = window.POKEDEX_META ?? { abilities: [], moves: [], movesById: {} };
 const abilityOptions = (meta.abilities ?? []).map((name) => ({ id: normalizeText(name), name }));
 const moveOptions = meta.moves ?? [];
@@ -4626,6 +4627,37 @@ function createDetailTextRibbon(text, className = '') {
   return card;
 }
 
+function getPokemonPointHistory(pokemon) {
+  const changes = pointCostHistory.filter((entry) => entry.name === pokemon.name);
+  if (!changes.length) return [pokemon.cost];
+  const values = [changes[0].from];
+  for (const change of changes) {
+    if (values.at(-1) !== change.to) values.push(change.to);
+  }
+  if (values.at(-1) !== pokemon.cost) values.push(pokemon.cost);
+  return values;
+}
+
+function createPointCostHistoryRibbon(pokemon) {
+  const ribbon = document.createElement('div');
+  ribbon.className = 'detail-ribbon detail-cost-history';
+  const label = document.createElement('strong');
+  label.textContent = 'Kostenverlauf';
+  const values = document.createElement('div');
+  values.className = 'detail-cost-history-values';
+  const history = getPokemonPointHistory(pokemon);
+  history.forEach((cost, index) => {
+    const value = document.createElement('span');
+    value.className = 'detail-cost-history-value';
+    if (index === history.length - 1) value.classList.add('is-current');
+    value.textContent = `${cost ?? '-'} Punkte`;
+    values.append(value);
+    if (index < history.length - 1) values.append(document.createTextNode(' -> '));
+  });
+  ribbon.append(label, values);
+  return ribbon;
+}
+
 function renderPokemonCareer(pokemon) {
   if (!detailCareer) return;
   detailCareer.innerHTML = '';
@@ -4633,10 +4665,7 @@ function renderPokemonCareer(pokemon) {
 
   if (!usage.currentPlayers.length && usage.historicTeamCount === 0) {
     detailCareer.append(createDetailTextRibbon('Wurde bisher noch nicht genutzt!'));
-    return;
-  }
-
-  if (usage.currentPlayers.length === 1) {
+  } else if (usage.currentPlayers.length === 1) {
     detailCareer.append(createDetailTextRibbon(`Aktuell im Team von ${usage.currentPlayers[0]}`));
   } else if (usage.currentPlayers.length > 1) {
     detailCareer.append(createDetailTextRibbon(`Aktuell in den Teams von ${formatGermanNameList(usage.currentPlayers)}`));
@@ -4645,6 +4674,7 @@ function renderPokemonCareer(pokemon) {
   if (usage.historicTeamCount > 0) {
     detailCareer.append(createDetailTextRibbon(`Wurde zuvor von ${usage.historicPlayerCount} Spielern in insgesamt ${usage.historicTeamCount} Teams genutzt!`));
   }
+  detailCareer.append(createPointCostHistoryRibbon(pokemon));
 }
 
 function getSpielerTeamNames(team) {

@@ -3600,6 +3600,32 @@ body.dark-mode .detail-stat-range {
   grid-template-columns: 40px minmax(0, 1fr);
 }
 
+.detail-ribbon.detail-cost-history {
+  grid-template-columns: 1fr;
+  gap: 8px;
+}
+
+.detail-cost-history-values {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+  color: var(--muted);
+  font-size: 0.86rem;
+  font-weight: 700;
+}
+
+.detail-cost-history-value {
+  padding: 4px 8px;
+  border-radius: 999px;
+  background: rgba(31, 34, 51, 0.08);
+}
+
+.detail-cost-history-value.is-current {
+  background: var(--accent);
+  color: #fff;
+}
+
 .detail-ribbon.is-warning {
   border-color: rgba(180, 35, 24, 0.36);
   box-shadow: inset 0 0 0 1px rgba(180, 35, 24, 0.3);
