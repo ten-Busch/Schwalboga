@@ -9,7 +9,7 @@ const draftBudgetByFormat = {
 const draftMaxPokemonCostByFormat = {
   normal: 20,
   uber: Infinity,
-  'low-power': 15,
+  'low-power': 13,
 };
 const draftNudelsternThresholdByFormat = {
   normal: 85,

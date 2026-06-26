@@ -1901,7 +1901,7 @@ function buildFormBadges(pokemon) {
 function getFormatThreshold(format) {
   if (format === 'free') return Infinity;
   if (format === 'normal') return 21;
-  if (format === 'low-power') return 15;
+  if (format === 'low-power') return 13;
   return Infinity;
 }
 
@@ -6810,7 +6810,7 @@ function isBudgetPlannerPokemonUnavailable(pokemon, slotIndex = null) {
   if (!pokemon || pokemon.hidden || pokemon.unreleased || pokemon.impossible || pokemon.cost === null) {
     return { unavailable: true, reason: 'Unavailable' };
   }
-  if (budgetPlannerState.format === 'low-power' && pokemon.cost > 15) {
+  if (budgetPlannerState.format === 'low-power' && pokemon.cost > 13) {
     return { unavailable: true, reason: 'Too expensive for Low Power' };
   }
   if (budgetPlannerState.format === 'normal' && pokemon.cost > 20) {
@@ -7926,7 +7926,7 @@ function runRuleCheckerValidation() {
 
   if (ruleCheckerState.format === 'low-power') {
     for (const entry of entries) {
-      if ((entry.pokemon.cost ?? 0) > 15) {
+      if ((entry.pokemon.cost ?? 0) > 13) {
         addRuleCheckerViolation(`${entry.pokemon.name} ist zu teuer für Low-Power Drafts!`, {
           cardSlots: [entry.slotIndex],
         });
