@@ -58,5 +58,14 @@ window.CHANGELOG_DATA = {
         '"Karriere" in der Pokémon Detailansicht hinzugefügt, wird später anzeigen welches Pokémon wie oft genutzt wurde'
       ],
     },
+    {
+      title: 'Draft Room',
+      date: '2026-06-26',
+      items: [
+      'Draft Room hinzufgefügt: funktioniert als modernere Version der "TV-Ansicht" von den alten Google Sheets-basierten Ansichten',
+      '-> Draft Room Control view: Funktionen für den Draft-Admin (Tobi)',
+      '-> Draft Room Board view: Ansicht für alle Spieler, inklusive Übersicht für Speed-Tiers, Defensiver Matrix and verbleibendem Pool'
+      ],
+    },
   ],
 };
