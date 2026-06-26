@@ -1,0 +1,1293 @@
+{
+  "kind": "schwalboga-draft-export",
+  "version": 1,
+  "exportedAt": "2026-06-26T23:04:45.213Z",
+  "format": "low-power",
+  "draftDate": "2026-06-26",
+  "customCosts": {},
+  "players": [
+    {
+      "name": "Robin",
+      "sprite": "assets/Trainer/birdkeeper.png",
+      "pokemon": [
+        "Forretress",
+        "Articuno-Galar",
+        "Meganium",
+        "Magmar",
+        "Murkrow",
+        "Wigglytuff",
+        "Misdreavus",
+        "Tauros-Paldea-Aqua",
+        "Nidoqueen",
+        "Dracozolt"
+      ],
+      "pokemonWithCosts": [
+        {
+          "name": "Forretress",
+          "cost": 9,
+          "customCost": null
+        },
+        {
+          "name": "Articuno-Galar",
+          "cost": 8,
+          "customCost": null
+        },
+        {
+          "name": "Meganium",
+          "cost": 5,
+          "customCost": null
+        },
+        {
+          "name": "Magmar",
+          "cost": 5,
+          "customCost": null
+        },
+        {
+          "name": "Murkrow",
+          "cost": 3,
+          "customCost": null
+        },
+        {
+          "name": "Wigglytuff",
+          "cost": 4,
+          "customCost": null
+        },
+        {
+          "name": "Misdreavus",
+          "cost": 4,
+          "customCost": null
+        },
+        {
+          "name": "Tauros-Paldea-Aqua",
+          "cost": 10,
+          "customCost": null
+        },
+        {
+          "name": "Nidoqueen",
+          "cost": 11,
+          "customCost": null
+        },
+        {
+          "name": "Dracozolt",
+          "cost": 13,
+          "customCost": null
+        }
+      ],
+      "teraCaptain": "Magmar",
+      "teraType": "Grass",
+      "teraTypePaidWith": "points",
+      "zCaptain": "Articuno-Galar",
+      "zType": "Psychic",
+      "zTypePaidWith": "points",
+      "spentPoints": 75,
+      "nudelsterneBeforeImport": 0,
+      "projectedNudelsternEarned": 0,
+      "nudelsterneAfterImport": 0,
+      "finalSwap": null
+    },
+    {
+      "name": "Jannik",
+      "sprite": "assets/Trainer/red.png",
+      "pokemon": [
+        "Skeledirge",
+        "Raichu-Alola",
+        "Hitmonlee",
+        "Thievul",
+        "Thwackey",
+        "Steelix",
+        "Audino-Mega",
+        "Blastoise",
+        "Swalot",
+        "Cryogonal",
+        "Fearow"
+      ],
+      "pokemonWithCosts": [
+        {
+          "name": "Skeledirge",
+          "cost": 13,
+          "customCost": null
+        },
+        {
+          "name": "Raichu-Alola",
+          "cost": 8,
+          "customCost": null
+        },
+        {
+          "name": "Hitmonlee",
+          "cost": 8,
+          "customCost": null
+        },
+        {
+          "name": "Thievul",
+          "cost": 2,
+          "customCost": null
+        },
+        {
+          "name": "Thwackey",
+          "cost": 5,
+          "customCost": null
+        },
+        {
+          "name": "Steelix",
+          "cost": 7,
+          "customCost": null
+        },
+        {
+          "name": "Audino-Mega",
+          "cost": 7,
+          "customCost": null
+        },
+        {
+          "name": "Blastoise",
+          "cost": 12,
+          "customCost": null
+        },
+        {
+          "name": "Swalot",
+          "cost": 4,
+          "customCost": null
+        },
+        {
+          "name": "Cryogonal",
+          "cost": 6,
+          "customCost": null
+        },
+        {
+          "name": "Fearow",
+          "cost": 1,
+          "customCost": null
+        }
+      ],
+      "teraCaptain": "Thievul",
+      "teraType": "Ice",
+      "teraTypePaidWith": "points",
+      "zCaptain": null,
+      "zType": null,
+      "zTypePaidWith": null,
+      "spentPoints": 75,
+      "nudelsterneBeforeImport": 0,
+      "projectedNudelsternEarned": 0,
+      "nudelsterneAfterImport": 0,
+      "finalSwap": null
+    },
+    {
+      "name": "Niklas",
+      "sprite": "assets/Trainer/n.png",
+      "pokemon": [
+        "Jellicent",
+        "Togetic",
+        "Braviary-Hisui",
+        "Morpeko",
+        "Aggron",
+        "Magmortar",
+        "Pinsir",
+        "Sceptile-Mega",
+        "Krookodile",
+        "Toxicroak"
+      ],
+      "pokemonWithCosts": [
+        {
+          "name": "Jellicent",
+          "cost": 9,
+          "customCost": null
+        },
+        {
+          "name": "Togetic",
+          "cost": 4,
+          "customCost": null
+        },
+        {
+          "name": "Braviary-Hisui",
+          "cost": 8,
+          "customCost": null
+        },
+        {
+          "name": "Morpeko",
+          "cost": 4,
+          "customCost": null
+        },
+        {
+          "name": "Aggron",
+          "cost": 5,
+          "customCost": null
+        },
+        {
+          "name": "Magmortar",
+          "cost": 7,
+          "customCost": null
+        },
+        {
+          "name": "Pinsir",
+          "cost": 4,
+          "customCost": null
+        },
+        {
+          "name": "Sceptile-Mega",
+          "cost": 12,
+          "customCost": null
+        },
+        {
+          "name": "Krookodile",
+          "cost": 13,
+          "customCost": null
+        },
+        {
+          "name": "Toxicroak",
+          "cost": 7,
+          "customCost": null
+        }
+      ],
+      "teraCaptain": null,
+      "teraType": null,
+      "teraTypePaidWith": null,
+      "zCaptain": "Pinsir",
+      "zType": "Ground",
+      "zTypePaidWith": "points",
+      "spentPoints": 75,
+      "nudelsterneBeforeImport": 0,
+      "projectedNudelsternEarned": 0,
+      "nudelsterneAfterImport": 0,
+      "finalSwap": null
+    },
+    {
+      "name": "Hans",
+      "sprite": "assets/Trainer/roughneck.png",
+      "pokemon": [
+        "Politoed",
+        "Drednaw",
+        "Breloom",
+        "Dubwool",
+        "Sandaconda",
+        "Kilowattrel",
+        "Bombirdier",
+        "Centiskorch",
+        "Mimikyu",
+        "Dragonair"
+      ],
+      "pokemonWithCosts": [
+        {
+          "name": "Politoed",
+          "cost": 10,
+          "customCost": null
+        },
+        {
+          "name": "Drednaw",
+          "cost": 9,
+          "customCost": null
+        },
+        {
+          "name": "Breloom",
+          "cost": 12,
+          "customCost": null
+        },
+        {
+          "name": "Dubwool",
+          "cost": 6,
+          "customCost": null
+        },
+        {
+          "name": "Sandaconda",
+          "cost": 6,
+          "customCost": null
+        },
+        {
+          "name": "Kilowattrel",
+          "cost": 9,
+          "customCost": null
+        },
+        {
+          "name": "Bombirdier",
+          "cost": 4,
+          "customCost": null
+        },
+        {
+          "name": "Centiskorch",
+          "cost": 6,
+          "customCost": null
+        },
+        {
+          "name": "Mimikyu",
+          "cost": 11,
+          "customCost": null
+        },
+        {
+          "name": "Dragonair",
+          "cost": 2,
+          "customCost": null
+        }
+      ],
+      "teraCaptain": null,
+      "teraType": null,
+      "teraTypePaidWith": null,
+      "zCaptain": null,
+      "zType": null,
+      "zTypePaidWith": null,
+      "spentPoints": 75,
+      "nudelsterneBeforeImport": 0,
+      "projectedNudelsternEarned": 0,
+      "nudelsterneAfterImport": 0,
+      "finalSwap": null
+    },
+    {
+      "name": "Stefan",
+      "sprite": "assets/Trainer/blue.png",
+      "pokemon": [
+        "Bronzong",
+        "Nidoking",
+        "Ampharos-Mega",
+        "Slurpuff",
+        "Sharpedo",
+        "Rapidash",
+        "Komala",
+        "Illumise",
+        "Virizion",
+        "Cofagrigus"
+      ],
+      "pokemonWithCosts": [
+        {
+          "name": "Bronzong",
+          "cost": 10,
+          "customCost": null
+        },
+        {
+          "name": "Nidoking",
+          "cost": 13,
+          "customCost": null
+        },
+        {
+          "name": "Ampharos-Mega",
+          "cost": 9,
+          "customCost": null
+        },
+        {
+          "name": "Slurpuff",
+          "cost": 9,
+          "customCost": null
+        },
+        {
+          "name": "Sharpedo",
+          "cost": 7,
+          "customCost": null
+        },
+        {
+          "name": "Rapidash",
+          "cost": 3,
+          "customCost": null
+        },
+        {
+          "name": "Komala",
+          "cost": 4,
+          "customCost": null
+        },
+        {
+          "name": "Illumise",
+          "cost": 4,
+          "customCost": null
+        },
+        {
+          "name": "Virizion",
+          "cost": 8,
+          "customCost": null
+        },
+        {
+          "name": "Cofagrigus",
+          "cost": 8,
+          "customCost": null
+        }
+      ],
+      "teraCaptain": null,
+      "teraType": null,
+      "teraTypePaidWith": null,
+      "zCaptain": null,
+      "zType": null,
+      "zTypePaidWith": null,
+      "spentPoints": 75,
+      "nudelsterneBeforeImport": 0,
+      "projectedNudelsternEarned": 0,
+      "nudelsterneAfterImport": 0,
+      "finalSwap": null
+    },
+    {
+      "name": "Tobi",
+      "sprite": "assets/Trainer/pokemaniac.png",
+      "pokemon": [
+        "Arctozolt",
+        "Pincurchin",
+        "Eelektrik",
+        "Beartic",
+        "Espeon",
+        "Gourgeist",
+        "Pelipper",
+        "Sirfetch’d",
+        "Kingdra",
+        "Shroodle"
+      ],
+      "pokemonWithCosts": [
+        {
+          "name": "Arctozolt",
+          "cost": 10,
+          "customCost": null
+        },
+        {
+          "name": "Pincurchin",
+          "cost": 5,
+          "customCost": null
+        },
+        {
+          "name": "Eelektrik",
+          "cost": 2,
+          "customCost": null
+        },
+        {
+          "name": "Beartic",
+          "cost": 5,
+          "customCost": null
+        },
+        {
+          "name": "Espeon",
+          "cost": 8,
+          "customCost": null
+        },
+        {
+          "name": "Gourgeist",
+          "cost": 7,
+          "customCost": null
+        },
+        {
+          "name": "Pelipper",
+          "cost": 13,
+          "customCost": null
+        },
+        {
+          "name": "Sirfetch’d",
+          "cost": 7,
+          "customCost": null
+        },
+        {
+          "name": "Kingdra",
+          "cost": 10,
+          "customCost": null
+        },
+        {
+          "name": "Shroodle",
+          "cost": 1,
+          "customCost": null
+        }
+      ],
+      "teraCaptain": null,
+      "teraType": null,
+      "teraTypePaidWith": null,
+      "zCaptain": "Arctozolt",
+      "zType": "Ice",
+      "zTypePaidWith": "points",
+      "spentPoints": 70,
+      "nudelsterneBeforeImport": 0,
+      "projectedNudelsternEarned": 0,
+      "nudelsterneAfterImport": 1,
+      "finalSwap": null
+    },
+    {
+      "name": "André",
+      "sprite": "assets/Trainer/blackbelt.png",
+      "pokemon": [
+        "Tapu Bulu",
+        "Muk-Alola",
+        "Camerupt-Mega",
+        "Golisopod",
+        "Drifblim",
+        "Aurorus",
+        "Magneton",
+        "Gogoat",
+        "Bronzor",
+        "Maushold"
+      ],
+      "pokemonWithCosts": [
+        {
+          "name": "Tapu Bulu",
+          "cost": 13,
+          "customCost": null
+        },
+        {
+          "name": "Muk-Alola",
+          "cost": 11,
+          "customCost": null
+        },
+        {
+          "name": "Camerupt-Mega",
+          "cost": 8,
+          "customCost": null
+        },
+        {
+          "name": "Golisopod",
+          "cost": 7,
+          "customCost": null
+        },
+        {
+          "name": "Drifblim",
+          "cost": 7,
+          "customCost": null
+        },
+        {
+          "name": "Aurorus",
+          "cost": 5,
+          "customCost": null
+        },
+        {
+          "name": "Magneton",
+          "cost": 6,
+          "customCost": null
+        },
+        {
+          "name": "Gogoat",
+          "cost": 4,
+          "customCost": null
+        },
+        {
+          "name": "Bronzor",
+          "cost": 1,
+          "customCost": null
+        },
+        {
+          "name": "Maushold",
+          "cost": 9,
+          "customCost": null
+        }
+      ],
+      "teraCaptain": "Aurorus",
+      "teraType": "Ice",
+      "teraTypePaidWith": "points",
+      "zCaptain": "Gogoat",
+      "zType": "Grass",
+      "zTypePaidWith": null,
+      "spentPoints": 73,
+      "nudelsterneBeforeImport": 0,
+      "projectedNudelsternEarned": 0,
+      "nudelsterneAfterImport": 0,
+      "finalSwap": null
+    },
+    {
+      "name": "Marc",
+      "sprite": "assets/Trainer/brycen.png",
+      "pokemon": [
+        "Bisharp",
+        "Vikavolt",
+        "Seismitoad",
+        "Crobat",
+        "Dachsbun",
+        "Froslass",
+        "Coalossal",
+        "Medicham",
+        "Zorua-Hisui",
+        "Sableye"
+      ],
+      "pokemonWithCosts": [
+        {
+          "name": "Bisharp",
+          "cost": 10,
+          "customCost": null
+        },
+        {
+          "name": "Vikavolt",
+          "cost": 7,
+          "customCost": null
+        },
+        {
+          "name": "Seismitoad",
+          "cost": 10,
+          "customCost": null
+        },
+        {
+          "name": "Crobat",
+          "cost": 12,
+          "customCost": null
+        },
+        {
+          "name": "Dachsbun",
+          "cost": 7,
+          "customCost": null
+        },
+        {
+          "name": "Froslass",
+          "cost": 6,
+          "customCost": null
+        },
+        {
+          "name": "Coalossal",
+          "cost": 5,
+          "customCost": null
+        },
+        {
+          "name": "Medicham",
+          "cost": 9,
+          "customCost": null
+        },
+        {
+          "name": "Zorua-Hisui",
+          "cost": 1,
+          "customCost": null
+        },
+        {
+          "name": "Sableye",
+          "cost": 5,
+          "customCost": null
+        }
+      ],
+      "teraCaptain": "Coalossal",
+      "teraType": "Grass",
+      "teraTypePaidWith": "points",
+      "zCaptain": "Vikavolt",
+      "zType": "Electric",
+      "zTypePaidWith": "points",
+      "spentPoints": 75,
+      "nudelsterneBeforeImport": 0,
+      "projectedNudelsternEarned": 0,
+      "nudelsterneAfterImport": 0,
+      "finalSwap": null
+    }
+  ],
+  "picks": [
+    {
+      "kind": "pokemon",
+      "playerId": "robin",
+      "pokemon": "Forretress",
+      "turnIndex": 0,
+      "at": "2026-06-26T19:31:14.532Z"
+    },
+    {
+      "kind": "pokemon",
+      "playerId": "jannik",
+      "pokemon": "Skeledirge",
+      "turnIndex": 1,
+      "at": "2026-06-26T19:33:16.302Z"
+    },
+    {
+      "kind": "pokemon",
+      "playerId": "niklas",
+      "pokemon": "Jellicent",
+      "turnIndex": 2,
+      "at": "2026-06-26T19:38:19.379Z"
+    },
+    {
+      "kind": "pokemon",
+      "playerId": "hans",
+      "pokemon": "Politoed",
+      "turnIndex": 3,
+      "at": "2026-06-26T19:39:34.952Z"
+    },
+    {
+      "kind": "pokemon",
+      "playerId": "stefan",
+      "pokemon": "Bronzong",
+      "turnIndex": 4,
+      "at": "2026-06-26T19:41:10.941Z"
+    },
+    {
+      "kind": "pokemon",
+      "playerId": "tobi",
+      "pokemon": "Arctozolt",
+      "turnIndex": 5,
+      "at": "2026-06-26T19:43:22.929Z"
+    },
+    {
+      "kind": "pokemon",
+      "playerId": "andre",
+      "pokemon": "Tapu Bulu",
+      "turnIndex": 6,
+      "at": "2026-06-26T19:43:47.703Z"
+    },
+    {
+      "kind": "pokemon",
+      "playerId": "marc",
+      "pokemon": "Bisharp",
+      "turnIndex": 7,
+      "at": "2026-06-26T19:44:54.971Z"
+    },
+    {
+      "kind": "pokemon",
+      "playerId": "marc",
+      "pokemon": "Vikavolt",
+      "turnIndex": 8,
+      "at": "2026-06-26T19:45:32.441Z"
+    },
+    {
+      "kind": "pokemon",
+      "playerId": "andre",
+      "pokemon": "Muk-Alola",
+      "turnIndex": 9,
+      "at": "2026-06-26T19:45:58.795Z"
+    },
+    {
+      "kind": "pokemon",
+      "playerId": "tobi",
+      "pokemon": "Pincurchin",
+      "turnIndex": 10,
+      "at": "2026-06-26T19:47:14.831Z"
+    },
+    {
+      "kind": "pokemon",
+      "playerId": "stefan",
+      "pokemon": "Nidoking",
+      "turnIndex": 11,
+      "at": "2026-06-26T19:48:17.643Z"
+    },
+    {
+      "kind": "pokemon",
+      "playerId": "hans",
+      "pokemon": "Drednaw",
+      "turnIndex": 12,
+      "at": "2026-06-26T19:51:31.606Z"
+    },
+    {
+      "kind": "pokemon",
+      "playerId": "niklas",
+      "pokemon": "Togetic",
+      "turnIndex": 13,
+      "at": "2026-06-26T19:52:29.609Z"
+    },
+    {
+      "kind": "pokemon",
+      "playerId": "jannik",
+      "pokemon": "Raichu-Alola",
+      "turnIndex": 14,
+      "at": "2026-06-26T19:53:32.635Z"
+    },
+    {
+      "kind": "pokemon",
+      "playerId": "robin",
+      "pokemon": "Articuno-Galar",
+      "turnIndex": 15,
+      "at": "2026-06-26T19:54:30.715Z"
+    },
+    {
+      "kind": "pokemon",
+      "playerId": "robin",
+      "pokemon": "Meganium",
+      "turnIndex": 16,
+      "at": "2026-06-26T19:55:17.570Z"
+    },
+    {
+      "kind": "pokemon",
+      "playerId": "jannik",
+      "pokemon": "Hitmonlee",
+      "turnIndex": 17,
+      "at": "2026-06-26T19:56:18.479Z"
+    },
+    {
+      "kind": "pokemon",
+      "playerId": "niklas",
+      "pokemon": "Braviary-Hisui",
+      "turnIndex": 18,
+      "at": "2026-06-26T19:57:55.034Z"
+    },
+    {
+      "kind": "pokemon",
+      "playerId": "hans",
+      "pokemon": "Breloom",
+      "turnIndex": 19,
+      "at": "2026-06-26T20:00:55.600Z"
+    },
+    {
+      "kind": "pokemon",
+      "playerId": "stefan",
+      "pokemon": "Ampharos-Mega",
+      "turnIndex": 20,
+      "at": "2026-06-26T20:03:28.393Z"
+    },
+    {
+      "kind": "pokemon",
+      "playerId": "tobi",
+      "pokemon": "Eelektrik",
+      "turnIndex": 21,
+      "at": "2026-06-26T20:04:17.129Z"
+    },
+    {
+      "kind": "pokemon",
+      "playerId": "andre",
+      "pokemon": "Camerupt-Mega",
+      "turnIndex": 22,
+      "at": "2026-06-26T20:05:05.534Z"
+    },
+    {
+      "kind": "pokemon",
+      "playerId": "marc",
+      "pokemon": "Seismitoad",
+      "turnIndex": 23,
+      "at": "2026-06-26T20:05:38.359Z"
+    },
+    {
+      "kind": "pokemon",
+      "playerId": "marc",
+      "pokemon": "Crobat",
+      "turnIndex": 24,
+      "at": "2026-06-26T20:05:50.199Z"
+    },
+    {
+      "kind": "pokemon",
+      "playerId": "andre",
+      "pokemon": "Golisopod",
+      "turnIndex": 25,
+      "at": "2026-06-26T20:38:40.888Z"
+    },
+    {
+      "kind": "pokemon",
+      "playerId": "tobi",
+      "pokemon": "Beartic",
+      "turnIndex": 26,
+      "at": "2026-06-26T20:40:38.030Z"
+    },
+    {
+      "kind": "pokemon",
+      "playerId": "stefan",
+      "pokemon": "Slurpuff",
+      "turnIndex": 27,
+      "at": "2026-06-26T20:43:14.091Z"
+    },
+    {
+      "kind": "pokemon",
+      "playerId": "hans",
+      "pokemon": "Dubwool",
+      "turnIndex": 28,
+      "at": "2026-06-26T20:48:10.553Z"
+    },
+    {
+      "kind": "pokemon",
+      "playerId": "niklas",
+      "pokemon": "Morpeko",
+      "turnIndex": 29,
+      "at": "2026-06-26T20:53:36.064Z"
+    },
+    {
+      "kind": "pokemon",
+      "playerId": "jannik",
+      "pokemon": "Thievul",
+      "turnIndex": 30,
+      "at": "2026-06-26T20:54:54.765Z"
+    },
+    {
+      "kind": "pokemon",
+      "playerId": "robin",
+      "pokemon": "Magmar",
+      "turnIndex": 31,
+      "at": "2026-06-26T20:56:51.343Z"
+    },
+    {
+      "kind": "pokemon",
+      "playerId": "robin",
+      "pokemon": "Murkrow",
+      "turnIndex": 32,
+      "at": "2026-06-26T21:05:55.775Z"
+    },
+    {
+      "kind": "pokemon",
+      "playerId": "jannik",
+      "pokemon": "Thwackey",
+      "turnIndex": 33,
+      "at": "2026-06-26T21:06:44.878Z"
+    },
+    {
+      "kind": "pokemon",
+      "playerId": "niklas",
+      "pokemon": "Aggron",
+      "turnIndex": 34,
+      "at": "2026-06-26T21:07:46.994Z"
+    },
+    {
+      "kind": "pokemon",
+      "playerId": "hans",
+      "pokemon": "Sandaconda",
+      "turnIndex": 35,
+      "at": "2026-06-26T21:08:52.246Z"
+    },
+    {
+      "kind": "pokemon",
+      "playerId": "stefan",
+      "pokemon": "Sharpedo",
+      "turnIndex": 36,
+      "at": "2026-06-26T21:12:10.039Z"
+    },
+    {
+      "kind": "pokemon",
+      "playerId": "tobi",
+      "pokemon": "Espeon",
+      "turnIndex": 37,
+      "at": "2026-06-26T21:25:00.674Z"
+    },
+    {
+      "kind": "pokemon",
+      "playerId": "andre",
+      "pokemon": "Drifblim",
+      "turnIndex": 38,
+      "at": "2026-06-26T21:26:04.908Z"
+    },
+    {
+      "kind": "pokemon",
+      "playerId": "marc",
+      "pokemon": "Dachsbun",
+      "turnIndex": 39,
+      "at": "2026-06-26T21:27:44.468Z"
+    },
+    {
+      "kind": "pokemon",
+      "playerId": "marc",
+      "pokemon": "Froslass",
+      "turnIndex": 40,
+      "at": "2026-06-26T21:27:52.357Z"
+    },
+    {
+      "kind": "pokemon",
+      "playerId": "andre",
+      "pokemon": "Aurorus",
+      "turnIndex": 41,
+      "at": "2026-06-26T21:29:23.858Z"
+    },
+    {
+      "kind": "pokemon",
+      "playerId": "tobi",
+      "pokemon": "Gourgeist",
+      "turnIndex": 42,
+      "at": "2026-06-26T21:29:46.580Z"
+    },
+    {
+      "kind": "pokemon",
+      "playerId": "stefan",
+      "pokemon": "Rapidash",
+      "turnIndex": 43,
+      "at": "2026-06-26T21:34:52.972Z"
+    },
+    {
+      "kind": "pokemon",
+      "playerId": "hans",
+      "pokemon": "Kilowattrel",
+      "turnIndex": 44,
+      "at": "2026-06-26T21:36:26.175Z"
+    },
+    {
+      "kind": "pokemon",
+      "playerId": "niklas",
+      "pokemon": "Magmortar",
+      "turnIndex": 45,
+      "at": "2026-06-26T21:38:10.560Z"
+    },
+    {
+      "kind": "pokemon",
+      "playerId": "jannik",
+      "pokemon": "Steelix",
+      "turnIndex": 46,
+      "at": "2026-06-26T21:39:48.420Z"
+    },
+    {
+      "kind": "pokemon",
+      "playerId": "robin",
+      "pokemon": "Wigglytuff",
+      "turnIndex": 47,
+      "at": "2026-06-26T21:41:27.450Z"
+    },
+    {
+      "kind": "pokemon",
+      "playerId": "robin",
+      "pokemon": "Misdreavus",
+      "turnIndex": 48,
+      "at": "2026-06-26T21:42:15.258Z"
+    },
+    {
+      "kind": "pokemon",
+      "playerId": "jannik",
+      "pokemon": "Audino-Mega",
+      "turnIndex": 49,
+      "at": "2026-06-26T21:42:44.478Z"
+    },
+    {
+      "kind": "pokemon",
+      "playerId": "niklas",
+      "pokemon": "Pinsir",
+      "turnIndex": 50,
+      "at": "2026-06-26T21:44:47.140Z"
+    },
+    {
+      "kind": "pokemon",
+      "playerId": "hans",
+      "pokemon": "Bombirdier",
+      "turnIndex": 51,
+      "at": "2026-06-26T21:46:09.746Z"
+    },
+    {
+      "kind": "pokemon",
+      "playerId": "stefan",
+      "pokemon": "Komala",
+      "turnIndex": 52,
+      "at": "2026-06-26T21:47:03.187Z"
+    },
+    {
+      "kind": "pokemon",
+      "playerId": "tobi",
+      "pokemon": "Pelipper",
+      "turnIndex": 53,
+      "at": "2026-06-26T21:47:46.143Z"
+    },
+    {
+      "kind": "pokemon",
+      "playerId": "andre",
+      "pokemon": "Magneton",
+      "turnIndex": 54,
+      "at": "2026-06-26T21:48:29.971Z"
+    },
+    {
+      "kind": "pokemon",
+      "playerId": "marc",
+      "pokemon": "Coalossal",
+      "turnIndex": 55,
+      "at": "2026-06-26T21:49:02.784Z"
+    },
+    {
+      "kind": "pokemon",
+      "playerId": "marc",
+      "pokemon": "Medicham",
+      "turnIndex": 56,
+      "at": "2026-06-26T21:50:05.634Z"
+    },
+    {
+      "kind": "pokemon",
+      "playerId": "andre",
+      "pokemon": "Gogoat",
+      "turnIndex": 57,
+      "at": "2026-06-26T21:50:50.764Z"
+    },
+    {
+      "kind": "pokemon",
+      "playerId": "tobi",
+      "pokemon": "Sirfetch’d",
+      "turnIndex": 58,
+      "at": "2026-06-26T21:51:27.480Z"
+    },
+    {
+      "kind": "pokemon",
+      "playerId": "stefan",
+      "pokemon": "Illumise",
+      "turnIndex": 59,
+      "at": "2026-06-26T21:52:09.836Z"
+    },
+    {
+      "kind": "pokemon",
+      "playerId": "hans",
+      "pokemon": "Centiskorch",
+      "turnIndex": 60,
+      "at": "2026-06-26T21:57:01.260Z"
+    },
+    {
+      "kind": "pokemon",
+      "playerId": "niklas",
+      "pokemon": "Sceptile-Mega",
+      "turnIndex": 61,
+      "at": "2026-06-26T21:59:34.536Z"
+    },
+    {
+      "kind": "pokemon",
+      "playerId": "jannik",
+      "pokemon": "Blastoise",
+      "turnIndex": 62,
+      "at": "2026-06-26T22:00:24.533Z"
+    },
+    {
+      "kind": "tera",
+      "type": "Grass",
+      "payment": "points",
+      "playerId": "robin",
+      "turnIndex": 63,
+      "at": "2026-06-26T22:05:45.718Z"
+    },
+    {
+      "kind": "z",
+      "type": "Psychic",
+      "payment": "points",
+      "playerId": "robin",
+      "turnIndex": 64,
+      "at": "2026-06-26T22:06:41.289Z"
+    },
+    {
+      "kind": "pokemon",
+      "playerId": "jannik",
+      "pokemon": "Swalot",
+      "turnIndex": 65,
+      "at": "2026-06-26T22:07:25.603Z"
+    },
+    {
+      "kind": "pokemon",
+      "playerId": "niklas",
+      "pokemon": "Krookodile",
+      "turnIndex": 66,
+      "at": "2026-06-26T22:08:37.656Z"
+    },
+    {
+      "kind": "pokemon",
+      "playerId": "hans",
+      "pokemon": "Mimikyu",
+      "turnIndex": 67,
+      "at": "2026-06-26T22:09:22.122Z"
+    },
+    {
+      "kind": "pokemon",
+      "playerId": "stefan",
+      "pokemon": "Virizion",
+      "turnIndex": 68,
+      "at": "2026-06-26T22:10:42.989Z"
+    },
+    {
+      "kind": "z",
+      "type": "Ice",
+      "payment": "points",
+      "playerId": "tobi",
+      "turnIndex": 69,
+      "at": "2026-06-26T22:14:12.419Z"
+    },
+    {
+      "kind": "pokemon",
+      "playerId": "andre",
+      "pokemon": "Bronzor",
+      "turnIndex": 70,
+      "at": "2026-06-26T22:14:32.186Z"
+    },
+    {
+      "kind": "pokemon",
+      "playerId": "marc",
+      "pokemon": "Zorua-Hisui",
+      "turnIndex": 71,
+      "at": "2026-06-26T22:14:49.798Z"
+    },
+    {
+      "kind": "z",
+      "type": "Electric",
+      "payment": "points",
+      "playerId": "marc",
+      "turnIndex": 72,
+      "at": "2026-06-26T22:15:04.422Z"
+    },
+    {
+      "kind": "pokemon",
+      "playerId": "andre",
+      "pokemon": "Maushold",
+      "turnIndex": 73,
+      "at": "2026-06-26T22:15:45.244Z"
+    },
+    {
+      "kind": "pokemon",
+      "playerId": "tobi",
+      "pokemon": "Kingdra",
+      "turnIndex": 74,
+      "at": "2026-06-26T22:18:31.222Z"
+    },
+    {
+      "kind": "pokemon",
+      "playerId": "stefan",
+      "pokemon": "Cofagrigus",
+      "turnIndex": 75,
+      "at": "2026-06-26T22:20:22.540Z"
+    },
+    {
+      "kind": "pokemon",
+      "playerId": "hans",
+      "pokemon": "Dragonair",
+      "turnIndex": 76,
+      "at": "2026-06-26T22:21:22.288Z"
+    },
+    {
+      "kind": "pokemon",
+      "playerId": "niklas",
+      "pokemon": "Toxicroak",
+      "turnIndex": 77,
+      "at": "2026-06-26T22:23:22.972Z"
+    },
+    {
+      "kind": "pokemon",
+      "playerId": "jannik",
+      "pokemon": "Cryogonal",
+      "turnIndex": 78,
+      "at": "2026-06-26T22:24:16.675Z"
+    },
+    {
+      "kind": "pokemon",
+      "playerId": "robin",
+      "pokemon": "Tauros-Paldea-Aqua",
+      "turnIndex": 79,
+      "at": "2026-06-26T22:26:10.798Z"
+    },
+    {
+      "kind": "pokemon",
+      "playerId": "robin",
+      "pokemon": "Nidoqueen",
+      "turnIndex": 80,
+      "at": "2026-06-26T22:26:47.022Z"
+    },
+    {
+      "kind": "tera",
+      "type": "Ice",
+      "payment": "points",
+      "playerId": "jannik",
+      "turnIndex": 81,
+      "at": "2026-06-26T22:27:50.105Z"
+    },
+    {
+      "kind": "z",
+      "type": "Ground",
+      "payment": "points",
+      "playerId": "niklas",
+      "turnIndex": 82,
+      "at": "2026-06-26T22:33:58.188Z"
+    },
+    {
+      "kind": "pokemon",
+      "playerId": "tobi",
+      "pokemon": "Shroodle",
+      "turnIndex": 83,
+      "at": "2026-06-26T22:34:37.724Z"
+    },
+    {
+      "kind": "finish",
+      "playerId": "tobi",
+      "turnIndex": 84,
+      "at": "2026-06-26T22:35:22.591Z"
+    },
+    {
+      "kind": "tera",
+      "type": "Ice",
+      "payment": "points",
+      "playerId": "andre",
+      "turnIndex": 85,
+      "at": "2026-06-26T22:52:49.869Z"
+    },
+    {
+      "kind": "finish",
+      "playerId": "andre",
+      "turnIndex": 86,
+      "at": "2026-06-26T22:53:32.065Z"
+    },
+    {
+      "kind": "tera",
+      "type": "Grass",
+      "payment": "points",
+      "playerId": "marc",
+      "turnIndex": 87,
+      "at": "2026-06-26T22:53:52.841Z"
+    },
+    {
+      "kind": "pokemon",
+      "playerId": "marc",
+      "pokemon": "Sableye",
+      "turnIndex": 88,
+      "at": "2026-06-26T22:53:56.719Z"
+    },
+    {
+      "kind": "pokemon",
+      "playerId": "jannik",
+      "pokemon": "Fearow",
+      "turnIndex": 89,
+      "at": "2026-06-26T23:02:27.330Z"
+    },
+    {
+      "kind": "pokemon",
+      "playerId": "robin",
+      "pokemon": "Dracozolt",
+      "turnIndex": 90,
+      "at": "2026-06-26T23:04:23.730Z"
+    }
+  ]
+}

@@ -6700,6 +6700,13 @@ body.dark-mode .replacement-priority-badge.is-high {
   min-height: 24px;
 }
 
+.spieler-star-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 24px;
+}
+
 .spieler-win-label {
   min-width: 92px;
   color: var(--muted);
@@ -6716,6 +6723,20 @@ body.dark-mode .replacement-priority-badge.is-high {
   cursor: help;
   font-size: 1.15rem;
   line-height: 1;
+}
+
+.spieler-star-count {
+  display: inline-grid;
+  place-items: center;
+  min-width: 26px;
+  height: 22px;
+  padding: 0 8px;
+  border-radius: 999px;
+  background: rgba(217, 79, 61, 0.1);
+  color: var(--accent);
+  font-family: 'Chakra Petch', sans-serif;
+  font-size: 0.82rem;
+  font-weight: 800;
 }
 
 .spieler-team-heading {
@@ -6776,9 +6797,13 @@ body.dark-mode .replacement-priority-badge.is-high {
 
 .spieler-pokemon-card .pokemon-name {
   right: 8px;
-  bottom: 12px;
+  bottom: 30px;
   left: 8px;
   font-size: 0.75rem;
+}
+
+.spieler-pokemon-card.has-multiple-captains .pokemon-name {
+  bottom: 56px;
 }
 
 .spieler-pokemon-card .type-list {
@@ -6790,6 +6815,49 @@ body.dark-mode .replacement-priority-badge.is-high {
 .spieler-pokemon-card .type-icon {
   width: 17px;
   height: 17px;
+}
+
+.spieler-captain-stack {
+  position: absolute;
+  right: 6px;
+  bottom: 4px;
+  left: 6px;
+  z-index: 4;
+  display: grid;
+  gap: 3px;
+}
+
+.spieler-captain-badge {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  min-height: 23px;
+  padding: 2px 5px;
+  border: 1px solid color-mix(in srgb, var(--spieler-captain-color) 58%, white);
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--spieler-captain-color) 20%, rgba(255, 255, 255, 0.92));
+  box-shadow: 0 6px 14px rgba(31, 34, 51, 0.12);
+  color: #1f2233;
+  font-family: 'Chakra Petch', sans-serif;
+  font-size: 0.64rem;
+  font-weight: 800;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.spieler-captain-badge img {
+  width: 15px;
+  height: 15px;
+  object-fit: contain;
+  flex: 0 0 auto;
+}
+
+.spieler-captain-badge span {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .spieler-missing-pokemon {

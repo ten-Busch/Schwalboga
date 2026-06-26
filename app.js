@@ -4685,7 +4685,67 @@ function getSpielerTeamNames(team) {
   return team.slice(0, 12);
 }
 
-function createSpielerPokemonCard(name) {
+function getSpielerCaptainInfos(player, pokemonName) {
+  const info = player?.currentTeamInfo ?? {};
+  const captainName = normalizeText(pokemonName);
+  const captains = [];
+  if (info.teraCaptain && normalizeText(info.teraCaptain) === captainName) {
+    captains.push({ kind: 'Tera', type: info.teraType, icon: teraIconPath });
+  }
+  if (info.zCaptain && normalizeText(info.zCaptain) === captainName) {
+    captains.push({ kind: 'Z', type: info.zType, icon: zIconPath });
+  }
+  return captains;
+}
+
+function removeSpielerGenericCaptainBadges(card) {
+  const badgeStack = card.querySelector('.form-badge-stack');
+  if (!badgeStack) return;
+
+  for (const badge of [...badgeStack.querySelectorAll('.form-badge-wrapper')]) {
+    const alt = badge.querySelector('.form-badge')?.alt;
+    if (alt === 'Tera' || alt === 'Z-Move') badge.remove();
+  }
+  if (!badgeStack.children.length) badgeStack.remove();
+}
+
+function addSpielerCaptainBadges(card, captainInfos) {
+  if (!captainInfos.length) return;
+
+  const stack = document.createElement('div');
+  stack.className = 'spieler-captain-stack';
+  if (captainInfos.length > 1) card.classList.add('has-multiple-captains');
+
+  for (const captainInfo of captainInfos) {
+    const badge = document.createElement('div');
+    badge.className = `spieler-captain-badge is-${captainInfo.kind.toLowerCase()}`;
+    badge.style.setProperty('--spieler-captain-color', typeColorVars[captainInfo.type] ?? 'var(--accent)');
+    badge.title = `${captainInfo.kind}-Captain: ${typeLabelsDe[captainInfo.type] ?? captainInfo.type ?? '-'}`;
+
+    const captainIcon = document.createElement('img');
+    captainIcon.src = captainInfo.icon;
+    captainIcon.alt = `${captainInfo.kind}-Captain`;
+    captainIcon.loading = 'lazy';
+    badge.append(captainIcon);
+
+    if (captainInfo.type && typeIcons[captainInfo.type]) {
+      const typeIcon = document.createElement('img');
+      typeIcon.src = typeIcons[captainInfo.type];
+      typeIcon.alt = typeLabelsDe[captainInfo.type] ?? captainInfo.type;
+      typeIcon.loading = 'lazy';
+      badge.append(typeIcon);
+    }
+
+    const label = document.createElement('span');
+    label.textContent = `${captainInfo.kind} ${typeLabelsDe[captainInfo.type] ?? captainInfo.type ?? '-'}`;
+    badge.append(label);
+    stack.append(badge);
+  }
+
+  card.append(stack);
+}
+
+function createSpielerPokemonCard(name, player) {
   const pokemon = getPokemonByNameLoose(name);
   if (!pokemon) {
     const card = document.createElement('article');
@@ -4701,17 +4761,19 @@ function createSpielerPokemonCard(name) {
   const card = fragment.querySelector('.pokemon-card');
   if (card) {
     card.classList.add('spieler-pokemon-card');
+    removeSpielerGenericCaptainBadges(card);
+    addSpielerCaptainBadges(card, getSpielerCaptainInfos(player, pokemon.name));
     const sortValue = card.querySelector('.pokemon-sort-value');
     if (sortValue) sortValue.remove();
   }
   return fragment;
 }
 
-function createSpielerTeamGrid(team) {
+function createSpielerTeamGrid(team, player) {
   const grid = document.createElement('div');
   grid.className = 'spieler-team-grid';
   for (const name of getSpielerTeamNames(team)) {
-    grid.append(createSpielerPokemonCard(name));
+    grid.append(createSpielerPokemonCard(name, player));
   }
   return grid;
 }
@@ -4753,6 +4815,26 @@ function createSpielerWinRow(label, wins, emoji) {
   return wrap;
 }
 
+function getSpielerNudelsternCount(player) {
+  return Math.max(0, Number(player?.nudelsterne) || 0);
+}
+
+function createSpielerNudelsternRow(player) {
+  const wrap = document.createElement('div');
+  wrap.className = 'spieler-star-row';
+
+  const label = document.createElement('span');
+  label.className = 'spieler-win-label';
+  label.textContent = 'Nudelsterne';
+
+  const value = document.createElement('span');
+  value.className = 'spieler-star-count';
+  value.textContent = String(getSpielerNudelsternCount(player));
+
+  wrap.append(label, value);
+  return wrap;
+}
+
 function createSpielerCard(player, index) {
   const card = document.createElement('article');
   card.className = 'spieler-card';
@@ -4776,6 +4858,7 @@ function createSpielerCard(player, index) {
     createSpielerWinRow('Match Siege', player.matchSiege, '🏅'),
     createSpielerWinRow('Abend Siege', player.abendSiege, '🏆')
   );
+  wins.append(createSpielerNudelsternRow(player));
   meta.append(name, wins);
   header.append(sprite, meta);
 
@@ -4796,7 +4879,7 @@ function createSpielerCard(player, index) {
     const heading = document.createElement('h4');
     heading.className = 'spieler-team-heading';
     heading.textContent = previousTeam.label || previousTeam.format || `Altes Team ${teamIndex + 1}`;
-    section.append(heading, createSpielerTeamGrid(getSpielerHistoricTeamPokemon(previousTeam)));
+    section.append(heading, createSpielerTeamGrid(getSpielerHistoricTeamPokemon(previousTeam), null));
     previousWrap.append(section);
   }
 
@@ -4814,7 +4897,7 @@ function createSpielerCard(player, index) {
     expandButton.textContent = `${expanded ? '▸' : '▾'} Alte Teams`;
   });
 
-  card.append(header, currentTitle, createSpielerTeamGrid(player.currentTeam), expandButton, previousWrap);
+  card.append(header, currentTitle, createSpielerTeamGrid(player.currentTeam, player), expandButton, previousWrap);
   return card;
 }
 
