@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Draft Room</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;700&family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="draft-room.css" />
+  </head>
+  <body>
+    <div class="draft-app" id="draft-app">
+      <header class="draft-topbar">
+        <a class="draft-home-link" href="index.html">Pokedex</a>
+        <div>
+          <p class="draft-eyebrow">Live Draft</p>
+          <h1>Draft Room</h1>
+        </div>
+        <nav class="draft-view-links" aria-label="Draft Ansichten">
+          <a href="draft-room.html?view=control" id="draft-control-link">Control</a>
+          <a href="draft-room.html?view=board" id="draft-board-link" target="_blank" rel="noopener noreferrer">Board</a>
+        </nav>
+      </header>
+
+      <main class="draft-shell">
+        <section class="draft-panel draft-setup-panel" id="draft-setup-panel">
+          <div class="draft-section-heading">
+            <div>
+              <p class="draft-eyebrow">Setup</p>
+              <h2>Waehle Mitspieler aus</h2>
+            </div>
+            <label class="draft-field draft-format-field">
+              <span>Format</span>
+              <select id="draft-format">
+                <option value="normal">Normal</option>
+                <option value="uber">Uber</option>
+                <option value="low-power">Low Power</option>
+              </select>
+            </label>
+          </div>
+          <div class="draft-trainer-grid" id="draft-trainer-grid"></div>
+          <div class="draft-admin-row">
+            <label class="draft-check">
+              <input id="draft-randomize-order" type="checkbox" />
+              <span>Reihenfolge mischen</span>
+            </label>
+            <label class="draft-check">
+              <input id="draft-admin-mode" type="checkbox" />
+              <span>Admin Mode</span>
+            </label>
+            <button class="draft-secondary" id="draft-reset-button" type="button">Draft zuruecksetzen</button>
+          </div>
+          <div class="draft-admin-stars" id="draft-admin-stars" hidden></div>
+          <div class="draft-randomizer">
+            <div class="draft-randomizer-display" id="draft-randomizer-display">Startspieler auslosen</div>
+            <button class="draft-primary" id="draft-randomize-button" type="button">Startspieler randomizen</button>
+            <button class="draft-primary" id="draft-start-button" type="button" disabled>Draft starten</button>
+          </div>
+        </section>
+
+        <section class="draft-panel draft-control-panel" id="draft-control-panel" hidden>
+          <div class="draft-section-heading">
+            <div>
+              <p class="draft-eyebrow" id="draft-phase-label">Draft</p>
+              <h2 id="draft-current-player">Aktueller Pick</h2>
+            </div>
+            <div class="draft-toolbar">
+              <button class="draft-secondary" id="draft-undo-button" type="button">Undo</button>
+              <button class="draft-secondary" id="draft-reset-control-button" type="button">Draft zuruecksetzen</button>
+              <button class="draft-secondary" id="draft-dismiss-reveal-button" type="button" hidden>Reveal schliessen</button>
+              <button class="draft-secondary" id="draft-export-button" type="button">Export</button>
+              <button class="draft-secondary" id="draft-board-open-button" type="button">Board oeffnen</button>
+            </div>
+          </div>
+          <div class="draft-current-summary" id="draft-current-summary"></div>
+          <div class="draft-type-picks" id="draft-type-picks"></div>
+          <div class="draft-pick-tools" id="draft-pick-tools">
+            <label class="draft-field">
+              <span>Pokemon suchen</span>
+              <input id="draft-pokemon-search" type="search" placeholder="Name, Typ oder Kosten" autocomplete="off" />
+            </label>
+            <label class="draft-field">
+              <span>Typ</span>
+              <select id="draft-filter-type">
+                <option value="">Alle Typen</option>
+              </select>
+            </label>
+            <label class="draft-field">
+              <span>Max Kosten</span>
+              <input id="draft-filter-max-cost" type="number" min="1" max="40" step="1" placeholder="-" />
+            </label>
+            <label class="draft-field">
+              <span>Spezial</span>
+              <select id="draft-filter-special">
+                <option value="">Alle</option>
+                <option value="affordable">Bezahlbar</option>
+                <option value="tera">Tera moeglich</option>
+                <option value="z">Z moeglich</option>
+                <option value="mega-gmax">Mega/GMAX</option>
+              </select>
+            </label>
+            <label class="draft-check">
+              <input id="draft-show-illegal" type="checkbox" />
+              <span>Illegale Picks anzeigen</span>
+            </label>
+            <button class="draft-secondary" id="draft-finish-player-button" type="button">Spieler fertig</button>
+          </div>
+          <div class="draft-pokemon-results" id="draft-pokemon-results"></div>
+          <div class="draft-control-grids">
+            <section class="draft-mini-panel">
+              <h3>Pick Log</h3>
+              <div class="draft-pick-log" id="draft-pick-log"></div>
+            </section>
+            <section class="draft-mini-panel">
+              <h3>Undo History</h3>
+              <div class="draft-undo-history" id="draft-undo-history"></div>
+            </section>
+          </div>
+        </section>
+
+        <section class="draft-panel draft-swap-panel" id="draft-swap-panel" hidden>
+          <div class="draft-section-heading">
+            <div>
+              <p class="draft-eyebrow">Finale Runde</p>
+              <h2 id="draft-swap-player">Swap oder Decline</h2>
+            </div>
+            <button class="draft-secondary" id="draft-swap-decline-button" type="button">Decline</button>
+          </div>
+          <div class="draft-swap-grid">
+            <label class="draft-field">
+              <span>Abgeben</span>
+              <select id="draft-swap-own"></select>
+            </label>
+            <label class="draft-field">
+              <span>Ersatz suchen</span>
+              <input id="draft-swap-search" type="search" placeholder="Verfuegbare Pokemon" autocomplete="off" />
+            </label>
+          </div>
+          <div class="draft-pokemon-results" id="draft-swap-results"></div>
+        </section>
+
+        <section class="draft-board" id="draft-board"></section>
+      </main>
+    </div>
+
+    <div class="draft-decision-modal" id="draft-decision-modal" hidden>
+      <div class="draft-decision-backdrop"></div>
+      <section class="draft-decision-dialog" role="dialog" aria-modal="true" aria-labelledby="draft-decision-title">
+        <h2 id="draft-decision-title">Entscheidung</h2>
+        <p id="draft-decision-copy"></p>
+        <div class="draft-decision-options" id="draft-decision-options"></div>
+      </section>
+    </div>
+
+    <script src="data/pokedex-data.js" defer></script>
+    <script src="Spieler.js" defer></script>
+    <script src="draft-room.js" defer></script>
+  </body>
+</html>

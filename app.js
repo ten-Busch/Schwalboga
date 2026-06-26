@@ -47,6 +47,27 @@ const battleTypes = [
   'Flying', 'Psychic', 'Bug', 'Rock', 'Ghost', 'Dragon', 'Dark', 'Steel', 'Fairy',
 ];
 
+const typeDefenseChart = {
+  Normal: { Normal: 1, Fire: 1, Water: 1, Electric: 1, Grass: 1, Ice: 1, Fighting: 2, Poison: 1, Ground: 1, Flying: 1, Psychic: 1, Bug: 1, Rock: 1, Ghost: 0, Dragon: 1, Dark: 1, Steel: 1, Fairy: 1 },
+  Fire: { Normal: 1, Fire: 0.5, Water: 2, Electric: 1, Grass: 0.5, Ice: 0.5, Fighting: 1, Poison: 1, Ground: 2, Flying: 1, Psychic: 1, Bug: 0.5, Rock: 2, Ghost: 1, Dragon: 1, Dark: 1, Steel: 0.5, Fairy: 0.5 },
+  Water: { Normal: 1, Fire: 0.5, Water: 0.5, Electric: 2, Grass: 2, Ice: 0.5, Fighting: 1, Poison: 1, Ground: 1, Flying: 1, Psychic: 1, Bug: 1, Rock: 1, Ghost: 1, Dragon: 1, Dark: 1, Steel: 0.5, Fairy: 1 },
+  Electric: { Normal: 1, Fire: 1, Water: 1, Electric: 0.5, Grass: 1, Ice: 1, Fighting: 1, Poison: 1, Ground: 2, Flying: 0.5, Psychic: 1, Bug: 1, Rock: 1, Ghost: 1, Dragon: 1, Dark: 1, Steel: 0.5, Fairy: 1 },
+  Grass: { Normal: 1, Fire: 2, Water: 0.5, Electric: 0.5, Grass: 0.5, Ice: 2, Fighting: 1, Poison: 2, Ground: 0.5, Flying: 2, Psychic: 1, Bug: 2, Rock: 1, Ghost: 1, Dragon: 1, Dark: 1, Steel: 1, Fairy: 1 },
+  Ice: { Normal: 1, Fire: 2, Water: 1, Electric: 1, Grass: 1, Ice: 0.5, Fighting: 2, Poison: 1, Ground: 1, Flying: 1, Psychic: 1, Bug: 1, Rock: 2, Ghost: 1, Dragon: 1, Dark: 1, Steel: 2, Fairy: 1 },
+  Fighting: { Normal: 1, Fire: 1, Water: 1, Electric: 1, Grass: 1, Ice: 1, Fighting: 1, Poison: 1, Ground: 1, Flying: 2, Psychic: 2, Bug: 0.5, Rock: 0.5, Ghost: 1, Dragon: 1, Dark: 0.5, Steel: 1, Fairy: 2 },
+  Poison: { Normal: 1, Fire: 1, Water: 1, Electric: 1, Grass: 0.5, Ice: 1, Fighting: 0.5, Poison: 0.5, Ground: 2, Flying: 1, Psychic: 2, Bug: 0.5, Rock: 1, Ghost: 1, Dragon: 1, Dark: 1, Steel: 1, Fairy: 0.5 },
+  Ground: { Normal: 1, Fire: 1, Water: 2, Electric: 0, Grass: 2, Ice: 2, Fighting: 1, Poison: 0.5, Ground: 1, Flying: 1, Psychic: 1, Bug: 1, Rock: 0.5, Ghost: 1, Dragon: 1, Dark: 1, Steel: 1, Fairy: 1 },
+  Flying: { Normal: 1, Fire: 1, Water: 1, Electric: 2, Grass: 0.5, Ice: 2, Fighting: 0.5, Poison: 1, Ground: 0, Flying: 1, Psychic: 1, Bug: 0.5, Rock: 2, Ghost: 1, Dragon: 1, Dark: 1, Steel: 1, Fairy: 1 },
+  Psychic: { Normal: 1, Fire: 1, Water: 1, Electric: 1, Grass: 1, Ice: 1, Fighting: 0.5, Poison: 1, Ground: 1, Flying: 1, Psychic: 0.5, Bug: 2, Rock: 1, Ghost: 2, Dragon: 1, Dark: 2, Steel: 1, Fairy: 1 },
+  Bug: { Normal: 1, Fire: 2, Water: 1, Electric: 1, Grass: 0.5, Ice: 1, Fighting: 0.5, Poison: 1, Ground: 0.5, Flying: 2, Psychic: 1, Bug: 1, Rock: 2, Ghost: 1, Dragon: 1, Dark: 1, Steel: 1, Fairy: 1 },
+  Rock: { Normal: 0.5, Fire: 0.5, Water: 2, Electric: 1, Grass: 2, Ice: 1, Fighting: 2, Poison: 0.5, Ground: 2, Flying: 0.5, Psychic: 1, Bug: 1, Rock: 1, Ghost: 1, Dragon: 1, Dark: 1, Steel: 2, Fairy: 1 },
+  Ghost: { Normal: 0, Fire: 1, Water: 1, Electric: 1, Grass: 1, Ice: 1, Fighting: 0, Poison: 0.5, Ground: 1, Flying: 1, Psychic: 1, Bug: 0.5, Rock: 1, Ghost: 2, Dragon: 1, Dark: 2, Steel: 1, Fairy: 1 },
+  Dragon: { Normal: 1, Fire: 0.5, Water: 0.5, Electric: 0.5, Grass: 0.5, Ice: 2, Fighting: 1, Poison: 1, Ground: 1, Flying: 1, Psychic: 1, Bug: 1, Rock: 1, Ghost: 1, Dragon: 2, Dark: 1, Steel: 1, Fairy: 2 },
+  Dark: { Normal: 1, Fire: 1, Water: 1, Electric: 1, Grass: 1, Ice: 1, Fighting: 2, Poison: 1, Ground: 1, Flying: 1, Psychic: 0, Bug: 2, Rock: 1, Ghost: 0.5, Dragon: 1, Dark: 0.5, Steel: 1, Fairy: 2 },
+  Steel: { Normal: 0.5, Fire: 2, Water: 1, Electric: 1, Grass: 0.5, Ice: 0.5, Fighting: 2, Poison: 0, Ground: 2, Flying: 0.5, Psychic: 0.5, Bug: 0.5, Rock: 0.5, Ghost: 1, Dragon: 0.5, Dark: 1, Steel: 0.5, Fairy: 0.5 },
+  Fairy: { Normal: 1, Fire: 1, Water: 1, Electric: 1, Grass: 1, Ice: 1, Fighting: 0.5, Poison: 2, Ground: 1, Flying: 1, Psychic: 1, Bug: 0.5, Rock: 1, Ghost: 1, Dragon: 0, Dark: 0.5, Steel: 2, Fairy: 1 },
+};
+
 const typeLabelsDe = {
   Normal: 'Normal',
   Fire: 'Feuer',
@@ -136,10 +157,15 @@ const budgetPlannerButton = document.querySelector('#budget-planner-button');
 const ruleCheckerButton = document.querySelector('#rule-checker-button');
 const stefansPdfButton = document.querySelector('#stefans-pdf-button');
 const changelogButton = document.querySelector('#changelog-button');
+const spielerButton = document.querySelector('#spieler-button');
+const informationGraphButton = document.querySelector('#information-graph-button');
 const themeToggle = document.querySelector('#theme-toggle');
 const themeToggleMascot = document.querySelector('#theme-toggle-mascot');
+const eastereggToggle = document.querySelector('#easteregg-toggle');
+const eastereggToggleMascot = document.querySelector('#easteregg-toggle-mascot');
 const legendButton = document.querySelector('#legend-button');
 const scrollTopButton = document.querySelector('#scroll-top-button');
+const jumpRail = document.querySelector('#jump-rail');
 const detailsModal = document.querySelector('#details-modal');
 const detailsClose = document.querySelector('#details-close');
 const detailsCancel = document.querySelector('#details-cancel');
@@ -186,6 +212,7 @@ const detailTitle = document.querySelector('#pokemon-detail-title');
 const detailTopPanel = document.querySelector('#detail-top-panel');
 const detailAbilities = document.querySelector('#detail-abilities');
 const detailTierList = document.querySelector('#detail-tier-list');
+const detailCareer = document.querySelector('#detail-career');
 const detailRibbons = document.querySelector('#detail-ribbons');
 const detailFamilyTitle = document.querySelector('#detail-family-title');
 const detailFamily = document.querySelector('#detail-family');
@@ -225,6 +252,16 @@ const changelogModal = document.querySelector('#changelog-modal');
 const changelogClose = document.querySelector('#changelog-close');
 const changelogTabs = [...document.querySelectorAll('.changelog-tab')];
 const changelogPanels = [...document.querySelectorAll('.changelog-panel')];
+const spielerModal = document.querySelector('#spieler-modal');
+const spielerClose = document.querySelector('#spieler-close');
+const spielerGrid = document.querySelector('#spieler-grid');
+const informationGraphModal = document.querySelector('#information-graph-modal');
+const informationGraphClose = document.querySelector('#information-graph-close');
+const informationGraphX = document.querySelector('#information-graph-x');
+const informationGraphY = document.querySelector('#information-graph-y');
+const informationGraphGenerate = document.querySelector('#information-graph-generate');
+const informationGraphCanvas = document.querySelector('#information-graph-canvas');
+const informationGraphTooltip = document.querySelector('#information-graph-tooltip');
 const legendModal = document.querySelector('#legend-modal');
 const legendClose = document.querySelector('#legend-close');
 const toolHelpToggles = [...document.querySelectorAll('.tool-help-toggle')];
@@ -247,6 +284,10 @@ const budgetPlannerBudget = document.querySelector('#budget-planner-budget');
 const budgetPlannerBudgetRemaining = document.querySelector('#budget-planner-budget-remaining');
 const budgetPlannerBudgetTotal = document.querySelector('#budget-planner-budget-total');
 const budgetPlannerBudgetMascot = document.querySelector('#budget-planner-budget-mascot');
+const budgetPlannerCount = document.querySelector('#budget-planner-count');
+const budgetPlannerCountCurrent = document.querySelector('#budget-planner-count-current');
+const budgetPlannerCountTotal = document.querySelector('#budget-planner-count-total');
+const budgetPlannerCountMascot = document.querySelector('#budget-planner-count-mascot');
 const budgetPlannerFeedback = document.querySelector('#budget-planner-feedback');
 const budgetPlannerSlots = document.querySelector('#budget-planner-slots');
 const budgetPlannerStars = document.querySelector('#budget-planner-stars');
@@ -544,6 +585,7 @@ const tierChangelogEntries = [
   ['Gliscor', '19', '18', 'Punktekosten angepasst'],
   ['Blaziken', 'Neu', '19', 'Neue Version mit erlaubtem Speed Boost'],
 ];
+const changelogData = window.CHANGELOG_DATA ?? { tier: [], site: [] };
 const meta = window.POKEDEX_META ?? { abilities: [], moves: [], movesById: {} };
 const abilityOptions = (meta.abilities ?? []).map((name) => ({ id: normalizeText(name), name }));
 const moveOptions = meta.moves ?? [];
@@ -654,6 +696,18 @@ const pokedexGenerationDividers = [
     themeClass: 'divider-gen9',
   },
 ];
+const informationGraphMetrics = [
+  { id: 'generation', label: 'Generation', getValue: (pokemon) => getPokemonGenerationNumber(pokemon) },
+  { id: 'cost', label: 'Punktekosten', getValue: (pokemon) => pokemon.cost },
+  { id: 'hp', label: 'KP', getValue: (pokemon) => pokemon.baseStats?.hp },
+  { id: 'atk', label: 'Angriff', getValue: (pokemon) => pokemon.baseStats?.atk },
+  { id: 'def', label: 'Verteidigung', getValue: (pokemon) => pokemon.baseStats?.def },
+  { id: 'spa', label: 'Spez. Angriff', getValue: (pokemon) => pokemon.baseStats?.spa },
+  { id: 'spd', label: 'Spez. Vert', getValue: (pokemon) => pokemon.baseStats?.spd },
+  { id: 'spe', label: 'Initiative', getValue: (pokemon) => pokemon.baseStats?.spe },
+  { id: 'usage', label: 'Nutzung', getValue: (pokemon) => getPokemonTotalUsageCount(pokemon) },
+];
+let informationGraphPoints = [];
 
 function normalizeRealStatOptions(options = {}) {
   return {
@@ -814,6 +868,8 @@ function pokemonMatchesTaggedSpecies(pokemon, speciesSet) {
 }
 
 const themeStorageKey = 'friendly-pokemon-theme';
+const eastereggModeStorageKey = 'friendly-pokemon-easteregg-mode';
+const missingSpriteFallbackPath = 'assets/Sub.png';
 const themeMascotByMode = {
   light: {
     src: 'https://play.pokemonshowdown.com/sprites/gen5/solrock.png',
@@ -823,6 +879,10 @@ const themeMascotByMode = {
     src: 'https://play.pokemonshowdown.com/sprites/gen5/lunatone.png',
     alt: 'Lunatone icon',
   },
+};
+const eastereggMascotByMode = {
+  eastereggs: '🥚',
+  serious: '💼',
 };
 const distantRelativeGroups = [
   ['Iron Crown', 'Cobalion'],
@@ -955,7 +1015,9 @@ let meowthCoinState = {
   started: false,
 };
 let detailSpecialEffectCleanups = [];
+let detailOneShotEffectsPlayed = new Set();
 let currentTheme = 'light';
+let currentEastereggMode = 'eastereggs';
 let collapsedDividerIds = new Set();
 let replacementFinderTargetName = null;
 let replacementFinderPriorities = new Map();
@@ -1069,6 +1131,7 @@ function getAnimatedBorderVariant(name) {
   if (name === 'Groudon-Primal') return 'primal-groudon';
   if (name === 'Kyogre-Primal') return 'primal-kyogre';
   if (isMegaPokemon(name)) return 'mega';
+  if (isGmaxPokemon(name)) return 'gmax';
   return null;
 }
 
@@ -1088,6 +1151,7 @@ function hasBeastBoost(pokemon) {
 }
 
 function hasWormholeEffect(pokemon) {
+  if (!areEasterEggsEnabled()) return false;
   if (hasBeastBoost(pokemon)) return true;
   const cosmicNames = new Set([
     'Cosmog',
@@ -1107,6 +1171,7 @@ function hasGholdengoDetailTheme(pokemon) {
 }
 
 function hasDialgaRetroTheme(pokemon) {
+  if (!areEasterEggsEnabled()) return false;
   return pokemon.name === 'Dialga' || pokemon.name === 'Dialga-Origin';
 }
 
@@ -1207,10 +1272,42 @@ function getTypeBorderColors(pokemon) {
 }
 
 function getSpecialNameVariant(pokemon) {
+  if (!areEasterEggsEnabled()) return null;
   const abilityNames = Object.values(pokemon.abilities ?? {});
   if (pokemon.name === 'Miraidon' || abilityNames.includes('Quark Drive')) return 'quark';
   if (pokemon.name === 'Koraidon' || abilityNames.includes('Protosynthesis')) return 'proto';
   return null;
+}
+
+function getPokemonAbilityNames(pokemon) {
+  return (pokemon.abilityDetails ?? []).map((ability) => ability.name).filter(Boolean);
+}
+
+function getDetailWeatherBadgeConfig(pokemon) {
+  const abilityNames = getPokemonAbilityNames(pokemon);
+  if (abilityNames.includes('Drought') || pokemon.name === 'Groudon-Primal' || pokemon.name === 'Koraidon') {
+    return { emoji: '\u2600\uFE0F', className: 'is-sun' };
+  }
+  if (abilityNames.includes('Drizzle') || pokemon.name === 'Kyogre-Primal') {
+    return { emoji: '\uD83C\uDF27\uFE0F', className: 'is-rain' };
+  }
+  if (abilityNames.includes('Snow Warning') || abilityNames.includes('Hail Warning')) {
+    return { emoji: '\u2744\uFE0F', className: 'is-snow' };
+  }
+  if (abilityNames.includes('Sand Stream')) {
+    return { emoji: '\uD83C\uDF2A\uFE0F', className: 'is-sand' };
+  }
+  return null;
+}
+
+function createDetailWeatherBadgeElement(pokemon) {
+  const config = getDetailWeatherBadgeConfig(pokemon);
+  if (!config) return null;
+  const badge = document.createElement('span');
+  badge.className = `detail-title-weather-badge ${config.className}`;
+  badge.textContent = config.emoji;
+  badge.setAttribute('aria-hidden', 'true');
+  return badge;
 }
 
 function getDetailSubtitle(pokemon) {
@@ -1357,10 +1454,85 @@ function initializeStaticToolContent() {
     entry.append(title, date, list);
     sitePanel.replaceChildren(entry);
   }
+
+  renderChangelogPanelsFromData();
+}
+
+function renderChangelogPanelsFromData() {
+  const tierPanel = document.querySelector('#changelog-panel-tier');
+  if (tierPanel) {
+    const formatCost = (value) => (value === 'â€”' || value === '—' ? '\u2014' : value);
+    const entries = (changelogData.tier ?? []).map((group) => {
+      const entry = document.createElement('article');
+      entry.className = 'changelog-entry';
+      const title = document.createElement('h3');
+      title.textContent = group.title ?? '';
+      const wrap = document.createElement('div');
+      wrap.className = 'changelog-table-wrap';
+      const table = document.createElement('table');
+      table.className = 'changelog-table';
+      table.innerHTML = `
+        <thead>
+          <tr>
+            <th>Pok\u00e9mon</th>
+            <th>Alte Kosten</th>
+            <th>Neue Kosten</th>
+            <th>Begr\u00fcndung</th>
+          </tr>
+        </thead>
+        <tbody>
+          ${(group.entries ?? []).map(([name, oldCost, newCost, reason]) => `
+            <tr>
+              <td>${name}</td>
+              <td>${formatCost(oldCost)}</td>
+              <td>${formatCost(newCost)}</td>
+              <td>${reason}</td>
+            </tr>
+          `).join('')}
+        </tbody>
+      `;
+      wrap.append(table);
+      entry.append(title, wrap);
+      return entry;
+    });
+    tierPanel.replaceChildren(...entries);
+  }
+
+  const sitePanel = document.querySelector('#changelog-panel-site');
+  if (sitePanel) {
+    const entries = (changelogData.site ?? []).map((group) => {
+      const entry = document.createElement('article');
+      entry.className = 'changelog-entry';
+      const title = document.createElement('h3');
+      title.textContent = group.title ?? 'Seiten Updates';
+      const date = document.createElement('p');
+      date.className = 'changelog-date';
+      date.textContent = group.date ?? '';
+      const list = document.createElement('ul');
+      list.className = 'changelog-list';
+      (group.items ?? []).forEach((text) => {
+        const item = document.createElement('li');
+        item.textContent = text;
+        list.append(item);
+      });
+      entry.append(title, date, list);
+      return entry;
+    });
+    sitePanel.replaceChildren(...entries);
+  }
 }
 function getStoredTheme() {
   const storedTheme = window.localStorage.getItem(themeStorageKey);
   return storedTheme === 'dark' ? 'dark' : 'light';
+}
+
+function getStoredEastereggMode() {
+  const storedMode = window.localStorage.getItem(eastereggModeStorageKey);
+  return storedMode === 'serious' ? 'serious' : 'eastereggs';
+}
+
+function areEasterEggsEnabled() {
+  return currentEastereggMode === 'eastereggs';
 }
 
 function applyTheme(theme) {
@@ -1442,10 +1614,163 @@ function toggleTheme() {
   window.localStorage.setItem(themeStorageKey, nextTheme);
 }
 
+function toggleEastereggMode() {
+  const nextMode = currentEastereggMode === 'eastereggs' ? 'serious' : 'eastereggs';
+  applyEastereggMode(nextMode);
+  window.localStorage.setItem(eastereggModeStorageKey, nextMode);
+  applyAllFilters();
+  if (!pokemonDetailModal?.hidden) refreshActivePokemonDetail();
+}
+
 function updateScrollTopButtonVisibility() {
   if (!scrollTopButton) return;
   const threshold = Math.max(window.innerHeight, 700);
   scrollTopButton.hidden = window.scrollY <= threshold;
+}
+
+function getJumpRailButtonLabel(target) {
+  return target.shortLabel ?? target.label ?? '';
+}
+
+function getJumpRailTargetsFromDividers() {
+  const dividers = sortDirection.value === 'desc' ? [...pokedexGenerationDividers].reverse() : [...pokedexGenerationDividers];
+  return dividers.map((divider) => {
+    const pokemon = currentRenderedPokemon.find((entry) => isPokemonWithinDividerRange(entry.num, divider));
+    if (!pokemon) return null;
+    const element = pokedexGrid.querySelector(`[data-pokemon-name="${CSS.escape(pokemon.name)}"]`);
+    if (!element) return null;
+    return {
+      element,
+      label: divider.name,
+      shortLabel: divider.name.replace('Generation ', 'Gen'),
+    };
+  }).filter(Boolean);
+}
+
+function getJumpRailValueLabel(pokemon, field) {
+  if (!pokemon) return '';
+  if (field === 'name') return (getPokemonDisplayName(pokemon).trim().charAt(0) || '?').toUpperCase();
+  if (field === 'cost') return pokemon.cost === null ? '?' : `${pokemon.cost}`;
+  if (field === 'dex') return `#${pokemon.num}`;
+  if (['hp', 'atk', 'def', 'spa', 'spd', 'spe'].includes(field)) {
+    return `${pokemon.baseStats?.[field] ?? '—'}`;
+  }
+  if (field === 'physical-bulk' || field === 'special-bulk') {
+    const value = getSortValue(pokemon, field);
+    return value === null || value === undefined ? '—' : `${value}`;
+  }
+  return getPokemonDisplayName(pokemon).slice(0, 3).toUpperCase();
+}
+
+function getJumpRailTargetsFromPokemon() {
+  const field = sortField.value;
+  const entries = currentRenderedPokemon;
+  if (!entries.length) return [];
+  const fractions = entries.length >= 40 ? [0.15, 0.35, 0.55, 0.75, 0.9] : [0.25, 0.5, 0.75];
+  const usedIndexes = new Set();
+  return fractions
+    .map((fraction) => Math.min(entries.length - 1, Math.max(1, Math.floor((entries.length - 1) * fraction))))
+    .filter((index) => {
+      if (usedIndexes.has(index)) return false;
+      usedIndexes.add(index);
+      return true;
+    })
+    .map((index) => {
+      const pokemon = entries[index];
+      const element = pokedexGrid.querySelector(`[data-pokemon-name="${CSS.escape(pokemon.name)}"]`);
+      if (!element) return null;
+      return {
+        element,
+        label: getSortDisplayValue(pokemon, field) ?? getPokemonDisplayName(pokemon),
+        shortLabel: getJumpRailValueLabel(pokemon, field),
+      };
+    })
+    .filter(Boolean);
+}
+
+function getJumpRailThresholds(field) {
+  if (field === 'cost') return [5, 10, 15, 20, 25, 30];
+  if (['hp', 'atk', 'def', 'spa', 'spd', 'spe'].includes(field)) {
+    return [25, 50, 75, 100, 125, 150, 175, 200, 225, 250];
+  }
+  return [];
+}
+
+function getJumpRailTargetsFromDividers() {
+  const dividers = sortDirection.value === 'desc' ? [...pokedexGenerationDividers].reverse() : [...pokedexGenerationDividers];
+  return dividers.map((divider) => {
+    const pokemon = currentRenderedPokemon.find((entry) => isPokemonWithinDividerRange(entry.num, divider));
+    if (!pokemon) return null;
+    const element = pokedexGrid.querySelector(`[data-pokemon-name="${CSS.escape(pokemon.name)}"]`);
+    if (!element) return null;
+    return {
+      element,
+      label: divider.name,
+      shortLabel: divider.name.replace('Generation ', 'Gen'),
+    };
+  }).filter(Boolean);
+}
+
+function getJumpRailTargetsFromPokemon() {
+  const field = sortField.value;
+  const entries = currentRenderedPokemon;
+  if (!entries.length) return [];
+  const thresholds = getJumpRailThresholds(field);
+  if (!thresholds.length) return [];
+  const direction = sortDirection.value === 'desc' ? 'desc' : 'asc';
+  const usedNames = new Set();
+  return thresholds.map((threshold) => {
+    const pokemon = entries.find((entry) => {
+      if (usedNames.has(entry.name)) return false;
+      const value = getSortValue(entry, field);
+      if (value === null || value === undefined) return false;
+      return direction === 'desc' ? Number(value) <= threshold : Number(value) >= threshold;
+    });
+    if (!pokemon) return null;
+    usedNames.add(pokemon.name);
+    const element = pokedexGrid.querySelector(`[data-pokemon-name="${CSS.escape(pokemon.name)}"]`);
+    if (!element) return null;
+    return {
+      element,
+      label: getSortDisplayValue(pokemon, field) ?? getPokemonDisplayName(pokemon),
+      shortLabel: `${threshold}`,
+    };
+  }).filter(Boolean);
+}
+
+function getJumpRailTargets() {
+  if (!pokedexGrid || currentRenderedPokemon.length < 8) return [];
+  if (sortField.value === 'dex') {
+    const dividerTargets = getJumpRailTargetsFromDividers();
+    if (dividerTargets.length) return dividerTargets;
+  }
+  if (sortField.value === 'physical-bulk' || sortField.value === 'special-bulk') return [];
+  return getJumpRailTargetsFromPokemon();
+}
+
+function jumpToRailTarget(target) {
+  if (!target?.element) return;
+  target.element.scrollIntoView({ behavior: 'smooth', block: 'start', inline: 'nearest' });
+}
+
+function renderJumpRail() {
+  if (!jumpRail) return;
+  jumpRail.innerHTML = '';
+  const targets = getJumpRailTargets();
+  jumpRail.hidden = !targets.length;
+  if (!targets.length) return;
+  const fragment = document.createDocumentFragment();
+  for (const target of targets) {
+    const button = document.createElement('button');
+    button.type = 'button';
+    button.className = 'scroll-top-button jump-rail-button';
+    button.textContent = getJumpRailButtonLabel(target);
+    button.title = target.label;
+    button.setAttribute('aria-label', target.label);
+    button.addEventListener('click', () => jumpToRailTarget(target));
+    fragment.append(button);
+  }
+  jumpRail.append(fragment);
 }
 
 function scrollToTopOfList() {
@@ -1588,6 +1913,7 @@ function buildFormBadges(pokemon) {
 }
 
 function getFormatThreshold(format) {
+  if (format === 'free') return Infinity;
   if (format === 'normal') return 21;
   if (format === 'low-power') return 15;
   return Infinity;
@@ -1946,6 +2272,7 @@ function compileExpertSearchTerm(term) {
     return (pokemon) => {
       if (pokemon.unreleased || pokemon.impossible) return false;
       if (normalizedValue === 'uber') return true;
+      if (normalizedValue === 'free' || normalizedValue === 'freies') return true;
       if (normalizedValue === 'normal') return pokemon.cost !== null && pokemon.cost < getFormatThreshold('normal');
       if (normalizedValue === 'low power' || normalizedValue === 'low-power') return pokemon.cost !== null && pokemon.cost < getFormatThreshold('low-power');
       return false;
@@ -2132,9 +2459,9 @@ function applyAllFilters() {
   renderSearchSummary();
 }
 
-function applyCostStyling(costElement, cost, card) {
+function applyCostStyling(costElement, cost, card, format = 'normal') {
   costElement.className = 'pokemon-cost';
-  if (card.classList.contains('is-impossible')) {
+  if (format !== 'free' && card.classList.contains('is-impossible')) {
     costElement.textContent = '\u26D4';
     card.classList.add('is-uncosted');
     return;
@@ -2159,16 +2486,34 @@ function applyCostStyling(costElement, cost, card) {
 }
 
 function shouldRenderGenerationDividers() {
-  return sortField.value === 'dex' && sortDirection.value === 'asc' && !hideDividers.checked;
+  return sortField.value === 'dex' && !hideDividers.checked;
 }
 
 function getGenerationDividerMap() {
-  return shouldRenderGenerationDividers() ? [...pokedexGenerationDividers] : [];
+  if (!shouldRenderGenerationDividers()) return [];
+  const dividers = [...pokedexGenerationDividers];
+  return sortDirection.value === 'desc' ? dividers.reverse() : dividers;
+}
+
+function isPokemonWithinDividerRange(pokemonNum, divider) {
+  return pokemonNum >= divider.startNum && pokemonNum <= divider.endNum;
+}
+
+function getDividerTerminalName(divider) {
+  return sortDirection.value === 'desc' ? divider.start : divider.end;
+}
+
+function shouldInsertDividerBeforePokemon(pokemonNum, divider) {
+  if (sortDirection.value === 'desc') return pokemonNum <= divider.endNum;
+  return pokemonNum >= divider.startNum;
 }
 
 function createGenerationDividerCard(divider) {
   const card = document.createElement('article');
   card.className = `pokemon-card pokemon-divider-card ${divider.themeClass}`;
+  card.dataset.dividerId = divider.id;
+  card.dataset.jumpLabel = divider.name;
+  card.dataset.jumpShortLabel = divider.name.replace('Generation ', 'Gen');
   card.tabIndex = 0;
   card.setAttribute('role', 'button');
   card.setAttribute('aria-expanded', String(!collapsedDividerIds.has(divider.id)));
@@ -2213,7 +2558,7 @@ function getSimpleCostLabel(cost) {
 
 function isPokemonIllegalInList(pokemon, format) {
   const cost = pokemon.cost ?? null;
-  return pokemon.impossible || pokemon.unreleased || (cost !== null && cost > getFormatThreshold(format));
+  return (format !== 'free' && pokemon.impossible) || pokemon.unreleased || (cost !== null && cost > getFormatThreshold(format));
 }
 
 function addSimpleCellOpenHandlers(cell, pokemon) {
@@ -2231,6 +2576,7 @@ function createSimplePokemonCell(pokemon, format) {
   const flags = getPokemonFlags(pokemon);
   const isIllegal = isPokemonIllegalInList(pokemon, format);
   cell.className = 'pokemon-simple-cell';
+  cell.dataset.pokemonName = pokemon.name;
   if (isIllegal) cell.classList.add('is-illegal');
   if (flags.mega && !isIllegal) cell.classList.add('is-mega');
   cell.tabIndex = 0;
@@ -2269,6 +2615,9 @@ function createSimpleGenerationDividerCell(divider) {
   const cell = document.createElement('button');
   cell.className = `pokemon-simple-divider simple-generation-divider ${divider.themeClass}`;
   cell.type = 'button';
+  cell.dataset.dividerId = divider.id;
+  cell.dataset.jumpLabel = divider.name;
+  cell.dataset.jumpShortLabel = divider.name.replace('Generation ', 'Gen');
   cell.setAttribute('aria-expanded', String(!collapsedDividerIds.has(divider.id)));
 
   const icon = document.createElement('img');
@@ -2307,7 +2656,7 @@ function renderSimplePokemonList(pokemonList, format) {
   const showCostDividers = sortField.value === 'cost' && !hideDividers.checked;
 
   const appendGenerationDividerIfNeeded = (pokemonNum) => {
-    while (dividerIndex < dividers.length && pokemonNum >= dividers[dividerIndex].startNum) {
+    while (dividerIndex < dividers.length && shouldInsertDividerBeforePokemon(pokemonNum, dividers[dividerIndex])) {
       const divider = dividers[dividerIndex];
       fragment.append(createSimpleGenerationDividerCell(divider));
       activeCollapsedDivider = collapsedDividerIds.has(divider.id) ? divider : activeCollapsedDivider;
@@ -2318,10 +2667,10 @@ function renderSimplePokemonList(pokemonList, format) {
   for (const pokemon of pokemonList) {
     appendGenerationDividerIfNeeded(pokemon.num);
     if (activeCollapsedDivider) {
-      if (pokemon.num > activeCollapsedDivider.endNum) {
+      if (!isPokemonWithinDividerRange(pokemon.num, activeCollapsedDivider)) {
         activeCollapsedDivider = null;
-      } else if (pokemon.num >= activeCollapsedDivider.startNum) {
-        if (pokemon.name === activeCollapsedDivider.end) activeCollapsedDivider = null;
+      } else {
+        if (pokemon.name === getDividerTerminalName(activeCollapsedDivider)) activeCollapsedDivider = null;
         continue;
       }
     }
@@ -2361,10 +2710,11 @@ function createPokemonCard(pokemon, format) {
   const typeList = cardFragment.querySelector('.type-list');
   const specialNameVariant = getSpecialNameVariant(pokemon);
 
-  if (pokemon.impossible) card.classList.add('is-impossible');
+  if (pokemon.impossible && format !== 'free') card.classList.add('is-impossible');
   if (pokemon.unreleased) card.classList.add('is-unreleased');
   const animatedBorderVariant = getAnimatedBorderVariant(pokemon.name);
   if (animatedBorderVariant === 'mega') card.classList.add('has-mega-border');
+  if (animatedBorderVariant === 'gmax') card.classList.add('has-gmax-border');
   if (animatedBorderVariant === 'primal-groudon') card.classList.add('has-primal-groudon-border');
   if (animatedBorderVariant === 'primal-kyogre') card.classList.add('has-primal-kyogre-border');
   if (hasWormholeEffect(pokemon)) card.classList.add('has-wormhole-effect');
@@ -2372,10 +2722,11 @@ function createPokemonCard(pokemon, format) {
   card.style.setProperty('--card-type-primary', borderColors.primary);
   card.style.setProperty('--card-type-secondary', borderColors.secondary);
   card.tabIndex = 0;
+  card.dataset.pokemonName = pokemon.name;
   card.setAttribute('role', 'button');
   card.setAttribute('aria-label', `${getPokemonDisplayName(pokemon)} details`);
   number.textContent = pokemon.displayNumber;
-  applyCostStyling(cost, pokemon.cost ?? null, card);
+  applyCostStyling(cost, pokemon.cost ?? null, card, format);
   if (pokemon.cost !== null && pokemon.cost > formatThreshold) card.classList.add('is-over-format');
   if (borderEffect) {
     borderEffect.style.setProperty('--card-type-primary', borderColors.primary);
@@ -2394,7 +2745,7 @@ function createPokemonCard(pokemon, format) {
   sprite.src = pokemon.sprite;
   sprite.alt = `${getPokemonDisplayName(pokemon)} sprite`;
   sprite.addEventListener('error', () => {
-    sprite.src = 'data:image/svg+xml;charset=UTF-8,' + encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 72 72"><rect width="72" height="72" rx="18" fill="#f0e3d1"/><text x="36" y="42" text-anchor="middle" font-size="16" font-family="Arial, sans-serif" fill="#8f2d23">?</text></svg>');
+    sprite.src = missingSpriteFallbackPath;
   }, { once: true });
 
   name.textContent = getPokemonDisplayName(pokemon);
@@ -2430,16 +2781,19 @@ function renderPokemonList(pokemonList, format = formatFilter.value) {
   const dividers = getGenerationDividerMap();
 
   if (!pokemonList.length) {
+    currentRenderedPokemon = [];
     const emptyState = document.createElement('p');
     emptyState.className = 'empty-state';
     emptyState.textContent = 'No Pokemon match that search yet.';
     pokedexGrid.append(emptyState);
     updateResultsCount(0);
+    renderJumpRail();
     return;
   }
 
   if (simpleViewToggle.checked) {
     renderSimplePokemonList(pokemonList, format);
+    renderJumpRail();
     return;
   }
 
@@ -2449,7 +2803,7 @@ function renderPokemonList(pokemonList, format = formatFilter.value) {
   let dividerIndex = 0;
 
   const appendDividerIfNeeded = (pokemonNum) => {
-    while (dividerIndex < dividers.length && pokemonNum >= dividers[dividerIndex].startNum) {
+    while (dividerIndex < dividers.length && shouldInsertDividerBeforePokemon(pokemonNum, dividers[dividerIndex])) {
       const divider = dividers[dividerIndex];
       fragment.append(createGenerationDividerCard(divider));
       activeCollapsedDivider = collapsedDividerIds.has(divider.id) ? divider : activeCollapsedDivider;
@@ -2460,10 +2814,10 @@ function renderPokemonList(pokemonList, format = formatFilter.value) {
   for (const pokemon of pokemonList) {
     appendDividerIfNeeded(pokemon.num);
     if (activeCollapsedDivider) {
-      if (pokemon.num > activeCollapsedDivider.endNum) {
+      if (!isPokemonWithinDividerRange(pokemon.num, activeCollapsedDivider)) {
         activeCollapsedDivider = null;
-      } else if (pokemon.num >= activeCollapsedDivider.startNum) {
-        if (pokemon.name === activeCollapsedDivider.end) activeCollapsedDivider = null;
+      } else {
+        if (pokemon.name === getDividerTerminalName(activeCollapsedDivider)) activeCollapsedDivider = null;
         continue;
       }
     }
@@ -2479,6 +2833,7 @@ function renderPokemonList(pokemonList, format = formatFilter.value) {
   currentRenderedPokemon = visiblePokemon;
   pokedexGrid.append(fragment);
   updateResultsCount(visiblePokemon.length);
+  renderJumpRail();
 }
 
 function buildCoverageRows() {
@@ -2634,14 +2989,15 @@ function readDefensiveCoverageCriteria() {
 function renderSearchSummary() {
   const chips = [];
   const triStates = getActiveTriStates();
+  const pushChip = (text, onClick = null) => chips.push({ text, onClick });
 
-  chips.push(`Format: ${formatFilter.options[formatFilter.selectedIndex].text}`);
-  chips.push(`Sortierung: ${sortField.options[sortField.selectedIndex].text} (${sortDirection.value === 'desc' ? 'Absteigend' : 'Aufsteigend'})`);
+  pushChip(`Format: ${formatFilter.options[formatFilter.selectedIndex].text}`);
+  pushChip(`Sortierung: ${sortField.options[sortField.selectedIndex].text} (${sortDirection.value === 'desc' ? 'Absteigend' : 'Aufsteigend'})`);
   if (sortFieldSecondary?.value) {
-    chips.push(`Sekundär: ${sortFieldSecondary.options[sortFieldSecondary.selectedIndex].text} (${sortDirectionSecondary?.value === 'desc' ? 'Absteigend' : 'Aufsteigend'})`);
+    pushChip(`Sekundär: ${sortFieldSecondary.options[sortFieldSecondary.selectedIndex].text} (${sortDirectionSecondary?.value === 'desc' ? 'Absteigend' : 'Aufsteigend'})`);
   }
-  if (searchInput.value.trim()) chips.push(`Suche: ${searchInput.value.trim()}`);
-  if (appliedAdvancedSearch.name) chips.push(`Name: ${appliedAdvancedSearch.name}`);
+  if (searchInput.value.trim()) pushChip(`Suche: ${searchInput.value.trim()}`);
+  if (appliedAdvancedSearch.name) pushChip(`Name: ${appliedAdvancedSearch.name}`);
   if (appliedAdvancedSearch.abilities.length) {
     chips.push(`Fähigkeiten (${appliedAdvancedSearch.abilityMode === 'all' ? 'Alle' : 'Eine aus'}): ${appliedAdvancedSearch.abilities.map((item) => item.name).join(', ')}`);
   }
@@ -2657,31 +3013,39 @@ function renderSearchSummary() {
     if (range.max !== null) parts.push(`<= ${range.max}`);
     chips.push(`${statLabels[stat] ?? stat} (${appliedAdvancedSearch.statMode === 'real' ? 'Echte Werte' : 'Basiswerte'}): ${parts.join(' / ')}`);
   }
-  if (appliedAdvancedSearch.speedControl.enabled) chips.push(`Speed Control: ${speedControlMode.options[speedControlMode.selectedIndex].text}`);
-  if (appliedAdvancedSearch.hazards.enabled) chips.push(`Hazards: ${hazardsMode.options[hazardsMode.selectedIndex].text}`);
-  if (appliedAdvancedSearch.pivot.enabled) chips.push(`Pivot: ${pivotMode.options[pivotMode.selectedIndex].text}`);
+  if (appliedAdvancedSearch.speedControl.enabled) pushChip(`Speed Control: ${speedControlMode.options[speedControlMode.selectedIndex].text}`);
+  if (appliedAdvancedSearch.hazards.enabled) pushChip(`Hazards: ${hazardsMode.options[hazardsMode.selectedIndex].text}`);
+  if (appliedAdvancedSearch.pivot.enabled) pushChip(`Pivot: ${pivotMode.options[pivotMode.selectedIndex].text}`);
   for (const criterion of appliedAdvancedSearch.defensiveCoverage) {
     const modeLabel = criterion.mode === 'resistant' ? 'Resistent' : criterion.mode === 'neutral' ? 'Nicht Schwach' : 'Immun';
-    chips.push(`Defensiv: ${criterion.type} ${modeLabel}`);
+    pushChip(`Defensiv: ${criterion.type} ${modeLabel}`);
   }
-  if (triStates.z !== 'any') chips.push(`Z-Captain: ${triStates.z === 'include' ? 'Ja' : 'Nein'}`);
-  if (triStates.tera !== 'any') chips.push(`Tera-Captain: ${triStates.tera === 'include' ? 'Ja' : 'Nein'}`);
-  if (triStates.mega !== 'any') chips.push(`Mega: ${triStates.mega === 'include' ? 'Ja' : 'Nein'}`);
-  if (triStates.gmax !== 'any') chips.push(`GMAX: ${triStates.gmax === 'include' ? 'Ja' : 'Nein'}`);
-  if (activeExpertSearch.raw) chips.push(`Expertensuche: ${activeExpertSearch.raw}`);
-  if (hideUnreleased.checked) chips.push('Hide Unreleased');
-  if (hideImpossible.checked) chips.push('Hide Impossible');
-  if (hideUntiered.checked) chips.push('Hide Untiered');
-  if (hideDividers.checked) chips.push('Hide Dividers');
-  if (simpleViewToggle.checked) chips.push('Einfache Ansicht');
+  if (triStates.z !== 'any') pushChip(`Z-Captain: ${triStates.z === 'include' ? 'Ja' : 'Nein'}`);
+  if (triStates.tera !== 'any') pushChip(`Tera-Captain: ${triStates.tera === 'include' ? 'Ja' : 'Nein'}`);
+  if (triStates.mega !== 'any') pushChip(`Mega: ${triStates.mega === 'include' ? 'Ja' : 'Nein'}`);
+  if (triStates.gmax !== 'any') pushChip(`GMAX: ${triStates.gmax === 'include' ? 'Ja' : 'Nein'}`);
+  if (activeExpertSearch.raw) pushChip(`Expertensuche: ${activeExpertSearch.raw}`);
+  if (hideUnreleased.checked) pushChip('Hide Unreleased', () => { hideUnreleased.checked = false; applyAllFilters(); });
+  if (hideImpossible.checked) pushChip('Hide Impossible', () => { hideImpossible.checked = false; applyAllFilters(); });
+  if (hideUntiered.checked) pushChip('Hide Untiered', () => { hideUntiered.checked = false; applyAllFilters(); });
+  if (hideDividers.checked) pushChip('Hide Dividers', () => { hideDividers.checked = false; applyAllFilters(); });
+  if (simpleViewToggle.checked) pushChip('Einfache Ansicht');
 
   searchSummary.innerHTML = '';
-  searchSummary.hidden = chips.length === 1 && chips[0].startsWith('Format:') && formatFilter.value === 'normal';
+  const firstChipText = typeof chips[0] === 'string' ? chips[0] : chips[0]?.text;
+  searchSummary.hidden = chips.length === 1 && firstChipText?.startsWith('Format:') && formatFilter.value === 'normal';
   if (searchSummary.hidden) return;
 
-  for (const chipText of chips) {
-    const chip = document.createElement('span');
+  for (const chipEntry of chips) {
+    const chipText = typeof chipEntry === 'string' ? chipEntry : chipEntry.text;
+    const chipAction = typeof chipEntry === 'string' ? null : chipEntry.onClick;
+    const chip = document.createElement(chipAction ? 'button' : 'span');
     chip.className = 'summary-chip';
+    if (chipAction) {
+      chip.type = 'button';
+      chip.classList.add('is-interactive');
+      chip.addEventListener('click', chipAction);
+    }
     chip.textContent = chipText;
     searchSummary.append(chip);
   }
@@ -2701,7 +3065,7 @@ function setSpriteWithFallback(image, spriteUrl, label) {
   image.alt = label;
   image.onerror = () => {
     image.onerror = null;
-    image.src = 'data:image/svg+xml;charset=UTF-8,' + encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 72 72"><rect width="72" height="72" rx="18" fill="#f0e3d1"/><text x="36" y="42" text-anchor="middle" font-size="16" font-family="Arial, sans-serif" fill="#8f2d23">?</text></svg>');
+    image.src = missingSpriteFallbackPath;
   };
 }
 
@@ -2749,6 +3113,7 @@ function scramblePorygonText(text) {
 }
 
 function applyPorygonZDetailEffect(pokemon, titleElements, spriteWrap, spriteLayers) {
+  if (!areEasterEggsEnabled()) return;
   if (pokemon.name !== 'Porygon-Z') return;
   const originalTitleEntries = titleElements.map((element) => ({
     element,
@@ -2808,6 +3173,10 @@ function getRandomOtherPokemon(excludedNames = []) {
 }
 
 function applyIllusionSpriteEffect(image, targetPokemon) {
+  if (!areEasterEggsEnabled()) {
+    setSpriteWithFallback(image, targetPokemon.sprite, `${targetPokemon.name} sprite`);
+    return;
+  }
   const disguise = getRandomOtherPokemon([targetPokemon.name]);
   if (!disguise) {
     setSpriteWithFallback(image, targetPokemon.sprite, `${targetPokemon.name} sprite`);
@@ -2826,6 +3195,10 @@ function applyIllusionSpriteEffect(image, targetPokemon) {
 }
 
 function applyDittoSpriteEffect(image, targetPokemon) {
+  if (!areEasterEggsEnabled()) {
+    setSpriteWithFallback(image, targetPokemon.sprite, `${targetPokemon.name} sprite`);
+    return;
+  }
   setSpriteWithFallback(image, targetPokemon.sprite, `${targetPokemon.name} sprite`);
   queueDetailEffect(() => {
     if (activeDetailPokemonName !== 'Ditto') return;
@@ -3500,15 +3873,24 @@ function linkedFormsHaveDifferentTypes(forms) {
   return signatures.size > 1;
 }
 
-function createSpriteLinkButton(pokemon) {
+function createSpriteLinkButton(entry) {
+  const pokemon = entry?.pokemon ?? entry;
   const button = document.createElement('button');
   button.type = 'button';
   button.className = 'detail-sprite-link';
-  const image = document.createElement('img');
-  setSpriteWithFallback(image, pokemon.sprite, `${pokemon.name} sprite`);
+  if (entry?.spriteEmoji) {
+    const emoji = document.createElement('span');
+    emoji.className = `detail-sprite-link-emoji${entry?.emojiClass ? ` ${entry.emojiClass}` : ''}`;
+    emoji.textContent = entry.spriteEmoji;
+    button.append(emoji);
+  } else {
+    const image = document.createElement('img');
+    setSpriteWithFallback(image, pokemon.sprite, `${pokemon.name} sprite`);
+    button.append(image);
+  }
   const label = document.createElement('span');
-  label.textContent = pokemon.name;
-  button.append(image, label);
+  label.textContent = entry?.nameOverride ?? pokemon.name;
+  button.append(label);
   button.addEventListener('click', () => openPokemonDetail(pokemon.name));
   return button;
 }
@@ -3519,8 +3901,21 @@ function renderSpriteLinkSection(container, pokemonList, emptyMessage) {
     renderEmptyDetailState(container, emptyMessage);
     return;
   }
-  for (const pokemon of pokemonList) {
-    container.append(createSpriteLinkButton(pokemon));
+  for (const entry of pokemonList) {
+    container.append(createSpriteLinkButton(entry));
+  }
+}
+
+function applyEastereggMode(mode) {
+  currentEastereggMode = mode === 'serious' ? 'serious' : 'eastereggs';
+  document.body.classList.toggle('serious-mode', currentEastereggMode === 'serious');
+  eastereggToggle?.setAttribute('aria-pressed', String(currentEastereggMode === 'eastereggs'));
+  if (eastereggToggle) {
+    const label = eastereggToggle.querySelector('.theme-toggle-label');
+    if (label) label.textContent = currentEastereggMode === 'eastereggs' ? 'Eastereggs' : 'Seriös';
+  }
+  if (eastereggToggleMascot) {
+    eastereggToggleMascot.textContent = eastereggMascotByMode[currentEastereggMode];
   }
 }
 
@@ -3943,6 +4338,490 @@ function closeChangelog() {
   changelogModal.hidden = true;
 }
 
+function formatGermanNameList(names) {
+  if (names.length <= 1) return names[0] ?? '';
+  if (names.length === 2) return `${names[0]} und ${names[1]}`;
+  return `${names.slice(0, -1).join(', ')} und ${names[names.length - 1]}`;
+}
+
+function getSpielerEntries() {
+  return Array.isArray(window.SPIELER) ? window.SPIELER : [];
+}
+
+function getSpielerHistoricTeamPokemon(previousTeam) {
+  if (Array.isArray(previousTeam)) return previousTeam;
+  if (Array.isArray(previousTeam?.pokemon)) return previousTeam.pokemon;
+  if (Array.isArray(previousTeam?.team)) return previousTeam.team;
+  return [];
+}
+
+function teamIncludesPokemon(team, pokemon) {
+  if (!Array.isArray(team) || !team.length) return false;
+  return team.some((name) => {
+    const teamPokemon = getPokemonByNameLoose(name);
+    return teamPokemon ? teamPokemon.name === pokemon.name : normalizeText(name) === normalizeText(pokemon.name);
+  });
+}
+
+function getPokemonCareerUsage(pokemon) {
+  const currentPlayers = [];
+  const historicPlayers = new Set();
+  let historicTeamCount = 0;
+
+  for (const player of getSpielerEntries()) {
+    if (teamIncludesPokemon(player.currentTeam, pokemon)) {
+      currentPlayers.push(player.name);
+    }
+
+    const previousTeams = Array.isArray(player.previousTeams) ? player.previousTeams : [];
+    for (const previousTeam of previousTeams) {
+      if (teamIncludesPokemon(getSpielerHistoricTeamPokemon(previousTeam), pokemon)) {
+        historicPlayers.add(player.name);
+        historicTeamCount += 1;
+      }
+    }
+  }
+
+  return {
+    currentPlayers,
+    historicPlayerCount: historicPlayers.size,
+    historicTeamCount,
+  };
+}
+
+function getPokemonTotalUsageCount(pokemon) {
+  let count = 0;
+
+  for (const player of getSpielerEntries()) {
+    if (teamIncludesPokemon(player.currentTeam, pokemon)) count += 1;
+
+    const previousTeams = Array.isArray(player.previousTeams) ? player.previousTeams : [];
+    for (const previousTeam of previousTeams) {
+      if (teamIncludesPokemon(getSpielerHistoricTeamPokemon(previousTeam), pokemon)) count += 1;
+    }
+  }
+
+  return count;
+}
+
+function getPokemonGenerationNumber(pokemon) {
+  const divider = pokedexGenerationDividers.find((entry) => isPokemonWithinDividerRange(pokemon.num, entry));
+  if (!divider) return null;
+  return Number(divider.id.replace('gen', ''));
+}
+
+function getInformationGraphMetric(id) {
+  return informationGraphMetrics.find((metric) => metric.id === id) ?? informationGraphMetrics[0];
+}
+
+function populateInformationGraphControls() {
+  if (!informationGraphX || !informationGraphY || informationGraphX.options.length) return;
+
+  for (const select of [informationGraphX, informationGraphY]) {
+    for (const metric of informationGraphMetrics) {
+      const option = document.createElement('option');
+      option.value = metric.id;
+      option.textContent = metric.label;
+      select.append(option);
+    }
+  }
+
+  informationGraphX.value = 'cost';
+  informationGraphY.value = 'usage';
+}
+
+function getInformationGraphPokemonPool() {
+  return allPokemon.filter((pokemon) => !pokemon.hidden);
+}
+
+function getGraphCssColor(variableName, fallback) {
+  const value = getComputedStyle(document.documentElement).getPropertyValue(variableName).trim();
+  return value || fallback;
+}
+
+function drawInformationGraph({ withData = false } = {}) {
+  if (!informationGraphCanvas) return;
+
+  const canvas = informationGraphCanvas;
+  const context = canvas.getContext('2d');
+  const rect = canvas.getBoundingClientRect();
+  const pixelRatio = window.devicePixelRatio || 1;
+  const cssWidth = Math.max(320, Math.round(rect.width || canvas.width));
+  const cssHeight = Math.max(260, Math.round(rect.height || canvas.height));
+  canvas.width = Math.round(cssWidth * pixelRatio);
+  canvas.height = Math.round(cssHeight * pixelRatio);
+  context.setTransform(pixelRatio, 0, 0, pixelRatio, 0, 0);
+
+  const xMetric = getInformationGraphMetric(informationGraphX?.value);
+  const yMetric = getInformationGraphMetric(informationGraphY?.value);
+  const isDark = document.body.classList.contains('dark-mode');
+  const ink = isDark ? '#dce6ff' : getGraphCssColor('--ink', '#1f2233');
+  const muted = isDark ? 'rgba(209, 218, 241, 0.72)' : '#6f7080';
+  const grid = isDark ? 'rgba(201, 214, 255, 0.14)' : 'rgba(31, 34, 51, 0.12)';
+  const accent = getGraphCssColor('--accent', '#d94f3d');
+  const bg = isDark ? 'rgba(18, 26, 42, 0.92)' : 'rgba(255, 253, 249, 0.96)';
+  const plot = {
+    left: 72,
+    right: 28,
+    top: 28,
+    bottom: 66,
+  };
+  const plotWidth = cssWidth - plot.left - plot.right;
+  const plotHeight = cssHeight - plot.top - plot.bottom;
+
+  context.clearRect(0, 0, cssWidth, cssHeight);
+  context.fillStyle = bg;
+  context.fillRect(0, 0, cssWidth, cssHeight);
+
+  const rows = withData
+    ? getInformationGraphPokemonPool()
+        .map((pokemon) => ({
+          pokemon,
+          x: Number(xMetric.getValue(pokemon)),
+          y: Number(yMetric.getValue(pokemon)),
+        }))
+        .filter((row) => Number.isFinite(row.x) && Number.isFinite(row.y))
+    : [];
+
+  const xValues = rows.map((row) => row.x);
+  const yValues = rows.map((row) => row.y);
+  const fallbackX = xMetric.id === 'generation' ? [1, 9] : [0, 100];
+  const fallbackY = yMetric.id === 'generation' ? [1, 9] : [0, 100];
+  let minX = xValues.length ? Math.min(...xValues) : fallbackX[0];
+  let maxX = xValues.length ? Math.max(...xValues) : fallbackX[1];
+  let minY = yValues.length ? Math.min(...yValues) : fallbackY[0];
+  let maxY = yValues.length ? Math.max(...yValues) : fallbackY[1];
+  if (minX === maxX) {
+    minX -= 1;
+    maxX += 1;
+  }
+  if (minY === maxY) {
+    minY -= 1;
+    maxY += 1;
+  }
+
+  const padX = Math.max((maxX - minX) * 0.06, xMetric.id === 'generation' ? 0.35 : 1);
+  const padY = Math.max((maxY - minY) * 0.06, yMetric.id === 'generation' ? 0.35 : 1);
+  minX -= padX;
+  maxX += padX;
+  minY -= padY;
+  maxY += padY;
+
+  const toCanvasX = (value) => plot.left + ((value - minX) / (maxX - minX)) * plotWidth;
+  const toCanvasY = (value) => plot.top + plotHeight - ((value - minY) / (maxY - minY)) * plotHeight;
+  const formatTick = (value) => Number.isInteger(value) ? String(value) : value.toFixed(1);
+
+  context.strokeStyle = grid;
+  context.lineWidth = 1;
+  context.font = '12px Chakra Petch, sans-serif';
+  context.fillStyle = muted;
+  context.textAlign = 'right';
+  context.textBaseline = 'middle';
+
+  for (let index = 0; index <= 5; index += 1) {
+    const fraction = index / 5;
+    const x = plot.left + fraction * plotWidth;
+    const y = plot.top + fraction * plotHeight;
+    const xValue = minX + fraction * (maxX - minX);
+    const yValue = maxY - fraction * (maxY - minY);
+
+    context.beginPath();
+    context.moveTo(x, plot.top);
+    context.lineTo(x, plot.top + plotHeight);
+    context.stroke();
+    context.textAlign = 'center';
+    context.fillText(formatTick(xValue), x, plot.top + plotHeight + 22);
+
+    context.beginPath();
+    context.moveTo(plot.left, y);
+    context.lineTo(plot.left + plotWidth, y);
+    context.stroke();
+    context.textAlign = 'right';
+    context.fillText(formatTick(yValue), plot.left - 12, y);
+  }
+
+  context.strokeStyle = ink;
+  context.lineWidth = 1.5;
+  context.beginPath();
+  context.moveTo(plot.left, plot.top);
+  context.lineTo(plot.left, plot.top + plotHeight);
+  context.lineTo(plot.left + plotWidth, plot.top + plotHeight);
+  context.stroke();
+
+  context.fillStyle = ink;
+  context.font = '700 14px Chakra Petch, sans-serif';
+  context.textAlign = 'center';
+  context.textBaseline = 'alphabetic';
+  context.fillText(xMetric.label, plot.left + plotWidth / 2, cssHeight - 22);
+  context.save();
+  context.translate(22, plot.top + plotHeight / 2);
+  context.rotate(-Math.PI / 2);
+  context.fillText(yMetric.label, 0, 0);
+  context.restore();
+
+  informationGraphPoints = rows.map((row) => ({
+    ...row,
+    canvasX: toCanvasX(row.x),
+    canvasY: toCanvasY(row.y),
+  }));
+
+  if (!withData) {
+    context.fillStyle = muted;
+    context.font = '700 14px Chakra Petch, sans-serif';
+    context.textAlign = 'center';
+    context.textBaseline = 'middle';
+    context.fillText('Achsen wählen und Graph generieren', plot.left + plotWidth / 2, plot.top + plotHeight / 2);
+    return;
+  }
+
+  context.fillStyle = accent;
+  context.strokeStyle = isDark ? 'rgba(255, 255, 255, 0.72)' : 'rgba(255, 255, 255, 0.95)';
+  for (const point of informationGraphPoints) {
+    context.beginPath();
+    context.arc(point.canvasX, point.canvasY, 4.2, 0, Math.PI * 2);
+    context.fill();
+    context.stroke();
+  }
+}
+
+function openInformationGraph() {
+  populateInformationGraphControls();
+  if (informationGraphModal) informationGraphModal.hidden = false;
+  drawInformationGraph({ withData: false });
+}
+
+function closeInformationGraph() {
+  if (informationGraphModal) informationGraphModal.hidden = true;
+  if (informationGraphTooltip) informationGraphTooltip.hidden = true;
+}
+
+function updateInformationGraphTooltip(event) {
+  if (!informationGraphCanvas || !informationGraphTooltip || informationGraphModal?.hidden) return;
+  if (!informationGraphPoints.length) {
+    informationGraphTooltip.hidden = true;
+    return;
+  }
+
+  const rect = informationGraphCanvas.getBoundingClientRect();
+  const x = event.clientX - rect.left;
+  const y = event.clientY - rect.top;
+  const nearest = informationGraphPoints.reduce((best, point) => {
+    const distance = Math.hypot(point.canvasX - x, point.canvasY - y);
+    return !best || distance < best.distance ? { point, distance } : best;
+  }, null);
+
+  if (!nearest || nearest.distance > 12) {
+    informationGraphTooltip.hidden = true;
+    return;
+  }
+
+  const xMetric = getInformationGraphMetric(informationGraphX?.value);
+  const yMetric = getInformationGraphMetric(informationGraphY?.value);
+  const title = document.createElement('strong');
+  title.textContent = getPokemonDisplayName(nearest.point.pokemon);
+  const xValue = document.createElement('span');
+  xValue.textContent = `${xMetric.label}: ${nearest.point.x}`;
+  const yValue = document.createElement('span');
+  yValue.textContent = `${yMetric.label}: ${nearest.point.y}`;
+  informationGraphTooltip.replaceChildren(title, xValue, yValue);
+  informationGraphTooltip.style.left = `${nearest.point.canvasX}px`;
+  informationGraphTooltip.style.top = `${nearest.point.canvasY}px`;
+  informationGraphTooltip.hidden = false;
+}
+
+function createDetailTextRibbon(text, className = '') {
+  const card = document.createElement('div');
+  card.className = `detail-ribbon${className ? ` ${className}` : ''}`;
+  const icon = document.createElement('span');
+  icon.className = 'detail-ribbon-symbol';
+  icon.textContent = '•';
+  const copy = document.createElement('p');
+  copy.textContent = text;
+  card.append(icon, copy);
+  return card;
+}
+
+function renderPokemonCareer(pokemon) {
+  if (!detailCareer) return;
+  detailCareer.innerHTML = '';
+  const usage = getPokemonCareerUsage(pokemon);
+
+  if (!usage.currentPlayers.length && usage.historicTeamCount === 0) {
+    detailCareer.append(createDetailTextRibbon('Wurde bisher noch nicht genutzt!'));
+    return;
+  }
+
+  if (usage.currentPlayers.length === 1) {
+    detailCareer.append(createDetailTextRibbon(`Aktuell im Team von ${usage.currentPlayers[0]}`));
+  } else if (usage.currentPlayers.length > 1) {
+    detailCareer.append(createDetailTextRibbon(`Aktuell in den Teams von ${formatGermanNameList(usage.currentPlayers)}`));
+  }
+
+  if (usage.historicTeamCount > 0) {
+    detailCareer.append(createDetailTextRibbon(`Wurde zuvor von ${usage.historicPlayerCount} Spielern in insgesamt ${usage.historicTeamCount} Teams genutzt!`));
+  }
+}
+
+function getSpielerTeamNames(team) {
+  if (!Array.isArray(team) || !team.length) {
+    return Array.from({ length: 10 }, () => 'Ditto');
+  }
+
+  return team.slice(0, 12);
+}
+
+function createSpielerPokemonCard(name) {
+  const pokemon = getPokemonByNameLoose(name);
+  if (!pokemon) {
+    const card = document.createElement('article');
+    card.className = 'pokemon-card spieler-pokemon-card spieler-missing-pokemon';
+    const label = document.createElement('p');
+    label.className = 'pokemon-name';
+    label.textContent = name;
+    card.append(label);
+    return card;
+  }
+
+  const fragment = createPokemonCard(pokemon, formatFilter?.value ?? 'normal');
+  const card = fragment.querySelector('.pokemon-card');
+  if (card) {
+    card.classList.add('spieler-pokemon-card');
+    const sortValue = card.querySelector('.pokemon-sort-value');
+    if (sortValue) sortValue.remove();
+  }
+  return fragment;
+}
+
+function createSpielerTeamGrid(team) {
+  const grid = document.createElement('div');
+  grid.className = 'spieler-team-grid';
+  for (const name of getSpielerTeamNames(team)) {
+    grid.append(createSpielerPokemonCard(name));
+  }
+  return grid;
+}
+
+function getSpielerWinTitle(win) {
+  const label = win.title || win.name || 'Sieg';
+  return `${label} - ${win.date}, ${win.format}`;
+}
+
+function createSpielerWinRow(label, wins, emoji) {
+  const wrap = document.createElement('div');
+  wrap.className = 'spieler-win-row';
+
+  const title = document.createElement('span');
+  title.className = 'spieler-win-label';
+  title.textContent = label;
+  wrap.append(title);
+
+  const validWins = Array.isArray(wins)
+    ? wins.filter((win) => win?.date && win?.format)
+    : [];
+
+  if (!validWins.length) {
+    const empty = document.createElement('span');
+    empty.className = 'spieler-win-empty';
+    empty.textContent = 'Keine';
+    wrap.append(empty);
+    return wrap;
+  }
+
+  for (const win of validWins) {
+    const badge = document.createElement('span');
+    badge.className = 'spieler-win-badge';
+    badge.title = getSpielerWinTitle(win);
+    badge.textContent = emoji;
+    wrap.append(badge);
+  }
+
+  return wrap;
+}
+
+function createSpielerCard(player, index) {
+  const card = document.createElement('article');
+  card.className = 'spieler-card';
+
+  const header = document.createElement('div');
+  header.className = 'spieler-card-header';
+
+  const sprite = document.createElement('img');
+  sprite.className = 'spieler-trainer-sprite';
+  sprite.src = player.sprite;
+  sprite.alt = `${player.name} trainer sprite`;
+  sprite.loading = 'lazy';
+
+  const meta = document.createElement('div');
+  meta.className = 'spieler-card-meta';
+  const name = document.createElement('h3');
+  name.textContent = player.name;
+  const wins = document.createElement('div');
+  wins.className = 'spieler-wins';
+  wins.append(
+    createSpielerWinRow('Match Siege', player.matchSiege, '🏅'),
+    createSpielerWinRow('Abend Siege', player.abendSiege, '🏆')
+  );
+  meta.append(name, wins);
+  header.append(sprite, meta);
+
+  const currentTitle = document.createElement('h4');
+  currentTitle.className = 'spieler-team-heading';
+  currentTitle.textContent = 'Aktuelles Team';
+
+  const previousTeams = Array.isArray(player.previousTeams) ? player.previousTeams : [];
+  const previousId = `spieler-previous-teams-${index}`;
+  const previousWrap = document.createElement('div');
+  previousWrap.className = 'spieler-previous-teams';
+  previousWrap.id = previousId;
+  previousWrap.hidden = true;
+
+  for (const [teamIndex, previousTeam] of previousTeams.entries()) {
+    const section = document.createElement('section');
+    section.className = 'spieler-previous-team';
+    const heading = document.createElement('h4');
+    heading.className = 'spieler-team-heading';
+    heading.textContent = previousTeam.label || previousTeam.format || `Altes Team ${teamIndex + 1}`;
+    section.append(heading, createSpielerTeamGrid(getSpielerHistoricTeamPokemon(previousTeam)));
+    previousWrap.append(section);
+  }
+
+  const expandButton = document.createElement('button');
+  expandButton.className = 'spieler-expand-button';
+  expandButton.type = 'button';
+  expandButton.setAttribute('aria-expanded', 'false');
+  expandButton.setAttribute('aria-controls', previousId);
+  expandButton.disabled = previousTeams.length === 0;
+  expandButton.textContent = previousTeams.length ? '▸ Alte Teams' : '▸ Keine alten Teams';
+  expandButton.addEventListener('click', () => {
+    const expanded = expandButton.getAttribute('aria-expanded') === 'true';
+    expandButton.setAttribute('aria-expanded', String(!expanded));
+    previousWrap.hidden = expanded;
+    expandButton.textContent = `${expanded ? '▸' : '▾'} Alte Teams`;
+  });
+
+  card.append(header, currentTitle, createSpielerTeamGrid(player.currentTeam), expandButton, previousWrap);
+  return card;
+}
+
+function renderSpielerOverview() {
+  if (!spielerGrid) return;
+  spielerGrid.innerHTML = '';
+  const fragment = document.createDocumentFragment();
+  getSpielerEntries().forEach((player, index) => {
+    fragment.append(createSpielerCard(player, index));
+  });
+  spielerGrid.append(fragment);
+}
+
+function openSpieler() {
+  renderSpielerOverview();
+  if (spielerModal) spielerModal.hidden = false;
+}
+
+function closeSpieler() {
+  if (spielerModal) spielerModal.hidden = true;
+}
+
 function submitReplacementPicker() {
   const pokemon = getReplacementPickerPokemon() ?? getReplacementPickerMatches()[0] ?? null;
   if (!pokemon) return;
@@ -4335,7 +5214,7 @@ function getRibbonEntries(pokemon) {
     });
   }
 
-  if (pokemon.name === 'Mewtwo') {
+  if (areEasterEggsEnabled() && pokemon.name === 'Mewtwo') {
     ribbons.push({
       symbol: 'R',
       symbolClass: 'is-rocket',
@@ -4344,7 +5223,7 @@ function getRibbonEntries(pokemon) {
     });
   }
 
-  if (pokemon.name === 'Meowth') {
+  if (areEasterEggsEnabled() && pokemon.name === 'Meowth') {
     ribbons.push({
       symbol: 'R',
       symbolClass: 'is-rocket',
@@ -4409,6 +5288,28 @@ function getDefenseEntriesForType(pokemon, type) {
     const reason = index < reasons.length ? reasons[index].text : 'Standard';
     return { value, reason };
   });
+}
+
+function getTypeChartDefenseValue(defendingTypes, attackType) {
+  const types = Array.isArray(defendingTypes) ? defendingTypes.filter(Boolean) : [];
+  if (!types.length) return 1;
+  return types.reduce((product, defendingType) => {
+    const value = typeDefenseChart[defendingType]?.[attackType] ?? 1;
+    return product * value;
+  }, 1);
+}
+
+function getBudgetPlannerDefenseValue(pokemon, attackType, options = {}) {
+  const overrideTypes = options.types ?? null;
+  if (!overrideTypes) return getReplacementBestDefenseValue(pokemon, attackType);
+
+  let bestValue = getTypeChartDefenseValue(overrideTypes, attackType);
+  const abilityReasons = getDefenseAbilityReasons(pokemon, attackType);
+  if (abilityReasons.length) {
+    const currentBestValue = getReplacementBestDefenseValue(pokemon, attackType);
+    bestValue = Math.min(bestValue, currentBestValue);
+  }
+  return bestValue;
 }
 
 function getMoveMethodBadges(methods) {
@@ -4646,10 +5547,135 @@ function clearMeowthCoinHunt() {
 function clearDetailSpecialEffects() {
   for (const cleanup of detailSpecialEffectCleanups) cleanup();
   detailSpecialEffectCleanups = [];
+  pokemonDetailBody?.querySelectorAll('.detail-gimmick-layer').forEach((node) => node.remove());
+  pokemonDetailModal?.querySelectorAll('.detail-fake-popup, .detail-cursor-stink').forEach((node) => node.remove());
   pokemonDetailDialog?.querySelectorAll('.detail-sprite-wrap').forEach((node) => {
-    node.classList.remove('is-wimpod-startled', 'is-wimpod-scuttled');
+    node.classList.remove('is-wimpod-startled', 'is-wimpod-scuttled', 'is-zygarde-jiggling');
     node.style.removeProperty('--kecleon-opacity');
   });
+}
+
+function createDetailBodyGimmickLayer(className) {
+  if (!pokemonDetailBody) return null;
+  const layer = document.createElement('div');
+  layer.className = `detail-gimmick-layer ${className}`;
+  pokemonDetailBody.prepend(layer);
+  return layer;
+}
+
+function setupPaintSplatterDetailEffect(pokemon) {
+  if (!areEasterEggsEnabled()) return;
+  if (!pokemonDetailBody) return;
+  if (pokemon.name !== 'Smeargle' && pokemon.name !== 'Grafaiai') return;
+  const layer = createDetailBodyGimmickLayer('detail-paint-splatter-layer');
+  if (!layer) return;
+  const splatters = ['\uD83D\uDCA5', '\uD83D\uDCA6', '\u2728'];
+  const splatterCount = pokemon.name === 'Smeargle' ? 18 : 14;
+  for (let index = 0; index < splatterCount; index += 1) {
+    const splatter = document.createElement('span');
+    splatter.className = 'detail-paint-splatter';
+    splatter.textContent = splatters[index % splatters.length];
+    splatter.style.left = `${4 + Math.random() * 90}%`;
+    splatter.style.top = `${3 + Math.random() * 92}%`;
+    splatter.style.fontSize = `${1.1 + Math.random() * 2.3}rem`;
+    splatter.style.transform = `translate(-50%, -50%) rotate(${Math.round(Math.random() * 360)}deg)`;
+    splatter.style.filter = `hue-rotate(${Math.round(Math.random() * 360)}deg) saturate(${(1.2 + Math.random() * 1.8).toFixed(2)})`;
+    splatter.style.opacity = `${0.1 + Math.random() * 0.16}`;
+    layer.append(splatter);
+  }
+}
+
+function setupMimikyuDetailEffect(pokemon, titleElements) {
+  if (!areEasterEggsEnabled()) return;
+  if (pokemon.name !== 'Mimikyu') return;
+  if (detailOneShotEffectsPlayed.has('mimikyu')) return;
+  detailOneShotEffectsPlayed.add('mimikyu');
+  const revealName = () => {
+    for (const element of titleElements) {
+      if (!element?.isConnected) continue;
+      element.textContent = getPokemonDisplayName(pokemon);
+      element.classList.remove('is-disguised-name');
+    }
+  };
+  for (const element of titleElements) {
+    if (!element) continue;
+    element.textContent = 'Pikachu?';
+    element.classList.add('is-disguised-name');
+    const onReveal = () => revealName();
+    element.addEventListener('pointerenter', onReveal, { once: true });
+    element.addEventListener('touchstart', onReveal, { once: true, passive: true });
+    detailSpecialEffectCleanups.push(() => {
+      element.removeEventListener('pointerenter', onReveal);
+      element.removeEventListener('touchstart', onReveal);
+    });
+  }
+}
+
+function setupZygardeDetailEffect(pokemon, spriteWrap, image) {
+  if (!areEasterEggsEnabled()) return;
+  if (!spriteWrap || !image) return;
+  const isFiftyPercent = pokemon.name === 'Zygarde';
+  const isHundredPercent = pokemon.name === 'Zygarde-Complete';
+  if (!isFiftyPercent && !isHundredPercent) return;
+  const effectKey = isHundredPercent ? 'zygarde-complete' : 'zygarde-50';
+  if (detailOneShotEffectsPlayed.has(effectKey)) return;
+  detailOneShotEffectsPlayed.add(effectKey);
+
+  const zygarde10 = pokemonByName.get('Zygarde-10%');
+  const zygarde50 = pokemonByName.get('Zygarde');
+  const zygarde100 = pokemonByName.get('Zygarde-Complete');
+  if (!zygarde10 || !zygarde50 || !zygarde100) return;
+
+  const swarm = document.createElement('div');
+  swarm.className = `zygarde-cell-swarm ${isHundredPercent ? 'is-complete' : 'is-fifty'}`;
+  for (let index = 0; index < 16; index += 1) {
+    const cell = document.createElement('span');
+    cell.className = 'zygarde-cell-emoji';
+    cell.textContent = '\uD83D\uDFE2';
+    const angle = (Math.PI * 2 * index) / 16;
+    const radius = 34 + Math.random() * 18;
+    cell.style.setProperty('--zygarde-cell-x', `${Math.cos(angle) * radius}%`);
+    cell.style.setProperty('--zygarde-cell-y', `${Math.sin(angle) * radius}%`);
+    cell.style.setProperty('--zygarde-cell-delay', `${(index * 0.08).toFixed(2)}s`);
+    swarm.append(cell);
+  }
+  spriteWrap.append(swarm);
+  setSpriteWithFallback(image, zygarde10.sprite, `${zygarde10.name} sprite`);
+
+  const jiggle = () => {
+    spriteWrap.classList.remove('is-zygarde-jiggling');
+    void spriteWrap.offsetWidth;
+    spriteWrap.classList.add('is-zygarde-jiggling');
+  };
+
+  if (isFiftyPercent) {
+    queueDetailEffect(() => {
+      if (activeDetailPokemonName !== pokemon.name) return;
+      setSpriteWithFallback(image, zygarde50.sprite, `${zygarde50.name} sprite`);
+      jiggle();
+    }, 1450);
+    queueDetailEffect(() => {
+      swarm.remove();
+      spriteWrap.classList.remove('is-zygarde-jiggling');
+    }, 2800);
+    return;
+  }
+
+  queueDetailEffect(() => {
+    if (activeDetailPokemonName !== pokemon.name) return;
+    setSpriteWithFallback(image, zygarde50.sprite, `${zygarde50.name} sprite`);
+    jiggle();
+    swarm.classList.add('is-phase-two');
+  }, 1100);
+  queueDetailEffect(() => {
+    if (activeDetailPokemonName !== pokemon.name) return;
+    setSpriteWithFallback(image, zygarde100.sprite, `${zygarde100.name} sprite`);
+    jiggle();
+  }, 2250);
+  queueDetailEffect(() => {
+    swarm.remove();
+    spriteWrap.classList.remove('is-zygarde-jiggling');
+  }, 2950);
 }
 
 function updateMeowthCoinCounter() {
@@ -4717,6 +5743,7 @@ function spawnMeowthCoin(options = {}) {
 
 function initializeMeowthCoinHunt(pokemon) {
   clearMeowthCoinHunt();
+  if (!areEasterEggsEnabled()) return;
   if (pokemon.name !== 'Meowth' || !pokemonDetailDialog) return;
   spawnMeowthCoin({
     isStarter: true,
@@ -4726,6 +5753,7 @@ function initializeMeowthCoinHunt(pokemon) {
 }
 
 function setupWimpodDetailEffect(spriteWrap, pokemon) {
+  if (!areEasterEggsEnabled()) return;
   if (pokemon.name !== 'Wimpod' || !pokemonDetailBody) return;
   let hasScuttled = false;
   const runIfVisible = () => {
@@ -4759,6 +5787,7 @@ function setupWimpodDetailEffect(spriteWrap, pokemon) {
 }
 
 function setupKecleonDetailEffect(spriteWrap, pokemon) {
+  if (!areEasterEggsEnabled()) return;
   if (pokemon.name !== 'Kecleon' || !pokemonDetailBody) return;
   const onMove = (event) => {
     const rect = spriteWrap.getBoundingClientRect();
@@ -4781,6 +5810,225 @@ function setupKecleonDetailEffect(spriteWrap, pokemon) {
   });
 }
 
+function setupStinkyCursorEffect(spriteWrap, pokemon) {
+  if (!areEasterEggsEnabled()) return;
+  if (!pokemonDetailBody || !pokemonDetailModal) return;
+  if (!['Gloom', 'Koffing', 'Weezing'].includes(pokemon.name)) return;
+  let stinkLayer = null;
+  let activeUntil = 0;
+
+  const ensureLayer = () => {
+    if (stinkLayer?.isConnected) return stinkLayer;
+    stinkLayer = document.createElement('div');
+    stinkLayer.className = 'detail-cursor-stink';
+    pokemonDetailModal.append(stinkLayer);
+    return stinkLayer;
+  };
+
+  const onMove = (event) => {
+    if (!stinkLayer || Date.now() > activeUntil) return;
+    stinkLayer.style.setProperty('--cursor-x', `${event.clientX}px`);
+    stinkLayer.style.setProperty('--cursor-y', `${event.clientY}px`);
+  };
+
+  const activate = () => {
+    const layer = ensureLayer();
+    layer.classList.remove('is-gloom', 'is-koffing', 'is-weezing');
+    layer.classList.add(`is-${normalizeText(pokemon.name)}`);
+    activeUntil = Date.now() + 4200;
+    layer.classList.add('is-active');
+    const timeout = window.setTimeout(() => {
+      layer.classList.remove('is-active');
+    }, 4200);
+    detailSpecialEffectCleanups.push(() => window.clearTimeout(timeout));
+  };
+
+  spriteWrap.addEventListener('pointerenter', activate);
+  pokemonDetailBody.addEventListener('mousemove', onMove);
+  detailSpecialEffectCleanups.push(() => {
+    spriteWrap.removeEventListener('pointerenter', activate);
+    pokemonDetailBody.removeEventListener('mousemove', onMove);
+    stinkLayer?.remove();
+  });
+}
+
+function setupMagikarpDetailEffect(spriteWrap, image, pokemon) {
+  if (!areEasterEggsEnabled()) return;
+  if (pokemon.name !== 'Magikarp') return;
+  let clickTimes = [];
+  const threshold = 5;
+  const onClick = () => {
+    const now = Date.now();
+    clickTimes = clickTimes.filter((time) => now - time <= 2600);
+    clickTimes.push(now);
+    const burst = document.createElement('span');
+    burst.className = 'detail-anger-burst';
+    burst.textContent = '\uD83D\uDCA2';
+    spriteWrap.append(burst);
+    const timeout = window.setTimeout(() => burst.remove(), 900);
+    detailSpecialEffectCleanups.push(() => window.clearTimeout(timeout));
+    if (clickTimes.length >= threshold) {
+      openPokemonDetail('Gyarados');
+    }
+  };
+  image.addEventListener('click', onClick);
+  image.style.cursor = 'pointer';
+  detailSpecialEffectCleanups.push(() => {
+    image.removeEventListener('click', onClick);
+    image.style.removeProperty('cursor');
+  });
+}
+
+function createFakePopupSprite(name, alt = name) {
+  const pokemon = getPokemonByNameLoose(name);
+  if (!pokemon) return null;
+  const image = document.createElement('img');
+  image.className = 'detail-fake-popup-sprite';
+  setSpriteWithFallback(image, pokemon.sprite, `${alt} sprite`);
+  return image;
+}
+
+function setupPorygonFakePopupEffect(pokemon) {
+  if (!areEasterEggsEnabled()) return;
+  if (!pokemonDetailModal || !pokemonDetailBody) return;
+  if (!['Porygon', 'Porygon2', 'Porygon-Z'].includes(pokemon.name)) return;
+
+  const popup = document.createElement('aside');
+  const variants = [
+    {
+      className: 'is-magenta',
+      title: 'Heiße MILFs in deiner Umgebung!',
+      build: (body) => {
+        const sprite = createFakePopupSprite('Kangaskhan');
+        if (sprite) body.append(sprite);
+      },
+    },
+    {
+      className: 'is-blue',
+      title: 'Wachstumspillen für deinen Schlurm, nur 99 Pokedollar!',
+      build: (body) => {
+        const sprite = createFakePopupSprite('Orthworm');
+        if (sprite) body.append(sprite);
+      },
+    },
+    {
+      className: 'is-red',
+      title: 'Alolas raus! Wählt Rechtsrattikarl!',
+      build: (body) => {
+        const row = document.createElement('div');
+        row.className = 'detail-fake-popup-icon-row';
+        for (let index = 0; index < 3; index += 1) {
+          const wrap = document.createElement('div');
+          wrap.className = 'detail-fake-popup-crossed';
+          const sprite = createFakePopupSprite('Rattata-Alola');
+          if (sprite) wrap.append(sprite);
+          row.append(wrap);
+        }
+        const rat = document.createElement('span');
+        rat.className = 'detail-fake-popup-emoji';
+        rat.textContent = '\uD83D\uDC00';
+        row.append(rat);
+        body.append(row);
+      },
+    },
+    {
+      className: 'is-grey',
+      title: 'Sie haben 151 Virusse auf ihrem Computer!!! Jetzt scannen!!!',
+      build: (body) => {
+        const sprite = createFakePopupSprite('Pecharunt');
+        if (sprite) body.append(sprite);
+      },
+    },
+    {
+      className: 'is-gold',
+      title: 'Frohes Neues 2001!',
+      build: (body) => {
+        const row = document.createElement('div');
+        row.className = 'detail-fake-popup-icon-row';
+        const fireworks = document.createElement('span');
+        fireworks.className = 'detail-fake-popup-emoji';
+        fireworks.textContent = '\uD83C\uDF86\u2728';
+        row.append(fireworks);
+        const sprite = createFakePopupSprite('Slowpoke');
+        if (sprite) row.append(sprite);
+        body.append(row);
+      },
+    },
+    {
+      className: 'is-teal',
+      title: 'Ankerarme!',
+      build: (body) => {
+        const row = document.createElement('div');
+        row.className = 'detail-fake-popup-icon-row';
+        const sprite = createFakePopupSprite('Dhelmise');
+        if (sprite) row.append(sprite);
+        const flex = document.createElement('span');
+        flex.className = 'detail-fake-popup-emoji';
+        flex.textContent = '\uD83D\uDCAA';
+        row.append(flex);
+        body.append(row);
+      },
+    },
+  ];
+  const variant = variants[Math.floor(Math.random() * variants.length)];
+  popup.className = `detail-fake-popup ${variant.className}`;
+  const title = document.createElement('strong');
+  title.textContent = variant.title;
+  const body = document.createElement('div');
+  body.className = 'detail-fake-popup-body';
+  variant.build(body);
+  const cta = document.createElement('span');
+  cta.className = 'detail-fake-popup-cta';
+  cta.textContent = 'Hier clicken!!!';
+  body.append(cta);
+  popup.append(title, body);
+  pokemonDetailModal.append(popup);
+
+  const onScroll = () => {
+    if (pokemonDetailBody.scrollTop > 0) popup.remove();
+  };
+  pokemonDetailBody.addEventListener('scroll', onScroll, { passive: true });
+  detailSpecialEffectCleanups.push(() => {
+    pokemonDetailBody.removeEventListener('scroll', onScroll);
+    popup.remove();
+  });
+}
+
+function wrapVictiniLetters(root) {
+  if (!root) return;
+  const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT);
+  const targets = [];
+  while (walker.nextNode()) {
+    const node = walker.currentNode;
+    if (!node.textContent || !/[Vv]/.test(node.textContent)) continue;
+    if (!node.parentElement) continue;
+    if (node.parentElement.closest('.victini-v-letter')) continue;
+    targets.push(node);
+  }
+  for (const node of targets) {
+    const fragment = document.createDocumentFragment();
+    for (const character of node.textContent) {
+      if (character === 'V' || character === 'v') {
+        const span = document.createElement('span');
+        span.className = 'victini-v-letter';
+        span.textContent = character;
+        fragment.append(span);
+      } else {
+        fragment.append(document.createTextNode(character));
+      }
+    }
+    node.parentNode?.replaceChild(fragment, node);
+  }
+}
+
+function applyVictiniDetailLetterEffect(pokemon) {
+  if (!areEasterEggsEnabled()) return;
+  if (pokemon.name !== 'Victini') return;
+  wrapVictiniLetters(detailTitle);
+  wrapVictiniLetters(detailTopPanel);
+  wrapVictiniLetters(pokemonDetailBody);
+}
+
 function renderPokemonDetail(pokemon) {
   clearMeowthCoinHunt();
   clearDetailSpecialEffects();
@@ -4791,6 +6039,7 @@ function renderPokemonDetail(pokemon) {
     'is-gholdengo-sparkle',
     'is-dialga-retro',
     'is-mega-detail',
+    'is-gmax-detail',
     'is-primal-groudon-detail',
     'is-primal-kyogre-detail',
     'is-rotom-static',
@@ -4804,16 +6053,17 @@ function renderPokemonDetail(pokemon) {
   if (hasDialgaRetroTheme(pokemon)) pokemonDetailModal.classList.add('is-dialga-retro');
   const animatedBorderVariant = getAnimatedBorderVariant(pokemon.name);
   if (animatedBorderVariant === 'mega') pokemonDetailModal.classList.add('is-mega-detail');
+  if (animatedBorderVariant === 'gmax') pokemonDetailModal.classList.add('is-gmax-detail');
   if (animatedBorderVariant === 'primal-groudon') pokemonDetailModal.classList.add('is-primal-groudon-detail');
   if (animatedBorderVariant === 'primal-kyogre') pokemonDetailModal.classList.add('is-primal-kyogre-detail');
-  if (isRotomFamily(pokemon) && Math.random() < 0.01) {
+  if (areEasterEggsEnabled() && isRotomFamily(pokemon) && Math.random() < 0.1) {
     pokemonDetailModal.classList.add('is-rotom-static');
     queueDetailEffect(() => {
       pokemonDetailModal.classList.remove('is-rotom-static');
-    }, 720);
+    }, 1100);
   }
   detailTitle.textContent = getPokemonDisplayName(pokemon);
-  detailTitle.classList.remove('is-quark-name', 'is-proto-name', 'is-porygon-glitching');
+  detailTitle.classList.remove('is-quark-name', 'is-proto-name', 'is-porygon-glitching', 'is-disguised-name');
   const detailNameVariant = getSpecialNameVariant(pokemon);
   if (detailNameVariant === 'quark') detailTitle.classList.add('is-quark-name');
   if (detailNameVariant === 'proto') detailTitle.classList.add('is-proto-name');
@@ -4885,6 +6135,8 @@ function renderPokemonDetail(pokemon) {
     headingWrap.className = 'detail-top-heading';
     const titleTextWrap = document.createElement('div');
     titleTextWrap.className = 'detail-top-heading-text';
+    const titleRow = document.createElement('div');
+    titleRow.className = 'detail-top-title-row';
     const title = document.createElement('h3');
     title.className = 'detail-top-title';
     title.textContent = getPokemonDisplayName(form);
@@ -4892,10 +6144,13 @@ function renderPokemonDetail(pokemon) {
     if (formNameVariant === 'quark') title.classList.add('is-quark-name');
     if (formNameVariant === 'proto') title.classList.add('is-proto-name');
     if (form.name === pokemon.name) activeTopTitle = title;
+    const weatherBadge = createDetailWeatherBadgeElement(form);
     const subtitle = createDetailSubtitleElement(form);
     const tagIcons = createDetailTagIconsElement(form);
     if (tagIcons) headingWrap.append(tagIcons);
-    titleTextWrap.append(title);
+    titleRow.append(title);
+    if (weatherBadge) titleRow.append(weatherBadge);
+    titleTextWrap.append(titleRow);
     if (subtitle) titleTextWrap.append(subtitle);
     headingWrap.append(titleTextWrap);
 
@@ -4971,9 +6226,15 @@ function renderPokemonDetail(pokemon) {
     if (form.name === pokemon.name) {
       setupWimpodDetailEffect(spriteWrap, pokemon);
       setupKecleonDetailEffect(spriteWrap, pokemon);
+      setupStinkyCursorEffect(spriteWrap, pokemon);
+      setupZygardeDetailEffect(pokemon, spriteWrap, image);
+      setupMagikarpDetailEffect(spriteWrap, image, pokemon);
     }
   }
-  if (pokemon.name === 'Porygon-Z' && activeTopTitle && activeSpriteWrap && activeSpriteLayers.length) {
+  setupPaintSplatterDetailEffect(pokemon);
+  setupPorygonFakePopupEffect(pokemon);
+  if (activeTopTitle) setupMimikyuDetailEffect(pokemon, [detailTitle, activeTopTitle]);
+  if (areEasterEggsEnabled() && pokemon.name === 'Porygon-Z' && activeTopTitle && activeSpriteWrap && activeSpriteLayers.length) {
     applyPorygonZDetailEffect(pokemon, [detailTitle, activeTopTitle], activeSpriteWrap, activeSpriteLayers);
   }
 
@@ -5089,6 +6350,8 @@ function renderPokemonDetail(pokemon) {
     }
   }
 
+  renderPokemonCareer(pokemon);
+
   detailRibbons.innerHTML = '';
   const ribbons = getRibbonEntries(pokemon);
   if (!ribbons.length) {
@@ -5117,19 +6380,29 @@ function renderPokemonDetail(pokemon) {
   }
 
   if (hasSideSandwichDecoration(pokemon)) {
-    detailFamilyTitle.textContent = 'Sandwich';
+    detailFamilyTitle.textContent = areEasterEggsEnabled() ? 'Sandwich' : 'Familie';
     detailFamily.innerHTML = '';
-    const sandwichCard = document.createElement('div');
-    sandwichCard.className = 'detail-sandwich-card';
-    const sandwichImage = document.createElement('img');
-    sandwichImage.src = 'assets/koraidon-miraidon-sandwich.png';
-    sandwichImage.alt = 'Sandwich';
-    sandwichImage.loading = 'lazy';
-    sandwichCard.append(sandwichImage);
-    detailFamily.append(sandwichCard);
+    if (areEasterEggsEnabled()) {
+      const sandwichCard = document.createElement('div');
+      sandwichCard.className = 'detail-sandwich-card';
+      const sandwichImage = document.createElement('img');
+      sandwichImage.src = 'assets/koraidon-miraidon-sandwich.png';
+      sandwichImage.alt = 'Sandwich';
+      sandwichImage.loading = 'lazy';
+      sandwichCard.append(sandwichImage);
+      detailFamily.append(sandwichCard);
+    }
   } else {
     detailFamilyTitle.textContent = 'Familie';
-    renderSpriteLinkSection(detailFamily, getFamilyMembers(pokemon), 'Keine Familienmitglieder gefunden.');
+    const familyMembers = getFamilyMembers(pokemon);
+    const familyEntries = areEasterEggsEnabled() && pokemon.name === 'Cubone'
+      ? familyMembers.map((member) => (
+        member.name === 'Marowak' || member.name === 'Marowak-Alola'
+          ? { pokemon: member, spriteEmoji: '\uD83E\uDEA6', emojiClass: 'is-gravestone' }
+          : member
+      ))
+      : familyMembers;
+    renderSpriteLinkSection(detailFamily, familyEntries, 'Keine Familienmitglieder gefunden.');
   }
   const distantRelatives = getDistantRelativeMembers(pokemon);
   detailDistantRelativesSection.hidden = !distantRelatives.length;
@@ -5172,11 +6445,13 @@ function renderPokemonDetail(pokemon) {
   renderPokemonDetailMoves(pokemon);
   renderSimilarPokemonSection(pokemon);
   initializeMeowthCoinHunt(pokemon);
+  applyVictiniDetailLetterEffect(pokemon);
 }
 
 function openPokemonDetail(name) {
   const pokemon = pokemonByName.get(name);
   if (!pokemon) return;
+  detailOneShotEffectsPlayed = new Set();
   expandedAbilityIds = new Set();
   loadedSimilarPokemonName = null;
   detailMoveSearch.value = '';
@@ -5443,6 +6718,22 @@ function getBudgetPlannerMascotEntry(remaining, total) {
   return { className: 'is-bronze', sprite: spriteFor('Rattata-Alola') || spriteFor('Rattata'), alt: 'Alolan Rattata sprite' };
 }
 
+function getBudgetPlannerCountMascotEntry(count) {
+  const spriteFor = (name) => pokemonByName.get(name)?.sprite ?? '';
+  if (count >= 9) {
+    return {
+      className: 'is-healthy',
+      sprite: spriteFor('Wishiwashi-School') || spriteFor('Wishiwashi'),
+      alt: 'Wishiwashi-School sprite',
+    };
+  }
+  return {
+    className: 'is-low',
+    sprite: spriteFor('Wishiwashi'),
+    alt: 'Wishiwashi sprite',
+  };
+}
+
 function setBudgetPlannerFeedback(message = '') {
   if (!budgetPlannerFeedback) return;
   budgetPlannerFeedback.hidden = !message;
@@ -5591,6 +6882,7 @@ function downloadBlob(filename, blob, mimeType = 'application/octet-stream') {
 function renderBudgetPlannerBudget() {
   const remaining = getBudgetPlannerRemainingBudget();
   const total = getBudgetPlannerTotalBudget();
+  const selectedCount = getBudgetPlannerSelectedEntries().length;
   if (budgetPlannerBudgetRemaining) budgetPlannerBudgetRemaining.textContent = String(remaining);
   if (budgetPlannerBudgetTotal) budgetPlannerBudgetTotal.textContent = String(total);
   if (budgetPlannerBudget) {
@@ -5606,6 +6898,23 @@ function renderBudgetPlannerBudget() {
     } else if (budgetPlannerBudgetMascot) {
       budgetPlannerBudgetMascot.hidden = true;
       budgetPlannerBudgetMascot.removeAttribute('src');
+    }
+  }
+  if (budgetPlannerCountCurrent) budgetPlannerCountCurrent.textContent = String(selectedCount);
+  if (budgetPlannerCountTotal) budgetPlannerCountTotal.textContent = '12';
+  if (budgetPlannerCount) {
+    budgetPlannerCount.classList.remove('is-low', 'is-healthy');
+    const mascot = getBudgetPlannerCountMascotEntry(selectedCount);
+    for (const className of mascot.className.split(' ')) {
+      if (className) budgetPlannerCount.classList.add(className);
+    }
+    if (budgetPlannerCountMascot && mascot.sprite) {
+      budgetPlannerCountMascot.hidden = false;
+      budgetPlannerCountMascot.src = mascot.sprite;
+      budgetPlannerCountMascot.alt = mascot.alt;
+    } else if (budgetPlannerCountMascot) {
+      budgetPlannerCountMascot.hidden = true;
+      budgetPlannerCountMascot.removeAttribute('src');
     }
   }
 }
@@ -5687,10 +6996,8 @@ function renderBudgetPlannerTypeMatrix() {
         key: `${entry.pokemon.name}-tera-${entry.slot.captainType}`,
         name: `${entry.pokemon.name} (Tera ${typeLabelsDe[entry.slot.captainType] ?? entry.slot.captainType})`,
         sprite: entry.pokemon.sprite,
-        pokemon: {
-          ...entry.pokemon,
-          types: [entry.slot.captainType],
-        },
+        pokemon: entry.pokemon,
+        defenseTypes: [entry.slot.captainType],
         tintType: entry.slot.captainType,
       });
     }
@@ -5714,13 +7021,13 @@ function renderBudgetPlannerTypeMatrix() {
     row.append(nameCell);
     for (const type of battleTypes) {
       const cell = document.createElement('td');
-      const code = getBudgetPlannerDefenseCode(getReplacementBestDefenseValue(entry.pokemon, type));
+      const code = getBudgetPlannerDefenseCode(getBudgetPlannerDefenseValue(entry.pokemon, type, { types: entry.defenseTypes ?? null }));
       cell.className = `budget-planner-defense-cell ${code.className}`;
       const text = document.createElement('span');
       text.className = 'budget-planner-defense-text';
       text.textContent = code.text;
       cell.append(text);
-      cell.title = `${entry.pokemon.name} vs ${type}`;
+      cell.title = `${entry.name} vs ${type}`;
       row.append(cell);
     }
     tbody.append(row);
@@ -7762,8 +9069,11 @@ ruleCheckerButton?.addEventListener('click', () => {
 });
 stefansPdfButton?.addEventListener('click', openStefansPdf);
 changelogButton?.addEventListener('click', () => openChangelog('site'));
+spielerButton?.addEventListener('click', openSpieler);
+informationGraphButton?.addEventListener('click', openInformationGraph);
 legendButton?.addEventListener('click', openLegend);
 themeToggle?.addEventListener('click', toggleTheme);
+eastereggToggle?.addEventListener('click', toggleEastereggMode);
   detailsClose.addEventListener('click', closeDetailsModal);
   detailsCancel.addEventListener('click', closeDetailsModal);
   detailsReset.addEventListener('click', resetAdvancedSearchModal);
@@ -7830,6 +9140,22 @@ themeToggle?.addEventListener('click', toggleTheme);
   });
   changelogTabs.forEach((tab) => {
     tab.addEventListener('click', () => setActiveChangelogTab(tab.dataset.tab ?? 'site'));
+  });
+  spielerClose?.addEventListener('click', closeSpieler);
+  spielerModal?.addEventListener('click', (event) => {
+    if (event.target.dataset.closeSpieler === 'true') closeSpieler();
+  });
+  informationGraphClose?.addEventListener('click', closeInformationGraph);
+  informationGraphModal?.addEventListener('click', (event) => {
+    if (event.target.dataset.closeInformationGraph === 'true') closeInformationGraph();
+  });
+  informationGraphGenerate?.addEventListener('click', () => drawInformationGraph({ withData: true }));
+  informationGraphCanvas?.addEventListener('mousemove', updateInformationGraphTooltip);
+  informationGraphCanvas?.addEventListener('mouseleave', () => {
+    if (informationGraphTooltip) informationGraphTooltip.hidden = true;
+  });
+  window.addEventListener('resize', () => {
+    if (informationGraphModal?.hidden === false) drawInformationGraph({ withData: informationGraphPoints.length > 0 });
   });
   coreFinderClose?.addEventListener('click', closeCoreFinder);
   coreFinderModal?.addEventListener('click', (event) => {
@@ -8008,6 +9334,7 @@ async function loadPokedex() {
 }
 
 applyTheme(getStoredTheme());
+applyEastereggMode(getStoredEastereggMode());
 initializeAdvancedSearch();
 searchInput.addEventListener('input', applyAllFilters);
 sortField.addEventListener('change', applyAllFilters);

@@ -1,0 +1,1623 @@
+:root {
+  --ink: #202331;
+  --muted: #687084;
+  --panel: rgba(255, 252, 246, 0.94);
+  --panel-strong: #ffffff;
+  --line: rgba(32, 35, 49, 0.12);
+  --accent: #d84f3e;
+  --accent-2: #287c9f;
+  --good: #26864a;
+  --warn: #c8871f;
+  --bad: #b72c2c;
+  --shadow: 0 24px 70px rgba(25, 28, 40, 0.18);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background:
+    linear-gradient(135deg, rgba(216, 79, 62, 0.12), transparent 32%),
+    linear-gradient(225deg, rgba(40, 124, 159, 0.14), transparent 34%),
+    #f6f1e8;
+  color: var(--ink);
+  font-family: Inter, system-ui, sans-serif;
+}
+
+button,
+input,
+select {
+  font: inherit;
+}
+
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+.draft-app {
+  min-height: 100vh;
+}
+
+.draft-topbar {
+  position: sticky;
+  top: 0;
+  z-index: 5;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: 18px;
+  align-items: center;
+  padding: 16px 22px;
+  border-bottom: 1px solid var(--line);
+  background: rgba(255, 252, 246, 0.9);
+  backdrop-filter: blur(18px);
+}
+
+.draft-home-link,
+.draft-view-links a,
+.draft-primary,
+.draft-secondary {
+  min-height: 42px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 0 15px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  color: var(--ink);
+  font-family: 'Chakra Petch', sans-serif;
+  font-weight: 700;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.draft-home-link,
+.draft-secondary,
+.draft-view-links a {
+  background: rgba(255, 255, 255, 0.82);
+}
+
+.draft-primary {
+  border-color: rgba(216, 79, 62, 0.28);
+  background: var(--accent);
+  color: #fff;
+}
+
+.draft-primary:disabled,
+.draft-secondary:disabled,
+.draft-pokemon-card:disabled {
+  cursor: default;
+  opacity: 0.55;
+}
+
+.draft-view-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.draft-topbar h1,
+.draft-section-heading h2,
+.draft-board-hero h2,
+.draft-roster-header h3,
+.draft-decision-dialog h2 {
+  margin: 0;
+  font-family: 'Chakra Petch', sans-serif;
+  line-height: 1.05;
+}
+
+.draft-topbar h1 {
+  font-size: 1.8rem;
+}
+
+.draft-eyebrow {
+  margin: 0 0 4px;
+  color: var(--muted);
+  font-family: 'Chakra Petch', sans-serif;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.draft-shell {
+  display: grid;
+  grid-template-columns: minmax(360px, 0.94fr) minmax(520px, 1.4fr);
+  gap: 18px;
+  align-items: start;
+  padding: 18px;
+}
+
+.draft-panel,
+.draft-board-empty,
+.draft-board-hero,
+.draft-roster-card,
+.draft-decision-dialog {
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--panel);
+  box-shadow: var(--shadow);
+}
+
+.draft-panel {
+  display: grid;
+  gap: 16px;
+  padding: 18px;
+}
+
+.draft-section-heading {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  align-items: start;
+}
+
+.draft-toolbar,
+.draft-admin-row,
+.draft-pick-tools,
+.draft-randomizer,
+.draft-swap-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: end;
+}
+
+.draft-field {
+  display: grid;
+  gap: 6px;
+  min-width: 180px;
+  color: var(--muted);
+  font-family: 'Chakra Petch', sans-serif;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.draft-field input,
+.draft-field select {
+  min-height: 42px;
+  width: 100%;
+  padding: 0 12px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.88);
+  color: var(--ink);
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+.draft-format-field {
+  min-width: 150px;
+}
+
+.draft-check {
+  min-height: 42px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--ink);
+  font-weight: 700;
+}
+
+.draft-trainer-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(132px, 1fr));
+  gap: 10px;
+}
+
+.draft-trainer-card {
+  min-height: 142px;
+  display: grid;
+  place-items: center;
+  gap: 7px;
+  padding: 12px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.75);
+  color: var(--ink);
+  cursor: pointer;
+}
+
+.draft-trainer-card img {
+  width: 72px;
+  height: 72px;
+  object-fit: contain;
+  image-rendering: pixelated;
+}
+
+.draft-trainer-card span {
+  color: var(--muted);
+  font-size: 0.78rem;
+  font-weight: 700;
+}
+
+.draft-trainer-card.is-selected {
+  border-color: rgba(40, 124, 159, 0.42);
+  background: rgba(222, 244, 251, 0.92);
+}
+
+.draft-trainer-card.is-start-player {
+  outline: 3px solid rgba(216, 79, 62, 0.32);
+}
+
+.draft-admin-stars {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 10px;
+}
+
+.draft-randomizer-display {
+  min-height: 46px;
+  min-width: 240px;
+  display: grid;
+  place-items: center;
+  padding: 0 18px;
+  border: 1px solid rgba(40, 124, 159, 0.22);
+  border-radius: 8px;
+  background: #fff;
+  color: var(--accent-2);
+  font-family: 'Chakra Petch', sans-serif;
+  font-size: 1.05rem;
+  font-weight: 700;
+}
+
+.draft-randomizer-display.is-ticking {
+  color: var(--accent);
+  transform: translateY(-1px);
+}
+
+.draft-current-summary {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(128px, 1fr));
+  gap: 10px;
+}
+
+.draft-summary-card {
+  min-height: 70px;
+  display: grid;
+  gap: 6px;
+  padding: 12px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--panel-strong);
+}
+
+.draft-summary-card span {
+  color: var(--muted);
+  font-size: 0.78rem;
+  font-weight: 700;
+}
+
+.draft-summary-card strong {
+  font-family: 'Chakra Petch', sans-serif;
+  font-size: 1.04rem;
+}
+
+.draft-type-picks {
+  display: grid;
+  gap: 12px;
+}
+
+.draft-type-section {
+  display: grid;
+  gap: 10px;
+  padding: 12px;
+  border: 1px solid rgba(40, 124, 159, 0.18);
+  border-radius: 8px;
+  background: rgba(237, 249, 252, 0.78);
+}
+
+.draft-type-section h3 {
+  margin: 0;
+  font-family: 'Chakra Petch', sans-serif;
+  font-size: 1rem;
+}
+
+.draft-type-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(112px, 1fr));
+  gap: 8px;
+}
+
+.draft-type-button {
+  min-height: 38px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #fff;
+  color: var(--ink);
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.draft-pick-tools .draft-field {
+  flex: 1 1 260px;
+}
+
+.draft-pokemon-results {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+  gap: 10px;
+  max-height: 62vh;
+  overflow: auto;
+  padding-right: 4px;
+}
+
+.draft-control-grids {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 12px;
+}
+
+.draft-mini-panel {
+  display: grid;
+  gap: 10px;
+  padding: 12px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.62);
+}
+
+.draft-mini-panel h3 {
+  margin: 0;
+  font-family: 'Chakra Petch', sans-serif;
+  font-size: 1rem;
+}
+
+.draft-pick-log,
+.draft-undo-history {
+  display: grid;
+  gap: 7px;
+  max-height: 260px;
+  overflow: auto;
+}
+
+.draft-log-row,
+.draft-undo-row {
+  min-height: 34px;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 8px;
+  align-items: center;
+  padding: 7px 9px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.74);
+  color: var(--ink);
+  text-align: left;
+}
+
+.draft-undo-row {
+  cursor: pointer;
+}
+
+.draft-log-row span,
+.draft-undo-row span,
+.draft-empty-note {
+  color: var(--muted);
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+
+.draft-pokemon-card {
+  min-height: 86px;
+  display: grid;
+  grid-template-columns: 58px 1fr;
+  gap: 10px;
+  align-items: center;
+  padding: 9px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.88);
+  color: var(--ink);
+  text-align: left;
+  cursor: pointer;
+}
+
+.draft-pokemon-card img {
+  width: 58px;
+  height: 58px;
+  object-fit: contain;
+  image-rendering: pixelated;
+}
+
+.draft-pokemon-card.is-illegal {
+  background: rgba(255, 239, 237, 0.8);
+  color: rgba(32, 35, 49, 0.68);
+}
+
+.draft-pokemon-meta,
+.draft-pokemon-meta span {
+  display: grid;
+  gap: 3px;
+}
+
+.draft-pokemon-meta strong {
+  font-family: 'Chakra Petch', sans-serif;
+}
+
+.draft-pokemon-meta span {
+  color: var(--muted);
+  font-size: 0.82rem;
+  font-weight: 700;
+}
+
+.draft-pokemon-reason {
+  color: var(--accent-2) !important;
+}
+
+.draft-board {
+  display: grid;
+  gap: 14px;
+}
+
+.draft-board-empty,
+.draft-board-hero {
+  padding: 22px;
+}
+
+.draft-board-hero {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  align-items: center;
+  background:
+    linear-gradient(120deg, rgba(216, 79, 62, 0.1), transparent 45%),
+    linear-gradient(260deg, rgba(40, 124, 159, 0.12), transparent 48%),
+    var(--panel-strong);
+}
+
+.draft-board-hero h2 {
+  font-size: clamp(1.8rem, 4vw, 4.4rem);
+}
+
+.draft-board-hero p:last-child {
+  max-width: 900px;
+  margin: 10px 0 0;
+  color: var(--muted);
+  font-size: clamp(1rem, 1.4vw, 1.35rem);
+  font-weight: 700;
+}
+
+.draft-order-strip {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+}
+
+.draft-order-chip {
+  min-height: 36px;
+  display: inline-flex;
+  align-items: center;
+  padding: 0 12px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.84);
+  color: var(--muted);
+  font-family: 'Chakra Petch', sans-serif;
+  font-weight: 700;
+}
+
+.draft-order-chip.is-current {
+  border-color: rgba(38, 134, 74, 0.7);
+  background: rgba(229, 249, 237, 0.96);
+  color: #126232;
+  box-shadow: 0 0 0 3px rgba(38, 134, 74, 0.16);
+}
+
+.draft-order-chip.is-finished {
+  opacity: 0.52;
+  text-decoration: line-through;
+}
+
+.draft-order-chip.is-randomizing,
+.draft-roster-card.is-randomizing {
+  border-color: rgba(255, 193, 55, 0.85);
+  animation: draft-randomizer-pulse 420ms ease-in-out infinite alternate;
+}
+
+.draft-order-chip.is-start-player,
+.draft-roster-card.is-start-player {
+  border-color: rgba(255, 193, 55, 0.88);
+}
+
+.draft-order-arrow {
+  color: var(--muted);
+  font-family: 'Chakra Petch', sans-serif;
+  font-weight: 800;
+}
+
+.draft-board-mode-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.draft-board-mode-button {
+  min-height: 38px;
+  padding: 0 14px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.82);
+  color: var(--ink);
+  font-family: 'Chakra Petch', sans-serif;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.draft-board-mode-button.is-active {
+  border-color: rgba(40, 124, 159, 0.5);
+  background: rgba(222, 244, 251, 0.92);
+  color: #0f5d78;
+}
+
+.draft-availability-pool,
+.draft-matrix-panel,
+.draft-speed-tiers-panel {
+  display: grid;
+  gap: 12px;
+  padding: 14px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--panel);
+}
+
+.draft-pool-group {
+  display: grid;
+  gap: 8px;
+}
+
+.draft-pool-group h3,
+.draft-matrix-panel h2,
+.draft-speed-tiers-panel h2 {
+  margin: 0;
+  font-family: 'Chakra Petch', sans-serif;
+}
+
+.draft-pool-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 7px;
+}
+
+.draft-pool-chip {
+  display: grid;
+  gap: 3px;
+  padding: 8px 10px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.72);
+}
+
+.draft-pool-chip span {
+  color: var(--muted);
+  font-size: 0.78rem;
+  font-weight: 800;
+}
+
+.draft-matrix-wrap {
+  overflow: auto;
+}
+
+.draft-matrix-table {
+  width: 100%;
+  min-width: 1120px;
+  border-collapse: collapse;
+}
+
+.draft-matrix-table th,
+.draft-matrix-table td {
+  padding: 8px;
+  border: 1px solid var(--line);
+  text-align: center;
+  font-weight: 800;
+}
+
+.draft-matrix-table th {
+  background: rgba(255, 255, 255, 0.92);
+}
+
+.draft-matrix-table td.is-defense-0,
+.draft-matrix-table td.is-defense-0-25,
+.draft-matrix-table td.is-defense-0-5 {
+  background: rgba(38, 134, 74, 0.18);
+  color: #176437;
+}
+
+.draft-matrix-table td.is-defense-2,
+.draft-matrix-table td.is-defense-4 {
+  background: rgba(183, 44, 44, 0.16);
+  color: #922323;
+}
+
+body.is-board-view .draft-matrix-table td.is-defense-0,
+body.is-board-view .draft-matrix-table td.is-defense-0-25,
+body.is-board-view .draft-matrix-table td.is-defense-0-5 {
+  background: rgba(71, 196, 114, 0.24);
+  color: #baffd0;
+}
+
+body.is-board-view .draft-matrix-table td.is-defense-2,
+body.is-board-view .draft-matrix-table td.is-defense-4 {
+  background: rgba(225, 78, 78, 0.28);
+  color: #ffd0d0;
+}
+
+.draft-speed-tiers-panel {
+  display: grid;
+  gap: 12px;
+}
+
+.draft-speed-tiers-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 8px;
+}
+
+.draft-speed-tier {
+  display: grid;
+  grid-template-columns: 50px minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 10px;
+  min-height: 48px;
+  padding: 8px 10px;
+  border: 1px solid var(--trainer-color);
+  border-left: 7px solid var(--trainer-color);
+  border-radius: 8px;
+  background: color-mix(in srgb, var(--trainer-color) 12%, white);
+}
+
+.draft-speed-value {
+  color: var(--trainer-color);
+  font-family: 'Chakra Petch', sans-serif;
+  font-size: 1.25rem;
+  text-align: center;
+}
+
+.draft-speed-pokemon {
+  overflow: hidden;
+  font-weight: 800;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.draft-speed-trainer {
+  color: var(--trainer-color);
+  font-size: 0.78rem;
+  font-weight: 900;
+  white-space: nowrap;
+}
+
+.draft-roster-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 12px;
+}
+
+.draft-roster-card {
+  display: grid;
+  gap: 12px;
+  padding: 14px;
+}
+
+.draft-roster-card.is-current {
+  border-color: rgba(38, 134, 74, 0.68);
+  box-shadow: 0 0 0 3px rgba(38, 134, 74, 0.16), var(--shadow);
+}
+
+.draft-roster-card.has-budget-danger {
+  border-color: rgba(183, 44, 44, 0.62);
+}
+
+.draft-budget-danger {
+  padding: 8px 10px;
+  border: 1px solid rgba(183, 44, 44, 0.28);
+  border-radius: 8px;
+  background: rgba(255, 235, 232, 0.88);
+  color: #8d2020;
+  font-size: 0.82rem;
+  font-weight: 800;
+}
+
+.draft-roster-header {
+  display: grid;
+  grid-template-columns: 64px 1fr auto;
+  gap: 12px;
+  align-items: center;
+}
+
+.draft-roster-header img {
+  width: 64px;
+  height: 64px;
+  object-fit: contain;
+  image-rendering: pixelated;
+}
+
+.draft-roster-header h3 {
+  font-size: 1.32rem;
+}
+
+.draft-roster-header p {
+  margin: 5px 0 0;
+  color: var(--muted);
+  font-weight: 800;
+}
+
+.draft-star {
+  width: 36px;
+  height: 36px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: #ffe17a;
+  color: #6d4800;
+  font-size: 1.5rem;
+  font-weight: 900;
+  box-shadow:
+    0 0 0 4px rgba(255, 225, 122, 0.24),
+    0 0 22px rgba(255, 199, 55, 0.86);
+  animation: draft-star-glow 1.6s ease-in-out infinite;
+}
+
+.draft-roster-badges,
+.draft-captain-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+}
+
+.draft-roster-badges span,
+.draft-captain-row span {
+  padding: 5px 8px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.76);
+  color: var(--muted);
+  font-size: 0.78rem;
+  font-weight: 800;
+}
+
+.draft-roster-pokemon {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(122px, 1fr));
+  gap: 7px;
+}
+
+.draft-roster-pick {
+  min-height: 42px;
+  display: grid;
+  grid-template-columns: 34px 1fr;
+  gap: 6px;
+  align-items: center;
+  padding: 5px;
+  border: 2px solid transparent;
+  border-radius: 8px;
+  background:
+    linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.9)) padding-box,
+    linear-gradient(90deg, var(--pick-type-left, var(--line)) 0 50%, var(--pick-type-right, var(--pick-type-left, var(--line))) 50% 100%) border-box;
+  font-size: 0.78rem;
+  font-weight: 800;
+}
+
+.draft-roster-pick.is-empty {
+  grid-template-columns: 1fr;
+  place-items: center;
+  border-color: var(--line);
+  background: rgba(255, 255, 255, 0.34);
+  color: rgba(104, 112, 132, 0.72);
+  font-family: 'Chakra Petch', sans-serif;
+}
+
+.draft-roster-pick img {
+  width: 34px;
+  height: 34px;
+  object-fit: contain;
+  image-rendering: pixelated;
+}
+
+.draft-reveal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 18;
+  display: grid;
+  place-items: center;
+  padding: 28px;
+  pointer-events: none;
+  background: rgba(5, 8, 16, 0.38);
+}
+
+.draft-reveal-ball-stage,
+.draft-reveal-flash {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  pointer-events: none;
+}
+
+.draft-reveal-ball-stage {
+  z-index: 0;
+  animation: draft-ball-stage-hide 2.1s ease forwards;
+}
+
+.draft-reveal-ball {
+  width: clamp(96px, 12vw, 164px);
+  height: clamp(96px, 12vw, 164px);
+  object-fit: contain;
+  image-rendering: pixelated;
+  filter: drop-shadow(0 24px 22px rgba(0, 0, 0, 0.42));
+  animation: draft-ball-drop 1.65s cubic-bezier(0.18, 0.82, 0.28, 1.08) forwards;
+}
+
+.draft-reveal-flash {
+  z-index: 1;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.95) 0 8%, rgba(255, 255, 255, 0.44) 16%, transparent 42%);
+  opacity: 0;
+  animation: draft-reveal-flash 2.35s ease forwards;
+}
+
+.draft-reveal-card {
+  position: relative;
+  isolation: isolate;
+  z-index: 2;
+  width: min(1040px, 96vw);
+  max-height: min(760px, 92vh);
+  overflow: hidden;
+  display: grid;
+  gap: 18px;
+  padding: clamp(18px, 3vw, 32px);
+  border: 3px solid rgba(255, 255, 255, 0.18);
+  border-radius: 16px;
+  background:
+    radial-gradient(circle at 18% 12%, rgba(255, 255, 255, 0.12), transparent 30%),
+    rgba(18, 27, 46, 0.98);
+  box-shadow: 0 30px 90px rgba(0, 0, 0, 0.52);
+  opacity: 0;
+  transform: translateY(24px) scale(0.94);
+  animation: draft-reveal-card-open 520ms cubic-bezier(0.2, 0.9, 0.22, 1.15) 2.06s forwards;
+}
+
+.draft-reveal-overlay.is-reveal-already-shown .draft-reveal-ball-stage,
+.draft-reveal-overlay.is-reveal-already-shown .draft-reveal-flash {
+  display: none;
+}
+
+.draft-reveal-overlay.is-reveal-already-shown .draft-reveal-card {
+  animation: none !important;
+  opacity: 1;
+  transform: none;
+}
+
+.draft-reveal-card::before,
+.draft-reveal-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+}
+
+.draft-reveal-header {
+  display: grid;
+  gap: 8px;
+}
+
+.draft-reveal-title-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: center;
+}
+
+.draft-reveal-title-row h2 {
+  margin: 0;
+  color: #fff;
+  font-family: 'Chakra Petch', sans-serif;
+  font-size: clamp(2.4rem, 7vw, 6.6rem);
+  line-height: 0.98;
+}
+
+.draft-reveal-title-row h2.is-quark-name {
+  font-family: 'Chakra Petch', monospace;
+  color: #8ff2ff;
+  text-shadow: 0 0 14px rgba(46, 211, 255, 0.74);
+}
+
+.draft-reveal-title-row h2.is-proto-name {
+  font-family: Georgia, 'Times New Roman', serif;
+  color: #ffd7a1;
+  text-shadow: 0 0 14px rgba(255, 106, 40, 0.68);
+}
+
+.draft-reveal-title-row h2.is-porygon-glitching {
+  animation: draft-porygon-title-glitch 360ms steps(2, end) infinite;
+}
+
+.draft-reveal-weather {
+  font-size: clamp(2rem, 4vw, 3.6rem);
+  line-height: 1;
+}
+
+.draft-reveal-weather.is-sun {
+  filter: drop-shadow(0 0 18px rgba(255, 202, 79, 0.9));
+}
+
+.draft-reveal-weather.is-rain {
+  filter: drop-shadow(0 0 18px rgba(93, 183, 255, 0.85));
+}
+
+.draft-reveal-weather.is-snow {
+  filter: drop-shadow(0 0 18px rgba(183, 244, 255, 0.85));
+}
+
+.draft-reveal-weather.is-sand {
+  filter: drop-shadow(0 0 18px rgba(212, 164, 88, 0.85));
+}
+
+.draft-reveal-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.draft-reveal-icon {
+  width: 38px;
+  height: 38px;
+  object-fit: contain;
+  image-rendering: pixelated;
+  filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.34));
+}
+
+.draft-reveal-content {
+  display: grid;
+  grid-template-columns: minmax(180px, 0.58fr) minmax(320px, 1fr);
+  gap: clamp(16px, 3vw, 28px);
+  align-items: center;
+}
+
+.draft-reveal-sprite-wrap {
+  position: relative;
+  min-height: 320px;
+  display: grid;
+  place-items: center;
+}
+
+.draft-reveal-sprite {
+  width: min(360px, 42vw);
+  height: min(360px, 42vw);
+  object-fit: contain;
+  image-rendering: pixelated;
+  filter: drop-shadow(0 18px 24px rgba(0, 0, 0, 0.34));
+}
+
+.draft-reveal-sprite-glitch {
+  position: absolute;
+  inset: 50% auto auto 50%;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.draft-reveal-info {
+  display: grid;
+  gap: 14px;
+}
+
+.draft-reveal-types,
+.draft-reveal-abilities {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 9px;
+}
+
+.draft-reveal-type-pill {
+  min-height: 38px;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 0 12px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.08);
+  color: #eef5ff;
+  font-weight: 800;
+}
+
+.draft-reveal-type-pill img {
+  width: 24px;
+  height: 24px;
+}
+
+.draft-reveal-stats {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(96px, 1fr));
+  gap: 9px;
+}
+
+.draft-reveal-stat,
+.draft-reveal-ability {
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.075);
+  color: #eef5ff;
+}
+
+.draft-reveal-stat {
+  min-height: 76px;
+  display: grid;
+  gap: 4px;
+  padding: 10px;
+}
+
+.draft-reveal-stat span,
+.draft-reveal-ability span {
+  color: rgba(224, 232, 252, 0.68);
+  font-size: 0.78rem;
+  font-weight: 800;
+}
+
+.draft-reveal-stat strong {
+  font-family: 'Chakra Petch', sans-serif;
+  font-size: 1.45rem;
+}
+
+.draft-reveal-ability {
+  min-width: 150px;
+  display: grid;
+  gap: 3px;
+  padding: 9px 11px;
+}
+
+.draft-reveal-ability strong {
+  font-family: 'Chakra Petch', sans-serif;
+}
+
+.draft-reveal-ability.is-pre-mega {
+  opacity: 0.44;
+  filter: grayscale(0.8);
+}
+
+.draft-reveal-overlay.is-mega-reveal .draft-reveal-card::after {
+  background: linear-gradient(115deg, transparent 0 22%, rgba(255, 255, 255, 0.18) 34%, rgba(255, 95, 206, 0.22) 45%, rgba(76, 223, 255, 0.2) 57%, transparent 72% 100%);
+  background-size: 220% 100%;
+  animation: draft-mega-shine 1.8s linear infinite;
+}
+
+.draft-reveal-overlay.is-gmax-reveal .draft-reveal-card::after {
+  background:
+    radial-gradient(circle at 12% 20%, rgba(160, 19, 96, 0.34) 0 12%, transparent 18%),
+    radial-gradient(circle at 72% 26%, rgba(88, 9, 48, 0.36) 0 14%, transparent 20%),
+    radial-gradient(circle at 84% 76%, rgba(184, 36, 86, 0.28) 0 15%, transparent 22%),
+    linear-gradient(115deg, transparent, rgba(154, 21, 104, 0.28), transparent);
+  background-size: 150% 150%, 160% 160%, 140% 140%, 230% 100%;
+  animation: draft-gmax-clouds 3.2s linear infinite;
+}
+
+.draft-reveal-overlay.is-ultra-reveal .draft-reveal-card::before {
+  background:
+    linear-gradient(90deg, rgba(124, 255, 242, 0.14) 1px, transparent 1px),
+    linear-gradient(0deg, rgba(124, 255, 242, 0.12) 1px, transparent 1px),
+    radial-gradient(circle at 50% 50%, rgba(113, 80, 255, 0.35), transparent 58%);
+  background-size: 34px 34px, 34px 34px, 100% 100%;
+  animation: draft-ultra-grid 5.4s linear infinite;
+}
+
+.draft-reveal-overlay.is-cherish-reveal .draft-reveal-card {
+  border-color: rgba(255, 232, 140, 0.86);
+  box-shadow: 0 0 0 4px rgba(255, 232, 140, 0.16), 0 0 52px rgba(255, 221, 98, 0.34), 0 30px 90px rgba(0, 0, 0, 0.52);
+}
+
+.draft-reveal-overlay.is-cherish-reveal .draft-reveal-card::before {
+  background:
+    radial-gradient(circle at 12% 22%, rgba(255, 255, 255, 0.85) 0 1px, transparent 3px),
+    radial-gradient(circle at 88% 18%, rgba(255, 236, 150, 0.9) 0 1px, transparent 4px),
+    radial-gradient(circle at 76% 82%, rgba(255, 255, 255, 0.8) 0 1px, transparent 3px),
+    radial-gradient(circle at 22% 78%, rgba(255, 236, 150, 0.88) 0 1px, transparent 4px);
+  animation: draft-cherish-sparkle 1.4s ease-in-out infinite alternate;
+}
+
+.draft-reveal-overlay.is-andre-medicham-reveal .draft-reveal-card {
+  box-shadow: 0 0 0 5px rgba(255, 123, 202, 0.18), 0 0 70px rgba(255, 82, 180, 0.48), 0 30px 90px rgba(0, 0, 0, 0.52);
+  animation:
+    draft-reveal-card-open 520ms cubic-bezier(0.2, 0.9, 0.22, 1.15) 2.06s forwards,
+    draft-heart-aura 1.05s ease-in-out 2.58s infinite;
+}
+
+.draft-reveal-overlay.is-andre-medicham-reveal .draft-reveal-card::after {
+  background: radial-gradient(circle at 50% 50%, rgba(255, 105, 194, 0.22), transparent 62%);
+}
+
+.draft-reveal-heart-layer {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: visible;
+}
+
+.draft-reveal-heart {
+  position: absolute;
+  left: 50%;
+  top: 52%;
+  color: #ff75ce;
+  font-size: var(--heart-size, 1.5rem);
+  line-height: 1;
+  text-shadow: 0 0 14px rgba(255, 99, 196, 0.9);
+  opacity: 0;
+  animation: draft-heart-float 2.8s ease-out infinite;
+  animation-delay: calc(2.12s + var(--heart-delay, 0s));
+}
+
+.draft-reveal-overlay.is-porygon-reveal .draft-reveal-card {
+  animation: draft-porygon-card-glitch 720ms steps(2, end) infinite;
+}
+
+.draft-reveal-overlay.is-porygon-reveal .draft-reveal-card {
+  animation:
+    draft-reveal-card-open 520ms cubic-bezier(0.2, 0.9, 0.22, 1.15) 2.06s forwards,
+    draft-porygon-card-glitch 720ms steps(2, end) 2.58s infinite;
+}
+
+.draft-reveal-overlay.is-porygon-reveal .draft-reveal-sprite {
+  animation: draft-porygon-sprite-glitch 440ms steps(2, end) 2.58s infinite;
+}
+
+.draft-reveal-overlay.is-porygon-reveal .draft-reveal-sprite-glitch {
+  animation: draft-porygon-layer-glitch 440ms steps(2, end) 2.58s infinite;
+}
+
+.draft-reveal-overlay.is-porygon-reveal .draft-reveal-sprite-glitch.is-blue {
+  filter: hue-rotate(150deg) saturate(2.2) drop-shadow(0 0 12px rgba(55, 242, 255, 0.75));
+}
+
+.draft-reveal-overlay.is-porygon-reveal .draft-reveal-sprite-glitch.is-pink {
+  filter: hue-rotate(290deg) saturate(2.4) drop-shadow(0 0 12px rgba(255, 75, 216, 0.75));
+}
+
+.draft-reveal-overlay.is-quark-reveal .draft-reveal-card {
+  border-color: rgba(99, 234, 255, 0.5);
+}
+
+.draft-reveal-overlay.is-proto-reveal .draft-reveal-card {
+  border-color: rgba(255, 155, 85, 0.56);
+}
+
+.draft-decision-modal[hidden] {
+  display: none;
+}
+
+.draft-decision-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 20;
+  display: grid;
+  place-items: center;
+  padding: 18px;
+}
+
+.draft-decision-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(17, 19, 28, 0.58);
+}
+
+.draft-decision-dialog {
+  position: relative;
+  z-index: 1;
+  width: min(520px, 100%);
+  display: grid;
+  gap: 14px;
+  padding: 20px;
+}
+
+.draft-decision-dialog p {
+  margin: 0;
+  color: var(--muted);
+  font-weight: 700;
+  line-height: 1.45;
+}
+
+.draft-decision-options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: flex-end;
+}
+
+body.is-board-view {
+  background: #101626;
+  color: #edf3ff;
+}
+
+body.is-board-view .draft-topbar {
+  display: none;
+}
+
+body.is-board-view .draft-panel {
+  display: none !important;
+}
+
+body.is-board-view .draft-shell {
+  display: block;
+  padding: 16px;
+}
+
+body.is-board-view .draft-board {
+  gap: 16px;
+}
+
+body.is-board-view .draft-board-hero,
+body.is-board-view .draft-roster-card,
+body.is-board-view .draft-board-empty {
+  border-color: rgba(209, 223, 255, 0.14);
+  background: rgba(19, 28, 46, 0.96);
+  box-shadow: none;
+}
+
+body.is-board-view .draft-board-hero {
+  min-height: 22vh;
+}
+
+body.is-board-view .draft-roster-grid {
+  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+}
+
+body.is-board-view .draft-board-hero h2,
+body.is-board-view .draft-roster-header h3 {
+  color: #fff;
+}
+
+body.is-board-view .draft-eyebrow,
+body.is-board-view .draft-board-hero p:last-child,
+body.is-board-view .draft-roster-header p,
+body.is-board-view .draft-pokemon-meta span {
+  color: rgba(224, 232, 252, 0.72);
+}
+
+body.is-board-view .draft-order-chip,
+body.is-board-view .draft-roster-badges span,
+body.is-board-view .draft-captain-row span,
+body.is-board-view .draft-roster-pick {
+  border-color: rgba(209, 223, 255, 0.13);
+  background: rgba(255, 255, 255, 0.07);
+  color: rgba(237, 243, 255, 0.82);
+}
+
+body.is-board-view .draft-order-chip.is-current {
+  border-color: rgba(107, 226, 145, 0.8);
+  background: rgba(30, 83, 51, 0.94);
+  color: #dfffea;
+  box-shadow: 0 0 0 3px rgba(107, 226, 145, 0.18);
+}
+
+body.is-board-view .draft-order-chip.is-randomizing,
+body.is-board-view .draft-roster-card.is-randomizing {
+  border-color: rgba(255, 212, 89, 0.95);
+  box-shadow: 0 0 0 3px rgba(255, 212, 89, 0.18), 0 0 30px rgba(255, 212, 89, 0.24);
+}
+
+body.is-board-view .draft-order-chip.is-start-player,
+body.is-board-view .draft-roster-card.is-start-player {
+  border-color: rgba(255, 212, 89, 0.9);
+}
+
+body.is-board-view .draft-order-chip.is-finished {
+  background: rgba(255, 255, 255, 0.04);
+  color: rgba(237, 243, 255, 0.48);
+}
+
+body.is-board-view .draft-order-arrow {
+  color: rgba(237, 243, 255, 0.6);
+}
+
+body.is-board-view .draft-board-mode-button {
+  border-color: rgba(209, 223, 255, 0.14);
+  background: rgba(255, 255, 255, 0.07);
+  color: rgba(237, 243, 255, 0.82);
+}
+
+body.is-board-view .draft-board-mode-button.is-active {
+  border-color: rgba(107, 226, 145, 0.6);
+  background: rgba(30, 83, 51, 0.94);
+  color: #dfffea;
+}
+
+body.is-board-view .draft-availability-pool,
+body.is-board-view .draft-matrix-panel,
+body.is-board-view .draft-speed-tiers-panel {
+  border-color: rgba(209, 223, 255, 0.14);
+  background: rgba(19, 28, 46, 0.96);
+}
+
+body.is-board-view .draft-pool-chip,
+body.is-board-view .draft-matrix-table th,
+body.is-board-view .draft-matrix-table td {
+  border-color: rgba(209, 223, 255, 0.13);
+  background: rgba(255, 255, 255, 0.07);
+  color: rgba(237, 243, 255, 0.84);
+}
+
+body.is-board-view .draft-pool-chip span {
+  color: rgba(224, 232, 252, 0.64);
+}
+
+body.is-board-view .draft-speed-tier {
+  background: color-mix(in srgb, var(--trainer-color) 14%, #131c2e);
+}
+
+body.is-board-view .draft-budget-danger {
+  border-color: rgba(255, 120, 120, 0.32);
+  background: rgba(105, 25, 25, 0.5);
+  color: #ffdada;
+}
+
+body.is-board-view .draft-roster-card.is-current {
+  border-color: rgba(107, 226, 145, 0.82);
+  box-shadow: 0 0 0 3px rgba(107, 226, 145, 0.18);
+}
+
+body.is-board-view .draft-roster-pick {
+  border-color: transparent;
+  background:
+    linear-gradient(rgba(22, 32, 52, 0.94), rgba(22, 32, 52, 0.94)) padding-box,
+    linear-gradient(90deg, var(--pick-type-left, rgba(209, 223, 255, 0.13)) 0 50%, var(--pick-type-right, var(--pick-type-left, rgba(209, 223, 255, 0.13))) 50% 100%) border-box;
+}
+
+body.is-board-view .draft-roster-pick.is-empty {
+  border-color: rgba(209, 223, 255, 0.1);
+  background: rgba(255, 255, 255, 0.035);
+  color: rgba(237, 243, 255, 0.34);
+}
+
+@keyframes draft-star-glow {
+  0%, 100% {
+    transform: scale(1);
+    box-shadow:
+      0 0 0 4px rgba(255, 225, 122, 0.24),
+      0 0 22px rgba(255, 199, 55, 0.86);
+  }
+  50% {
+    transform: scale(1.08);
+    box-shadow:
+      0 0 0 7px rgba(255, 225, 122, 0.16),
+      0 0 36px rgba(255, 199, 55, 1);
+  }
+}
+
+@keyframes draft-randomizer-pulse {
+  from {
+    transform: translateY(0) scale(1);
+    box-shadow: 0 0 0 2px rgba(255, 193, 55, 0.12);
+  }
+  to {
+    transform: translateY(-2px) scale(1.02);
+    box-shadow: 0 0 0 5px rgba(255, 193, 55, 0.2), 0 0 24px rgba(255, 193, 55, 0.34);
+  }
+}
+
+@keyframes draft-ball-drop {
+  0% {
+    transform: translateY(-58vh) rotate(-210deg) scale(0.74);
+    opacity: 0;
+  }
+  14% {
+    opacity: 1;
+  }
+  74% {
+    transform: translateY(0) rotate(590deg) scale(1);
+  }
+  88% {
+    transform: translateY(-18px) rotate(650deg) scale(1.04);
+  }
+  100% {
+    transform: translateY(0) rotate(720deg) scale(1);
+    opacity: 0;
+  }
+}
+
+@keyframes draft-ball-stage-hide {
+  0%, 82% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes draft-reveal-flash {
+  0%, 66% {
+    opacity: 0;
+    transform: scale(0.24);
+  }
+  76% {
+    opacity: 1;
+    transform: scale(1.05);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1.5);
+  }
+}
+
+@keyframes draft-reveal-card-open {
+  from {
+    opacity: 0;
+    transform: translateY(24px) scale(0.94);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes draft-mega-shine {
+  from {
+    background-position: 160% 50%;
+  }
+  to {
+    background-position: -80% 50%;
+  }
+}
+
+@keyframes draft-gmax-clouds {
+  from {
+    background-position: 0% 0%, 100% 20%, 50% 100%, 160% 50%;
+  }
+  to {
+    background-position: 100% 30%, 0% 80%, 80% 0%, -80% 50%;
+  }
+}
+
+@keyframes draft-ultra-grid {
+  from {
+    background-position: 0 0, 0 0, 50% 50%;
+  }
+  to {
+    background-position: 68px 34px, 34px 68px, 50% 50%;
+  }
+}
+
+@keyframes draft-cherish-sparkle {
+  from {
+    opacity: 0.48;
+    transform: scale(1);
+  }
+  to {
+    opacity: 0.95;
+    transform: scale(1.015);
+  }
+}
+
+@keyframes draft-heart-aura {
+  0%, 100% {
+    transform: translateY(0) scale(1);
+    filter: saturate(1);
+  }
+  50% {
+    transform: translateY(0) scale(1.018);
+    filter: saturate(1.28);
+  }
+}
+
+@keyframes draft-heart-float {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.25) rotate(0deg);
+  }
+  16% {
+    opacity: 0.95;
+  }
+  100% {
+    opacity: 0;
+    transform:
+      translate(
+        calc(-50% + var(--heart-x, 0px)),
+        calc(-50% - var(--heart-y, 180px))
+      )
+      scale(1.2)
+      rotate(22deg);
+  }
+}
+
+@keyframes draft-porygon-card-glitch {
+  0%, 100% {
+    transform: translate(0, 0);
+  }
+  25% {
+    transform: translate(2px, -1px);
+  }
+  50% {
+    transform: translate(-2px, 1px);
+  }
+  75% {
+    transform: translate(1px, 2px);
+  }
+}
+
+@keyframes draft-porygon-title-glitch {
+  0%, 100% {
+    text-shadow: 2px 0 #37f2ff, -2px 0 #ff4bd8;
+    transform: translateX(0);
+  }
+  50% {
+    text-shadow: -2px 0 #37f2ff, 2px 0 #ff4bd8;
+    transform: translateX(2px);
+  }
+}
+
+@keyframes draft-porygon-sprite-glitch {
+  0%, 100% {
+    transform: rotate(0deg) scaleX(1) scaleY(1);
+  }
+  20% {
+    transform: rotate(3deg) scaleX(-1) scaleY(1);
+  }
+  40% {
+    transform: rotate(-4deg) scaleX(1) scaleY(-1);
+  }
+  70% {
+    transform: translate(3px, -2px) rotate(2deg) scaleX(1);
+  }
+}
+
+@keyframes draft-porygon-layer-glitch {
+  0%, 100% {
+    opacity: 0;
+    transform: translate(-50%, -50%);
+  }
+  35% {
+    opacity: 0.48;
+    transform: translate(calc(-50% - 8px), calc(-50% + 3px)) rotate(-3deg);
+  }
+  70% {
+    opacity: 0.42;
+    transform: translate(calc(-50% + 7px), calc(-50% - 4px)) rotate(4deg);
+  }
+}
+
+@media (max-width: 980px) {
+  .draft-shell {
+    grid-template-columns: 1fr;
+  }
+
+  .draft-topbar {
+    grid-template-columns: 1fr;
+  }
+
+  .draft-section-heading {
+    display: grid;
+  }
+
+  .draft-reveal-content {
+    grid-template-columns: 1fr;
+  }
+
+  .draft-reveal-sprite-wrap {
+    min-height: 220px;
+  }
+}
+
+@media (max-width: 620px) {
+  .draft-shell {
+    padding: 10px;
+  }
+
+  .draft-panel,
+  .draft-board-empty,
+  .draft-board-hero,
+  .draft-roster-card {
+    padding: 12px;
+  }
+
+  .draft-pokemon-results {
+    grid-template-columns: 1fr;
+  }
+
+  .draft-roster-grid {
+    grid-template-columns: 1fr;
+  }
+}

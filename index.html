@@ -44,8 +44,47 @@
                   height="32"
                   loading="lazy"
                 />
+                <button
+                  class="theme-toggle"
+                  id="easteregg-toggle"
+                  type="button"
+                  aria-pressed="true"
+                  aria-label="Eastereggmodus umschalten"
+                >
+                  <span class="theme-toggle-track" aria-hidden="true">
+                    <span class="theme-toggle-thumb"></span>
+                  </span>
+                  <span class="theme-toggle-label">Eastereggs</span>
+                </button>
+                <span
+                  class="theme-toggle-mascot theme-toggle-emoji-mascot"
+                  id="easteregg-toggle-mascot"
+                  aria-hidden="true"
+                >🥚</span>
                 <button class="details-button" id="legend-button" type="button">Legende</button>
               </div>
+            </div>
+          </div>
+
+          <div class="tool-panel">
+            <div class="tool-panel-heading">Tools</div>
+            <div class="tool-panel-actions">
+              <button class="details-button" id="replacement-finder-button" type="button">Ersatzfinder</button>
+              <button class="details-button" id="core-finder-button" type="button">Core Sucher</button>
+              <button class="details-button" id="budget-planner-button" type="button">Budget Planer</button>
+              <button class="details-button" id="rule-checker-button" type="button">Regel Checker</button>
+              <button class="details-button" id="speed-tiers-button" type="button">Speed Tiers</button>
+              <a class="details-button" href="draft-room.html">Draft Room</a>
+            </div>
+          </div>
+
+          <div class="tool-panel">
+            <div class="tool-panel-heading">Information</div>
+            <div class="tool-panel-actions">
+              <button class="details-button" id="stefans-pdf-button" type="button">Stefans Pdf</button>
+              <button class="details-button" id="changelog-button" type="button">Changelog</button>
+              <button class="details-button" id="spieler-button" type="button">Spieler</button>
+              <button class="details-button" id="information-graph-button" type="button">Graph</button>
             </div>
           </div>
 
@@ -127,19 +166,6 @@
             <p class="results-count" id="results-count">Loading entries...</p>
           </div>
 
-          <div class="tool-panel">
-            <div class="tool-panel-heading">Tools</div>
-            <div class="tool-panel-actions">
-              <button class="details-button" id="replacement-finder-button" type="button">Ersatzfinder</button>
-              <button class="details-button" id="core-finder-button" type="button">Core Sucher</button>
-              <button class="details-button" id="budget-planner-button" type="button">Budget Planer</button>
-              <button class="details-button" id="rule-checker-button" type="button">Regel Checker</button>
-              <button class="details-button" id="speed-tiers-button" type="button">Speed Tiers</button>
-              <button class="details-button" id="stefans-pdf-button" type="button">Stefans Pdf</button>
-              <button class="details-button" id="changelog-button" type="button">Changelog</button>
-            </div>
-          </div>
-
           <div class="filter-panel">
             <label class="format-filter" for="format-filter">
               <span>Format:</span>
@@ -147,6 +173,7 @@
                 <option value="normal">Normal</option>
                 <option value="low-power">Low Power</option>
                 <option value="uber">Uber</option>
+                <option value="free">Freies</option>
               </select>
             </label>
 
@@ -192,6 +219,7 @@
       <button class="scroll-top-button" id="scroll-top-button" type="button" hidden>
         Nach oben
       </button>
+      <div class="jump-rail" id="jump-rail" hidden aria-label="Jump to list sections"></div>
     </div>
 
     <template id="pokemon-card-template">
@@ -425,6 +453,13 @@
               <h3>Tier-Liste</h3>
             </div>
             <div class="detail-ribbons" id="detail-tier-list"></div>
+          </section>
+
+          <section class="detail-section">
+            <div class="detail-section-heading">
+              <h3>Karriere</h3>
+            </div>
+            <div class="detail-ribbons" id="detail-career"></div>
           </section>
 
           <section class="detail-section">
@@ -703,6 +738,52 @@
       </section>
     </div>
 
+    <div class="details-modal" id="spieler-modal" hidden>
+      <div class="details-backdrop" data-close-spieler="true"></div>
+      <section class="details-dialog spieler-dialog" aria-labelledby="spieler-title" aria-modal="true" role="dialog">
+        <div class="details-header">
+          <div>
+            <p class="eyebrow">Information</p>
+            <h2 id="spieler-title">Spieler</h2>
+          </div>
+          <button class="details-close" id="spieler-close" type="button" aria-label="Close">&times;</button>
+        </div>
+        <div class="details-body spieler-body">
+          <div class="spieler-grid" id="spieler-grid"></div>
+        </div>
+      </section>
+    </div>
+
+    <div class="details-modal" id="information-graph-modal" hidden>
+      <div class="details-backdrop" data-close-information-graph="true"></div>
+      <section class="details-dialog information-graph-dialog" aria-labelledby="information-graph-title" aria-modal="true" role="dialog">
+        <div class="details-header">
+          <div>
+            <p class="eyebrow">Information</p>
+            <h2 id="information-graph-title">Pok&eacute;mon Graph</h2>
+          </div>
+          <button class="details-close" id="information-graph-close" type="button" aria-label="Close">&times;</button>
+        </div>
+        <div class="details-body information-graph-body">
+          <div class="information-graph-controls">
+            <label class="information-graph-field" for="information-graph-x">
+              <span>X-Achse</span>
+              <select id="information-graph-x"></select>
+            </label>
+            <label class="information-graph-field" for="information-graph-y">
+              <span>Y-Achse</span>
+              <select id="information-graph-y"></select>
+            </label>
+            <button class="details-primary information-graph-generate" id="information-graph-generate" type="button">Graph generieren</button>
+          </div>
+          <div class="information-graph-canvas-wrap">
+            <canvas id="information-graph-canvas" width="960" height="560" aria-label="Leerer Scatter Plot" role="img"></canvas>
+            <div class="information-graph-tooltip" id="information-graph-tooltip" hidden></div>
+          </div>
+        </div>
+      </section>
+    </div>
+
     <div class="details-modal" id="legend-modal" hidden>
       <div class="details-backdrop" data-close-legend="true"></div>
       <section class="details-dialog legend-dialog" aria-labelledby="legend-title" aria-modal="true" role="dialog">
@@ -887,6 +968,17 @@
                     <span id="budget-planner-budget-total">90</span>
                   </strong>
                   <img class="budget-planner-budget-mascot" id="budget-planner-budget-mascot" alt="" hidden />
+                </div>
+              </div>
+              <div class="budget-planner-budget-box budget-planner-count-box">
+                <span class="budget-planner-budget-label">Pok&eacute;mon</span>
+                <div class="budget-planner-budget-display">
+                  <strong id="budget-planner-count">
+                    <span id="budget-planner-count-current">0</span>
+                    <span class="budget-planner-budget-separator"> / </span>
+                    <span id="budget-planner-count-total">12</span>
+                  </strong>
+                  <img class="budget-planner-budget-mascot" id="budget-planner-count-mascot" alt="" hidden />
                 </div>
               </div>
             </div>
@@ -1146,7 +1238,9 @@
     </div>
 
     <script src="data/pokedex-data.js" defer></script>
+    <script src="data/changelog-data.js" defer></script>
     <script src="data/rule-checker-items.js" defer></script>
+    <script src="Spieler.js" defer></script>
     <script src="app.js" defer></script>
   </body>
 </html>
