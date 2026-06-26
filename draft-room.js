@@ -92,6 +92,7 @@ const draftTypeColors = {
   Stellar: '#35ace7',
 };
 const draftTrainerColors = ['#47c9ff', '#ff7d92', '#9be45e', '#ffc85a', '#c993ff', '#55dbc0', '#ff9b5c', '#79a6ff'];
+const draftIllegalAbilityNames = new Set(['Sand Veil', 'Snow Cloak', 'Static']);
 const draftTypeDefenseChart = {
   Normal: { Normal: 1, Fire: 1, Water: 1, Electric: 1, Grass: 1, Ice: 1, Fighting: 2, Poison: 1, Ground: 1, Flying: 1, Psychic: 1, Bug: 1, Rock: 1, Ghost: 0, Dragon: 1, Dark: 1, Steel: 1, Fairy: 1 },
   Fire: { Normal: 1, Fire: 0.5, Water: 2, Electric: 1, Grass: 0.5, Ice: 0.5, Fighting: 1, Poison: 1, Ground: 2, Flying: 1, Psychic: 1, Bug: 0.5, Rock: 2, Ghost: 1, Dragon: 1, Dark: 1, Steel: 0.5, Fairy: 0.5 },
@@ -218,6 +219,7 @@ let allPokemon = [];
 let pokemonByName = new Map();
 let draftState = loadDraftState();
 let randomizerTimer = null;
+let draftDefenseProfileTick = 0;
 
 function normalizeText(value) {
   return String(value ?? '')
@@ -1526,8 +1528,81 @@ function renderAvailabilityPool() {
   nodes.board.append(wrap);
 }
 
-function getDefenseMultiplier(pokemon, attackType) {
-  return (pokemon.types ?? []).reduce((value, defendingType) => value * (draftTypeDefenseChart[defendingType]?.[attackType] ?? 1), 1);
+function getDefenseMultiplier(pokemon, attackType, defendingTypes = pokemon.types) {
+  return (defendingTypes ?? []).reduce((value, defendingType) => value * (draftTypeDefenseChart[defendingType]?.[attackType] ?? 1), 1);
+}
+
+function getDraftDefenseProfiles(pokemon, attackType, defendingTypes = pokemon.types) {
+  const baseValue = getDefenseMultiplier(pokemon, attackType, defendingTypes);
+  const abilityNames = new Set((pokemon.abilityDetails ?? []).map((ability) => ability.name));
+  const profiles = [{ value: baseValue, label: 'Ohne Fäh.' }];
+  const addProfile = (ability, value) => {
+    if (!abilityNames.has(ability) || value === baseValue) return;
+    profiles.push({ value, label: ability });
+  };
+  if (attackType === 'Ground') {
+    addProfile('Earth Eater', 0);
+    addProfile('Levitate', 0);
+  }
+  if (attackType === 'Water') {
+    addProfile('Dry Skin', 0);
+    addProfile('Storm Drain', 0);
+    addProfile('Water Absorb', 0);
+  }
+  if (attackType === 'Electric') {
+    addProfile('Lightning Rod', 0);
+    addProfile('Motor Drive', 0);
+    addProfile('Volt Absorb', 0);
+  }
+  if (attackType === 'Grass') addProfile('Sap Sipper', 0);
+  if (attackType === 'Fire') {
+    addProfile('Flash Fire', 0);
+    addProfile('Well-Baked Body', 0);
+    addProfile('Heatproof', baseValue / 2);
+    addProfile('Thick Fat', baseValue / 2);
+    addProfile('Water Bubble', baseValue / 2);
+    addProfile('Dry Skin', baseValue * 1.25);
+  }
+  if (attackType === 'Ice') addProfile('Thick Fat', baseValue / 2);
+  if (attackType === 'Ghost') addProfile('Purifying Salt', baseValue / 2);
+  if (baseValue > 1) {
+    addProfile('Filter', baseValue * 0.75);
+    addProfile('Prism Armor', baseValue * 0.75);
+    addProfile('Solid Rock', baseValue * 0.75);
+  }
+  return profiles;
+}
+
+function getDraftDefenseAbilityStates(pokemon, defendingTypes = pokemon.types) {
+  const abilities = (pokemon.abilityDetails ?? [])
+    .filter((ability) => !ability.isPreMegaAbility)
+    .map((ability) => ability.name)
+    .filter((ability) => ability && !draftIllegalAbilityNames.has(ability))
+    .filter((ability) => !(pokemon.name === 'Blaziken' && ability === 'Speed Boost'));
+  return abilities.length ? abilities : ['Ohne Fäh.'];
+}
+
+function setDraftDefenseProfileCell(cell, profiles, abilityStates) {
+  const activeAbility = abilityStates[draftDefenseProfileTick % abilityStates.length];
+  const profile = profiles.find((entry) => entry.label === activeAbility) ?? profiles[0];
+  cell.className = `is-defense-${String(profile.value).replace('.', '-')}`;
+  cell.textContent = getDefenseLabel(profile.value);
+  cell.title = activeAbility;
+  if (abilityStates.length > 1 || activeAbility !== 'Ohne Fäh.') {
+    cell.classList.add(abilityStates.length > 1 ? 'is-defense-cycling' : 'is-defense-ability-active');
+    cell.dataset.defenseProfileLabel = activeAbility;
+  }
+}
+
+function refreshDraftDefenseProfileCells() {
+  if (currentView !== 'board' || draftState.boardMode !== 'matrix' || document.hidden || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  draftDefenseProfileTick += 1;
+  document.querySelectorAll('.draft-matrix-table td.is-defense-cycling').forEach((cell) => {
+    setDraftDefenseProfileCell(cell, cell._defenseProfiles, cell._defenseAbilityStates);
+    cell.classList.remove('is-defense-flashing');
+    void cell.offsetWidth;
+    cell.classList.add('is-defense-flashing');
+  });
 }
 
 function getDefenseLabel(value) {
@@ -1556,14 +1631,27 @@ function renderActivePlayerMatrix() {
   thead.append(headRow);
   table.append(thead);
   const tbody = document.createElement('tbody');
-  for (const pick of player.pokemon) {
+  const matrixEntries = player.pokemon.map((pick) => ({ pick, defenseTypes: null, label: getPokemonDisplayName(pick.name) }));
+  if (player.teraCaptain && player.teraType) {
+    const teraPick = player.pokemon.find((pick) => pick.name === player.teraCaptain);
+    if (teraPick) matrixEntries.push({
+      pick: teraPick,
+      defenseTypes: [player.teraType],
+      label: `${getPokemonDisplayName(teraPick.name)} (Tera ${player.teraType})`,
+    });
+  }
+  for (const entry of matrixEntries) {
+    const pick = entry.pick;
     const pokemon = pokemonByName.get(pick.name);
     if (!pokemon) continue;
     const row = document.createElement('tr');
-    row.append(createElement('th', '', getPokemonDisplayName(pokemon)));
+    row.append(createElement('th', '', entry.label));
     for (const type of draftBattleTypes.filter((entry) => entry !== 'Stellar')) {
-      const value = getDefenseMultiplier(pokemon, type);
-      const cell = createElement('td', `is-defense-${String(value).replace('.', '-')}`, getDefenseLabel(value));
+      const profiles = getDraftDefenseProfiles(pokemon, type, entry.defenseTypes ?? pokemon.types);
+      const cell = createElement('td');
+      cell._defenseProfiles = profiles;
+      cell._defenseAbilityStates = getDraftDefenseAbilityStates(pokemon, entry.defenseTypes ?? pokemon.types);
+      setDraftDefenseProfileCell(cell, profiles, cell._defenseAbilityStates);
       row.append(cell);
     }
     tbody.append(row);
@@ -1848,4 +1936,5 @@ initializePokemonData();
 populateDraftFilters();
 bindEvents();
 render();
+window.setInterval(refreshDraftDefenseProfileCells, 2000);
 

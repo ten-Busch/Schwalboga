@@ -4127,6 +4127,19 @@ body.dark-mode .detail-stat-range {
   color: #9f2214;
 }
 
+.is-defense-cycling[data-defense-show-label]::after,
+.is-defense-ability-active[data-defense-show-label]::after {
+  content: attr(data-defense-profile-label);
+  margin-left: 5px;
+  font-size: 0.7em;
+  font-weight: 600;
+  opacity: 0.72;
+}
+
+.is-defense-flashing {
+  animation: defense-profile-flash 420ms ease-out;
+}
+
 .detail-move-filters {
   display: flex;
   flex-wrap: wrap;
@@ -5061,6 +5074,32 @@ body.dark-mode .detail-stat-range {
 .budget-planner-defense-cell.weak,
 .budget-planner-defense-cell.double-weak {
   color: #b22b2b;
+}
+
+.budget-planner-defense-text.resist,
+.budget-planner-defense-text.double-resist,
+.budget-planner-defense-text.immune {
+  color: #237347;
+}
+
+.budget-planner-defense-text.neutral {
+  color: rgba(31, 34, 51, 0.45);
+}
+
+.budget-planner-defense-text.weak,
+.budget-planner-defense-text.double-weak {
+  color: #b22b2b;
+}
+
+@keyframes defense-profile-flash {
+  0% { filter: brightness(1.65); transform: scale(1.08); }
+  100% { filter: brightness(1); transform: scale(1); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .is-defense-cycling {
+    animation: none !important;
+  }
 }
 
 .budget-planner-feature-grid {

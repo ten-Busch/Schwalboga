@@ -1016,6 +1016,7 @@ let meowthCoinState = {
 };
 let detailSpecialEffectCleanups = [];
 let detailOneShotEffectsPlayed = new Set();
+let defenseProfileTick = 0;
 let currentTheme = 'light';
 let currentEastereggMode = 'eastereggs';
 let collapsedDividerIds = new Set();
@@ -5227,53 +5228,6 @@ function classifyDefenseValue(value) {
   return { label: 'Neutral', className: 'neutral' };
 }
 
-function getDefenseAbilityReasons(pokemon, type) {
-  const reasons = [];
-  const abilityNames = pokemon.abilityDetails.map((ability) => ability.name);
-
-  const pushReason = (ability, text) => {
-    if (abilityNames.includes(ability)) reasons.push({ ability, text });
-  };
-
-  if (type === 'Ground') {
-    pushReason('Earth Eater', 'Mit Earth Eater');
-    pushReason('Levitate', 'Mit Levitate');
-  }
-  if (type === 'Water') {
-    pushReason('Dry Skin', 'Mit Dry Skin');
-    pushReason('Storm Drain', 'Mit Storm Drain');
-    pushReason('Water Absorb', 'Mit Water Absorb');
-    pushReason('Heatproof', 'Mit Heatproof');
-    pushReason('Water Bubble', 'Mit Water Bubble');
-  }
-  if (type === 'Electric') {
-    pushReason('Lightning Rod', 'Mit Lightning Rod');
-    pushReason('Motor Drive', 'Mit Motor Drive');
-    pushReason('Volt Absorb', 'Mit Volt Absorb');
-  }
-  if (type === 'Grass') pushReason('Sap Sipper', 'Mit Sap Sipper');
-  if (type === 'Fire') {
-    pushReason('Flash Fire', 'Mit Flash Fire');
-    pushReason('Well-Baked Body', 'Mit Well-Baked Body');
-    pushReason('Fluffy', 'Mit Fluffy');
-    pushReason('Dry Skin', 'Mit Dry Skin');
-  }
-  if (type === 'Ghost') pushReason('Purifying Salt', 'Mit Purifying Salt');
-  return reasons;
-}
-
-function getDefenseEntriesForType(pokemon, type) {
-  const defenseValue = pokemon[`${type.toLowerCase()}_defense`];
-  const rawValues = Array.isArray(defenseValue) ? defenseValue : [defenseValue];
-  const values = [...new Set(rawValues.filter((value) => value !== undefined && value !== null))];
-  const reasons = [...getDefenseAbilityReasons(pokemon, type)];
-
-  return values.map((value, index) => {
-    const reason = index < reasons.length ? reasons[index].text : 'Standard';
-    return { value, reason };
-  });
-}
-
 function getTypeChartDefenseValue(defendingTypes, attackType) {
   const types = Array.isArray(defendingTypes) ? defendingTypes.filter(Boolean) : [];
   if (!types.length) return 1;
@@ -5283,17 +5237,101 @@ function getTypeChartDefenseValue(defendingTypes, attackType) {
   }, 1);
 }
 
+function getDefenseProfiles(pokemon, attackType, defendingTypes = pokemon.types) {
+  const baseValue = getTypeChartDefenseValue(defendingTypes, attackType);
+  const abilityNames = new Set((pokemon.abilityDetails ?? []).map((ability) => ability.name));
+  const profiles = [{ value: baseValue, label: 'Ohne Fähigkeit' }];
+  const addProfile = (ability, value) => {
+    if (!abilityNames.has(ability) || value === baseValue) return;
+    profiles.push({ value, label: ability });
+  };
+
+  if (attackType === 'Ground') {
+    addProfile('Earth Eater', 0);
+    addProfile('Levitate', 0);
+  }
+  if (attackType === 'Water') {
+    addProfile('Dry Skin', 0);
+    addProfile('Storm Drain', 0);
+    addProfile('Water Absorb', 0);
+  }
+  if (attackType === 'Electric') {
+    addProfile('Lightning Rod', 0);
+    addProfile('Motor Drive', 0);
+    addProfile('Volt Absorb', 0);
+  }
+  if (attackType === 'Grass') addProfile('Sap Sipper', 0);
+  if (attackType === 'Fire') {
+    addProfile('Flash Fire', 0);
+    addProfile('Well-Baked Body', 0);
+    addProfile('Heatproof', baseValue / 2);
+    addProfile('Thick Fat', baseValue / 2);
+    addProfile('Water Bubble', baseValue / 2);
+    addProfile('Dry Skin', baseValue * 1.25);
+  }
+  if (attackType === 'Ice') addProfile('Thick Fat', baseValue / 2);
+  if (attackType === 'Ghost') addProfile('Purifying Salt', baseValue / 2);
+  if (baseValue > 1) {
+    addProfile('Filter', baseValue * 0.75);
+    addProfile('Prism Armor', baseValue * 0.75);
+    addProfile('Solid Rock', baseValue * 0.75);
+  }
+  return profiles;
+}
+
+function getDefenseEntriesForType(pokemon, type) {
+  return getDefenseProfiles(pokemon, type).map((profile) => ({ value: profile.value, reason: profile.label }));
+}
+
+function getDefenseAbilityStates(pokemon, defendingTypes = pokemon.types) {
+  const abilities = (pokemon.abilityDetails ?? [])
+    .filter((ability) => !ability.isPreMegaAbility)
+    .filter((ability) => getAbilityRuleInfo(ability.name, pokemon)?.severity !== 'illegal')
+    .map((ability) => ability.name)
+    .filter(Boolean);
+  return abilities.length ? abilities : ['Ohne Fähigkeit'];
+}
+
+function setDefenseProfilePresentation(node, profiles, formatter, abilityStates) {
+  const activeAbility = abilityStates[defenseProfileTick % abilityStates.length];
+  const profile = profiles.find((entry) => entry.label === activeAbility) ?? profiles[0];
+  const classification = classifyDefenseValue(profile.value);
+  node.classList.remove('neutral', 'resistant', 'immune', 'weak', 'very-weak', 'resist', 'double-resist', 'double-weak');
+  node.classList.add(...formatter.classNames(profile.value, classification));
+  node.textContent = formatter.text(profile.value, classification);
+  node.title = activeAbility;
+  node.dataset.defenseProfileLabel = activeAbility;
+  if (formatter.showLabel) node.dataset.defenseShowLabel = 'true';
+  else delete node.dataset.defenseShowLabel;
+}
+
+function registerDefenseProfileNode(node, profiles, formatter, abilityStates = ['Ohne Fähigkeit']) {
+  if (abilityStates.length <= 1) {
+    if (abilityStates[0] !== 'Ohne Fähigkeit') node.classList.add('is-defense-ability-active');
+    setDefenseProfilePresentation(node, profiles, formatter, abilityStates);
+    return;
+  }
+  node.classList.add('is-defense-cycling');
+  node._defenseProfiles = profiles;
+  node._defenseFormatter = formatter;
+  node._defenseAbilityStates = abilityStates;
+  setDefenseProfilePresentation(node, profiles, formatter, abilityStates);
+}
+
+function refreshDefenseProfileNodes() {
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  defenseProfileTick += 1;
+  document.querySelectorAll('.is-defense-cycling').forEach((node) => {
+    setDefenseProfilePresentation(node, node._defenseProfiles, node._defenseFormatter, node._defenseAbilityStates);
+    node.classList.remove('is-defense-flashing');
+    void node.offsetWidth;
+    node.classList.add('is-defense-flashing');
+  });
+}
+
 function getBudgetPlannerDefenseValue(pokemon, attackType, options = {}) {
   const overrideTypes = options.types ?? null;
-  if (!overrideTypes) return getReplacementBestDefenseValue(pokemon, attackType);
-
-  let bestValue = getTypeChartDefenseValue(overrideTypes, attackType);
-  const abilityReasons = getDefenseAbilityReasons(pokemon, attackType);
-  if (abilityReasons.length) {
-    const currentBestValue = getReplacementBestDefenseValue(pokemon, attackType);
-    bestValue = Math.min(bestValue, currentBestValue);
-  }
-  return bestValue;
+  return Math.min(...getDefenseProfiles(pokemon, attackType, overrideTypes ?? pokemon.types).map((profile) => profile.value));
 }
 
 function getMoveMethodBadges(methods) {
@@ -6197,8 +6235,11 @@ function renderPokemonDetail(pokemon) {
           item.append(icon);
         }
         const label = document.createElement('span');
-        label.textContent = entries.map((entry) => `${entry.value}x`).join(' / ');
-        item.title = entries.map((entry) => entry.reason).join(' / ');
+        registerDefenseProfileNode(label, entries.map((entry) => ({ value: entry.value, label: entry.reason })), {
+          classNames: () => [],
+          text: (value) => `${value}x`,
+          showLabel: true,
+        }, getDefenseAbilityStates(form));
         item.append(label);
         defenseGrid.append(item);
       }
@@ -6414,14 +6455,14 @@ function renderPokemonDetail(pokemon) {
     header.append(label);
     const valuesWrap = document.createElement('div');
     valuesWrap.className = 'detail-weakness-values';
-    for (const entry of getDefenseEntriesForType(pokemon, type)) {
-      const chip = document.createElement('span');
-      const classification = classifyDefenseValue(entry.value);
-      chip.className = `detail-defense-chip ${classification.className}`;
-      chip.textContent = `${entry.value}x ${classification.label}`;
-      chip.title = entry.reason;
-      valuesWrap.append(chip);
-    }
+    const chip = document.createElement('span');
+    chip.className = 'detail-defense-chip';
+    registerDefenseProfileNode(chip, getDefenseEntriesForType(pokemon, type).map((entry) => ({ value: entry.value, label: entry.reason })), {
+      classNames: (value, classification) => [classification.className],
+      text: (value, classification) => `${value}x ${classification.label}`,
+      showLabel: true,
+    }, getDefenseAbilityStates(pokemon));
+    valuesWrap.append(chip);
     card.append(header, valuesWrap);
     detailWeaknessGrid.append(card);
   }
@@ -7005,11 +7046,13 @@ function renderBudgetPlannerTypeMatrix() {
     row.append(nameCell);
     for (const type of battleTypes) {
       const cell = document.createElement('td');
-      const code = getBudgetPlannerDefenseCode(getBudgetPlannerDefenseValue(entry.pokemon, type, { types: entry.defenseTypes ?? null }));
-      cell.className = `budget-planner-defense-cell ${code.className}`;
+      cell.className = 'budget-planner-defense-cell';
       const text = document.createElement('span');
       text.className = 'budget-planner-defense-text';
-      text.textContent = code.text;
+      registerDefenseProfileNode(text, getDefenseProfiles(entry.pokemon, type, entry.defenseTypes ?? entry.pokemon.types), {
+        classNames: (value) => [getBudgetPlannerDefenseCode(value).className],
+        text: (value) => getBudgetPlannerDefenseCode(value).text,
+      }, getDefenseAbilityStates(entry.pokemon, entry.defenseTypes ?? entry.pokemon.types));
       cell.append(text);
       cell.title = `${entry.name} vs ${type}`;
       row.append(cell);
@@ -9344,6 +9387,9 @@ window.addEventListener('resize', updateScrollTopButtonVisibility);
 setSearchAdvancedExpanded(false);
 updateScrollTopButtonVisibility();
 loadPokedex();
+window.setInterval(() => {
+  if (!document.hidden) refreshDefenseProfileNodes();
+}, 2000);
 
 
 

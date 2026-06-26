@@ -609,14 +609,21 @@ a {
   width: 100%;
   min-width: 1120px;
   border-collapse: collapse;
+  table-layout: fixed;
 }
 
 .draft-matrix-table th,
 .draft-matrix-table td {
+  height: 54px;
   padding: 8px;
   border: 1px solid var(--line);
   text-align: center;
+  vertical-align: middle;
   font-weight: 800;
+}
+
+.draft-matrix-table th:first-child {
+  width: clamp(160px, 18vw, 240px);
 }
 
 .draft-matrix-table th {
@@ -636,6 +643,23 @@ a {
   color: #922323;
 }
 
+.draft-matrix-table td.is-defense-cycling::after,
+.draft-matrix-table td.is-defense-ability-active::after {
+  content: attr(data-defense-profile-label);
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  margin-top: 3px;
+  font-size: 0.65rem;
+  font-weight: 700;
+  opacity: 0.78;
+}
+
+.draft-matrix-table td.is-defense-flashing {
+  animation: draft-defense-profile-flash 420ms ease-out;
+}
+
 body.is-board-view .draft-matrix-table td.is-defense-0,
 body.is-board-view .draft-matrix-table td.is-defense-0-25,
 body.is-board-view .draft-matrix-table td.is-defense-0-5 {
@@ -647,6 +671,17 @@ body.is-board-view .draft-matrix-table td.is-defense-2,
 body.is-board-view .draft-matrix-table td.is-defense-4 {
   background: rgba(225, 78, 78, 0.28);
   color: #ffd0d0;
+}
+
+@keyframes draft-defense-profile-flash {
+  0% { filter: brightness(1.8); }
+  100% { filter: brightness(1); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .draft-matrix-table td.is-defense-cycling {
+    animation: none !important;
+  }
 }
 
 .draft-speed-tiers-panel {
