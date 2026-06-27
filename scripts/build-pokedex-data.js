@@ -11,6 +11,7 @@ const sourcePaths = {
   abilitiesText: path.join(workspaceRoot, 'abilities_text.ts'),
   learnsets: path.join(workspaceRoot, 'learnsets.ts'),
   typechart: path.join(workspaceRoot, 'typechart.ts'),
+  translations: path.join(workspaceRoot, 'data', 'translations.json'),
 };
 const outputDirectory = path.join(workspaceRoot, 'data');
 const outputScriptPath = path.join(outputDirectory, 'pokedex-data.js');
@@ -18,8 +19,17 @@ const outputScriptPath = path.join(outputDirectory, 'pokedex-data.js');
 const toId = (value) =>
   String(value)
     .toLowerCase()
+    .normalize('NFKD')
+    .replace(/[\u0300-\u036f]/g, '')
     .replace(/[\u2019']/g, '')
     .replace(/[^a-z0-9]+/g, '');
+
+const normalizeSearchText = (values) =>
+  values
+    .filter((value) => value !== null && value !== undefined && value !== '')
+    .map(toId)
+    .filter(Boolean)
+    .join(' ');
 
 const toSpriteSlug = (name) =>
   name
@@ -56,7 +66,16 @@ const spriteUrlOverrides = {
   'Necrozma-Dusk-Mane': 'https://play.pokemonshowdown.com/sprites/gen5/necrozma-duskmane.png',
   'Necrozma-Dawn-Wings': 'https://play.pokemonshowdown.com/sprites/gen5/necrozma-dawnwings.png',
   'Mr. Rime': 'https://play.pokemonshowdown.com/sprites/gen5/mrrime.png',
+  'Pikachu-Rock-Star': 'https://play.pokemonshowdown.com/sprites/gen5/pikachu-rockstar.png',
+  'Pikachu-Pop-Star': 'https://play.pokemonshowdown.com/sprites/gen5/pikachu-popstar.png',
+  'Pichu-Spiky-eared': 'https://play.pokemonshowdown.com/sprites/gen5/pichu-spikyeared.png',
+  'Basculin-Blue-Striped': 'https://play.pokemonshowdown.com/sprites/gen5/basculin-bluestriped.png',
+  'Basculin-White-Striped': 'https://play.pokemonshowdown.com/sprites/gen5/basculin-whitestriped.png',
+  'Darmanitan-Galar-Zen': 'https://play.pokemonshowdown.com/sprites/gen5/darmanitan-galarzen.png',
+  'Oricorio-Pom-Pom': 'https://play.pokemonshowdown.com/sprites/gen5/oricorio-pompom.png',
+  'Toxtricity-Low-Key': 'https://play.pokemonshowdown.com/sprites/gen5/toxtricity-lowkey.png',
   'Urshifu-Rapid-Strike': 'https://play.pokemonshowdown.com/sprites/gen5/urshifu-rapidstrike.png',
+  'Urshifu-Rapid-Strike-Gmax': 'https://play.pokemonshowdown.com/sprites/gen5/urshifu-rapidstrikegmax.png',
   'Great Tusk': 'https://play.pokemonshowdown.com/sprites/gen5/greattusk.png',
   'Scream Tail': 'https://play.pokemonshowdown.com/sprites/gen5/screamtail.png',
   'Brute Bonnet': 'https://play.pokemonshowdown.com/sprites/gen5/brutebonnet.png',
@@ -86,9 +105,33 @@ const spriteUrlOverrides = {
   'Meowstic-M-Mega': 'https://play.pokemonshowdown.com/sprites/gen5/meowstic-mmega.png',
   'Meowstic-F-Mega': 'https://play.pokemonshowdown.com/sprites/gen5/meowstic-fmega.png',
   'Annihilape-Fist': 'https://play.pokemonshowdown.com/sprites/gen5/annihilape.png',
+  'Dudunsparce-Three-Segment': 'https://play.pokemonshowdown.com/sprites/gen5/dudunsparce-threesegment.png',
+  'Ogerpon-Teal-Tera': 'https://play.pokemonshowdown.com/sprites/gen5/ogerpon-tealtera.png',
+  'Ogerpon-Wellspring-Tera': 'https://play.pokemonshowdown.com/sprites/gen5/ogerpon-wellspringtera.png',
+  'Ogerpon-Hearthflame-Tera': 'https://play.pokemonshowdown.com/sprites/gen5/ogerpon-hearthflametera.png',
+  'Ogerpon-Cornerstone-Tera': 'https://play.pokemonshowdown.com/sprites/gen5/ogerpon-cornerstonetera.png',
 };
 
 const toSpriteUrl = (name) => spriteUrlOverrides[name] ?? `https://play.pokemonshowdown.com/sprites/gen5/${toSpriteSlug(name)}.png`;
+
+function getSpeciesSpriteData(species) {
+  const defaultSprite = typeof species.sprite === 'string' && species.sprite
+    ? species.sprite
+    : toSpriteUrl(species.name);
+  const rawOptions = Array.isArray(species.spriteOptions)
+    ? species.spriteOptions
+    : Array.isArray(species.sprites)
+      ? species.sprites
+      : null;
+  const spriteOptions = rawOptions
+    ? [...new Set(rawOptions.filter((option) => typeof option === 'string' && option.trim()).map((option) => option.trim()))]
+    : [defaultSprite];
+  const sprite = spriteOptions[0] ?? defaultSprite;
+  return {
+    sprite,
+    ...(spriteOptions.length > 1 ? { spriteOptions } : {}),
+  };
+}
 
 const loadExportedObject = ({ filePath, exportName, startPattern }) => {
   const sourceText = fs.readFileSync(filePath, 'utf8');
@@ -163,6 +206,10 @@ const MovesText = loadExportedObject({
   startPattern: /export const MovesText:\s*\{[^=]+\}\s*=\s*/,
 });
 
+const Translations = fs.existsSync(sourcePaths.translations)
+  ? JSON.parse(fs.readFileSync(sourcePaths.translations, 'utf8'))
+  : { pokemon: {}, moves: {}, abilities: {} };
+
 const movesSourceText = fs.readFileSync(sourcePaths.moves, 'utf8');
 const moveEntries = parseTopLevelEntries(movesSourceText);
 const Moves = Object.fromEntries(
@@ -175,11 +222,14 @@ const Moves = Object.fromEntries(
     const accuracyRaw = body.match(/\n\t\taccuracy:\s*([^,\n]+)/)?.[1]?.trim() ?? 'true';
     const accuracy = /^\d+$/.test(accuracyRaw) ? Number(accuracyRaw) : null;
     const moveText = MovesText[id] ?? {};
+    const translatedName = Translations.moves?.[id]?.de ?? null;
+    const names = translatedName ? { de: translatedName } : undefined;
     return [
       id,
       {
         id,
         name,
+        ...(names ? { names } : {}),
         type,
         category,
         basePower,
@@ -324,11 +374,73 @@ const abilityTextByName = new Map(
     {
       id,
       name: ability.name,
+      ...(Translations.abilities?.[id]?.de ? { names: { de: Translations.abilities[id].de } } : {}),
       shortDesc: ability.shortDesc ?? null,
       desc: ability.desc ?? ability.shortDesc ?? null,
     },
   ]),
 );
+
+const pokemonIdByName = new Map(Object.entries(Pokedex).map(([id, species]) => [toId(species.name), id]));
+
+const pokemonFormSuffixTranslations = [
+  ['Mega-X', 'Mega-X'],
+  ['Mega-Y', 'Mega-Y'],
+  ['Rapid-Strike', 'Fließender Stil'],
+  ['Dusk-Mane', 'Abendmähne'],
+  ['Dawn-Wings', 'Morgenschwingen'],
+  ['Hearthflame', 'Ofen'],
+  ['Cornerstone', 'Fundament'],
+  ['Wellspring', 'Brunnen'],
+  ['Bloodmoon', 'Blutmond'],
+  ['Therian', 'Tiergeist'],
+  ['Unbound', 'Entfesselt'],
+  ['Midnight', 'Nacht'],
+  ['Defense', 'Verteidigung'],
+  ['Attack', 'Angriff'],
+  ['Speed', 'Initiative'],
+  ['Primal', 'Proto'],
+  ['Sandy', 'Sand'],
+  ['Trashy', 'Lumpen'],
+  ['Trash', 'Lumpen'],
+  ['Crowned', 'König'],
+  ['Alola', 'Alola'],
+  ['Galar', 'Galar'],
+  ['Hisui', 'Hisui'],
+  ['Mega', 'Mega'],
+  ['Gmax', 'GMAX'],
+  ['Tera', 'Tera'],
+  ['Heat', 'Hitze'],
+  ['Wash', 'Wasch'],
+  ['Fan', 'Wirbel'],
+  ['Cut', 'Schneid'],
+  ['Mow', 'Schneid'],
+  ['Sky', 'Himmel'],
+  ['Black', 'Schwarz'],
+  ['White', 'Weiß'],
+  ['Dusk', 'Zwielicht'],
+  ['Ice', 'Schimmel'],
+  ['Shadow', 'Rappe'],
+];
+
+function getPokemonBaseGermanNameByEnglishName(name) {
+  const baseId = pokemonIdByName.get(toId(name));
+  return baseId ? (getPokemonGermanName(baseId, Pokedex[baseId].name) ?? Pokedex[baseId].name) : null;
+}
+
+function getPokemonGermanName(speciesId, name) {
+  const direct = Translations.pokemon?.[speciesId]?.de;
+  if (direct) return direct;
+
+  for (const [englishSuffix, germanSuffix] of pokemonFormSuffixTranslations) {
+    const token = `-${englishSuffix}`;
+    if (!name.endsWith(token)) continue;
+    const baseName = getPokemonBaseGermanNameByEnglishName(name.slice(0, -token.length));
+    if (baseName) return `${baseName}-${germanSuffix}`;
+  }
+
+  return null;
+}
 
 const getLearnsetForSpecies = (speciesId, species) => {
   const candidateIds = [
@@ -346,15 +458,30 @@ const getLearnsetForSpecies = (speciesId, species) => {
 };
 
 const allAbilityNames = new Set();
+const allAbilityOptionsById = new Map();
 for (const species of Object.values(Pokedex)) {
   for (const abilityName of Object.values(species.abilities ?? {})) {
     allAbilityNames.add(abilityName);
+    const abilityText = abilityTextByName.get(abilityName);
+    if (abilityText) {
+      allAbilityOptionsById.set(abilityText.id, {
+        id: abilityText.id,
+        name: abilityText.name,
+        ...(abilityText.names ? { names: abilityText.names } : {}),
+        searchText: normalizeSearchText([abilityText.name, abilityText.names?.de]),
+      });
+    }
   }
 }
 
 const allMoveOptions = Object.values(Moves)
   .filter((move) => move.name)
-  .map(({ id, name }) => ({ id, name }))
+  .map(({ id, name, names }) => ({
+    id,
+    name,
+    ...(names ? { names } : {}),
+    searchText: normalizeSearchText([name, names?.de]),
+  }))
   .sort((left, right) => left.name.localeCompare(right.name));
 
 const pokedexEntries = Object.entries(Pokedex)
@@ -379,12 +506,26 @@ const pokedexEntries = Object.entries(Pokedex)
       };
       return { slot, ...text };
     });
+    const germanName = getPokemonGermanName(speciesId, species.name);
+    const names = germanName ? { de: germanName } : undefined;
+    const searchText = normalizeSearchText([
+      `#${String(species.num).padStart(4, '0')}`,
+      String(species.num),
+      species.name,
+      names?.de,
+      species.displayName,
+      ...(species.types ?? []),
+    ]);
+
+    const spriteData = getSpeciesSpriteData(species);
 
     return {
       speciesId,
       sourceIndex,
       num: species.num,
       name: species.name,
+      ...(names ? { names } : {}),
+      searchText,
       types: species.types ?? [],
       abilities: species.abilities ?? {},
       abilityDetails,
@@ -407,7 +548,7 @@ const pokedexEntries = Object.entries(Pokedex)
       learnset,
       coverageByType,
       ...(defenseByName.get(species.name) ?? {}),
-      sprite: toSpriteUrl(species.name),
+      ...spriteData,
     };
   })
   .filter((species) => typeof species.num === 'number' && species.num >= 1 && species.name)
@@ -428,6 +569,7 @@ fs.writeFileSync(
     `window.POKEDEX_META = ${JSON.stringify(
       {
         abilities: [...allAbilityNames].sort((left, right) => left.localeCompare(right)),
+        abilityOptions: [...allAbilityOptionsById.values()].sort((left, right) => left.name.localeCompare(right.name)),
         moves: allMoveOptions,
         movesById: Moves,
       },

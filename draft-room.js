@@ -1,6 +1,7 @@
 const draftStorageKey = 'schwalboga-draft-room-state-v1';
 const draftUndoKey = 'schwalboga-draft-room-undo-v1';
 const draftChannelName = 'schwalboga-draft-room';
+const draftLanguageStorageKey = 'pokedex-name-language';
 const draftBudgetByFormat = {
   normal: 90,
   uber: 115,
@@ -204,6 +205,7 @@ const nodes = {
   undoButton: document.querySelector('#draft-undo-button'),
   exportButton: document.querySelector('#draft-export-button'),
   boardOpenButton: document.querySelector('#draft-board-open-button'),
+  languageToggle: document.querySelector('#draft-language-toggle'),
   swapPlayer: document.querySelector('#draft-swap-player'),
   swapOwn: document.querySelector('#draft-swap-own'),
   swapSearch: document.querySelector('#draft-swap-search'),
@@ -218,6 +220,7 @@ const nodes = {
 let allPokemon = [];
 let pokemonByName = new Map();
 let draftState = loadDraftState();
+let activeNameLanguage = localStorage.getItem(draftLanguageStorageKey) === 'de' ? 'de' : 'en';
 let randomizerTimer = null;
 let draftDefenseProfileTick = 0;
 
@@ -241,14 +244,60 @@ function getSpielerEntries() {
   return Array.isArray(window.SPIELER) ? window.SPIELER : [];
 }
 
+function getPokemonSearchText(pokemon) {
+  if (!pokemon) return '';
+  return pokemon.searchText ?? normalizeText([
+    pokemon.name,
+    pokemon.names?.de,
+    pokemon.displayName,
+    ...(pokemon.types ?? []),
+    String(pokemon.cost ?? ''),
+    String(pokemon.num ?? ''),
+  ].join(' '));
+}
+
 function getPokemonDisplayName(pokemonOrName) {
   const pokemon = typeof pokemonOrName === 'string' ? pokemonByName.get(pokemonOrName) : pokemonOrName;
+  if (activeNameLanguage === 'de' && pokemon?.names?.de) return pokemon.names.de;
   return pokemon?.displayName ?? pokemon?.name ?? String(pokemonOrName ?? '');
+}
+
+function getAbilityDisplayName(ability) {
+  if (activeNameLanguage === 'de' && ability?.names?.de) return ability.names.de;
+  return ability?.name ?? '';
+}
+
+function updateDraftLanguageToggle() {
+  if (!nodes.languageToggle) return;
+  const isGerman = activeNameLanguage === 'de';
+  nodes.languageToggle.setAttribute('aria-pressed', isGerman ? 'true' : 'false');
+  nodes.languageToggle.textContent = isGerman ? 'DE Namen' : 'EN Names';
+}
+
+function setDraftNameLanguage(language) {
+  activeNameLanguage = language === 'de' ? 'de' : 'en';
+  localStorage.setItem(draftLanguageStorageKey, activeNameLanguage);
+  updateDraftLanguageToggle();
+  render();
 }
 
 function getRevealDisplayName(pokemon) {
   if (pokemon?.name === 'Mimikyu') return 'Pikachu..?';
   return getPokemonDisplayName(pokemon);
+}
+
+function assignRandomPokemonSprites(entries) {
+  return entries.map((entry) => {
+    const spriteOptions = Array.isArray(entry.spriteOptions)
+      ? [...new Set(entry.spriteOptions.filter((option) => typeof option === 'string' && option.trim()).map((option) => option.trim()))]
+      : [];
+    if (spriteOptions.length <= 1) return { ...entry };
+    return {
+      ...entry,
+      spriteOptions,
+      sprite: spriteOptions[Math.floor(Math.random() * spriteOptions.length)],
+    };
+  });
 }
 
 function injectDraftPokemonEntries(entries) {
@@ -301,7 +350,7 @@ function injectDraftPokemonEntries(entries) {
 
 function initializePokemonData() {
   const entries = Array.isArray(window.POKEDEX_ENTRIES) ? window.POKEDEX_ENTRIES : [];
-  allPokemon = injectDraftPokemonEntries(entries).filter((pokemon) => !pokemon.hidden);
+  allPokemon = injectDraftPokemonEntries(assignRandomPokemonSprites(entries)).filter((pokemon) => !pokemon.hidden);
   pokemonByName = new Map(allPokemon.map((pokemon) => [pokemon.name, pokemon]));
 }
 
@@ -757,7 +806,7 @@ function getFilteredPokemonEntries(player, query, options = {}) {
     .filter((pokemon) => {
       const cost = getEffectivePokemonCost(pokemon);
       const costLabel = cost ?? (pokemonNeedsDraftCost(pokemon) ? 'untiered kosten festlegen' : '');
-      if (normalizedQuery && !normalizeText(`${pokemon.name} ${(pokemon.types ?? []).join(' ')} ${costLabel}`).includes(normalizedQuery)) return false;
+      if (normalizedQuery && !normalizeText(`${getPokemonSearchText(pokemon)} ${costLabel}`).includes(normalizedQuery)) return false;
       if (type && !(pokemon.types ?? []).includes(type)) return false;
       if (Number.isFinite(maxCost) && maxCost > 0 && (cost ?? Infinity) > maxCost) return false;
       const flags = getPokemonFlags(pokemon);
@@ -1125,7 +1174,7 @@ function getAvailableSwapPokemon(player, removedPick, query) {
       const flags = getPokemonFlags(pokemon);
       if ((flags.mega || flags.gmax) && player.megaGmaxSlot && !removedWasMegaGmax) return false;
       if (!search) return true;
-      return normalizeText(`${pokemon.name} ${(pokemon.types ?? []).join(' ')} ${cost}`).includes(search);
+      return normalizeText(`${getPokemonSearchText(pokemon)} ${cost}`).includes(search);
     })
     .slice(0, 80);
 }
@@ -1897,7 +1946,7 @@ function renderLatestReveal() {
   const abilities = createElement('div', 'draft-reveal-abilities');
   for (const ability of getRevealAbilities(pokemon)) {
     const abilityCard = createElement('div', `draft-reveal-ability${ability.isPreMegaAbility ? ' is-pre-mega' : ''}`);
-    abilityCard.append(createElement('strong', '', ability.name));
+    abilityCard.append(createElement('strong', '', getAbilityDisplayName(ability)));
     abilityCard.append(createElement('span', '', ability.sourceLabel ?? ability.slot ?? 'Ability'));
     abilities.append(abilityCard);
   }
@@ -2023,6 +2072,7 @@ function bindEvents() {
   nodes.dismissRevealButton.addEventListener('click', dismissLatestReveal);
   nodes.exportButton.addEventListener('click', exportDraft);
   nodes.boardOpenButton.addEventListener('click', () => window.open('draft-room.html?view=board', '_blank', 'noopener,noreferrer'));
+  nodes.languageToggle?.addEventListener('click', () => setDraftNameLanguage(activeNameLanguage === 'de' ? 'en' : 'de'));
   nodes.swapOwn.addEventListener('change', renderSwapResults);
   nodes.swapSearch.addEventListener('input', renderSwapResults);
   nodes.swapDecline.addEventListener('click', declineSwap);
@@ -2033,6 +2083,12 @@ function bindEvents() {
     render();
   });
   window.addEventListener('storage', (event) => {
+    if (event.key === draftLanguageStorageKey) {
+      activeNameLanguage = event.newValue === 'de' ? 'de' : 'en';
+      updateDraftLanguageToggle();
+      render();
+      return;
+    }
     if (event.key !== draftStorageKey || !event.newValue) return;
     const nextState = JSON.parse(event.newValue);
     if ((nextState.updatedAt ?? 0) <= (draftState.updatedAt ?? 0)) return;
@@ -2044,6 +2100,7 @@ function bindEvents() {
 initializePokemonData();
 populateDraftFilters();
 bindEvents();
+updateDraftLanguageToggle();
 render();
 window.setInterval(refreshDraftDefenseProfileCells, 2000);
 

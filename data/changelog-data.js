@@ -1,6 +1,29 @@
 window.CHANGELOG_DATA = {
   "tier": [
     {
+      "title": "2026-06-27",
+      "entries": [
+        [
+          "Unown",
+          "-",
+          "1",
+          "Fehlte in der Liste"
+        ],
+        [
+          "Qwilfish-Hisui",
+          "-",
+          "8",
+          "Fehlte in der Liste"
+        ],
+        [
+          "Landorus",
+          "-",
+          "19",
+          "Fehlte in der Liste (mit VF)"
+        ]
+      ]
+    },
+    {
       "title": "2026-06-26",
       "entries": [
         [
@@ -204,6 +227,7 @@ window.CHANGELOG_DATA = {
     }
   ],
   "site": [
+
     {
       "title": "Seiten Updates",
       "date": "2026-04-19",
@@ -233,6 +257,13 @@ window.CHANGELOG_DATA = {
         "-> Draft Room Control view: Funktionen f\u00fcr den Draft-Admin (Tobi)",
         "-> Draft Room Board view: Ansicht f\u00fcr alle Spieler, inklusive \u00dcbersicht f\u00fcr Speed-Tiers, Defensiver Matrix and verbleibendem Pool"
       ]
+    },
+    {
+    "title": "Seiten Updates",
+    "date:" "2026-06-27",
+    "Special sprites gefixt",
+    "Alternate Draft ansicht für aktuellen Draft",
+    "Deutsche Ansicht + deutsche Search terms",
     }
   ]
 };

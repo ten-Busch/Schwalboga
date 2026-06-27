@@ -58,6 +58,7 @@ a {
 
 .draft-home-link,
 .draft-view-links a,
+.draft-language-toggle,
 .draft-primary,
 .draft-secondary {
   min-height: 42px;
@@ -77,8 +78,14 @@ a {
 
 .draft-home-link,
 .draft-secondary,
+.draft-language-toggle,
 .draft-view-links a {
   background: rgba(255, 255, 255, 0.82);
+}
+
+.draft-language-toggle[aria-pressed="true"] {
+  border-color: rgba(40, 124, 159, 0.42);
+  background: rgba(40, 124, 159, 0.14);
 }
 
 .draft-primary {
