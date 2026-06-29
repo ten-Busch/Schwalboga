@@ -358,6 +358,13 @@ const ruleCheckerModal = document.querySelector('#rule-checker-modal');
 const ruleCheckerClose = document.querySelector('#rule-checker-close');
 const ruleCheckerFormat = document.querySelector('#rule-checker-format');
 const ruleCheckerImportBudget = document.querySelector('#rule-checker-import-budget');
+const ruleCheckerImportCurrentTeam = document.querySelector('#rule-checker-import-current-team');
+const ruleCheckerCurrentTeamOverlay = document.querySelector('#rule-checker-current-team-overlay');
+const ruleCheckerCurrentTeamSelect = document.querySelector('#rule-checker-current-team-select');
+const ruleCheckerCurrentTeamEmpty = document.querySelector('#rule-checker-current-team-empty');
+const ruleCheckerCurrentTeamClose = document.querySelector('#rule-checker-current-team-close');
+const ruleCheckerCurrentTeamCancel = document.querySelector('#rule-checker-current-team-cancel');
+const ruleCheckerCurrentTeamConfirm = document.querySelector('#rule-checker-current-team-confirm');
 const ruleCheckerPickerInput = document.querySelector('#rule-checker-picker-input');
 const ruleCheckerPickerSuggestions = document.querySelector('#rule-checker-picker-suggestions');
 const ruleCheckerRoster = document.querySelector('#rule-checker-roster');
@@ -556,7 +563,7 @@ const toolHelpContentById = {
     'Wenn du fertig bist kannst du über die Kosten-Tabelle eine Text-Datei des geplanted Drafts ansehen und runterladen, oder unter Zoom eine hübschere Ansicht des Teams sehen (wenn du diese Runterlädst werden die Sprites allerdings nicht angezeigt). Unter Captain Cost kannst du jederzeit die Kosten für Tera und Z-Steine ansehen. Bei Bugs und weiteren Fragen melde dich bei Tobi.',
   ],
   'rule-checker-help': [
-    'Gib unter "Pokémon Pool" dein gewünschtes Format ein und importiere entweder das Team, dass du zuletzt im Budget Planer offen hattest (Seite schließen löscht das Team hier), oder gib deinen Draft in der Zeile "Pokémon hinzufügen" ein. Danach kannst du bei "Set Vorschau" Pokémon aus deinem Draft per Drop-Down auswählen und ihre Sets eingeben. Wenn du dann auf Leglität Prüfen klickst, zeigt dir der Checker eventuelle Regelverstöße an.',
+    'Gib unter "Pokémon Pool" dein gewünschtes Format ein und importiere entweder das Team, das du zuletzt im Budget Planer offen hattest, oder ein aktuelles Spieler-Team. Alternativ kannst du deinen Draft in der Zeile "Pokémon hinzufügen" eingeben. Danach kannst du bei "Set Vorschau" Pokémon aus deinem Draft per Drop-Down auswählen und ihre Sets eingeben. Wenn du dann auf Leglität Prüfen klickst, zeigt dir der Checker eventuelle Regelverstöße an.',
     'Bei Bugs und weiteren Fragen melde dich bei Tobi.',
   ],
   'speed-tiers-help': [
@@ -586,7 +593,7 @@ Object.assign(toolHelpContentById, {
     'Wenn du fertig bist kannst du \u00fcber die Kosten-Tabelle eine Text-Datei des geplanted Drafts ansehen und runterladen, oder unter Zoom eine h\u00fcbschere Ansicht des Teams sehen (wenn du diese Runterl\u00e4dst werden die Sprites allerdings nicht angezeigt). Unter Captain Cost kannst du jederzeit die Kosten f\u00fcr Tera und Z-Steine ansehen. Bei Bugs und weiteren Fragen melde dich bei Tobi.',
   ],
   'rule-checker-help': [
-    'Gib unter "Pok\u00e9mon Pool" dein gew\u00fcnschtes Format ein und importiere entweder das Team, dass du zuletzt im Budget Planer offen hattest (Seite schlie\u00dfen l\u00f6scht das Team hier), oder gib deinen Draft in der Zeile "Pok\u00e9mon hinzuf\u00fcgen" ein. Danach kannst du bei "Set Vorschau" Pok\u00e9mon aus deinem Draft per Drop-Down ausw\u00e4hlen und ihre Sets eingeben. Wenn du dann auf Leglit\u00e4t Pr\u00fcfen klickst, zeigt dir der Checker eventuelle Regelverst\u00f6\u00dfe an.',
+    'Gib unter "Pok\u00e9mon Pool" dein gew\u00fcnschtes Format ein und importiere entweder das Team, das du zuletzt im Budget Planer offen hattest, oder ein aktuelles Spieler-Team. Alternativ kannst du deinen Draft in der Zeile "Pok\u00e9mon hinzuf\u00fcgen" eingeben. Danach kannst du bei "Set Vorschau" Pok\u00e9mon aus deinem Draft per Drop-Down ausw\u00e4hlen und ihre Sets eingeben. Wenn du dann auf Leglit\u00e4t Pr\u00fcfen klickst, zeigt dir der Checker eventuelle Regelverst\u00f6\u00dfe an.',
     'Bei Bugs und weiteren Fragen melde dich bei Tobi.',
   ],
   'speed-tiers-help': [
@@ -1124,6 +1131,11 @@ let draftOverviewActivePlayerId = null;
 let draftOffenseOwnPlayerId = null;
 let draftOffenseOpponentPlayerId = null;
 const draftOffenseSelections = new Map();
+let shedinjaCheckState = {
+  teraActive: false,
+  teraType: 'Electric',
+  playerId: null,
+};
 const evOptimizerStats = ['hp', 'atk', 'def', 'spa', 'spd', 'spe'];
 const evOptimizerNatureLabels = { atk: 'Atk', def: 'Def', spa: 'SpA', spd: 'SpD', spe: 'Spe' };
 let evOptimizerState = {
@@ -3498,6 +3510,23 @@ function applySpriteCheckerOverlay(target, pokemon, spriteUrl) {
   target.append(createSpriteCheckerCanvas(spriteUrl, palette));
 }
 
+function getTeraSpritePalette(teraType) {
+  if (teraType === 'Stellar') return spriteCheckerPalettes['Terapagos-Stellar'];
+  return shedinjaTeraPalettes[teraType] ?? shedinjaTeraPalettes.Electric;
+}
+
+function appendTeraSpriteCheckerOverlay(target, spriteUrl, teraType) {
+  if (!target || !teraType || typeof spriteUrl !== 'string' || !spriteUrl) return;
+  const palette = getTeraSpritePalette(teraType);
+  if (!palette) return;
+  target.classList.add('has-sprite-checker-overlay', 'has-tera-sprite-checker');
+  target.querySelectorAll(':scope > .tera-sprite-checker-canvas').forEach((node) => node.remove());
+  const canvas = createSpriteCheckerCanvas(spriteUrl, palette);
+  canvas.classList.add('tera-sprite-checker-canvas');
+  canvas.title = `Tera ${typeLabelsDe[teraType] ?? teraType}`;
+  target.append(canvas);
+}
+
 function getShinySpriteUrl(spriteUrl) {
   if (typeof spriteUrl !== 'string') return null;
   const marker = '/sprites/gen5/';
@@ -4995,6 +5024,10 @@ function renderDraftOverview() {
       renderOutspeedHelper(players);
       return;
     }
+    if (draftOverviewMode === 'shedinja-check') {
+      renderShedinjaCheck(players);
+      return;
+    }
     renderDraftOverviewEmpty('Keine aktuellen Teams in der Spieler-Liste gefunden.');
     return;
   }
@@ -5023,6 +5056,10 @@ function renderDraftOverview() {
   }
   if (draftOverviewMode === 'outspeed-helper') {
     renderOutspeedHelper(players);
+    return;
+  }
+  if (draftOverviewMode === 'shedinja-check') {
+    renderShedinjaCheck(players);
     return;
   }
   renderDraftOverviewTeams(players);
@@ -5090,13 +5127,14 @@ function createDraftOverviewTeamCard(player) {
   const picks = createNode('div', 'draft-overview-picks');
   for (let index = 0; index < 12; index += 1) {
     const pick = player.pokemon?.[index] ?? null;
-    picks.append(pick ? createDraftOverviewPokemonLink(pick) : createNode('div', 'draft-overview-pick is-empty', `Slot ${index + 1}`));
+    const isTeraCaptain = pick && player.teraCaptain === pick.name && player.teraType;
+    picks.append(pick ? createDraftOverviewPokemonLink(pick, '', { teraType: isTeraCaptain ? player.teraType : null }) : createNode('div', 'draft-overview-pick is-empty', `Slot ${index + 1}`));
   }
   card.append(picks);
   return card;
 }
 
-function createDraftOverviewPokemonLink(pick, extraLabel = '') {
+function createDraftOverviewPokemonLink(pick, extraLabel = '', options = {}) {
   const pokemon = pokemonByName.get(pick.name);
   const link = createNode('a', 'draft-overview-pick');
   link.href = getDraftOverviewPokemonLink(pick.name);
@@ -5107,10 +5145,13 @@ function createDraftOverviewPokemonLink(pick, extraLabel = '') {
   link.style.setProperty('--pick-type-left', typeColorVars[primaryType] ?? typeColorVars.Normal);
   link.style.setProperty('--pick-type-right', typeColorVars[secondaryType] ?? typeColorVars[primaryType] ?? typeColorVars.Normal);
   if (pokemon?.sprite) {
+    const spriteWrap = createNode('div', 'draft-overview-pick-sprite-wrap');
     const image = document.createElement('img');
     setSpriteWithFallback(image, pokemon.sprite, `${pokemon.name} sprite`);
     image.loading = 'lazy';
-    link.append(image);
+    spriteWrap.append(image);
+    appendTeraSpriteCheckerOverlay(spriteWrap, pokemon.sprite, options.teraType);
+    link.append(spriteWrap);
   }
   const label = createNode('span', '', `${pokemon ? getPokemonDisplayName(pokemon) : pick.name}${extraLabel}${pick.cost !== undefined && pick.cost !== null ? ` (${pick.cost})` : ''}`);
   link.append(label);
@@ -5172,7 +5213,7 @@ function renderDraftOverviewMatrix(players) {
   const entries = player.pokemon.map((pick) => ({ pick, label: '', defenseTypes: null }));
   if (player.teraCaptain && player.teraType) {
     const teraPick = player.pokemon.find((pick) => pick.name === player.teraCaptain);
-    if (teraPick) entries.push({ pick: teraPick, label: ` (Tera ${player.teraType})`, defenseTypes: [player.teraType] });
+    if (teraPick) entries.push({ pick: teraPick, label: ` (Tera ${player.teraType})`, defenseTypes: [player.teraType], teraType: player.teraType });
   }
   for (const entry of entries) {
     const pokemon = pokemonByName.get(entry.pick.name);
@@ -5180,7 +5221,7 @@ function renderDraftOverviewMatrix(players) {
     const row = document.createElement('tr');
     const nameCell = document.createElement('th');
     nameCell.className = 'budget-planner-matrix-pokemon';
-    nameCell.append(createDraftOverviewPokemonLink(entry.pick, entry.label));
+    nameCell.append(createDraftOverviewPokemonLink(entry.pick, entry.label, { teraType: entry.teraType }));
     row.append(nameCell);
     for (const type of battleTypes) {
       const cell = document.createElement('td');
@@ -5503,6 +5544,296 @@ function renderDraftOverviewOffenseMatrix(players) {
   content.append(section);
 }
 
+const shedinjaCheckMoveIds = {
+  entryHazards: ['spikes', 'stealthrock'],
+  burn: ['willowisp'],
+  poison: ['toxic', 'banefulbunker', 'poisongas', 'poisonpowder', 'toxicspikes', 'toxicthread'],
+  hail: ['hail'],
+  sand: ['sandstorm'],
+  bypass: ['moongeistbeam', 'photongeyser', 'sunsteelstrike'],
+  seed: ['leechseed'],
+  antiItem: ['gravity', 'wonderroom'],
+};
+
+const shedinjaCheckAbilityNames = {
+  burn: ['Flame Body'],
+  poison: ['Poison Point'],
+  contact: ['Rough Skin', 'Iron Barbs'],
+  sand: ['Sand Stream'],
+  breaker: ['Mold Breaker', 'Teravolt', 'Turboblaze'],
+};
+
+const shedinjaTeraPalettes = {
+  Normal: ['#d5d2c8', '#f7f4eb', '#aba69a', '#ffffff', '#c6c0b5', '#8f887d'],
+  Fire: ['#ff3b22', '#ff8a2d', '#ffd166', '#b91c1c', '#ff5c38', '#fff0a6'],
+  Water: ['#1677ff', '#53d3ff', '#b7f3ff', '#0f4fb3', '#6ba8ff', '#e3fbff'],
+  Electric: ['#ffe047', '#fff68a', '#ffb703', '#f59e0b', '#fffbd1', '#facc15'],
+  Grass: ['#1fa463', '#6ee787', '#b7f7c1', '#0f6b3f', '#3ddc84', '#eaffd8'],
+  Ice: ['#71e8ff', '#d6fbff', '#a7f3ff', '#3bb5d5', '#f0feff', '#8bdff0'],
+  Fighting: ['#d23936', '#ff6b5f', '#8a1f1c', '#ffc3b8', '#ef4444', '#7f1d1d'],
+  Poison: ['#a855f7', '#d8b4fe', '#7e22ce', '#f0abfc', '#9333ea', '#581c87'],
+  Ground: ['#d6a752', '#f3d28b', '#8a5f25', '#fff1bf', '#c08435', '#6b4218'],
+  Flying: ['#82a9ff', '#c7d7ff', '#516fc4', '#eef4ff', '#9db8ff', '#384c9c'],
+  Psychic: ['#ff4fa3', '#ff9ed2', '#be185d', '#ffd1ea', '#ec4899', '#831843'],
+  Bug: ['#9aba23', '#d7ef6b', '#657c13', '#f3ffd0', '#a3c51f', '#4d5f0f'],
+  Rock: ['#a98445', '#e3c277', '#6f5528', '#fff0bd', '#b99454', '#4c351c'],
+  Ghost: ['#6d5bbf', '#a99af4', '#3f2b83', '#e3dcff', '#7c6de0', '#24134f'],
+  Dragon: ['#6c4cff', '#a590ff', '#341ec3', '#ddd6ff', '#7f5fff', '#211080'],
+  Dark: ['#5c4b43', '#a08a7e', '#2d2524', '#dccfc8', '#6b5a50', '#171312'],
+  Steel: ['#8ea3b8', '#d9e4ef', '#5f748a', '#f6fbff', '#9aadc0', '#34495e'],
+  Fairy: ['#ff87c9', '#ffd0ea', '#d946a5', '#fff0f8', '#f9a8d4', '#9d266d'],
+};
+
+function getShedinjaDefenseTypes() {
+  return shedinjaCheckState.teraActive ? [shedinjaCheckState.teraType] : ['Bug', 'Ghost'];
+}
+
+function getShedinjaEffectiveness(move, defenseTypes = getShedinjaDefenseTypes()) {
+  if (!move?.type || move.category === 'Status') return 0;
+  if (move.id === 'flyingpress') {
+    return getTypeChartDefenseValue(defenseTypes, 'Fighting') * getTypeChartDefenseValue(defenseTypes, 'Flying');
+  }
+  if (move.id === 'freezedry' && defenseTypes.includes('Water')) {
+    return defenseTypes.reduce((product, defendingType) => product * (defendingType === 'Water' ? 2 : (typeDefenseChart[defendingType]?.Ice ?? 1)), 1);
+  }
+  return getTypeChartDefenseValue(defenseTypes, move.type);
+}
+
+function getShedinjaPokemonMoves(pokemon) {
+  return getLegalPokemonMoveRows(pokemon);
+}
+
+function getShedinjaMoveMatches(pokemon, moveIds) {
+  const requested = new Set(moveIds);
+  return getShedinjaPokemonMoves(pokemon).filter((move) => requested.has(move.id));
+}
+
+function hasShedinjaMove(pokemon, moveId) {
+  return getShedinjaMoveMatches(pokemon, [moveId]).length > 0;
+}
+
+function getShedinjaAbilityMatches(pokemon, abilityNames) {
+  const requested = new Set(abilityNames);
+  return getPokemonAbilityNames(pokemon).filter((ability) => requested.has(ability));
+}
+
+function createShedinjaReason(kind, label, details = [], options = {}) {
+  return {
+    kind,
+    label,
+    details: details.filter(Boolean),
+    caution: options.caution ?? '',
+  };
+}
+
+function formatShedinjaMoveList(moves, limit = 5) {
+  const names = moves.map(getMoveDisplayName);
+  if (names.length <= limit) return names;
+  return [...names.slice(0, limit), `+${names.length - limit}`];
+}
+
+function getShedinjaCheckReasons(pokemon) {
+  const reasons = [];
+  const defenseTypes = getShedinjaDefenseTypes();
+  const teraType = shedinjaCheckState.teraActive ? shedinjaCheckState.teraType : null;
+  const damagingSuperMoves = getShedinjaPokemonMoves(pokemon)
+    .filter((move) => move.category !== 'Status' && getShedinjaEffectiveness(move, defenseTypes) >= 2)
+    .sort((left, right) => getMoveDisplayName(left).localeCompare(getMoveDisplayName(right)));
+  const hasGravity = hasShedinjaMove(pokemon, 'gravity');
+  const hasWonderRoom = hasShedinjaMove(pokemon, 'wonderroom');
+  const antiAirMoves = [
+    ...(hasGravity ? [moveDetailsById.gravity] : []),
+    ...(hasWonderRoom ? [moveDetailsById.wonderroom] : []),
+  ].filter(Boolean);
+  const groundWarningApplies = teraType && ['Electric', 'Steel', 'Poison', 'Fire'].includes(teraType);
+  const superMoveDetails = formatShedinjaMoveList(damagingSuperMoves);
+  if (groundWarningApplies) {
+    const groundMoves = damagingSuperMoves.filter((move) => move.type === 'Ground');
+    if (groundMoves.length && !hasGravity && !hasWonderRoom) {
+      superMoveDetails.push('❗ Vorsicht, Luftballon');
+    } else if (groundMoves.length && antiAirMoves.length) {
+      superMoveDetails.push(...formatShedinjaMoveList(antiAirMoves));
+    }
+  }
+  if (damagingSuperMoves.length) reasons.push(createShedinjaReason('damage', 'Super-effektiver Schaden', superMoveDetails));
+
+  const hazards = getShedinjaMoveMatches(pokemon, shedinjaCheckMoveIds.entryHazards);
+  if (hazards.length) reasons.push(createShedinjaReason('hazard', 'Hazards', formatShedinjaMoveList(hazards)));
+
+  if (teraType !== 'Fire') {
+    const burnMoves = getShedinjaMoveMatches(pokemon, shedinjaCheckMoveIds.burn);
+    const burnAbilities = getShedinjaAbilityMatches(pokemon, shedinjaCheckAbilityNames.burn);
+    if (burnMoves.length || burnAbilities.length) reasons.push(createShedinjaReason('status', 'Burn', [...formatShedinjaMoveList(burnMoves), ...burnAbilities]));
+  }
+
+  if (teraType !== 'Poison') {
+    const poisonMoves = getShedinjaMoveMatches(pokemon, shedinjaCheckMoveIds.poison);
+    const poisonAbilities = getShedinjaAbilityMatches(pokemon, shedinjaCheckAbilityNames.poison);
+    const poisonDetails = formatShedinjaMoveList(poisonMoves);
+    if (poisonMoves.some((move) => move.id === 'poisonpowder') && !hasWonderRoom) poisonDetails.push('❗ Vorsicht, Schutzbrille');
+    if (poisonMoves.some((move) => move.id === 'poisonpowder') && hasWonderRoom) poisonDetails.push(getMoveDisplayName(moveDetailsById.wonderroom));
+    if (poisonMoves.length || poisonAbilities.length) reasons.push(createShedinjaReason('status', 'Poison', [...poisonDetails, ...poisonAbilities]));
+  }
+
+  const contactAbilities = getShedinjaAbilityMatches(pokemon, shedinjaCheckAbilityNames.contact);
+  if (contactAbilities.length) reasons.push(createShedinjaReason('ability', 'Kontakt-Schaden', contactAbilities));
+
+  if (teraType !== 'Ice') {
+    const hailMoves = getShedinjaMoveMatches(pokemon, shedinjaCheckMoveIds.hail);
+    const details = formatShedinjaMoveList(hailMoves);
+    if (hailMoves.length && !hasWonderRoom) details.push('❗ Vorsicht, Schutzbrille');
+    if (hailMoves.length && hasWonderRoom) details.push(getMoveDisplayName(moveDetailsById.wonderroom));
+    if (hailMoves.length) reasons.push(createShedinjaReason('weather', 'Hail', details));
+  }
+
+  if (!['Ground', 'Rock', 'Steel'].includes(teraType ?? '')) {
+    const sandMoves = getShedinjaMoveMatches(pokemon, shedinjaCheckMoveIds.sand);
+    const sandAbilities = getShedinjaAbilityMatches(pokemon, shedinjaCheckAbilityNames.sand);
+    const details = [...formatShedinjaMoveList(sandMoves), ...sandAbilities];
+    if ((sandMoves.length || sandAbilities.length) && !hasWonderRoom) details.push('❗ Vorsicht, Schutzbrille');
+    if ((sandMoves.length || sandAbilities.length) && hasWonderRoom) details.push(getMoveDisplayName(moveDetailsById.wonderroom));
+    if (sandMoves.length || sandAbilities.length) reasons.push(createShedinjaReason('weather', 'Sand', details));
+  }
+
+  const bypassMoves = getShedinjaMoveMatches(pokemon, shedinjaCheckMoveIds.bypass)
+    .filter((move) => !(move.id === 'moongeistbeam' && teraType === 'Normal'))
+    .filter((move) => !(move.id === 'photongeyser' && teraType === 'Dark'));
+  if (pokemon.name === 'Necrozma-Ultra') bypassMoves.push({ id: 'ultranecrozma', name: 'Ultra Necrozma' });
+  if (bypassMoves.length) reasons.push(createShedinjaReason('bypass', 'Ignore Ability', bypassMoves.map((move) => move.name ? getMoveDisplayName(move) : move)));
+
+  const breakerAbilities = getShedinjaAbilityMatches(pokemon, shedinjaCheckAbilityNames.breaker);
+  if (breakerAbilities.length) reasons.push(createShedinjaReason('ability', 'Mold Breaker', breakerAbilities));
+
+  if (teraType !== 'Grass') {
+    const seedMoves = getShedinjaMoveMatches(pokemon, shedinjaCheckMoveIds.seed);
+    if (seedMoves.length) reasons.push(createShedinjaReason('status', 'Leech Seed', formatShedinjaMoveList(seedMoves)));
+  }
+
+  return reasons;
+}
+
+function createShedinjaSpritePanel() {
+  const panel = createNode('div', 'shedinja-check-sprite-panel');
+  const shedinja = pokemonByName.get('Shedinja');
+  const spriteWrap = createNode('div', 'shedinja-check-sprite-wrap');
+  if (shedinja) {
+    const sprite = document.createElement('img');
+    setSpriteWithFallback(sprite, shedinja.sprite, 'Ninjatom sprite');
+    spriteWrap.append(sprite);
+    if (shedinjaCheckState.teraActive) {
+      appendTeraSpriteCheckerOverlay(spriteWrap, shedinja.sprite, shedinjaCheckState.teraType);
+    }
+  }
+  const label = createNode('strong', '', shedinjaCheckState.teraActive ? `Ninjatom Tera ${typeLabelsDe[shedinjaCheckState.teraType] ?? shedinjaCheckState.teraType}` : 'Ninjatom Bug/Ghost');
+  panel.append(spriteWrap, label);
+  return panel;
+}
+
+function createShedinjaCheckControls(players) {
+  const controls = createNode('div', 'shedinja-check-controls');
+  const teraToggle = createNode('label', 'hide-filter ev-optimizer-toggle');
+  const teraInput = document.createElement('input');
+  teraInput.type = 'checkbox';
+  teraInput.checked = shedinjaCheckState.teraActive;
+  teraInput.addEventListener('change', () => {
+    shedinjaCheckState.teraActive = teraInput.checked;
+    renderDraftOverview();
+  });
+  teraToggle.append(teraInput, document.createTextNode(' Tera aktiv'));
+
+  const teraTypeField = createNode('label', 'details-field shedinja-tera-type-field');
+  teraTypeField.hidden = !shedinjaCheckState.teraActive;
+  teraTypeField.append(createNode('span', '', 'Tera-Typ'));
+  const teraTypeSelect = document.createElement('select');
+  for (const type of battleTypes) {
+    const option = document.createElement('option');
+    option.value = type;
+    option.textContent = typeLabelsDe[type] ?? type;
+    if (type === shedinjaCheckState.teraType) option.selected = true;
+    teraTypeSelect.append(option);
+  }
+  teraTypeSelect.addEventListener('change', () => {
+    shedinjaCheckState.teraType = teraTypeSelect.value;
+    renderDraftOverview();
+  });
+  teraTypeField.append(teraTypeSelect);
+
+  const playerField = createNode('label', 'details-field');
+  playerField.append(createNode('span', '', 'Spieler'));
+  const playerSelect = document.createElement('select');
+  for (const player of players) {
+    const option = document.createElement('option');
+    option.value = player.id;
+    option.textContent = player.name;
+    if (player.id === shedinjaCheckState.playerId) option.selected = true;
+    playerSelect.append(option);
+  }
+  playerSelect.addEventListener('change', () => {
+    shedinjaCheckState.playerId = playerSelect.value;
+    renderDraftOverview();
+  });
+  playerField.append(playerSelect);
+  controls.append(teraToggle, teraTypeField, playerField);
+  return controls;
+}
+
+function createShedinjaCheckPokemonCard(pick) {
+  const pokemon = pokemonByName.get(pick.name);
+  const card = createNode('article', 'shedinja-check-card');
+  if (!pokemon) {
+    card.append(createNode('strong', '', pick.name));
+    return card;
+  }
+  const header = createNode('div', 'shedinja-check-card-header');
+  const sprite = document.createElement('img');
+  setSpriteWithFallback(sprite, pokemon.sprite, `${getPokemonDisplayName(pokemon)} sprite`);
+  header.append(sprite, createNode('strong', '', getPokemonDisplayName(pokemon)));
+  const reasons = getShedinjaCheckReasons(pokemon);
+  const reasonList = createNode('div', 'shedinja-check-reasons');
+  if (!reasons.length) {
+    reasonList.append(createNode('span', 'shedinja-check-empty', 'Kein Treffer'));
+  } else {
+    for (const reason of reasons) {
+      const chip = createNode('div', `shedinja-check-reason is-${reason.kind}`);
+      chip.append(createNode('strong', '', reason.label));
+      if (reason.details.length) chip.append(createNode('span', '', reason.details.join(', ')));
+      reasonList.append(chip);
+    }
+  }
+  card.append(header, reasonList);
+  return card;
+}
+
+function renderShedinjaCheck(players) {
+  const content = getDraftOverviewContentTarget();
+  if (!content) return;
+  content.innerHTML = '';
+  if (players.length) renderDraftOverviewHeader(content, players);
+  if (!players.some((player) => player.id === shedinjaCheckState.playerId)) {
+    shedinjaCheckState.playerId = players[0]?.id ?? null;
+  }
+  const section = createNode('div', 'draft-overview-panel shedinja-check-panel');
+  const heading = createNode('div', 'detail-section-heading');
+  heading.append(createNode('h3', '', 'Ninjatom Check'));
+  const back = createNode('button', 'details-secondary', 'Weitere Tools');
+  back.type = 'button';
+  back.addEventListener('click', () => {
+    draftOverviewMode = 'tools';
+    renderDraftOverview();
+  });
+  heading.append(back);
+  section.append(heading, createShedinjaSpritePanel(), createShedinjaCheckControls(players));
+  const selectedPlayer = players.find((player) => player.id === shedinjaCheckState.playerId);
+  if (!selectedPlayer?.pokemon?.length) {
+    renderEmptyDetailState(section, 'Keine Pokemon fuer diesen Spieler gefunden.');
+  } else {
+    const roster = createNode('div', 'shedinja-check-roster');
+    for (const pick of selectedPlayer.pokemon) roster.append(createShedinjaCheckPokemonCard(pick));
+    section.append(roster);
+  }
+  content.append(section);
+}
+
 function createDraftOverviewToolCard({ label, key, action, disabled = false }) {
   const button = document.createElement('button');
   button.type = 'button';
@@ -5538,6 +5869,11 @@ function handleDraftToolAction(action) {
     renderDraftOverview();
     return;
   }
+  if (action === 'shedinja-check') {
+    draftOverviewMode = 'shedinja-check';
+    renderDraftOverview();
+    return;
+  }
   if (action === 'damage-calc') {
     window.location.href = 'damage-calc-master/dist/index.html';
   }
@@ -5552,7 +5888,7 @@ function renderDraftOverviewTools(players) {
   section.append(createNode('h3', '', 'Weitere Tools'));
   const grid = createNode('div', 'hub-action-grid draft-tools-grid');
   [
-    { label: 'Ninjatom Check', key: 'shedinja-check', disabled: true },
+    { label: 'Ninjatom Check', key: 'shedinja-check', action: 'shedinja-check' },
     { label: 'EVs Optimieren', key: 'ev-optimizer', action: 'ev-optimizer' },
     { label: 'Outspeed Helfer', key: 'outspeed-helper', action: 'outspeed-helper' },
     { label: 'Damage Calc', key: 'damage-calc', action: 'damage-calc' },
@@ -6950,9 +7286,12 @@ function createSpielerPokemonCard(name, player) {
   const fragment = createPokemonCard(pokemon, formatFilter?.value ?? 'normal');
   const card = fragment.querySelector('.pokemon-card');
   if (card) {
+    const captainInfos = getSpielerCaptainInfos(player, pokemon.name);
     card.classList.add('spieler-pokemon-card');
     removeSpielerGenericCaptainBadges(card);
-    addSpielerCaptainBadges(card, getSpielerCaptainInfos(player, pokemon.name));
+    addSpielerCaptainBadges(card, captainInfos);
+    const teraCaptain = captainInfos.find((captainInfo) => captainInfo.kind === 'Tera' && captainInfo.type);
+    if (teraCaptain) appendTeraSpriteCheckerOverlay(card, pokemon.sprite, teraCaptain.type);
     const sortValue = card.querySelector('.pokemon-sort-value');
     if (sortValue) sortValue.remove();
   }
@@ -10073,6 +10412,58 @@ function importRuleCheckerFromBudgetPlanner() {
   renderRuleChecker();
 }
 
+function getRuleCheckerCurrentTeamOptions() {
+  return getDraftOverviewPlayers()
+    .filter((player) => Array.isArray(player.pokemon) && player.pokemon.length)
+    .map((player) => ({
+      id: player.id,
+      label: [player.name, player.teamLabel].filter(Boolean).join(' - '),
+      format: player.format,
+      names: player.pokemon.map((pick) => pick.name).filter(Boolean).slice(0, 12),
+    }));
+}
+
+function renderRuleCheckerCurrentTeamImportOptions() {
+  if (!ruleCheckerCurrentTeamSelect || !ruleCheckerCurrentTeamEmpty || !ruleCheckerCurrentTeamConfirm) return [];
+  const options = getRuleCheckerCurrentTeamOptions();
+  ruleCheckerCurrentTeamSelect.innerHTML = '';
+  for (const option of options) {
+    const node = document.createElement('option');
+    node.value = option.id;
+    node.textContent = `${option.label} (${option.names.length})`;
+    ruleCheckerCurrentTeamSelect.append(node);
+  }
+  const isEmpty = !options.length;
+  ruleCheckerCurrentTeamSelect.disabled = isEmpty;
+  ruleCheckerCurrentTeamConfirm.disabled = isEmpty;
+  ruleCheckerCurrentTeamEmpty.hidden = !isEmpty;
+  return options;
+}
+
+function openRuleCheckerCurrentTeamImport() {
+  if (!ruleCheckerCurrentTeamOverlay) return;
+  renderRuleCheckerCurrentTeamImportOptions();
+  ruleCheckerCurrentTeamOverlay.hidden = false;
+}
+
+function closeRuleCheckerCurrentTeamImport() {
+  if (ruleCheckerCurrentTeamOverlay) ruleCheckerCurrentTeamOverlay.hidden = true;
+}
+
+function importRuleCheckerFromCurrentTeam() {
+  const options = getRuleCheckerCurrentTeamOptions();
+  const selectedId = ruleCheckerCurrentTeamSelect?.value;
+  const selected = options.find((option) => option.id === selectedId) ?? options[0];
+  if (!selected?.names.length) return;
+  ruleCheckerState.rosterNames = [...new Set(selected.names)].slice(0, 12);
+  if (selected.format) ruleCheckerState.format = selected.format;
+  ruleCheckerState.pickerInput = '';
+  syncRuleCheckerBattleSlots();
+  resetRuleCheckerValidation();
+  closeRuleCheckerCurrentTeamImport();
+  renderRuleChecker();
+}
+
 function renderRuleCheckerPickerSuggestions() {
   if (!ruleCheckerPickerSuggestions) return;
   ruleCheckerPickerSuggestions.innerHTML = '';
@@ -10830,6 +11221,7 @@ function renderRuleCheckerTeamGrid() {
 }
 
 function renderRuleChecker() {
+  if (ruleCheckerFormat) ruleCheckerFormat.value = ruleCheckerState.format;
   if (ruleCheckerPickerInput) ruleCheckerPickerInput.value = ruleCheckerState.pickerInput;
   renderRuleCheckerPickerSuggestions();
   renderRuleCheckerRoster();
@@ -10846,6 +11238,7 @@ async function openRuleChecker() {
 }
 
 function closeRuleChecker() {
+  closeRuleCheckerCurrentTeamImport();
   if (ruleCheckerModal) ruleCheckerModal.hidden = true;
 }
 
@@ -11672,6 +12065,13 @@ ruleCheckerModal?.addEventListener('click', (event) => {
   if (event.target.dataset.closeRuleChecker === 'true') closeRuleChecker();
 });
 ruleCheckerImportBudget?.addEventListener('click', importRuleCheckerFromBudgetPlanner);
+ruleCheckerImportCurrentTeam?.addEventListener('click', openRuleCheckerCurrentTeamImport);
+ruleCheckerCurrentTeamClose?.addEventListener('click', closeRuleCheckerCurrentTeamImport);
+ruleCheckerCurrentTeamCancel?.addEventListener('click', closeRuleCheckerCurrentTeamImport);
+ruleCheckerCurrentTeamConfirm?.addEventListener('click', importRuleCheckerFromCurrentTeam);
+ruleCheckerCurrentTeamOverlay?.addEventListener('click', (event) => {
+  if (event.target.dataset.closeRuleCheckerCurrentTeam === 'true') closeRuleCheckerCurrentTeamImport();
+});
 ruleCheckerFormat?.addEventListener('change', () => {
   ruleCheckerState.format = ruleCheckerFormat.value;
   resetRuleCheckerValidation();

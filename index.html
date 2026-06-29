@@ -1543,7 +1543,7 @@
         </div>
         <div class="details-body">
           <section class="detail-section tool-help-inline" id="rule-checker-help" hidden>
-            <p class="tool-help-text">Gib unter "Pok&eacute;mon Pool" dein gew&uuml;nschtes Format ein und importiere entweder das Team, dass du zuletzt im Budget Planer offen hattest (Seite schlie&szlig;en l&ouml;scht das Team hier), oder gib deinen Draft in der Zeile "Pok&eacute;mon hinzuf&uuml;gen" ein. Danach kannst du bei "Set Vorschau" Pok&eacute;mon aus deinem Draft per Drop-Down ausw&auml;hlen und ihre Sets eingeben. Wenn du dann auf Legalit&auml;t Pr&uuml;fen klickst, zeigt dir der Checker eventuelle Regelverst&ouml;&szlig;e an.</p>
+            <p class="tool-help-text">Gib unter "Pok&eacute;mon Pool" dein gew&uuml;nschtes Format ein und importiere entweder das Team, das du zuletzt im Budget Planer offen hattest, oder ein aktuelles Spieler-Team. Alternativ kannst du deinen Draft in der Zeile "Pok&eacute;mon hinzuf&uuml;gen" eingeben. Danach kannst du bei "Set Vorschau" Pok&eacute;mon aus deinem Draft per Drop-Down ausw&auml;hlen und ihre Sets eingeben. Wenn du dann auf Legalit&auml;t Pr&uuml;fen klickst, zeigt dir der Checker eventuelle Regelverst&ouml;&szlig;e an.</p>
             <p class="tool-help-text">Bei Bugs und weiteren Fragen melde dich bei Tobi.</p>
           </section>
           <section class="detail-section">
@@ -1562,6 +1562,7 @@
                   </select>
                 </label>
                 <button class="details-secondary" id="rule-checker-import-budget" type="button">Aus Budget Planer &uuml;bernehmen</button>
+                <button class="details-secondary" id="rule-checker-import-current-team" type="button">Aus aktuellem Team &uuml;bernehmen</button>
               </div>
             </div>
             <div class="rule-checker-picker">
@@ -1587,6 +1588,27 @@
               <h3>Gebrochene Regeln</h3>
             </div>
             <div class="rule-checker-results" id="rule-checker-results"></div>
+          </section>
+        </div>
+        <div class="rule-checker-import-overlay" id="rule-checker-current-team-overlay" hidden>
+          <div class="rule-checker-import-backdrop" data-close-rule-checker-current-team="true"></div>
+          <section class="rule-checker-import-dialog" aria-labelledby="rule-checker-current-team-title" role="dialog">
+            <div class="detail-section-heading">
+              <div>
+                <h3 id="rule-checker-current-team-title">Aktuelles Team importieren</h3>
+                <p class="replacement-intro">W&auml;hle ein Spieler-Team aus. Der Pok&eacute;mon Pool wird damit ersetzt.</p>
+              </div>
+              <button class="details-close" id="rule-checker-current-team-close" type="button" aria-label="Close">&times;</button>
+            </div>
+            <label class="details-field">
+              <span>Team</span>
+              <select id="rule-checker-current-team-select"></select>
+            </label>
+            <p class="rule-checker-import-empty" id="rule-checker-current-team-empty" hidden>Keine aktuellen Teams gefunden.</p>
+            <div class="details-actions">
+              <button class="details-secondary" id="rule-checker-current-team-cancel" type="button">Abbrechen</button>
+              <button class="details-primary" id="rule-checker-current-team-confirm" type="button">Team &uuml;bernehmen</button>
+            </div>
           </section>
         </div>
       </section>

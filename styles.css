@@ -5165,11 +5165,28 @@ body.dark-mode .detail-stat-range {
   box-shadow: 0 8px 20px rgba(31, 34, 51, 0.12);
 }
 
+.draft-overview-pick-sprite-wrap {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 42px;
+  height: 42px;
+}
+
 .draft-overview-pick img {
   width: 42px;
   height: 42px;
   object-fit: contain;
   image-rendering: pixelated;
+}
+
+.draft-overview-pick-sprite-wrap > .sprite-checker-overlay-canvas {
+  position: absolute;
+  inset: 50% auto auto 50%;
+  z-index: 2;
+  width: 42px;
+  height: 42px;
+  transform: translate(-50%, -50%);
 }
 
 .draft-overview-pick span {
@@ -5370,6 +5387,141 @@ body.dark-mode .detail-stat-range {
   color: var(--muted);
 }
 
+.shedinja-check-panel {
+  gap: 18px;
+}
+
+.shedinja-check-sprite-panel {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  min-width: 0;
+  padding: 14px;
+  border: 1px solid rgba(31, 34, 51, 0.1);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.82);
+}
+
+.shedinja-check-sprite-wrap {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 88px;
+  height: 88px;
+}
+
+.shedinja-check-sprite-wrap img {
+  width: 88px;
+  height: 88px;
+  object-fit: contain;
+  image-rendering: pixelated;
+}
+
+.shedinja-check-sprite-wrap > .sprite-checker-overlay-canvas {
+  position: absolute;
+  inset: 50% auto auto 50%;
+  z-index: 2;
+  width: 88px;
+  height: 88px;
+  transform: translate(-50%, -50%);
+}
+
+.shedinja-check-controls {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 190px), 1fr));
+  gap: 12px;
+  align-items: end;
+}
+
+.shedinja-check-roster {
+  display: flex;
+  gap: 12px;
+  overflow-x: auto;
+  padding: 2px 2px 8px;
+  scroll-snap-type: x proximity;
+}
+
+.shedinja-check-card {
+  flex: 0 0 min(260px, 82vw);
+  display: grid;
+  align-content: start;
+  gap: 10px;
+  min-width: 0;
+  padding: 12px;
+  border: 1px solid rgba(31, 34, 51, 0.1);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.82);
+  scroll-snap-align: start;
+}
+
+.shedinja-check-card-header {
+  display: grid;
+  grid-template-columns: 48px minmax(0, 1fr);
+  align-items: center;
+  gap: 8px;
+}
+
+.shedinja-check-card-header img {
+  width: 48px;
+  height: 48px;
+  object-fit: contain;
+  image-rendering: pixelated;
+}
+
+.shedinja-check-card-header strong {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+.shedinja-check-reasons {
+  display: grid;
+  gap: 8px;
+}
+
+.shedinja-check-reason,
+.shedinja-check-empty {
+  display: grid;
+  gap: 3px;
+  padding: 8px 10px;
+  border-radius: 8px;
+  background: rgba(31, 34, 51, 0.06);
+  font-size: 0.78rem;
+  line-height: 1.25;
+}
+
+.shedinja-check-reason strong {
+  font-family: 'Chakra Petch', sans-serif;
+  font-size: 0.78rem;
+}
+
+.shedinja-check-reason span {
+  color: var(--muted);
+  overflow-wrap: anywhere;
+}
+
+.shedinja-check-reason.is-damage {
+  background: rgba(220, 38, 38, 0.14);
+}
+
+.shedinja-check-reason.is-hazard,
+.shedinja-check-reason.is-weather {
+  background: rgba(251, 146, 60, 0.16);
+}
+
+.shedinja-check-reason.is-status {
+  background: rgba(168, 85, 247, 0.14);
+}
+
+.shedinja-check-reason.is-ability,
+.shedinja-check-reason.is-bypass {
+  background: rgba(89, 157, 255, 0.14);
+}
+
+.shedinja-check-empty {
+  color: var(--muted);
+  border: 1px dashed rgba(31, 34, 51, 0.16);
+}
+
 .ev-optimizer-panel {
   gap: 18px;
 }
@@ -5552,6 +5704,44 @@ body.dark-mode .detail-stat-range {
 
 .rule-checker-format-field {
   min-width: 180px;
+}
+
+.rule-checker-import-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 8;
+  display: grid;
+  place-items: center;
+  padding: 18px;
+}
+
+.rule-checker-import-overlay[hidden] {
+  display: none;
+}
+
+.rule-checker-import-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(14, 18, 28, 0.42);
+  backdrop-filter: blur(3px);
+}
+
+.rule-checker-import-dialog {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  gap: 16px;
+  width: min(460px, 100%);
+  padding: 18px;
+  border: 1px solid rgba(31, 34, 51, 0.12);
+  border-radius: 12px;
+  background: var(--panel);
+  box-shadow: 0 24px 70px rgba(31, 34, 51, 0.28);
+}
+
+.rule-checker-import-empty {
+  margin: 0;
+  color: var(--muted);
 }
 
 .rule-checker-roster {
@@ -7153,6 +7343,8 @@ body.dark-mode .draft-overview-team-card,
 body.dark-mode .draft-overview-panel,
 body.dark-mode .draft-offense-card,
 body.dark-mode .draft-offense-matrix,
+body.dark-mode .shedinja-check-card,
+body.dark-mode .shedinja-check-sprite-panel,
 body.dark-mode .ev-optimizer-pokemon-card,
 body.dark-mode .ev-optimizer-stat-card,
 body.dark-mode .outspeed-helper-card,
@@ -7177,8 +7369,13 @@ body.dark-mode .draft-overview-player-picker .is-active {
 
 body.dark-mode .draft-overview-badges span,
 body.dark-mode .draft-overview-captains span,
+body.dark-mode .shedinja-check-reason,
 body.dark-mode .draft-overview-pick.is-empty {
   background: rgba(201, 214, 255, 0.08);
+  color: rgba(209, 218, 241, 0.78);
+}
+
+body.dark-mode .shedinja-check-reason span {
   color: rgba(209, 218, 241, 0.78);
 }
 
@@ -8368,6 +8565,11 @@ body.dark-mode .replacement-priority-badge.is-high {
 }
 
 .spieler-pokemon-card .pokemon-sprite {
+  width: 62px;
+  height: 62px;
+}
+
+.spieler-pokemon-card > .sprite-checker-overlay-canvas {
   width: 62px;
   height: 62px;
 }
