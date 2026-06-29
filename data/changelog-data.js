@@ -227,14 +227,22 @@ window.CHANGELOG_DATA = {
     }
   ],
   "site": [
-
+    {
+      "title": "Großes Update",
+      "date": "2026-06-29",
+      "items": [
+        "Neues Seiten-Layout",
+        "Pokejeopardy in die Seite integriert",
+        ""
+      ]
+    },
     {
       "title": "Seiten Updates",
       "date": "2026-04-19",
       "items": [
         "Dark Mode Ausnahmen gefixed",
-        "Changelogs hinzugef\u00fcgt",
-        "Hilfe-Buttons hinzugef\u00fcgt",
+        "Changelogs hinzugefügt",
+        "Hilfe-Buttons hinzugefügt",
         "Stefans PDF verlinkt"
       ]
     },
@@ -243,19 +251,19 @@ window.CHANGELOG_DATA = {
       "date": "2026-06-23",
       "items": [
         "Search Funktion angepasst (Freies Format)",
-        "Easter Egg/Seri\u00f6s toggle hinzugef\u00fcgt",
-        "Budget Planner angepasst: Beachtet jetzt Tera-Type, Pok\u00e9mon-Anzahl Tracker",
-        "\"Spieler\" Funktion hinzugef\u00fcgt, wird sp\u00e4ter vorhandene Teams und Siege tracken",
-        "\"Karriere\" in der Pok\u00e9mon Detailansicht hinzugef\u00fcgt, wird sp\u00e4ter anzeigen welches Pok\u00e9mon wie oft genutzt wurde"
+        "Easter Egg's toggle hinzugefügt",
+        "Budget Planner angepasst: Beachtet jetzt Tera-Type, Pokémon-Anzahl Tracker",
+        "\"Spieler\" Funktion hinzugefügt, wird späer vorhandene Teams und Siege tracken",
+        "\"Karriere\" in der Pokémon Detailansicht hinzugefügt, wird sp\u00e4ter anzeigen welches Pokémon wie oft genutzt wurde"
       ]
     },
     {
       "title": "Draft Room",
       "date": "2026-06-26",
       "items": [
-        "Draft Room hinzufgef\u00fcgt: funktioniert als modernere Version der \"TV-Ansicht\" von den alten Google Sheets-basierten Ansichten",
-        "-> Draft Room Control view: Funktionen f\u00fcr den Draft-Admin (Tobi)",
-        "-> Draft Room Board view: Ansicht f\u00fcr alle Spieler, inklusive \u00dcbersicht f\u00fcr Speed-Tiers, Defensiver Matrix and verbleibendem Pool"
+        "Draft Room hinzufgefügt: funktioniert als modernere Version der \"TV-Ansicht\" von den alten Google Sheets-basierten Ansichten",
+        "-> Draft Room Control view: Funktionen für den Draft-Admin (Tobi)",
+        "-> Draft Room Board view: Ansicht für alle Spieler, inklusive Übersicht für Speed-Tiers, Defensiver Matrix and verbleibendem Pool"
       ]
     },
     {
@@ -263,7 +271,7 @@ window.CHANGELOG_DATA = {
       "date": "2026-06-27",
       "items": [
         "Special sprites gefixt",
-        "Alternate Draft Ansicht f\u00fcr aktuellen Draft",
+        "Alternate Draft Ansicht für aktuellen Draft",
         "Deutsche Ansicht + deutsche Search Terms"
       ]
     }

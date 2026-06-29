@@ -132,6 +132,17 @@ const legendaryIconPath = 'Type Icons/Masterball.png';
 const mythicIconPath = 'Type Icons/Cherish Ball.png';
 const costSuggestionsEndpoint = 'https://script.google.com/macros/s/AKfycbwl7_jdkgBdixfeeqrqJdzI4Dwp3gwI6gKF4YEQxXZLrdgPwvMOeCOgnvbR16QpD2jX/exec';
 
+const hubViews = [...document.querySelectorAll('[data-hub-view]')];
+const hubActionButtons = [...document.querySelectorAll('[data-hub-action]')];
+const draftPageTabs = document.querySelector('#draft-page-tabs');
+const draftPageContent = document.querySelector('#draft-page-content');
+const landingTierUpdate = document.querySelector('#landing-tier-update');
+const landingTierUpdateText = document.querySelector('#landing-tier-update-text');
+const landingTierUpdateSprite = document.querySelector('#landing-tier-update-sprite');
+let activeHubView = 'home';
+let draftOverviewContext = 'modal';
+let landingTierSpriteInterval = null;
+
 const pokedexGrid = document.querySelector('#pokedex-grid');
 const searchInput = document.querySelector('#pokemon-search');
 const sortField = document.querySelector('#sort-field');
@@ -555,7 +566,7 @@ const toolHelpContentById = {
     'Bei Bugs und weiteren Fragen melde dich bei Tobi.',
   ],
   'stefans-pdf-help': [
-    'Hier kannst du Stefans originale Pdf ansehen, indem die Regeln des Punkte-Systems und die Punkte-Tiers angezeigt werden. Du kannst die Pdf auch herunterladen.',
+    'Hier findest du den Regeltext aus Stefans originaler PDF als lesbare Textfassung. Du kannst die PDF weiterhin herunterladen oder im neuen Tab öffnen.',
   ],
 };
 customRibbonEntriesByName.set('Wormadam', [{ symbol: 'i', text: 'Das Draften dieses Pok\u00e9mon umfasst alle Formen.' }]);
@@ -1841,6 +1852,10 @@ function toggleEastereggMode() {
 
 function updateScrollTopButtonVisibility() {
   if (!scrollTopButton) return;
+  if (activeHubView !== 'pokedex') {
+    scrollTopButton.hidden = true;
+    return;
+  }
   const threshold = Math.max(window.innerHeight, 700);
   scrollTopButton.hidden = window.scrollY <= threshold;
 }
@@ -1957,6 +1972,10 @@ function jumpToRailTarget(target) {
 function renderJumpRail() {
   if (!jumpRail) return;
   jumpRail.innerHTML = '';
+  if (activeHubView !== 'pokedex') {
+    jumpRail.hidden = true;
+    return;
+  }
   const targets = getJumpRailTargets();
   jumpRail.hidden = !targets.length;
   if (!targets.length) return;
@@ -4692,6 +4711,140 @@ function createNode(tag, className = '', text = '') {
   return node;
 }
 
+function getHubViewFromHash() {
+  if (new URLSearchParams(window.location.search).has('pokemon')) return 'pokedex';
+  const key = (window.location.hash || '#home').replace('#', '') || 'home';
+  if (key === 'regelset') return 'ruleset';
+  if (key === 'spieler') return 'teams';
+  return ['home', 'pokedex', 'ruleset', 'teams', 'draft', 'draft-room', 'games'].includes(key) ? key : 'home';
+}
+
+function renderHubView(viewKey = getHubViewFromHash()) {
+  activeHubView = viewKey;
+  for (const view of hubViews) {
+    view.hidden = view.dataset.hubView !== viewKey;
+  }
+  document.body.dataset.hubView = viewKey;
+  if (viewKey !== 'pokedex') {
+    if (jumpRail) jumpRail.hidden = true;
+    if (scrollTopButton) scrollTopButton.hidden = true;
+  }
+  if (viewKey === 'draft') {
+    draftOverviewContext = 'page';
+    renderDraftOverview();
+  }
+  if (viewKey === 'teams') {
+    renderSpielerOverview();
+  }
+  if (viewKey === 'pokedex') {
+    requestAnimationFrame(() => {
+      resetControlRailStickyThreshold();
+      updateControlRailVisibility();
+      renderJumpRail();
+      updateScrollTopButtonVisibility();
+    });
+  } else {
+    closeMobilePanels();
+  }
+}
+
+function handleHubAction(action) {
+  if (action === 'rule-checker') {
+    void openRuleChecker();
+    return;
+  }
+  if (action === 'stefans-pdf') {
+    openStefansPdf();
+    return;
+  }
+  if (action === 'spieler') {
+    openSpieler();
+    return;
+  }
+  if (action === 'changelog') {
+    openChangelog('site');
+  }
+}
+
+function parsePointHistoryDate(value) {
+  if (typeof value !== 'string') return null;
+  const match = value.match(/^(\d{4})-(\d{2})-(\d{2})$/);
+  if (!match) return null;
+  const [, year, month, day] = match;
+  const date = new Date(Number(year), Number(month) - 1, Number(day));
+  return Number.isNaN(date.getTime()) ? null : date;
+}
+
+function formatDisplayDate(date) {
+  const day = String(date.getDate()).padStart(2, '0');
+  const month = String(date.getMonth() + 1).padStart(2, '0');
+  const year = String(date.getFullYear());
+  return `${day}-${month}-${year}`;
+}
+
+function initializeLandingTierUpdate() {
+  if (!landingTierUpdate || !landingTierUpdateText) return;
+  const latestDate = pointCostHistory
+    .map((entry) => parsePointHistoryDate(entry.date))
+    .filter(Boolean)
+    .sort((left, right) => right.getTime() - left.getTime())[0];
+  if (!latestDate) {
+    landingTierUpdateText.textContent = 'Letzte Tier-\u00c4nderung: --.--.----';
+    landingTierUpdate.classList.remove('is-recent');
+    updateLandingTierSprite([]);
+    return;
+  }
+  landingTierUpdateText.textContent = `Letzte Tier-\u00c4nderung: ${formatDisplayDate(latestDate)}`;
+  const oneMonthAgo = new Date();
+  oneMonthAgo.setMonth(oneMonthAgo.getMonth() - 1);
+  landingTierUpdate.classList.toggle('is-recent', latestDate > oneMonthAgo);
+  updateLandingTierSprite(getRecentPointCostPokemon());
+}
+
+function getRecentPointCostPokemon() {
+  if (!pokemonByNormalizedName.size) return [];
+  const thirtyDaysAgo = new Date();
+  thirtyDaysAgo.setDate(thirtyDaysAgo.getDate() - 30);
+  const seen = new Set();
+  return pointCostHistory
+    .map((entry) => ({ ...entry, parsedDate: parsePointHistoryDate(entry.date) }))
+    .filter((entry) => entry.parsedDate && entry.parsedDate >= thirtyDaysAgo)
+    .sort((left, right) => right.parsedDate.getTime() - left.parsedDate.getTime())
+    .map((entry) => getPokemonByNameLoose(entry.name))
+    .filter((pokemon) => {
+      if (!pokemon || seen.has(pokemon.name)) return false;
+      seen.add(pokemon.name);
+      return true;
+    });
+}
+
+function updateLandingTierSprite(pokemonList) {
+  if (landingTierSpriteInterval !== null) {
+    window.clearInterval(landingTierSpriteInterval);
+    landingTierSpriteInterval = null;
+  }
+  if (!landingTierUpdateSprite || !pokemonList.length) {
+    if (landingTierUpdateSprite) {
+      landingTierUpdateSprite.hidden = true;
+      landingTierUpdateSprite.removeAttribute('src');
+      landingTierUpdateSprite.removeAttribute('title');
+    }
+    return;
+  }
+  let index = 0;
+  const showPokemon = () => {
+    const pokemon = pokemonList[index % pokemonList.length];
+    landingTierUpdateSprite.hidden = false;
+    landingTierUpdateSprite.title = getPokemonDisplayName(pokemon);
+    setSpriteWithFallback(landingTierUpdateSprite, pokemon.sprite, `${getPokemonDisplayName(pokemon)} sprite`);
+    index += 1;
+  };
+  showPokemon();
+  if (pokemonList.length > 1) {
+    landingTierSpriteInterval = window.setInterval(showPokemon, 1800);
+  }
+}
+
 function getDraftOverviewPlayers() {
   return getSpielerEntries()
     .filter((player) => Array.isArray(player.currentTeam) && player.currentTeam.length)
@@ -4743,19 +4896,28 @@ function getDraftOverviewPlayerSlotCount(player) {
 function getDraftOverviewPokemonLink(name) {
   const url = new URL(window.location.href);
   url.search = '';
-  url.hash = '';
+  url.hash = '#pokedex';
   url.searchParams.set('pokemon', name);
   return url.toString();
 }
 
+function getDraftOverviewContentTarget() {
+  return draftOverviewContext === 'page' ? draftPageContent : draftOverviewContent;
+}
+
+function getDraftOverviewTabsTarget() {
+  return draftOverviewContext === 'page' ? draftPageTabs : draftOverviewTabs;
+}
+
 function renderDraftOverviewEmpty(message = 'Noch kein laufender Draft gefunden.') {
-  if (!draftOverviewContent) return;
-  draftOverviewContent.innerHTML = '';
-  renderEmptyDetailState(draftOverviewContent, message);
+  const content = getDraftOverviewContentTarget();
+  if (!content) return;
+  content.innerHTML = '';
+  renderEmptyDetailState(content, message);
 }
 
 function syncDraftOverviewTabs() {
-  draftOverviewTabs?.querySelectorAll('[data-draft-overview-mode]').forEach((button) => {
+  getDraftOverviewTabsTarget()?.querySelectorAll('[data-draft-overview-mode]').forEach((button) => {
     const isActive = button.dataset.draftOverviewMode === draftOverviewMode;
     button.classList.toggle('is-active', isActive);
     button.setAttribute('aria-selected', String(isActive));
@@ -4763,7 +4925,7 @@ function syncDraftOverviewTabs() {
 }
 
 function renderDraftOverview() {
-  if (!draftOverviewContent) return;
+  if (!getDraftOverviewContentTarget()) return;
   syncDraftOverviewTabs();
   const players = getDraftOverviewPlayers();
   if (!players.length) {
@@ -4800,13 +4962,15 @@ function renderDraftOverviewHeader(container, players) {
 }
 
 function renderDraftOverviewTeams(players) {
-  draftOverviewContent.innerHTML = '';
-  renderDraftOverviewHeader(draftOverviewContent, players);
+  const content = getDraftOverviewContentTarget();
+  if (!content) return;
+  content.innerHTML = '';
+  renderDraftOverviewHeader(content, players);
   const grid = createNode('div', 'draft-overview-team-grid');
   for (const player of players) {
     grid.append(createDraftOverviewTeamCard(player));
   }
-  draftOverviewContent.append(grid);
+  content.append(grid);
 }
 
 function createDraftOverviewTeamCard(player) {
@@ -4887,15 +5051,17 @@ function renderDraftOverviewPlayerPicker(players) {
 }
 
 function renderDraftOverviewMatrix(players) {
-  draftOverviewContent.innerHTML = '';
-  renderDraftOverviewHeader(draftOverviewContent, players);
-  draftOverviewContent.append(renderDraftOverviewPlayerPicker(players));
+  const content = getDraftOverviewContentTarget();
+  if (!content) return;
+  content.innerHTML = '';
+  renderDraftOverviewHeader(content, players);
+  content.append(renderDraftOverviewPlayerPicker(players));
   const player = players.find((entry) => entry.id === draftOverviewActivePlayerId) ?? players[0];
   const section = createNode('div', 'draft-overview-panel');
   section.append(createNode('h3', '', `${player.name}: Defense Matrix`));
   if (!player.pokemon?.length) {
     renderEmptyDetailState(section, 'Noch keine Pokemon fuer diese Matrix.');
-    draftOverviewContent.append(section);
+    content.append(section);
     return;
   }
 
@@ -4952,18 +5118,20 @@ function renderDraftOverviewMatrix(players) {
   table.append(tbody);
   wrap.append(table);
   section.append(wrap);
-  draftOverviewContent.append(section);
+  content.append(section);
 }
 
 function renderDraftOverviewSpeedTiers(players) {
-  draftOverviewContent.innerHTML = '';
-  renderDraftOverviewHeader(draftOverviewContent, players);
+  const content = getDraftOverviewContentTarget();
+  if (!content) return;
+  content.innerHTML = '';
+  renderDraftOverviewHeader(content, players);
   const entries = players.flatMap((player) => (player.pokemon ?? []).map((pick) => {
     const pokemon = pokemonByName.get(pick.name);
     return pokemon ? { player, pokemon } : null;
   }).filter(Boolean));
   if (!entries.length) {
-    renderEmptyDetailState(draftOverviewContent, 'Noch keine Pokemon fuer Speed Tiers.');
+    renderEmptyDetailState(content, 'Noch keine Pokemon fuer Speed Tiers.');
     return;
   }
   const rows = entries.flatMap((entry) =>
@@ -4985,10 +5153,11 @@ function renderDraftOverviewSpeedTiers(players) {
     item.append(label, value);
     list.append(item);
   }
-  draftOverviewContent.append(list);
+  content.append(list);
 }
 
 function openDraftOverview() {
+  draftOverviewContext = 'modal';
   renderDraftOverview();
   if (draftOverviewModal) draftOverviewModal.hidden = false;
 }
@@ -10144,6 +10313,7 @@ function initializeAdvancedSearch() {
 initializeToolHelpToggles();
 initializeStaticToolContent();
 initializeStaticUiLabels();
+initializeLandingTierUpdate();
 detailsButton.addEventListener('click', openDetailsModal);
 expertSearchButton?.addEventListener('click', openExpertSearchModal);
 searchExpandButton?.addEventListener('click', () => setSearchAdvancedExpanded(!isSearchAdvancedExpanded));
@@ -10169,6 +10339,10 @@ window.addEventListener('resize', () => {
   syncResponsiveMode();
 });
 window.addEventListener('scroll', updateControlRailVisibility, { passive: true });
+window.addEventListener('hashchange', () => renderHubView());
+hubActionButtons.forEach((button) => {
+  button.addEventListener('click', () => handleHubAction(button.dataset.hubAction));
+});
 replacementFinderButton?.addEventListener('click', () => openReplacementPicker());
 coreFinderButton?.addEventListener('click', openCoreFinder);
 budgetPlannerButton?.addEventListener('click', openBudgetPlanner);
@@ -10244,6 +10418,14 @@ languageToggle?.addEventListener('click', () => setNameLanguage(activeNameLangua
   draftOverviewTabs?.addEventListener('click', (event) => {
     const button = event.target.closest('[data-draft-overview-mode]');
     if (!button) return;
+    draftOverviewContext = 'modal';
+    draftOverviewMode = button.dataset.draftOverviewMode;
+    renderDraftOverview();
+  });
+  draftPageTabs?.addEventListener('click', (event) => {
+    const button = event.target.closest('[data-draft-overview-mode]');
+    if (!button) return;
+    draftOverviewContext = 'page';
     draftOverviewMode = button.dataset.draftOverviewMode;
     renderDraftOverview();
   });
@@ -10458,6 +10640,8 @@ async function loadPokedex() {
     }, new Map());
     applyAllFilters();
     openPokemonDetailFromUrl();
+    initializeLandingTierUpdate();
+    if (activeHubView === 'draft') renderDraftOverview();
   } catch (error) {
     pokedexGrid.innerHTML = '';
     const emptyState = document.createElement('p');
@@ -10475,6 +10659,7 @@ resetControlRailStickyThreshold();
 syncResponsiveMode();
 updateLanguageToggle();
 initializeAdvancedSearch();
+renderHubView();
 searchInput.addEventListener('input', applyAllFilters);
 sortField.addEventListener('change', applyAllFilters);
 sortDirection.addEventListener('change', applyAllFilters);

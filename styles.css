@@ -81,12 +81,257 @@ img {
 }
 
 .hero,
-.pokedex-panel {
+.pokedex-panel,
+.landing-page,
+.hub-page {
   border: 1px solid var(--line);
   border-radius: 28px;
   background: var(--panel);
   box-shadow: var(--shadow);
   backdrop-filter: blur(12px);
+}
+
+.hub-view[hidden] {
+  display: none !important;
+}
+
+.landing-page,
+.hub-page {
+  padding: 32px;
+}
+
+.landing-page {
+  display: grid;
+  gap: 28px;
+}
+
+.landing-banner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 88px;
+  padding: 22px 26px;
+  border: 1px dashed rgba(31, 34, 51, 0.22);
+  border-radius: 20px;
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.18), rgba(31, 34, 51, 0.12)),
+    url('assets/sections/banner.webp'),
+    linear-gradient(135deg, rgba(217, 79, 61, 0.14), rgba(109, 189, 92, 0.12)),
+    var(--panel-strong);
+  background-position: center;
+  background-size: cover;
+  color: #fff;
+  font-family: 'Chakra Petch', sans-serif;
+  font-size: clamp(1.4rem, 3vw, 2.4rem);
+  font-weight: 800;
+  line-height: 1.1;
+  text-align: center;
+  text-shadow:
+    -2px -2px 0 #000,
+    2px -2px 0 #000,
+    -2px 2px 0 #000,
+    2px 2px 0 #000,
+    0 4px 14px rgba(0, 0, 0, 0.42);
+  outline: none;
+}
+
+.landing-banner:focus {
+  border-color: rgba(217, 79, 61, 0.48);
+  box-shadow: 0 0 0 4px rgba(217, 79, 61, 0.12);
+}
+
+.landing-heading {
+  display: grid;
+  gap: 10px;
+}
+
+.landing-heading h1 {
+  margin: 0;
+  font-family: 'Chakra Petch', sans-serif;
+  font-size: clamp(2.3rem, 6vw, 4.8rem);
+  line-height: 0.95;
+}
+
+.landing-grid,
+.hub-action-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr));
+  gap: 18px;
+}
+
+.landing-tile,
+.hub-action-card {
+  position: relative;
+  min-height: clamp(172px, 22vw, 230px);
+  overflow: hidden;
+  border: 1px solid rgba(31, 34, 51, 0.12);
+  border-radius: 22px;
+  background: var(--panel-strong);
+  color: var(--ink);
+  text-decoration: none;
+  box-shadow: 0 18px 38px rgba(62, 35, 18, 0.1);
+  transition:
+    transform 170ms ease,
+    border-color 170ms ease,
+    box-shadow 170ms ease;
+}
+
+.landing-tile {
+  display: flex;
+  align-items: flex-end;
+  padding: 22px;
+}
+
+.landing-tile:hover,
+.landing-tile:focus-visible,
+.hub-action-card:hover,
+.hub-action-card:focus-visible {
+  border-color: rgba(217, 79, 61, 0.36);
+  box-shadow: 0 24px 48px rgba(62, 35, 18, 0.16);
+  transform: translateY(-2px);
+}
+
+.landing-tile-art,
+.hub-action-art {
+  position: absolute;
+  inset: clamp(12px, 2vw, 18px) clamp(12px, 2vw, 18px) clamp(58px, 7vw, 66px);
+  border: 1px dashed rgba(31, 34, 51, 0.14);
+  border-radius: 18px;
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.2), rgba(31, 34, 51, 0.08)),
+    var(--tile-image, linear-gradient(135deg, rgba(255, 255, 255, 0.28), rgba(255, 255, 255, 0))),
+    color-mix(in srgb, var(--tile-color, var(--accent)) 16%, transparent);
+  background-position: center;
+  background-size: cover;
+}
+
+.landing-tile-label,
+.hub-action-card span:last-child {
+  position: relative;
+  z-index: 1;
+  font-family: 'Chakra Petch', sans-serif;
+  font-size: clamp(1.2rem, 4vw, 2.2rem);
+  font-weight: 800;
+  overflow-wrap: anywhere;
+}
+
+.landing-tile.is-pokedex {
+  --tile-color: var(--water);
+  --tile-image: url('assets/sections/dex.png');
+}
+
+.landing-tile.is-ruleset {
+  --tile-color: var(--fighting);
+  --tile-image: url('assets/sections/regeln.webp');
+}
+
+.landing-tile.is-teams {
+  --tile-color: var(--grass);
+  --tile-image: url('assets/sections/spieler.webp');
+}
+
+.landing-tile.is-draft {
+  --tile-color: var(--electric);
+  --tile-image: url('assets/sections/draftboard.webp');
+}
+
+.landing-tile.is-draft-room {
+  --tile-color: var(--ghost);
+  --tile-image: url('assets/sections/draft.webp');
+}
+
+.landing-tile.is-games {
+  --tile-color: var(--psychic);
+  --tile-image: url('assets/sections/games.webp');
+}
+
+.landing-footer-actions {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) auto minmax(0, 0.85fr);
+  gap: 12px;
+  align-items: center;
+  padding-top: 6px;
+}
+
+.landing-tier-update {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  justify-self: end;
+  color: #fff;
+  font-family: 'Chakra Petch', sans-serif;
+  font-weight: 800;
+  text-align: right;
+  text-shadow:
+    -1px -1px 0 #000,
+    1px -1px 0 #000,
+    -1px 1px 0 #000,
+    1px 1px 0 #000,
+    0 3px 10px rgba(0, 0, 0, 0.35);
+}
+
+.landing-tier-update-sprite {
+  width: 1.55em;
+  height: 1.55em;
+  object-fit: contain;
+  image-rendering: pixelated;
+  filter: drop-shadow(0 2px 2px rgba(0, 0, 0, 0.55));
+  flex: 0 0 auto;
+}
+
+.landing-tier-update.is-recent {
+  animation: tier-update-alert 950ms step-end infinite;
+}
+
+@keyframes tier-update-alert {
+  0%,
+  49% {
+    color: #fff;
+  }
+
+  50%,
+  100% {
+    color: #ff1f1f;
+  }
+}
+
+.hub-page {
+  display: grid;
+  gap: 22px;
+}
+
+.hub-action-card {
+  display: flex;
+  align-items: flex-end;
+  padding: 22px;
+  cursor: pointer;
+  font: inherit;
+  text-align: left;
+}
+
+.hub-action-card[data-hub-action='stefans-pdf'] {
+  --tile-color: var(--rock);
+  --tile-image: url('assets/sections/stefanspdf.webp');
+}
+
+.hub-action-card[data-hub-action='rule-checker'] {
+  --tile-color: var(--fighting);
+  --tile-image: url('assets/sections/regelchecker.webp');
+}
+
+.hub-action-card[data-hub-action='spieler'] {
+  --tile-color: var(--grass);
+  --tile-image: url('assets/sections/teams.webp');
+}
+
+.hub-action-card[data-hub-action='quiz'] {
+  --tile-color: var(--psychic);
+  --tile-image: url('assets/sections/quiz.webp');
+}
+
+.hub-action-card[data-hub-action='draft-room'] {
+  --tile-color: var(--ghost);
+  --tile-image: url('assets/sections/draft.webp');
 }
 
 .hero {
@@ -402,6 +647,11 @@ img {
 .scroll-top-button:focus-visible {
   transform: translateY(-2px);
   box-shadow: 0 18px 38px rgba(31, 34, 51, 0.24);
+}
+
+.scroll-top-button[hidden],
+.jump-rail[hidden] {
+  display: none !important;
 }
 
 .jump-rail {
@@ -6583,7 +6833,7 @@ body.dark-mode .replacement-priority-badge.is-high {
   }
 
   .page-shell {
-    width: min(100% - 20px, 100%);
+    width: min(100%, calc(100% - 20px));
     padding-top: 20px;
   }
 
@@ -6632,6 +6882,40 @@ body.dark-mode .replacement-priority-badge.is-high {
 
   .section-heading > div:first-child {
     display: none;
+  }
+
+  .hub-page .section-heading > div:first-child {
+    display: block;
+  }
+
+  .landing-page,
+  .hub-page,
+  .pokedex-panel {
+    padding: 22px;
+  }
+
+  .landing-grid,
+  .hub-action-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .landing-footer-actions {
+    grid-template-columns: 1fr auto;
+  }
+
+  .landing-footer-actions::after {
+    content: none;
+  }
+
+  .landing-tile,
+  .hub-action-card {
+    min-height: 172px;
+  }
+
+  .landing-banner {
+    min-height: 72px;
+    padding: 18px;
+    font-size: clamp(1.05rem, 4.8vw, 1.7rem);
   }
 
   .section-header-tools {
@@ -6899,6 +7183,72 @@ body.dark-mode .replacement-priority-badge.is-high {
 }
 
 @media (max-width: 560px) {
+  .page-shell {
+    width: min(100%, calc(100% - 14px));
+    padding: 12px 0 36px;
+  }
+
+  .landing-page,
+  .hub-page,
+  .pokedex-panel {
+    padding: 14px;
+    border-radius: 18px;
+  }
+
+  .landing-page,
+  .hub-page {
+    gap: 16px;
+  }
+
+  .landing-heading {
+    gap: 6px;
+  }
+
+  .landing-heading h1 {
+    font-size: clamp(2rem, 11vw, 3rem);
+  }
+
+  .landing-banner {
+    min-height: 64px;
+    padding: 12px;
+    border-radius: 15px;
+    font-size: clamp(0.95rem, 5vw, 1.35rem);
+    text-shadow:
+      -1px -1px 0 #000,
+      1px -1px 0 #000,
+      -1px 1px 0 #000,
+      1px 1px 0 #000,
+      0 3px 10px rgba(0, 0, 0, 0.5);
+  }
+
+  .landing-grid,
+  .hub-action-grid {
+    gap: 12px;
+  }
+
+  .landing-footer-actions {
+    grid-template-columns: 1fr;
+    justify-items: center;
+  }
+
+  .landing-tier-update {
+    justify-self: center;
+    text-align: center;
+  }
+
+  .landing-tile,
+  .hub-action-card {
+    min-height: 148px;
+    padding: 16px;
+    border-radius: 16px;
+  }
+
+  .landing-tile-art,
+  .hub-action-art {
+    inset: 10px 10px 52px;
+    border-radius: 12px;
+  }
+
   .scroll-top-button {
     right: 14px;
     bottom: 14px;
@@ -7196,12 +7546,67 @@ body.dark-mode .replacement-priority-badge.is-high {
   gap: 12px;
 }
 
-.stefans-pdf-frame {
-  width: 100%;
-  min-height: 72vh;
+.stefans-rules-document {
+  display: grid;
+  gap: 16px;
+  max-height: 72vh;
+  overflow: auto;
+  padding: 18px;
   border: 1px solid rgba(31, 34, 51, 0.12);
   border-radius: 18px;
   background: rgba(255, 255, 255, 0.92);
+}
+
+.stefans-rules-section {
+  display: grid;
+  gap: 10px;
+  padding: 16px 18px;
+  border: 1px solid rgba(31, 34, 51, 0.08);
+  border-radius: 16px;
+  background: rgba(255, 253, 249, 0.84);
+}
+
+.stefans-rules-section h3 {
+  margin: 0;
+  font-family: 'Chakra Petch', sans-serif;
+  font-size: 1.25rem;
+}
+
+.stefans-rules-section ul {
+  display: grid;
+  gap: 7px;
+  margin: 0;
+  padding-left: 20px;
+  line-height: 1.5;
+}
+
+.stefans-rules-section p {
+  margin: 0;
+}
+
+.stefans-rules-table-wrap {
+  overflow-x: auto;
+}
+
+.stefans-rules-table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 620px;
+}
+
+.stefans-rules-table th,
+.stefans-rules-table td {
+  padding: 10px 12px;
+  border-bottom: 1px solid rgba(31, 34, 51, 0.1);
+  text-align: left;
+  vertical-align: top;
+}
+
+.stefans-rules-table th {
+  font-size: 0.82rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--muted);
 }
 
 .changelog-dialog {
@@ -7759,7 +8164,8 @@ body.dark-mode .tool-help-toggle {
 
 body.dark-mode .tool-help-inline,
 body.dark-mode .changelog-entry,
-body.dark-mode .stefans-pdf-frame,
+body.dark-mode .stefans-rules-document,
+body.dark-mode .stefans-rules-section,
 body.dark-mode .spieler-card,
 body.dark-mode .cost-suggestions-table-wrap,
 body.dark-mode .information-graph-canvas-wrap {
@@ -7814,9 +8220,18 @@ body.dark-mode .changelog-date {
 
 body.dark-mode .changelog-table th,
 body.dark-mode .changelog-table td,
+body.dark-mode .stefans-rules-table th,
+body.dark-mode .stefans-rules-table td,
 body.dark-mode .cost-suggestions-table th,
 body.dark-mode .cost-suggestions-table td {
   border-bottom-color: rgba(201, 214, 255, 0.12);
+}
+
+body.dark-mode .landing-banner,
+body.dark-mode .landing-tile,
+body.dark-mode .hub-action-card {
+  border-color: rgba(201, 214, 255, 0.14);
+  box-shadow: 0 22px 48px rgba(4, 8, 18, 0.28);
 }
 
 body.dark-mode .changelog-table th {
@@ -7852,7 +8267,16 @@ body.dark-mode .replacement-finder-modal:not(.is-dialga-retro):not(.is-gholdengo
 }
 
 @media (max-width: 720px) {
-  .stefans-pdf-frame {
-    min-height: 58vh;
+  .stefans-rules-document {
+    max-height: 58vh;
+    padding: 12px;
+  }
+
+  .stefans-rules-section {
+    padding: 13px;
+  }
+
+  .stefans-rules-table {
+    min-width: 540px;
   }
 }
