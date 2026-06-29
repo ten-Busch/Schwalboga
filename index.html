@@ -24,26 +24,33 @@
             <div class="section-header-tools">
               <div class="theme-toggle-wrap">
                 <button
+                  class="rail-toggle"
+                  id="rail-toggle"
+                  type="button"
+                  aria-expanded="true"
+                  aria-label="Hide controls"
+                >
+                  <span aria-hidden="true">&#9654;</span>
+                </button>
+                <button
                   class="theme-toggle"
                   id="theme-toggle"
                   type="button"
                   aria-pressed="false"
                   aria-label="Dunkelmodus umschalten"
                 >
-                  <span class="theme-toggle-track" aria-hidden="true">
-                    <span class="theme-toggle-thumb"></span>
-                  </span>
+                  <img
+                    class="theme-toggle-mascot"
+                    id="theme-toggle-mascot"
+                    alt=""
+                    src="https://play.pokemonshowdown.com/sprites/gen5/solrock.png"
+                    width="32"
+                    height="32"
+                    loading="lazy"
+                    aria-hidden="true"
+                  />
                   <span class="theme-toggle-label">Dark Mode</span>
                 </button>
-                <img
-                  class="theme-toggle-mascot"
-                  id="theme-toggle-mascot"
-                  alt="Solrock icon"
-                  src="https://play.pokemonshowdown.com/sprites/gen5/solrock.png"
-                  width="32"
-                  height="32"
-                  loading="lazy"
-                />
                 <button
                   class="theme-toggle"
                   id="easteregg-toggle"
@@ -51,16 +58,9 @@
                   aria-pressed="true"
                   aria-label="Eastereggmodus umschalten"
                 >
-                  <span class="theme-toggle-track" aria-hidden="true">
-                    <span class="theme-toggle-thumb"></span>
-                  </span>
+                  <span class="theme-toggle-mascot theme-toggle-emoji-mascot" id="easteregg-toggle-mascot" aria-hidden="true">&#129370;</span>
                   <span class="theme-toggle-label">Eastereggs</span>
                 </button>
-                <span
-                  class="theme-toggle-mascot theme-toggle-emoji-mascot"
-                  id="easteregg-toggle-mascot"
-                  aria-hidden="true"
-                >🥚</span>
                 <button
                   class="theme-toggle"
                   id="language-toggle"
@@ -68,18 +68,36 @@
                   aria-pressed="false"
                   aria-label="Namenssprache umschalten"
                 >
-                  <span class="theme-toggle-track" aria-hidden="true">
-                    <span class="theme-toggle-thumb"></span>
-                  </span>
+                  <span class="language-flag language-flag-en" aria-hidden="true">&#127468;&#127463;</span>
+                  <span class="language-flag language-flag-de" aria-hidden="true">&#127465;&#127466;</span>
                   <span class="theme-toggle-label">DE Namen</span>
                 </button>
-                <button class="details-button" id="legend-button" type="button">Legende</button>
+                <button class="details-button rail-icon-button" id="legend-button" type="button" aria-label="Legende">
+                  <span aria-hidden="true">?</span>
+                </button>
               </div>
             </div>
           </div>
 
-          <div class="tool-panel">
-            <div class="tool-panel-heading">Tools</div>
+          <div class="mobile-panel-dock" aria-label="Mobile controls">
+            <button class="mobile-panel-trigger" type="button" data-mobile-panel-trigger="tools" aria-expanded="false" aria-controls="tools-panel" aria-label="Tools">
+              <span aria-hidden="true">&#128295;</span>
+            </button>
+            <button class="mobile-panel-trigger" type="button" data-mobile-panel-trigger="information" aria-expanded="false" aria-controls="information-panel" aria-label="Information">
+              <span aria-hidden="true">&#8505;</span>
+            </button>
+            <button class="mobile-panel-trigger" type="button" data-mobile-panel-trigger="search" aria-expanded="false" aria-controls="search-panel" aria-label="Search">
+              <span aria-hidden="true">&#128269;</span>
+            </button>
+          </div>
+
+          <div class="mobile-panel-backdrop" id="mobile-panel-backdrop" hidden></div>
+
+          <div class="tool-panel mobile-overlay-panel" id="tools-panel" data-mobile-panel="tools">
+            <div class="mobile-overlay-heading">
+              <div class="tool-panel-heading">Tools</div>
+              <button class="mobile-overlay-close" type="button" data-mobile-panel-close aria-label="Close Tools">&times;</button>
+            </div>
             <div class="tool-panel-actions">
               <button class="details-button" id="replacement-finder-button" type="button">Ersatzfinder</button>
               <button class="details-button" id="core-finder-button" type="button">Core Sucher</button>
@@ -90,8 +108,11 @@
             </div>
           </div>
 
-          <div class="tool-panel">
-            <div class="tool-panel-heading">Information</div>
+          <div class="tool-panel mobile-overlay-panel" id="information-panel" data-mobile-panel="information">
+            <div class="mobile-overlay-heading">
+              <div class="tool-panel-heading">Information</div>
+              <button class="mobile-overlay-close" type="button" data-mobile-panel-close aria-label="Close Information">&times;</button>
+            </div>
             <div class="tool-panel-actions">
               <button class="details-button" id="draft-overview-button" type="button">Draft Board</button>
               <button class="details-button" id="stefans-pdf-button" type="button">Stefans Pdf</button>
@@ -102,7 +123,11 @@
             </div>
           </div>
 
-          <div class="toolbar">
+          <div class="toolbar mobile-overlay-panel" id="search-panel" data-mobile-panel="search">
+            <div class="mobile-overlay-heading">
+              <div class="tool-panel-heading">Search</div>
+              <button class="mobile-overlay-close" type="button" data-mobile-panel-close aria-label="Close Search">&times;</button>
+            </div>
             <div class="search-actions">
               <label class="search-field" for="pokemon-search">
                 <span class="search-field-label-row">

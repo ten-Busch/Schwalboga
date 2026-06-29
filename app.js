@@ -144,6 +144,10 @@ const template = document.querySelector('#pokemon-card-template');
 const formatFilter = document.querySelector('#format-filter');
 const searchExpandButton = document.querySelector('#search-expand-button');
 const searchAdvancedTools = document.querySelector('#search-advanced-tools');
+const mobilePanelTriggers = [...document.querySelectorAll('[data-mobile-panel-trigger]')];
+const mobilePanels = [...document.querySelectorAll('[data-mobile-panel]')];
+const mobilePanelBackdrop = document.querySelector('#mobile-panel-backdrop');
+const mobilePanelCloseButtons = [...document.querySelectorAll('[data-mobile-panel-close]')];
 const triFilterButtons = [...document.querySelectorAll('.tri-filter')];
 const showAllPokemon = document.querySelector('#show-all-pokemon');
 const hideUnreleased = document.querySelector('#hide-unreleased');
@@ -169,6 +173,12 @@ const eastereggToggle = document.querySelector('#easteregg-toggle');
 const eastereggToggleMascot = document.querySelector('#easteregg-toggle-mascot');
 const languageToggle = document.querySelector('#language-toggle');
 const legendButton = document.querySelector('#legend-button');
+const railToggle = document.querySelector('#rail-toggle');
+const themeToggleWrap = document.querySelector('.theme-toggle-wrap');
+const themeToggleWrapHome = {
+  parent: themeToggleWrap?.parentNode ?? null,
+  nextSibling: themeToggleWrap?.nextSibling ?? null,
+};
 const scrollTopButton = document.querySelector('#scroll-top-button');
 const jumpRail = document.querySelector('#jump-rail');
 const detailsModal = document.querySelector('#details-modal');
@@ -1117,6 +1127,7 @@ let activeExpertSearch = {
   matcher: null,
 };
 let isSearchAdvancedExpanded = false;
+let controlRailStickyThreshold = null;
 let appliedAdvancedSearch = {
   name: '',
   abilities: [],
@@ -1192,6 +1203,7 @@ function updateLanguageToggle() {
   if (!languageToggle) return;
   const isGerman = activeNameLanguage === 'de';
   languageToggle.setAttribute('aria-pressed', isGerman ? 'true' : 'false');
+  languageToggle.setAttribute('aria-label', isGerman ? 'Deutsche Namen aktiv' : 'Englische Namen aktiv');
   const label = languageToggle.querySelector('.theme-toggle-label');
   if (label) label.textContent = isGerman ? 'DE Namen' : 'EN Names';
 }
@@ -1215,6 +1227,111 @@ function setSearchAdvancedExpanded(expanded) {
     searchExpandButton.setAttribute('aria-expanded', expanded ? 'true' : 'false');
     searchExpandButton.classList.toggle('is-expanded', expanded);
   }
+}
+
+function closeMobilePanels() {
+  for (const panel of mobilePanels) {
+    panel.classList.remove('is-open');
+  }
+  for (const trigger of mobilePanelTriggers) {
+    trigger.setAttribute('aria-expanded', 'false');
+  }
+  if (mobilePanelBackdrop) mobilePanelBackdrop.hidden = true;
+  document.body.classList.remove('mobile-panel-open');
+}
+
+function openMobilePanel(panelName) {
+  let openedPanel = null;
+  for (const panel of mobilePanels) {
+    const isTarget = panel.dataset.mobilePanel === panelName;
+    panel.classList.toggle('is-open', isTarget);
+    if (isTarget) openedPanel = panel;
+  }
+  for (const trigger of mobilePanelTriggers) {
+    trigger.setAttribute('aria-expanded', trigger.dataset.mobilePanelTrigger === panelName ? 'true' : 'false');
+  }
+  if (mobilePanelBackdrop) mobilePanelBackdrop.hidden = !openedPanel;
+  document.body.classList.toggle('mobile-panel-open', Boolean(openedPanel));
+  openedPanel?.querySelector('input, select, button, a')?.focus({ preventScroll: true });
+}
+
+function toggleMobilePanel(panelName) {
+  const isOpen = mobilePanels.some((panel) => panel.dataset.mobilePanel === panelName && panel.classList.contains('is-open'));
+  if (isOpen) closeMobilePanels();
+  else openMobilePanel(panelName);
+}
+
+function setRailCollapsed(collapsed) {
+  document.body.classList.toggle('controls-collapsed', collapsed);
+  railToggle?.setAttribute('aria-expanded', collapsed ? 'false' : 'true');
+  railToggle?.setAttribute('aria-label', collapsed ? 'Show controls' : 'Hide controls');
+}
+
+function toggleRailCollapsed() {
+  setRailCollapsed(!document.body.classList.contains('controls-collapsed'));
+}
+
+function setControlRailPortaled(portaled) {
+  if (!themeToggleWrap || !themeToggleWrapHome.parent) return;
+  if (portaled) {
+    if (themeToggleWrap.parentNode !== document.body) {
+      document.body.append(themeToggleWrap);
+    }
+    return;
+  }
+  if (themeToggleWrap.parentNode === themeToggleWrapHome.parent) return;
+  themeToggleWrapHome.parent.insertBefore(themeToggleWrap, themeToggleWrapHome.nextSibling);
+}
+
+function isMobileLayout() {
+  return window.matchMedia('(max-width: 820px)').matches;
+}
+
+function getControlRailStickyThreshold() {
+  const heading = document.querySelector('.section-heading');
+  if (!heading) return 96;
+  return heading.getBoundingClientRect().bottom + window.scrollY - 8;
+}
+
+function resetControlRailStickyThreshold() {
+  const wasSticky = document.body.classList.contains('controls-sticky');
+  if (wasSticky) document.body.classList.remove('controls-sticky');
+  setControlRailPortaled(false);
+  controlRailStickyThreshold = getControlRailStickyThreshold();
+  setControlRailPortaled(wasSticky && !isMobileLayout());
+  document.body.classList.toggle('controls-sticky', wasSticky);
+}
+
+function hasScrolledPastHeaderControls() {
+  if (controlRailStickyThreshold === null) {
+    controlRailStickyThreshold = getControlRailStickyThreshold();
+  }
+  return window.scrollY > controlRailStickyThreshold;
+}
+
+function updateControlRailVisibility() {
+  const shouldPinControls = !isMobileLayout() && hasScrolledPastHeaderControls();
+  setControlRailPortaled(shouldPinControls);
+  document.body.classList.toggle('controls-sticky', shouldPinControls);
+  if (!shouldPinControls && !isMobileLayout()) {
+    setRailCollapsed(false);
+  }
+}
+
+function syncResponsiveMode() {
+  const previousMode = currentEastereggMode;
+  if (isMobileLayout()) {
+    setControlRailPortaled(false);
+    applyEastereggMode('serious');
+  } else {
+    applyEastereggMode(getStoredEastereggMode());
+  }
+  if (previousMode !== currentEastereggMode) {
+    applyAllFilters();
+    if (!pokemonDetailModal?.hidden) refreshActivePokemonDetail();
+  }
+  updateControlRailVisibility();
+  if (!isMobileLayout()) closeMobilePanels();
 }
 
 function isMegaPokemon(name) {
@@ -1634,6 +1751,7 @@ function applyTheme(theme) {
   currentTheme = theme === 'dark' ? 'dark' : 'light';
   document.body.classList.toggle('dark-mode', currentTheme === 'dark');
   themeToggle?.setAttribute('aria-pressed', String(currentTheme === 'dark'));
+  themeToggle?.setAttribute('aria-label', currentTheme === 'dark' ? 'Dunkelmodus aktiv' : 'Hellmodus aktiv');
   if (themeToggle) {
     const label = themeToggle.querySelector('.theme-toggle-label');
     if (label) label.textContent = currentTheme === 'dark' ? 'Dark Mode' : 'Light Mode';
@@ -1710,6 +1828,10 @@ function toggleTheme() {
 }
 
 function toggleEastereggMode() {
+  if (isMobileLayout()) {
+    applyEastereggMode('serious');
+    return;
+  }
   const nextMode = currentEastereggMode === 'eastereggs' ? 'serious' : 'eastereggs';
   applyEastereggMode(nextMode);
   window.localStorage.setItem(eastereggModeStorageKey, nextMode);
@@ -3151,9 +3273,9 @@ const spriteOutlinePalettes = {
   'Eternatus-Eternamax': ['#2a063f', '#5d1595', '#ff1f3d', '#15001f', '#b00835', '#ff5a67'],
 };
 
-function createSpriteOutlineImage(spriteUrl, label, palette = null) {
+function createSpriteOutlineImage(spriteUrl, label, palette = null, isAnimated = false) {
   const image = document.createElement('img');
-  image.className = 'sprite-outline-image';
+  image.className = `sprite-outline-image${isAnimated ? ' is-pulsing-outline' : ''}`;
   image.src = spriteUrl;
   image.alt = '';
   image.loading = 'lazy';
@@ -3174,11 +3296,11 @@ function clearSpriteOutline(decorationTarget) {
   decorationTarget?.querySelectorAll(':scope > .sprite-outline-image, :scope > .mega-fallback-border-image, :scope > .mega-fallback-border-canvas').forEach((node) => node.remove());
 }
 
-function applySpriteOutline(decorationTarget, spriteUrl, label, palette = null, className = 'has-sprite-outline') {
+function applySpriteOutline(decorationTarget, spriteUrl, label, palette = null, className = 'has-sprite-outline', isAnimated = false) {
   if (!decorationTarget || typeof spriteUrl !== 'string' || !spriteUrl) return;
   decorationTarget.classList.add(className);
   clearSpriteOutline(decorationTarget);
-  decorationTarget.append(createSpriteOutlineImage(spriteUrl, label, palette));
+  decorationTarget.append(createSpriteOutlineImage(spriteUrl, label, palette, isAnimated));
 }
 
 function getSpecialSpriteOutlinePalette(pokemon) {
@@ -3188,7 +3310,7 @@ function getSpecialSpriteOutlinePalette(pokemon) {
 function applySpecialSpriteOutline(decorationTarget, pokemon, spriteUrl, label = `${pokemon?.name ?? 'Pokemon'} sprite`) {
   const palette = getSpecialSpriteOutlinePalette(pokemon);
   if (!palette) return;
-  applySpriteOutline(decorationTarget, spriteUrl, label, palette);
+  applySpriteOutline(decorationTarget, spriteUrl, label, palette, 'has-sprite-outline', true);
 }
 
 function getMegaFallbackPokemon(pokemon) {
@@ -4173,6 +4295,7 @@ function applyEastereggMode(mode) {
   currentEastereggMode = mode === 'serious' ? 'serious' : 'eastereggs';
   document.body.classList.toggle('serious-mode', currentEastereggMode === 'serious');
   eastereggToggle?.setAttribute('aria-pressed', String(currentEastereggMode === 'eastereggs'));
+  eastereggToggle?.setAttribute('aria-label', currentEastereggMode === 'eastereggs' ? 'Eastereggs aktiv' : 'Eastereggs aus');
   if (eastereggToggle) {
     const label = eastereggToggle.querySelector('.theme-toggle-label');
     if (label) label.textContent = currentEastereggMode === 'eastereggs' ? 'Eastereggs' : 'Seriös';
@@ -7416,6 +7539,8 @@ function openPokemonDetail(name) {
   renderPokemonDetail(pokemon);
   if (pokemonDetailBody) pokemonDetailBody.scrollTop = 0;
   pokemonDetailModal.hidden = false;
+  document.body.classList.add('pokemon-detail-open');
+  closeMobilePanels();
   if (pokemonDetailBody) pokemonDetailBody.scrollTop = 0;
 }
 
@@ -7425,6 +7550,7 @@ function closePokemonDetail() {
   clearDetailEffectTimeouts();
   activeDetailShinySprites = new Map();
   pokemonDetailModal.hidden = true;
+  document.body.classList.remove('pokemon-detail-open');
 }
 
 function refreshActivePokemonDetail() {
@@ -10021,6 +10147,28 @@ initializeStaticUiLabels();
 detailsButton.addEventListener('click', openDetailsModal);
 expertSearchButton?.addEventListener('click', openExpertSearchModal);
 searchExpandButton?.addEventListener('click', () => setSearchAdvancedExpanded(!isSearchAdvancedExpanded));
+for (const trigger of mobilePanelTriggers) {
+  trigger.addEventListener('click', () => toggleMobilePanel(trigger.dataset.mobilePanelTrigger));
+}
+for (const button of mobilePanelCloseButtons) {
+  button.addEventListener('click', closeMobilePanels);
+}
+for (const panel of mobilePanels) {
+  panel.addEventListener('click', (event) => {
+    if (event.target.closest('[data-mobile-panel-close]')) return;
+    if (event.target.closest('.details-button')) closeMobilePanels();
+  }, { capture: true });
+}
+mobilePanelBackdrop?.addEventListener('click', closeMobilePanels);
+railToggle?.addEventListener('click', toggleRailCollapsed);
+window.addEventListener('keydown', (event) => {
+  if (event.key === 'Escape') closeMobilePanels();
+});
+window.addEventListener('resize', () => {
+  resetControlRailStickyThreshold();
+  syncResponsiveMode();
+});
+window.addEventListener('scroll', updateControlRailVisibility, { passive: true });
 replacementFinderButton?.addEventListener('click', () => openReplacementPicker());
 coreFinderButton?.addEventListener('click', openCoreFinder);
 budgetPlannerButton?.addEventListener('click', openBudgetPlanner);
@@ -10323,6 +10471,8 @@ async function loadPokedex() {
 
 applyTheme(getStoredTheme());
 applyEastereggMode(getStoredEastereggMode());
+resetControlRailStickyThreshold();
+syncResponsiveMode();
 updateLanguageToggle();
 initializeAdvancedSearch();
 searchInput.addEventListener('input', applyAllFilters);
