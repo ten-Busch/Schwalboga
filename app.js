@@ -1121,6 +1121,59 @@ let ruleCheckerItemOptions = window.RULE_CHECKER_ITEMS?.itemOptions ?? [];
 let ruleCheckerMegaStoneByForm = new Map(Object.entries(window.RULE_CHECKER_ITEMS?.megaStoneByForm ?? {}));
 let draftOverviewMode = 'teams';
 let draftOverviewActivePlayerId = null;
+let draftOffenseOwnPlayerId = null;
+let draftOffenseOpponentPlayerId = null;
+const draftOffenseSelections = new Map();
+const evOptimizerStats = ['hp', 'atk', 'def', 'spa', 'spd', 'spe'];
+const evOptimizerNatureLabels = { atk: 'Atk', def: 'Def', spa: 'SpA', spd: 'SpD', spe: 'Spe' };
+let evOptimizerState = {
+  pokemonName: '',
+  level: 100,
+  trickRoom: false,
+  naturePlus: '',
+  natureMinus: '',
+  stats: Object.fromEntries(evOptimizerStats.map((stat) => [stat, { iv: 31, ev: 0 }])),
+};
+const outspeedStageMultipliers = {
+  '-6': 2 / 8,
+  '-5': 2 / 7,
+  '-4': 2 / 6,
+  '-3': 2 / 5,
+  '-2': 2 / 4,
+  '-1': 2 / 3,
+  0: 2 / 2,
+  1: 3 / 2,
+  2: 4 / 2,
+  3: 5 / 2,
+  4: 6 / 2,
+  5: 7 / 2,
+  6: 8 / 2,
+};
+let outspeedHelperState = {
+  mode: 'value',
+  pokemonName: '',
+  level: 100,
+  iv: 31,
+  ev: 0,
+  nature: 'neutral',
+  item: 'none',
+  ownWeatherRush: false,
+  ownTailwind: false,
+  targetWeatherRush: false,
+  targetTailwind: false,
+  avoidPositiveNature: false,
+  avoidScarf: false,
+  targetValue: 100,
+  targetPokemonName: '',
+  targetLevel: 100,
+  targetIv: 31,
+  targetEv: 0,
+  targetNature: 'neutral',
+  targetItem: 'none',
+  targetStage: 0,
+  targetBaseSpeed: 100,
+  targetPreset: 'positive',
+};
 let speedTiersState = {
   pickerInput: '',
   entries: [],
@@ -4930,6 +4983,18 @@ function renderDraftOverview() {
   const players = getDraftOverviewPlayers();
   if (!players.length) {
     draftOverviewActivePlayerId = null;
+    if (draftOverviewMode === 'tools') {
+      renderDraftOverviewTools(players);
+      return;
+    }
+    if (draftOverviewMode === 'ev-optimizer') {
+      renderEvOptimizer(players);
+      return;
+    }
+    if (draftOverviewMode === 'outspeed-helper') {
+      renderOutspeedHelper(players);
+      return;
+    }
     renderDraftOverviewEmpty('Keine aktuellen Teams in der Spieler-Liste gefunden.');
     return;
   }
@@ -4940,8 +5005,24 @@ function renderDraftOverview() {
     renderDraftOverviewMatrix(players);
     return;
   }
+  if (draftOverviewMode === 'offense') {
+    renderDraftOverviewOffenseMatrix(players);
+    return;
+  }
   if (draftOverviewMode === 'speed') {
     renderDraftOverviewSpeedTiers(players);
+    return;
+  }
+  if (draftOverviewMode === 'tools') {
+    renderDraftOverviewTools(players);
+    return;
+  }
+  if (draftOverviewMode === 'ev-optimizer') {
+    renderEvOptimizer(players);
+    return;
+  }
+  if (draftOverviewMode === 'outspeed-helper') {
+    renderOutspeedHelper(players);
     return;
   }
   renderDraftOverviewTeams(players);
@@ -5118,6 +5199,1023 @@ function renderDraftOverviewMatrix(players) {
   table.append(tbody);
   wrap.append(table);
   section.append(wrap);
+  content.append(section);
+}
+
+const draftOffenseFixedNeutralMoveIds = new Set(['seismictoss', 'dragonrage', 'superfang', 'nightshade', 'natureswrath', 'naturesmadness']);
+const draftOffenseNormalTypeAbilities = {
+  aerilate: 'Flying',
+  refrigerate: 'Ice',
+  galvanize: 'Electric',
+  pixilate: 'Fairy',
+};
+
+function getDraftOffenseSelectionKey(playerId, pokemonName) {
+  return `${playerId}::${pokemonName}`;
+}
+
+function isDraftOffenseDamagingMove(move) {
+  return Boolean(move?.type) && (move.category !== 'Status' || draftOffenseFixedNeutralMoveIds.has(move.id));
+}
+
+function getDraftOffenseMoveOptions(pokemon) {
+  return getLegalPokemonMoveRows(pokemon);
+}
+
+function getDraftOffenseDamagingMoveOptions(pokemon) {
+  return getDraftOffenseMoveOptions(pokemon).filter(isDraftOffenseDamagingMove);
+}
+
+function getDraftOffenseSelection(player, pick, pokemon) {
+  const key = getDraftOffenseSelectionKey(player.id, pick.name);
+  const abilityNames = getPokemonAbilityNames(pokemon);
+  const moveOptions = getDraftOffenseMoveOptions(pokemon);
+  const moveIds = new Set(moveOptions.map((move) => move.id));
+  const existing = draftOffenseSelections.get(key) ?? {};
+  const selectedMoves = (existing.moves ?? []).slice(0, 4).map((moveId) => (moveIds.has(moveId) ? moveId : ''));
+  const defaultMoves = getDraftOffenseDamagingMoveOptions(pokemon).slice(0, 4).map((move) => move.id);
+  while (selectedMoves.length < 4) selectedMoves.push(defaultMoves[selectedMoves.length] ?? '');
+  const selection = {
+    ability: abilityNames.includes(existing.ability) ? existing.ability : abilityNames[0] ?? '',
+    moves: selectedMoves,
+  };
+  draftOffenseSelections.set(key, selection);
+  return selection;
+}
+
+function setDraftOffenseSelection(player, pick, nextSelection) {
+  draftOffenseSelections.set(getDraftOffenseSelectionKey(player.id, pick.name), nextSelection);
+}
+
+function createDraftOffenseSelect(labelText, value, options, onChange) {
+  const label = createNode('label', 'draft-offense-select-field');
+  label.append(createNode('span', '', labelText));
+  const select = document.createElement('select');
+  for (const option of options) {
+    const node = document.createElement('option');
+    node.value = option.value;
+    node.textContent = option.label;
+    if (option.title) node.title = option.title;
+    select.append(node);
+  }
+  select.value = value ?? '';
+  select.addEventListener('change', () => onChange(select.value));
+  label.append(select);
+  return label;
+}
+
+function normalizeDraftOffensePlayers(players) {
+  if (!players.some((player) => player.id === draftOffenseOwnPlayerId)) {
+    draftOffenseOwnPlayerId = players[0]?.id ?? null;
+  }
+  if (!players.some((player) => player.id === draftOffenseOpponentPlayerId)) {
+    draftOffenseOpponentPlayerId = players.find((player) => player.id !== draftOffenseOwnPlayerId)?.id ?? players[0]?.id ?? null;
+  }
+  if (players.length > 1 && draftOffenseOwnPlayerId === draftOffenseOpponentPlayerId) {
+    draftOffenseOpponentPlayerId = players.find((player) => player.id !== draftOffenseOwnPlayerId)?.id ?? draftOffenseOpponentPlayerId;
+  }
+}
+
+function createDraftOffenseTeamControls(players) {
+  const controls = createNode('div', 'draft-offense-controls');
+  const playerOptions = players.map((player) => ({ value: player.id, label: player.name }));
+  controls.append(
+    createDraftOffenseSelect('Dein Team', draftOffenseOwnPlayerId, playerOptions, (value) => {
+      draftOffenseOwnPlayerId = value;
+      if (players.length > 1 && draftOffenseOpponentPlayerId === value) {
+        draftOffenseOpponentPlayerId = players.find((player) => player.id !== value)?.id ?? draftOffenseOpponentPlayerId;
+      }
+      renderDraftOverview();
+    }),
+    createDraftOffenseSelect('Gegner Team', draftOffenseOpponentPlayerId, playerOptions, (value) => {
+      draftOffenseOpponentPlayerId = value;
+      renderDraftOverview();
+    }),
+  );
+  return controls;
+}
+
+function createDraftOffensePokemonEditor(player, pick) {
+  const pokemon = pokemonByName.get(pick.name);
+  const card = createNode('div', 'draft-offense-card');
+  if (!pokemon) {
+    card.append(createNode('p', '', pick.name));
+    return card;
+  }
+  const selection = getDraftOffenseSelection(player, pick, pokemon);
+  const header = createNode('div', 'draft-offense-card-header');
+  const sprite = document.createElement('img');
+  setSpriteWithFallback(sprite, pokemon.sprite, `${getPokemonDisplayName(pokemon)} sprite`);
+  header.append(sprite, createNode('strong', '', getPokemonDisplayName(pokemon)));
+
+  const abilityOptions = getPokemonAbilityNames(pokemon).map((ability) => ({ value: ability, label: ability }));
+  const moveOptions = [
+    { value: '', label: 'Move waehlen' },
+    ...getDraftOffenseMoveOptions(pokemon).map((move) => ({
+      value: move.id,
+      label: getMoveDisplayName(move),
+      title: [move.type, move.category, move.basePower ? `${move.basePower} BP` : null].filter(Boolean).join(' / '),
+    })),
+  ];
+  const fields = createNode('div', 'draft-offense-select-grid');
+  fields.append(createDraftOffenseSelect('Faehigkeit', selection.ability, abilityOptions, (value) => {
+    setDraftOffenseSelection(player, pick, { ...selection, ability: value });
+    renderDraftOverview();
+  }));
+  for (let moveIndex = 0; moveIndex < 4; moveIndex += 1) {
+    fields.append(createDraftOffenseSelect(`Move ${moveIndex + 1}`, selection.moves[moveIndex] ?? '', moveOptions, (value) => {
+      const moves = [...selection.moves];
+      moves[moveIndex] = value;
+      setDraftOffenseSelection(player, pick, { ...selection, moves });
+      renderDraftOverview();
+    }));
+  }
+  card.append(header, fields);
+  return card;
+}
+
+function getDraftOffenseMoveType(move, abilityName) {
+  const normalizedAbility = normalizeText(abilityName);
+  return move.type === 'Normal' && draftOffenseNormalTypeAbilities[normalizedAbility]
+    ? draftOffenseNormalTypeAbilities[normalizedAbility]
+    : move.type;
+}
+
+function getDraftOffenseTypeValue(defendingTypes, attackType, abilityName, moveId = '') {
+  const normalizedAbility = normalizeText(abilityName);
+  return (defendingTypes ?? []).reduce((product, defendingType) => {
+    if (normalizedAbility === 'scrappy' && (attackType === 'Normal' || attackType === 'Fighting') && defendingType === 'Ghost') {
+      return product;
+    }
+    if (moveId === 'freezedry' && defendingType === 'Water') return product * 2;
+    return product * (typeDefenseChart[defendingType]?.[attackType] ?? 1);
+  }, 1);
+}
+
+function applyDraftOffenseDefenderAbility(value, attackType, defenderAbility) {
+  if (!defenderAbility) return value;
+  if (attackType === 'Ground' && ['Earth Eater', 'Levitate'].includes(defenderAbility)) return 0;
+  if (attackType === 'Water' && ['Dry Skin', 'Storm Drain', 'Water Absorb'].includes(defenderAbility)) return 0;
+  if (attackType === 'Electric' && ['Lightning Rod', 'Motor Drive', 'Volt Absorb'].includes(defenderAbility)) return 0;
+  if (attackType === 'Grass' && defenderAbility === 'Sap Sipper') return 0;
+  if (attackType === 'Fire') {
+    if (['Flash Fire', 'Well-Baked Body'].includes(defenderAbility)) return 0;
+    if (['Heatproof', 'Thick Fat', 'Water Bubble'].includes(defenderAbility)) return value / 2;
+    if (defenderAbility === 'Dry Skin') return value * 1.25;
+  }
+  if (attackType === 'Ice' && defenderAbility === 'Thick Fat') return value / 2;
+  if (attackType === 'Ghost' && defenderAbility === 'Purifying Salt') return value / 2;
+  if (value > 1 && ['Filter', 'Prism Armor', 'Solid Rock'].includes(defenderAbility)) return value * 0.75;
+  return value;
+}
+
+function getDraftOffenseMoveEffectiveness(attackerAbility, move, defender) {
+  let value;
+  const moveType = getDraftOffenseMoveType(move, attackerAbility);
+  const normalizedAbility = normalizeText(attackerAbility);
+  if (draftOffenseFixedNeutralMoveIds.has(move.id)) {
+    value = 1;
+  } else {
+    const baseValue = move.id === 'flyingpress'
+      ? getDraftOffenseTypeValue(defender.types, 'Fighting', attackerAbility, move.id) *
+        getDraftOffenseTypeValue(defender.types, 'Flying', attackerAbility, move.id)
+      : getDraftOffenseTypeValue(defender.types, moveType, attackerAbility, move.id);
+    if (normalizedAbility === 'moldbreaker') {
+      value = baseValue;
+    } else {
+      const defenderAbilities = getDefenseAbilityStates(defender);
+      value = Math.min(...defenderAbilities.map((ability) => applyDraftOffenseDefenderAbility(baseValue, moveType, ability)));
+    }
+  }
+  if (normalizedAbility === 'tintedlens' && value === 0.5) value = 1;
+  if (defender.name === 'Shedinja' && value < 2) value = 0;
+  return value;
+}
+
+function getDraftOffenseBestResult(ownPlayer, ownPick, defender) {
+  const attacker = pokemonByName.get(ownPick.name);
+  if (!attacker) return null;
+  const selection = getDraftOffenseSelection(ownPlayer, ownPick, attacker);
+  const moveRows = new Map(getDraftOffenseMoveOptions(attacker).map((move) => [move.id, move]));
+  const selectedMoves = selection.moves.map((moveId) => moveRows.get(moveId)).filter(isDraftOffenseDamagingMove);
+  if (!selectedMoves.length) return null;
+  return selectedMoves
+    .map((move) => ({
+      move,
+      value: getDraftOffenseMoveEffectiveness(selection.ability, move, defender),
+    }))
+    .sort((left, right) => right.value - left.value || getMoveDisplayName(left.move).localeCompare(getMoveDisplayName(right.move)))[0] ?? null;
+}
+
+function getDraftOffenseValueClass(value) {
+  if (value === null || value === undefined) return 'is-empty';
+  const displayValue = Number(value.toFixed(2));
+  if (displayValue === 0) return 'is-zero';
+  if (displayValue <= 0.25) return 'is-red';
+  if (displayValue <= 0.4) return 'is-dark-orange';
+  if (displayValue < 1) return 'is-orange';
+  if (displayValue === 1) return 'is-exact-neutral';
+  if (displayValue > 1 && displayValue <= 2.5) return 'is-light-green';
+  if (displayValue <= 3) return 'is-green';
+  if (displayValue < 4) return 'is-dark-green';
+  if (displayValue >= 4) return 'is-glow-green';
+  return 'is-neutral';
+}
+
+function formatDraftOffenseValue(value) {
+  if (value === null || value === undefined) return '-';
+  return `${Number.isInteger(value) ? value : value.toFixed(2).replace(/0+$/, '').replace(/\.$/, '')}x`;
+}
+
+function createDraftOffenseHeaderChip(pick) {
+  const pokemon = pokemonByName.get(pick.name);
+  const chip = createNode('div', 'draft-offense-axis-chip');
+  if (pokemon) {
+    const sprite = document.createElement('img');
+    setSpriteWithFallback(sprite, pokemon.sprite, `${getPokemonDisplayName(pokemon)} sprite`);
+    chip.append(sprite, createNode('span', '', getPokemonDisplayName(pokemon)));
+  } else {
+    chip.append(createNode('span', '', pick.name));
+  }
+  return chip;
+}
+
+function renderDraftOverviewOffenseMatrix(players) {
+  const content = getDraftOverviewContentTarget();
+  if (!content) return;
+  content.innerHTML = '';
+  renderDraftOverviewHeader(content, players);
+  normalizeDraftOffensePlayers(players);
+  content.append(createDraftOffenseTeamControls(players));
+  const ownPlayer = players.find((player) => player.id === draftOffenseOwnPlayerId) ?? players[0];
+  const opponentPlayer = players.find((player) => player.id === draftOffenseOpponentPlayerId) ?? players[0];
+  const section = createNode('div', 'draft-overview-panel');
+  section.append(createNode('h3', '', `${ownPlayer.name} vs ${opponentPlayer.name}: Offense Matrix`));
+  if (!ownPlayer.pokemon?.length || !opponentPlayer.pokemon?.length) {
+    renderEmptyDetailState(section, 'Noch keine Pokemon fuer diese Offense Matrix.');
+    content.append(section);
+    return;
+  }
+
+  const roster = createNode('div', 'draft-offense-roster');
+  for (const pick of ownPlayer.pokemon) roster.append(createDraftOffensePokemonEditor(ownPlayer, pick));
+
+  const wrap = createNode('div', 'draft-offense-matrix-wrap');
+  const table = document.createElement('table');
+  table.className = 'draft-offense-matrix';
+  const thead = document.createElement('thead');
+  const headerRow = document.createElement('tr');
+  headerRow.append(createNode('th', '', 'Gegner'));
+  for (const pick of ownPlayer.pokemon) {
+    const header = document.createElement('th');
+    header.append(createDraftOffenseHeaderChip(pick));
+    headerRow.append(header);
+  }
+  thead.append(headerRow);
+  table.append(thead);
+
+  const tbody = document.createElement('tbody');
+  for (const defenderPick of opponentPlayer.pokemon) {
+    const defender = pokemonByName.get(defenderPick.name);
+    if (!defender) continue;
+    const row = document.createElement('tr');
+    const nameCell = document.createElement('th');
+    nameCell.className = 'budget-planner-matrix-pokemon';
+    nameCell.append(createDraftOverviewPokemonLink(defenderPick));
+    row.append(nameCell);
+    for (const ownPick of ownPlayer.pokemon) {
+      const result = getDraftOffenseBestResult(ownPlayer, ownPick, defender);
+      const cell = document.createElement('td');
+      const value = result?.value ?? null;
+      cell.className = `draft-offense-cell ${getDraftOffenseValueClass(value)}`;
+      cell.textContent = formatDraftOffenseValue(value);
+      if (result?.move) {
+        const attacker = pokemonByName.get(ownPick.name);
+        cell.title = `${attacker ? getPokemonDisplayName(attacker) : ownPick.name} -> ${getPokemonDisplayName(defender)}: ${getMoveDisplayName(result.move)}`;
+      }
+      row.append(cell);
+    }
+    tbody.append(row);
+  }
+  table.append(tbody);
+  wrap.append(table);
+  section.append(roster, wrap);
+  content.append(section);
+}
+
+function createDraftOverviewToolCard({ label, key, action, disabled = false }) {
+  const button = document.createElement('button');
+  button.type = 'button';
+  button.className = 'hub-action-card draft-tool-card';
+  if (key) button.dataset.draftTool = key;
+  if (action) button.dataset.draftToolAction = action;
+  if (disabled) {
+    button.setAttribute('aria-disabled', 'true');
+    button.classList.add('is-placeholder');
+  }
+  const art = createNode('span', 'hub-action-art');
+  art.setAttribute('aria-hidden', 'true');
+  button.append(art, createNode('span', '', label));
+  return button;
+}
+
+function handleDraftToolAction(action) {
+  if (action === 'core-finder') {
+    openCoreFinder();
+    return;
+  }
+  if (action === 'replacement-finder') {
+    openReplacementPicker();
+    return;
+  }
+  if (action === 'ev-optimizer') {
+    draftOverviewMode = 'ev-optimizer';
+    renderDraftOverview();
+    return;
+  }
+  if (action === 'outspeed-helper') {
+    draftOverviewMode = 'outspeed-helper';
+    renderDraftOverview();
+    return;
+  }
+  if (action === 'damage-calc') {
+    window.location.href = 'damage-calc-master/dist/index.html';
+  }
+}
+
+function renderDraftOverviewTools(players) {
+  const content = getDraftOverviewContentTarget();
+  if (!content) return;
+  content.innerHTML = '';
+  renderDraftOverviewHeader(content, players);
+  const section = createNode('div', 'draft-overview-panel');
+  section.append(createNode('h3', '', 'Weitere Tools'));
+  const grid = createNode('div', 'hub-action-grid draft-tools-grid');
+  [
+    { label: 'Ninjatom Check', key: 'shedinja-check', disabled: true },
+    { label: 'EVs Optimieren', key: 'ev-optimizer', action: 'ev-optimizer' },
+    { label: 'Outspeed Helfer', key: 'outspeed-helper', action: 'outspeed-helper' },
+    { label: 'Damage Calc', key: 'damage-calc', action: 'damage-calc' },
+    { label: 'Core Sucher', key: 'core-finder', action: 'core-finder' },
+    { label: 'Ersatzfinder', key: 'replacement-finder', action: 'replacement-finder' },
+  ].forEach((tool) => grid.append(createDraftOverviewToolCard(tool)));
+  grid.addEventListener('click', (event) => {
+    const button = event.target.closest('[data-draft-tool-action]');
+    if (!button) return;
+    handleDraftToolAction(button.dataset.draftToolAction);
+  });
+  section.append(grid);
+  content.append(section);
+}
+
+function getEvOptimizerPokemonOptions() {
+  return allPokemon
+    .filter((pokemon) => !pokemon.hidden && !pokemon.unreleased && !pokemon.impossible)
+    .sort((left, right) => left.num - right.num || left.name.localeCompare(right.name));
+}
+
+function getEvOptimizerPokemon() {
+  if (!evOptimizerState.pokemonName) {
+    evOptimizerState.pokemonName = getEvOptimizerPokemonOptions()[0]?.name ?? '';
+  }
+  return getPokemonByNameLoose(evOptimizerState.pokemonName) ?? getEvOptimizerPokemonOptions()[0] ?? null;
+}
+
+function clampInteger(value, min, max, fallback) {
+  const parsed = Number.parseInt(value, 10);
+  if (!Number.isFinite(parsed)) return fallback;
+  return Math.min(max, Math.max(min, parsed));
+}
+
+function getEvOptimizerNatureMultiplier(stat, plus = evOptimizerState.naturePlus, minus = evOptimizerState.natureMinus) {
+  if (stat === 'hp') return 1;
+  if (stat === plus) return 1.1;
+  if (stat === minus) return 0.9;
+  return 1;
+}
+
+function calculateEvOptimizerStat(baseStats, stat, options) {
+  const base = baseStats?.[stat] ?? 0;
+  if (stat === 'hp') return calculateRealHp(base, options);
+  return calculateRealOtherStat(base, options);
+}
+
+function getEvOptimizerRealStats(pokemon) {
+  return Object.fromEntries(evOptimizerStats.map((stat) => [stat, calculateEvOptimizerStat(pokemon.baseStats, stat, {
+    level: evOptimizerState.level,
+    iv: evOptimizerState.stats[stat]?.iv ?? 31,
+    ev: evOptimizerState.stats[stat]?.ev ?? 0,
+    nature: getEvOptimizerNatureMultiplier(stat),
+  })]));
+}
+
+function getEvOptimizerScore(stats, trickRoom = evOptimizerState.trickRoom) {
+  return evOptimizerStats.reduce((sum, stat) => sum + (stat === 'spe' && trickRoom ? -stats[stat] : stats[stat]), 0);
+}
+
+function getEvOptimizerNatureOptions() {
+  const nonHp = evOptimizerStats.filter((stat) => stat !== 'hp');
+  const options = [{ plus: '', minus: '', label: 'Neutral' }];
+  for (const plus of nonHp) {
+    for (const minus of nonHp) {
+      if (plus === minus) continue;
+      options.push({ plus, minus, label: `+${evOptimizerNatureLabels[plus]}/-${evOptimizerNatureLabels[minus]}` });
+    }
+  }
+  return options;
+}
+
+function getEvOptimizerNatureKey(plus = evOptimizerState.naturePlus, minus = evOptimizerState.natureMinus) {
+  return plus && minus ? `${plus}:${minus}` : 'neutral';
+}
+
+function parseEvOptimizerNatureKey(key) {
+  if (key === 'neutral') return { plus: '', minus: '' };
+  const [plus, minus] = key.split(':');
+  return { plus: plus ?? '', minus: minus ?? '' };
+}
+
+function buildEvOptimizerStatOptions(pokemon, stat, nature, currentValue) {
+  const isTrickRoomSpeed = evOptimizerState.trickRoom && stat === 'spe';
+  const iv = isTrickRoomSpeed ? 0 : 31;
+  const options = [];
+  for (let q = 0; q <= 63; q += 1) {
+    const ev = q * 4;
+    const value = calculateEvOptimizerStat(pokemon.baseStats, stat, {
+      level: evOptimizerState.level,
+      iv,
+      ev,
+      nature: getEvOptimizerNatureMultiplier(stat, nature.plus, nature.minus),
+    });
+    const dominates = isTrickRoomSpeed ? value <= currentValue : value >= currentValue;
+    if (dominates) options.push({ q, ev, iv, value });
+  }
+  return options;
+}
+
+function findEvOptimizerImprovement(pokemon, currentStats) {
+  const currentScore = getEvOptimizerScore(currentStats);
+  const natureOptions = getEvOptimizerNatureOptions();
+  for (const nature of natureOptions) {
+    const optionsByStat = Object.fromEntries(evOptimizerStats.map((stat) => [
+      stat,
+      buildEvOptimizerStatOptions(pokemon, stat, nature, currentStats[stat]),
+    ]));
+    if (evOptimizerStats.some((stat) => !optionsByStat[stat].length)) continue;
+    let states = [{ q: 0, score: 0, values: {}, spread: {} }];
+    for (const stat of evOptimizerStats) {
+      const nextStates = [];
+      for (const state of states) {
+        for (const option of optionsByStat[stat]) {
+          const totalQ = state.q + option.q;
+          if (totalQ > 127) continue;
+          nextStates.push({
+            q: totalQ,
+            score: state.score + (stat === 'spe' && evOptimizerState.trickRoom ? -option.value : option.value),
+            values: { ...state.values, [stat]: option.value },
+            spread: { ...state.spread, [stat]: { iv: option.iv, ev: option.ev } },
+          });
+        }
+      }
+      nextStates.sort((left, right) => right.score - left.score || left.q - right.q);
+      const bestByQ = new Map();
+      for (const state of nextStates) {
+        if (!bestByQ.has(state.q)) bestByQ.set(state.q, state);
+      }
+      states = [...bestByQ.values()];
+    }
+    const best = states.sort((left, right) => right.score - left.score || left.q - right.q)[0];
+    if (best && best.score > currentScore) {
+      return { ...best, nature };
+    }
+  }
+  return null;
+}
+
+function createEvOptimizerNumberField(labelText, value, min, max, onInput) {
+  const label = createNode('label', 'details-field');
+  label.append(createNode('span', '', labelText));
+  const input = document.createElement('input');
+  input.type = 'number';
+  input.min = String(min);
+  input.max = String(max);
+  input.value = String(value);
+  const commitValue = () => onInput(clampInteger(input.value, min, max, value));
+  input.addEventListener('change', commitValue);
+  input.addEventListener('keydown', (event) => {
+    if (event.key === 'Enter') {
+      event.preventDefault();
+      commitValue();
+    }
+  });
+  label.append(input);
+  return label;
+}
+
+function renderEvOptimizer(players = []) {
+  const content = getDraftOverviewContentTarget();
+  if (!content) return;
+  content.innerHTML = '';
+  if (players.length) renderDraftOverviewHeader(content, players);
+  const pokemon = getEvOptimizerPokemon();
+  const section = createNode('div', 'draft-overview-panel ev-optimizer-panel');
+  const heading = createNode('div', 'detail-section-heading');
+  heading.append(createNode('h3', '', 'EVs Optimieren'));
+  const back = createNode('button', 'details-secondary', 'Weitere Tools');
+  back.type = 'button';
+  back.addEventListener('click', () => {
+    draftOverviewMode = 'tools';
+    renderDraftOverview();
+  });
+  heading.append(back);
+
+  const controls = createNode('div', 'ev-optimizer-controls');
+  const pokemonField = createNode('label', 'details-field');
+  pokemonField.append(createNode('span', '', 'Pokemon'));
+  const pokemonInput = document.createElement('input');
+  pokemonInput.type = 'search';
+  pokemonInput.autocomplete = 'off';
+  pokemonInput.value = pokemon ? getPokemonDisplayName(pokemon) : '';
+  const pokemonList = document.createElement('datalist');
+  pokemonList.id = 'ev-optimizer-pokemon-list';
+  pokemonInput.setAttribute('list', pokemonList.id);
+  for (const optionPokemon of getEvOptimizerPokemonOptions()) {
+    const option = document.createElement('option');
+    option.value = optionPokemon.name;
+    option.label = getPokemonDisplayName(optionPokemon);
+    pokemonList.append(option);
+  }
+  const commitPokemon = () => {
+    const match = getPokemonByNameLoose(pokemonInput.value);
+    if (!match) return;
+    evOptimizerState.pokemonName = match.name;
+    renderDraftOverview();
+  };
+  pokemonInput.addEventListener('change', commitPokemon);
+  pokemonInput.addEventListener('keydown', (event) => {
+    if (event.key === 'Enter') {
+      event.preventDefault();
+      commitPokemon();
+    }
+  });
+  pokemonField.append(pokemonInput, pokemonList);
+
+  const natureField = createNode('label', 'details-field');
+  natureField.append(createNode('span', '', 'Nature'));
+  const natureSelect = document.createElement('select');
+  const activeNatureKey = getEvOptimizerNatureKey();
+  for (const optionNature of getEvOptimizerNatureOptions()) {
+    const option = document.createElement('option');
+    option.value = getEvOptimizerNatureKey(optionNature.plus, optionNature.minus);
+    option.textContent = optionNature.label;
+    if (option.value === activeNatureKey) option.selected = true;
+    natureSelect.append(option);
+  }
+  natureSelect.addEventListener('change', () => {
+    const nature = parseEvOptimizerNatureKey(natureSelect.value);
+    evOptimizerState.naturePlus = nature.plus;
+    evOptimizerState.natureMinus = nature.minus;
+    renderDraftOverview();
+  });
+  natureField.append(natureSelect);
+
+  const trickRoomLabel = createNode('label', 'hide-filter ev-optimizer-toggle');
+  const trickRoomInput = document.createElement('input');
+  trickRoomInput.type = 'checkbox';
+  trickRoomInput.checked = evOptimizerState.trickRoom;
+  trickRoomInput.addEventListener('change', () => {
+    evOptimizerState.trickRoom = trickRoomInput.checked;
+    renderDraftOverview();
+  });
+  trickRoomLabel.append(trickRoomInput, document.createTextNode(' Trick Room'));
+
+  controls.append(
+    pokemonField,
+    createEvOptimizerNumberField('Level', evOptimizerState.level, 1, 100, (value) => {
+      evOptimizerState.level = value;
+      renderDraftOverview();
+    }),
+    natureField,
+    trickRoomLabel,
+  );
+
+  const pokemonCard = createNode('div', 'ev-optimizer-pokemon-card');
+  if (pokemon) {
+    const sprite = document.createElement('img');
+    setSpriteWithFallback(sprite, pokemon.sprite, `${getPokemonDisplayName(pokemon)} sprite`);
+    const copy = createNode('div');
+    copy.append(
+      createNode('strong', '', getPokemonDisplayName(pokemon)),
+      createNode('span', '', (pokemon.types ?? []).join(' / ')),
+    );
+    pokemonCard.append(sprite, copy);
+  }
+
+  const statGrid = createNode('div', 'ev-optimizer-stat-grid');
+  const currentStats = pokemon ? getEvOptimizerRealStats(pokemon) : {};
+  for (const stat of evOptimizerStats) {
+    const card = createNode('div', 'ev-optimizer-stat-card');
+    card.append(createNode('strong', '', statLabels[stat]));
+    card.append(createNode('span', 'ev-optimizer-base', `Base ${pokemon?.baseStats?.[stat] ?? '-'}`));
+    card.append(createEvOptimizerNumberField('IV', evOptimizerState.stats[stat]?.iv ?? 31, 0, 31, (value) => {
+      evOptimizerState.stats[stat].iv = value;
+      renderDraftOverview();
+    }));
+    card.append(createEvOptimizerNumberField('EV', evOptimizerState.stats[stat]?.ev ?? 0, 0, 252, (value) => {
+      evOptimizerState.stats[stat].ev = value;
+      renderDraftOverview();
+    }));
+    card.append(createNode('span', 'ev-optimizer-real-stat', `Wert ${currentStats[stat] ?? '-'}`));
+    statGrid.append(card);
+  }
+
+  const totalEv = evOptimizerStats.reduce((sum, stat) => sum + (evOptimizerState.stats[stat]?.ev ?? 0), 0);
+  const status = createNode('div', `ev-optimizer-status${totalEv > 510 ? ' is-error' : ''}`);
+  if (!pokemon) {
+    status.textContent = 'Waehle zuerst ein Pokemon.';
+  } else if (totalEv > 510) {
+    status.textContent = `Zu viele EVs: ${totalEv}/510`;
+  } else if (totalEv < 510) {
+    status.textContent = `EVs: ${totalEv}/510`;
+  } else {
+    const improvement = findEvOptimizerImprovement(pokemon, currentStats);
+    if (!improvement) {
+      status.textContent = 'Optimale EVs! 👍';
+    } else {
+      const natureText = improvement.nature.label;
+      const spreadText = evOptimizerStats.map((stat) => `${statLabels[stat]} ${improvement.spread[stat].ev}EV/${improvement.spread[stat].iv}IV`).join(', ');
+      status.textContent = `EVs koennen verbessert werden: ${natureText}; ${spreadText}`;
+    }
+  }
+
+  section.append(heading, controls, pokemonCard, statGrid, status);
+  content.append(section);
+}
+
+function getOutspeedPokemonOptions() {
+  return getEvOptimizerPokemonOptions();
+}
+
+function getOutspeedPokemon(name = outspeedHelperState.pokemonName) {
+  if (!name && !outspeedHelperState.pokemonName) {
+    outspeedHelperState.pokemonName = getOutspeedPokemonOptions()[0]?.name ?? '';
+    name = outspeedHelperState.pokemonName;
+  }
+  return getPokemonByNameLoose(name) ?? getOutspeedPokemonOptions()[0] ?? null;
+}
+
+function getOutspeedNatureMultiplier(natureKey) {
+  if (natureKey === 'positive') return 1.1;
+  if (natureKey === 'negative') return 0.9;
+  return 1;
+}
+
+function getOutspeedNatureLabel(natureKey) {
+  if (natureKey === 'positive') return '+Spe';
+  if (natureKey === 'negative') return '-Spe';
+  return 'Neutral';
+}
+
+function getOutspeedItemMultiplier(item) {
+  return item === 'scarf' ? 1.5 : 1;
+}
+
+function calculateOutspeedRawSpeed(baseSpeed, { level, iv, ev, nature }) {
+  return calculateRealOtherStat(baseSpeed ?? 0, {
+    level,
+    iv,
+    ev,
+    nature: getOutspeedNatureMultiplier(nature),
+  });
+}
+
+function applyOutspeedMultipliers(value, { item = 'none', weatherRush = false, tailwind = false, stage = 0 } = {}) {
+  const weatherMultiplier = weatherRush ? 2 : 1;
+  const tailwindMultiplier = tailwind ? 2 : 1;
+  const stageMultiplier = outspeedStageMultipliers[String(stage)] ?? 1;
+  return Math.floor(value * weatherMultiplier * tailwindMultiplier * stageMultiplier * getOutspeedItemMultiplier(item));
+}
+
+function getOutspeedCurrentOwnSpeed(pokemon) {
+  const raw = calculateOutspeedRawSpeed(pokemon?.baseStats?.spe ?? 0, outspeedHelperState);
+  return applyOutspeedMultipliers(raw, {
+    item: outspeedHelperState.item,
+    weatherRush: outspeedHelperState.ownWeatherRush,
+    tailwind: outspeedHelperState.ownTailwind,
+  });
+}
+
+function getOutspeedTargetPresets() {
+  const level = outspeedHelperState.targetLevel;
+  const base = outspeedHelperState.targetBaseSpeed;
+  return {
+    positive: {
+      label: '31IV + 252EV + positiv',
+      value: calculateOutspeedRawSpeed(base, { level, iv: 31, ev: 252, nature: 'positive' }),
+    },
+    neutral: {
+      label: '31IV + 0EV + neutral',
+      value: calculateOutspeedRawSpeed(base, { level, iv: 31, ev: 0, nature: 'neutral' }),
+    },
+    negative: {
+      label: '0IV + 0EV + negativ',
+      value: calculateOutspeedRawSpeed(base, { level, iv: 0, ev: 0, nature: 'negative' }),
+    },
+  };
+}
+
+function getOutspeedTargetRawSpeed() {
+  if (outspeedHelperState.mode === 'value') return outspeedHelperState.targetValue;
+  if (outspeedHelperState.mode === 'pokemon') {
+    const target = getOutspeedPokemon(outspeedHelperState.targetPokemonName);
+    return calculateOutspeedRawSpeed(target?.baseStats?.spe ?? 0, {
+      level: outspeedHelperState.targetLevel,
+      iv: outspeedHelperState.targetIv,
+      ev: outspeedHelperState.targetEv,
+      nature: outspeedHelperState.targetNature,
+    });
+  }
+  return getOutspeedTargetPresets()[outspeedHelperState.targetPreset]?.value ?? 0;
+}
+
+function getOutspeedTargetEffectiveSpeed() {
+  return applyOutspeedMultipliers(getOutspeedTargetRawSpeed(), {
+    item: outspeedHelperState.mode === 'pokemon' ? outspeedHelperState.targetItem : 'none',
+    weatherRush: outspeedHelperState.targetWeatherRush,
+    tailwind: outspeedHelperState.targetTailwind,
+    stage: outspeedHelperState.targetStage,
+  });
+}
+
+function findOutspeedMinimumSpread(pokemon, targetSpeed) {
+  const baseSpeed = pokemon?.baseStats?.spe ?? 0;
+  const items = outspeedHelperState.avoidScarf ? ['none', 'scarf'] : ['none', 'scarf'];
+  const natures = outspeedHelperState.avoidPositiveNature ? ['neutral', 'positive'] : ['positive', 'neutral'];
+  const candidates = [];
+  for (const item of items) {
+    for (const nature of natures) {
+      for (let ev = 0; ev <= 252; ev += 4) {
+        for (let iv = 0; iv <= 31; iv += 1) {
+          const raw = calculateOutspeedRawSpeed(baseSpeed, { level: outspeedHelperState.level, iv, ev, nature });
+          const value = applyOutspeedMultipliers(raw, {
+            item,
+            weatherRush: outspeedHelperState.ownWeatherRush,
+            tailwind: outspeedHelperState.ownTailwind,
+          });
+          if (value > targetSpeed) candidates.push({ item, nature, ev, iv, raw, value });
+        }
+      }
+    }
+  }
+  if (!candidates.length) return null;
+  candidates.sort((left, right) => {
+    const scarfPenalty = outspeedHelperState.avoidScarf ? Number(left.item === 'scarf') - Number(right.item === 'scarf') : 0;
+    if (scarfPenalty) return scarfPenalty;
+    const naturePenalty = outspeedHelperState.avoidPositiveNature ? Number(left.nature === 'positive') - Number(right.nature === 'positive') : 0;
+    if (naturePenalty) return naturePenalty;
+    return left.ev - right.ev || left.iv - right.iv || Number(left.item === 'scarf') - Number(right.item === 'scarf') || Number(left.nature === 'positive') - Number(right.nature === 'positive');
+  });
+  return candidates[0];
+}
+
+function createOutspeedPokemonField(labelText, value, onCommit) {
+  const field = createNode('label', 'details-field');
+  field.append(createNode('span', '', labelText));
+  const input = document.createElement('input');
+  input.type = 'search';
+  input.autocomplete = 'off';
+  const selected = getPokemonByNameLoose(value);
+  input.value = selected ? getPokemonDisplayName(selected) : value;
+  const list = document.createElement('datalist');
+  list.id = `outspeed-pokemon-list-${normalizeText(labelText)}`;
+  input.setAttribute('list', list.id);
+  for (const pokemon of getOutspeedPokemonOptions()) {
+    const option = document.createElement('option');
+    option.value = pokemon.name;
+    option.label = getPokemonDisplayName(pokemon);
+    list.append(option);
+  }
+  const commit = () => {
+    const match = getPokemonByNameLoose(input.value);
+    if (!match) return;
+    onCommit(match.name);
+    renderDraftOverview();
+  };
+  input.addEventListener('change', commit);
+  input.addEventListener('keydown', (event) => {
+    if (event.key === 'Enter') {
+      event.preventDefault();
+      commit();
+    }
+  });
+  field.append(input, list);
+  return field;
+}
+
+function createOutspeedSelectField(labelText, value, options, onChange) {
+  const field = createNode('label', 'details-field');
+  field.append(createNode('span', '', labelText));
+  const select = document.createElement('select');
+  for (const optionConfig of options) {
+    const option = document.createElement('option');
+    option.value = optionConfig.value;
+    option.textContent = optionConfig.label;
+    if (String(optionConfig.value) === String(value)) option.selected = true;
+    select.append(option);
+  }
+  select.addEventListener('change', () => {
+    onChange(select.value);
+    renderDraftOverview();
+  });
+  field.append(select);
+  return field;
+}
+
+function createOutspeedToggle(labelText, checked, onChange) {
+  const label = createNode('label', 'hide-filter ev-optimizer-toggle');
+  const input = document.createElement('input');
+  input.type = 'checkbox';
+  input.checked = checked;
+  input.addEventListener('change', () => {
+    onChange(input.checked);
+    renderDraftOverview();
+  });
+  label.append(input, document.createTextNode(` ${labelText}`));
+  return label;
+}
+
+function createOutspeedSetupPanel(title, prefix, state, isTarget = false) {
+  const panel = createNode('div', 'outspeed-helper-card');
+  panel.append(createNode('h4', '', title));
+  const grid = createNode('div', 'outspeed-helper-fields');
+  grid.append(
+    createEvOptimizerNumberField('Level', state.level, 1, 100, (value) => {
+      outspeedHelperState[prefix ? `${prefix}Level` : 'level'] = value;
+      renderDraftOverview();
+    }),
+    createEvOptimizerNumberField('IV', state.iv, 0, 31, (value) => {
+      outspeedHelperState[prefix ? `${prefix}Iv` : 'iv'] = value;
+      renderDraftOverview();
+    }),
+    createEvOptimizerNumberField('EV', state.ev, 0, 252, (value) => {
+      outspeedHelperState[prefix ? `${prefix}Ev` : 'ev'] = value;
+      renderDraftOverview();
+    }),
+    createOutspeedSelectField('Nature', state.nature, [
+      { value: 'positive', label: '+Spe' },
+      { value: 'neutral', label: 'Neutral' },
+      { value: 'negative', label: '-Spe' },
+    ], (value) => {
+      outspeedHelperState[prefix ? `${prefix}Nature` : 'nature'] = value;
+    }),
+    createOutspeedSelectField('Item', state.item, [
+      { value: 'none', label: 'Kein Item' },
+      { value: 'scarf', label: 'Choice Scarf' },
+    ], (value) => {
+      outspeedHelperState[prefix ? `${prefix}Item` : 'item'] = value;
+    }),
+  );
+  if (isTarget) {
+    grid.append(createOutspeedSelectField('Stufe', outspeedHelperState.targetStage, Object.keys(outspeedStageMultipliers).map((stage) => ({ value: stage, label: stage })), (value) => {
+      outspeedHelperState.targetStage = Number(value);
+    }));
+  }
+  panel.append(grid);
+  return panel;
+}
+
+function renderOutspeedTargetControls(container) {
+  const targetSection = createNode('div', 'outspeed-helper-card');
+  targetSection.append(createNode('h4', '', 'Ziel'));
+  const modeField = createOutspeedSelectField('Modus', outspeedHelperState.mode, [
+    { value: 'value', label: 'Echter Wert' },
+    { value: 'pokemon', label: 'Zweites Pokemon' },
+    { value: 'base', label: 'Base-Speed Werte' },
+  ], (value) => {
+    outspeedHelperState.mode = value;
+  });
+  const fields = createNode('div', 'outspeed-helper-fields');
+  fields.append(modeField);
+  if (outspeedHelperState.mode === 'value') {
+    fields.append(createEvOptimizerNumberField('Echter Wert', outspeedHelperState.targetValue, 1, 2000, (value) => {
+      outspeedHelperState.targetValue = value;
+      renderDraftOverview();
+    }));
+  } else if (outspeedHelperState.mode === 'pokemon') {
+    fields.append(createOutspeedPokemonField('Gegner Pokemon', outspeedHelperState.targetPokemonName, (name) => {
+      outspeedHelperState.targetPokemonName = name;
+    }));
+    targetSection.append(fields, createOutspeedSetupPanel('Gegner Set', 'target', {
+      level: outspeedHelperState.targetLevel,
+      iv: outspeedHelperState.targetIv,
+      ev: outspeedHelperState.targetEv,
+      nature: outspeedHelperState.targetNature,
+      item: outspeedHelperState.targetItem,
+    }, true));
+    container.append(targetSection);
+    return;
+  } else {
+    fields.append(
+      createEvOptimizerNumberField('Base Speed', outspeedHelperState.targetBaseSpeed, 1, 255, (value) => {
+        outspeedHelperState.targetBaseSpeed = value;
+        renderDraftOverview();
+      }),
+      createEvOptimizerNumberField('Level', outspeedHelperState.targetLevel, 1, 100, (value) => {
+        outspeedHelperState.targetLevel = value;
+        renderDraftOverview();
+      }),
+    );
+    const presets = createNode('div', 'outspeed-preset-grid');
+    const presetValues = getOutspeedTargetPresets();
+    for (const [key, preset] of Object.entries(presetValues)) {
+      const button = createNode('button', `details-secondary${outspeedHelperState.targetPreset === key ? ' is-active' : ''}`, `${preset.label}: ${preset.value}`);
+      button.type = 'button';
+      button.addEventListener('click', () => {
+        outspeedHelperState.targetPreset = key;
+        renderDraftOverview();
+      });
+      presets.append(button);
+    }
+    targetSection.append(fields, presets);
+    container.append(targetSection);
+    return;
+  }
+  fields.append(createOutspeedSelectField('Stufe', outspeedHelperState.targetStage, Object.keys(outspeedStageMultipliers).map((stage) => ({ value: stage, label: stage })), (value) => {
+    outspeedHelperState.targetStage = Number(value);
+  }));
+  targetSection.append(fields);
+  container.append(targetSection);
+}
+
+function renderOutspeedHelper(players = []) {
+  const content = getDraftOverviewContentTarget();
+  if (!content) return;
+  content.innerHTML = '';
+  if (players.length) renderDraftOverviewHeader(content, players);
+  const ownPokemon = getOutspeedPokemon();
+  if (!outspeedHelperState.targetPokemonName) outspeedHelperState.targetPokemonName = ownPokemon?.name ?? '';
+  const section = createNode('div', 'draft-overview-panel outspeed-helper-panel');
+  const heading = createNode('div', 'detail-section-heading');
+  heading.append(createNode('h3', '', 'Outspeed Helfer'));
+  const back = createNode('button', 'details-secondary', 'Weitere Tools');
+  back.type = 'button';
+  back.addEventListener('click', () => {
+    draftOverviewMode = 'tools';
+    renderDraftOverview();
+  });
+  heading.append(back);
+
+  const mainGrid = createNode('div', 'outspeed-helper-grid');
+  const ownSection = createNode('div', 'outspeed-helper-card');
+  ownSection.append(createNode('h4', '', 'Eigenes Pokemon'));
+  ownSection.append(createOutspeedPokemonField('Pokemon', outspeedHelperState.pokemonName, (name) => {
+    outspeedHelperState.pokemonName = name;
+  }));
+  ownSection.append(createOutspeedSetupPanel('Eigenes Set', '', {
+    level: outspeedHelperState.level,
+    iv: outspeedHelperState.iv,
+    ev: outspeedHelperState.ev,
+    nature: outspeedHelperState.nature,
+    item: outspeedHelperState.item,
+  }));
+  mainGrid.append(ownSection);
+  renderOutspeedTargetControls(mainGrid);
+
+  const toggles = createNode('div', 'outspeed-toggle-grid');
+  toggles.append(
+    createOutspeedToggle('Eigene Wetter Rush Faehigkeit', outspeedHelperState.ownWeatherRush, (checked) => {
+      outspeedHelperState.ownWeatherRush = checked;
+    }),
+    createOutspeedToggle('Gegner Wetter Rush Faehigkeit', outspeedHelperState.targetWeatherRush, (checked) => {
+      outspeedHelperState.targetWeatherRush = checked;
+    }),
+    createOutspeedToggle('Eigener Rueckenwind', outspeedHelperState.ownTailwind, (checked) => {
+      outspeedHelperState.ownTailwind = checked;
+    }),
+    createOutspeedToggle('Gegner Rueckenwind', outspeedHelperState.targetTailwind, (checked) => {
+      outspeedHelperState.targetTailwind = checked;
+    }),
+    createOutspeedToggle('Faehigkeit neutral falls moeglich', outspeedHelperState.avoidPositiveNature, (checked) => {
+      outspeedHelperState.avoidPositiveNature = checked;
+    }),
+    createOutspeedToggle('Scarf vermeiden falls moeglich', outspeedHelperState.avoidScarf, (checked) => {
+      outspeedHelperState.avoidScarf = checked;
+    }),
+  );
+
+  const targetSpeed = getOutspeedTargetEffectiveSpeed();
+  const ownCurrent = ownPokemon ? getOutspeedCurrentOwnSpeed(ownPokemon) : 0;
+  const minimum = findOutspeedMinimumSpread(ownPokemon, targetSpeed);
+  const result = createNode('div', `ev-optimizer-status${minimum ? '' : ' is-error'}`);
+  if (!ownPokemon) {
+    result.textContent = 'Waehle zuerst ein Pokemon.';
+  } else if (!minimum) {
+    result.textContent = `Kein legales Set outspeedet ${targetSpeed}. Aktuell: ${ownCurrent}.`;
+  } else {
+    result.textContent = `Ziel ${targetSpeed}, aktuell ${ownCurrent}. Minimum: ${minimum.iv} IV / ${minimum.ev} EV / ${getOutspeedNatureLabel(minimum.nature)} / ${minimum.item === 'scarf' ? 'Choice Scarf' : 'kein Item'} -> ${minimum.value}`;
+  }
+
+  section.append(heading, mainGrid, toggles, result);
   content.append(section);
 }
 

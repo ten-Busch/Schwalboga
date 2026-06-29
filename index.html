@@ -38,7 +38,7 @@
             </a>
             <a class="landing-tile is-draft" href="#draft">
               <span class="landing-tile-art" aria-hidden="true"></span>
-              <span class="landing-tile-label">Draft Board</span>
+              <span class="landing-tile-label">Battle Prep</span>
             </a>
             <a class="landing-tile is-draft-room" href="#draft-room">
               <span class="landing-tile-art" aria-hidden="true"></span>
@@ -100,16 +100,18 @@
           <div class="section-heading">
             <div>
               <p class="eyebrow">Draft</p>
-              <h2>Draft Board</h2>
+              <h2>Battle Prep</h2>
             </div>
             <div class="section-header-tools">
               <a class="details-button" href="#home">Zur&uuml;ck</a>
             </div>
           </div>
-          <div class="draft-overview-toolbar" id="draft-page-tabs" role="tablist" aria-label="Draft Board Ansichten">
+          <div class="draft-overview-toolbar" id="draft-page-tabs" role="tablist" aria-label="Battle Prep Ansichten">
             <button class="details-secondary is-active" type="button" data-draft-overview-mode="teams" role="tab" aria-selected="true">Teams</button>
             <button class="details-secondary" type="button" data-draft-overview-mode="matrix" role="tab" aria-selected="false">Defense Matrix</button>
+            <button class="details-secondary" type="button" data-draft-overview-mode="offense" role="tab" aria-selected="false">Offense Matrix</button>
             <button class="details-secondary" type="button" data-draft-overview-mode="speed" role="tab" aria-selected="false">Speed Tiers</button>
+            <button class="details-secondary" type="button" data-draft-overview-mode="tools" role="tab" aria-selected="false">Weitere Tools</button>
           </div>
           <div class="draft-overview-content" id="draft-page-content"></div>
         </section>
@@ -235,7 +237,6 @@
             </div>
             <div class="tool-panel-actions">
               <button class="details-button" id="replacement-finder-button" type="button">Ersatzfinder</button>
-              <button class="details-button" id="core-finder-button" type="button">Core Sucher</button>
               <button class="details-button" id="budget-planner-button" type="button">Budget Planer</button>
               <button class="details-button" id="speed-tiers-button" type="button">Speed Tiers</button>
             </div>
@@ -865,15 +866,17 @@
         <div class="details-header">
           <div class="tool-modal-heading">
             <p class="eyebrow">Information</p>
-            <h2 id="draft-overview-title">Draft Board</h2>
+            <h2 id="draft-overview-title">Battle Prep</h2>
           </div>
           <button class="details-close" id="draft-overview-close" type="button" aria-label="Close">&times;</button>
         </div>
         <div class="details-body draft-overview-body">
-          <div class="draft-overview-toolbar" id="draft-overview-tabs" role="tablist" aria-label="Draft Board Ansicht">
+          <div class="draft-overview-toolbar" id="draft-overview-tabs" role="tablist" aria-label="Battle Prep Ansicht">
             <button class="details-secondary is-active" type="button" data-draft-overview-mode="teams">Teams</button>
             <button class="details-secondary" type="button" data-draft-overview-mode="matrix">Defense Matrix</button>
+            <button class="details-secondary" type="button" data-draft-overview-mode="offense">Offense Matrix</button>
             <button class="details-secondary" type="button" data-draft-overview-mode="speed">Speed Tiers</button>
+            <button class="details-secondary" type="button" data-draft-overview-mode="tools">Weitere Tools</button>
           </div>
           <section class="detail-section draft-overview-content" id="draft-overview-content"></section>
         </div>
