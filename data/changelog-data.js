@@ -259,11 +259,13 @@ window.CHANGELOG_DATA = {
       ]
     },
     {
-    "title": "Seiten Updates",
-    "date:" "2026-06-27",
-    "Special sprites gefixt",
-    "Alternate Draft ansicht für aktuellen Draft",
-    "Deutsche Ansicht + deutsche Search terms",
+      "title": "Seiten Updates",
+      "date": "2026-06-27",
+      "items": [
+        "Special sprites gefixt",
+        "Alternate Draft Ansicht f\u00fcr aktuellen Draft",
+        "Deutsche Ansicht + deutsche Search Terms"
+      ]
     }
   ]
 };
