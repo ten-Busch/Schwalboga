@@ -130,6 +130,7 @@ const rageFistIconPath = 'Type Icons/Punch.png';
 const revivalBlessingIconPath = 'Type Icons/maxrevive.png';
 const legendaryIconPath = 'Type Icons/Masterball.png';
 const mythicIconPath = 'Type Icons/Cherish Ball.png';
+const costSuggestionsEndpoint = 'https://script.google.com/macros/s/AKfycbwl7_jdkgBdixfeeqrqJdzI4Dwp3gwI6gKF4YEQxXZLrdgPwvMOeCOgnvbR16QpD2jX/exec';
 
 const pokedexGrid = document.querySelector('#pokedex-grid');
 const searchInput = document.querySelector('#pokemon-search');
@@ -270,6 +271,19 @@ const informationGraphY = document.querySelector('#information-graph-y');
 const informationGraphGenerate = document.querySelector('#information-graph-generate');
 const informationGraphCanvas = document.querySelector('#information-graph-canvas');
 const informationGraphTooltip = document.querySelector('#information-graph-tooltip');
+const costSuggestionsButton = document.querySelector('#cost-suggestions-button');
+const costSuggestionsModal = document.querySelector('#cost-suggestions-modal');
+const costSuggestionsClose = document.querySelector('#cost-suggestions-close');
+const costSuggestionsAuth = document.querySelector('#cost-suggestions-auth');
+const costSuggestionsPassword = document.querySelector('#cost-suggestions-password');
+const costSuggestionsStatus = document.querySelector('#cost-suggestions-status');
+const costSuggestionsTableWrap = document.querySelector('#cost-suggestions-table-wrap');
+const costSuggestionForm = document.querySelector('#cost-suggestion-form');
+const costSuggestionValue = document.querySelector('#cost-suggestion-value');
+const costSuggestionName = document.querySelector('#cost-suggestion-name');
+const costSuggestionReason = document.querySelector('#cost-suggestion-reason');
+const costSuggestionSubmit = document.querySelector('#cost-suggestion-submit');
+const costSuggestionFeedback = document.querySelector('#cost-suggestion-feedback');
 const legendModal = document.querySelector('#legend-modal');
 const legendClose = document.querySelector('#legend-close');
 const toolHelpToggles = [...document.querySelectorAll('.tool-help-toggle')];
@@ -5163,6 +5177,210 @@ function closeInformationGraph() {
   if (informationGraphTooltip) informationGraphTooltip.hidden = true;
 }
 
+function setCostSuggestionFeedback(message, state = '') {
+  if (!costSuggestionFeedback) return;
+  costSuggestionFeedback.textContent = message;
+  costSuggestionFeedback.dataset.state = state;
+}
+
+function setCostSuggestionsStatus(message, state = '') {
+  if (!costSuggestionsStatus) return;
+  costSuggestionsStatus.textContent = message;
+  costSuggestionsStatus.dataset.state = state;
+}
+
+function resetCostSuggestionForm() {
+  if (costSuggestionForm) costSuggestionForm.hidden = true;
+  if (costSuggestionValue) costSuggestionValue.value = '';
+  if (costSuggestionReason) costSuggestionReason.value = '';
+  setCostSuggestionFeedback('', '');
+}
+
+function renderCostSuggestionToggle() {
+  if (!detailTierList || !costSuggestionForm) return;
+  const action = document.createElement('div');
+  action.className = 'detail-ribbon cost-suggestion-toggle-ribbon';
+  const button = document.createElement('button');
+  button.type = 'button';
+  button.className = 'details-secondary';
+  button.textContent = 'Kostenänderung vorschlagen';
+  button.addEventListener('click', () => {
+    costSuggestionForm.hidden = !costSuggestionForm.hidden;
+    button.textContent = costSuggestionForm.hidden ? 'Kostenänderung vorschlagen' : 'Vorschlag ausblenden';
+    if (!costSuggestionForm.hidden) costSuggestionValue?.focus();
+  });
+  action.append(button);
+  detailTierList.append(action);
+}
+
+function readSuggestionField(entry, names) {
+  for (const name of names) {
+    if (entry?.[name] !== undefined && entry[name] !== null && entry[name] !== '') return entry[name];
+  }
+  const normalizedNames = names.map(normalizeText);
+  const key = Object.keys(entry ?? {}).find((candidate) => normalizedNames.includes(normalizeText(candidate)));
+  return key ? entry[key] : '';
+}
+
+function formatSuggestionDate(value) {
+  if (!value) return '';
+  const date = new Date(value);
+  if (Number.isNaN(date.getTime())) return String(value);
+  return new Intl.DateTimeFormat('de-DE', {
+    dateStyle: 'short',
+    timeStyle: 'short',
+  }).format(date);
+}
+
+function getNormalizedCostSuggestions(payload) {
+  const suggestions = Array.isArray(payload?.suggestions)
+    ? payload.suggestions
+    : Array.isArray(payload?.rows)
+      ? payload.rows
+      : Array.isArray(payload)
+        ? payload
+        : [];
+
+  return suggestions.map((entry) => ({
+    timestamp: readSuggestionField(entry, ['Timestamp', 'Zeitstempel', 'Datum']),
+    pokemon: readSuggestionField(entry, ['Pokemon', 'Pokémon', 'pokemon']),
+    currentCost: readSuggestionField(entry, ['Current Cost', 'Aktuelle Kosten', 'currentCost']),
+    suggestedCost: readSuggestionField(entry, ['Suggested Cost', 'Vorgeschlagene Kosten', 'suggestedCost']),
+    reason: readSuggestionField(entry, ['Reason', 'Begründung', 'Begruendung', 'reason']),
+    name: readSuggestionField(entry, ['Name', 'Trainer', 'name']),
+  })).filter((entry) => entry.pokemon || entry.suggestedCost || entry.reason);
+}
+
+function renderCostSuggestionsTable(suggestions) {
+  if (!costSuggestionsTableWrap) return;
+  costSuggestionsTableWrap.innerHTML = '';
+
+  if (!suggestions.length) {
+    const empty = document.createElement('div');
+    empty.className = 'detail-empty-state';
+    empty.textContent = 'Noch keine Änderungsvorschläge gefunden.';
+    costSuggestionsTableWrap.append(empty);
+    return;
+  }
+
+  const table = document.createElement('table');
+  table.className = 'cost-suggestions-table';
+  table.innerHTML = `
+    <thead>
+      <tr>
+        <th>Datum</th>
+        <th>Pok&eacute;mon</th>
+        <th>Aktuell</th>
+        <th>Vorschlag</th>
+        <th>Name</th>
+        <th>Begr&uuml;ndung</th>
+      </tr>
+    </thead>
+  `;
+  const body = document.createElement('tbody');
+  for (const suggestion of suggestions) {
+    const row = document.createElement('tr');
+    const cells = [
+      formatSuggestionDate(suggestion.timestamp),
+      suggestion.pokemon,
+      suggestion.currentCost,
+      suggestion.suggestedCost,
+      suggestion.name,
+      suggestion.reason,
+    ];
+    for (const value of cells) {
+      const cell = document.createElement('td');
+      cell.textContent = value === null || value === undefined || value === '' ? '-' : String(value);
+      row.append(cell);
+    }
+    body.append(row);
+  }
+  table.append(body);
+  costSuggestionsTableWrap.append(table);
+}
+
+async function submitCostSuggestion(event) {
+  event?.preventDefault();
+  const pokemon = pokemonByName.get(activeDetailPokemonName);
+  const suggestedCost = Number(costSuggestionValue?.value);
+  const reason = costSuggestionReason?.value.trim() ?? '';
+  const name = costSuggestionName?.value.trim() ?? '';
+  if (!pokemon || !Number.isFinite(suggestedCost) || !reason || !name) {
+    setCostSuggestionFeedback('Bitte alle Felder ausfüllen.', 'error');
+    return;
+  }
+
+  const payload = {
+    pokemon: pokemon.name,
+    displayName: getPokemonDisplayName(pokemon),
+    currentCost: pokemon.cost ?? '',
+    suggestedCost,
+    reason,
+    name,
+  };
+
+  costSuggestionSubmit.disabled = true;
+  setCostSuggestionFeedback('Vorschlag wird gesendet...', 'loading');
+
+  try {
+    await fetch(costSuggestionsEndpoint, {
+      method: 'POST',
+      mode: 'no-cors',
+      headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+      body: JSON.stringify(payload),
+    });
+    costSuggestionValue.value = '';
+    costSuggestionReason.value = '';
+    costSuggestionName.value = '';
+    setCostSuggestionFeedback('Vorschlag gesendet. Er erscheint gleich in der Liste.', 'success');
+  } catch (error) {
+    setCostSuggestionFeedback('Senden fehlgeschlagen. Bitte später nochmal versuchen.', 'error');
+  } finally {
+    costSuggestionSubmit.disabled = false;
+  }
+}
+
+function openCostSuggestions() {
+  if (!costSuggestionsModal) return;
+  costSuggestionsModal.hidden = false;
+  setCostSuggestionsStatus('', '');
+  if (costSuggestionsTableWrap) costSuggestionsTableWrap.innerHTML = '';
+  costSuggestionsPassword?.focus();
+}
+
+function closeCostSuggestions() {
+  if (costSuggestionsModal) costSuggestionsModal.hidden = true;
+}
+
+async function loadCostSuggestions(event) {
+  event?.preventDefault();
+  const password = costSuggestionsPassword?.value ?? '';
+  if (!password) {
+    setCostSuggestionsStatus('Bitte Passwort eingeben.', 'error');
+    return;
+  }
+
+  setCostSuggestionsStatus('Vorschläge werden geladen...', 'loading');
+  if (costSuggestionsTableWrap) costSuggestionsTableWrap.innerHTML = '';
+
+  try {
+    const url = new URL(costSuggestionsEndpoint);
+    url.searchParams.set('password', password);
+    url.searchParams.set('t', String(Date.now()));
+    const response = await fetch(url.toString(), { cache: 'no-store' });
+    const payload = await response.json();
+    if (payload?.ok === false) {
+      setCostSuggestionsStatus(payload.error || 'Passwort nicht akzeptiert.', 'error');
+      return;
+    }
+    const suggestions = getNormalizedCostSuggestions(payload);
+    renderCostSuggestionsTable(suggestions);
+    setCostSuggestionsStatus(`${suggestions.length} Vorschläge geladen.`, 'success');
+  } catch (error) {
+    setCostSuggestionsStatus('Vorschläge konnten nicht geladen werden. Prüfe Web-App-Zugriff und Apps-Script-Antwort.', 'error');
+  }
+}
+
 function updateInformationGraphTooltip(event) {
   if (!informationGraphCanvas || !informationGraphTooltip || informationGraphModal?.hidden) return;
   if (!informationGraphPoints.length) {
@@ -6788,6 +7006,11 @@ function renderPokemonDetail(pokemon) {
     }, 1100);
   }
   detailTitle.textContent = getPokemonDisplayName(pokemon);
+  if (costSuggestionValue) {
+    costSuggestionValue.value = '';
+    costSuggestionValue.placeholder = pokemon.cost === null ? 'Neue Kosten' : `Aktuell: ${pokemon.cost}`;
+  }
+  resetCostSuggestionForm();
   detailTitle.classList.remove('is-quark-name', 'is-proto-name', 'is-porygon-glitching', 'is-disguised-name');
   const detailNameVariant = getSpecialNameVariant(pokemon);
   if (detailNameVariant === 'quark') detailTitle.classList.add('is-quark-name');
@@ -7058,6 +7281,7 @@ function renderPokemonDetail(pokemon) {
     costText.textContent = `Dieses Pokémon kostet ${pokemon.cost} Punkte`;
     costRibbon.append(costBadge, costText);
     detailTierList.append(costRibbon);
+    renderCostSuggestionToggle();
 
     if (pokemon.cost >= 16) {
       const lowPowerRibbon = document.createElement('div');
@@ -9808,6 +10032,7 @@ stefansPdfButton?.addEventListener('click', openStefansPdf);
 changelogButton?.addEventListener('click', () => openChangelog('site'));
 spielerButton?.addEventListener('click', openSpieler);
 informationGraphButton?.addEventListener('click', openInformationGraph);
+costSuggestionsButton?.addEventListener('click', openCostSuggestions);
 legendButton?.addEventListener('click', openLegend);
 themeToggle?.addEventListener('click', toggleTheme);
 eastereggToggle?.addEventListener('click', toggleEastereggMode);
@@ -9901,6 +10126,16 @@ languageToggle?.addEventListener('click', () => setNameLanguage(activeNameLangua
   informationGraphCanvas?.addEventListener('mousemove', updateInformationGraphTooltip);
   informationGraphCanvas?.addEventListener('mouseleave', () => {
     if (informationGraphTooltip) informationGraphTooltip.hidden = true;
+  });
+  costSuggestionForm?.addEventListener('submit', (event) => {
+    void submitCostSuggestion(event);
+  });
+  costSuggestionsClose?.addEventListener('click', closeCostSuggestions);
+  costSuggestionsModal?.addEventListener('click', (event) => {
+    if (event.target.dataset.closeCostSuggestions === 'true') closeCostSuggestions();
+  });
+  costSuggestionsAuth?.addEventListener('submit', (event) => {
+    void loadCostSuggestions(event);
   });
   window.addEventListener('resize', () => {
     if (informationGraphModal?.hidden === false) drawInformationGraph({ withData: informationGraphPoints.length > 0 });

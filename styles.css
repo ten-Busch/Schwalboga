@@ -588,6 +588,9 @@ body.dark-mode .details-backdrop {
 body.dark-mode .details-dialog,
 body.dark-mode .details-close,
 body.dark-mode .details-field input[type='text'],
+body.dark-mode .details-field input[type='number'],
+body.dark-mode .details-field input[type='password'],
+body.dark-mode .details-field textarea,
 body.dark-mode .details-field select,
 body.dark-mode .stat-range-row input,
 body.dark-mode .token-field {
@@ -2159,6 +2162,9 @@ body.dark-mode .expert-search-dialog .details-field > span {
 }
 
 .details-field input[type='text'],
+.details-field input[type='number'],
+.details-field input[type='password'],
+.details-field textarea,
 .details-field select {
   min-height: 46px;
   padding: 0 14px;
@@ -2167,6 +2173,13 @@ body.dark-mode .expert-search-dialog .details-field > span {
   background: #fffdf9;
   color: var(--ink);
   font: inherit;
+}
+
+.details-field textarea {
+  min-height: 112px;
+  padding: 12px 14px;
+  resize: vertical;
+  line-height: 1.45;
 }
 
 .token-filter {
@@ -6954,6 +6967,101 @@ body.dark-mode .replacement-priority-badge.is-high {
   color: var(--muted);
 }
 
+.cost-suggestion-form {
+  display: grid;
+  grid-template-columns: minmax(120px, 160px) minmax(160px, 220px) minmax(0, 1fr);
+  gap: 14px;
+  align-items: start;
+  margin-top: 14px;
+}
+
+.cost-suggestion-form[hidden] {
+  display: none;
+}
+
+.cost-suggestion-toggle-ribbon {
+  justify-content: flex-start;
+}
+
+.cost-suggestion-toggle-ribbon .details-secondary {
+  min-height: 38px;
+}
+
+.cost-suggestion-reason-field {
+  min-width: 0;
+}
+
+.cost-suggestion-actions {
+  grid-column: 1 / -1;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+}
+
+.cost-suggestion-feedback,
+.cost-suggestions-status {
+  margin: 0;
+  min-height: 24px;
+  color: var(--muted);
+  font-weight: 700;
+}
+
+.cost-suggestion-feedback[data-state='success'],
+.cost-suggestions-status[data-state='success'] {
+  color: #14804a;
+}
+
+.cost-suggestion-feedback[data-state='error'],
+.cost-suggestions-status[data-state='error'] {
+  color: #b42318;
+}
+
+.cost-suggestions-dialog {
+  width: min(1120px, calc(100% - 28px));
+}
+
+.cost-suggestions-body {
+  display: grid;
+  gap: 16px;
+}
+
+.cost-suggestions-auth {
+  display: grid;
+  grid-template-columns: minmax(220px, 320px) auto;
+  gap: 12px;
+  align-items: end;
+}
+
+.cost-suggestions-table-wrap {
+  overflow-x: auto;
+}
+
+.cost-suggestions-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.cost-suggestions-table th,
+.cost-suggestions-table td {
+  padding: 12px 10px;
+  border-bottom: 1px solid rgba(31, 34, 51, 0.1);
+  text-align: left;
+  vertical-align: top;
+  line-height: 1.45;
+}
+
+.cost-suggestions-table th {
+  font-size: 0.82rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.cost-suggestions-table td:nth-child(6) {
+  min-width: 260px;
+}
+
 .spieler-dialog {
   width: min(1160px, calc(100% - 28px));
 }
@@ -7325,6 +7433,7 @@ body.dark-mode .tool-help-inline,
 body.dark-mode .changelog-entry,
 body.dark-mode .stefans-pdf-frame,
 body.dark-mode .spieler-card,
+body.dark-mode .cost-suggestions-table-wrap,
 body.dark-mode .information-graph-canvas-wrap {
   border-color: rgba(201, 214, 255, 0.14);
   background: rgba(18, 26, 42, 0.88);
@@ -7344,10 +7453,16 @@ body.dark-mode .information-graph-tooltip span {
 }
 
 @media (max-width: 720px) {
+  .cost-suggestion-form,
   .information-graph-controls {
     grid-template-columns: 1fr;
   }
 
+  .cost-suggestions-auth {
+    grid-template-columns: 1fr;
+  }
+
+  .cost-suggestions-auth .details-primary,
   .information-graph-generate {
     width: 100%;
   }
@@ -7370,7 +7485,9 @@ body.dark-mode .changelog-date {
 }
 
 body.dark-mode .changelog-table th,
-body.dark-mode .changelog-table td {
+body.dark-mode .changelog-table td,
+body.dark-mode .cost-suggestions-table th,
+body.dark-mode .cost-suggestions-table td {
   border-bottom-color: rgba(201, 214, 255, 0.12);
 }
 
