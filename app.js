@@ -1763,10 +1763,17 @@ function initializeStaticToolContent() {
 }
 
 function renderChangelogPanelsFromData() {
+  const getChangelogDateKey = (group) => {
+    const value = group?.date ?? group?.title ?? '';
+    const timestamp = Date.parse(value);
+    return Number.isNaN(timestamp) ? 0 : timestamp;
+  };
+  const newestChangelogFirst = (left, right) => getChangelogDateKey(right) - getChangelogDateKey(left);
+
   const tierPanel = document.querySelector('#changelog-panel-tier');
   if (tierPanel) {
     const formatCost = (value) => (value === 'â€”' || value === '—' ? '\u2014' : value);
-    const entries = (changelogData.tier ?? []).map((group) => {
+    const entries = [...(changelogData.tier ?? [])].sort(newestChangelogFirst).map((group) => {
       const entry = document.createElement('article');
       entry.className = 'changelog-entry';
       const title = document.createElement('h3');
@@ -1804,7 +1811,7 @@ function renderChangelogPanelsFromData() {
 
   const sitePanel = document.querySelector('#changelog-panel-site');
   if (sitePanel) {
-    const entries = (changelogData.site ?? []).map((group) => {
+    const entries = [...(changelogData.site ?? [])].sort(newestChangelogFirst).map((group) => {
       const entry = document.createElement('article');
       entry.className = 'changelog-entry';
       const title = document.createElement('h3');

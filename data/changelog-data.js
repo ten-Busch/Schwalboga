@@ -227,6 +227,15 @@ window.CHANGELOG_DATA = {
     }
   ],
   "site": [
+      {
+      "title": "Neue Domäne!",
+      "date": "2026-07-05",
+      "items": [
+        "Match-Day hinzugefügt, zeigt bevorstehende Matchdes an",
+        "Neue Domain! Die Seite ist jetzt auch über Schwalboga.de erreichbar 🥳",
+        ""
+      ]
+    },
     {
       "title": "Großes Update",
       "date": "2026-06-29",
