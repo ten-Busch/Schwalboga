@@ -229172,9 +229172,9 @@ window.POKEDEX_ENTRIES = [
     "num": 200,
     "name": "Misdreavus",
     "names": {
-      "de": "Traunmagil"
+      "de": "Traunfugil"
     },
-    "searchText": "0200 200 misdreavus traunmagil ghost",
+    "searchText": "0200 200 misdreavus traunfugil ghost",
     "types": [
       "Ghost"
     ],

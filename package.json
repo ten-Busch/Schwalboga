@@ -8,6 +8,7 @@
     "build:pokedex": "node ./scripts/build-pokedex-data.js",
     "change:cost": "node ./scripts/change-pokemon-cost.js",
     "import:draft": "node ./scripts/import-draft-to-spieler.js",
+    "validate:data": "node ./tools/validate-data.js",
     "start": "npx serve ."
   }
 }

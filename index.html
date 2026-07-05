@@ -23,6 +23,13 @@
             <p class="eyebrow">Pok&eacute;maniacs</p>
             <h1>Schwalboga Hub</h1>
           </div>
+          <div class="hub-search">
+            <label class="details-field" for="hub-search-input">
+              <span>Suche</span>
+              <input id="hub-search-input" type="search" placeholder="Pok&eacute;mon, Bereiche, Tools..." autocomplete="off" />
+            </label>
+            <div class="hub-search-results" id="hub-search-results" hidden></div>
+          </div>
           <div class="landing-grid" aria-label="Hauptbereiche">
             <a class="landing-tile is-pokedex" href="#pokedex">
               <span class="landing-tile-art" aria-hidden="true"></span>
@@ -47,6 +54,10 @@
             <a class="landing-tile is-games" href="#games">
               <span class="landing-tile-art" aria-hidden="true"></span>
               <span class="landing-tile-label">Games</span>
+            </a>
+            <a class="landing-tile is-matchday" href="#matchday">
+              <span class="landing-tile-art" aria-hidden="true"></span>
+              <span class="landing-tile-label">Matchday</span>
             </a>
           </div>
           <div class="landing-footer-actions">
@@ -149,6 +160,18 @@
               <span>Quiz</span>
             </a>
           </div>
+        </section>
+
+        <section class="hub-page hub-view matchday-page" id="matchday" data-hub-view="matchday" hidden>
+          <div class="section-heading">
+            <div>
+              <h2>Matchday</h2>
+            </div>
+            <div class="section-header-tools">
+              <a class="details-button" href="#home">Zur&uuml;ck</a>
+            </div>
+          </div>
+          <div class="matchday-rounds" id="matchday-content"></div>
         </section>
 
         <section class="pokedex-panel hub-view" id="pokedex" data-hub-view="pokedex" hidden>
@@ -293,6 +316,8 @@
                     <option value="special-bulk">Spez. Bulk</option>
                     <option value="physical-bulk">Phys. Bulk</option>
                     <option value="spe">Initiative</option>
+                    <option value="usage">Nutzung</option>
+                    <option value="favorite">Favoriten</option>
                   </select>
                 </label>
                 <label class="sort-field sort-direction-field" for="sort-direction">
@@ -317,6 +342,8 @@
                     <option value="special-bulk">Spez. Bulk</option>
                     <option value="physical-bulk">Phys. Bulk</option>
                     <option value="spe">Initiative</option>
+                    <option value="usage">Nutzung</option>
+                    <option value="favorite">Favoriten</option>
                   </select>
                 </label>
                 <label class="sort-field sort-direction-field" for="sort-direction-secondary">
@@ -1578,7 +1605,11 @@
           <section class="detail-section">
             <div class="detail-section-heading">
               <h3>Set Vorschau</h3>
-              <button class="details-primary" id="rule-checker-validate" type="button">Legalit&auml;t pr&uuml;fen</button>
+              <div class="rule-checker-set-actions">
+                <button class="details-secondary" id="rule-checker-import-showdown" type="button">Showdown importieren</button>
+                <button class="details-secondary" id="rule-checker-export-showdown" type="button">Showdown exportieren</button>
+                <button class="details-primary" id="rule-checker-validate" type="button">Legalit&auml;t pr&uuml;fen</button>
+              </div>
             </div>
             <div class="rule-checker-team-grid" id="rule-checker-team-grid"></div>
           </section>
@@ -1588,6 +1619,26 @@
               <h3>Gebrochene Regeln</h3>
             </div>
             <div class="rule-checker-results" id="rule-checker-results"></div>
+          </section>
+        </div>
+        <div class="rule-checker-import-overlay" id="rule-checker-showdown-overlay" hidden>
+          <div class="rule-checker-import-backdrop" data-close-rule-checker-showdown="true"></div>
+          <section class="rule-checker-import-dialog rule-checker-showdown-dialog" aria-labelledby="rule-checker-showdown-title" role="dialog">
+            <div class="detail-section-heading">
+              <div>
+                <h3 id="rule-checker-showdown-title">Showdown</h3>
+                <p class="replacement-intro" id="rule-checker-showdown-help">Importiere oder exportiere Sets im Showdown-Format.</p>
+              </div>
+              <button class="details-close" id="rule-checker-showdown-close" type="button" aria-label="Close">&times;</button>
+            </div>
+            <label class="details-field">
+              <span>Text</span>
+              <textarea id="rule-checker-showdown-text" rows="14" spellcheck="false"></textarea>
+            </label>
+            <div class="details-actions">
+              <button class="details-secondary" id="rule-checker-showdown-cancel" type="button">Abbrechen</button>
+              <button class="details-primary" id="rule-checker-showdown-confirm" type="button">Importieren</button>
+            </div>
           </section>
         </div>
         <div class="rule-checker-import-overlay" id="rule-checker-current-team-overlay" hidden>
