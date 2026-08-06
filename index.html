@@ -59,6 +59,10 @@
               <span class="landing-tile-art" aria-hidden="true"></span>
               <span class="landing-tile-label">Matchday</span>
             </a>
+            <a class="landing-tile is-replays" href="#replays">
+              <span class="landing-tile-art" aria-hidden="true"></span>
+              <span class="landing-tile-label">Replays</span>
+            </a>
           </div>
           <div class="landing-footer-actions">
             <span class="landing-tier-update" id="landing-tier-update">
@@ -172,6 +176,23 @@
             </div>
           </div>
           <div class="matchday-rounds" id="matchday-content"></div>
+        </section>
+
+        <section class="hub-page hub-view replay-page" id="replays" data-hub-view="replays" hidden>
+          <div class="section-heading">
+            <div><p class="eyebrow">Battle Archive</p><h2>Replays</h2></div>
+            <div class="section-header-tools"><a class="details-button" href="#home">Zur&uuml;ck</a></div>
+          </div>
+          <div class="replay-banner" role="img" aria-label="Pokémon-Kampf zwischen Trainern">
+            <div><p class="eyebrow">Gespeicherte K&auml;mpfe</p><strong>Battle Replay Archiv</strong></div>
+          </div>
+          <div class="replay-layout">
+            <aside class="replay-library" aria-label="Replay Archiv">
+              <label class="details-field"><span>Replay suchen</span><input id="replay-search" type="search" placeholder="Spieler, Format, Pokémon..." /></label>
+              <div id="replay-list"></div>
+            </aside>
+            <div class="replay-detail" id="replay-detail"></div>
+          </div>
         </section>
 
         <section class="pokedex-panel hub-view" id="pokedex" data-hub-view="pokedex" hidden>
@@ -1762,7 +1783,10 @@
     <script src="data/point-cost-history.js" defer></script>
     <script src="data/changelog-data.js" defer></script>
     <script src="data/rule-checker-items.js" defer></script>
+    <script src="data/replay-data.js" defer></script>
     <script src="Spieler.js" defer></script>
+    <script src="default-replay.js" defer></script>
+    <script src="replay-library.js" defer></script>
     <script src="app.js" defer></script>
   </body>
 </html>

@@ -66,6 +66,20 @@ npm run start
 
 If `npx serve` is not available, you can use any static file server.
 
+## Replay archive
+
+The `#replays` section displays the generated replay archive. Import controls are intentionally not exposed on the public website.
+
+To create the shared replay database used by every visitor, put replay HTML files in a folder and run:
+
+```bash
+npm run import:replays -- "path/to/replay-folder"
+```
+
+This updates `data/replay-data.js`. The replay records intentionally live beside the Pokédex database instead of inside it. Pokémon names can therefore be resolved against `window.POKEDEX_ENTRIES` without coupling battle history to the generated Dex source.
+
+`replays/Sehr echtes Replay.html` is reserved as the hard-coded viewer replay. Its visible match details are generated into the root-level `default-replay.js`, which also works when the website is opened directly from disk. The folder importer skips this file, so neither the animation nor its display-only analysis is written to `data/replay-data.js`.
+
 ## Notes
 
 - GitHub Pages does not run the build script for you.

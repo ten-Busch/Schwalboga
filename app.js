@@ -4886,7 +4886,7 @@ function getHubViewFromHash() {
   const key = (window.location.hash || '#home').replace('#', '') || 'home';
   if (key === 'regelset') return 'ruleset';
   if (key === 'spieler') return 'teams';
-  return ['home', 'pokedex', 'ruleset', 'teams', 'draft', 'draft-room', 'games', 'matchday'].includes(key) ? key : 'home';
+  return ['home', 'pokedex', 'ruleset', 'teams', 'draft', 'draft-room', 'games', 'matchday', 'replays'].includes(key) ? key : 'home';
 }
 
 const matchdayRounds = [
@@ -5072,6 +5072,9 @@ function renderHubView(viewKey = getHubViewFromHash()) {
   if (viewKey === 'matchday') {
     renderMatchday();
   }
+  if (viewKey === 'replays') {
+    window.dispatchEvent(new CustomEvent('schwalboga:render-replays'));
+  }
   if (viewKey === 'pokedex') {
     requestAnimationFrame(() => {
       resetControlRailStickyThreshold();
@@ -5094,6 +5097,7 @@ function getHubSearchEntries() {
     { label: 'Draft Abend', detail: 'Bereich', view: 'draft-room' },
     { label: 'Games', detail: 'Bereich', view: 'games' },
     { label: 'Matchday', detail: 'Bereich', view: 'matchday' },
+    { label: 'Replays', detail: 'Battle Archiv', view: 'replays' },
     { label: 'Regel Checker', detail: 'Tool', view: 'ruleset', action: () => { void openRuleChecker(); } },
     { label: 'Stefans Pdf', detail: 'Regelset', view: 'ruleset', action: () => openStefansPdf() },
     { label: 'Ninjatom Check', detail: 'Battle Prep', view: 'draft', action: () => { draftOverviewMode = 'shedinja-check'; renderDraftOverview(); } },
