@@ -249,7 +249,7 @@ window.CHANGELOG_DATA = {
       "title": "Seiten Updates",
       "date": "2026-04-19",
       "items": [
-        "Dark Mode Ausnahmen gefixed",
+        "Dark Mode Ausnahmen gefixed ",
         "Changelogs hinzugefügt",
         "Hilfe-Buttons hinzugefügt",
         "Stefans PDF verlinkt"
