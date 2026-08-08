@@ -140,6 +140,33 @@ img {
   box-shadow: 0 0 0 4px rgba(217, 79, 61, 0.12);
 }
 
+.landing-banner-today {
+  display: inline-block;
+  animation: landing-banner-today-rainbow 1.4s steps(1, end) infinite;
+}
+
+@keyframes landing-banner-today-rainbow {
+  0% { color: #ff3b30; }
+  16.66% { color: #ff9500; }
+  33.33% { color: #ffdd00; }
+  50% { color: #34c759; }
+  66.66% { color: #32ade6; }
+  83.33% { color: #bf5af2; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .landing-banner-today {
+    animation: none;
+    color: #ffdd00;
+  }
+
+  .landing-tile.is-matchday.is-today {
+    animation: none;
+    border-color: #ffdd00;
+    box-shadow: 0 0 0 5px #ffdd00, 0 18px 38px rgba(255, 221, 0, 0.32);
+  }
+}
+
 .landing-heading {
   display: grid;
   gap: 10px;
@@ -322,6 +349,19 @@ body.dark-mode .hub-search-result span {
   --tile-image: url('assets/sections/battle.gif');
 }
 
+.landing-tile.is-matchday.is-today {
+  animation: landing-matchday-today-rainbow 1.4s steps(1, end) infinite;
+}
+
+@keyframes landing-matchday-today-rainbow {
+  0% { border-color: #ff3b30; box-shadow: 0 0 0 5px #ff3b30, 0 18px 38px rgba(255, 59, 48, 0.32); }
+  16.66% { border-color: #ff9500; box-shadow: 0 0 0 5px #ff9500, 0 18px 38px rgba(255, 149, 0, 0.32); }
+  33.33% { border-color: #ffdd00; box-shadow: 0 0 0 5px #ffdd00, 0 18px 38px rgba(255, 221, 0, 0.32); }
+  50% { border-color: #34c759; box-shadow: 0 0 0 5px #34c759, 0 18px 38px rgba(52, 199, 89, 0.32); }
+  66.66% { border-color: #32ade6; box-shadow: 0 0 0 5px #32ade6, 0 18px 38px rgba(50, 173, 230, 0.32); }
+  83.33% { border-color: #bf5af2; box-shadow: 0 0 0 5px #bf5af2, 0 18px 38px rgba(191, 90, 242, 0.32); }
+}
+
 .landing-tile.is-replays {
   --tile-color: var(--water);
   --tile-image: url('assets/sections/replays.webp');
@@ -441,6 +481,29 @@ body.dark-mode .replay-library, body.dark-mode .replay-detail { background: rgba
 
 .matchday-page {
   overflow: visible;
+}
+
+.matchday-pdf-date {
+  display: grid;
+  gap: 3px;
+  color: var(--muted);
+  font-size: 0.72rem;
+  font-weight: 800;
+}
+
+.matchday-pdf-date input {
+  min-height: 38px;
+  padding: 6px 10px;
+  border: 1px solid rgba(31, 34, 51, 0.2);
+  border-radius: 10px;
+  background: var(--panel-strong);
+  color: var(--text);
+  font: inherit;
+}
+
+.matchday-pdf-button {
+  border: 0;
+  cursor: pointer;
 }
 
 .matchday-rounds {

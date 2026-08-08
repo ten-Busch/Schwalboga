@@ -139,9 +139,12 @@ const draftPageContent = document.querySelector('#draft-page-content');
 const landingTierUpdate = document.querySelector('#landing-tier-update');
 const landingTierUpdateText = document.querySelector('#landing-tier-update-text');
 const landingTierUpdateSprite = document.querySelector('#landing-tier-update-sprite');
+const landingBanner = document.querySelector('.landing-banner');
 const hubSearchInput = document.querySelector('#hub-search-input');
 const hubSearchResults = document.querySelector('#hub-search-results');
 const matchdayContent = document.querySelector('#matchday-content');
+const matchdayPdfDate = document.querySelector('#matchday-pdf-date');
+const matchdayPdfButton = document.querySelector('#matchday-pdf-button');
 let activeHubView = 'home';
 let draftOverviewContext = 'modal';
 let landingTierSpriteInterval = null;
@@ -4919,6 +4922,116 @@ const matchdayRounds = [
   },
 ];
 
+function escapeMatchdayPrintHtml(value) {
+  return String(value ?? '')
+    .replaceAll('&', '&amp;')
+    .replaceAll('<', '&lt;')
+    .replaceAll('>', '&gt;')
+    .replaceAll('"', '&quot;')
+    .replaceAll("'", '&#039;');
+}
+
+function getMatchdayPrintDate() {
+  const value = matchdayPdfDate?.value;
+  if (!value) return '____________________';
+  const [year, month, day] = value.split('-');
+  return `${day}.${month}.${year}`;
+}
+
+function getMatchdayPrintTeam(player) {
+  return (player?.currentTeam ?? []).map((name) => {
+    const pokemon = getPokemonByNameLoose(name);
+    return {
+      name: pokemon ? getPokemonDisplayName(pokemon) : name,
+      sprite: pokemon?.sprite ?? missingSpriteFallbackPath,
+    };
+  });
+}
+
+function createMatchdayPrintTeamHtml(player, fallbackName) {
+  const team = getMatchdayPrintTeam(player);
+  const rows = team.length
+    ? team.map((pokemon) => `
+        <li>
+          <img src="${escapeMatchdayPrintHtml(new URL(pokemon.sprite, document.baseURI).href)}" alt="" />
+          <span>${escapeMatchdayPrintHtml(pokemon.name)}</span>
+          <i aria-hidden="true"></i>
+        </li>`).join('')
+    : '<li class="empty-team"><span>Kein Team hinterlegt</span></li>';
+  return `
+    <section class="print-team">
+      <h3>${escapeMatchdayPrintHtml(getMatchdayDisplayName(player, fallbackName))}</h3>
+      <ul>${rows}</ul>
+    </section>`;
+}
+
+function createMatchdayPrintMatchHtml(match) {
+  const [leftName, rightName] = match;
+  const leftPlayer = getMatchdayPlayer(leftName);
+  const rightPlayer = getMatchdayPlayer(rightName);
+  const leftDisplayName = getMatchdayDisplayName(leftPlayer, leftName);
+  const rightDisplayName = getMatchdayDisplayName(rightPlayer, rightName);
+  return `
+    <article class="print-match">
+      <h2>${escapeMatchdayPrintHtml(leftDisplayName)} <small>vs.</small> ${escapeMatchdayPrintHtml(rightDisplayName)}</h2>
+      <div class="result-line"><strong>Sieger:</strong><span></span><strong>Differenz:</strong><b></b><em>:</em><b></b></div>
+      <div class="print-teams">
+        ${createMatchdayPrintTeamHtml(leftPlayer, leftName)}
+        ${createMatchdayPrintTeamHtml(rightPlayer, rightName)}
+      </div>
+      <div class="replay-check"><i aria-hidden="true"></i><strong>Showdown Replay an replay@Schwalboga.de gesendet?</strong></div>
+    </article>`;
+}
+
+function createMatchdayPrintDocument(autoPrint = true) {
+  const rounds = matchdayRounds.map((round) => `
+    <section class="print-round">
+      <header><p>Match-Datum: <strong>${escapeMatchdayPrintHtml(getMatchdayPrintDate())}</strong></p><h1>${escapeMatchdayPrintHtml(round.label.replace('Round', 'Runde'))}</h1></header>
+      <div class="print-matches">${round.matches.map(createMatchdayPrintMatchHtml).join('')}</div>
+    </section>`).join('');
+  return `<!doctype html>
+  <html lang="de"><head><meta charset="utf-8"><title>Schwalboga Matchbogen</title>
+  <style>
+    @page { size: A4 landscape; margin: 8mm; }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; color: #111827; font-family: Arial, Helvetica, sans-serif; }
+    .print-round { min-height: 194mm; break-after: page; page-break-after: always; }
+    .print-round:last-child { break-after: auto; page-break-after: auto; }
+    header { position: relative; min-height: 15mm; border-bottom: 2px solid #b91c1c; }
+    header p { position: absolute; left: 0; top: 2mm; margin: 0; font-size: 10pt; }
+    header h1 { margin: 0; text-align: center; color: #991b1b; font-size: 24pt; line-height: 14mm; }
+    .print-matches { display: grid; grid-template-columns: 1fr 1fr; gap: 4mm; padding-top: 4mm; }
+    .print-match { height: 85mm; overflow: hidden; border: 1.2px solid #475569; border-radius: 2mm; padding: 2.5mm 3mm; }
+    .print-match h2 { margin: 0 0 1.5mm; padding-bottom: 1mm; border-bottom: 1px solid #cbd5e1; font-size: 13pt; }
+    .print-match h2 small { color: #64748b; font-size: 9pt; font-weight: 400; }
+    .result-line { display: flex; align-items: end; gap: 2mm; height: 7mm; font-size: 9pt; }
+    .result-line span { flex: 1; min-width: 25mm; border-bottom: 1px solid #111827; }
+    .result-line b { width: 8mm; border-bottom: 1px solid #111827; }
+    .result-line em { font-style: normal; font-weight: bold; }
+    .print-teams { display: grid; grid-template-columns: 1fr 1fr; gap: 5mm; }
+    .print-team h3 { margin: 1mm 0 .6mm; font-size: 10pt; }
+    .print-team ul { display: grid; grid-template-columns: 1fr; gap: .1mm; margin: 0; padding: 0; list-style: none; }
+    .print-team li { display: grid; grid-template-columns: 4mm minmax(0, 1fr) 3.8mm; align-items: center; min-height: 4.1mm; font-size: 9pt; line-height: 3.2mm; }
+    .print-team img { width: 3.1mm; height: 3.1mm; object-fit: contain; image-rendering: pixelated; }
+    .print-team li span { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    .print-team li i, .replay-check i { width: 3.8mm; height: 3.8mm; border: 1px solid #111827; }
+    .empty-team { grid-column: 1 / -1; color: #64748b; }
+    .replay-check { display: flex; align-items: center; gap: 2mm; margin-top: 1.5mm; padding-top: 1.5mm; border-top: 1px solid #cbd5e1; font-size: 8pt; }
+    @media screen { body { background: #e2e8f0; } .print-round { width: 281mm; margin: 8mm auto; padding: 8mm; background: white; box-shadow: 0 2mm 8mm #64748b55; } }
+  </style></head><body>${rounds}${autoPrint ? '<script>window.addEventListener(\'load\', () => setTimeout(() => window.print(), 350));<\\/script>' : ''}</body></html>`;
+}
+
+function openMatchdayPrintPdf() {
+  const printWindow = window.open('', '_blank');
+  if (!printWindow) {
+    window.alert('Das Druckfenster wurde blockiert. Bitte Pop-ups fuer diese Seite erlauben.');
+    return;
+  }
+  printWindow.document.open();
+  printWindow.document.write(createMatchdayPrintDocument());
+  printWindow.document.close();
+}
+
 function getMatchdayPlayer(name) {
   const target = normalizeText(name);
   return getSpielerEntries().find((player) => {
@@ -5052,6 +5165,9 @@ function renderMatchday() {
   }
 }
 
+if (matchdayPdfDate) matchdayPdfDate.value = new Date().toISOString().slice(0, 10);
+matchdayPdfButton?.addEventListener('click', openMatchdayPrintPdf);
+
 function renderHubView(viewKey = getHubViewFromHash()) {
   activeHubView = viewKey;
   for (const view of hubViews) {
@@ -5164,6 +5280,25 @@ function handleHubAction(action) {
   if (action === 'changelog') {
     openChangelog('site');
   }
+}
+
+function initializeLandingMatchdayBanner() {
+  if (!landingBanner) return;
+  const bannerText = landingBanner.textContent.replace(/\s+/g, ' ').trim();
+  const match = bannerText.match(/^(Nächster Draft:\s*)(\d{2})\.(\d{2})\.(\d{4})(\s*-\s*.+)$/);
+  if (!match) return;
+  const [, prefix, day, month, year, suffix] = match;
+  const today = new Date();
+  const isToday = Number(day) === today.getDate()
+    && Number(month) === today.getMonth() + 1
+    && Number(year) === today.getFullYear();
+  if (!isToday) return;
+  landingBanner.replaceChildren(
+    document.createTextNode(prefix),
+    createNode('span', 'landing-banner-today', 'Heute'),
+    document.createTextNode(suffix),
+  );
+  document.querySelector('.landing-tile.is-matchday')?.classList.add('is-today');
 }
 
 function parsePointHistoryDate(value) {
@@ -12277,6 +12412,7 @@ function initializeAdvancedSearch() {
 initializeToolHelpToggles();
 initializeStaticToolContent();
 initializeStaticUiLabels();
+initializeLandingMatchdayBanner();
 initializeLandingTierUpdate();
 detailsButton.addEventListener('click', openDetailsModal);
 expertSearchButton?.addEventListener('click', openExpertSearchModal);
