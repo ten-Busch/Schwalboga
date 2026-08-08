@@ -5285,7 +5285,7 @@ function handleHubAction(action) {
 function initializeLandingMatchdayBanner() {
   if (!landingBanner) return;
   const bannerText = landingBanner.textContent.replace(/\s+/g, ' ').trim();
-  const match = bannerText.match(/^(Nächster Draft:\s*)(\d{2})\.(\d{2})\.(\d{4})(\s*-\s*.+)$/);
+  const match = bannerText.match(/^(Nächster Abend:\s*)(\d{2})\.(\d{2})\.(\d{4})(\s*-\s*.+)$/);
   if (!match) return;
   const [, prefix, day, month, year, suffix] = match;
   const today = new Date();
