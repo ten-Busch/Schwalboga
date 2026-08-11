@@ -4970,7 +4970,10 @@ const finishedMatchdayMatches = [
   },
   {
     players: ['Stefan', 'Robin'], winner: 'Stefan', score: '5:0',
-    teams: [Array.from({ length: 6 }, () => ['?', false]), Array.from({ length: 6 }, () => ['?', false])],
+    teams: [
+      [['Ampharos-Mega', false], ['Nidoking', false], ['Virizion', false], ['Bronzong', false], ['Slurpuff', false], ['Komala', true]],
+      [['Dracozolt', true], ['Tauros-Paldea-Aqua', true], ['Articuno-Galar', true], ['Magmar', true], ['Nidoqueen', true], ['Forretress', true]],
+    ],
   },
   {
     players: ['Andre', 'Tobi'], winner: 'Andre', score: '1:0',
