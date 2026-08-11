@@ -242,6 +242,18 @@ window.SPIELER = [
   },
 ];
 
+// Manuelle Achievements: Den Wert beim jeweiligen Spieler auf true setzen.
+window.SPIELER_ACHIEVEMENT_FLAGS = {
+  "André": { partyHost: false },
+  "Hans": { partyHost: true },
+  "Marc": { partyHost: false },
+  "Niklas": { partyHost: false },
+  "Robin": { partyHost: false },
+  "Stefan": { partyHost: false },
+  "Tobi": { partyHost: false },
+  "Jannik": { partyHost: false },
+};
+
 /*
   Team examples:
   currentTeam: ['Charizard', 'Blastoise', 'Venusaur', 'Pikachu', 'Snorlax', 'Gengar', 'Dragonite', 'Lapras', 'Arcanine'],

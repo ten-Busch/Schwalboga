@@ -228,6 +228,16 @@ window.CHANGELOG_DATA = {
   ],
   "site": [
       {
+      "title": "Post-Battle Funktionen",
+      "date": "2026-08-11",
+      "items": [
+       "Aktuelle Match-Ups, vorherige Match-Ups und Verschobene Match-Ups können jetzt differneziert werden",
+       "In den Spieler-Tabs gibt es jetzt diverse Infos über die vergangenen Matches",
+       "Replays können eingefügt, angeschaut und ausgewertet werden. Diese werden erst nach dem vollständigen Draft sichtbar, um niemanden zu spoilern",
+       "Achievements!"
+      ]
+    },
+      {
       "title": "Neue Domäne!",
       "date": "2026-07-05",
       "items": [

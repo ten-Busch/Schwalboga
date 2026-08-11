@@ -469,6 +469,21 @@ body.dark-mode .replay-library, body.dark-mode .replay-detail { background: rgba
   --tile-image: url('assets/sections/teams.webp');
 }
 
+.hub-action-card[data-hub-action='spieler-boxes'] {
+  --tile-color: var(--electric);
+  --tile-image: url('assets/sections/draftboard.webp');
+}
+
+.hub-action-card[data-hub-action='spieler-knockouts'] {
+  --tile-color: var(--ghost);
+  --tile-image: url('assets/sections/draft.webp');
+}
+
+.hub-action-card[data-hub-action='spieler-achievements'] {
+  --tile-color: var(--grass);
+  --tile-image: url('assets/sections/spieler.webp');
+}
+
 .hub-action-card[data-hub-action='quiz'] {
   --tile-color: var(--psychic);
   --tile-image: url('assets/sections/quiz.webp');
@@ -532,6 +547,29 @@ body.dark-mode .replay-library, body.dark-mode .replay-detail { background: rgba
   height: 2px;
   border-radius: 999px;
   background: linear-gradient(90deg, transparent, rgba(220, 38, 38, 0.66), transparent);
+}
+
+.matchday-round-divider.is-compact {
+  margin-top: 0;
+  color: var(--muted);
+  font-size: clamp(1rem, 2.2vw, 1.35rem);
+}
+
+.matchday-group-divider {
+  margin: 22px 0 0;
+  padding: 14px 18px;
+  border-radius: 16px;
+  background: linear-gradient(135deg, rgba(31, 34, 51, 0.92), rgba(90, 100, 125, 0.88));
+  color: #fff;
+  font-family: 'Chakra Petch', sans-serif;
+  font-size: clamp(1.4rem, 3.5vw, 2.1rem);
+  text-align: center;
+  box-shadow: 0 14px 32px rgba(31, 34, 51, 0.16);
+}
+
+.matchday-history {
+  display: grid;
+  gap: 14px;
 }
 
 .matchday-chip-row {
@@ -655,6 +693,59 @@ body.dark-mode .replay-library, body.dark-mode .replay-detail { background: rgba
   will-change: transform, opacity, filter;
 }
 
+.matchday-pokemon-sprite.is-knocked-out {
+  filter: grayscale(1) contrast(0.68) brightness(0.82) !important;
+}
+
+.matchday-pokemon-sprite.is-concealed {
+  filter: drop-shadow(0 7px 10px rgba(31, 34, 51, 0.24));
+}
+
+.matchday-unknown-sprite {
+  display: grid;
+  place-items: center;
+  border: 2px solid rgba(31, 34, 51, 0.42);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.92);
+  color: #1f2233;
+  font-family: 'Audiowide', 'Chakra Petch', sans-serif;
+  font-size: 2rem;
+  font-weight: 900;
+}
+
+.matchday-center {
+  position: relative;
+  z-index: 8;
+  display: grid;
+  gap: 8px;
+  justify-items: center;
+}
+
+.matchday-result {
+  max-width: 116px;
+  padding: 5px 9px;
+  border-radius: 999px;
+  background: rgba(22, 101, 52, 0.92);
+  color: #fff;
+  font-family: 'Chakra Petch', sans-serif;
+  font-size: 0.78rem;
+  line-height: 1.05;
+  text-align: center;
+  box-shadow: 0 5px 14px rgba(22, 101, 52, 0.24);
+}
+
+.matchday-chip.is-finished {
+  cursor: default;
+  background:
+    radial-gradient(circle at 50% 50%, rgba(71, 85, 105, 0.16), transparent 28%),
+    linear-gradient(135deg, rgba(248, 250, 252, 0.92), rgba(226, 232, 240, 0.88));
+}
+
+.matchday-chip.is-finished .matchday-vs {
+  background: #475569;
+  font-size: clamp(1.15rem, 3vw, 1.7rem);
+}
+
 .matchday-vs {
   position: relative;
   z-index: 3;
@@ -705,31 +796,31 @@ body.dark-mode .replay-library, body.dark-mode .replay-detail { background: rgba
   0% {
     z-index: 3;
     opacity: 0.18;
-    filter: drop-shadow(0 3px 5px rgba(31, 34, 51, 0.14));
+    filter: var(--matchday-color-filter, none) drop-shadow(0 3px 5px rgba(31, 34, 51, 0.14));
     transform: translate(-230%, -38%) scale(0.44) rotate(-16deg);
   }
   20% {
     z-index: 4;
     opacity: 0.7;
-    filter: drop-shadow(0 5px 8px rgba(31, 34, 51, 0.2));
+    filter: var(--matchday-color-filter, none) drop-shadow(0 5px 8px rgba(31, 34, 51, 0.2));
     transform: translate(-142%, -45%) scale(0.72) rotate(-8deg);
   }
   50% {
     z-index: 7;
     opacity: 1;
-    filter: drop-shadow(0 10px 16px rgba(220, 38, 38, 0.28));
+    filter: var(--matchday-color-filter, none) drop-shadow(0 10px 16px rgba(220, 38, 38, 0.28));
     transform: translate(-50%, -54%) scale(1.34) rotate(0deg);
   }
   80% {
     z-index: 4;
     opacity: 0.7;
-    filter: drop-shadow(0 5px 8px rgba(31, 34, 51, 0.2));
+    filter: var(--matchday-color-filter, none) drop-shadow(0 5px 8px rgba(31, 34, 51, 0.2));
     transform: translate(42%, -45%) scale(0.72) rotate(8deg);
   }
   100% {
     z-index: 3;
     opacity: 0.18;
-    filter: drop-shadow(0 3px 5px rgba(31, 34, 51, 0.14));
+    filter: var(--matchday-color-filter, none) drop-shadow(0 3px 5px rgba(31, 34, 51, 0.14));
     transform: translate(130%, -38%) scale(0.44) rotate(16deg);
   }
 }
@@ -9037,6 +9128,20 @@ body.dark-mode .replacement-priority-badge.is-high {
   line-height: 1;
 }
 
+.spieler-win-count {
+  display: inline-grid;
+  place-items: center;
+  min-width: 25px;
+  height: 22px;
+  padding: 0 7px;
+  border-radius: 999px;
+  background: rgba(245, 158, 11, 0.16);
+  color: #a16207;
+  font-family: 'Chakra Petch', sans-serif;
+  font-size: 0.78rem;
+  font-weight: 900;
+}
+
 .spieler-star-count {
   display: inline-grid;
   place-items: center;
@@ -9215,6 +9320,461 @@ body.dark-mode .replacement-priority-badge.is-high {
 .spieler-previous-team {
   display: grid;
   gap: 10px;
+}
+
+.spieler-feature-section {
+  display: grid;
+  gap: 10px;
+  overflow: hidden;
+  padding: 10px;
+  border: 1px solid rgba(31, 34, 51, 0.12);
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.58);
+}
+
+.spieler-feature-banner {
+  display: flex;
+  align-items: end;
+  min-height: 88px;
+  padding: 12px 14px;
+  border-radius: 13px;
+  background:
+    linear-gradient(90deg, rgba(8, 15, 31, 0.82), rgba(8, 15, 31, 0.16)),
+    var(--spieler-feature-image) center / cover no-repeat;
+  color: #fff;
+  box-shadow: 0 10px 22px rgba(31, 34, 51, 0.18);
+}
+
+.spieler-feature-section.is-boxes {
+  --spieler-feature-image: url('assets/sections/draftboard.webp');
+}
+
+.spieler-feature-section.is-knockouts {
+  --spieler-feature-image: url('assets/sections/draft.webp');
+}
+
+.spieler-card.is-knockouts-view {
+  grid-template-rows: 116px minmax(0, 1fr);
+  min-height: 620px;
+}
+
+.spieler-card.is-knockouts-view .spieler-card-header {
+  min-height: 116px;
+  align-self: start;
+}
+
+.spieler-card.is-knockouts-view .spieler-feature-section.is-knockouts {
+  grid-template-rows: 88px minmax(0, 1fr);
+  min-height: 454px;
+}
+
+.spieler-card.is-knockouts-view .spieler-feature-banner {
+  min-height: 88px;
+  height: 88px;
+}
+
+.spieler-feature-banner h4 {
+  margin: 0;
+  font-family: 'Audiowide', 'Chakra Petch', sans-serif;
+  font-size: 1.25rem;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.72);
+}
+
+.spieler-box-drafts {
+  display: grid;
+  gap: 10px;
+}
+
+.spieler-box-draft {
+  position: relative;
+  display: grid;
+  gap: 8px;
+  padding: 10px;
+  border: 1px solid rgba(31, 34, 51, 0.12);
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.68);
+}
+
+.spieler-box-draft h5 {
+  position: relative;
+  z-index: 2;
+  margin: 0;
+  color: var(--muted);
+  font-family: 'Chakra Petch', sans-serif;
+  font-size: 0.78rem;
+  letter-spacing: 0.04em;
+  overflow-wrap: anywhere;
+  text-transform: uppercase;
+}
+
+.spieler-collection-grid {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(68px, 1fr));
+  gap: 7px;
+}
+
+.spieler-collection-pokemon {
+  display: grid;
+  gap: 3px;
+  justify-items: center;
+  min-width: 0;
+  padding: 6px 4px;
+  border: 1px solid rgba(31, 34, 51, 0.1);
+  border-radius: 11px;
+  background: rgba(255, 255, 255, 0.78);
+  text-align: center;
+}
+
+.spieler-collection-pokemon img {
+  width: 48px;
+  height: 48px;
+  object-fit: contain;
+  image-rendering: pixelated;
+  transition: filter 180ms ease, opacity 180ms ease;
+}
+
+.spieler-collection-pokemon span {
+  width: 100%;
+  overflow: hidden;
+  font-size: 0.66rem;
+  font-weight: 700;
+  line-height: 1.05;
+  overflow-wrap: anywhere;
+}
+
+.spieler-collection-pokemon.is-unbrought {
+  color: var(--muted);
+  background: rgba(148, 163, 184, 0.1);
+}
+
+.spieler-collection-pokemon.is-unbrought img {
+  filter: grayscale(1) contrast(0.72);
+  opacity: 0.64;
+}
+
+.spieler-collection-empty {
+  margin: 0;
+  padding: 6px 4px;
+  color: var(--muted);
+  font-size: 0.82rem;
+}
+
+.spieler-knockout-list {
+  position: relative;
+  min-width: 0;
+  min-height: 336px;
+  overflow: hidden;
+}
+
+.spieler-knockout-summary {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 5;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  min-height: 28px;
+  padding: 3px 9px 3px 6px;
+  border: 1px solid rgba(31, 34, 51, 0.16);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.94);
+  color: #1f2233;
+  font-family: 'Chakra Petch', sans-serif;
+  font-size: 0.78rem;
+  box-shadow: 0 5px 12px rgba(31, 34, 51, 0.14);
+}
+
+.spieler-knockout-skull {
+  color: #283143;
+  font-size: 1.05rem;
+  line-height: 1;
+}
+
+.spieler-knockout-viewport {
+  height: 336px;
+  overflow: hidden;
+  padding-top: 34px;
+}
+
+.spieler-knockout-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-rows: repeat(4, minmax(0, 1fr));
+  height: 302px;
+}
+
+.spieler-knockout-grid.is-scrolling {
+  grid-auto-flow: column;
+  grid-auto-columns: calc((100% - 14px) / 3);
+  grid-template-columns: none;
+  width: 100%;
+  will-change: transform;
+}
+
+.spieler-knockout-viewport .spieler-collection-empty {
+  display: grid;
+  place-items: center;
+  height: 100%;
+  text-align: center;
+}
+
+.spieler-box-draft.is-complete {
+  border-color: #f5c542;
+  box-shadow:
+    0 0 0 2px rgba(245, 197, 66, 0.46),
+    0 0 18px rgba(245, 197, 66, 0.72),
+    inset 0 0 18px rgba(255, 231, 126, 0.24);
+  animation: spieler-box-gold-glow 1.8s ease-in-out infinite;
+}
+
+.spieler-box-draft.is-complete::after {
+  content: '✦   ✧   ★   ✦   ✧   ★';
+  position: absolute;
+  inset: -5px 5px auto;
+  z-index: 3;
+  color: #ffe784;
+  font-size: 0.82rem;
+  letter-spacing: 0.22em;
+  pointer-events: none;
+  text-align: center;
+  text-shadow: 0 0 7px #f5c542;
+  animation: spieler-box-stars 1.15s steps(2, end) infinite;
+}
+
+@keyframes spieler-box-gold-glow {
+  0%, 100% { box-shadow: 0 0 0 2px rgba(245, 197, 66, 0.42), 0 0 14px rgba(245, 197, 66, 0.56), inset 0 0 14px rgba(255, 231, 126, 0.2); }
+  50% { box-shadow: 0 0 0 3px rgba(255, 224, 102, 0.72), 0 0 28px rgba(245, 197, 66, 0.92), inset 0 0 24px rgba(255, 231, 126, 0.34); }
+}
+
+@keyframes spieler-box-stars {
+  0% { opacity: 0.38; transform: translateY(1px) scale(0.96); }
+  50%, 100% { opacity: 1; transform: translateY(-1px) scale(1.04); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .spieler-box-draft.is-complete,
+  .spieler-box-draft.is-complete::after {
+    animation: none;
+  }
+}
+
+body.dark-mode .spieler-feature-section,
+body.dark-mode .spieler-box-draft,
+body.dark-mode .spieler-collection-pokemon {
+  border-color: rgba(201, 214, 255, 0.14);
+  background-color: rgba(18, 26, 42, 0.78);
+}
+
+body.dark-mode .spieler-knockout-summary {
+  border-color: rgba(201, 214, 255, 0.18);
+  background: rgba(18, 26, 42, 0.94);
+  color: #f8fafc;
+}
+
+body.dark-mode .spieler-knockout-skull {
+  color: #e2e8f0;
+}
+
+.spieler-grid.is-achievements {
+  grid-template-columns: minmax(0, 1fr);
+}
+
+.spieler-achievements-shell {
+  display: grid;
+  gap: 16px;
+}
+
+.spieler-achievements-banner {
+  display: flex;
+  align-items: end;
+  min-height: 150px;
+  padding: 20px;
+  border-radius: 20px;
+  background:
+    linear-gradient(90deg, rgba(8, 15, 31, 0.84), rgba(8, 15, 31, 0.14)),
+    url('assets/sections/spieler.webp') center / cover no-repeat;
+  color: #fff;
+  box-shadow: 0 16px 34px rgba(31, 34, 51, 0.2);
+}
+
+.spieler-achievements-banner h3 {
+  margin: 0;
+  font-family: 'Audiowide', 'Chakra Petch', sans-serif;
+  font-size: clamp(1.6rem, 4vw, 2.5rem);
+  text-shadow: 0 3px 12px rgba(0, 0, 0, 0.76);
+}
+
+.spieler-achievement-picker {
+  width: min(360px, 100%);
+}
+
+.spieler-achievement-player {
+  grid-column: 1 / -1;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 16px;
+  border: 1px solid rgba(31, 34, 51, 0.12);
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.72);
+}
+
+.spieler-achievement-player img {
+  width: 58px;
+  height: 58px;
+  object-fit: contain;
+  image-rendering: pixelated;
+}
+
+.spieler-achievement-player h3 {
+  margin: 0;
+  font-family: 'Chakra Petch', sans-serif;
+  font-size: 1.4rem;
+}
+
+.spieler-achievement-list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.spieler-achievement {
+  display: grid;
+  gap: 11px;
+  padding: 15px;
+  border: 1px solid rgba(31, 34, 51, 0.12);
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.76);
+  box-shadow: 0 10px 24px rgba(31, 34, 51, 0.08);
+}
+
+.spieler-achievement.is-achieved {
+  border-color: rgba(245, 158, 11, 0.58);
+  background: linear-gradient(135deg, rgba(255, 251, 225, 0.96), rgba(255, 235, 153, 0.86));
+  box-shadow: 0 0 18px rgba(245, 158, 11, 0.3);
+}
+
+.spieler-achievement-heading {
+  display: flex;
+  align-items: start;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.spieler-achievement-heading h4,
+.spieler-achievement-heading p {
+  margin: 0;
+}
+
+.spieler-achievement-heading h4 {
+  font-family: 'Chakra Petch', sans-serif;
+  font-size: 1.03rem;
+}
+
+.spieler-achievement-heading p {
+  margin-top: 3px;
+  color: var(--muted);
+  font-size: 0.8rem;
+}
+
+.spieler-achievement-trophy {
+  flex: 0 0 auto;
+  font-size: 1.55rem;
+  filter: drop-shadow(0 3px 5px rgba(161, 98, 7, 0.26));
+}
+
+.spieler-achievement-progress-meta {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  color: var(--muted);
+  font-size: 0.76rem;
+  font-weight: 700;
+}
+
+.spieler-achievement-progress {
+  height: 10px;
+  overflow: hidden;
+  border-radius: 999px;
+  background: rgba(148, 163, 184, 0.24);
+  box-shadow: inset 0 1px 3px rgba(31, 34, 51, 0.12);
+}
+
+.spieler-achievement-progress span {
+  display: block;
+  height: 100%;
+  border-radius: inherit;
+  background: linear-gradient(90deg, #3b82f6, #22c55e);
+}
+
+.spieler-achievement.is-achieved .spieler-achievement-progress span {
+  background: linear-gradient(90deg, #f59e0b, #fde047);
+}
+
+.spieler-achievement-toggle {
+  justify-self: start;
+  padding: 4px 9px;
+  border: 1px solid rgba(31, 34, 51, 0.14);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.72);
+  color: var(--ink);
+  font: inherit;
+  font-family: 'Chakra Petch', sans-serif;
+  font-size: 0.74rem;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.spieler-achievement-details {
+  max-height: 180px;
+  overflow: auto;
+  padding: 9px 10px;
+  border: 1px solid rgba(31, 34, 51, 0.1);
+  border-radius: 11px;
+  background: rgba(255, 255, 255, 0.58);
+  color: var(--muted);
+  font-size: 0.76rem;
+}
+
+.spieler-achievement-details[hidden] {
+  display: none;
+}
+
+.spieler-achievement-details ul {
+  display: grid;
+  gap: 4px;
+  margin: 0;
+  padding-left: 18px;
+}
+
+.spieler-achievement-details p {
+  margin: 0;
+}
+
+body.dark-mode .spieler-achievement-player,
+body.dark-mode .spieler-achievement {
+  border-color: rgba(201, 214, 255, 0.14);
+  background: rgba(18, 26, 42, 0.82);
+}
+
+body.dark-mode .spieler-achievement.is-achieved {
+  border-color: rgba(245, 200, 68, 0.58);
+  background: linear-gradient(135deg, rgba(87, 63, 14, 0.92), rgba(53, 39, 14, 0.9));
+}
+
+body.dark-mode .spieler-achievement-toggle,
+body.dark-mode .spieler-achievement-details {
+  border-color: rgba(201, 214, 255, 0.16);
+  background: rgba(18, 26, 42, 0.76);
+  color: var(--ink);
+}
+
+@media (max-width: 720px) {
+  .spieler-achievement-list {
+    grid-template-columns: minmax(0, 1fr);
+  }
 }
 
 .information-graph-dialog {

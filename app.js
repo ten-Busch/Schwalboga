@@ -149,6 +149,8 @@ let activeHubView = 'home';
 let draftOverviewContext = 'modal';
 let landingTierSpriteInterval = null;
 let expandedMatchdayMatchId = null;
+let spielerAchievementPlayerName = null;
+let spielerAchievementDetailId = 0;
 
 const pokedexGrid = document.querySelector('#pokedex-grid');
 const searchInput = document.querySelector('#pokemon-search');
@@ -292,6 +294,7 @@ const changelogPanels = [...document.querySelectorAll('.changelog-panel')];
 const spielerModal = document.querySelector('#spieler-modal');
 const spielerClose = document.querySelector('#spieler-close');
 const spielerGrid = document.querySelector('#spieler-grid');
+const spielerTitle = document.querySelector('#spieler-title');
 const informationGraphModal = document.querySelector('#information-graph-modal');
 const informationGraphClose = document.querySelector('#information-graph-close');
 const informationGraphX = document.querySelector('#information-graph-x');
@@ -4894,33 +4897,92 @@ function getHubViewFromHash() {
 
 const matchdayRounds = [
   {
-    label: 'Round 1',
+    label: 'Round 4',
     matches: [
-      ['Stefan', 'Hans'],
-      ['Marc', 'Robin'],
-      ['Andre', 'Niklas'],
-      ['Tobi', 'Jannik'],
+      ['Stefan', 'Marc'],
+      ['Andre', 'Jannik'],
+      ['Tobi', 'Niklas'],
+      ['Robin', 'Hans'],
     ],
   },
   {
-    label: 'Round 2',
+    label: 'Round 5',
     matches: [
-      ['Stefan', 'Robin'],
-      ['Hans', 'Jannik'],
-      ['Marc', 'Niklas'],
-      ['Andre', 'Tobi'],
+      ['Stefan', 'Andre'],
+      ['Marc', 'Tobi'],
+      ['Jannik', 'Robin'],
+      ['Niklas', 'Hans'],
     ],
   },
   {
-    label: 'Round 3',
+    label: 'Round 6',
     matches: [
-      ['Stefan', 'Jannik'],
-      ['Robin', 'Niklas'],
-      ['Hans', 'Tobi'],
-      ['Marc', 'Andre'],
+      ['Stefan', 'Tobi'],
+      ['Marc', 'Hans'],
+      ['Andre', 'Robin'],
+      ['Jannik', 'Niklas'],
+    ],
+  },
+  {
+    label: 'Round 7',
+    matches: [
+      ['Stefan', 'Niklas'],
+      ['Marc', 'Jannik'],
+      ['Andre', 'Hans'],
+      ['Tobi', 'Robin'],
     ],
   },
 ];
+
+const postponedMatchdayRounds = [
+  { label: 'Round 2', matches: [['Hans', 'Jannik'], ['Marc', 'Niklas']] },
+  { label: 'Round 3', matches: [['Stefan', 'Jannik'], ['Robin', 'Niklas'], ['Hans', 'Tobi'], ['Marc', 'Andre']] },
+];
+
+const finishedMatchdayMatches = [
+  {
+    players: ['Stefan', 'Hans'], winner: 'Stefan', score: '4:0',
+    teams: [
+      [['Virizion', true], ['Ampharos-Mega', false], ['Nidoking', true], ['Bronzong', false], ['Cofagrigus', false], ['Slurpuff', false]],
+      [['Drednaw', true], ['Kilowattrel', true], ['Mimikyu', true], ['Bombirdier', true], ['Centiskorch', true], ['Breloom', true]],
+    ],
+  },
+  {
+    players: ['Marc', 'Robin'], winner: 'Marc', score: '2:0',
+    teams: [
+      [['Bisharp', false], ['Sableye', true], ['Vikavolt', true], ['Seismitoad', true], ['Medicham', false], ['Coalossal', true]],
+      [['Forretress', true], ['Magmar', true], ['Tauros-Paldea-Aqua', true], ['Nidoqueen', true], ['Dracozolt', true], ['Articuno-Galar', true]],
+    ],
+  },
+  {
+    players: ['Andre', 'Niklas'], winner: 'Andre', score: '2:0',
+    teams: [
+      [['Tapu Bulu', false], ['Muk-Alola', true], ['Maushold', false], ['Golisopod', true], ['Magneton', true], ['Aurorus', true]],
+      [['Toxicroak', true], ['Krookodile', true], ['Jellicent', true], ['Sceptile', true], ['Magmortar', true], ['Morpeko', true]],
+    ],
+  },
+  {
+    players: ['Tobi', 'Jannik'], winner: 'Jannik', score: '1:0',
+    teams: [
+      [['Pelipper', true], ['Kingdra', true], ['Espeon', true], ['Sirfetch’d', true], ['Gourgeist', true], ['Arctozolt', true]],
+      [['Steelix', true], ['Raichu-Alola', true], ['Thwackey', true], ['Audino-Mega', false], ['Hitmonlee', true], ['Swalot', true]],
+    ],
+  },
+  {
+    players: ['Stefan', 'Robin'], winner: 'Stefan', score: '5:0',
+    teams: [Array.from({ length: 6 }, () => ['?', false]), Array.from({ length: 6 }, () => ['?', false])],
+  },
+  {
+    players: ['Andre', 'Tobi'], winner: 'Andre', score: '1:0',
+    teams: [
+      [['Tapu Bulu', true], ['Muk-Alola', true], ['Camerupt', true], ['Golisopod', false], ['Magneton', true], ['Bronzor', true]],
+      [['Arctozolt', true], ['Beartic', true], ['Pelipper', true], ['Sirfetch’d', true], ['Gourgeist', true], ['Espeon', true]],
+    ],
+  },
+].map((match) => ({
+  ...match,
+  teams: match.teams.map((team) => team.map(([name, knockedOut]) => ({ name, knockedOut, unknown: name === '?' }))),
+}));
 
 function escapeMatchdayPrintHtml(value) {
   return String(value ?? '')
@@ -5052,7 +5114,6 @@ function getMatchdayDraftPlayer(name) {
 
 function getMatchdayDisplayName(player, fallback) {
   if (!player) return fallback;
-  if (normalizeText(fallback) === 'andre') return 'Andre';
   return player.name;
 }
 
@@ -5062,8 +5123,91 @@ function getMatchdayTeamPokemon(player) {
     .filter(Boolean);
 }
 
-function createMatchdayCarousel(player, side) {
-  const team = getMatchdayTeamPokemon(player);
+function loadMatchdayPaletteImage(src, crossOrigin = false) {
+  return new Promise((resolve, reject) => {
+    const image = new Image();
+    if (crossOrigin) image.crossOrigin = 'anonymous';
+    image.onload = () => resolve(image);
+    image.onerror = reject;
+    image.src = src;
+  });
+}
+
+function interpolateMatchdayColor(left, right, amount) {
+  return left.map((channel, index) => Math.round(channel + (right[index] - channel) * amount));
+}
+
+const matchdaySubstitutePaletteFilters = {
+  Politoed: 'grayscale(1) sepia(1) saturate(4.2) hue-rotate(118deg) brightness(1.08)',
+  Drednaw: 'grayscale(1) sepia(1) saturate(4.5) hue-rotate(142deg) brightness(0.88)',
+  Breloom: 'grayscale(1) sepia(1) saturate(3.6) hue-rotate(52deg) brightness(0.96)',
+  Dubwool: 'grayscale(1) contrast(1.32) brightness(1.02)',
+  Sandaconda: 'grayscale(1) sepia(0.9) saturate(2.2) hue-rotate(350deg) brightness(0.92)',
+  Kilowattrel: 'grayscale(1) sepia(1) saturate(5.4) hue-rotate(352deg) brightness(1.04) contrast(1.15)',
+  Bombirdier: 'grayscale(1) contrast(1.18) brightness(1.14)',
+  Centiskorch: 'grayscale(1) sepia(1) saturate(5.2) hue-rotate(320deg) brightness(0.94)',
+  Mimikyu: 'grayscale(1) sepia(0.72) saturate(1.9) hue-rotate(352deg) brightness(1.12)',
+  Dragonair: 'grayscale(1) sepia(1) saturate(3.8) hue-rotate(148deg) brightness(1.12)',
+};
+
+async function recolorMatchdaySubstitute(image, pokemon) {
+  try {
+    const [substitute, source] = await Promise.all([
+      loadMatchdayPaletteImage(missingSpriteFallbackPath),
+      loadMatchdayPaletteImage(pokemon.sprite, true),
+    ]);
+    const sampleCanvas = document.createElement('canvas');
+    sampleCanvas.width = 96;
+    sampleCanvas.height = 96;
+    const sampleContext = sampleCanvas.getContext('2d', { willReadFrequently: true });
+    sampleContext.drawImage(source, 0, 0, 96, 96);
+    const sourcePixels = sampleContext.getImageData(0, 0, 96, 96).data;
+    const colors = [];
+    for (let index = 0; index < sourcePixels.length; index += 4) {
+      const alpha = sourcePixels[index + 3];
+      if (alpha < 96) continue;
+      const color = [sourcePixels[index], sourcePixels[index + 1], sourcePixels[index + 2]];
+      const max = Math.max(...color);
+      const min = Math.min(...color);
+      if (max - min < 18 || max < 24 || min > 242) continue;
+      colors.push(color);
+    }
+    if (!colors.length) return;
+    colors.sort((left, right) => (left[0] + left[1] + left[2]) - (right[0] + right[1] + right[2]));
+    const dark = colors[Math.floor(colors.length * 0.16)];
+    const middle = colors[Math.floor(colors.length * 0.52)];
+    const light = colors[Math.floor(colors.length * 0.86)];
+    const canvas = document.createElement('canvas');
+    canvas.width = substitute.naturalWidth || 96;
+    canvas.height = substitute.naturalHeight || 96;
+    const context = canvas.getContext('2d', { willReadFrequently: true });
+    context.drawImage(substitute, 0, 0, canvas.width, canvas.height);
+    const output = context.getImageData(0, 0, canvas.width, canvas.height);
+    for (let index = 0; index < output.data.length; index += 4) {
+      if (output.data[index + 3] < 12) continue;
+      const luminance = (output.data[index] * 0.21 + output.data[index + 1] * 0.72 + output.data[index + 2] * 0.07) / 255;
+      const mapped = luminance < 0.5
+        ? interpolateMatchdayColor(dark, middle, luminance * 2)
+        : interpolateMatchdayColor(middle, light, (luminance - 0.5) * 2);
+      output.data[index] = mapped[0];
+      output.data[index + 1] = mapped[1];
+      output.data[index + 2] = mapped[2];
+    }
+    context.putImageData(output, 0, 0);
+    image.src = canvas.toDataURL('image/png');
+    image.style.removeProperty('--matchday-color-filter');
+  } catch {
+    image.src = missingSpriteFallbackPath;
+  }
+}
+
+function normalizeMatchdayTeamEntries(player, teamEntries = null) {
+  if (teamEntries) return teamEntries.map((entry) => ({ ...entry, pokemon: entry.unknown ? null : getPokemonByNameLoose(entry.name) }));
+  return getMatchdayTeamPokemon(player).map((pokemon) => ({ name: pokemon.name, pokemon, knockedOut: false, unknown: false }));
+}
+
+function createMatchdayCarousel(player, side, teamEntries = null, concealTeam = false) {
+  const team = normalizeMatchdayTeamEntries(player, teamEntries);
   const carousel = createNode('div', `matchday-carousel is-${side}`);
   if (!team.length) {
     carousel.append(createNode('span', 'matchday-empty-team', 'Kein Team'));
@@ -5072,20 +5216,30 @@ function createMatchdayCarousel(player, side) {
   carousel.style.setProperty('--matchday-team-size', String(team.length));
   const duration = Math.max(10, team.length * 1.15);
   carousel.style.setProperty('--matchday-carousel-duration', `${duration}s`);
-  team.forEach((pokemon, index) => {
-    const image = document.createElement('img');
-    image.className = 'matchday-pokemon-sprite';
-    image.style.setProperty('--matchday-sprite-index', String(index));
-    image.style.setProperty('--matchday-sprite-delay', `${-(duration / team.length) * index}s`);
-    image.title = getPokemonDisplayName(pokemon);
-    image.loading = 'lazy';
-    setSpriteWithFallback(image, pokemon.sprite, `${getPokemonDisplayName(pokemon)} sprite`);
-    carousel.append(image);
+  team.forEach((entry, index) => {
+    const sprite = entry.unknown ? createNode('span', 'matchday-pokemon-sprite matchday-unknown-sprite', '?') : document.createElement('img');
+    sprite.className = `matchday-pokemon-sprite${entry.unknown ? ' matchday-unknown-sprite' : ''}${entry.knockedOut ? ' is-knocked-out' : ''}${concealTeam ? ' is-concealed' : ''}`;
+    sprite.style.setProperty('--matchday-sprite-index', String(index));
+    sprite.style.setProperty('--matchday-sprite-delay', `${-(duration / team.length) * index}s`);
+    const displayTitle = concealTeam ? '?' : entry.unknown ? '?' : getPokemonDisplayName(entry.pokemon ?? { name: entry.name });
+    sprite.title = `${displayTitle}${entry.knockedOut ? ' (KO)' : ''}`;
+    if (!entry.unknown) {
+      sprite.loading = 'lazy';
+      if (concealTeam && entry.pokemon) {
+        sprite.alt = 'Verdecktes Pokémon';
+        sprite.src = missingSpriteFallbackPath;
+        sprite.style.setProperty('--matchday-color-filter', matchdaySubstitutePaletteFilters[entry.pokemon.name] ?? 'grayscale(1) sepia(1) saturate(3)');
+        void recolorMatchdaySubstitute(sprite, entry.pokemon);
+      } else {
+        setSpriteWithFallback(sprite, entry.pokemon?.sprite ?? missingSpriteFallbackPath, `${sprite.title} sprite`);
+      }
+    }
+    carousel.append(sprite);
   });
   return carousel;
 }
 
-function createMatchdaySide(player, fallbackName, side) {
+function createMatchdaySide(player, fallbackName, side, teamEntries = null, concealTeam = false) {
   const sideNode = createNode('div', `matchday-side is-${side}`);
   const trainer = document.createElement('img');
   trainer.className = 'matchday-trainer-sprite';
@@ -5095,27 +5249,34 @@ function createMatchdaySide(player, fallbackName, side) {
   const name = createNode('strong', 'matchday-trainer-name', getMatchdayDisplayName(player, fallbackName));
   const header = createNode('div', 'matchday-trainer-header');
   header.append(trainer, name);
-  sideNode.append(header, createMatchdayCarousel(player, side));
+  sideNode.append(header, createMatchdayCarousel(player, side, teamEntries, concealTeam));
   return sideNode;
 }
 
-function createMatchdayChip(roundLabel, match, index) {
+function createMatchdayChip(roundLabel, match, index, options = {}) {
   const [leftName, rightName] = match;
   const leftPlayer = getMatchdayPlayer(leftName);
   const rightPlayer = getMatchdayPlayer(rightName);
   const matchId = `${normalizeText(roundLabel)}-${index}`;
   const chip = createNode('article', 'matchday-chip');
   chip.style.setProperty('--matchday-delay', `${(index % 4) * 120}ms`);
-  chip.tabIndex = 0;
-  chip.setAttribute('role', 'button');
-  chip.setAttribute('aria-expanded', String(expandedMatchdayMatchId === matchId));
+  if (!options.finished) {
+    chip.tabIndex = 0;
+    chip.setAttribute('role', 'button');
+    chip.setAttribute('aria-expanded', String(expandedMatchdayMatchId === matchId));
+  }
+  if (options.finished) chip.classList.add('is-finished');
+  const center = createNode('div', 'matchday-center');
+  center.append(createNode('div', 'matchday-vs', options.score ?? 'VS'));
+  if (options.finished) center.append(createNode('strong', 'matchday-result', `${getMatchdayDisplayName(getMatchdayPlayer(options.winner), options.winner)} gewinnt`));
   chip.append(
-    createMatchdaySide(leftPlayer, leftName, 'left'),
-    createNode('div', 'matchday-vs', 'VS'),
-    createMatchdaySide(rightPlayer, rightName, 'right'),
+    createMatchdaySide(leftPlayer, leftName, 'left', options.teams?.[0] ?? null, options.concealHans && normalizeText(leftName) === 'hans'),
+    center,
+    createMatchdaySide(rightPlayer, rightName, 'right', options.teams?.[1] ?? null, options.concealHans && normalizeText(rightName) === 'hans'),
   );
   chip.setAttribute('aria-label', `${roundLabel}: ${leftName} vs ${rightName}`);
   const toggle = () => {
+    if (options.finished) return;
     expandedMatchdayMatchId = expandedMatchdayMatchId === matchId ? null : matchId;
     renderMatchday();
   };
@@ -5144,25 +5305,35 @@ function createMatchdayExpandedPanel(match) {
   return panel;
 }
 
-function createMatchdayMatchNode(roundLabel, match, index) {
+function createMatchdayMatchNode(roundLabel, match, index, options = {}) {
   const matchId = `${normalizeText(roundLabel)}-${index}`;
   const wrap = createNode('div', `matchday-match${expandedMatchdayMatchId === matchId ? ' is-expanded' : ''}`);
-  wrap.append(createMatchdayChip(roundLabel, match, index));
-  if (expandedMatchdayMatchId === matchId) wrap.append(createMatchdayExpandedPanel(match));
+  wrap.append(createMatchdayChip(roundLabel, match, index, options));
+  if (!options.finished && expandedMatchdayMatchId === matchId) wrap.append(createMatchdayExpandedPanel(match));
   return wrap;
+}
+
+function createMatchdayRoundSection(round, options = {}) {
+  const section = createNode('section', 'matchday-round');
+  section.append(createNode(options.compact ? 'h4' : 'h3', `matchday-round-divider${options.compact ? ' is-compact' : ''}`, round.label.replace('Round', 'Runde')));
+  const list = createNode('div', 'matchday-chip-row');
+  round.matches.forEach((match, index) => list.append(createMatchdayMatchNode(`${options.keyPrefix ?? ''}${round.label}`, match, index, options)));
+  section.append(list);
+  return section;
 }
 
 function renderMatchday() {
   if (!matchdayContent) return;
   matchdayContent.innerHTML = '';
   for (const round of matchdayRounds) {
-    const section = createNode('section', 'matchday-round');
-    section.append(createNode('h3', 'matchday-round-divider', round.label.replace('Round', 'Runde')));
-    const list = createNode('div', 'matchday-chip-row');
-    round.matches.forEach((match, index) => list.append(createMatchdayMatchNode(round.label, match, index)));
-    section.append(list);
-    matchdayContent.append(section);
+    matchdayContent.append(createMatchdayRoundSection(round, { concealHans: true, keyPrefix: 'active-' }));
   }
+  matchdayContent.append(createNode('h3', 'matchday-group-divider', 'Aufgeschoben'));
+  postponedMatchdayRounds.forEach((round) => matchdayContent.append(createMatchdayRoundSection(round, { compact: true, keyPrefix: 'postponed-' })));
+  matchdayContent.append(createNode('h3', 'matchday-group-divider', 'Bisherige Kämpfe'));
+  const history = createNode('section', 'matchday-history');
+  finishedMatchdayMatches.forEach((finished, index) => history.append(createMatchdayMatchNode('finished', finished.players, index, { ...finished, finished: true })));
+  matchdayContent.append(history);
 }
 
 if (matchdayPdfDate) matchdayPdfDate.value = new Date().toISOString().slice(0, 10);
@@ -5274,7 +5445,19 @@ function handleHubAction(action) {
     return;
   }
   if (action === 'spieler') {
-    openSpieler();
+    openSpieler('teams');
+    return;
+  }
+  if (action === 'spieler-boxes') {
+    openSpieler('boxes');
+    return;
+  }
+  if (action === 'spieler-knockouts') {
+    openSpieler('knockouts');
+    return;
+  }
+  if (action === 'spieler-achievements') {
+    openSpieler('achievements');
     return;
   }
   if (action === 'changelog') {
@@ -7761,12 +7944,374 @@ function createSpielerTeamGrid(team, player) {
   return grid;
 }
 
-function getSpielerWinTitle(win) {
-  const label = win.title || win.name || 'Sieg';
-  return `${label} - ${win.date}, ${win.format}`;
+function getSpielerFinishedBattleUsage(playerName) {
+  const target = normalizeText(playerName);
+  const brought = new Set();
+  const knockouts = new Map();
+  for (const match of finishedMatchdayMatches) {
+    const playerIndex = match.players.findIndex((name) => normalizeText(name) === target);
+    if (playerIndex < 0) continue;
+    for (const entry of match.teams[playerIndex] ?? []) {
+      if (!entry.unknown) brought.add(normalizeText(entry.name));
+    }
+    for (const entry of match.teams[playerIndex === 0 ? 1 : 0] ?? []) {
+      if (entry.unknown || !entry.knockedOut) continue;
+      const key = normalizeText(entry.name);
+      if (!knockouts.has(key)) knockouts.set(key, entry.name);
+    }
+  }
+  return { brought, knockouts: [...knockouts.values()] };
 }
 
-function createSpielerWinRow(label, wins, emoji) {
+function createSpielerCollectionPokemon(name, options = {}) {
+  const pokemon = getPokemonByNameLoose(name);
+  const tile = document.createElement('article');
+  tile.className = `spieler-collection-pokemon${options.unbrought ? ' is-unbrought' : ''}`;
+  const image = document.createElement('img');
+  image.loading = 'lazy';
+  setSpriteWithFallback(image, pokemon?.sprite ?? missingSpriteFallbackPath, `${pokemon ? getPokemonDisplayName(pokemon) : name} sprite`);
+  const label = document.createElement('span');
+  label.textContent = pokemon ? getPokemonDisplayName(pokemon) : name;
+  tile.append(image, label);
+  return tile;
+}
+
+function getSpielerDraftCollections(player) {
+  const currentInfo = player.currentTeamInfo ?? {};
+  const drafts = [{
+    label: currentInfo.label || currentInfo.format || 'Aktueller Draft',
+    pokemon: Array.isArray(player.currentTeam) ? player.currentTeam : [],
+    current: true,
+  }];
+  const previousTeams = Array.isArray(player.previousTeams) ? player.previousTeams : [];
+  previousTeams.forEach((team, index) => drafts.push({
+    label: team.label || team.format || `Draft ${index + 1}`,
+    pokemon: getSpielerHistoricTeamPokemon(team),
+    current: false,
+  }));
+  return drafts.filter((draft) => draft.pokemon.length);
+}
+
+function spielerPokemonWasBrought(broughtSet, pokemonName) {
+  const normalized = normalizeText(pokemonName);
+  if (broughtSet.has(normalized)) return true;
+  if (normalized.endsWith('mega') && broughtSet.has(normalized.slice(0, -4))) return true;
+  return false;
+}
+
+function createSpielerBoxesSection(player, usage) {
+  const section = document.createElement('section');
+  section.className = 'spieler-feature-section is-boxes';
+  const banner = document.createElement('header');
+  banner.className = 'spieler-feature-banner';
+  const title = document.createElement('h4');
+  title.textContent = 'Boxen';
+  banner.append(title);
+  const drafts = document.createElement('div');
+  drafts.className = 'spieler-box-drafts';
+  for (const draft of getSpielerDraftCollections(player)) {
+    const broughtSet = draft.current ? usage.brought : new Set();
+    const isComplete = draft.pokemon.length > 0 && draft.pokemon.every((name) => spielerPokemonWasBrought(broughtSet, name));
+    const draftSection = document.createElement('section');
+    draftSection.className = `spieler-box-draft${isComplete ? ' is-complete' : ''}`;
+    const heading = document.createElement('h5');
+    heading.textContent = draft.label;
+    const grid = document.createElement('div');
+    grid.className = 'spieler-collection-grid';
+    draft.pokemon.forEach((name) => grid.append(createSpielerCollectionPokemon(name, { unbrought: !spielerPokemonWasBrought(broughtSet, name) })));
+    draftSection.append(heading, grid);
+    drafts.append(draftSection);
+  }
+  section.append(banner, drafts);
+  return section;
+}
+
+function createSpielerKnockoutsSection(usage) {
+  const section = document.createElement('section');
+  section.className = 'spieler-feature-section is-knockouts';
+  const banner = document.createElement('header');
+  banner.className = 'spieler-feature-banner';
+  const title = document.createElement('h4');
+  title.textContent = 'Knock-Outs';
+  banner.append(title);
+  const list = document.createElement('div');
+  list.className = 'spieler-knockout-list';
+  const summary = document.createElement('div');
+  summary.className = 'spieler-knockout-summary';
+  summary.title = `${usage.knockouts.length} Knock-Outs`;
+  summary.append(createNode('span', 'spieler-knockout-skull', '☠'), createNode('strong', '', String(usage.knockouts.length)));
+  const viewport = document.createElement('div');
+  viewport.className = 'spieler-knockout-viewport';
+  if (usage.knockouts.length) {
+    const grid = document.createElement('div');
+    grid.className = `spieler-collection-grid spieler-knockout-grid${usage.knockouts.length > 12 ? ' is-scrolling' : ''}`;
+    usage.knockouts.forEach((name) => grid.append(createSpielerCollectionPokemon(name)));
+    viewport.append(grid);
+    if (usage.knockouts.length > 12) {
+      requestAnimationFrame(() => {
+        const distance = Math.max(0, grid.scrollWidth - viewport.clientWidth);
+        if (!distance || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+        grid.animate(
+          [{ transform: 'translateX(0)' }, { transform: `translateX(-${distance}px)` }],
+          { duration: Math.max(18000, distance * 85), iterations: Infinity, direction: 'alternate', easing: 'linear' },
+        );
+      });
+    }
+  } else {
+    const empty = document.createElement('p');
+    empty.className = 'spieler-collection-empty';
+    empty.textContent = 'Noch keine Knock-Outs erfasst.';
+    viewport.append(empty);
+  }
+  list.append(summary, viewport);
+  section.append(banner, list);
+  return section;
+}
+
+function getSpielerAchievementBroughtPokemon(player) {
+  const usage = getSpielerFinishedBattleUsage(player.name);
+  const pokemon = new Map();
+  for (const draft of getSpielerDraftCollections(player)) {
+    for (const name of draft.pokemon) {
+      if (!spielerPokemonWasBrought(usage.brought, name)) continue;
+      const entry = getPokemonByNameLoose(name);
+      if (entry) pokemon.set(entry.name, entry);
+    }
+  }
+  const playerTarget = normalizeText(player.name);
+  for (const match of finishedMatchdayMatches) {
+    const playerIndex = match.players.findIndex((name) => normalizeText(name) === playerTarget);
+    if (playerIndex < 0) continue;
+    for (const battleEntry of match.teams[playerIndex] ?? []) {
+      if (battleEntry.unknown) continue;
+      const entry = getPokemonByNameLoose(battleEntry.name);
+      if (entry) pokemon.set(entry.name, entry);
+    }
+  }
+  return [...pokemon.values()];
+}
+
+function getSpielerDraftCaptainTypes(player, key) {
+  const types = new Set();
+  const infos = [player.currentTeamInfo, ...(Array.isArray(player.previousTeams) ? player.previousTeams : [])];
+  for (const info of infos) {
+    const value = info?.[key];
+    if (value) types.add(value);
+  }
+  return types;
+}
+
+function getSpielerManualAchievementFlag(player, key) {
+  const flags = window.SPIELER_ACHIEVEMENT_FLAGS ?? {};
+  const direct = flags[player.name];
+  if (direct && typeof direct[key] === 'boolean') return direct[key];
+  const matchedKey = Object.keys(flags).find((name) => normalizeText(name) === normalizeText(player.name));
+  return Boolean(matchedKey && flags[matchedKey]?.[key]);
+}
+
+function isSpielerPastParadox(pokemon) {
+  return Object.values(pokemon?.abilities ?? {}).includes('Protosynthesis');
+}
+
+function isSpielerFutureParadox(pokemon) {
+  return Object.values(pokemon?.abilities ?? {}).includes('Quark Drive');
+}
+
+function getSpielerCanonicalAchievementPokemon(pokemon) {
+  return allPokemon.find((entry) => entry.num === pokemon.num && !entry.baseSpecies && !entry.forme && !entry.hidden) ?? pokemon;
+}
+
+function getSpielerGenerationAchievementEntries(pokemon, generation, exclusion = null) {
+  const entries = new Map();
+  for (const entry of pokemon) {
+    if (getPokemonGenerationNumber(entry) !== generation) continue;
+    if (exclusion === 'ultra-beast' && entry.tags?.includes('Ultra Beast')) continue;
+    if (exclusion === 'future' && isSpielerFutureParadox(entry)) continue;
+    if (exclusion === 'past' && isSpielerPastParadox(entry)) continue;
+    const canonical = getSpielerCanonicalAchievementPokemon(entry);
+    entries.set(entry.num, getPokemonDisplayName(canonical));
+  }
+  return [...entries.values()].sort((left, right) => left.localeCompare(right, 'de'));
+}
+
+function getSpielerAchievementProgress(player) {
+  const target = normalizeText(player.name);
+  const wonMatches = finishedMatchdayMatches.filter((match) => normalizeText(match.winner) === target);
+  const beatenPlayers = new Set(wonMatches.flatMap((match) => match.players.filter((name) => normalizeText(name) !== target).map(normalizeText)));
+  const broughtPokemon = getSpielerAchievementBroughtPokemon(player);
+  const megaEntries = [...new Set(broughtPokemon.filter((pokemon) => pokemon.forme === 'Mega' || pokemon.name.includes('-Mega')).map((pokemon) => getPokemonDisplayName(pokemon)))].sort((left, right) => left.localeCompare(right, 'de'));
+  const zTypes = getSpielerDraftCaptainTypes(player, 'zType');
+  const teraTypes = getSpielerDraftCaptainTypes(player, 'teraType');
+  const usage = getSpielerFinishedBattleUsage(player.name);
+  const drafts = getSpielerDraftCollections(player);
+  const completedDraft = drafts.some((draft) => draft.current
+    && draft.pokemon.length > 0
+    && draft.pokemon.every((name) => spielerPokemonWasBrought(usage.brought, name)));
+  const boxEntries = drafts.flatMap((draft) => draft.pokemon.map((name) => `${spielerPokemonWasBrought(usage.brought, name) ? '✓' : '○'} ${name}`));
+  const beatenEntries = [...beatenPlayers].map((name) => getMatchdayDisplayName(getMatchdayPlayer(name), name)).sort((left, right) => left.localeCompare(right, 'de'));
+  const fullSweepEntries = wonMatches.filter((match) => match.score === '6:0').map((match) => `6:0 gegen ${match.players.find((name) => normalizeText(name) !== target)}`);
+  const closeWinEntries = wonMatches.filter((match) => match.score === '1:0').map((match) => `1:0 gegen ${match.players.find((name) => normalizeText(name) !== target)}`);
+  const generationEntries = Object.fromEntries([
+    [1, getSpielerGenerationAchievementEntries(broughtPokemon, 1)],
+    [2, getSpielerGenerationAchievementEntries(broughtPokemon, 2)],
+    [3, getSpielerGenerationAchievementEntries(broughtPokemon, 3)],
+    [4, getSpielerGenerationAchievementEntries(broughtPokemon, 4)],
+    [5, getSpielerGenerationAchievementEntries(broughtPokemon, 5)],
+    [6, getSpielerGenerationAchievementEntries(broughtPokemon, 6)],
+    [7, getSpielerGenerationAchievementEntries(broughtPokemon, 7, 'ultra-beast')],
+    [8, getSpielerGenerationAchievementEntries(broughtPokemon, 8)],
+    ['9-past', getSpielerGenerationAchievementEntries(broughtPokemon, 9, 'future')],
+    ['9-future', getSpielerGenerationAchievementEntries(broughtPokemon, 9, 'past')],
+  ]);
+  const hostUnlocked = getSpielerManualAchievementFlag(player, 'partyHost');
+  const binary = (value) => ({ value: value ? 1 : 0, target: 1 });
+  return [
+    { name: 'Full Sweep', description: 'Gewinne in einem 6:0!', entries: fullSweepEntries, ...binary(fullSweepEntries.length > 0) },
+    { name: 'Knappe Kiste', description: 'Gewinne in einem 1:0!', entries: closeWinEntries, ...binary(closeWinEntries.length > 0) },
+    { name: 'Mega, ey', description: 'Bringe diverse Megas', entries: megaEntries, value: megaEntries.length, target: 25 },
+    { name: 'Plan Z!', description: 'Bringe diverse Z-Typen', entries: [...zTypes].sort(), value: zTypes.size, target: 10 },
+    { name: 'Neues Tera-torium', description: 'Bringe diverse Tera-Types', entries: [...teraTypes].sort(), value: teraTypes.size, target: 10 },
+    { name: 'Schrecken der Maniacs', description: 'Besiege jeden anderen Maniac', entries: beatenEntries, value: beatenPlayers.size, target: Math.max(0, getSpielerEntries().length - 1) },
+    { name: 'Der Bootsführerschein', description: 'Erhalte den Vollständigkeits-Nudelstern', entries: boxEntries, ...binary(completedDraft) },
+    { name: 'Eichs Enkel', description: 'Bringe 50 Kanto-Pokémon', entries: generationEntries[1], value: generationEntries[1].length, target: 50 },
+    { name: 'Linds Lehrling', description: 'Bringe 50 Johto-Pokémon', entries: generationEntries[2], value: generationEntries[2].length, target: 50 },
+    { name: 'Birks Buddy', description: 'Bringe 50 Hoenn-Pokémon', entries: generationEntries[3], value: generationEntries[3].length, target: 50 },
+    { name: 'Eibe Enthusiast', description: 'Bringe 50 Sinnoh-Pokémon', entries: generationEntries[4], value: generationEntries[4].length, target: 50 },
+    { name: 'Esche Eleve', description: 'Bringe 50 Einall-Pokémon', entries: generationEntries[5], value: generationEntries[5].length, target: 50 },
+    { name: 'Platans Praktikant', description: 'Bringe 50 Kalos-Pokémon', entries: generationEntries[6], value: generationEntries[6].length, target: 50 },
+    { name: 'Kukui Kenner', description: 'Bringe 50 Alola-Pokémon', entries: generationEntries[7], value: generationEntries[7].length, target: 50 },
+    { name: 'Sanias Schüler', description: 'Bringe 50 Galar-Pokémon', entries: generationEntries[8], value: generationEntries[8].length, target: 50 },
+    { name: 'Antiquas Assistent', description: 'Bringe 50 Kalos oder Vergangenheits-Pokémon', entries: generationEntries['9-past'], value: generationEntries['9-past'].length, target: 50 },
+    { name: 'Futurus Famulus', description: 'Bringe 50 Kalos oder Zukunfts-Pokémon', entries: generationEntries['9-future'], value: generationEntries['9-future'].length, target: 50 },
+    { name: 'Plane-deine-Party-Kasten', description: 'Sei Gastgeber', entries: [hostUnlocked ? 'Manuell freigeschaltet' : 'Noch nicht manuell freigeschaltet'], ...binary(hostUnlocked) },
+  ].map((achievement) => ({ ...achievement, achieved: achievement.target > 0 && achievement.value >= achievement.target }));
+}
+
+function createSpielerAchievementCard(achievement) {
+  const card = document.createElement('article');
+  card.className = `spieler-achievement${achievement.achieved ? ' is-achieved' : ''}`;
+  const heading = document.createElement('div');
+  heading.className = 'spieler-achievement-heading';
+  const copy = document.createElement('div');
+  const title = document.createElement('h4');
+  title.textContent = achievement.name;
+  const description = document.createElement('p');
+  description.textContent = achievement.description;
+  copy.append(title, description);
+  if (achievement.achieved) heading.append(copy, createNode('span', 'spieler-achievement-trophy', '🏆'));
+  else heading.append(copy);
+  const progressMeta = document.createElement('div');
+  progressMeta.className = 'spieler-achievement-progress-meta';
+  progressMeta.append(createNode('span', '', achievement.achieved ? 'Erreicht' : 'Fortschritt'), createNode('strong', '', `${Math.min(achievement.value, achievement.target)} / ${achievement.target}`));
+  const progress = document.createElement('div');
+  progress.className = 'spieler-achievement-progress';
+  progress.setAttribute('role', 'progressbar');
+  progress.setAttribute('aria-label', achievement.name);
+  progress.setAttribute('aria-valuemin', '0');
+  progress.setAttribute('aria-valuemax', String(achievement.target));
+  progress.setAttribute('aria-valuenow', String(Math.min(achievement.value, achievement.target)));
+  const fill = document.createElement('span');
+  fill.style.width = `${achievement.target ? Math.min(100, achievement.value / achievement.target * 100) : 0}%`;
+  progress.append(fill);
+  const detailId = `spieler-achievement-details-${++spielerAchievementDetailId}`;
+  const toggle = document.createElement('button');
+  toggle.className = 'spieler-achievement-toggle';
+  toggle.type = 'button';
+  toggle.setAttribute('aria-expanded', 'false');
+  toggle.setAttribute('aria-controls', detailId);
+  toggle.textContent = '▸ Einträge anzeigen';
+  const details = document.createElement('div');
+  details.className = 'spieler-achievement-details';
+  details.id = detailId;
+  details.hidden = true;
+  const entries = achievement.entries ?? [];
+  if (entries.length) {
+    const list = document.createElement('ul');
+    entries.forEach((entry) => {
+      const item = document.createElement('li');
+      item.textContent = entry;
+      list.append(item);
+    });
+    details.append(list);
+  } else {
+    details.append(createNode('p', '', 'Noch keine passenden Einträge.'));
+  }
+  toggle.addEventListener('click', () => {
+    const expanded = toggle.getAttribute('aria-expanded') === 'true';
+    toggle.setAttribute('aria-expanded', String(!expanded));
+    toggle.textContent = `${expanded ? '▸' : '▾'} Einträge ${expanded ? 'anzeigen' : 'ausblenden'}`;
+    details.hidden = expanded;
+  });
+  card.append(heading, progressMeta, progress, toggle, details);
+  return card;
+}
+
+function renderSpielerAchievements() {
+  if (!spielerGrid) return;
+  spielerGrid.innerHTML = '';
+  spielerGrid.classList.add('is-achievements');
+  const players = getSpielerEntries();
+  const selectedName = players.some((player) => normalizeText(player.name) === normalizeText(spielerAchievementPlayerName ?? ''))
+    ? spielerAchievementPlayerName
+    : players[0]?.name;
+  spielerAchievementPlayerName = selectedName ?? null;
+  const shell = document.createElement('section');
+  shell.className = 'spieler-achievements-shell';
+  const banner = document.createElement('header');
+  banner.className = 'spieler-achievements-banner';
+  banner.append(createNode('h3', '', 'Achievements'));
+  const picker = document.createElement('label');
+  picker.className = 'details-field spieler-achievement-picker';
+  picker.append(createNode('span', '', 'Spieler auswählen'));
+  const select = document.createElement('select');
+  players.forEach((player) => {
+    const option = document.createElement('option');
+    option.value = player.name;
+    option.textContent = player.name;
+    option.selected = normalizeText(player.name) === normalizeText(spielerAchievementPlayerName ?? '');
+    select.append(option);
+  });
+  picker.append(select);
+  const list = document.createElement('div');
+  list.className = 'spieler-achievement-list';
+  const renderSelected = () => {
+    spielerAchievementPlayerName = select.value;
+    const player = players.find((entry) => normalizeText(entry.name) === normalizeText(select.value));
+    list.innerHTML = '';
+    if (!player) return;
+    const playerHeading = document.createElement('div');
+    playerHeading.className = 'spieler-achievement-player';
+    const sprite = document.createElement('img');
+    sprite.src = player.sprite;
+    sprite.alt = `${player.name} trainer sprite`;
+    playerHeading.append(sprite, createNode('h3', '', player.name));
+    list.append(playerHeading, ...getSpielerAchievementProgress(player).map(createSpielerAchievementCard));
+  };
+  select.addEventListener('change', renderSelected);
+  shell.append(banner, picker, list);
+  spielerGrid.append(shell);
+  renderSelected();
+}
+
+function getSpielerWinTitle(win) {
+  const label = win.title || win.name || 'Sieg';
+  return [label, win.date, win.format].filter(Boolean).join(' - ');
+}
+
+function getSpielerMatchWinRecords(player) {
+  const target = normalizeText(player?.name ?? '');
+  return finishedMatchdayMatches
+    .filter((match) => normalizeText(match.winner) === target)
+    .map((match) => {
+      const opponent = match.players.find((name) => normalizeText(name) !== target) ?? 'Unbekannt';
+      return {
+        title: `${match.score} gegen ${getMatchdayDisplayName(getMatchdayPlayer(opponent), opponent)}`,
+        format: 'Matchday',
+      };
+    });
+}
+
+function createSpielerWinRow(label, wins, emoji, showNumericZero = false) {
   const wrap = document.createElement('div');
   wrap.className = 'spieler-win-row';
 
@@ -7776,16 +8321,22 @@ function createSpielerWinRow(label, wins, emoji) {
   wrap.append(title);
 
   const validWins = Array.isArray(wins)
-    ? wins.filter((win) => win?.date && win?.format)
+    ? wins.filter((win) => win && (win.title || win.name || win.date || win.format))
     : [];
 
   if (!validWins.length) {
     const empty = document.createElement('span');
-    empty.className = 'spieler-win-empty';
-    empty.textContent = 'Keine';
+    empty.className = showNumericZero ? 'spieler-win-count' : 'spieler-win-empty';
+    empty.textContent = showNumericZero ? '0' : 'Keine';
     wrap.append(empty);
     return wrap;
   }
+
+  const count = document.createElement('span');
+  count.className = 'spieler-win-count';
+  count.textContent = String(validWins.length);
+  count.title = `${label}: ${validWins.length}`;
+  wrap.append(count);
 
   for (const win of validWins) {
     const badge = document.createElement('span');
@@ -7828,7 +8379,7 @@ function openSpielerPlayerInBattlePrep(player) {
   renderHubView('draft');
 }
 
-function createSpielerCard(player, index) {
+function createSpielerCard(player, index, mode = 'teams') {
   const card = document.createElement('article');
   card.className = 'spieler-card';
 
@@ -7848,12 +8399,23 @@ function createSpielerCard(player, index) {
   const wins = document.createElement('div');
   wins.className = 'spieler-wins';
   wins.append(
-    createSpielerWinRow('Match Siege', player.matchSiege, '🏅'),
+    createSpielerWinRow('Match Siege', getSpielerMatchWinRecords(player), '🏅', true),
     createSpielerWinRow('Abend Siege', player.abendSiege, '🏆')
   );
   wins.append(createSpielerNudelsternRow(player));
   meta.append(name, wins);
   header.append(sprite, meta);
+
+  const battleUsage = getSpielerFinishedBattleUsage(player.name);
+  if (mode === 'boxes') {
+    card.append(header, createSpielerBoxesSection(player, battleUsage));
+    return card;
+  }
+  if (mode === 'knockouts') {
+    card.classList.add('is-knockouts-view');
+    card.append(header, createSpielerKnockoutsSection(battleUsage));
+    return card;
+  }
 
   const currentTitle = document.createElement('h4');
   currentTitle.className = 'spieler-team-heading';
@@ -7897,22 +8459,41 @@ function createSpielerCard(player, index) {
   battlePrepButton.disabled = !Array.isArray(player.currentTeam) || !player.currentTeam.length;
   battlePrepButton.addEventListener('click', () => openSpielerPlayerInBattlePrep(player));
 
-  card.append(header, currentTitle, createSpielerTeamGrid(player.currentTeam, player), battlePrepButton, expandButton, previousWrap);
+  card.append(
+    header,
+    currentTitle,
+    createSpielerTeamGrid(player.currentTeam, player),
+    battlePrepButton,
+    expandButton,
+    previousWrap,
+  );
   return card;
 }
 
-function renderSpielerOverview() {
+function renderSpielerOverview(mode = 'teams') {
   if (!spielerGrid) return;
   spielerGrid.innerHTML = '';
+  spielerGrid.classList.remove('is-achievements');
   const fragment = document.createDocumentFragment();
   getSpielerEntries().forEach((player, index) => {
-    fragment.append(createSpielerCard(player, index));
+    fragment.append(createSpielerCard(player, index, mode));
   });
   spielerGrid.append(fragment);
 }
 
-function openSpieler() {
-  renderSpielerOverview();
+function openSpieler(mode = 'teams') {
+  const viewMode = typeof mode === 'string' ? mode : 'teams';
+  if (viewMode === 'achievements') renderSpielerAchievements();
+  else renderSpielerOverview(viewMode);
+  if (spielerTitle) {
+    spielerTitle.textContent = viewMode === 'boxes'
+      ? 'Boxen'
+      : viewMode === 'knockouts'
+        ? 'Knock-Outs'
+        : viewMode === 'achievements'
+          ? 'Achievements'
+          : 'Teams';
+  }
   if (spielerModal) spielerModal.hidden = false;
 }
 
