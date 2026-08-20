@@ -539,6 +539,12 @@ const pokedexEntries = Object.entries(Pokedex)
       formeOrder: species.formeOrder ?? [],
       tags: species.tags ?? [],
       cost: costByName.has(species.name) ? costByName.get(species.name).cost : null,
+      cost_dbl: costByName.has(species.name)
+        ? (costByName.get(species.name).cost_dbl ?? costByName.get(species.name).cost)
+        : null,
+      cost_dbl_is_placeholder: costByName.has(species.name)
+        ? !Object.prototype.hasOwnProperty.call(costByName.get(species.name), 'cost_dbl')
+        : true,
       impossible: costByName.has(species.name) ? costByName.get(species.name).impossible : false,
       unreleased: costByName.has(species.name) ? costByName.get(species.name).unreleased : false,
       untiered: costByName.has(species.name) ? costByName.get(species.name).untiered : false,

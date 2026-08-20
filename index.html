@@ -63,6 +63,10 @@
               <span class="landing-tile-art" aria-hidden="true"></span>
               <span class="landing-tile-label">Replays</span>
             </a>
+            <a class="landing-tile is-tier-editor" id="tier-editor-tile" href="#tier-editor" hidden>
+              <span class="landing-tile-art" aria-hidden="true"></span>
+              <span class="landing-tile-label">Tiers &Auml;ndern</span>
+            </a>
           </div>
           <div class="landing-footer-actions">
             <span class="landing-tier-update" id="landing-tier-update">
@@ -212,6 +216,44 @@
           </div>
         </section>
 
+        <section class="hub-page hub-view tier-editor-page" id="tier-editor" data-hub-view="tier-editor" hidden>
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">Gesch&uuml;tzter Bereich</p>
+              <h2>Tiers &Auml;ndern</h2>
+            </div>
+            <div class="section-header-tools">
+              <button class="details-secondary" id="tier-editor-discard" type="button">Ungespeicherte verwerfen</button>
+              <button class="details-primary" id="tier-editor-save" type="button">Alle &Auml;nderungen speichern</button>
+              <a class="details-button" href="#home">Zur&uuml;ck</a>
+            </div>
+          </div>
+          <div class="tier-editor-toolbar">
+            <label class="details-field" for="tier-editor-search">
+              <span>Pok&eacute;mon suchen</span>
+              <input id="tier-editor-search" type="search" placeholder="Name oder Dex-Nummer" autocomplete="off" />
+            </label>
+            <label class="hide-filter">
+              <input id="tier-editor-changed-only" type="checkbox" />
+              <span>Nur ge&auml;nderte</span>
+            </label>
+            <p class="tier-editor-status" id="tier-editor-status" aria-live="polite"></p>
+          </div>
+          <div class="tier-editor-table-wrap">
+            <table class="tier-editor-table">
+              <thead>
+                <tr>
+                  <th>Pok&eacute;mon</th>
+                  <th>Singles</th>
+                  <th>Doubles</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
+              <tbody id="tier-editor-rows"></tbody>
+            </table>
+          </div>
+        </section>
+
         <section class="pokedex-panel hub-view" id="pokedex" data-hub-view="pokedex" hidden>
           <div class="section-heading">
             <div>
@@ -269,6 +311,25 @@
                   <span class="language-flag language-flag-en" aria-hidden="true">&#127468;&#127463;</span>
                   <span class="language-flag language-flag-de" aria-hidden="true">&#127465;&#127466;</span>
                   <span class="theme-toggle-label">DE Namen</span>
+                </button>
+                <button
+                  class="theme-toggle battle-mode-toggle"
+                  id="battle-mode-toggle"
+                  type="button"
+                  aria-pressed="false"
+                  aria-label="Doubles-Kosten aktivieren"
+                >
+                  <span class="battle-mode-icon" aria-hidden="true">2v2</span>
+                  <span class="theme-toggle-label">Singles</span>
+                </button>
+                <button
+                  class="theme-toggle"
+                  id="auth-toggle"
+                  type="button"
+                  aria-label="Anmelden"
+                >
+                  <span class="auth-toggle-icon" aria-hidden="true">&#128274;</span>
+                  <span class="theme-toggle-label">Anmelden</span>
                 </button>
                 <button class="details-button rail-icon-button" id="legend-button" type="button" aria-label="Legende">
                   <span aria-hidden="true">?</span>
@@ -1796,6 +1857,63 @@
       </section>
     </div>
 
+    <div class="details-modal" id="auth-modal" hidden>
+      <div class="details-backdrop" data-close-auth="true"></div>
+      <section class="details-dialog auth-dialog" aria-labelledby="auth-title" aria-modal="true" role="dialog">
+        <div class="details-header">
+          <div>
+            <p class="eyebrow">Doubles Cost System</p>
+            <h2 id="auth-title">Anmelden</h2>
+          </div>
+          <button class="details-close" id="auth-close" type="button" aria-label="Close">&times;</button>
+        </div>
+        <div class="details-body auth-body">
+          <p class="auth-config-notice" id="auth-config-notice" hidden>
+            Supabase ist noch nicht mit dieser Website verbunden.
+          </p>
+          <form class="auth-form" id="auth-login-form">
+            <label class="details-field" for="auth-email">
+              <span>E-Mail</span>
+              <input id="auth-email" type="email" autocomplete="email" required />
+            </label>
+            <label class="details-field" for="auth-password">
+              <span>Passwort</span>
+              <input id="auth-password" type="password" autocomplete="current-password" required />
+            </label>
+            <div class="auth-actions">
+              <button class="details-primary" id="auth-login-submit" type="submit">Anmelden</button>
+              <button class="details-secondary" id="auth-forgot-password" type="button">Passwort vergessen</button>
+            </div>
+          </form>
+          <section class="auth-account" id="auth-account" hidden>
+            <p>Angemeldet als</p>
+            <strong id="auth-account-email"></strong>
+            <div class="auth-actions">
+              <button class="details-secondary" id="auth-show-password-change" type="button">Passwort ändern</button>
+              <button class="details-secondary" id="auth-sign-out" type="button">Abmelden</button>
+            </div>
+          </section>
+          <form class="auth-form" id="auth-password-form" hidden>
+            <label class="details-field" for="auth-new-password">
+              <span>Neues Passwort</span>
+              <input id="auth-new-password" type="password" autocomplete="new-password" minlength="8" required />
+            </label>
+            <label class="details-field" for="auth-new-password-confirm">
+              <span>Passwort wiederholen</span>
+              <input id="auth-new-password-confirm" type="password" autocomplete="new-password" minlength="8" required />
+            </label>
+            <div class="auth-actions">
+              <button class="details-primary" type="submit">Passwort speichern</button>
+              <button class="details-secondary" id="auth-password-cancel" type="button">Abbrechen</button>
+            </div>
+          </form>
+          <p class="auth-feedback" id="auth-feedback" aria-live="polite"></p>
+        </div>
+      </section>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2" defer></script>
+    <script src="data/supabase-config.js" defer></script>
     <script src="data/pokedex-data.js" defer></script>
     <script src="data/point-cost-history.js" defer></script>
     <script src="data/changelog-data.js" defer></script>

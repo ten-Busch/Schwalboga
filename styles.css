@@ -1369,6 +1369,200 @@ body.pokemon-detail-open .mobile-panel-dock {
   line-height: 1;
 }
 
+.battle-mode-icon {
+  display: inline-grid;
+  place-items: center;
+  min-width: 32px;
+  height: 32px;
+  padding: 0 5px;
+  border: 2px solid currentColor;
+  border-radius: 10px;
+  font-size: 0.72rem;
+  line-height: 1;
+}
+
+.auth-toggle-icon {
+  font-size: 1.35rem;
+  line-height: 1;
+}
+
+.auth-dialog {
+  width: min(520px, calc(100vw - 32px));
+}
+
+.auth-body,
+.auth-form,
+.auth-account {
+  display: grid;
+  gap: 16px;
+}
+
+.auth-form[hidden],
+.auth-account[hidden],
+.auth-config-notice[hidden] {
+  display: none;
+}
+
+.auth-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.auth-feedback,
+.auth-config-notice {
+  margin: 0;
+  color: var(--muted);
+}
+
+.auth-feedback[data-state='error'],
+.auth-config-notice {
+  color: var(--accent);
+}
+
+.auth-feedback[data-state='success'] {
+  color: #238636;
+}
+
+.auth-account strong {
+  overflow-wrap: anywhere;
+}
+
+.tier-editor-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  align-items: end;
+  margin-bottom: 18px;
+}
+
+.landing-tile[hidden] {
+  display: none;
+}
+
+.tier-editor-toolbar .details-field {
+  flex: 1 1 300px;
+  margin: 0;
+}
+
+.tier-editor-status {
+  flex: 1 1 100%;
+  min-height: 1.4em;
+  margin: 0;
+  color: var(--muted);
+}
+
+.tier-editor-status[data-state='error'] {
+  color: var(--accent);
+}
+
+.tier-editor-status[data-state='success'] {
+  color: #238636;
+}
+
+.tier-editor-table-wrap {
+  overflow: auto;
+  max-height: calc(100vh - 260px);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  background: var(--surface);
+}
+
+.tier-editor-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.tier-editor-table th,
+.tier-editor-table td {
+  padding: 10px 14px;
+  border-bottom: 1px solid var(--line);
+  text-align: left;
+}
+
+.tier-editor-table thead th {
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  background: var(--surface);
+}
+
+.tier-editor-table tr.is-dirty {
+  background: rgba(125, 255, 0, 0.09);
+}
+
+.tier-editor-pokemon {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  min-width: 220px;
+}
+
+.tier-editor-pokemon img {
+  width: 42px;
+  height: 42px;
+  object-fit: contain;
+  image-rendering: pixelated;
+}
+
+.tier-editor-cost-input {
+  width: 82px;
+  min-height: 40px;
+  padding: 6px 10px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: var(--surface);
+  color: inherit;
+  font: inherit;
+}
+
+.tier-editor-placeholder-label {
+  color: #58b800;
+  font-weight: 700;
+}
+
+.detail-cost-edit-button {
+  margin-left: auto;
+  min-width: 40px;
+  min-height: 36px;
+  padding: 0 10px;
+}
+
+.detail-cost-editor {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  padding: 14px;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  background: var(--surface);
+}
+
+.detail-cost-editor[hidden] {
+  display: none;
+}
+
+.detail-cost-editor .auth-actions,
+.detail-cost-editor .auth-feedback {
+  grid-column: 1 / -1;
+}
+
+@media (max-width: 640px) {
+  .detail-cost-editor {
+    grid-template-columns: 1fr;
+  }
+
+  .detail-cost-editor .auth-actions,
+  .detail-cost-editor .auth-feedback {
+    grid-column: auto;
+  }
+}
+
+.is-placeholder-cost {
+  color: #7dff00 !important;
+  text-shadow: 0 0 8px rgba(125, 255, 0, 0.42);
+}
+
 .language-flag-de,
 .theme-toggle[aria-pressed='true'] .language-flag-en {
   display: none;
@@ -1500,6 +1694,7 @@ body.dark-mode .details-backdrop {
 body.dark-mode .details-dialog,
 body.dark-mode .details-close,
 body.dark-mode .details-field input[type='text'],
+body.dark-mode .details-field input[type='email'],
 body.dark-mode .details-field input[type='number'],
 body.dark-mode .details-field input[type='password'],
 body.dark-mode .details-field textarea,
@@ -3156,6 +3351,7 @@ body.dark-mode .expert-search-dialog .details-field > span {
 }
 
 .details-field input[type='text'],
+.details-field input[type='email'],
 .details-field input[type='number'],
 .details-field input[type='password'],
 .details-field textarea,

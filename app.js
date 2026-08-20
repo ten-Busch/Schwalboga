@@ -145,6 +145,13 @@ const hubSearchResults = document.querySelector('#hub-search-results');
 const matchdayContent = document.querySelector('#matchday-content');
 const matchdayPdfDate = document.querySelector('#matchday-pdf-date');
 const matchdayPdfButton = document.querySelector('#matchday-pdf-button');
+const tierEditorTile = document.querySelector('#tier-editor-tile');
+const tierEditorSearch = document.querySelector('#tier-editor-search');
+const tierEditorChangedOnly = document.querySelector('#tier-editor-changed-only');
+const tierEditorRows = document.querySelector('#tier-editor-rows');
+const tierEditorSave = document.querySelector('#tier-editor-save');
+const tierEditorDiscard = document.querySelector('#tier-editor-discard');
+const tierEditorStatus = document.querySelector('#tier-editor-status');
 let activeHubView = 'home';
 let draftOverviewContext = 'modal';
 let landingTierSpriteInterval = null;
@@ -192,6 +199,26 @@ const themeToggleMascot = document.querySelector('#theme-toggle-mascot');
 const eastereggToggle = document.querySelector('#easteregg-toggle');
 const eastereggToggleMascot = document.querySelector('#easteregg-toggle-mascot');
 const languageToggle = document.querySelector('#language-toggle');
+const battleModeToggle = document.querySelector('#battle-mode-toggle');
+const authToggle = document.querySelector('#auth-toggle');
+const authModal = document.querySelector('#auth-modal');
+const authClose = document.querySelector('#auth-close');
+const authTitle = document.querySelector('#auth-title');
+const authConfigNotice = document.querySelector('#auth-config-notice');
+const authLoginForm = document.querySelector('#auth-login-form');
+const authEmail = document.querySelector('#auth-email');
+const authPassword = document.querySelector('#auth-password');
+const authLoginSubmit = document.querySelector('#auth-login-submit');
+const authForgotPassword = document.querySelector('#auth-forgot-password');
+const authAccount = document.querySelector('#auth-account');
+const authAccountEmail = document.querySelector('#auth-account-email');
+const authShowPasswordChange = document.querySelector('#auth-show-password-change');
+const authSignOut = document.querySelector('#auth-sign-out');
+const authPasswordForm = document.querySelector('#auth-password-form');
+const authNewPassword = document.querySelector('#auth-new-password');
+const authNewPasswordConfirm = document.querySelector('#auth-new-password-confirm');
+const authPasswordCancel = document.querySelector('#auth-password-cancel');
+const authFeedback = document.querySelector('#auth-feedback');
 const legendButton = document.querySelector('#legend-button');
 const railToggle = document.querySelector('#rail-toggle');
 const themeToggleWrap = document.querySelector('.theme-toggle-wrap');
@@ -659,6 +686,356 @@ const pointCostHistory = Array.isArray(window.POINT_COST_HISTORY) ? window.POINT
 const meta = window.POKEDEX_META ?? { abilities: [], moves: [], movesById: {} };
 const languageStorageKey = 'pokedex-name-language';
 let activeNameLanguage = localStorage.getItem(languageStorageKey) === 'de' ? 'de' : 'en';
+const battleModeStorageKey = 'schwalboga-battle-mode';
+let preferredBattleMode = localStorage.getItem(battleModeStorageKey) === 'doubles' ? 'doubles' : 'singles';
+let activeBattleMode = 'singles';
+let supabaseClient = null;
+let authSession = null;
+let authRecoveryMode = false;
+const authLinkTypeAtLoad = new URLSearchParams(window.location.hash.slice(1)).get('type');
+let sharedCostRows = new Map();
+let sharedCostsReady = false;
+let sharedCostsError = '';
+let tierEditorDraft = new Map();
+
+function getPokemonCost(pokemon, mode = activeBattleMode) {
+  if (!pokemon) return null;
+  return mode === 'doubles' ? (pokemon.cost_dbl ?? pokemon.cost ?? null) : (pokemon.cost ?? null);
+}
+
+function isPlaceholderDoublesCost(pokemon) {
+  return Boolean(pokemon?.cost_dbl_is_placeholder);
+}
+
+function markPlaceholderCost(element, pokemon, mode = activeBattleMode) {
+  const isPlaceholder = mode === 'doubles'
+    && getPokemonCost(pokemon, 'doubles') !== null
+    && isPlaceholderDoublesCost(pokemon);
+  element?.classList.toggle('is-placeholder-cost', isPlaceholder);
+  if (element && isPlaceholder) {
+    element.title = 'Vorläufiger Doubles-Wert: verwendet aktuell die Singles-Kosten';
+  }
+}
+
+function syncBattleModeToggle() {
+  if (!battleModeToggle) return;
+  const isDoubles = activeBattleMode === 'doubles';
+  battleModeToggle.setAttribute('aria-pressed', String(isDoubles));
+  const signedIn = Boolean(authSession?.user);
+  battleModeToggle.setAttribute(
+    'aria-label',
+    signedIn ? (isDoubles ? 'Doubles-Kosten aktiv' : 'Singles-Kosten aktiv') : 'Anmelden, um Doubles-Kosten zu verwenden',
+  );
+  const label = battleModeToggle.querySelector('.theme-toggle-label');
+  if (label) label.textContent = isDoubles ? 'Doubles' : 'Singles';
+  const icon = battleModeToggle.querySelector('.battle-mode-icon');
+  if (icon) icon.textContent = isDoubles ? '2v2' : '1v1';
+}
+
+function toggleBattleMode() {
+  if (!authSession?.user) {
+    openAuthModal();
+    setAuthFeedback('Melde dich an, um die Doubles-Kosten zu verwenden.', 'error');
+    return;
+  }
+  activeBattleMode = activeBattleMode === 'singles' ? 'doubles' : 'singles';
+  preferredBattleMode = activeBattleMode;
+  localStorage.setItem(battleModeStorageKey, preferredBattleMode);
+  syncBattleModeToggle();
+  refreshCostDependentViews();
+}
+
+function refreshCostDependentViews() {
+  applyAllFilters();
+
+  if (pokemonDetailModal?.hidden === false && activeDetailPokemonName) {
+    refreshActivePokemonDetail();
+  }
+
+  if (replacementFinderModal?.hidden === false) {
+    const target = getReplacementTargetPokemon();
+    const hadResults = replacementResultsSection?.hidden === false;
+    if (target) {
+      renderReplacementFinder(target);
+      if (hadResults && getReplacementSelectedAspects().length) runReplacementFinderSearch();
+    }
+  }
+
+  if (coreFinderModal?.hidden === false) {
+    const hadResults = coreFinderResultsSection?.hidden === false;
+    renderCoreFinderSlots();
+    if (hadResults) renderCoreFinderResults(findCoreFinderResults());
+  }
+
+  if (budgetPlannerModal?.hidden === false) renderBudgetPlanner();
+  if (ruleCheckerModal?.hidden === false) renderRuleChecker();
+  if (draftOverviewModal?.hidden === false || activeHubView === 'draft') renderDraftOverview();
+  if (activeHubView === 'matchday') renderMatchday();
+  if (informationGraphModal?.hidden === false) {
+    drawInformationGraph({ withData: informationGraphPoints.length > 0 });
+  }
+  if (activeHubView === 'tier-editor') renderTierEditor();
+}
+
+function isSupabaseConfigured() {
+  const config = window.SUPABASE_CONFIG;
+  return Boolean(
+    config?.url
+    && config?.publishableKey
+    && /^https:\/\//.test(config.url)
+    && config.publishableKey.startsWith('sb_publishable_'),
+  );
+}
+
+function setAuthFeedback(message = '', state = '') {
+  if (!authFeedback) return;
+  authFeedback.textContent = message;
+  if (state) authFeedback.dataset.state = state;
+  else delete authFeedback.dataset.state;
+}
+
+function syncAuthUi() {
+  const user = authSession?.user ?? null;
+  const configured = isSupabaseConfigured();
+  if (authConfigNotice) authConfigNotice.hidden = configured;
+  if (authLoginForm) authLoginForm.hidden = !configured || Boolean(user) || authRecoveryMode;
+  if (authAccount) authAccount.hidden = !user || authRecoveryMode;
+  if (authPasswordForm) authPasswordForm.hidden = !authRecoveryMode;
+  if (authAccountEmail) authAccountEmail.textContent = user?.email ?? '';
+  if (authTitle) authTitle.textContent = authRecoveryMode ? 'Passwort festlegen' : user ? 'Konto' : 'Anmelden';
+
+  if (authToggle) {
+    const label = authToggle.querySelector('.theme-toggle-label');
+    const icon = authToggle.querySelector('.auth-toggle-icon');
+    if (label) label.textContent = user ? 'Konto' : 'Anmelden';
+    if (icon) icon.textContent = user ? '🔓' : '🔒';
+    authToggle.setAttribute('aria-label', user ? `Konto: ${user.email ?? 'angemeldet'}` : 'Anmelden');
+  }
+  if (tierEditorTile) tierEditorTile.hidden = !user;
+  syncBattleModeToggle();
+}
+
+function applyAuthSession(session, { refresh = true } = {}) {
+  const wasMode = activeBattleMode;
+  authSession = session ?? null;
+  activeBattleMode = authSession?.user ? preferredBattleMode : 'singles';
+  syncAuthUi();
+  if (!authSession?.user && activeHubView === 'tier-editor') {
+    window.location.hash = '#home';
+    renderHubView('home');
+  }
+  void syncSharedCostsForSession();
+  if (refresh && wasMode !== activeBattleMode && pokemonByName.size) refreshCostDependentViews();
+}
+
+function rememberStaticPokemonCosts() {
+  for (const pokemon of allPokemon) {
+    if (Object.prototype.hasOwnProperty.call(pokemon, '_staticCost')) continue;
+    pokemon._staticCost = pokemon.cost ?? null;
+    pokemon._staticCostDbl = pokemon.cost_dbl ?? pokemon.cost ?? null;
+    pokemon._staticCostDblPlaceholder = Boolean(pokemon.cost_dbl_is_placeholder);
+  }
+}
+
+function restoreStaticPokemonCosts() {
+  for (const pokemon of allPokemon) {
+    if (!Object.prototype.hasOwnProperty.call(pokemon, '_staticCost')) continue;
+    pokemon.cost = pokemon._staticCost;
+    pokemon.cost_dbl = pokemon._staticCostDbl;
+    pokemon.cost_dbl_is_placeholder = pokemon._staticCostDblPlaceholder;
+  }
+}
+
+function applySharedCostRows() {
+  restoreStaticPokemonCosts();
+  for (const [name, row] of sharedCostRows) {
+    const pokemon = pokemonByName.get(name);
+    if (!pokemon) continue;
+    pokemon.cost = row.cost ?? null;
+    pokemon.cost_dbl = row.cost_dbl ?? null;
+    pokemon.cost_dbl_is_placeholder = false;
+    pokemon.untiered = row.cost === null && row.cost_dbl === null ? pokemon.untiered : false;
+  }
+}
+
+async function syncSharedCostsForSession() {
+  if (!allPokemon.length) return;
+  rememberStaticPokemonCosts();
+  tierEditorDraft = new Map();
+  sharedCostsError = '';
+  if (!authSession?.user || !supabaseClient) {
+    sharedCostRows = new Map();
+    sharedCostsReady = false;
+    restoreStaticPokemonCosts();
+    refreshCostDependentViews();
+    return;
+  }
+
+  const { data, error } = await supabaseClient
+    .from('pokemon_costs')
+    .select('pokemon_name,cost,cost_dbl,updated_at,updated_by');
+  if (error) {
+    sharedCostsReady = false;
+    sharedCostsError = error.message;
+    setTierEditorStatus('Die Kostentabelle ist noch nicht eingerichtet. Führe zuerst das Supabase-SQL aus.', 'error');
+    return;
+  }
+  sharedCostRows = new Map((data ?? []).map((row) => [row.pokemon_name, row]));
+  sharedCostsReady = true;
+  applySharedCostRows();
+  refreshCostDependentViews();
+  if (activeHubView === 'tier-editor') renderTierEditor();
+}
+
+function normalizeEditableCost(value) {
+  if (value === '' || value === null || value === undefined) return null;
+  const number = Number(value);
+  return Number.isInteger(number) && number >= 0 && number <= 32 ? number : NaN;
+}
+
+async function saveSharedCostChanges(changes) {
+  if (!authSession?.user || !supabaseClient) throw new Error('Nicht angemeldet.');
+  if (!changes.length) return [];
+  const rows = changes.map((change) => ({
+    pokemon_name: change.pokemon_name,
+    cost: change.cost,
+    cost_dbl: change.cost_dbl,
+    updated_at: new Date().toISOString(),
+    updated_by: authSession.user.id,
+  }));
+  const { data, error } = await supabaseClient
+    .from('pokemon_costs')
+    .upsert(rows, { onConflict: 'pokemon_name' })
+    .select('pokemon_name,cost,cost_dbl,updated_at,updated_by');
+  if (error) throw error;
+  for (const row of data ?? rows) sharedCostRows.set(row.pokemon_name, row);
+  applySharedCostRows();
+  refreshCostDependentViews();
+  return data ?? rows;
+}
+
+function openAuthModal() {
+  if (!authModal) return;
+  authModal.hidden = false;
+  syncAuthUi();
+  setAuthFeedback('');
+  if (!authSession?.user && isSupabaseConfigured()) authEmail?.focus();
+}
+
+function closeAuthModal() {
+  if (authModal) authModal.hidden = true;
+  if (!authRecoveryMode) setAuthFeedback('');
+}
+
+function getAuthRedirectUrl() {
+  const url = new URL(window.location.href);
+  url.search = '';
+  url.hash = '';
+  return url.toString();
+}
+
+async function submitAuthLogin(event) {
+  event.preventDefault();
+  if (!supabaseClient) return;
+  const email = authEmail?.value.trim() ?? '';
+  const password = authPassword?.value ?? '';
+  if (!email || !password) return;
+  if (authLoginSubmit) authLoginSubmit.disabled = true;
+  setAuthFeedback('Anmeldung läuft …');
+  const { error } = await supabaseClient.auth.signInWithPassword({ email, password });
+  if (authLoginSubmit) authLoginSubmit.disabled = false;
+  if (error) {
+    setAuthFeedback('Anmeldung fehlgeschlagen. Prüfe E-Mail und Passwort.', 'error');
+    return;
+  }
+  if (authPassword) authPassword.value = '';
+  setAuthFeedback('Erfolgreich angemeldet.', 'success');
+}
+
+async function requestPasswordReset() {
+  if (!supabaseClient) return;
+  const email = authEmail?.value.trim() ?? '';
+  if (!email) {
+    setAuthFeedback('Trage zuerst deine E-Mail-Adresse ein.', 'error');
+    authEmail?.focus();
+    return;
+  }
+  if (authForgotPassword) authForgotPassword.disabled = true;
+  const { error } = await supabaseClient.auth.resetPasswordForEmail(email, { redirectTo: getAuthRedirectUrl() });
+  if (authForgotPassword) authForgotPassword.disabled = false;
+  setAuthFeedback(
+    error ? 'Die Passwort-E-Mail konnte nicht gesendet werden.' : 'Falls das Konto existiert, wurde eine Passwort-E-Mail gesendet.',
+    error ? 'error' : 'success',
+  );
+}
+
+function showPasswordChange() {
+  authRecoveryMode = true;
+  syncAuthUi();
+  setAuthFeedback('');
+  authNewPassword?.focus();
+}
+
+function cancelPasswordChange() {
+  authRecoveryMode = false;
+  if (authNewPassword) authNewPassword.value = '';
+  if (authNewPasswordConfirm) authNewPasswordConfirm.value = '';
+  syncAuthUi();
+  setAuthFeedback('');
+}
+
+async function submitPasswordChange(event) {
+  event.preventDefault();
+  if (!supabaseClient) return;
+  const password = authNewPassword?.value ?? '';
+  const confirmation = authNewPasswordConfirm?.value ?? '';
+  if (password.length < 8) {
+    setAuthFeedback('Das Passwort muss mindestens 8 Zeichen lang sein.', 'error');
+    return;
+  }
+  if (password !== confirmation) {
+    setAuthFeedback('Die Passwörter stimmen nicht überein.', 'error');
+    return;
+  }
+  const submit = authPasswordForm?.querySelector('[type="submit"]');
+  if (submit) submit.disabled = true;
+  const { error } = await supabaseClient.auth.updateUser({ password });
+  if (submit) submit.disabled = false;
+  if (error) {
+    setAuthFeedback('Das Passwort konnte nicht gespeichert werden.', 'error');
+    return;
+  }
+  authRecoveryMode = false;
+  if (authNewPassword) authNewPassword.value = '';
+  if (authNewPasswordConfirm) authNewPasswordConfirm.value = '';
+  syncAuthUi();
+  setAuthFeedback('Passwort gespeichert.', 'success');
+}
+
+async function signOutUser() {
+  if (!supabaseClient) return;
+  if (authSignOut) authSignOut.disabled = true;
+  const { error } = await supabaseClient.auth.signOut();
+  if (authSignOut) authSignOut.disabled = false;
+  if (error) setAuthFeedback('Abmelden fehlgeschlagen.', 'error');
+  else setAuthFeedback('Du bist abgemeldet.', 'success');
+}
+
+function initializeSupabaseAuth() {
+  if (!isSupabaseConfigured() || !window.supabase?.createClient) {
+    syncAuthUi();
+    return;
+  }
+  const config = window.SUPABASE_CONFIG;
+  supabaseClient = window.supabase.createClient(config.url, config.publishableKey, {
+    auth: { persistSession: true, autoRefreshToken: true, detectSessionInUrl: true },
+  });
+  supabaseClient.auth.onAuthStateChange((event, session) => {
+    authRecoveryMode = event === 'PASSWORD_RECOVERY' || (event === 'SIGNED_IN' && authLinkTypeAtLoad === 'invite');
+    applyAuthSession(session);
+    if (authRecoveryMode) openAuthModal();
+  });
+}
 const favoritePokemonStorageKey = 'schwalboga-favorite-pokemon';
 let favoritePokemonNames = new Set();
 const abilityOptions = (meta.abilityOptions ?? (meta.abilities ?? []).map((name) => ({ id: normalizeText(name), name })))
@@ -774,7 +1151,7 @@ const pokedexGenerationDividers = [
 ];
 const informationGraphMetrics = [
   { id: 'generation', label: 'Generation', getValue: (pokemon) => getPokemonGenerationNumber(pokemon) },
-  { id: 'cost', label: 'Punktekosten', getValue: (pokemon) => pokemon.cost },
+  { id: 'cost', label: 'Punktekosten', getValue: (pokemon) => getPokemonCost(pokemon) },
   { id: 'hp', label: 'KP', getValue: (pokemon) => pokemon.baseStats?.hp },
   { id: 'atk', label: 'Angriff', getValue: (pokemon) => pokemon.baseStats?.atk },
   { id: 'def', label: 'Verteidigung', getValue: (pokemon) => pokemon.baseStats?.def },
@@ -1449,7 +1826,8 @@ function isGmaxPokemon(name) {
 }
 
 function hasBoosterCondition(pokemon) {
-  if (pokemon.cost === null || pokemon.cost > 15) return false;
+  const cost = getPokemonCost(pokemon);
+  if (cost === null || cost > 15) return false;
   const abilityNames = Object.values(pokemon.abilities ?? {});
   return abilityNames.includes('Quark Drive') || abilityNames.includes('Protosynthesis');
 }
@@ -2028,7 +2406,7 @@ function getJumpRailTargetsFromDividers() {
 function getJumpRailValueLabel(pokemon, field) {
   if (!pokemon) return '';
   if (field === 'name') return (getPokemonDisplayName(pokemon).trim().charAt(0) || '?').toUpperCase();
-  if (field === 'cost') return pokemon.cost === null ? '?' : `${pokemon.cost}`;
+  if (field === 'cost') return getPokemonCost(pokemon) === null ? '?' : `${getPokemonCost(pokemon)}`;
   if (field === 'usage') return `${getPokemonTotalUsageCount(pokemon)}`;
   if (field === 'favorite') return isFavoritePokemon(pokemon) ? '★' : '☆';
   if (field === 'dex') return `#${pokemon.num}`;
@@ -2154,8 +2532,8 @@ function getPokemonFlags(pokemon) {
   return {
     mega,
     gmax: isGmaxPokemon(pokemon.name),
-    tera: pokemon.cost !== null && pokemon.cost <= 5,
-    z: !mega && pokemon.cost !== null && pokemon.cost <= 10,
+    tera: getPokemonCost(pokemon) !== null && getPokemonCost(pokemon) <= 5,
+    z: !mega && getPokemonCost(pokemon) !== null && getPokemonCost(pokemon) <= 10,
     booster: hasBoosterCondition(pokemon),
   };
 }
@@ -2632,7 +3010,7 @@ function compileExpertSearchTerm(term) {
     const test = parseExpertNumeric(value, operator);
     return (pokemon) => {
       const candidateValue = field === 'cost'
-        ? pokemon.cost
+        ? getPokemonCost(pokemon)
         : field === 'dex'
           ? pokemon.num
           : pokemon.baseStats?.[field];
@@ -2646,8 +3024,8 @@ function compileExpertSearchTerm(term) {
       if (pokemon.unreleased || pokemon.impossible) return false;
       if (normalizedValue === 'uber') return true;
       if (normalizedValue === 'free' || normalizedValue === 'freies') return true;
-      if (normalizedValue === 'normal') return pokemon.cost !== null && pokemon.cost < getFormatThreshold('normal');
-      if (normalizedValue === 'low power' || normalizedValue === 'low-power') return pokemon.cost !== null && pokemon.cost < getFormatThreshold('low-power');
+      if (normalizedValue === 'normal') return getPokemonCost(pokemon) !== null && getPokemonCost(pokemon) < getFormatThreshold('normal');
+      if (normalizedValue === 'low power' || normalizedValue === 'low-power') return getPokemonCost(pokemon) !== null && getPokemonCost(pokemon) < getFormatThreshold('low-power');
       return false;
     };
   }
@@ -2713,7 +3091,7 @@ function matchesPokemonFilters(pokemon, query, triStates, options = {}) {
 
 function getSortValue(pokemon, field) {
   if (field === 'name') return getPokemonDisplayName(pokemon);
-  if (field === 'cost') return pokemon.cost;
+  if (field === 'cost') return getPokemonCost(pokemon);
   if (field === 'usage') return getPokemonTotalUsageCount(pokemon);
   if (field === 'favorite') return isFavoritePokemon(pokemon) ? 0 : 1;
   if (field === 'special-bulk') {
@@ -2735,7 +3113,7 @@ function getSortDisplayValue(pokemon, field) {
   if (field === 'dex') return `Dex: ${pokemon.num}`;
   if (field === 'usage') return `Nutzung: ${getPokemonTotalUsageCount(pokemon)}`;
   if (field === 'favorite') return isFavoritePokemon(pokemon) ? 'Favorit' : null;
-  if (field === 'cost') return pokemon.cost === null ? 'Kosten: —' : `Kosten: ${pokemon.cost}`;
+  if (field === 'cost') return getPokemonCost(pokemon) === null ? 'Kosten: —' : `Kosten: ${getPokemonCost(pokemon)}`;
   if (field === 'hp') return `KP: ${pokemon.baseStats?.hp ?? '—'}`;
   if (field === 'atk') return `Angriff: ${pokemon.baseStats?.atk ?? '—'}`;
   if (field === 'def') return `Verteidigung: ${pokemon.baseStats?.def ?? '—'}`;
@@ -2928,7 +3306,7 @@ function getSimpleCostLabel(cost) {
 }
 
 function isPokemonIllegalInList(pokemon, format) {
-  const cost = pokemon.cost ?? null;
+  const cost = getPokemonCost(pokemon);
   return (format !== 'free' && pokemon.impossible) || pokemon.unreleased || (cost !== null && cost > getFormatThreshold(format));
 }
 
@@ -2958,7 +3336,8 @@ function createSimplePokemonCell(pokemon, format) {
 
   const cost = document.createElement('span');
   cost.className = 'pokemon-simple-cost';
-  cost.textContent = getSimpleCostLabel(pokemon.cost);
+  cost.textContent = getSimpleCostLabel(getPokemonCost(pokemon));
+  markPlaceholderCost(cost, pokemon);
 
   const name = document.createElement('span');
   name.className = 'pokemon-simple-name';
@@ -3049,9 +3428,9 @@ function renderSimplePokemonList(pokemonList, format) {
       }
     }
 
-    const costKey = getSimpleCostLabel(pokemon.cost);
+    const costKey = getSimpleCostLabel(getPokemonCost(pokemon));
     if (showCostDividers && costKey !== lastCostKey) {
-      fragment.append(createSimpleCostDividerCell(pokemon.cost));
+      fragment.append(createSimpleCostDividerCell(getPokemonCost(pokemon)));
       lastCostKey = costKey;
     }
 
@@ -3102,8 +3481,9 @@ function createPokemonCard(pokemon, format) {
   card.setAttribute('role', 'button');
   card.setAttribute('aria-label', `${getPokemonDisplayName(pokemon)} details`);
   number.textContent = pokemon.displayNumber;
-  applyCostStyling(cost, pokemon.cost ?? null, card, format);
-  if (pokemon.cost !== null && pokemon.cost > formatThreshold) card.classList.add('is-over-format');
+  applyCostStyling(cost, getPokemonCost(pokemon), card, format);
+  markPlaceholderCost(cost, pokemon);
+  if (getPokemonCost(pokemon) !== null && getPokemonCost(pokemon) > formatThreshold) card.classList.add('is-over-format');
   if (borderEffect) {
     borderEffect.style.setProperty('--card-type-primary', borderColors.primary);
     borderEffect.style.setProperty('--card-type-secondary', borderColors.secondary);
@@ -3935,7 +4315,8 @@ function createCoreFinderPreviewCard(pokemon) {
   }
 
   number.textContent = pokemon.displayNumber;
-  applyCostStyling(cost, pokemon.cost ?? null, card);
+  applyCostStyling(cost, getPokemonCost(pokemon), card);
+  markPlaceholderCost(cost, pokemon);
   badgeStack.replaceChildren(...buildFormBadges(pokemon).map(createFormBadgeNode));
   setPokemonSpriteWithFallback(sprite, pokemon, pokemon.sprite, `${pokemon.name} sprite`, card);
   for (const type of pokemon.types ?? []) {
@@ -4014,8 +4395,8 @@ function getSuggestedCoreException(teams) {
       if (candidate.uncoveredCount < best.uncoveredCount) best = candidate;
       continue;
     }
-    const candidateCost = team.reduce((total, pokemon) => total + (pokemon.cost ?? 99), 0);
-    const bestCost = best.team.reduce((total, pokemon) => total + (pokemon.cost ?? 99), 0);
+    const candidateCost = team.reduce((total, pokemon) => total + (getPokemonCost(pokemon) ?? 99), 0);
+    const bestCost = best.team.reduce((total, pokemon) => total + (getPokemonCost(pokemon) ?? 99), 0);
     if (candidateCost < bestCost) best = candidate;
   }
   return best
@@ -4040,7 +4421,7 @@ function buildCoreFinderResult(team) {
   }
   return {
     team,
-    totalCost: team.reduce((total, pokemon) => total + (pokemon.cost ?? 99), 0),
+    totalCost: team.reduce((total, pokemon) => total + (getPokemonCost(pokemon) ?? 99), 0),
     totalWeaknesses: profiles.reduce((total, profile) => total + profile.weakTypes.length, 0),
     resistanceCoverage: resistedOrImmuneTypes.size,
     immunityCoverage: immuneTypes.size,
@@ -4613,14 +4994,16 @@ function renderSimilarPokemonSection(pokemon) {
     title.textContent = entry.pokemon.name;
     const cost = document.createElement('span');
     cost.className = 'detail-similar-card-cost';
-      cost.textContent = `${entry.pokemon.cost ?? '—'} Punkte`;
+      cost.textContent = `${getPokemonCost(entry.pokemon) ?? '—'} Punkte`;
+      markPlaceholderCost(cost, entry.pokemon);
     titleRow.append(title, cost);
 
     const typeRow = document.createElement('div');
     typeRow.className = 'detail-similar-card-types';
     const meta = document.createElement('div');
     const costLine = document.createElement('span');
-    costLine.textContent = `Kosten: ${entry.pokemon.cost ?? '—'}`;
+    costLine.textContent = `Kosten: ${getPokemonCost(entry.pokemon) ?? '—'}`;
+    markPlaceholderCost(costLine, entry.pokemon);
     const typeLine = document.createElement('span');
     typeLine.textContent = entry.sharedTypes.length
       ? `Gemeinsame Typen: ${entry.sharedTypes.join(', ')}`
@@ -4892,7 +5275,7 @@ function getHubViewFromHash() {
   const key = (window.location.hash || '#home').replace('#', '') || 'home';
   if (key === 'regelset') return 'ruleset';
   if (key === 'spieler') return 'teams';
-  return ['home', 'pokedex', 'ruleset', 'teams', 'draft', 'draft-room', 'games', 'matchday', 'replays'].includes(key) ? key : 'home';
+  return ['home', 'pokedex', 'ruleset', 'teams', 'draft', 'draft-room', 'games', 'matchday', 'replays', 'tier-editor'].includes(key) ? key : 'home';
 }
 
 const matchdayRounds = [
@@ -5339,10 +5722,157 @@ function renderMatchday() {
   matchdayContent.append(history);
 }
 
+function setTierEditorStatus(message = '', state = '') {
+  if (!tierEditorStatus) return;
+  tierEditorStatus.textContent = message;
+  if (state) tierEditorStatus.dataset.state = state;
+  else delete tierEditorStatus.dataset.state;
+}
+
+function updateTierEditorDraftFromRow(row, pokemon, { forceExplicit = false } = {}) {
+  const singlesInput = row.querySelector('[data-cost-mode="singles"]');
+  const doublesInput = row.querySelector('[data-cost-mode="doubles"]');
+  const cost = normalizeEditableCost(singlesInput?.value ?? '');
+  const costDbl = normalizeEditableCost(doublesInput?.value ?? '');
+  if (Number.isNaN(cost) || Number.isNaN(costDbl)) {
+    row.classList.add('is-dirty');
+    setTierEditorStatus('Kosten müssen ganze Zahlen zwischen 0 und 32 sein oder leer bleiben.', 'error');
+    return;
+  }
+  const unchanged = cost === getPokemonCost(pokemon, 'singles')
+    && costDbl === getPokemonCost(pokemon, 'doubles')
+    && !forceExplicit;
+  if (unchanged) tierEditorDraft.delete(pokemon.name);
+  else tierEditorDraft.set(pokemon.name, { pokemon_name: pokemon.name, cost, cost_dbl: costDbl });
+  row.classList.toggle('is-dirty', tierEditorDraft.has(pokemon.name));
+  const status = row.querySelector('[data-role="status"]');
+  if (status) status.textContent = tierEditorDraft.has(pokemon.name)
+    ? 'Ungespeichert'
+    : isPlaceholderDoublesCost(pokemon) ? 'Doubles-Platzhalter' : 'Gespeichert';
+  setTierEditorStatus(`${tierEditorDraft.size} ungespeicherte Änderung${tierEditorDraft.size === 1 ? '' : 'en'}.`);
+}
+
+function createTierEditorRow(pokemon) {
+  const draft = tierEditorDraft.get(pokemon.name);
+  const row = document.createElement('tr');
+  row.dataset.pokemonName = pokemon.name;
+  row.classList.toggle('is-dirty', Boolean(draft));
+
+  const pokemonCell = document.createElement('td');
+  const identity = createNode('div', 'tier-editor-pokemon');
+  const sprite = document.createElement('img');
+  setSpriteWithFallback(sprite, pokemon.sprite, `${pokemon.name} sprite`);
+  sprite.loading = 'lazy';
+  const copy = createNode('div');
+  copy.append(createNode('strong', '', getPokemonDisplayName(pokemon)), createNode('div', '', pokemon.displayNumber ?? `#${pokemon.num}`));
+  identity.append(sprite, copy);
+  pokemonCell.append(identity);
+
+  const createInputCell = (mode, value) => {
+    const cell = document.createElement('td');
+    const input = document.createElement('input');
+    input.className = 'tier-editor-cost-input';
+    input.type = 'number';
+    input.min = '0';
+    input.max = '32';
+    input.step = '1';
+    input.inputMode = 'numeric';
+    input.dataset.costMode = mode;
+    input.value = value === null ? '' : String(value);
+    input.setAttribute('aria-label', `${pokemon.name} ${mode === 'singles' ? 'Singles' : 'Doubles'} Kosten`);
+    input.addEventListener('input', () => updateTierEditorDraftFromRow(row, pokemon));
+    cell.append(input);
+    return cell;
+  };
+
+  const singlesValue = draft ? draft.cost : getPokemonCost(pokemon, 'singles');
+  const doublesValue = draft ? draft.cost_dbl : getPokemonCost(pokemon, 'doubles');
+  const statusCell = document.createElement('td');
+  statusCell.dataset.role = 'status';
+  if (draft) {
+    statusCell.textContent = 'Ungespeichert';
+  } else if (isPlaceholderDoublesCost(pokemon)) {
+    const confirm = createNode('button', 'details-secondary tier-editor-placeholder-label', 'Platzhalter übernehmen');
+    confirm.type = 'button';
+    confirm.title = 'Speichert den aktuellen Doubles-Wert ausdrücklich, auch wenn er den Singles-Kosten entspricht.';
+    confirm.addEventListener('click', () => {
+      updateTierEditorDraftFromRow(row, pokemon, { forceExplicit: true });
+      renderTierEditor();
+    });
+    statusCell.append(confirm);
+  } else {
+    statusCell.textContent = 'Gespeichert';
+  }
+  row.append(
+    pokemonCell,
+    createInputCell('singles', singlesValue),
+    createInputCell('doubles', doublesValue),
+    statusCell,
+  );
+  return row;
+}
+
+function renderTierEditor() {
+  if (!tierEditorRows) return;
+  if (!authSession?.user) {
+    window.location.hash = '#home';
+    renderHubView('home');
+    openAuthModal();
+    return;
+  }
+  tierEditorRows.innerHTML = '';
+  if (!sharedCostsReady && sharedCostsError) {
+    setTierEditorStatus('Die Supabase-Kostentabelle fehlt noch. Führe das vorbereitete SQL aus.', 'error');
+  } else {
+    setTierEditorStatus(`${tierEditorDraft.size} ungespeicherte Änderung${tierEditorDraft.size === 1 ? '' : 'en'}.`);
+  }
+  const query = normalizeText(tierEditorSearch?.value ?? '');
+  const changedOnly = Boolean(tierEditorChangedOnly?.checked);
+  const matches = allPokemon.filter((pokemon) => {
+    if (pokemon.hidden) return false;
+    if (changedOnly && !tierEditorDraft.has(pokemon.name)) return false;
+    return !query || getPokemonSearchText(pokemon).includes(query) || String(pokemon.num) === query.replace(/^0+/, '');
+  });
+  const fragment = document.createDocumentFragment();
+  for (const pokemon of matches) fragment.append(createTierEditorRow(pokemon));
+  tierEditorRows.append(fragment);
+}
+
+async function saveTierEditorChanges() {
+  if (!tierEditorDraft.size) {
+    setTierEditorStatus('Es gibt keine ungespeicherten Änderungen.');
+    return;
+  }
+  if (tierEditorSave) tierEditorSave.disabled = true;
+  setTierEditorStatus(`${tierEditorDraft.size} Änderung${tierEditorDraft.size === 1 ? '' : 'en'} werden gespeichert …`);
+  try {
+    await saveSharedCostChanges([...tierEditorDraft.values()]);
+    const savedCount = tierEditorDraft.size;
+    tierEditorDraft = new Map();
+    renderTierEditor();
+    setTierEditorStatus(`${savedCount} Änderung${savedCount === 1 ? '' : 'en'} gespeichert.`, 'success');
+  } catch (error) {
+    setTierEditorStatus(`Speichern fehlgeschlagen: ${error.message}`, 'error');
+  } finally {
+    if (tierEditorSave) tierEditorSave.disabled = false;
+  }
+}
+
+function discardTierEditorChanges() {
+  tierEditorDraft = new Map();
+  renderTierEditor();
+  setTierEditorStatus('Ungespeicherte Änderungen wurden verworfen.');
+}
+
 if (matchdayPdfDate) matchdayPdfDate.value = new Date().toISOString().slice(0, 10);
 matchdayPdfButton?.addEventListener('click', openMatchdayPrintPdf);
 
 function renderHubView(viewKey = getHubViewFromHash()) {
+  if (viewKey === 'tier-editor' && !authSession?.user) {
+    window.location.hash = '#home';
+    viewKey = 'home';
+    window.setTimeout(openAuthModal, 0);
+  }
   activeHubView = viewKey;
   for (const view of hubViews) {
     view.hidden = view.dataset.hubView !== viewKey;
@@ -5365,6 +5895,7 @@ function renderHubView(viewKey = getHubViewFromHash()) {
   if (viewKey === 'replays') {
     window.dispatchEvent(new CustomEvent('schwalboga:render-replays'));
   }
+  if (viewKey === 'tier-editor') renderTierEditor();
   if (viewKey === 'pokedex') {
     requestAnimationFrame(() => {
       resetControlRailStickyThreshold();
@@ -5388,6 +5919,7 @@ function getHubSearchEntries() {
     { label: 'Games', detail: 'Bereich', view: 'games' },
     { label: 'Matchday', detail: 'Bereich', view: 'matchday' },
     { label: 'Replays', detail: 'Battle Archiv', view: 'replays' },
+    ...(authSession?.user ? [{ label: 'Tiers Ändern', detail: 'Geschützter Bereich', view: 'tier-editor' }] : []),
     { label: 'Regel Checker', detail: 'Tool', view: 'ruleset', action: () => { void openRuleChecker(); } },
     { label: 'Stefans Pdf', detail: 'Regelset', view: 'ruleset', action: () => openStefansPdf() },
     { label: 'Ninjatom Check', detail: 'Battle Prep', view: 'draft', action: () => { draftOverviewMode = 'shedinja-check'; renderDraftOverview(); } },
@@ -5584,7 +6116,7 @@ function getDraftOverviewPlayers() {
           const pokemon = getPokemonByNameLoose(name);
           return {
             name: pokemon?.name ?? name,
-            cost: pokemon?.cost ?? null,
+            cost: getPokemonCost(pokemon),
           };
         }),
         teraCaptain: info.teraCaptain ?? null,
@@ -5606,7 +6138,7 @@ function getDraftOverviewBudget(playerOrFormat) {
 }
 
 function getDraftOverviewPlayerSpent(player) {
-  if (Number.isFinite(player?.spentPoints)) return player.spentPoints;
+  if (activeBattleMode === 'singles' && Number.isFinite(player?.spentPoints)) return player.spentPoints;
   return (player?.pokemon ?? []).reduce((sum, pick) => sum + (Number(pick?.cost) || 0), 0);
 }
 
@@ -7678,7 +8210,7 @@ async function submitCostSuggestion(event) {
   const payload = {
     pokemon: pokemon.name,
     displayName: getPokemonDisplayName(pokemon),
-    currentCost: pokemon.cost ?? '',
+    currentCost: getPokemonCost(pokemon) ?? '',
     suggestedCost,
     reason,
     name,
@@ -8545,7 +9077,8 @@ function renderReplacementTargetPanel(pokemon) {
   }
   const costLine = document.createElement('p');
   costLine.className = 'replacement-target-copy';
-  costLine.textContent = pokemon.cost === null ? 'Kosten: unbekannt' : `Kosten: ${pokemon.cost}`;
+  costLine.textContent = getPokemonCost(pokemon) === null ? 'Kosten: unbekannt' : `Kosten: ${getPokemonCost(pokemon)}`;
+  markPlaceholderCost(costLine, pokemon);
   metaWrap.append(title, typeList, costLine);
   topCard.append(spriteWrap, metaWrap);
   replacementTargetPanel.append(topCard);
@@ -8593,7 +9126,7 @@ function renderReplacementCostGrid(pokemon) {
   replacementCost.append(createReplacementPriorityButton({
     key: 'cost',
     label: 'Kosten',
-    meta: pokemon.cost === null ? 'Unbekannt' : String(pokemon.cost),
+    meta: getPokemonCost(pokemon) === null ? 'Unbekannt' : String(getPokemonCost(pokemon)),
   }));
 }
 
@@ -8698,8 +9231,8 @@ function evaluateReplacementAspect(target, candidate, aspectKey, priority) {
     };
   }
   if (kind === 'cost') {
-    const targetCost = target.cost;
-    const candidateCost = candidate.cost;
+    const targetCost = getPokemonCost(target);
+    const candidateCost = getPokemonCost(candidate);
     if (targetCost === null || candidateCost === null) {
       return { matches: false, summary: 'Kosten: unbekannt', score: 0 };
     }
@@ -8832,7 +9365,7 @@ function runReplacementFinderSearch() {
     .filter(Boolean)
     .sort((left, right) => {
       if (left.score !== right.score) return right.score - left.score;
-      if (left.pokemon.cost !== right.pokemon.cost) return (left.pokemon.cost ?? 999) - (right.pokemon.cost ?? 999);
+      if (getPokemonCost(left.pokemon) !== getPokemonCost(right.pokemon)) return (getPokemonCost(left.pokemon) ?? 999) - (getPokemonCost(right.pokemon) ?? 999);
       if (left.pokemon.num !== right.pokemon.num) return left.pokemon.num - right.pokemon.num;
       return left.pokemon.sourceIndex - right.pokemon.sourceIndex;
     });
@@ -8855,7 +9388,7 @@ function getRibbonEntries(pokemon) {
     });
   }
 
-  if (pokemon.cost !== null && pokemon.cost <= 10 && flags.mega) {
+  if (getPokemonCost(pokemon) !== null && getPokemonCost(pokemon) <= 10 && flags.mega) {
     ribbons.push({
       icon: zIconPath,
       text: 'Dieses Pokémon kann kein Z-Stein Captain sein, da es seinen Mega-Stein halten muss.',
@@ -9093,7 +9626,7 @@ function getMoveRuleInfo(moveId, pokemon) {
     });
   }
 
-  if (moveId === 'hiddenpower' && pokemon.cost !== null && pokemon.cost >= 6) {
+  if (moveId === 'hiddenpower' && getPokemonCost(pokemon) !== null && getPokemonCost(pokemon) >= 6) {
     resolvedRule = mergeRule(resolvedRule, {
       severity: 'illegal',
       text: 'Kraftreserve ist nur auf Pokémon mit 5 oder weniger Punkten erlaubt.',
@@ -9756,6 +10289,62 @@ function applyVictiniDetailLetterEffect(pokemon) {
   wrapVictiniLetters(pokemonDetailBody);
 }
 
+function createDetailCostEditor(pokemon) {
+  const form = document.createElement('form');
+  form.className = 'detail-cost-editor';
+  form.hidden = true;
+  const createField = (labelText, mode) => {
+    const field = createNode('label', 'details-field');
+    field.append(createNode('span', '', labelText));
+    const input = document.createElement('input');
+    input.type = 'number';
+    input.min = '0';
+    input.max = '32';
+    input.step = '1';
+    input.inputMode = 'numeric';
+    input.dataset.mode = mode;
+    const value = getPokemonCost(pokemon, mode);
+    input.value = value === null ? '' : String(value);
+    field.append(input);
+    return field;
+  };
+  form.append(createField('Singles', 'singles'), createField('Doubles', 'doubles'));
+  const actions = createNode('div', 'auth-actions');
+  const save = createNode('button', 'details-primary', 'Kosten speichern');
+  save.type = 'submit';
+  const cancel = createNode('button', 'details-secondary', 'Abbrechen');
+  cancel.type = 'button';
+  cancel.addEventListener('click', () => {
+    form.hidden = true;
+  });
+  actions.append(save, cancel);
+  const feedback = createNode('p', 'auth-feedback');
+  feedback.setAttribute('aria-live', 'polite');
+  form.append(actions, feedback);
+  form.addEventListener('submit', async (event) => {
+    event.preventDefault();
+    const cost = normalizeEditableCost(form.querySelector('[data-mode="singles"]').value);
+    const costDbl = normalizeEditableCost(form.querySelector('[data-mode="doubles"]').value);
+    if (Number.isNaN(cost) || Number.isNaN(costDbl)) {
+      feedback.textContent = 'Kosten müssen ganze Zahlen zwischen 0 und 32 sein oder leer bleiben.';
+      feedback.dataset.state = 'error';
+      return;
+    }
+    save.disabled = true;
+    feedback.textContent = 'Wird gespeichert …';
+    delete feedback.dataset.state;
+    try {
+      await saveSharedCostChanges([{ pokemon_name: pokemon.name, cost, cost_dbl: costDbl }]);
+      renderPokemonDetail(pokemon);
+    } catch (error) {
+      save.disabled = false;
+      feedback.textContent = `Speichern fehlgeschlagen: ${error.message}`;
+      feedback.dataset.state = 'error';
+    }
+  });
+  return form;
+}
+
 function renderPokemonDetail(pokemon) {
   clearMeowthCoinHunt();
   clearDetailSpecialEffects();
@@ -9792,7 +10381,7 @@ function renderPokemonDetail(pokemon) {
   detailTitle.textContent = getPokemonDisplayName(pokemon);
   if (costSuggestionValue) {
     costSuggestionValue.value = '';
-    costSuggestionValue.placeholder = pokemon.cost === null ? 'Neue Kosten' : `Aktuell: ${pokemon.cost}`;
+    costSuggestionValue.placeholder = getPokemonCost(pokemon) === null ? 'Neue Kosten' : `Aktuell: ${getPokemonCost(pokemon)}`;
   }
   resetCostSuggestionForm();
   detailTitle.classList.remove('is-quark-name', 'is-proto-name', 'is-porygon-glitching', 'is-disguised-name');
@@ -10051,24 +10640,46 @@ function renderPokemonDetail(pokemon) {
   }
 
   detailTierList.innerHTML = '';
-  if (pokemon.cost === null) {
+  const singlesCost = getPokemonCost(pokemon, 'singles');
+  const doublesCost = getPokemonCost(pokemon, 'doubles');
+  const activeCost = getPokemonCost(pokemon);
+  const costEditor = authSession?.user ? createDetailCostEditor(pokemon) : null;
+  if (singlesCost === null && doublesCost === null) {
     renderEmptyDetailState(detailTierList, 'Für dieses Pokémon sind derzeit keine Punktekosten festgelegt.');
   } else {
-    const costRibbon = document.createElement('div');
-    costRibbon.className = 'detail-ribbon is-tier';
-    const costBadge = document.createElement('span');
-    costBadge.className = 'detail-tier-badge';
-    if (pokemon.cost >= 21) {
-      costBadge.classList.add('is-premium', `cost-${pokemon.cost}`);
+    for (const [modeLabel, modeCost] of [['Singles', singlesCost], ['Doubles', doublesCost]]) {
+      const costRibbon = document.createElement('div');
+      costRibbon.className = 'detail-ribbon is-tier';
+      const costBadge = document.createElement('span');
+      costBadge.className = 'detail-tier-badge';
+      if (modeCost !== null && modeCost >= 21) {
+        costBadge.classList.add('is-premium', `cost-${modeCost}`);
+      }
+      costBadge.textContent = modeCost === null ? '—' : String(modeCost);
+      markPlaceholderCost(costBadge, pokemon, modeLabel.toLowerCase());
+      const costText = document.createElement('p');
+      costText.textContent = modeCost === null
+        ? `Für ${modeLabel} sind keine Punktekosten festgelegt`
+        : `Dieses Pokémon kostet ${modeCost} Punkte in ${modeLabel}`;
+      markPlaceholderCost(costText, pokemon, modeLabel.toLowerCase());
+      costRibbon.append(costBadge, costText);
+      if (authSession?.user) {
+        const edit = createNode('button', 'details-secondary detail-cost-edit-button', '✎');
+        edit.type = 'button';
+        edit.setAttribute('aria-label', `${modeLabel}-Kosten bearbeiten`);
+        edit.addEventListener('click', () => {
+          if (!costEditor) return;
+          costEditor.hidden = false;
+          costEditor.querySelector(`[data-mode="${modeLabel.toLowerCase()}"]`)?.focus();
+        });
+        costRibbon.append(edit);
+      }
+      detailTierList.append(costRibbon);
     }
-    costBadge.textContent = String(pokemon.cost);
-    const costText = document.createElement('p');
-    costText.textContent = `Dieses Pokémon kostet ${pokemon.cost} Punkte`;
-    costRibbon.append(costBadge, costText);
-    detailTierList.append(costRibbon);
+    if (costEditor) detailTierList.append(costEditor);
     renderCostSuggestionToggle();
 
-    if (pokemon.cost >= 16) {
+    if (activeCost !== null && activeCost >= 16) {
       const lowPowerRibbon = document.createElement('div');
       lowPowerRibbon.className = 'detail-ribbon is-caution';
       const icon = document.createElement('span');
@@ -10079,7 +10690,7 @@ function renderPokemonDetail(pokemon) {
       detailTierList.append(lowPowerRibbon);
     }
 
-    if (pokemon.cost >= 21) {
+    if (activeCost !== null && activeCost >= 21) {
       const uberRibbon = document.createElement('div');
       uberRibbon.className = 'detail-ribbon is-warning';
       const icon = document.createElement('span');
@@ -10413,8 +11024,8 @@ function getBudgetPlannerSlotPokemon(index) {
 function getBudgetPlannerSlotTotalCost(slot) {
   if (!slot?.name) return 0;
   const pokemon = pokemonByName.get(slot.name);
-  if (!pokemon || pokemon.cost === null) return 0;
-  return pokemon.cost + getBudgetPlannerCaptainCost(slot.captainKind, slot.captainType);
+  if (!pokemon || getPokemonCost(pokemon) === null) return 0;
+  return getPokemonCost(pokemon) + getBudgetPlannerCaptainCost(slot.captainKind, slot.captainType);
 }
 
 function getBudgetPlannerSpentBudget(exceptSlotIndex = null) {
@@ -10442,7 +11053,7 @@ function getBudgetPlannerSelectedEntries() {
 function formatBudgetPlannerCostBreakdown(slot) {
   if (!slot?.name) return '0 Punkte';
   const pokemon = pokemonByName.get(slot.name);
-  const baseCost = pokemon?.cost ?? 0;
+  const baseCost = getPokemonCost(pokemon) ?? 0;
   const extraCost = getBudgetPlannerCaptainCost(slot.captainKind, slot.captainType);
   const totalCost = baseCost + extraCost;
   if (extraCost > 0) return `${totalCost} Punkte (${baseCost}+${extraCost})`;
@@ -10498,20 +11109,20 @@ function getBudgetPlannerSelectedMegaSlot(exceptSlotIndex = null) {
 }
 
 function isBudgetPlannerPokemonUnavailable(pokemon, slotIndex = null) {
-  if (!pokemon || pokemon.hidden || pokemon.unreleased || pokemon.impossible || pokemon.cost === null) {
+  if (!pokemon || pokemon.hidden || pokemon.unreleased || pokemon.impossible || getPokemonCost(pokemon) === null) {
     return { unavailable: true, reason: 'Unavailable' };
   }
-  if (budgetPlannerState.format === 'low-power' && pokemon.cost > 13) {
+  if (budgetPlannerState.format === 'low-power' && getPokemonCost(pokemon) > 13) {
     return { unavailable: true, reason: 'Too expensive for Low Power' };
   }
-  if (budgetPlannerState.format === 'normal' && pokemon.cost > 20) {
+  if (budgetPlannerState.format === 'normal' && getPokemonCost(pokemon) > 20) {
     return { unavailable: true, reason: 'Too expensive for Normal' };
   }
   const megaEntry = getBudgetPlannerSelectedMegaSlot(slotIndex);
   if (megaEntry && getPokemonFlags(pokemon).mega) {
     return { unavailable: true, reason: 'Another Mega is already selected' };
   }
-  const projectedSpent = getBudgetPlannerSpentBudget(slotIndex) + pokemon.cost;
+  const projectedSpent = getBudgetPlannerSpentBudget(slotIndex) + getPokemonCost(pokemon);
   if (projectedSpent > getBudgetPlannerTotalBudget()) {
     return { unavailable: true, reason: 'Would exceed budget' };
   }
@@ -10604,7 +11215,7 @@ function buildBudgetPlannerSpendText() {
     'Pokemon | Base | Captain | Total',
   ];
   for (const entry of getBudgetPlannerSelectedEntries()) {
-    const baseCost = entry.pokemon.cost ?? 0;
+    const baseCost = getPokemonCost(entry.pokemon) ?? 0;
     const extraCost = getBudgetPlannerCaptainCost(entry.slot.captainKind, entry.slot.captainType);
     const captainLabel = entry.slot.captainKind && entry.slot.captainType
       ? `${entry.slot.captainKind === 'z' ? 'Z' : 'Tera'} ${typeLabelsDe[entry.slot.captainType] ?? entry.slot.captainType} (+${extraCost})`
@@ -10669,7 +11280,7 @@ function renderBudgetPlannerStars() {
   if (!budgetPlannerStars) return;
   budgetPlannerStars.innerHTML = '';
   const selected = getBudgetPlannerSelectedEntries();
-  const oneCostEntry = selected.find((entry) => entry.pokemon.cost === 1);
+  const oneCostEntry = selected.find((entry) => getPokemonCost(entry.pokemon) === 1);
   const messages = [];
   if (oneCostEntry) {
     messages.push(`⭐ Dieses Team kann durch ${oneCostEntry.pokemon.name} einen Stern verdienen!`);
@@ -10935,6 +11546,7 @@ function renderBudgetPlannerZoomGrid() {
     name.textContent = entry.pokemon.name;
     const cost = document.createElement('span');
     cost.textContent = formatBudgetPlannerCostBreakdown(entry.slot);
+    markPlaceholderCost(cost, entry.pokemon);
     const captain = document.createElement('span');
     captain.className = 'budget-planner-zoom-captain';
     captain.textContent = entry.slot.captainKind && entry.slot.captainType
@@ -11064,7 +11676,7 @@ function renderBudgetPlannerSuggestions(container, slotIndex, query) {
     button.type = 'button';
     button.className = `suggestion-item budget-planner-suggestion ${state.unavailable ? 'is-invalid' : ''}`;
     button.disabled = state.unavailable;
-    const costText = pokemon.cost === null ? '—' : String(pokemon.cost);
+    const costText = getPokemonCost(pokemon) === null ? '—' : String(getPokemonCost(pokemon));
     button.textContent = `${getPokemonDisplayName(pokemon)} (${costText})${state.reason ? ` - ${state.reason}` : ''}`;
     button.addEventListener('click', () => {
       budgetPlannerState.slots[slotIndex].name = pokemon.name;
@@ -11102,7 +11714,7 @@ function renderBudgetPlannerCostsTable() {
   const body = document.createElement('tbody');
   for (const entry of selected) {
     const row = document.createElement('tr');
-    const baseCost = entry.pokemon.cost ?? 0;
+    const baseCost = getPokemonCost(entry.pokemon) ?? 0;
     const extraCost = getBudgetPlannerCaptainCost(entry.slot.captainKind, entry.slot.captainType);
     const captainLabel = entry.slot.captainKind && entry.slot.captainType
       ? `${entry.slot.captainKind === 'z' ? 'Z' : 'Tera'} ${typeLabelsDe[entry.slot.captainType] ?? entry.slot.captainType} (+${extraCost})`
@@ -11151,7 +11763,7 @@ function updateBudgetPlannerCaptainType(slotIndex, type) {
   const pokemon = getBudgetPlannerSlotPokemon(slotIndex);
   if (!slot || !pokemon) return;
   const nextExtra = getBudgetPlannerCaptainCost(slot.captainKind, type);
-  const projected = getBudgetPlannerSpentBudget(slotIndex) + (pokemon.cost ?? 0) + nextExtra;
+  const projected = getBudgetPlannerSpentBudget(slotIndex) + (getPokemonCost(pokemon) ?? 0) + nextExtra;
   if (projected > getBudgetPlannerTotalBudget()) {
     setBudgetPlannerFeedback('That captain type would exceed the budget.');
     return;
@@ -11219,6 +11831,7 @@ function renderBudgetPlannerSlotCard(slotIndex) {
     name.textContent = getPokemonDisplayName(pokemon);
     const cost = document.createElement('span');
     cost.textContent = `${getBudgetPlannerSlotTotalCost(slot)} Punkte`;
+    markPlaceholderCost(cost, pokemonByName.get(slot.name));
     body.append(name, cost);
     preview.append(sprite, body);
     card.append(preview);
@@ -11804,7 +12417,7 @@ function runRuleCheckerValidation() {
 
   if (ruleCheckerState.format === 'low-power') {
     for (const entry of entries) {
-      if ((entry.pokemon.cost ?? 0) > 13) {
+      if ((getPokemonCost(entry.pokemon) ?? 0) > 13) {
         addRuleCheckerViolation(`${entry.pokemon.name} ist zu teuer für Low-Power Drafts!`, {
           cardSlots: [entry.slotIndex],
         });
@@ -11814,8 +12427,8 @@ function runRuleCheckerValidation() {
 
   if (ruleCheckerState.format === 'normal') {
     for (const entry of entries) {
-      if ((entry.pokemon.cost ?? 0) > 20) {
-        addRuleCheckerViolation(`${entry.pokemon.name} ist im ${getRuleCheckerUberTierLabel(entry.pokemon.cost ?? 0)} Uber Tier!`, {
+      if ((getPokemonCost(entry.pokemon) ?? 0) > 20) {
+        addRuleCheckerViolation(`${entry.pokemon.name} ist im ${getRuleCheckerUberTierLabel(getPokemonCost(entry.pokemon) ?? 0)} Uber Tier!`, {
           cardSlots: [entry.slotIndex],
         });
       }
@@ -11823,8 +12436,8 @@ function runRuleCheckerValidation() {
   }
 
   for (const entry of teraEntries) {
-    if ((entry.pokemon.cost ?? 0) > 5) {
-      addRuleCheckerViolation(`${entry.pokemon.name} kostet ${entry.pokemon.cost} Punkte und darf kein Tera-Captain sein!`, {
+    if ((getPokemonCost(entry.pokemon) ?? 0) > 5) {
+      addRuleCheckerViolation(`${entry.pokemon.name} kostet ${getPokemonCost(entry.pokemon)} Punkte und darf kein Tera-Captain sein!`, {
         cardSlots: [entry.slotIndex],
         teraSlots: [entry.slotIndex],
       });
@@ -11838,8 +12451,8 @@ function runRuleCheckerValidation() {
   }
 
   for (const entry of zEntries) {
-    if ((entry.pokemon.cost ?? 0) > 10) {
-      addRuleCheckerViolation(`${entry.pokemon.name} kostet ${entry.pokemon.cost} Punkte und darf kein Z-Captain sein!`, {
+    if ((getPokemonCost(entry.pokemon) ?? 0) > 10) {
+      addRuleCheckerViolation(`${entry.pokemon.name} kostet ${getPokemonCost(entry.pokemon)} Punkte und darf kein Z-Captain sein!`, {
         cardSlots: [entry.slotIndex],
         zSlots: [entry.slotIndex],
       });
@@ -11865,8 +12478,8 @@ function runRuleCheckerValidation() {
     const hiddenPowerMove = entry.selectedMoves.find((move) => move.id === 'hiddenpower');
     const teraBlastMove = entry.selectedMoves.find((move) => move.id === 'terablast');
     const rageFistMove = entry.selectedMoves.find((move) => move.id === 'ragefist');
-    if (hiddenPowerMove && (entry.pokemon.cost ?? 0) > 5) {
-      addRuleCheckerViolation(`Nur Pokémon bis 5 Punkten dürfen Kraftreserve nutzen. ${entry.pokemon.name} kostet ${entry.pokemon.cost} Punkte.`, {
+    if (hiddenPowerMove && (getPokemonCost(entry.pokemon) ?? 0) > 5) {
+      addRuleCheckerViolation(`Nur Pokémon bis 5 Punkten dürfen Kraftreserve nutzen. ${entry.pokemon.name} kostet ${getPokemonCost(entry.pokemon)} Punkte.`, {
         cardSlots: [entry.slotIndex],
         moveSlots: [[entry.slotIndex, hiddenPowerMove.moveIndex]],
       });
@@ -12844,6 +13457,8 @@ function injectCustomPokemonEntries(entries) {
     const entry = byName.get(name);
     if (entry) {
       entry.cost = cost;
+      entry.cost_dbl = cost;
+      entry.cost_dbl_is_placeholder = false;
       if (cost !== null && cost !== undefined) entry.untiered = false;
     }
   }
@@ -12856,6 +13471,8 @@ function injectCustomPokemonEntries(entries) {
       name: 'Eevee-Z',
       displayName: 'Eevee',
       cost: 1,
+      cost_dbl: 1,
+      cost_dbl_is_placeholder: false,
       untiered: false,
       tags: [...new Set([...(eevee.tags ?? []), 'z-warning'])],
     });
@@ -12869,6 +13486,8 @@ function injectCustomPokemonEntries(entries) {
       name: 'Blaziken-Speed-Boost',
       displayName: 'Blaziken',
       cost: 19,
+      cost_dbl: 19,
+      cost_dbl_is_placeholder: false,
       untiered: false,
     });
   }
@@ -12888,6 +13507,8 @@ function injectCustomPokemonEntries(entries) {
         name: 'Blastoise-Mega-Shell-Smash',
         displayName: 'Blastoise-Mega',
         cost: null,
+        cost_dbl: null,
+        cost_dbl_is_placeholder: false,
         untiered: true,
         tags: [...new Set([...(blastoiseMega.tags ?? [])])],
       };
@@ -12925,6 +13546,8 @@ function injectCustomPokemonEntries(entries) {
       forme: 'Fist',
       changesFrom: 'Annihilape',
       cost: 22,
+      cost_dbl: 22,
+      cost_dbl_is_placeholder: false,
       tags: ['ragefist'],
       sprite: annihilape.sprite,
     });
@@ -13053,6 +13676,32 @@ legendButton?.addEventListener('click', openLegend);
 themeToggle?.addEventListener('click', toggleTheme);
 eastereggToggle?.addEventListener('click', toggleEastereggMode);
 languageToggle?.addEventListener('click', () => setNameLanguage(activeNameLanguage === 'de' ? 'en' : 'de'));
+battleModeToggle?.addEventListener('click', toggleBattleMode);
+authToggle?.addEventListener('click', openAuthModal);
+authClose?.addEventListener('click', closeAuthModal);
+authModal?.addEventListener('click', (event) => {
+  if (event.target.dataset.closeAuth === 'true') closeAuthModal();
+});
+tierEditorSearch?.addEventListener('input', renderTierEditor);
+tierEditorChangedOnly?.addEventListener('change', renderTierEditor);
+tierEditorSave?.addEventListener('click', () => {
+  void saveTierEditorChanges();
+});
+tierEditorDiscard?.addEventListener('click', discardTierEditorChanges);
+authLoginForm?.addEventListener('submit', (event) => {
+  void submitAuthLogin(event);
+});
+authForgotPassword?.addEventListener('click', () => {
+  void requestPasswordReset();
+});
+authShowPasswordChange?.addEventListener('click', showPasswordChange);
+authPasswordCancel?.addEventListener('click', cancelPasswordChange);
+authPasswordForm?.addEventListener('submit', (event) => {
+  void submitPasswordChange(event);
+});
+authSignOut?.addEventListener('click', () => {
+  void signOutUser();
+});
   detailsClose.addEventListener('click', closeDetailsModal);
   detailsCancel.addEventListener('click', closeDetailsModal);
   detailsReset.addEventListener('click', resetAdvancedSearchModal);
@@ -13336,6 +13985,7 @@ async function loadPokedex() {
     loadFavoritePokemonNames();
     coreDefenseProfileCache = new Map();
     pokemonByName = new Map(allPokemon.map((pokemon) => [pokemon.name, pokemon]));
+    rememberStaticPokemonCosts();
     pokemonByNormalizedName = new Map();
     for (const pokemon of allPokemon) {
       pokemonByNormalizedName.set(normalizeText(pokemon.name), pokemon);
@@ -13349,6 +13999,7 @@ async function loadPokedex() {
       return map;
     }, new Map());
     applyAllFilters();
+    void syncSharedCostsForSession();
     openPokemonDetailFromUrl();
     initializeLandingTierUpdate();
     if (activeHubView === 'draft') renderDraftOverview();
@@ -13369,6 +14020,8 @@ applyEastereggMode(getStoredEastereggMode());
 resetControlRailStickyThreshold();
 syncResponsiveMode();
 updateLanguageToggle();
+syncBattleModeToggle();
+initializeSupabaseAuth();
 initializeAdvancedSearch();
 renderHubView();
 searchInput.addEventListener('input', applyAllFilters);
