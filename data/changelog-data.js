@@ -237,6 +237,15 @@ window.CHANGELOG_DATA = {
        "Achievements!"
       ]
     },
+          {
+      "title": "Login Funktionen!",
+      "date": "2026-08-20",
+      "items": [
+        "Nutzer-Konten für Tobi, Robin, Stefan und einen Replay-Viewer Account sind jetzt testweise verfügbar!",
+        "Tobi und Stefan können Tiers direkt auf der Seite bearbeiten, Robin kann Änderungen live sehen",
+        "Jeder sieht nur die Replays, in denen er involviert war - außer der Replay-Viewer, der alle sieht"
+      ]
+    },
       {
       "title": "Neue Domäne!",
       "date": "2026-07-05",

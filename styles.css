@@ -1392,14 +1392,30 @@ body.pokemon-detail-open .mobile-panel-dock {
 
 .auth-body,
 .auth-form,
-.auth-account {
+.auth-account,
+.auth-profile-form {
   display: grid;
   gap: 16px;
 }
 
+.auth-profile-form {
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: end;
+}
+
+.auth-profile-form .details-field {
+  margin: 0;
+}
+
+.auth-account small {
+  color: var(--muted);
+  overflow-wrap: anywhere;
+}
+
 .auth-form[hidden],
 .auth-account[hidden],
-.auth-config-notice[hidden] {
+.auth-config-notice[hidden],
+#auth-current-password-field[hidden] {
   display: none;
 }
 
@@ -1548,6 +1564,10 @@ body.pokemon-detail-open .mobile-panel-dock {
 }
 
 @media (max-width: 640px) {
+  .auth-profile-form {
+    grid-template-columns: 1fr;
+  }
+
   .detail-cost-editor {
     grid-template-columns: 1fr;
   }

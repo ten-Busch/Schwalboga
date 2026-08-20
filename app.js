@@ -211,10 +211,15 @@ const authPassword = document.querySelector('#auth-password');
 const authLoginSubmit = document.querySelector('#auth-login-submit');
 const authForgotPassword = document.querySelector('#auth-forgot-password');
 const authAccount = document.querySelector('#auth-account');
+const authAccountName = document.querySelector('#auth-account-name');
 const authAccountEmail = document.querySelector('#auth-account-email');
+const authProfileForm = document.querySelector('#auth-profile-form');
+const authDisplayName = document.querySelector('#auth-display-name');
 const authShowPasswordChange = document.querySelector('#auth-show-password-change');
 const authSignOut = document.querySelector('#auth-sign-out');
 const authPasswordForm = document.querySelector('#auth-password-form');
+const authCurrentPasswordField = document.querySelector('#auth-current-password-field');
+const authCurrentPassword = document.querySelector('#auth-current-password');
 const authNewPassword = document.querySelector('#auth-new-password');
 const authNewPasswordConfirm = document.querySelector('#auth-new-password-confirm');
 const authPasswordCancel = document.querySelector('#auth-password-cancel');
@@ -693,10 +698,38 @@ let supabaseClient = null;
 let authSession = null;
 let authRecoveryMode = false;
 const authLinkTypeAtLoad = new URLSearchParams(window.location.hash.slice(1)).get('type');
+const COST_ADMIN_EMAILS = new Set(['tenbusch1@gmail.com', 'stefan.gysbers@web.de']);
+const DOUBLES_BLOCKED_EMAILS = new Set(['schwalboga@gmail.com']);
+const REPLAY_ADMIN_EMAILS = new Set(['schwalboga@gmail.com', 'replay@schwalboga.de']);
 let sharedCostRows = new Map();
 let sharedCostsReady = false;
 let sharedCostsError = '';
 let tierEditorDraft = new Map();
+
+function currentUserEmail() {
+  return String(authSession?.user?.email ?? '').trim().toLowerCase();
+}
+
+function canEditCosts() {
+  return COST_ADMIN_EMAILS.has(currentUserEmail());
+}
+
+function canViewDoublesCosts() {
+  return !DOUBLES_BLOCKED_EMAILS.has(currentUserEmail());
+}
+
+function getReplayViewer() {
+  const user = authSession?.user ?? null;
+  const email = currentUserEmail();
+  return {
+    authenticated: Boolean(user),
+    email,
+    displayName: String(user?.user_metadata?.display_name ?? '').trim(),
+    canViewAll: REPLAY_ADMIN_EMAILS.has(email),
+  };
+}
+
+window.SCHWALBOGA_AUTH = { getReplayViewer };
 
 function getPokemonCost(pokemon, mode = activeBattleMode) {
   if (!pokemon) return null;
@@ -722,9 +755,11 @@ function syncBattleModeToggle() {
   const isDoubles = activeBattleMode === 'doubles';
   battleModeToggle.setAttribute('aria-pressed', String(isDoubles));
   const signedIn = Boolean(authSession?.user);
+  const doublesAllowed = signedIn && canViewDoublesCosts();
+  battleModeToggle.hidden = signedIn && !doublesAllowed;
   battleModeToggle.setAttribute(
     'aria-label',
-    signedIn ? (isDoubles ? 'Doubles-Kosten aktiv' : 'Singles-Kosten aktiv') : 'Anmelden, um Doubles-Kosten zu verwenden',
+    doublesAllowed ? (isDoubles ? 'Doubles-Kosten aktiv' : 'Singles-Kosten aktiv') : 'Anmelden, um Doubles-Kosten zu verwenden',
   );
   const label = battleModeToggle.querySelector('.theme-toggle-label');
   if (label) label.textContent = isDoubles ? 'Doubles' : 'Singles';
@@ -733,9 +768,9 @@ function syncBattleModeToggle() {
 }
 
 function toggleBattleMode() {
-  if (!authSession?.user) {
+  if (!authSession?.user || !canViewDoublesCosts()) {
     openAuthModal();
-    setAuthFeedback('Melde dich an, um die Doubles-Kosten zu verwenden.', 'error');
+    setAuthFeedback(authSession?.user ? 'Dieses Konto hat keinen Zugriff auf Doubles-Kosten.' : 'Melde dich an, um die Doubles-Kosten zu verwenden.', 'error');
     return;
   }
   activeBattleMode = activeBattleMode === 'singles' ? 'doubles' : 'singles';
@@ -796,31 +831,38 @@ function setAuthFeedback(message = '', state = '') {
 
 function syncAuthUi() {
   const user = authSession?.user ?? null;
+  const displayName = user?.user_metadata?.display_name?.trim()
+    || user?.email?.split('@')[0]
+    || 'Benutzer';
   const configured = isSupabaseConfigured();
   if (authConfigNotice) authConfigNotice.hidden = configured;
   if (authLoginForm) authLoginForm.hidden = !configured || Boolean(user) || authRecoveryMode;
   if (authAccount) authAccount.hidden = !user || authRecoveryMode;
   if (authPasswordForm) authPasswordForm.hidden = !authRecoveryMode;
+  if (authCurrentPasswordField) authCurrentPasswordField.hidden = authLinkTypeAtLoad === 'recovery' || authLinkTypeAtLoad === 'invite';
+  if (authAccountName) authAccountName.textContent = user ? displayName : '';
   if (authAccountEmail) authAccountEmail.textContent = user?.email ?? '';
+  if (authDisplayName && document.activeElement !== authDisplayName) authDisplayName.value = user ? displayName : '';
   if (authTitle) authTitle.textContent = authRecoveryMode ? 'Passwort festlegen' : user ? 'Konto' : 'Anmelden';
 
   if (authToggle) {
     const label = authToggle.querySelector('.theme-toggle-label');
     const icon = authToggle.querySelector('.auth-toggle-icon');
-    if (label) label.textContent = user ? 'Konto' : 'Anmelden';
+    if (label) label.textContent = user ? displayName : 'Anmelden';
     if (icon) icon.textContent = user ? '🔓' : '🔒';
-    authToggle.setAttribute('aria-label', user ? `Konto: ${user.email ?? 'angemeldet'}` : 'Anmelden');
+    authToggle.setAttribute('aria-label', user ? `Konto: ${displayName}` : 'Anmelden');
   }
-  if (tierEditorTile) tierEditorTile.hidden = !user;
+  if (tierEditorTile) tierEditorTile.hidden = !canEditCosts();
   syncBattleModeToggle();
 }
 
 function applyAuthSession(session, { refresh = true } = {}) {
   const wasMode = activeBattleMode;
   authSession = session ?? null;
-  activeBattleMode = authSession?.user ? preferredBattleMode : 'singles';
+  activeBattleMode = authSession?.user && canViewDoublesCosts() ? preferredBattleMode : 'singles';
   syncAuthUi();
-  if (!authSession?.user && activeHubView === 'tier-editor') {
+  window.dispatchEvent(new CustomEvent('schwalboga:auth-changed'));
+  if (!canEditCosts() && activeHubView === 'tier-editor') {
     window.location.hash = '#home';
     renderHubView('home');
   }
@@ -871,9 +913,12 @@ async function syncSharedCostsForSession() {
     return;
   }
 
+  const costColumns = canViewDoublesCosts()
+    ? 'pokemon_name,cost,cost_dbl,updated_at,updated_by'
+    : 'pokemon_name,cost,updated_at,updated_by';
   const { data, error } = await supabaseClient
     .from('pokemon_costs')
-    .select('pokemon_name,cost,cost_dbl,updated_at,updated_by');
+    .select(costColumns);
   if (error) {
     sharedCostsReady = false;
     sharedCostsError = error.message;
@@ -895,6 +940,7 @@ function normalizeEditableCost(value) {
 
 async function saveSharedCostChanges(changes) {
   if (!authSession?.user || !supabaseClient) throw new Error('Nicht angemeldet.');
+  if (!canEditCosts()) throw new Error('Dieses Konto darf Kosten nicht bearbeiten.');
   if (!changes.length) return [];
   const rows = changes.map((change) => ({
     pokemon_name: change.pokemon_name,
@@ -978,6 +1024,7 @@ function showPasswordChange() {
 
 function cancelPasswordChange() {
   authRecoveryMode = false;
+  if (authCurrentPassword) authCurrentPassword.value = '';
   if (authNewPassword) authNewPassword.value = '';
   if (authNewPasswordConfirm) authNewPasswordConfirm.value = '';
   syncAuthUi();
@@ -989,6 +1036,7 @@ async function submitPasswordChange(event) {
   if (!supabaseClient) return;
   const password = authNewPassword?.value ?? '';
   const confirmation = authNewPasswordConfirm?.value ?? '';
+  const currentPassword = authCurrentPassword?.value ?? '';
   if (password.length < 8) {
     setAuthFeedback('Das Passwort muss mindestens 8 Zeichen lang sein.', 'error');
     return;
@@ -999,17 +1047,40 @@ async function submitPasswordChange(event) {
   }
   const submit = authPasswordForm?.querySelector('[type="submit"]');
   if (submit) submit.disabled = true;
-  const { error } = await supabaseClient.auth.updateUser({ password });
+  const attributes = currentPassword ? { password, current_password: currentPassword } : { password };
+  const { error } = await supabaseClient.auth.updateUser(attributes);
   if (submit) submit.disabled = false;
   if (error) {
     setAuthFeedback('Das Passwort konnte nicht gespeichert werden.', 'error');
     return;
   }
   authRecoveryMode = false;
+  if (authCurrentPassword) authCurrentPassword.value = '';
   if (authNewPassword) authNewPassword.value = '';
   if (authNewPasswordConfirm) authNewPasswordConfirm.value = '';
   syncAuthUi();
   setAuthFeedback('Passwort gespeichert.', 'success');
+}
+
+async function submitDisplayName(event) {
+  event.preventDefault();
+  if (!supabaseClient || !authSession?.user) return;
+  const displayName = authDisplayName?.value.trim() ?? '';
+  if (!displayName) {
+    setAuthFeedback('Der Anzeigename darf nicht leer sein.', 'error');
+    return;
+  }
+  const submit = authProfileForm?.querySelector('[type="submit"]');
+  if (submit) submit.disabled = true;
+  const { data, error } = await supabaseClient.auth.updateUser({ data: { display_name: displayName } });
+  if (submit) submit.disabled = false;
+  if (error) {
+    setAuthFeedback('Der Anzeigename konnte nicht gespeichert werden.', 'error');
+    return;
+  }
+  if (data?.user) authSession = { ...authSession, user: data.user };
+  syncAuthUi();
+  setAuthFeedback('Anzeigename gespeichert.', 'success');
 }
 
 async function signOutUser() {
@@ -5814,7 +5885,7 @@ function createTierEditorRow(pokemon) {
 
 function renderTierEditor() {
   if (!tierEditorRows) return;
-  if (!authSession?.user) {
+  if (!canEditCosts()) {
     window.location.hash = '#home';
     renderHubView('home');
     openAuthModal();
@@ -5868,7 +5939,7 @@ if (matchdayPdfDate) matchdayPdfDate.value = new Date().toISOString().slice(0, 1
 matchdayPdfButton?.addEventListener('click', openMatchdayPrintPdf);
 
 function renderHubView(viewKey = getHubViewFromHash()) {
-  if (viewKey === 'tier-editor' && !authSession?.user) {
+  if (viewKey === 'tier-editor' && !canEditCosts()) {
     window.location.hash = '#home';
     viewKey = 'home';
     window.setTimeout(openAuthModal, 0);
@@ -5919,7 +5990,7 @@ function getHubSearchEntries() {
     { label: 'Games', detail: 'Bereich', view: 'games' },
     { label: 'Matchday', detail: 'Bereich', view: 'matchday' },
     { label: 'Replays', detail: 'Battle Archiv', view: 'replays' },
-    ...(authSession?.user ? [{ label: 'Tiers Ändern', detail: 'Geschützter Bereich', view: 'tier-editor' }] : []),
+    ...(canEditCosts() ? [{ label: 'Tiers Ändern', detail: 'Geschützter Bereich', view: 'tier-editor' }] : []),
     { label: 'Regel Checker', detail: 'Tool', view: 'ruleset', action: () => { void openRuleChecker(); } },
     { label: 'Stefans Pdf', detail: 'Regelset', view: 'ruleset', action: () => openStefansPdf() },
     { label: 'Ninjatom Check', detail: 'Battle Prep', view: 'draft', action: () => { draftOverviewMode = 'shedinja-check'; renderDraftOverview(); } },
@@ -10643,11 +10714,14 @@ function renderPokemonDetail(pokemon) {
   const singlesCost = getPokemonCost(pokemon, 'singles');
   const doublesCost = getPokemonCost(pokemon, 'doubles');
   const activeCost = getPokemonCost(pokemon);
-  const costEditor = authSession?.user ? createDetailCostEditor(pokemon) : null;
+  const costEditor = canEditCosts() ? createDetailCostEditor(pokemon) : null;
   if (singlesCost === null && doublesCost === null) {
     renderEmptyDetailState(detailTierList, 'Für dieses Pokémon sind derzeit keine Punktekosten festgelegt.');
   } else {
-    for (const [modeLabel, modeCost] of [['Singles', singlesCost], ['Doubles', doublesCost]]) {
+    const visibleCosts = canViewDoublesCosts()
+      ? [['Singles', singlesCost], ['Doubles', doublesCost]]
+      : [['Singles', singlesCost]];
+    for (const [modeLabel, modeCost] of visibleCosts) {
       const costRibbon = document.createElement('div');
       costRibbon.className = 'detail-ribbon is-tier';
       const costBadge = document.createElement('span');
@@ -10663,7 +10737,7 @@ function renderPokemonDetail(pokemon) {
         : `Dieses Pokémon kostet ${modeCost} Punkte in ${modeLabel}`;
       markPlaceholderCost(costText, pokemon, modeLabel.toLowerCase());
       costRibbon.append(costBadge, costText);
-      if (authSession?.user) {
+      if (canEditCosts()) {
         const edit = createNode('button', 'details-secondary detail-cost-edit-button', '✎');
         edit.type = 'button';
         edit.setAttribute('aria-label', `${modeLabel}-Kosten bearbeiten`);
@@ -13695,6 +13769,9 @@ authForgotPassword?.addEventListener('click', () => {
   void requestPasswordReset();
 });
 authShowPasswordChange?.addEventListener('click', showPasswordChange);
+authProfileForm?.addEventListener('submit', (event) => {
+  void submitDisplayName(event);
+});
 authPasswordCancel?.addEventListener('click', cancelPasswordChange);
 authPasswordForm?.addEventListener('submit', (event) => {
   void submitPasswordChange(event);

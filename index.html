@@ -10,7 +10,7 @@
       href="https://fonts.googleapis.com/css2?family=Audiowide&family=Chakra+Petch:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;700&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="styles.css?v=20260820-auth-cost-editor" />
   </head>
   <body>
     <div class="page-shell">
@@ -1887,13 +1887,25 @@
           </form>
           <section class="auth-account" id="auth-account" hidden>
             <p>Angemeldet als</p>
-            <strong id="auth-account-email"></strong>
+            <strong id="auth-account-name"></strong>
+            <small id="auth-account-email"></small>
+            <form class="auth-profile-form" id="auth-profile-form">
+              <label class="details-field" for="auth-display-name">
+                <span>Anzeigename</span>
+                <input id="auth-display-name" type="text" maxlength="40" autocomplete="nickname" required />
+              </label>
+              <button class="details-primary" type="submit">Namen speichern</button>
+            </form>
             <div class="auth-actions">
               <button class="details-secondary" id="auth-show-password-change" type="button">Passwort ändern</button>
               <button class="details-secondary" id="auth-sign-out" type="button">Abmelden</button>
             </div>
           </section>
           <form class="auth-form" id="auth-password-form" hidden>
+            <label class="details-field" for="auth-current-password" id="auth-current-password-field">
+              <span>Aktuelles Passwort</span>
+              <input id="auth-current-password" type="password" autocomplete="current-password" />
+            </label>
             <label class="details-field" for="auth-new-password">
               <span>Neues Passwort</span>
               <input id="auth-new-password" type="password" autocomplete="new-password" minlength="8" required />
@@ -1913,16 +1925,17 @@
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2" defer></script>
-    <script src="data/supabase-config.js" defer></script>
+    <script src="data/supabase-config.js?v=20260820-auth-cost-editor" defer></script>
     <script src="data/pokedex-data.js" defer></script>
     <script src="data/point-cost-history.js" defer></script>
     <script src="data/changelog-data.js" defer></script>
     <script src="data/rule-checker-items.js" defer></script>
     <script src="data/replay-data.js" defer></script>
+    <script src="data/replay-catalog.js?v=20260820-new-replays" defer></script>
     <script src="Spieler.js?v=20260811-achievements" defer></script>
     <script src="default-replay.js" defer></script>
-    <script src="replay-library.js" defer></script>
-    <script src="app.js?v=20260811-battle-data" defer></script>
+    <script src="replay-library.js?v=20260820-account-rights" defer></script>
+    <script src="app.js?v=20260820-account-rights" defer></script>
   </body>
 </html>
 

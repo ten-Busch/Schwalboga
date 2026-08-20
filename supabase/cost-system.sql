@@ -27,17 +27,36 @@ to authenticated
 using (true);
 
 drop policy if exists "authenticated users can add costs" on public.pokemon_costs;
-create policy "authenticated users can add costs"
+drop policy if exists "cost administrators can add costs" on public.pokemon_costs;
+create policy "cost administrators can add costs"
 on public.pokemon_costs for insert
 to authenticated
-with check ((select auth.uid()) = updated_by);
+with check (
+  (select auth.uid()) = updated_by
+  and lower(coalesce((select auth.jwt() ->> 'email'), '')) in (
+    'tenbusch1@gmail.com',
+    'stefan.gysbers@web.de'
+  )
+);
 
 drop policy if exists "authenticated users can update costs" on public.pokemon_costs;
-create policy "authenticated users can update costs"
+drop policy if exists "cost administrators can update costs" on public.pokemon_costs;
+create policy "cost administrators can update costs"
 on public.pokemon_costs for update
 to authenticated
-using (true)
-with check ((select auth.uid()) = updated_by);
+using (
+  lower(coalesce((select auth.jwt() ->> 'email'), '')) in (
+    'tenbusch1@gmail.com',
+    'stefan.gysbers@web.de'
+  )
+)
+with check (
+  (select auth.uid()) = updated_by
+  and lower(coalesce((select auth.jwt() ->> 'email'), '')) in (
+    'tenbusch1@gmail.com',
+    'stefan.gysbers@web.de'
+  )
+);
 
 drop policy if exists "authenticated users can read cost history" on public.pokemon_cost_history;
 create policy "authenticated users can read cost history"
