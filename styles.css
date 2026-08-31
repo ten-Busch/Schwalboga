@@ -2099,6 +2099,16 @@ body.dark-mode .pokemon-detail-modal:not(.is-dialga-retro):not(.is-gholdengo-the
   white-space: nowrap;
 }
 
+.pokemon-simple-name.has-split-display-name {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  min-width: 0;
+  line-height: 1.02;
+  white-space: normal;
+}
+
 .pokemon-simple-badges {
   display: inline-flex;
   align-items: center;
@@ -2923,6 +2933,90 @@ body.dark-mode .pokemon-detail-modal:not(.is-dialga-retro):not(.is-gholdengo-the
   font-size: 1.05rem;
   line-height: 1.15;
   overflow-wrap: anywhere;
+}
+
+.pokemon-name.has-split-display-name {
+  bottom: 27px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  line-height: 1.02;
+}
+
+.display-name-main,
+.display-name-form {
+  display: block;
+  max-width: 100%;
+}
+
+.display-name-form {
+  font-size: 0.74em;
+  font-weight: 500;
+  line-height: 1;
+  opacity: 0.9;
+}
+
+.pokemon-name .display-name-main {
+  transform: translateY(-1px);
+}
+
+.pokemon-name .display-name-form,
+.pokemon-simple-name .display-name-form {
+  font-size: 0.72em;
+}
+
+.has-form-mega .display-name-form {
+  background: linear-gradient(90deg, #ff4f6d, #ffb84f, #f5ea4f, #4fe58b, #4fb7ff, #9a74ff, #ff65d8);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  opacity: 1;
+}
+
+.has-form-mega .display-name-form.has-partial-highlight {
+  background: none;
+  color: inherit;
+}
+
+.display-name-form-highlight.is-mega-highlight {
+  background: linear-gradient(90deg, #ff4f6d, #ffb84f, #f5ea4f, #4fe58b, #4fb7ff, #9a74ff, #ff65d8);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.has-form-gmax .display-name-form {
+  background: linear-gradient(90deg, #8c2bff, #c52cff, #ff2f6d, #7a123e);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  opacity: 1;
+}
+
+.has-form-stellar .display-name-form {
+  background: linear-gradient(90deg, #ff9bd6, #a9e6ff, #fff1a8, #b9ffc9, #c9b6ff, #ffc6a3);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  opacity: 1;
+}
+
+.has-form-ogerpon-hearthflame .display-name-form {
+  color: #e65a24;
+}
+
+.has-form-ogerpon-cornerstone .display-name-form {
+  color: #9a6d3a;
+}
+
+.has-form-ogerpon-wellspring .display-name-form {
+  color: #1d8fd6;
+}
+
+.has-form-ogerpon-teal .display-name-form {
+  color: #178f73;
 }
 
 .pokemon-name.is-quark-name,
@@ -4323,6 +4417,19 @@ body.dark-mode .detail-similar-diff.is-negative {
   font-size: clamp(1.8rem, 4vw, 2.6rem);
 }
 
+.detail-header h2.has-split-display-name {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  line-height: 1.02;
+}
+
+.detail-header h2 .display-name-form {
+  font-size: 0.5em;
+}
+
 .detail-close {
   position: absolute;
   top: 16px;
@@ -4695,6 +4802,17 @@ body.dark-mode .detail-similar-diff.is-negative {
   margin: 0;
   font-family: 'Chakra Petch', sans-serif;
   font-size: 1.35rem;
+}
+
+.detail-top-title.has-split-display-name {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  line-height: 1.04;
+}
+
+.detail-top-title .display-name-form {
+  font-size: 0.62em;
 }
 
 .detail-top-title.is-disguised-name,

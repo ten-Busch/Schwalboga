@@ -23585,7 +23585,10 @@ window.POKEDEX_ENTRIES = [
     "sourceIndex": 32,
     "num": 20,
     "name": "Raticate-Alola-Totem",
-    "searchText": "0020 20 raticatealolatotem dark normal",
+    "names": {
+      "de": "Rattikarl-Alola-Totem"
+    },
+    "searchText": "0020 20 raticatealolatotem rattikarlalolatotem dark normal",
     "types": [
       "Dark",
       "Normal"
@@ -28784,7 +28787,10 @@ window.POKEDEX_ENTRIES = [
     "sourceIndex": 44,
     "num": 25,
     "name": "Pikachu-Original",
-    "searchText": "0025 25 pikachuoriginal electric",
+    "names": {
+      "de": "Pikachu-Original"
+    },
+    "searchText": "0025 25 pikachuoriginal pikachuoriginal electric",
     "types": [
       "Electric"
     ],
@@ -128643,7 +128649,10 @@ window.POKEDEX_ENTRIES = [
     "sourceIndex": 171,
     "num": 105,
     "name": "Marowak-Alola-Totem",
-    "searchText": "0105 105 marowakalolatotem fire ghost",
+    "names": {
+      "de": "Knogga-Alola-Totem"
+    },
+    "searchText": "0105 105 marowakalolatotem knoggaalolatotem fire ghost",
     "types": [
       "Fire",
       "Ghost"
@@ -229758,9 +229767,9 @@ window.POKEDEX_ENTRIES = [
     "num": 200,
     "name": "Misdreavus",
     "names": {
-      "de": "Traunfugil"
+      "de": "Traunmagil"
     },
-    "searchText": "0200 200 misdreavus traunfugil ghost",
+    "searchText": "0200 200 misdreavus traunmagil ghost",
     "types": [
       "Ghost"
     ],
@@ -498520,7 +498529,10 @@ window.POKEDEX_ENTRIES = [
     "sourceIndex": 655,
     "num": 493,
     "name": "Arceus-Bug",
-    "searchText": "0493 493 arceusbug bug",
+    "names": {
+      "de": "Arceus-Käfer"
+    },
+    "searchText": "0493 493 arceusbug arceuskafer bug",
     "types": [
       "Bug"
     ],
@@ -499735,7 +499747,10 @@ window.POKEDEX_ENTRIES = [
     "sourceIndex": 656,
     "num": 493,
     "name": "Arceus-Dark",
-    "searchText": "0493 493 arceusdark dark",
+    "names": {
+      "de": "Arceus-Unlicht"
+    },
+    "searchText": "0493 493 arceusdark arceusunlicht dark",
     "types": [
       "Dark"
     ],
@@ -500950,7 +500965,10 @@ window.POKEDEX_ENTRIES = [
     "sourceIndex": 657,
     "num": 493,
     "name": "Arceus-Dragon",
-    "searchText": "0493 493 arceusdragon dragon",
+    "names": {
+      "de": "Arceus-Drache"
+    },
+    "searchText": "0493 493 arceusdragon arceusdrache dragon",
     "types": [
       "Dragon"
     ],
@@ -502165,7 +502183,10 @@ window.POKEDEX_ENTRIES = [
     "sourceIndex": 658,
     "num": 493,
     "name": "Arceus-Electric",
-    "searchText": "0493 493 arceuselectric electric",
+    "names": {
+      "de": "Arceus-Elektro"
+    },
+    "searchText": "0493 493 arceuselectric arceuselektro electric",
     "types": [
       "Electric"
     ],
@@ -503380,7 +503401,10 @@ window.POKEDEX_ENTRIES = [
     "sourceIndex": 659,
     "num": 493,
     "name": "Arceus-Fairy",
-    "searchText": "0493 493 arceusfairy fairy",
+    "names": {
+      "de": "Arceus-Fee"
+    },
+    "searchText": "0493 493 arceusfairy arceusfee fairy",
     "types": [
       "Fairy"
     ],
@@ -504595,7 +504619,10 @@ window.POKEDEX_ENTRIES = [
     "sourceIndex": 660,
     "num": 493,
     "name": "Arceus-Fighting",
-    "searchText": "0493 493 arceusfighting fighting",
+    "names": {
+      "de": "Arceus-Kampf"
+    },
+    "searchText": "0493 493 arceusfighting arceuskampf fighting",
     "types": [
       "Fighting"
     ],
@@ -505810,7 +505837,10 @@ window.POKEDEX_ENTRIES = [
     "sourceIndex": 661,
     "num": 493,
     "name": "Arceus-Fire",
-    "searchText": "0493 493 arceusfire fire",
+    "names": {
+      "de": "Arceus-Feuer"
+    },
+    "searchText": "0493 493 arceusfire arceusfeuer fire",
     "types": [
       "Fire"
     ],
@@ -507025,7 +507055,10 @@ window.POKEDEX_ENTRIES = [
     "sourceIndex": 662,
     "num": 493,
     "name": "Arceus-Flying",
-    "searchText": "0493 493 arceusflying flying",
+    "names": {
+      "de": "Arceus-Flug"
+    },
+    "searchText": "0493 493 arceusflying arceusflug flying",
     "types": [
       "Flying"
     ],
@@ -508240,7 +508273,10 @@ window.POKEDEX_ENTRIES = [
     "sourceIndex": 663,
     "num": 493,
     "name": "Arceus-Ghost",
-    "searchText": "0493 493 arceusghost ghost",
+    "names": {
+      "de": "Arceus-Geist"
+    },
+    "searchText": "0493 493 arceusghost arceusgeist ghost",
     "types": [
       "Ghost"
     ],
@@ -509455,7 +509491,10 @@ window.POKEDEX_ENTRIES = [
     "sourceIndex": 664,
     "num": 493,
     "name": "Arceus-Grass",
-    "searchText": "0493 493 arceusgrass grass",
+    "names": {
+      "de": "Arceus-Pflanze"
+    },
+    "searchText": "0493 493 arceusgrass arceuspflanze grass",
     "types": [
       "Grass"
     ],
@@ -510670,7 +510709,10 @@ window.POKEDEX_ENTRIES = [
     "sourceIndex": 665,
     "num": 493,
     "name": "Arceus-Ground",
-    "searchText": "0493 493 arceusground ground",
+    "names": {
+      "de": "Arceus-Boden"
+    },
+    "searchText": "0493 493 arceusground arceusboden ground",
     "types": [
       "Ground"
     ],
@@ -511886,9 +511928,9 @@ window.POKEDEX_ENTRIES = [
     "num": 493,
     "name": "Arceus-Ice",
     "names": {
-      "de": "Arceus-Schimmel"
+      "de": "Arceus-Eis"
     },
-    "searchText": "0493 493 arceusice arceusschimmel ice",
+    "searchText": "0493 493 arceusice arceuseis ice",
     "types": [
       "Ice"
     ],
@@ -513103,7 +513145,10 @@ window.POKEDEX_ENTRIES = [
     "sourceIndex": 667,
     "num": 493,
     "name": "Arceus-Poison",
-    "searchText": "0493 493 arceuspoison poison",
+    "names": {
+      "de": "Arceus-Gift"
+    },
+    "searchText": "0493 493 arceuspoison arceusgift poison",
     "types": [
       "Poison"
     ],
@@ -514318,7 +514363,10 @@ window.POKEDEX_ENTRIES = [
     "sourceIndex": 668,
     "num": 493,
     "name": "Arceus-Psychic",
-    "searchText": "0493 493 arceuspsychic psychic",
+    "names": {
+      "de": "Arceus-Psycho"
+    },
+    "searchText": "0493 493 arceuspsychic arceuspsycho psychic",
     "types": [
       "Psychic"
     ],
@@ -515533,7 +515581,10 @@ window.POKEDEX_ENTRIES = [
     "sourceIndex": 669,
     "num": 493,
     "name": "Arceus-Rock",
-    "searchText": "0493 493 arceusrock rock",
+    "names": {
+      "de": "Arceus-Gestein"
+    },
+    "searchText": "0493 493 arceusrock arceusgestein rock",
     "types": [
       "Rock"
     ],
@@ -516748,7 +516799,10 @@ window.POKEDEX_ENTRIES = [
     "sourceIndex": 670,
     "num": 493,
     "name": "Arceus-Steel",
-    "searchText": "0493 493 arceussteel steel",
+    "names": {
+      "de": "Arceus-Stahl"
+    },
+    "searchText": "0493 493 arceussteel arceusstahl steel",
     "types": [
       "Steel"
     ],
@@ -517963,7 +518017,10 @@ window.POKEDEX_ENTRIES = [
     "sourceIndex": 671,
     "num": 493,
     "name": "Arceus-Water",
-    "searchText": "0493 493 arceuswater water",
+    "names": {
+      "de": "Arceus-Wasser"
+    },
+    "searchText": "0493 493 arceuswater arceuswasser water",
     "types": [
       "Water"
     ],
@@ -652050,7 +652107,10 @@ window.POKEDEX_ENTRIES = [
     "sourceIndex": 920,
     "num": 678,
     "name": "Meowstic-F",
-    "searchText": "0678 678 meowsticf psychic",
+    "names": {
+      "de": "Meowstic-F"
+    },
+    "searchText": "0678 678 meowsticf meowsticf psychic",
     "types": [
       "Psychic"
     ],
@@ -694921,7 +694981,10 @@ window.POKEDEX_ENTRIES = [
     "sourceIndex": 1001,
     "num": 735,
     "name": "Gumshoos-Totem",
-    "searchText": "0735 735 gumshoostotem normal",
+    "names": {
+      "de": "Manguspektor-Totem"
+    },
+    "searchText": "0735 735 gumshoostotem manguspektortotem normal",
     "types": [
       "Normal"
     ],
@@ -696481,7 +696544,10 @@ window.POKEDEX_ENTRIES = [
     "sourceIndex": 1005,
     "num": 738,
     "name": "Vikavolt-Totem",
-    "searchText": "0738 738 vikavolttotem bug electric",
+    "names": {
+      "de": "Donarion-Totem"
+    },
+    "searchText": "0738 738 vikavolttotem donariontotem bug electric",
     "types": [
       "Bug",
       "Electric"
@@ -700832,7 +700898,10 @@ window.POKEDEX_ENTRIES = [
     "sourceIndex": 1015,
     "num": 743,
     "name": "Ribombee-Totem",
-    "searchText": "0743 743 ribombeetotem bug fairy",
+    "names": {
+      "de": "Bandelby-Totem"
+    },
+    "searchText": "0743 743 ribombeetotem bandelbytotem bug fairy",
     "types": [
       "Bug",
       "Fairy"
@@ -707129,7 +707198,10 @@ window.POKEDEX_ENTRIES = [
     "sourceIndex": 1029,
     "num": 752,
     "name": "Araquanid-Totem",
-    "searchText": "0752 752 araquanidtotem water bug",
+    "names": {
+      "de": "Aranestro-Totem"
+    },
+    "searchText": "0752 752 araquanidtotem aranestrototem water bug",
     "types": [
       "Water",
       "Bug"
@@ -708318,7 +708390,10 @@ window.POKEDEX_ENTRIES = [
     "sourceIndex": 1032,
     "num": 754,
     "name": "Lurantis-Totem",
-    "searchText": "0754 754 lurantistotem grass",
+    "names": {
+      "de": "Mantidea-Totem"
+    },
+    "searchText": "0754 754 lurantistotem mantideatotem grass",
     "types": [
       "Grass"
     ],
@@ -710495,7 +710570,10 @@ window.POKEDEX_ENTRIES = [
     "sourceIndex": 1037,
     "num": 758,
     "name": "Salazzle-Totem",
-    "searchText": "0758 758 salazzletotem poison fire",
+    "names": {
+      "de": "Amfira-Totem"
+    },
+    "searchText": "0758 758 salazzletotem amfiratotem poison fire",
     "types": [
       "Poison",
       "Fire"
@@ -718268,7 +718346,10 @@ window.POKEDEX_ENTRIES = [
     "sourceIndex": 1054,
     "num": 773,
     "name": "Silvally-Bug",
-    "searchText": "0773 773 silvallybug bug",
+    "names": {
+      "de": "Amigento-Käfer"
+    },
+    "searchText": "0773 773 silvallybug amigentokafer bug",
     "types": [
       "Bug"
     ],
@@ -718780,7 +718861,10 @@ window.POKEDEX_ENTRIES = [
     "sourceIndex": 1055,
     "num": 773,
     "name": "Silvally-Dark",
-    "searchText": "0773 773 silvallydark dark",
+    "names": {
+      "de": "Amigento-Unlicht"
+    },
+    "searchText": "0773 773 silvallydark amigentounlicht dark",
     "types": [
       "Dark"
     ],
@@ -719292,7 +719376,10 @@ window.POKEDEX_ENTRIES = [
     "sourceIndex": 1056,
     "num": 773,
     "name": "Silvally-Dragon",
-    "searchText": "0773 773 silvallydragon dragon",
+    "names": {
+      "de": "Amigento-Drache"
+    },
+    "searchText": "0773 773 silvallydragon amigentodrache dragon",
     "types": [
       "Dragon"
     ],
@@ -719804,7 +719891,10 @@ window.POKEDEX_ENTRIES = [
     "sourceIndex": 1057,
     "num": 773,
     "name": "Silvally-Electric",
-    "searchText": "0773 773 silvallyelectric electric",
+    "names": {
+      "de": "Amigento-Elektro"
+    },
+    "searchText": "0773 773 silvallyelectric amigentoelektro electric",
     "types": [
       "Electric"
     ],
@@ -720316,7 +720406,10 @@ window.POKEDEX_ENTRIES = [
     "sourceIndex": 1058,
     "num": 773,
     "name": "Silvally-Fairy",
-    "searchText": "0773 773 silvallyfairy fairy",
+    "names": {
+      "de": "Amigento-Fee"
+    },
+    "searchText": "0773 773 silvallyfairy amigentofee fairy",
     "types": [
       "Fairy"
     ],
@@ -720828,7 +720921,10 @@ window.POKEDEX_ENTRIES = [
     "sourceIndex": 1059,
     "num": 773,
     "name": "Silvally-Fighting",
-    "searchText": "0773 773 silvallyfighting fighting",
+    "names": {
+      "de": "Amigento-Kampf"
+    },
+    "searchText": "0773 773 silvallyfighting amigentokampf fighting",
     "types": [
       "Fighting"
     ],
@@ -721340,7 +721436,10 @@ window.POKEDEX_ENTRIES = [
     "sourceIndex": 1060,
     "num": 773,
     "name": "Silvally-Fire",
-    "searchText": "0773 773 silvallyfire fire",
+    "names": {
+      "de": "Amigento-Feuer"
+    },
+    "searchText": "0773 773 silvallyfire amigentofeuer fire",
     "types": [
       "Fire"
     ],
@@ -721852,7 +721951,10 @@ window.POKEDEX_ENTRIES = [
     "sourceIndex": 1061,
     "num": 773,
     "name": "Silvally-Flying",
-    "searchText": "0773 773 silvallyflying flying",
+    "names": {
+      "de": "Amigento-Flug"
+    },
+    "searchText": "0773 773 silvallyflying amigentoflug flying",
     "types": [
       "Flying"
     ],
@@ -722364,7 +722466,10 @@ window.POKEDEX_ENTRIES = [
     "sourceIndex": 1062,
     "num": 773,
     "name": "Silvally-Ghost",
-    "searchText": "0773 773 silvallyghost ghost",
+    "names": {
+      "de": "Amigento-Geist"
+    },
+    "searchText": "0773 773 silvallyghost amigentogeist ghost",
     "types": [
       "Ghost"
     ],
@@ -722876,7 +722981,10 @@ window.POKEDEX_ENTRIES = [
     "sourceIndex": 1063,
     "num": 773,
     "name": "Silvally-Grass",
-    "searchText": "0773 773 silvallygrass grass",
+    "names": {
+      "de": "Amigento-Pflanze"
+    },
+    "searchText": "0773 773 silvallygrass amigentopflanze grass",
     "types": [
       "Grass"
     ],
@@ -723388,7 +723496,10 @@ window.POKEDEX_ENTRIES = [
     "sourceIndex": 1064,
     "num": 773,
     "name": "Silvally-Ground",
-    "searchText": "0773 773 silvallyground ground",
+    "names": {
+      "de": "Amigento-Boden"
+    },
+    "searchText": "0773 773 silvallyground amigentoboden ground",
     "types": [
       "Ground"
     ],
@@ -723901,9 +724012,9 @@ window.POKEDEX_ENTRIES = [
     "num": 773,
     "name": "Silvally-Ice",
     "names": {
-      "de": "Amigento-Schimmel"
+      "de": "Amigento-Eis"
     },
-    "searchText": "0773 773 silvallyice amigentoschimmel ice",
+    "searchText": "0773 773 silvallyice amigentoeis ice",
     "types": [
       "Ice"
     ],
@@ -724415,7 +724526,10 @@ window.POKEDEX_ENTRIES = [
     "sourceIndex": 1066,
     "num": 773,
     "name": "Silvally-Poison",
-    "searchText": "0773 773 silvallypoison poison",
+    "names": {
+      "de": "Amigento-Gift"
+    },
+    "searchText": "0773 773 silvallypoison amigentogift poison",
     "types": [
       "Poison"
     ],
@@ -724927,7 +725041,10 @@ window.POKEDEX_ENTRIES = [
     "sourceIndex": 1067,
     "num": 773,
     "name": "Silvally-Psychic",
-    "searchText": "0773 773 silvallypsychic psychic",
+    "names": {
+      "de": "Amigento-Psycho"
+    },
+    "searchText": "0773 773 silvallypsychic amigentopsycho psychic",
     "types": [
       "Psychic"
     ],
@@ -725439,7 +725556,10 @@ window.POKEDEX_ENTRIES = [
     "sourceIndex": 1068,
     "num": 773,
     "name": "Silvally-Rock",
-    "searchText": "0773 773 silvallyrock rock",
+    "names": {
+      "de": "Amigento-Gestein"
+    },
+    "searchText": "0773 773 silvallyrock amigentogestein rock",
     "types": [
       "Rock"
     ],
@@ -725951,7 +726071,10 @@ window.POKEDEX_ENTRIES = [
     "sourceIndex": 1069,
     "num": 773,
     "name": "Silvally-Steel",
-    "searchText": "0773 773 silvallysteel steel",
+    "names": {
+      "de": "Amigento-Stahl"
+    },
+    "searchText": "0773 773 silvallysteel amigentostahl steel",
     "types": [
       "Steel"
     ],
@@ -726463,7 +726586,10 @@ window.POKEDEX_ENTRIES = [
     "sourceIndex": 1070,
     "num": 773,
     "name": "Silvally-Water",
-    "searchText": "0773 773 silvallywater water",
+    "names": {
+      "de": "Amigento-Wasser"
+    },
+    "searchText": "0773 773 silvallywater amigentowasser water",
     "types": [
       "Water"
     ],
@@ -729176,7 +729302,10 @@ window.POKEDEX_ENTRIES = [
     "sourceIndex": 1082,
     "num": 777,
     "name": "Togedemaru-Totem",
-    "searchText": "0777 777 togedemarutotem electric steel",
+    "names": {
+      "de": "Togedemaru-Totem"
+    },
+    "searchText": "0777 777 togedemarutotem togedemarutotem electric steel",
     "types": [
       "Electric",
       "Steel"
@@ -730645,7 +730774,10 @@ window.POKEDEX_ENTRIES = [
     "sourceIndex": 1085,
     "num": 778,
     "name": "Mimikyu-Totem",
-    "searchText": "0778 778 mimikyutotem ghost fairy",
+    "names": {
+      "de": "Mimigma-Totem"
+    },
+    "searchText": "0778 778 mimikyutotem mimigmatotem ghost fairy",
     "types": [
       "Ghost",
       "Fairy"
@@ -731002,7 +731134,10 @@ window.POKEDEX_ENTRIES = [
     "sourceIndex": 1086,
     "num": 778,
     "name": "Mimikyu-Busted-Totem",
-    "searchText": "0778 778 mimikyubustedtotem ghost fairy",
+    "names": {
+      "de": "Mimikyu-Busted-Totem"
+    },
+    "searchText": "0778 778 mimikyubustedtotem mimikyubustedtotem ghost fairy",
     "types": [
       "Ghost",
       "Fairy"
@@ -735303,7 +735438,10 @@ window.POKEDEX_ENTRIES = [
     "sourceIndex": 1094,
     "num": 784,
     "name": "Kommo-o-Totem",
-    "searchText": "0784 784 kommoototem dragon fighting",
+    "names": {
+      "de": "Grandiras-Totem"
+    },
+    "searchText": "0784 784 kommoototem grandirastotem dragon fighting",
     "types": [
       "Dragon",
       "Fighting"
@@ -743350,7 +743488,10 @@ window.POKEDEX_ENTRIES = [
     "sourceIndex": 1115,
     "num": 801,
     "name": "Magearna-Original",
-    "searchText": "0801 801 magearnaoriginal steel fairy",
+    "names": {
+      "de": "Magearna-Original"
+    },
+    "searchText": "0801 801 magearnaoriginal magearnaoriginal steel fairy",
     "types": [
       "Steel",
       "Fairy"
@@ -765174,7 +765315,10 @@ window.POKEDEX_ENTRIES = [
     "sourceIndex": 1174,
     "num": 845,
     "name": "Cramorant-Gulping",
-    "searchText": "0845 845 cramorantgulping flying water",
+    "names": {
+      "de": "Urgl"
+    },
+    "searchText": "0845 845 cramorantgulping urgl flying water",
     "types": [
       "Flying",
       "Water"
@@ -765555,7 +765699,10 @@ window.POKEDEX_ENTRIES = [
     "sourceIndex": 1175,
     "num": 845,
     "name": "Cramorant-Gorging",
-    "searchText": "0845 845 cramorantgorging flying water",
+    "names": {
+      "de": "Urgl"
+    },
+    "searchText": "0845 845 cramorantgorging urgl flying water",
     "types": [
       "Flying",
       "Water"
@@ -767301,7 +767448,10 @@ window.POKEDEX_ENTRIES = [
     "sourceIndex": 1180,
     "num": 849,
     "name": "Toxtricity-Low-Key",
-    "searchText": "0849 849 toxtricitylowkey electric poison",
+    "names": {
+      "de": "Riffex-Low-Key"
+    },
+    "searchText": "0849 849 toxtricitylowkey riffexlowkey electric poison",
     "types": [
       "Electric",
       "Poison"
@@ -768288,9 +768438,9 @@ window.POKEDEX_ENTRIES = [
     "num": 849,
     "name": "Toxtricity-Low-Key-Gmax",
     "names": {
-      "de": "Toxtricity-Low-Key-GMAX"
+      "de": "Riffex-Low-Key-GMAX"
     },
-    "searchText": "0849 849 toxtricitylowkeygmax toxtricitylowkeygmax electric poison",
+    "searchText": "0849 849 toxtricitylowkeygmax riffexlowkeygmax electric poison",
     "types": [
       "Electric",
       "Poison"
@@ -770544,7 +770694,10 @@ window.POKEDEX_ENTRIES = [
     "sourceIndex": 1189,
     "num": 854,
     "name": "Sinistea-Antique",
-    "searchText": "0854 854 sinisteaantique ghost",
+    "names": {
+      "de": "Fatalitee-Antique"
+    },
+    "searchText": "0854 854 sinisteaantique fataliteeantique ghost",
     "types": [
       "Ghost"
     ],
@@ -771227,7 +771380,10 @@ window.POKEDEX_ENTRIES = [
     "sourceIndex": 1191,
     "num": 855,
     "name": "Polteageist-Antique",
-    "searchText": "0855 855 polteageistantique ghost",
+    "names": {
+      "de": "Mortipot-Antique"
+    },
+    "searchText": "0855 855 polteageistantique mortipotantique ghost",
     "types": [
       "Ghost"
     ],
@@ -781408,7 +781564,10 @@ window.POKEDEX_ENTRIES = [
     "sourceIndex": 1225,
     "num": 876,
     "name": "Indeedee-F",
-    "searchText": "0876 876 indeedeef psychic normal",
+    "names": {
+      "de": "Servol-F"
+    },
+    "searchText": "0876 876 indeedeef servolf psychic normal",
     "types": [
       "Psychic",
       "Normal"
@@ -788533,7 +788692,10 @@ window.POKEDEX_ENTRIES = [
     "sourceIndex": 1245,
     "num": 890,
     "name": "Eternatus-Eternamax",
-    "searchText": "0890 890 eternatuseternamax poison dragon",
+    "names": {
+      "de": "Endynalos-Eternamax"
+    },
+    "searchText": "0890 890 eternatuseternamax endynaloseternamax poison dragon",
     "types": [
       "Poison",
       "Dragon"
@@ -796919,7 +797081,10 @@ window.POKEDEX_ENTRIES = [
     "sourceIndex": 1265,
     "num": 902,
     "name": "Basculegion-F",
-    "searchText": "0902 902 basculegionf water ghost",
+    "names": {
+      "de": "Salmagnis-F"
+    },
+    "searchText": "0902 902 basculegionf salmagnisf water ghost",
     "types": [
       "Water",
       "Ghost"
@@ -802071,7 +802236,10 @@ window.POKEDEX_ENTRIES = [
     "sourceIndex": 1281,
     "num": 916,
     "name": "Oinkologne-F",
-    "searchText": "0916 916 oinkolognef normal",
+    "names": {
+      "de": "Fragrunz-F"
+    },
+    "searchText": "0916 916 oinkolognef fragrunzf normal",
     "types": [
       "Normal"
     ],
@@ -807215,7 +807383,10 @@ window.POKEDEX_ENTRIES = [
     "sourceIndex": 1298,
     "num": 931,
     "name": "Squawkabilly-Blue",
-    "searchText": "0931 931 squawkabillyblue normal flying",
+    "names": {
+      "de": "Krawalloro-Blau"
+    },
+    "searchText": "0931 931 squawkabillyblue krawalloroblau normal flying",
     "types": [
       "Normal",
       "Flying"
@@ -807516,7 +807687,10 @@ window.POKEDEX_ENTRIES = [
     "sourceIndex": 1299,
     "num": 931,
     "name": "Squawkabilly-Yellow",
-    "searchText": "0931 931 squawkabillyyellow normal flying",
+    "names": {
+      "de": "Krawalloro-Gelb"
+    },
+    "searchText": "0931 931 squawkabillyyellow krawallorogelb normal flying",
     "types": [
       "Normal",
       "Flying"
@@ -818529,7 +818703,10 @@ window.POKEDEX_ENTRIES = [
     "sourceIndex": 1335,
     "num": 964,
     "name": "Palafin-Hero",
-    "searchText": "0964 964 palafinhero water",
+    "names": {
+      "de": "Delfinator-Hero"
+    },
+    "searchText": "0964 964 palafinhero delfinatorhero water",
     "types": [
       "Water"
     ],
@@ -823422,7 +823599,10 @@ window.POKEDEX_ENTRIES = [
     "sourceIndex": 1351,
     "num": 978,
     "name": "Tatsugiri-Droopy",
-    "searchText": "0978 978 tatsugiridroopy dragon water",
+    "names": {
+      "de": "Nigiragi-Droopy"
+    },
+    "searchText": "0978 978 tatsugiridroopy nigiragidroopy dragon water",
     "types": [
       "Dragon",
       "Water"
@@ -823675,7 +823855,10 @@ window.POKEDEX_ENTRIES = [
     "sourceIndex": 1352,
     "num": 978,
     "name": "Tatsugiri-Stretchy",
-    "searchText": "0978 978 tatsugiristretchy dragon water",
+    "names": {
+      "de": "Nigiragi-Stretchy"
+    },
+    "searchText": "0978 978 tatsugiristretchy nigiragistretchy dragon water",
     "types": [
       "Dragon",
       "Water"
@@ -823931,7 +824114,10 @@ window.POKEDEX_ENTRIES = [
     "sourceIndex": 1353,
     "num": 978,
     "name": "Tatsugiri-Curly-Mega",
-    "searchText": "0978 978 tatsugiricurlymega dragon water",
+    "names": {
+      "de": "Nigiragi-Curly-Mega"
+    },
+    "searchText": "0978 978 tatsugiricurlymega nigiragicurlymega dragon water",
     "types": [
       "Dragon",
       "Water"
@@ -824185,9 +824371,9 @@ window.POKEDEX_ENTRIES = [
     "num": 978,
     "name": "Tatsugiri-Droopy-Mega",
     "names": {
-      "de": "Tatsugiri-Droopy-Mega"
+      "de": "Nigiragi-Droopy-Mega"
     },
-    "searchText": "0978 978 tatsugiridroopymega tatsugiridroopymega dragon water",
+    "searchText": "0978 978 tatsugiridroopymega nigiragidroopymega dragon water",
     "types": [
       "Dragon",
       "Water"
@@ -824441,9 +824627,9 @@ window.POKEDEX_ENTRIES = [
     "num": 978,
     "name": "Tatsugiri-Stretchy-Mega",
     "names": {
-      "de": "Tatsugiri-Stretchy-Mega"
+      "de": "Nigiragi-Stretchy-Mega"
     },
-    "searchText": "0978 978 tatsugiristretchymega tatsugiristretchymega dragon water",
+    "searchText": "0978 978 tatsugiristretchymega nigiragistretchymega dragon water",
     "types": [
       "Dragon",
       "Water"
@@ -826370,7 +826556,10 @@ window.POKEDEX_ENTRIES = [
     "sourceIndex": 1360,
     "num": 982,
     "name": "Dudunsparce-Three-Segment",
-    "searchText": "0982 982 dudunsparcethreesegment normal",
+    "names": {
+      "de": "Dummimisel-Three-Segment"
+    },
+    "searchText": "0982 982 dudunsparcethreesegment dummimiselthreesegment normal",
     "types": [
       "Normal"
     ],
@@ -832527,7 +832716,10 @@ window.POKEDEX_ENTRIES = [
     "sourceIndex": 1379,
     "num": 999,
     "name": "Gimmighoul-Roaming",
-    "searchText": "0999 999 gimmighoulroaming ghost",
+    "names": {
+      "de": "Gierspenst-Roaming"
+    },
+    "searchText": "0999 999 gimmighoulroaming gierspenstroaming ghost",
     "types": [
       "Ghost"
     ],
@@ -836875,7 +837067,10 @@ window.POKEDEX_ENTRIES = [
     "sourceIndex": 1393,
     "num": 1012,
     "name": "Poltchageist-Artisan",
-    "searchText": "1012 1012 poltchageistartisan grass ghost",
+    "names": {
+      "de": "Mortcha-Artisan"
+    },
+    "searchText": "1012 1012 poltchageistartisan mortchaartisan grass ghost",
     "types": [
       "Grass",
       "Ghost"
@@ -837402,7 +837597,10 @@ window.POKEDEX_ENTRIES = [
     "sourceIndex": 1395,
     "num": 1013,
     "name": "Sinistcha-Masterpiece",
-    "searchText": "1013 1013 sinistchamasterpiece grass ghost",
+    "names": {
+      "de": "Fatalitcha-Masterpiece"
+    },
+    "searchText": "1013 1013 sinistchamasterpiece fatalitchamasterpiece grass ghost",
     "types": [
       "Grass",
       "Ghost"

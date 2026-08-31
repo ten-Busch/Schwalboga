@@ -2078,6 +2078,93 @@ function getPokemonDisplayName(pokemon) {
   return pokemon?.displayName ?? pokemon?.name ?? '';
 }
 
+const naturalHyphenDisplayNames = new Set([
+  'Ho-Oh',
+  'Kommo-o',
+  'Wie-Shu',
+  'Kapu-Riki',
+  'Kapu-Fala',
+  'Kapu-Toro',
+  'Kapu-Kime',
+  'Wo-Chie',
+  'Wo-Chien',
+  'Chien-Pao',
+  'Ting-Lu',
+  'Chi-Yu',
+]);
+
+const naturalHyphenBaseNames = [
+  'Kommo-o',
+];
+
+function getDisplayNameFormVariant(pokemon, formLabel) {
+  const functionalName = pokemon?.name ?? '';
+  if (/^Ogerpon-Hearthflame-Tera$/i.test(functionalName)) return 'ogerpon-hearthflame';
+  if (/^Ogerpon-Cornerstone-Tera$/i.test(functionalName)) return 'ogerpon-cornerstone';
+  if (/^Ogerpon-Wellspring-Tera$/i.test(functionalName)) return 'ogerpon-wellspring';
+  if (/^Ogerpon-Teal-Tera$/i.test(functionalName)) return 'ogerpon-teal';
+  if (functionalName === 'Eternatus-Eternamax' || /\bEternamax\b/i.test(formLabel)) return 'gmax';
+  if (functionalName.endsWith('-Stellar') || /\bStellar\b/i.test(formLabel)) return 'stellar';
+  if (isGmaxPokemon(functionalName) || /\bG(?:MAX|max)\b/.test(formLabel) || /\bGigantamax\b/i.test(formLabel)) return 'gmax';
+  if (isMegaPokemon(functionalName) || /\bMega\b/i.test(formLabel)) return 'mega';
+  return null;
+}
+
+function getPokemonDisplayNameParts(pokemon) {
+  const displayName = getPokemonDisplayName(pokemon);
+  if (!displayName.includes('-')) return { main: displayName, form: null, variant: null };
+  if (naturalHyphenDisplayNames.has(displayName) || naturalHyphenDisplayNames.has(pokemon?.name)) {
+    return { main: displayName, form: null, variant: null };
+  }
+  const naturalBase = naturalHyphenBaseNames.find((base) => displayName.startsWith(`${base}-`));
+  if (naturalBase) {
+    const form = displayName.slice(naturalBase.length + 1).replace(/\bG(?:MAX|max)\b/g, 'Gigantamax').replace(/-/g, ' ').trim();
+    if (form) return { main: naturalBase, form, variant: getDisplayNameFormVariant(pokemon, form) };
+  }
+  const [main, ...formParts] = displayName.split('-');
+  const form = formParts.join(' ').replace(/\bG(?:MAX|max)\b/g, 'Gigantamax').trim();
+  if (!main || !form) return { main: displayName, form: null, variant: null };
+  return { main: main.trim(), form, variant: getDisplayNameFormVariant(pokemon, form) };
+}
+
+function renderPokemonDisplayName(element, pokemon) {
+  if (!element) return;
+  element.classList.remove(
+    'has-split-display-name',
+    'has-form-mega',
+    'has-form-gmax',
+    'has-form-stellar',
+    'has-form-ogerpon-hearthflame',
+    'has-form-ogerpon-cornerstone',
+    'has-form-ogerpon-wellspring',
+    'has-form-ogerpon-teal',
+  );
+  const parts = getPokemonDisplayNameParts(pokemon);
+  element.replaceChildren();
+  element.setAttribute('aria-label', getPokemonDisplayName(pokemon));
+  if (!parts.form) {
+    element.textContent = parts.main;
+    return;
+  }
+  element.classList.add('has-split-display-name');
+  if (parts.variant) element.classList.add(`has-form-${parts.variant}`);
+  const main = document.createElement('span');
+  main.className = 'display-name-main';
+  main.textContent = parts.main;
+  const form = document.createElement('span');
+  form.className = 'display-name-form';
+  if (pokemon?.name === 'Magearna-Original-Mega' && parts.form === 'Original Mega') {
+    form.classList.add('has-partial-highlight');
+    const mega = document.createElement('span');
+    mega.className = 'display-name-form-highlight is-mega-highlight';
+    mega.textContent = 'Mega';
+    form.append('(', 'Original ', mega, ')');
+  } else {
+    form.textContent = `(${parts.form})`;
+  }
+  element.append(main, form);
+}
+
 function getReplacementHelpNameElement() {
   return document.querySelector('#replacement-help-name');
 }
@@ -3412,7 +3499,7 @@ function createSimplePokemonCell(pokemon, format) {
 
   const name = document.createElement('span');
   name.className = 'pokemon-simple-name';
-  name.textContent = getPokemonDisplayName(pokemon);
+  renderPokemonDisplayName(name, pokemon);
 
   const badges = document.createElement('span');
   badges.className = 'pokemon-simple-badges';
@@ -3573,7 +3660,7 @@ function createPokemonCard(pokemon, format) {
   setPokemonSpriteWithFallback(sprite, pokemon, pokemon.sprite, `${getPokemonDisplayName(pokemon)} sprite`, card);
   applySpriteCheckerOverlay(card, pokemon, pokemon.sprite);
 
-  name.textContent = getPokemonDisplayName(pokemon);
+  renderPokemonDisplayName(name, pokemon);
   if (specialNameVariant === 'quark') name.classList.add('is-quark-name');
   if (specialNameVariant === 'proto') name.classList.add('is-proto-name');
   const sortDisplayValue = getSortDisplayValue(pokemon, sortField.value);
@@ -10449,13 +10536,26 @@ function renderPokemonDetail(pokemon) {
       pokemonDetailModal.classList.remove('is-rotom-static');
     }, 1100);
   }
-  detailTitle.textContent = getPokemonDisplayName(pokemon);
+  detailTitle.classList.remove(
+    'is-quark-name',
+    'is-proto-name',
+    'is-porygon-glitching',
+    'is-disguised-name',
+    'has-split-display-name',
+    'has-form-mega',
+    'has-form-gmax',
+    'has-form-stellar',
+    'has-form-ogerpon-hearthflame',
+    'has-form-ogerpon-cornerstone',
+    'has-form-ogerpon-wellspring',
+    'has-form-ogerpon-teal',
+  );
+  renderPokemonDisplayName(detailTitle, pokemon);
   if (costSuggestionValue) {
     costSuggestionValue.value = '';
     costSuggestionValue.placeholder = getPokemonCost(pokemon) === null ? 'Neue Kosten' : `Aktuell: ${getPokemonCost(pokemon)}`;
   }
   resetCostSuggestionForm();
-  detailTitle.classList.remove('is-quark-name', 'is-proto-name', 'is-porygon-glitching', 'is-disguised-name');
   const detailNameVariant = getSpecialNameVariant(pokemon);
   if (detailNameVariant === 'quark') detailTitle.classList.add('is-quark-name');
   if (detailNameVariant === 'proto') detailTitle.classList.add('is-proto-name');
@@ -10535,7 +10635,7 @@ function renderPokemonDetail(pokemon) {
     titleRow.className = 'detail-top-title-row';
     const title = document.createElement('h3');
     title.className = 'detail-top-title';
-    title.textContent = getPokemonDisplayName(form);
+    renderPokemonDisplayName(title, form);
     const formNameVariant = getSpecialNameVariant(form);
     if (formNameVariant === 'quark') title.classList.add('is-quark-name');
     if (formNameVariant === 'proto') title.classList.add('is-proto-name');

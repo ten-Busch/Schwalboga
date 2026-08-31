@@ -10,6 +10,7 @@
     ['tenbusch1@gmail.com', ['tenbusch']],
     ['stefan.gysbers@web.de', ['gysi1994']],
     ['robin.nyboer@web.de', ['mrstarli']],
+    ['aweggebakker@uos.de', ['nyantacuga']],
   ]);
   let selectedId = null;
 

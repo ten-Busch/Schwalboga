@@ -57,9 +57,16 @@ GERMAN_VALUE_CORRECTIONS = {
 MANUAL_TRANSLATIONS = {
     "pokemon": {
         "banette": {"de": "Banette"},
+        "calyrexice": {"de": "Coronospa-Schimmel"},
+        "cramorantgulping": {"de": "Urgl"},
+        "cramorantgorging": {"de": "Urgl"},
+        "kommoototem": {"de": "Grandiras-Totem"},
         "taurospaldeacombat": {"de": "Tauros-Paldea-Gefecht"},
         "taurospaldeablaze": {"de": "Tauros-Paldea-Flammen"},
         "taurospaldeaaqua": {"de": "Tauros-Paldea-Fluten"},
+        "tatsugiricurlymega": {"de": "Nigiragi-Curly-Mega"},
+        "tatsugiridroopymega": {"de": "Nigiragi-Droopy-Mega"},
+        "tatsugiristretchymega": {"de": "Nigiragi-Stretchy-Mega"},
     },
 }
 

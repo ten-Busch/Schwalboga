@@ -267,6 +267,9 @@
     "calyrex": {
       "de": "Coronospa"
     },
+    "calyrexice": {
+      "de": "Coronospa-Schimmel"
+    },
     "capsakid": {
       "de": "Chilingel"
     },
@@ -448,6 +451,12 @@
       "de": "Wielie"
     },
     "cramorant": {
+      "de": "Urgl"
+    },
+    "cramorantgorging": {
+      "de": "Urgl"
+    },
+    "cramorantgulping": {
       "de": "Urgl"
     },
     "cranidos": {
@@ -1203,6 +1212,9 @@
     "kommoo": {
       "de": "Grandiras"
     },
+    "kommoototem": {
+      "de": "Grandiras-Totem"
+    },
     "kricketot": {
       "de": "Zirpurze"
     },
@@ -1414,7 +1426,7 @@
       "de": "Meteno"
     },
     "misdreavus": {
-      "de": "Traunfugil"
+      "de": "Traunmagil"
     },
     "mismagius": {
       "de": "Traunmagil"
@@ -2189,6 +2201,15 @@
     },
     "tatsugiri": {
       "de": "Nigiragi"
+    },
+    "tatsugiricurlymega": {
+      "de": "Nigiragi-Curly-Mega"
+    },
+    "tatsugiridroopymega": {
+      "de": "Nigiragi-Droopy-Mega"
+    },
+    "tatsugiristretchymega": {
+      "de": "Nigiragi-Stretchy-Mega"
     },
     "taurospaldeaaqua": {
       "de": "Tauros-Paldea-Fluten"
