@@ -11,6 +11,7 @@
     ['stefan.gysbers@web.de', ['gysi1994']],
     ['robin.nyboer@web.de', ['mrstarli']],
     ['aweggebakker@uos.de', ['nyantacuga']],
+    ['niklasnykamp16@gmail.com', ['sibra1998']],
   ]);
   let selectedId = null;
 
