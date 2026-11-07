@@ -3351,6 +3351,10 @@ function applyAllFilters() {
   renderSearchSummary();
 }
 
+function appendPokemonCostMode(costElement) {
+  costElement.append(createNode('span', 'pokemon-cost-mode', activeBattleMode === 'doubles' ? 'D' : 'S'));
+}
+
 function applyCostStyling(costElement, cost, card, format = 'normal') {
   costElement.className = 'pokemon-cost';
   if (format !== 'free' && card.classList.contains('is-impossible')) {
@@ -3372,6 +3376,7 @@ function applyCostStyling(costElement, cost, card, format = 'normal') {
   }
 
   costElement.textContent = String(cost);
+  appendPokemonCostMode(costElement);
   if ([22, 24, 26, 30, 32].includes(cost)) {
     costElement.classList.add('is-premium', `cost-${cost}`);
   }
@@ -3479,7 +3484,9 @@ function createSimplePokemonCell(pokemon, format) {
 
   const cost = document.createElement('span');
   cost.className = 'pokemon-simple-cost';
-  cost.textContent = getSimpleCostLabel(getPokemonCost(pokemon));
+  const costValue = getPokemonCost(pokemon);
+  cost.textContent = getSimpleCostLabel(costValue);
+  if (costValue !== null) appendPokemonCostMode(cost);
   markPlaceholderCost(cost, pokemon);
 
   const name = document.createElement('span');

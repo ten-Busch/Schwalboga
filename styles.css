@@ -1578,6 +1578,11 @@ body.pokemon-detail-open .mobile-panel-dock {
   }
 }
 
+.pokemon-cost-mode {
+  margin-inline-start: 0.12em;
+  opacity: 0.5;
+}
+
 .is-placeholder-cost {
   color: #7dff00 !important;
   text-shadow: 0 0 8px rgba(125, 255, 0, 0.42);
