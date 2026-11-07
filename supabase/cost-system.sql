@@ -26,6 +26,12 @@ on public.pokemon_costs for select
 to authenticated
 using (true);
 
+drop policy if exists "guests can read costs" on public.pokemon_costs;
+create policy "guests can read costs"
+on public.pokemon_costs for select
+to anon
+using (true);
+
 drop policy if exists "authenticated users can add costs" on public.pokemon_costs;
 drop policy if exists "cost administrators can add costs" on public.pokemon_costs;
 create policy "cost administrators can add costs"
@@ -96,4 +102,5 @@ for each row execute function public.record_pokemon_cost_change();
 grant select, insert, update on public.pokemon_costs to authenticated;
 grant select on public.pokemon_cost_history to authenticated;
 revoke all on public.pokemon_costs from anon;
+grant select (pokemon_name, cost, cost_dbl) on public.pokemon_costs to anon;
 revoke all on public.pokemon_cost_history from anon;

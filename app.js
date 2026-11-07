@@ -692,14 +692,12 @@ const meta = window.POKEDEX_META ?? { abilities: [], moves: [], movesById: {} };
 const languageStorageKey = 'pokedex-name-language';
 let activeNameLanguage = localStorage.getItem(languageStorageKey) === 'de' ? 'de' : 'en';
 const battleModeStorageKey = 'schwalboga-battle-mode';
-let preferredBattleMode = localStorage.getItem(battleModeStorageKey) === 'doubles' ? 'doubles' : 'singles';
-let activeBattleMode = 'singles';
+let activeBattleMode = localStorage.getItem(battleModeStorageKey) === 'doubles' ? 'doubles' : 'singles';
 let supabaseClient = null;
 let authSession = null;
 let authRecoveryMode = false;
 const authLinkTypeAtLoad = new URLSearchParams(window.location.hash.slice(1)).get('type');
 const COST_ADMIN_EMAILS = new Set(['tenbusch1@gmail.com', 'stefan.gysbers@web.de']);
-const DOUBLES_BLOCKED_EMAILS = new Set(['schwalboga@gmail.com']);
 const REPLAY_ADMIN_EMAILS = new Set(['schwalboga@gmail.com', 'replay@schwalboga.de']);
 let sharedCostRows = new Map();
 let sharedCostsReady = false;
@@ -712,10 +710,6 @@ function currentUserEmail() {
 
 function canEditCosts() {
   return COST_ADMIN_EMAILS.has(currentUserEmail());
-}
-
-function canViewDoublesCosts() {
-  return !DOUBLES_BLOCKED_EMAILS.has(currentUserEmail());
 }
 
 function getReplayViewer() {
@@ -754,12 +748,9 @@ function syncBattleModeToggle() {
   if (!battleModeToggle) return;
   const isDoubles = activeBattleMode === 'doubles';
   battleModeToggle.setAttribute('aria-pressed', String(isDoubles));
-  const signedIn = Boolean(authSession?.user);
-  const doublesAllowed = signedIn && canViewDoublesCosts();
-  battleModeToggle.hidden = signedIn && !doublesAllowed;
   battleModeToggle.setAttribute(
     'aria-label',
-    doublesAllowed ? (isDoubles ? 'Doubles-Kosten aktiv' : 'Singles-Kosten aktiv') : 'Anmelden, um Doubles-Kosten zu verwenden',
+    isDoubles ? 'Singles-Kosten anzeigen' : 'Doubles-Kosten anzeigen',
   );
   const label = battleModeToggle.querySelector('.theme-toggle-label');
   if (label) label.textContent = isDoubles ? 'Doubles' : 'Singles';
@@ -768,14 +759,8 @@ function syncBattleModeToggle() {
 }
 
 function toggleBattleMode() {
-  if (!authSession?.user || !canViewDoublesCosts()) {
-    openAuthModal();
-    setAuthFeedback(authSession?.user ? 'Dieses Konto hat keinen Zugriff auf Doubles-Kosten.' : 'Melde dich an, um die Doubles-Kosten zu verwenden.', 'error');
-    return;
-  }
   activeBattleMode = activeBattleMode === 'singles' ? 'doubles' : 'singles';
-  preferredBattleMode = activeBattleMode;
-  localStorage.setItem(battleModeStorageKey, preferredBattleMode);
+  localStorage.setItem(battleModeStorageKey, activeBattleMode);
   syncBattleModeToggle();
   refreshCostDependentViews();
 }
@@ -856,18 +841,21 @@ function syncAuthUi() {
   syncBattleModeToggle();
 }
 
-function applyAuthSession(session, { refresh = true } = {}) {
-  const wasMode = activeBattleMode;
+function applyAuthSession(session) {
+  const previousUserId = authSession?.user?.id;
+  const couldEditCosts = canEditCosts();
   authSession = session ?? null;
-  activeBattleMode = authSession?.user && canViewDoublesCosts() ? preferredBattleMode : 'singles';
+  const accountChanged = previousUserId !== authSession?.user?.id;
+  if (accountChanged) tierEditorDraft.clear();
   syncAuthUi();
   window.dispatchEvent(new CustomEvent('schwalboga:auth-changed'));
   if (!canEditCosts() && activeHubView === 'tier-editor') {
     window.location.hash = '#home';
     renderHubView('home');
   }
-  void syncSharedCostsForSession();
-  if (refresh && wasMode !== activeBattleMode && pokemonByName.size) refreshCostDependentViews();
+  if (pokemonByName.size && (couldEditCosts !== canEditCosts() || (accountChanged && activeHubView === 'tier-editor'))) {
+    refreshCostDependentViews();
+  }
 }
 
 function rememberStaticPokemonCosts() {
@@ -900,36 +888,32 @@ function applySharedCostRows() {
   }
 }
 
-async function syncSharedCostsForSession() {
-  if (!allPokemon.length) return;
-  rememberStaticPokemonCosts();
-  tierEditorDraft = new Map();
-  sharedCostsError = '';
-  if (!authSession?.user || !supabaseClient) {
-    sharedCostRows = new Map();
-    sharedCostsReady = false;
-    restoreStaticPokemonCosts();
-    refreshCostDependentViews();
-    return;
+async function loadSharedCosts() {
+  if (!allPokemon.length || !supabaseClient) return;
+  const rows = new Map();
+  let lastName = null;
+  while (true) {
+    let query = supabaseClient
+      .from('pokemon_costs')
+      .select('pokemon_name,cost,cost_dbl')
+      .order('pokemon_name')
+      .limit(1000);
+    if (lastName !== null) query = query.gt('pokemon_name', lastName);
+    const { data, error } = await query;
+    if (error) {
+      sharedCostsReady = false;
+      sharedCostsError = error.message;
+      if (activeHubView === 'tier-editor') renderTierEditor();
+      return;
+    }
+    if (!data.length) break;
+    for (const row of data) rows.set(row.pokemon_name, row);
+    lastName = data[data.length - 1].pokemon_name;
   }
-
-  const costColumns = canViewDoublesCosts()
-    ? 'pokemon_name,cost,cost_dbl,updated_at,updated_by'
-    : 'pokemon_name,cost,updated_at,updated_by';
-  const { data, error } = await supabaseClient
-    .from('pokemon_costs')
-    .select(costColumns);
-  if (error) {
-    sharedCostsReady = false;
-    sharedCostsError = error.message;
-    setTierEditorStatus('Die Kostentabelle ist noch nicht eingerichtet. Führe zuerst das Supabase-SQL aus.', 'error');
-    return;
-  }
-  sharedCostRows = new Map((data ?? []).map((row) => [row.pokemon_name, row]));
+  sharedCostRows = rows;
   sharedCostsReady = true;
   applySharedCostRows();
   refreshCostDependentViews();
-  if (activeHubView === 'tier-editor') renderTierEditor();
 }
 
 function normalizeEditableCost(value) {
@@ -942,6 +926,7 @@ async function saveSharedCostChanges(changes) {
   if (!authSession?.user || !supabaseClient) throw new Error('Nicht angemeldet.');
   if (!canEditCosts()) throw new Error('Dieses Konto darf Kosten nicht bearbeiten.');
   if (!changes.length) return [];
+  if (!sharedCostsReady) throw new Error('Die aktuellen Kosten sind noch nicht geladen.');
   const rows = changes.map((change) => ({
     pokemon_name: change.pokemon_name,
     cost: change.cost,
@@ -5979,11 +5964,15 @@ function renderTierEditor() {
     return;
   }
   tierEditorRows.innerHTML = '';
-  if (!sharedCostsReady && sharedCostsError) {
-    setTierEditorStatus('Die Supabase-Kostentabelle fehlt noch. Führe das vorbereitete SQL aus.', 'error');
-  } else {
-    setTierEditorStatus(`${tierEditorDraft.size} ungespeicherte Änderung${tierEditorDraft.size === 1 ? '' : 'en'}.`);
+  if (!sharedCostsReady) {
+    if (sharedCostsError) {
+      setTierEditorStatus('Die Kostentabelle konnte nicht geladen werden.', 'error');
+    } else {
+      setTierEditorStatus('Aktuelle Kosten werden geladen …');
+    }
+    return;
   }
+  setTierEditorStatus(`${tierEditorDraft.size} ungespeicherte Änderung${tierEditorDraft.size === 1 ? '' : 'en'}.`);
   const query = normalizeText(tierEditorSearch?.value ?? '');
   const changedOnly = Boolean(tierEditorChangedOnly?.checked);
   const matches = allPokemon.filter((pokemon) => {
@@ -10814,14 +10803,11 @@ function renderPokemonDetail(pokemon) {
   const singlesCost = getPokemonCost(pokemon, 'singles');
   const doublesCost = getPokemonCost(pokemon, 'doubles');
   const activeCost = getPokemonCost(pokemon);
-  const costEditor = canEditCosts() ? createDetailCostEditor(pokemon) : null;
+  const costEditor = sharedCostsReady && canEditCosts() ? createDetailCostEditor(pokemon) : null;
   if (singlesCost === null && doublesCost === null) {
     renderEmptyDetailState(detailTierList, 'Für dieses Pokémon sind derzeit keine Punktekosten festgelegt.');
   } else {
-    const visibleCosts = canViewDoublesCosts()
-      ? [['Singles', singlesCost], ['Doubles', doublesCost]]
-      : [['Singles', singlesCost]];
-    for (const [modeLabel, modeCost] of visibleCosts) {
+    for (const [modeLabel, modeCost] of [['Singles', singlesCost], ['Doubles', doublesCost]]) {
       const costRibbon = document.createElement('div');
       costRibbon.className = 'detail-ribbon is-tier';
       const costBadge = document.createElement('span');
@@ -10837,12 +10823,11 @@ function renderPokemonDetail(pokemon) {
         : `Dieses Pokémon kostet ${modeCost} Punkte in ${modeLabel}`;
       markPlaceholderCost(costText, pokemon, modeLabel.toLowerCase());
       costRibbon.append(costBadge, costText);
-      if (canEditCosts()) {
+      if (costEditor) {
         const edit = createNode('button', 'details-secondary detail-cost-edit-button', '✎');
         edit.type = 'button';
         edit.setAttribute('aria-label', `${modeLabel}-Kosten bearbeiten`);
         edit.addEventListener('click', () => {
-          if (!costEditor) return;
           costEditor.hidden = false;
           costEditor.querySelector(`[data-mode="${modeLabel.toLowerCase()}"]`)?.focus();
         });
@@ -14176,7 +14161,7 @@ async function loadPokedex() {
       return map;
     }, new Map());
     applyAllFilters();
-    void syncSharedCostsForSession();
+    void loadSharedCosts();
     openPokemonDetailFromUrl();
     initializeLandingTierUpdate();
     if (activeHubView === 'draft') renderDraftOverview();
