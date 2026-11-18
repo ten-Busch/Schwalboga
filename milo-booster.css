@@ -1,0 +1,61 @@
+.milo-joker-dialog.milo-booster-dialog {
+  box-sizing: border-box; width: min(1820px, calc(100vw - 28px)); max-width: none;
+  max-height: 96dvh; padding: clamp(16px, 2vw, 32px); overflow: auto;
+  background: radial-gradient(ellipse at 50% 35%, #243c60, #090e20 75%);
+  border: 1px solid #93bdd6; box-shadow: 0 0 80px #55a8dc33, 0 24px 100px #000c;
+}
+.milo-booster-dialog::backdrop { background: #020613ef; }
+.milo-booster-dialog > h3 { margin: 0; text-align: center; }
+.milo-booster-subtitle { text-align: center; color: #e3ce91; letter-spacing: .06em; }
+.milo-booster-scene { position: relative; isolation: isolate; display: grid; place-items: center; min-height: min(58dvh, 570px); }
+.milo-booster-pack { position: relative; width: min(260px, 45vw, 26dvh); aspect-ratio: 546 / 1025;
+  filter: drop-shadow(0 18px 24px #000b); transform: rotate(-4deg); }
+.milo-booster-wrapper, .milo-booster-tear { position: absolute; inset: 0;
+  background: url('assets/tcg/Boosterpack.jpg') center / 100% 100% no-repeat; }
+.milo-booster-wrapper { clip-path: polygon(0 11%, 17% 10%, 34% 12%, 51% 10%, 73% 12%, 100% 10%, 100% 100%, 0 100%); }
+.milo-booster-tear { clip-path: polygon(0 0, 100% 0, 100% 10%, 73% 12%, 51% 10%, 34% 12%, 17% 10%, 0 11%); }
+.is-opening .milo-booster-tear { animation: milo-pack-tear .65s ease-in forwards; }
+.is-opening .milo-booster-wrapper { animation: milo-pack-drop .65s .4s ease-in forwards; }
+.milo-booster-status { text-align: center; min-height: 1.5em; font-size: clamp(15px, 1.3vw, 21px); color: #f7e6b5; }
+.milo-booster-actions { display: flex; justify-content: center; flex-wrap: wrap; gap: 12px; }
+.milo-booster-current { position: relative; z-index: 1; padding: 15px; animation: milo-card-reveal .6s cubic-bezier(.17,.7,.22,1) both; }
+.milo-booster-current > .milo-card { width: min(360px, 70vw, 36dvh); }
+.milo-booster-aura { position: absolute; inset: 5%; pointer-events: none; opacity: .4;
+  background: radial-gradient(ellipse, #9ddfff66, transparent 65%); }
+.is-big-hit .milo-booster-current { animation: milo-mega-reveal 1s cubic-bezier(.17,.7,.22,1) both; }
+.is-big-hit .milo-booster-aura { opacity: 1; background: repeating-conic-gradient(from 20deg, #ed98ff33 0deg 10deg, transparent 12deg 30deg), radial-gradient(ellipse, #ffdb8477, transparent 65%);
+  mask-image: radial-gradient(ellipse, #000, transparent 72%); animation: milo-hit-bloom 1s ease-out both; }
+.milo-booster-scene.is-gallery { display: block; min-height: 0; }
+.milo-booster-gallery { grid-template-columns: repeat(5, minmax(0, 1fr)); gap: clamp(10px, 1.5vw, 28px); }
+.milo-booster-gallery .milo-card { width: 300px; }
+.milo-booster-card-label { color: #b8cee6; font-size: 12px; text-align: center; }
+@keyframes milo-pack-tear { to { transform: translate(65px, -110px) rotate(35deg); opacity: 0; } }
+@keyframes milo-pack-drop { to { transform: translateY(160px) rotate(-12deg); opacity: 0; } }
+@keyframes milo-card-reveal { from { opacity: 0; transform: translateY(65px) rotateY(75deg) scale(.8); } to { opacity: 1; transform: none; } }
+@keyframes milo-mega-reveal { from { opacity: 0; transform: translateY(50px) scale(.65) rotate(-10deg); filter: brightness(2); } to { opacity: 1; transform: none; filter: brightness(1); } }
+@keyframes milo-hit-bloom { from { opacity: 0; transform: scale(.5); } to { opacity: 1; transform: scale(1); } }
+
+@media (prefers-reduced-motion: reduce) {
+  .milo-booster-dialog *, .milo-booster-dialog *::before, .milo-booster-dialog *::after { animation: none !important; transition: none !important; }
+}
+
+.milo-booster-gallery { width: min(100%, calc(350dvh - 875px)); margin-inline: auto; gap: clamp(3px, 1vw, 18px); }
+.milo-booster-gallery .milo-card-preview-slot { display: block; padding: 8px 0 16px; }
+.milo-booster-card-fit { position: relative; width: 100%; aspect-ratio: 63 / 88; }
+.milo-booster-card-fit > .milo-card,
+.milo-booster-card-fit > .milo-card:hover { position: absolute; inset: 0; width: 320px; max-width: none; transform-origin: top left; transform: scale(var(--card-scale, 1)); }
+.milo-booster-dialog .milo-card { cursor: zoom-in; }
+.milo-booster-card-label { font-size: clamp(7px, .8vw, 12px); min-height: 2.5em; margin: 0 0 8px; overflow-wrap: anywhere; }
+.milo-card-zoom { padding: 22px; border: 1px solid #93bdd6; border-radius: 16px; background: #101a2e; color: #edf3ff; max-height: 95dvh; overflow: auto; }
+.milo-card-zoom::backdrop { background: #020613e8; }
+.milo-card-zoom-fit { width: min(440px, 75vw, 55dvh); margin: 0 auto 20px; }
+.milo-card-zoom .milo-card { cursor: default; }
+@media (max-height: 400px) { .milo-booster-gallery { width: 80%; } }
+
+/* Every view scales the same 320px card rather than resizing its content. */
+.milo-booster-card-fit > .milo-card,
+.milo-booster-card-fit > .milo-card:hover {
+  inset: 0 auto auto 0; width: 320px; height: 446.984126984px;
+  transition: box-shadow 220ms ease;
+}
+.milo-booster-current > .milo-booster-card-fit { width: min(360px, 70vw, 36dvh); }

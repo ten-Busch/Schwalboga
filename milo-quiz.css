@@ -35,6 +35,38 @@
 .milo-score-form p { flex-basis: 100%; }
 .milo-joker-dialog .milo-phone { padding: 20px; border-radius: 10px; }
 .milo-joker-dialog .milo-speaker { width: fit-content; padding: 6px 14px; border: 1px solid #ffda91; background: #242e49; margin-bottom: 18px; }
+.milo-joker-dialog .milo-phone.milo-matrix {
+  background: #000;
+  color: #39ff14;
+  border-color: #39ff14;
+  box-shadow: inset 0 0 0 4px #063608;
+  text-shadow: 0 0 7px #39ff1455;
+}
+.milo-joker-dialog .milo-matrix .milo-speaker {
+  background: #000;
+  color: #39ff14;
+  border-color: #39ff14;
+}
+.milo-joker-dialog .milo-phone.milo-roto {
+  background: #fff5ac;
+  color: #111;
+  border: 4px solid #ffb000;
+  box-shadow: none;
+}
+.milo-joker-dialog .milo-roto .milo-speaker { background: #fff5ac; color: #111; border-color: #ffb000; }
+.milo-joker-dialog .milo-roto p { color: #111; font-family: Arial, sans-serif; }
+.milo-kricketune-text { height: 180px; overflow-y: scroll; overflow-wrap: anywhere; scrollbar-color: #84e8df #0e162f; }
+.milo-xatu p {
+  text-shadow: -1px 1px 5px #ff78d8;
+  animation: milo-xatu-shadow 3s ease-in-out infinite alternate;
+}
+@keyframes milo-xatu-shadow {
+  from { text-shadow: -1px 1px 5px #ff78d8; }
+  to { text-shadow: 1px -1px 7px #ff78d8; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .milo-xatu p { animation: none; }
+}
 
 .milo-dev-dialog {
   width: min(780px, calc(100% - 48px));
@@ -259,6 +291,23 @@
 .milo-actions p { margin-inline-end: auto; }
 .milo-answers { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
 .milo-dialog .milo-answer { text-align: left; }
+.milo-dialog .milo-answer-with-estimate { position: relative; padding-right: 5.5em; }
+.milo-achromas-estimate {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  padding: 3px 8px;
+  border: 1px solid #a5deff;
+  border-radius: 7px;
+  background: #153654;
+  color: #effaff;
+  font-size: 0.75em;
+  font-weight: 700;
+  line-height: 1.4;
+  box-shadow: 0 0 8px #83d1ff33;
+  pointer-events: none;
+}
 .milo-answer[aria-pressed='true'] { border-color: var(--milo-gold); color: var(--milo-gold); }
 .milo-dialog .milo-answer[data-result] { opacity: 1; }
 .milo-dialog .milo-answer[data-result='correct'] { background: #14524e; border-color: #78d9a8; }
@@ -280,7 +329,7 @@
 }
 
 .milo-phone h3 { color: var(--milo-gold); }
-.milo-phone p { font: 1rem/1.6 'Courier New', monospace; }
+.milo-phone p { font: 1rem/1.6 'Courier New', monospace; white-space: pre-line; }
 .milo-ladder ol, .milo-board ol { list-style: none; padding: 0; }
 .milo-ladder li {
   display: grid;

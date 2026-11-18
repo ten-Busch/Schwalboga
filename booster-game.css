@@ -1,0 +1,37 @@
+.booster-game-content { max-width: 1400px; margin: 0 auto; padding: 24px; font-size: 16px; }
+.booster-game h1 { font: 700 clamp(1.8rem, 4vw, 2.8rem) 'Chakra Petch', sans-serif; margin: 0; }
+.booster-game-content > [role='status'] { padding: 0 0 20px; }
+.booster-home { display: flex; gap: 36px; align-items: center; padding: 26px; border: 1px solid var(--milo-line); border-radius: 18px; background: #14223a; }
+.booster-home > div { display: grid; justify-items: start; gap: 16px; }
+.booster-home-pack { width: 130px; border-radius: 4px; transform: rotate(-5deg); box-shadow: 0 12px 25px #0007; }
+.booster-counters { display: grid; grid-template-columns: repeat(auto-fit, minmax(115px, 1fr)); gap: 10px; margin-block: 26px; }
+.booster-counter { display: grid; gap: 5px; padding: 14px; background: #172640; border: 1px solid #3c4d78; border-radius: 10px; }
+.booster-counter strong { font-size: 25px; color: #ffdf8b; }
+.booster-counter span { color: #c0cde3; font-size: 12px; }
+.booster-collection-heading { display: flex; gap: 20px; align-items: end; flex-wrap: wrap; }
+.booster-collection-heading > div { margin-right: auto; }
+.booster-collection-heading label { display: grid; gap: 6px; color: #c0cde3; font-size: 13px; }
+.booster-collection-heading input[type='search'] { width: min(280px, 75vw); padding: 10px; border: 1px solid #61759d; border-radius: 8px; background: #152039; color: #fff; font: inherit; }
+.booster-collection-heading .booster-owned-filter { display: flex; align-items: center; padding-bottom: 10px; }
+.booster-collection-hint { padding-block: 14px; font-size: 13px; }
+.booster-dex { display: grid; grid-template-columns: repeat(auto-fill, minmax(105px, 1fr)); gap: 9px; }
+.booster-game .booster-dex-slot { display: grid; justify-items: center; align-content: start; min-width: 0; gap: 4px; padding: 10px 5px; min-height: 140px; background: #101b30; }
+.booster-game .booster-dex-slot.is-owned { border-color: #67c6bc; background: #17333c; }
+.booster-dex-slot > span:first-child { justify-self: start; font-size: 10px; color: #a0b4d0; }
+.booster-dex-slot img { width: 64px; height: 64px; object-fit: contain; image-rendering: pixelated; }
+.booster-dex-empty { display: grid; place-items: center; height: 64px; font-size: 32px; color: #3f5270; }
+.booster-dex-slot strong { font-size: 12px; overflow-wrap: anywhere; text-align: center; }
+.booster-dex-slot small { color: #92dcd1; font-size: 10px; }
+.booster-game .booster-collection-dialog { width: min(1500px, calc(100vw - 24px)); max-width: none; }
+.booster-collection-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 290px), 1fr)); gap: 22px; margin-block: 20px; }
+.booster-collection-cards > div { display: grid; justify-items: center; gap: 8px; }
+.booster-collection-cards .milo-card { width: 320px; height: 446.984126984px; max-width: none; }
+.booster-collection-cards .booster-card-holder { width: 100%; max-width: 320px; aspect-ratio: 63 / 88; position: relative; }
+.booster-card-holder > .milo-card { position: absolute; transform-origin: top left; transform: scale(var(--collection-scale, 1)); }
+.booster-collection-cards .milo-card:hover { transform: scale(var(--collection-scale, 1)); }
+@media (max-width: 600px) {
+  .booster-game-content { padding: 16px; }
+  .booster-home { gap: 18px; padding: 18px; }
+  .booster-home-pack { width: 85px; }
+  .booster-dex { grid-template-columns: repeat(auto-fill, minmax(85px, 1fr)); }
+}

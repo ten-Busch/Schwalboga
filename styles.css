@@ -489,6 +489,11 @@ body.dark-mode .replay-library, body.dark-mode .replay-detail { background: rgba
   --tile-image: url('assets/sections/quiz.webp');
 }
 
+.hub-action-card[data-hub-action='booster'] {
+  --tile-color: var(--water);
+  --tile-image: url('assets/tcg/Boosterpack.jpg');
+}
+
 .hub-action-card[data-hub-action='draft-room'] {
   --tile-color: var(--ghost);
   --tile-image: url('assets/sections/draft.webp');

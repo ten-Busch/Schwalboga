@@ -19,7 +19,7 @@ window.createMiloQuestionGenerator = function createMiloQuestionGenerator(entrie
     if (new Set([correct, ...wrong].map(key)).size !== 4 || wrong.length !== 3) return null;
     const options = shuffle([correct, ...wrong]);
     return { prompt, options, correct: options.indexOf(correct), explanation,
-      referencePokemon: referencePokemon.map((p) => ({ name: p.name, de: name(p) })) };
+      referencePokemon: referencePokemon.map((p) => ({ name: p.name, de: name(p), types: [...p.types] })) };
   }
 
   const translationGroups = [
@@ -249,7 +249,14 @@ window.createMiloQuestionGenerator = function createMiloQuestionGenerator(entrie
         difficultyDetails += rule ? `\nZahlenregel: ${rule.label}. Falsche Werte auf die nächste passende Zahl gerundet; bei Gleichstand nach unten. Ursprüngliche Werte: ${wrong.map((p) => statValue(p, stat)).join(', ')}.` : '';
         const result = question(`Welchen Basiswert hat ${name(r)} in ${statLabels[stat]}?`, String(rv),
           answers.map(String), `${name(r)}: ${rv} (${statLabels[stat]})`);
-        if (result) return result;
+        if (result) {
+          const all = pool.map((p) => statValue(p, stat));
+          const rank = (all.filter((value) => value < rv).length + all.filter((value) => value === rv).length / 2) / all.length;
+          result.numericStat = { stat, label: statLabels[stat], value: rv, pokemon: name(r),
+            average: all.reduce((sum, value) => sum + value, 0) / all.length,
+            third: rank < 1 / 3 ? 'unteren' : rank < 2 / 3 ? 'mittleren' : 'oberen' };
+          return result;
+        }
         continue;
       }
       const feminine = feminineStats.has(stat);
@@ -260,7 +267,13 @@ window.createMiloQuestionGenerator = function createMiloQuestionGenerator(entrie
       const prompt = `Welches Pokémon hat ${comparison} ${statLabels[stat]} ${direction === 0 ? 'wie' : 'als'} ${name(r)}?`;
       const explanation = [r, c, ...wrong].map((p) => `${name(p)}: ${statValue(p, stat)}`).join(' · ');
       const result = question(prompt, name(c), wrong.map(name), explanation);
-      if (result && !result.options.some((option) => key(option) === key(name(r)))) return result;
+      if (result && !result.options.some((option) => key(option) === key(name(r)))) {
+        result.comparison = {
+          stat, direction, reference: { name: name(r), value: rv },
+          options: [c, ...wrong].map((p) => ({ name: name(p), value: statValue(p, stat) })),
+        };
+        return result;
+      }
     }
     return null;
   }
@@ -296,8 +309,11 @@ window.createMiloQuestionGenerator = function createMiloQuestionGenerator(entrie
     const wrong = shuffle(Array.from({ length: 101 }, (_, value) => value)
       .filter((value) => Math.abs(value - percent) >= minimumGap && Math.abs(value - percent) <= maximumGap)).slice(0, 3);
     difficultyDetails = `Standardformen mit Typ ${types[type]}: ${total}\nDavon lernen ${moveName(id)}: ${learners}\n100 × ${learners} / ${total} = ${(100 * learners / total).toFixed(4)}%, auf ganze Prozent gerundet: ${percent}%.\nHäufigkeitsminimum 50%, exakte 100% ausgeschlossen.\nFeste Stufe ${prize}: falsche Antworten ${minimumGap}–${maximumGap} Prozentpunkte von der gerundeten Lösung entfernt.`;
-    return question(`Welcher Anteil an Pokémon vom Typ ${types[type]} lernt die Attacke ${moveName(id)}? (Standardformen, auf ganze Prozent gerundet)`,
+    const result = question(`Welcher Anteil an Pokémon vom Typ ${types[type]} lernt die Attacke ${moveName(id)}? (Standardformen, auf ganze Prozent gerundet)`,
       `${percent}%`, wrong.map((value) => `${value}%`), `${learners} von ${total} Pokémon: ${percent}%`);
+    if (result) result.movePercentage = { typeName: types[type], total, learners, percent,
+      allLearners: pool.filter((p) => learned.get(p).has(id)).length };
+    return result;
   }
   const fit = (p, id) => {
     const difference = p.baseStats.atk - p.baseStats.spa;
@@ -423,8 +439,15 @@ window.createMiloQuestionGenerator = function createMiloQuestionGenerator(entrie
         difficultyDetails = `Format: ${format}\nBasis: ${reference.value}; Zusatz: ${extra}; Antwort: ${total}\nMindestabstand der angebotenen Zahlen: ${gap}\nSchwellenbonus: ${thresholdBonus(reference.value)}\nEase: ${ease.toFixed(2)}\nFormel: ${enhanced ? '10 − 3 × Zusatz + 0,25 × Schwellenbonus' : '0,7 × Abstand × 5 + Schwellenbonus + 4'}`;
         const enhancement = upgrade ? kind === 'tera' ? ` mit Tera-Typ ${types[upgrade[0]] ?? upgrade[0]}`
           : ` mit einem Z-Kristall vom Typ ${types[upgrade[0]] ?? upgrade[0]}` : '';
-        return question(`Wie viele Punkte kostet ${name(reference.p)}${enhancement} im ${format} insgesamt?`,
+        const result = question(`Wie viele Punkte kostet ${name(reference.p)}${enhancement} im ${format} insgesamt?`,
           String(total), wrong.map(String), `Pokémon: ${reference.value} · Zusatzkosten: ${extra} · Gesamt: ${total}`);
+        if (result && upgrade) result.upgradeCost = {
+          kind, type: upgrade[0], typeName: types[upgrade[0]] ?? upgrade[0],
+          surcharge: extra, pokemonCost: reference.value, mode,
+        };
+        if (result) result.numericCost = { value: reference.value, pokemon: name(reference.p), mode,
+          paradox: reference.p.tags?.includes('Paradox') ?? false };
+        return result;
       }
       const direction = pick([-1, 0, 1]);
       const corrects = priced.filter((row) => row.p !== reference.p && Math.sign(row.value - reference.value) === direction);
@@ -439,9 +462,14 @@ window.createMiloQuestionGenerator = function createMiloQuestionGenerator(entrie
       referencePokemon = [reference.p];
       difficultyDetails = `Format: ${format}\nAntwortabstand ×5: ${separation}\nReferenzabstand ×5: ${referenceGap}\nSchwellenbonus: ${thresholdBonus(reference.value)}\nEase: ${ease.toFixed(2)}\nGleichheit: Antwortabstand + Bonus; sonst 0,8 × Antwortabstand + 0,2 × Referenzabstand + Bonus.`;
       const comparison = direction === 0 ? 'genauso viele Punkte wie' : direction > 0 ? 'mehr Punkte als' : 'weniger Punkte als';
-      return question(`Welches Pokémon kostet im ${format} ${comparison} ${name(reference.p)}?`,
+      const result = question(`Welches Pokémon kostet im ${format} ${comparison} ${name(reference.p)}?`,
         name(correct.p), wrong.map((row) => name(row.p)),
         [reference, correct, ...wrong].map((row) => `${name(row.p)}: ${row.value}`).join(' · '));
+      if (result) result.comparison = {
+        stat: 'cost', mode, direction, reference: { name: name(reference.p), value: reference.value },
+        options: [correct, ...wrong].map((row) => ({ name: name(row.p), value: row.value })),
+      };
+      return result;
     }
     return null;
   }
@@ -506,7 +534,21 @@ window.createMiloQuestionGenerator = function createMiloQuestionGenerator(entrie
     const { p, own, id } = pick(abilityQuestions.get(prize));
     referencePokemon = [p];
     difficultyDetails = `Typ-Häufigkeiten: ${p.types.map((type) => `${types[type]} ${abilityTypes.get(id).get(type) ?? 0}/${typeTotals.get(type)}`).join(', ')}\nPaarungen mit tatsächlichen Fähigkeiten: ${own.map((other) => `${labels.get(other)} ${pairs.get(other).get(id) ?? 0}/${counts.get(other) - 1}`).join(', ')}\n8k/16k/32k nach Paarungsanteil ≥40%/≥25%/≥20% (mindestens 4 Partner). 64k/125k nach Typanteil ≥22%/≥12% (mindestens 5). Evolutionslinie: feste 250k.`;
-    return question(`Welche Fähigkeit hat ${name(p)} nicht?`, labels.get(id), own.map((ability) => labels.get(ability)));
+    const result = question(`Welche Fähigkeit hat ${name(p)} nicht?`, labels.get(id), own.map((ability) => labels.get(ability)));
+    if (result) {
+      const prevo = byName.get(p.prevo);
+      result.pokemonAbilities = {
+        regular: p.abilityDetails.filter((ability) => ['0', '1'].includes(ability.slot)).map((ability) => labels.get(ability.id)),
+        hidden: p.abilityDetails.find((ability) => ability.slot === 'H')
+          ? labels.get(p.abilityDetails.find((ability) => ability.slot === 'H').id) : null,
+        descriptions: own.map((ability) => ({ name: labels.get(ability), description: window.ABILITY_DESCRIPTIONS_DE?.[ability] })),
+        preEvolution: prevo ? {
+          name: name(prevo),
+          abilities: [...new Set(prevo.abilityDetails.map((ability) => labels.get(ability.id) ?? ability.names?.de ?? ability.name))],
+        } : null,
+      };
+    }
+    return result;
   }
 
   const ranks = new Map([...pairs].map(([id, partners]) => [id, [...partners].sort((a, b) => b[1] - a[1])]));
@@ -530,51 +572,76 @@ window.createMiloQuestionGenerator = function createMiloQuestionGenerator(entrie
     const { reference, correct, first, second, third } = candidate;
     const wrong = [first, second, pick(third)];
     const explanation = [correct, ...wrong].map((id) => `${labels.get(id)}: ${pairs.get(reference).get(id) ?? 0}`).join(' · ');
-    return question(`Welche dieser Fähigkeiten kommt am häufigsten bei denselben Pokémon vor wie ${labels.get(reference)}?`,
+    const result = question(`Welche dieser Fähigkeiten kommt am häufigsten bei denselben Pokémon vor wie ${labels.get(reference)}?`,
       labels.get(correct), wrong.map((id) => labels.get(id)), explanation);
+    if (result) result.abilityPair = { options: [correct, ...wrong].map((id) => ({
+      name: labels.get(id), count: counts.get(id), partners: pairs.get(id).size,
+      shared: pairs.get(reference).get(id) ?? 0, description: window.ABILITY_DESCRIPTIONS_DE?.[id],
+    })) };
+    return result;
   }
 
   function teamQuestion(mode) {
-    difficultyDetails = 'Feste Kategorie für 1.000.000 Punkte. Vier aktuelle Tierkosten plus genau ein Tera-/Z-Zuschlag. Maximal ein Mega; im Singles nach Möglichkeit ein Mega. Falsche Zahlen liegen 15–35% vom Gesamtwert entfernt.';
+    difficultyDetails = 'Feste Kategorie für 1.000.000 Punkte. Fünf legale Pokémon in Reihenfolge: ohne Spezialfolie über 10 Punkte, ohne Spezialfolie, Z, Tera, Mega oder Pokémon mit Spezialfolie (legendär, mysteriös, Ultrabestie oder Paradox). Keine Ubers (Grundkosten ab 21 im gewählten Format). Z bis 10 und Tera bis 5 Grundkosten; beide Typzuschläge werden addiert. Die zusätzliche Energiekarte zählt nicht. Falsche Zahlen liegen 15–35% vom Gesamtwert entfernt.';
     const priced = entries.filter((p) => !p.hidden && !p.impossible && !p.unreleased)
-      .map((p) => ({ name: p.forme ? p.name : name(p), species: p.num, cost: getCost(p, mode),
-        mega: /^Mega(?:-|$)/i.test(p.forme ?? '') || /-Mega(?:-|$)/i.test(p.name) }))
-      .filter(({ cost }) => Number.isInteger(cost) && cost >= 0);
-    const upgrades = priced.filter((p) => !p.mega && p.cost <= 10).flatMap((p) =>
-      ['tera', 'z'].filter((kind) => p.cost <= (kind === 'tera' ? 5 : 10))
-        .flatMap((kind) => Object.entries(captainCosts)
-          .filter(([, costs]) => Number.isInteger(costs[kind]) && costs[kind] > 0)
-          .map(([type, costs]) => ({ ...p, upgrade: { kind, type, cost: costs[kind] } }))));
-    if (!upgrades.length) return null;
-    const team = [pick(upgrades)];
-    const megas = priced.filter((p) => p.mega && p.species !== team[0].species);
-    if (mode === 'singles' && megas.length) team.push(pick(megas));
-    for (const p of shuffle(priced)) {
-      if (!team.some(({ species }) => species === p.species) && (!p.mega || !team.some((member) => member.mega))) team.push(p);
-      if (team.length === 4) break;
+      .map((p) => ({ pokemon: p, name: p.names?.de ?? p.name, species: p.num, cost: getCost(p, mode),
+        mega: /^Mega(?:-|$)/i.test(p.forme ?? '') || /-Mega(?:-|$)/i.test(p.name),
+        specialFoil: [...(p.tags ?? []), ...(byName.get(p.baseSpecies)?.tags ?? [])]
+          .some((tag) => /Legendary/.test(tag) || ['Mythical', 'Ultra Beast', 'Paradox'].includes(tag)) }))
+      .filter(({ cost }) => Number.isInteger(cost) && cost >= 0 && cost < 21);
+    const ordinary = priced.filter((p) => !p.mega);
+    const plain = ordinary.filter((p) => !p.specialFoil);
+    const high = plain.filter((p) => p.cost > 10);
+    const hits = priced.filter((p) => p.mega || p.specialFoil);
+    const upgrades = (kind) => ordinary.filter((p) => p.cost <= (kind === 'tera' ? 5 : 10))
+      .flatMap((p) => Object.entries(captainCosts)
+        .filter(([type, costs]) => Object.hasOwn(types, type) && Number.isInteger(costs[kind]) && costs[kind] > 0)
+        .map(([type, costs]) => ({ ...p, upgrade: { kind, type, cost: costs[kind] } })));
+    const zPool = upgrades('z');
+    const teraPool = upgrades('tera');
+    let team;
+    // Choose the constrained slots first, preserving the requested reveal order afterwards.
+    for (let attempt = 0; attempt < 60; attempt += 1) {
+      const selected = [];
+      const take = (choices) => {
+        const candidate = pick(choices.filter((p) => !selected.some((other) => other.species === p.species)));
+        if (candidate) selected.push(candidate);
+        return candidate;
+      };
+      const tera = take(teraPool);
+      const z = take(zPool);
+      const hit = take(hits);
+      const first = take(high);
+      const second = take(plain);
+      if (selected.length === 5) { team = [first, second, z, tera, hit]; break; }
     }
-    if (team.length !== 4) return null;
-    referencePokemon = team.map((member) => entries.find((p) => p.num === member.species && (p.forme ? p.name : name(p)) === member.name));
+    if (!team) return null;
+    referencePokemon = team.map((member) => member.pokemon);
     const total = team.reduce((sum, p) => sum + p.cost + (p.upgrade?.cost ?? 0), 0);
     const displayName = (p) => {
       if (!p.upgrade) return p.name;
       const { kind, type } = p.upgrade;
-      return `${p.name} (${kind === 'tera' ? 'Tera-Typ' : 'Z-Kristall vom Typ'} ${types[type] ?? type})`;
+      return p.name + ' (' + (kind === 'tera' ? 'Tera-Typ' : 'Z-Kristall vom Typ') + ' ' + (types[type] ?? type) + ')';
     };
     const wrong = [];
     for (let value = Math.ceil(total * 65 / 100); value <= Math.floor(total * 135 / 100); value += 1) {
       const difference = Math.abs(value - total) * 100;
       if (difference && difference >= total * 15 && difference <= total * 35) wrong.push(String(value));
     }
-    return question(`Wie viele Punkte würde dieses 4er-Team im ${mode === 'doubles' ? 'Doubles' : 'Singles'} nach aktuellem Stand kosten? ${shuffle(team).map(displayName).join(', ')}.`,
+    const result = question('Wie viele Punkte würde dieses 5er-Team im ' + (mode === 'doubles' ? 'Doubles' : 'Singles')
+      + ' nach aktuellem Stand kosten? ' + team.map(displayName).join(', ') + '.',
       String(total), shuffle(wrong).slice(0, 3),
-      team.map((p) => `${displayName(p)}: ${p.cost}${p.upgrade ? ` + ${p.upgrade.cost}` : ''}`).join(' · '));
+      team.map((p) => displayName(p) + ': ' + p.cost + (p.upgrade ? ' + ' + p.upgrade.cost : '')).join(' · '));
+    if (result) result.team = { mode, energyType: pick(Object.keys(captainCosts).filter((type) => Object.hasOwn(types, type))), cards: team.map((p) => ({ pokemonName: p.pokemon.name,
+      variant: p.upgrade?.kind ?? (p.mega ? 'mega' : 'normal'), type: p.upgrade?.type ?? p.pokemon.types[0],
+      cost: p.cost, upgradeCost: p.upgrade?.cost ?? 0 })) };
+    return result;
   }
 
   const promptKey = (result) => result.prompt === 'Welche Schreibweise ist richtig?'
     ? result.options[result.correct] : result.prompt;
   const categoryHistory = new WeakMap();
-  return function generate(prize, seen = new Set(), requiredCategory = null) {
+  return function generate(prize, seen = new Set(), requiredCategory = null, excludedCategory = null) {
     const sources = [];
     const add = (category, generate, weight = 1) => sources.push({ category, generate, weight });
     if (!categoryHistory.has(seen)) categoryHistory.set(seen, new Map());
@@ -605,7 +672,8 @@ window.createMiloQuestionGenerator = function createMiloQuestionGenerator(entrie
       add('team-doubles', () => teamQuestion('doubles'));
     };
     for (let attempt = 0; attempt < 4; attempt += 1) {
-      const ordered = sources.filter((source) => !requiredCategory || source.category === requiredCategory)
+      const ordered = sources.filter((source) => (!requiredCategory || source.category === requiredCategory)
+        && source.category !== excludedCategory)
         .map((source) => ({ ...source, priority: -Math.log(1 - Math.random()) / source.weight }))
         .sort((a, b) => (usage.get(a.category) ?? 0) - (usage.get(b.category) ?? 0) || a.priority - b.priority);
       for (const source of ordered) {
@@ -616,6 +684,26 @@ window.createMiloQuestionGenerator = function createMiloQuestionGenerator(entrie
           seen.add(promptKey(result));
           if (!requiredCategory) usage.set(source.category, (usage.get(source.category) ?? 0) + 1);
           result.category = source.category;
+          if (['coverage', 'shared-three', 'shared-four'].includes(source.category)) {
+            result.answerMoves = result.options.map((option) => {
+              const matching = Object.values(moves).filter((move) => (move.names?.de ?? move.name) === option);
+              const move = matching[0];
+              if (!move || matching.some((other) => other.type !== move.type || other.category !== move.category
+                || other.basePower !== move.basePower || other.accuracy !== move.accuracy)) return null;
+              return { option, type: move.type, category: move.category, basePower: move.basePower, accuracy: move.accuracy };
+            });
+            result.moveLearners = result.options.map((option) => {
+              const matchingIds = new Set(Object.keys(moves).filter((id) => moveName(id) === option));
+              const learners = [];
+              const nonLearners = [];
+              for (const reference of result.referencePokemon) {
+                const pokemon = byName.get(reference.name);
+                const learns = pokemon.moveIds.some((id) => matchingIds.has(id));
+                (learns ? learners : nonLearners).push(reference.de);
+              }
+              return { option, learners, nonLearners };
+            });
+          }
           result.difficultyDetails = difficultyDetails || (source.category === 'translation'
             ? 'Feste Stufen: Pokémon 300, Attacken 500, Fähigkeiten 1.000. Distraktoren nach längster gemeinsamer Buchstabenfolge, dann gemeinsamen Buchstaben und ähnlicher Länge.'
             : 'Feste Schreibweisen-Stufe: 50/100 einfache Tippfehler; 200 komplexe Tippfehler; 300 komplexe Tippfehler neuerer Pokémon.');

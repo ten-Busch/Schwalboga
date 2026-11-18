@@ -1,0 +1,342 @@
+.milo-card-preview {
+  box-sizing: border-box;
+  width: min(1700px, calc(100% - 24px));
+  max-width: none;
+  max-height: 95dvh;
+  padding: clamp(16px, 2vw, 32px);
+  border: 1px solid #61759d;
+  border-radius: 18px;
+  background: radial-gradient(ellipse at top, #263753, #10182b 70%);
+  color: #edf3ff;
+  font: 16px/1.5 system-ui, sans-serif;
+}
+.milo-card-preview::backdrop { background: #050c19e8; }
+.milo-card-preview-header { display: flex; align-items: center; justify-content: space-between; gap: 20px; }
+.milo-card-preview-header h2 { margin: 0; }
+.milo-card-preview-note { color: #b8c8df; font-size: .85rem; }
+.milo-card-preview-controls { display: flex; flex-wrap: wrap; align-items: end; gap: 12px; margin-block: 20px 30px; }
+.milo-card-preview-controls label { display: grid; gap: 5px; min-width: 0; }
+.milo-card-preview-controls select { max-width: min(340px, 75vw); padding: 10px; border: 1px solid #61759d; border-radius: 8px; background: #152039; color: #edf3ff; font: inherit; }
+.milo-card-gallery { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 285px), 1fr)); gap: clamp(18px, 2.5vw, 42px); align-items: start; }
+.milo-card-preview-slot { display: grid; justify-items: center; padding: 10px 0 25px; min-width: 0; }
+.milo-card {
+  --card-color: #639fc0;
+  box-sizing: border-box;
+  position: relative;
+  isolation: isolate;
+  width: 320px;
+  max-width: 100%;
+  aspect-ratio: 63 / 88;
+  display: grid;
+  grid-template-rows: auto 42% auto 1fr auto;
+  border: 10px solid #f5d549;
+  border-radius: 16px;
+  padding: 7px 9px 5px;
+  background:
+    repeating-linear-gradient(108deg, #ffffff12 0 1px, transparent 1px 4px),
+    radial-gradient(ellipse at 15% 12%, #fff5dcbb, transparent 55%),
+    linear-gradient(145deg, color-mix(in srgb, var(--card-color) 50%, #fff7de), var(--card-color));
+  color: #211a12;
+  font: 12px/1.3 Arial, sans-serif;
+  box-shadow: 0 1px 0 1px #805813, inset 0 0 0 1px #a79037, 0 16px 28px #0007;
+  transform: perspective(1100px) rotateY(-3deg) rotateZ(-1deg);
+  transition: transform 220ms ease, box-shadow 220ms ease;
+  overflow: hidden;
+}
+.milo-card:hover { transform: perspective(1100px) rotateY(3deg) rotateZ(0deg) translateY(-5px); box-shadow: 0 1px 0 1px #805813, 0 22px 40px #0009; }
+.milo-card > :not(.milo-card-foil) { position: relative; z-index: 1; }
+.milo-card-header { display: flex; align-items: center; gap: 5px; min-width: 0; padding-bottom: 7px; }
+.milo-card-stage { font-size: 7px; font-weight: 900; font-style: italic; letter-spacing: -.03em; border-bottom: 1px solid #6a5a31; }
+.milo-dialog .milo-card .milo-card-title { margin: 0; font: 800 17px/1.05 Arial, sans-serif; flex: 1; overflow-wrap: anywhere; }
+.milo-card-hp { display: flex; align-items: baseline; gap: 2px; white-space: nowrap; }
+.milo-card-hp small { font-size: 8px; }
+.milo-card-hp strong { font-size: 20px; }
+.milo-card-energy { flex-shrink: 0; display: inline-flex; align-items: center; justify-content: center; width: 24px; height: 24px; border-radius: 50%; background: #fff7d5aa; box-shadow: inset 0 1px 3px #fff9, 0 1px 2px #0007; }
+.milo-card-energy img { display: block; width: 88%; height: 88%; object-fit: contain; }
+.milo-card-art {
+  display: grid;
+  place-items: center;
+  border: 3px solid #d4bd6d;
+  outline: 1px solid #5e512c;
+  background:
+    radial-gradient(ellipse at 48% 72%, #ffffff77 0%, transparent 25%),
+    repeating-conic-gradient(from 15deg at 50% 95%, #ffffff0d 0deg 12deg, transparent 12deg 24deg),
+    radial-gradient(ellipse at center, color-mix(in srgb, var(--card-color) 65%, #fff), #203a4c);
+  overflow: hidden;
+}
+.milo-card-sprite { width: 75%; height: 90%; object-fit: contain; image-rendering: pixelated; filter: drop-shadow(0 10px 5px #0008); }
+.milo-card-seal { position: absolute; bottom: 5px; left: 5px; padding: 3px 6px; border: 1px solid #ffeb9b; border-radius: 3px; background: #172633dd; color: #fff5c7; font-size: 9px; font-weight: 800; letter-spacing: .03em; }
+.milo-card-caption { margin: 6px -3px 0; padding: 3px; text-align: center; background: linear-gradient(90deg, #a08844, #f8e7af 50%, #a08844); font-size: 8px; font-style: italic; }
+.milo-card-body { display: grid; grid-template-rows: minmax(0, 1fr) auto; gap: 8px; padding-top: 10px; min-height: 0; }
+.milo-card-ability { min-height: 0; }
+.milo-card-ability-heading { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 7px; color: #85232a; }
+.milo-card-ability-label { padding: 1px 5px; background: #a83837; color: #fff5d5; border-radius: 4px; font-size: 9px; font-weight: bold; font-style: italic; }
+.milo-card .milo-card-ability p { font-size: 10px; line-height: 1.3; margin: 5px 0 0; overflow-wrap: anywhere; }
+.milo-card-attack { border-top: 1px solid #5c4a3866; padding: 7px 0 9px; }
+.milo-card-attack-heading { display: flex; align-items: center; gap: 6px; }
+.milo-card-energy-cost { display: flex; flex-shrink: 0; gap: 2px; }
+.milo-card-energy-cost .milo-card-energy { width: 15px; height: 15px; }
+.milo-card-move-title { flex: 1; font-size: 13px; line-height: 1.05; overflow-wrap: anywhere; }
+.milo-card-damage { font-size: 23px; }
+.milo-card .milo-card-attack p { font-size: 9px; margin: 5px 0 0; }
+.milo-card-footer { display: flex; justify-content: space-between; gap: 4px; padding-top: 5px; border-top: 1px solid #5c4a3866; font-size: 7px; font-weight: bold; }
+.milo-card-foil { position: absolute; inset: 0; z-index: 2; pointer-events: none; border-radius: 6px; opacity: 0; }
+.milo-card.is-mega .milo-card-foil {
+  opacity: .7;
+  background: repeating-linear-gradient(115deg, #ffe260 0%, #ff7fba 10%, #77e9fb 20%, #b6f67f 30%, #ffe260 40%);
+  background-size: 260% 100%;
+  mix-blend-mode: hard-light;
+  animation: milo-card-rainbow 3s ease-in-out infinite alternate;
+}
+.milo-card.is-mega { border-color: #fff08a; box-shadow: 0 0 0 2px #ffee94, 0 0 28px #fb73ffbb, 0 0 55px #6edaff77, 0 18px 32px #0009; }
+.milo-card.is-mega .milo-card-art { background-color: #9b41b6; }
+.milo-card.is-tera .milo-card-foil {
+  opacity: .9;
+  background: conic-gradient(from 32deg at 24% 25%, transparent 0deg 55deg, #c1f2ff88 55deg 95deg, transparent 95deg 165deg, #ffffff77 165deg 205deg, transparent 205deg),
+    conic-gradient(from 70deg at 77% 65%, #ffffff33 0deg 45deg, transparent 45deg 125deg, #80d8fb77 125deg 170deg, transparent 170deg);
+  mix-blend-mode: screen;
+}
+.milo-card.is-tera { border-color: #c6f6ff; box-shadow: 0 0 0 2px #fff, 0 0 30px #78e6ff99, 0 18px 32px #0009; }
+.milo-card.is-tera .milo-card-art { border-color: #d2f5fa; }
+.milo-card.is-z .milo-card-foil {
+  opacity: .75;
+  background: repeating-linear-gradient(135deg, transparent 0 15px, #fff4b8 15px 18px, transparent 18px 48px),
+    linear-gradient(130deg, transparent 25%, #ffe86e 45%, transparent 65%);
+  mix-blend-mode: screen;
+  background-size: 100% 100%, 250% 100%;
+  animation: milo-card-rainbow 2.2s ease-in-out infinite alternate;
+}
+.milo-card.is-z { border-color: #ffe969; box-shadow: 0 0 0 2px #fff6ab, 0 0 32px #ffc400aa, 0 18px 32px #0009; }
+.milo-card-foil::before, .milo-card-foil::after { content: ''; position: absolute; inset: 0; }
+.milo-card.is-mega .milo-card-foil::before {
+  background: repeating-linear-gradient(35deg, transparent 0 4px, #ffffff80 5px, transparent 7px 13px);
+  mix-blend-mode: soft-light;
+}
+.milo-card.is-mega .milo-card-foil::after,
+.milo-card.is-tera .milo-card-foil::after {
+  background: linear-gradient(115deg, transparent 30%, #fff0 40%, #ffffffcc 49%, #fff4 53%, transparent 62%);
+  background-size: 350% 100%;
+  animation: milo-card-rainbow 3.5s ease-in-out infinite;
+}
+.milo-card.is-tera .milo-card-foil::before {
+  background: repeating-conic-gradient(from 22deg at 50% 35%, #e8fcff99 0deg 1deg, transparent 2deg 30deg),
+    conic-gradient(from 12deg at 60% 30%, #fff9, transparent 65deg, #52bcff88 120deg, transparent 180deg, #fff8 240deg, transparent 300deg);
+  clip-path: polygon(50% 0, 100% 28%, 90% 78%, 50% 100%, 8% 78%, 0 28%);
+}
+.milo-card.is-z .milo-card-foil::before {
+  background: #fff5a9;
+  opacity: .65;
+  clip-path: polygon(10% 16%, 88% 16%, 47% 53%, 91% 53%, 17% 92%, 46% 63%, 8% 63%, 60% 29%, 10% 29%);
+  filter: drop-shadow(0 0 8px #ffcf00);
+}
+/* Keep the exaggerated finish over the illustration, with readable text panels. */
+.milo-card:is(.is-mega, .is-tera, .is-z) .milo-card-body {
+  z-index: 3;
+  background: linear-gradient(110deg, #fff8d8d9, #fff3c399);
+  border-radius: 4px;
+  padding-inline: 4px;
+}
+.milo-card:is(.is-mega, .is-tera, .is-z) .milo-card-header { z-index: 3; }
+.milo-card-z-attack { position: relative; padding: 13px 6px; margin-inline: -5px; background: linear-gradient(115deg, #fff8c6, #f0b937 60%, #fff6ac); border-block: 2px solid #a86d17; }
+.milo-card-z-attack .milo-card-move-title { font-size: 16px; font-style: italic; }
+.milo-card-z-attack .milo-card-damage { font-size: 38px; color: #af362b; transform: skewX(-12deg); text-shadow: 2px 2px #fff6ae; }
+@keyframes milo-card-rainbow { from { background-position: 0% 50%; } to { background-position: 100% 50%; } }
+@media (prefers-reduced-motion: reduce) {
+  .milo-card, .milo-card:hover { transform: none; transition: none; }
+  .milo-card .milo-card-foil, .milo-card .milo-card-foil::after { animation: none; }
+}
+
+/* Upgrade finishes: Z is restricted to the attack; Tera reuses the site sprite shader. */
+.milo-card.is-z { border-color: #f5d549; box-shadow: 0 1px 0 1px #805813, 0 16px 28px #0007; }
+.milo-card.is-z > .milo-card-foil, .milo-card.is-tera > .milo-card-foil { display: none; }
+.milo-card.is-z .milo-card-body { background: none; padding-inline: 0; }
+.milo-card-z-attack { isolation: isolate; overflow: hidden; box-shadow: 0 0 18px #ffbd3888; }
+.milo-card-z-attack::before { content: ''; position: absolute; inset: 0; z-index: -1;
+  background: repeating-linear-gradient(125deg, transparent 0 12px, #fff9 13px 16px, transparent 17px 35px), linear-gradient(110deg, #ffbf0099, #fffbdc, #ffb50099);
+  background-size: 220% 100%; animation: milo-card-rainbow 2.3s ease-in-out infinite alternate; }
+.milo-card-z-attack::after { content: ''; position: absolute; inset: 0; z-index: -1; background: #fff9;
+  clip-path: polygon(18% 8%, 77% 8%, 50% 45%, 89% 45%, 26% 96%, 44% 59%, 10% 59%, 53% 25%, 18% 25%); }
+.milo-card.is-tera { border-color: #f5d549; box-shadow: 0 1px 0 1px #805813, 0 0 22px #78e6ff55, 0 18px 32px #0009; }
+.milo-card-crystal { position: absolute; width: 75%; height: 90%; object-fit: contain; image-rendering: pixelated;
+  opacity: .65; mix-blend-mode: screen; pointer-events: none; }
+.milo-card-seal { z-index: 4; }
+.milo-species-foil { position: absolute; inset: 0; z-index: 2; pointer-events: none; overflow: hidden; border-radius: 5px; }
+.milo-card > .milo-species-foil { position: absolute; z-index: 2; }
+.foil-holo { opacity: .58; mix-blend-mode: soft-light;
+  background: repeating-linear-gradient(115deg, #ff80bd 0%, #8cf1ff 15%, #c0ff80 30%, #ffe1a1 45%, #bb8cff 60%);
+  background-size: 300% 100%; animation: milo-card-rainbow 5s ease-in-out infinite alternate; }
+.foil-holo::after { content: ''; position: absolute; inset: 0;
+  background: repeating-linear-gradient(0deg, transparent 0 3px, #fff6 4px, transparent 5px 8px); }
+.foil-galaxy { background: radial-gradient(ellipse at 28% 30%, #703bb944, transparent 42%), radial-gradient(ellipse at 70% 70%, #2c99cb44, transparent 48%); }
+.foil-galaxy::before { content: ''; position: absolute; inset: -25%; opacity: .2;
+  background: repeating-conic-gradient(from 40deg at 50% 50%, transparent 0deg 45deg, #b594ff 65deg, transparent 90deg);
+  filter: blur(15px); border-radius: 50%; transform: scaleY(.5) rotate(-30deg); }
+.foil-dot, .foil-star { position: absolute; width: 3px; height: 3px; background: #e9e4ff; box-shadow: 0 0 5px #e1baff; animation: milo-foil-glint 5s ease-in-out infinite alternate; }
+.foil-star { width: 11px; height: 11px; clip-path: polygon(50% 0, 60% 39%, 100% 50%, 60% 61%, 50% 100%, 40% 61%, 0 50%, 40% 39%); }
+.foil-binary span { position: absolute; font: bold 14px/1 monospace; color: transparent;
+  background: linear-gradient(125deg, #40b9ff, #fff, #db70ed, #68f5d2); background-clip: text;
+  opacity: .55; animation: milo-foil-glint 4s ease-in-out infinite alternate; }
+.foil-shards i { position: absolute; width: 34%; height: 25%;
+  clip-path: polygon(0 12%, 100% 0, 68% 100%);
+  background: linear-gradient(120deg, #ffd6ff66, #9eeaff88 48%, #fff9 49%, #d0c4ff22 80%);
+  mix-blend-mode: soft-light; animation: milo-foil-glint 7s ease-in-out infinite alternate; }
+@keyframes milo-foil-glint { from { opacity: .15; } to { opacity: .7; } }
+@media (prefers-reduced-motion: reduce) {
+  .milo-species-foil, .milo-species-foil *, .milo-card-z-attack::before { animation: none; }
+}
+
+/* Image and alpha-masked crystal canvas share exactly the same artwork box. */
+.milo-card-art > .milo-card-sprite,
+.milo-card-art > .milo-card-crystal {
+  position: absolute; inset: 0; margin: auto; width: 75%; height: 90%;
+  object-fit: contain; object-position: center; transform: none;
+}
+/* Richer species finishes, stationary until the card is hovered. */
+.foil-holo { opacity: .85; mix-blend-mode: hard-light; }
+.foil-galaxy { background: radial-gradient(ellipse at 28% 30%, #703bb977, transparent 48%), radial-gradient(ellipse at 70% 70%, #2c99cb77, transparent 52%); }
+.foil-galaxy::before { opacity: .5; filter: blur(8px); }
+.foil-dot { width: 4px; height: 4px; box-shadow: 0 0 8px #f0bdff; }
+.foil-star { width: 15px; height: 15px; }
+.foil-binary span { font-size: 18px; font-weight: 900; filter: drop-shadow(0 0 2px #b1eaff88); }
+.foil-shards i { mix-blend-mode: hard-light; background: linear-gradient(120deg, #ffd6ff99, #9eeaffbb 48%, #fffd 49%, #d0c4ff44 80%); }
+.milo-card.milo-card .milo-card-foil,
+.milo-card.milo-card .milo-card-foil::before,
+.milo-card.milo-card .milo-card-foil::after,
+.milo-card.milo-card .milo-species-foil,
+.milo-card.milo-card .milo-species-foil::before,
+.milo-card.milo-card .milo-species-foil::after,
+.milo-card.milo-card .milo-species-foil *,
+.milo-card.milo-card .milo-card-z-attack::before { animation-play-state: paused; }
+.milo-card:hover .milo-card-foil,
+.milo-card:hover .milo-card-foil::before,
+.milo-card:hover .milo-card-foil::after,
+.milo-card:hover .milo-species-foil,
+.milo-card:hover .milo-species-foil::before,
+.milo-card:hover .milo-species-foil::after,
+.milo-card:hover .milo-species-foil *,
+.milo-card:hover .milo-card-z-attack::before { animation-play-state: running; }
+.milo-card-crystal { animation: milo-crystal-shine 1.8s ease-in-out infinite alternate; animation-play-state: paused; }
+.milo-card:hover .milo-card-crystal { animation-play-state: running; }
+@keyframes milo-crystal-shine { from { opacity: .65; filter: brightness(1); } to { opacity: .95; filter: brightness(1.65) saturate(1.4); } }
+@media (prefers-reduced-motion: reduce) { .milo-card.milo-card .milo-card-crystal { animation: none; } }
+
+/* Move the light over the foil pattern, rather than lighting the whole card. */
+.milo-card[data-finish]:not([data-finish="holo"]) > .milo-species-foil {
+  translate: var(--foil-dx, 0px) var(--foil-dy, 0px);
+  transition: translate 90ms ease-out;
+}
+.foil-binary span, .foil-shards i {
+  background-size: 250% 250%;
+  background-position: var(--foil-x, 50%) var(--foil-y, 50%);
+}
+.foil-galaxy .foil-dot, .foil-galaxy .foil-star {
+  background: radial-gradient(circle at var(--foil-x, 50%) var(--foil-y, 50%), #fff 10%, #a9edff 40%, #ac74ef 80%);
+}
+.foil-galaxy::before { translate: var(--foil-dx, 0px) var(--foil-dy, 0px); }
+.milo-card:hover .foil-galaxy,
+.milo-card:hover .foil-binary,
+.milo-card:hover .foil-shards {
+  filter: brightness(1.3) saturate(1.3);
+}
+/* The full-art Mega rainbow continues across its ability and attack panel. */
+.milo-card.is-mega .milo-card-body { z-index: 1; background: transparent; }
+@media (prefers-reduced-motion: reduce) {
+  .milo-card[data-finish] > .milo-species-foil { translate: none; transition: none; }
+}
+
+.milo-card-rarity { display: inline-flex; align-items: center; gap: 5px; line-height: 1; }
+.milo-card-rarity-symbol { font-size: 13px; color: #211a12; }
+.rarity-special .milo-card-rarity-symbol { color: #ffd637; text-shadow: -1px 0 #765013, 1px 0 #765013, 0 -1px #765013, 0 1px #765013, 0 0 4px #fff3ab; }
+.rarity-super .milo-card-rarity-symbol { color: #e6ecf3; text-shadow: -1px 0 #626975, 1px 0 #626975, 0 -1px #626975, 0 1px #626975; }
+.milo-card-rarity-modifier { font-size: 11px; font-weight: 900; }
+.milo-card .milo-card-footer { z-index: 3; }
+
+/* Crystal backing is below the content and inside the yellow border. */
+.milo-card > .milo-card-background-crystal {
+  position: absolute; inset: 0; z-index: 0; width: 100%; height: 100%;
+  pointer-events: none; image-rendering: pixelated; mix-blend-mode: soft-light;
+  opacity: .75; animation: milo-crystal-shine 1.8s ease-in-out infinite alternate;
+  animation-play-state: paused;
+}
+.milo-card.is-tera .milo-card-body { background: transparent; }
+.milo-card:hover > .milo-card-background-crystal { animation-play-state: running; }
+@media (prefers-reduced-motion: reduce) { .milo-card > .milo-card-background-crystal { animation: none; } }
+
+.milo-energy-card { grid-template-rows: auto auto 1fr auto auto; background: radial-gradient(circle at 50% 52%, #fff9, transparent 32%), repeating-conic-gradient(from 12deg at 50% 52%, #ffffff1a 0deg 12deg, transparent 13deg 25deg), linear-gradient(145deg, #fff8db, var(--card-color) 55%, var(--card-color)); }
+.milo-energy-emblem { display: grid; place-items: center; }
+.milo-energy-emblem .milo-card-energy { width: 170px; height: 170px; box-shadow: 0 0 25px #fff9, 0 12px 16px #0004, inset 0 0 20px #fff9; }
+.milo-energy-caption { font-size: 10px; font-weight: bold; letter-spacing: .15em; }
+.milo-energy-note { font-size: 10px; text-align: center; }
+
+/* Full art uses the supplied scene from edge to edge inside the yellow frame. */
+.milo-card.is-full-art {
+  grid-template-rows: auto 42% 1fr auto;
+  background-image: var(--fullart-image);
+  background-size: auto var(--fullart-size, 100%);
+  background-position: var(--fullart-position, 50%) top;
+  background-repeat: no-repeat;
+  background-color: #172033;
+  color: #fff8e7;
+}
+.milo-card.is-full-art .milo-card-art {
+  background: none; border-color: transparent; outline: none; overflow: visible;
+}
+.milo-card.is-full-art .milo-card-art > .foil-holo { display: none; }
+.milo-card.is-full-art .milo-card-sprite,
+.milo-card.is-full-art .milo-card-crystal { width: 112.5%; height: 135%; }
+.milo-card.is-full-art .milo-card-body {
+  z-index: 1; padding: 9px 5px 0; margin-inline: -4px; border-radius: 5px;
+  background: linear-gradient(180deg, #07111e33, #07111e9c);
+  text-shadow: 0 1px 2px #000;
+}
+.milo-card.is-full-art .milo-card-header { z-index: 3; text-shadow: 0 1px 3px #000, 0 0 4px #000; }
+.milo-card.is-full-art .milo-card-stage { border-color: #fff9; }
+.milo-card.is-full-art .milo-card-ability-heading { color: #fff3cd; }
+.milo-card.is-full-art .milo-card-attack { border-color: #fff5; }
+.milo-card.is-full-art .milo-card-footer { color: #fff3cd; text-shadow: 0 1px 2px #000; border-color: #fff5; }
+.milo-card.is-full-art .rarity-rare .milo-card-rarity-symbol,
+.milo-card.is-full-art .rarity-uncommon .milo-card-rarity-symbol,
+.milo-card.is-full-art .rarity-common .milo-card-rarity-symbol { color: #fff6de; }
+.milo-card-fullart-mark { font-size: 12px; text-shadow: none; }
+.milo-card.is-full-art .milo-card-z-attack { color: #211a12; text-shadow: none; }
+.milo-card.is-full-art > .milo-card-foil {
+  display: block; opacity: .5; mix-blend-mode: soft-light;
+  background: repeating-linear-gradient(115deg, #ff93d1 0%, #90f0ff 15%, #bcff97 30%, #ffdfa4 45%, #c091ff 60%);
+  background-size: 260% 100%; animation: milo-card-rainbow 3s ease-in-out infinite alternate;
+  animation-play-state: paused;
+}
+.milo-card.is-full-art:hover > .milo-card-foil { animation-play-state: running; }
+.milo-card.is-full-art > .milo-card-foil::before {
+  background: repeating-linear-gradient(35deg, transparent 0 5px, #ffffff66 6px, transparent 7px 15px);
+  clip-path: none; opacity: .5; filter: none;
+}
+.milo-card.is-full-art > .milo-card-foil::after {
+  background: linear-gradient(115deg, transparent 30%, #fff0 40%, #ffffffaa 49%, #fff4 53%, transparent 62%);
+  background-size: 350% 100%; animation: milo-card-rainbow 3.5s ease-in-out infinite;
+  animation-play-state: paused;
+}
+.milo-card.is-full-art:hover > .milo-card-foil::after { animation-play-state: running; }
+@media (prefers-reduced-motion: reduce) {
+  .milo-card.is-full-art > .milo-card-foil, .milo-card.is-full-art > .milo-card-foil::after { animation: none; }
+}
+
+/* Reserve a fixed attack area; a single move starts near its top. */
+.milo-card-body { grid-template-rows: auto minmax(0, 1fr); gap: 5px; }
+.milo-card-attacks { display: grid; align-content: start; gap: 3px; min-height: 0; padding-top: 8px; }
+.milo-card[data-attack-count="1"] .milo-card-attacks { padding-top: 14px; }
+.milo-card[data-attack-count="2"] .milo-card-attack { padding-top: 4px; padding-bottom: 3px; }
+.milo-card[data-attack-count="2"] .milo-card-move-title { font-size: 12px; }
+.milo-card[data-attack-count="2"] .milo-card-damage { font-size: 19px; line-height: 1; }
+.milo-card[data-attack-count="2"] .milo-card-attack p { font-size: 8px; line-height: 1.15; margin-top: 3px; }
+.milo-card[data-attack-count="2"] .milo-card-z-attack { padding: 6px; }
+.milo-card[data-attack-count="2"] .milo-card-z-attack .milo-card-move-title { font-size: 13px; }
+.milo-card[data-attack-count="2"] .milo-card-z-attack .milo-card-damage { font-size: 27px; }
+.milo-card .milo-card-ability p { display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 3; overflow: hidden; }
+
+.milo-card-brand { display: grid; flex: 0 0 auto; font: 800 5px/1.15 Arial, sans-serif; letter-spacing: .15px; }
+.milo-card-footer { align-items: center; gap: 4px; }
+.milo-card-footer-stats { display: flex; flex: 1; align-items: center; justify-content: center; gap: 8px; min-width: 0; }
+.milo-card-footer-stat { display: inline-flex; align-items: center; gap: 1px; }
+.milo-card-footer-stat > svg { width: 8px; height: 11px; fill: none; stroke: currentColor; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; margin-right: 2px; }
+.milo-card-footer-stat .milo-card-energy { width: 12px; height: 12px; }
+.milo-card-footer .milo-card-rarity { flex: 0 0 auto; }

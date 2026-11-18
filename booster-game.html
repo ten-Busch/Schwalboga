@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Booster sammeln · Schwalboga</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;700&display=swap">
+    <link rel="stylesheet" href="milo-quiz.css?v=20261118-roster">
+    <link rel="stylesheet" href="milo-cards.css?v=20261118-footer13">
+    <link rel="stylesheet" href="milo-booster.css?v=20261118-fixed-layout3">
+    <link rel="stylesheet" href="booster-game.css?v=20261118">
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2" defer></script>
+    <script src="data/supabase-config.js?v=20260820-auth-cost-editor" defer></script>
+    <script src="data/pokedex-data.js?v=20261118-type-chart" defer></script>
+    <script src="data/ability-descriptions-de.js?v=20261118" defer></script>
+    <script src="sprite-crystal.js?v=20261118-background" defer></script>
+    <script src="milo-cards.js?v=20261118-collection14" defer></script>
+    <script src="milo-booster.js?v=20261118-collection6" defer></script>
+    <script src="booster-game-data.js?v=20261118" defer></script>
+    <script src="booster-game.js?v=20261118" defer></script>
+  </head>
+  <body class="milo-page">
+    <main class="milo-dialog booster-game">
+      <header class="milo-header">
+        <div><p class="milo-kicker">Games · Schwalboga</p><h1>Booster sammeln</h1></div>
+        <a class="milo-back" href="index.html#games">Zurück zu Games</a>
+      </header>
+      <div class="booster-game-content">
+        <p id="booster-account" class="milo-muted" role="status">Anmeldung wird geprüft …</p>
+        <section class="booster-home" aria-label="Booster öffnen">
+          <img src="assets/tcg/Boosterpack.jpg" alt="Milotic-Boosterpack" class="booster-home-pack">
+          <div>
+            <h2>Noch ein Pack?</h2>
+            <p>Fünf Pokémon, ein großer Hit. Öffne Booster und vervollständige deine Sammlung.</p>
+            <button id="booster-open" class="milo-primary" type="button" disabled>Booster öffnen</button>
+            <button id="booster-refresh" type="button" hidden>Erneut laden</button>
+            <p class="milo-muted">Deine Sammlung wird in deinem Account gespeichert.</p>
+          </div>
+        </section>
+        <section id="booster-progress" aria-label="Sammlungsfortschritt" hidden>
+          <div id="booster-counters" class="booster-counters"></div>
+          <div class="booster-collection-heading">
+            <div><h2>Deine Sammlung</h2><p id="booster-dex-count" class="milo-muted"></p></div>
+            <label>Pokémon suchen<input id="booster-search" type="search" placeholder="Name oder Dex-Nummer" autocomplete="off"></label>
+            <label class="booster-owned-filter"><input id="booster-owned-only" type="checkbox"> Nur gesammelte</label>
+          </div>
+          <p class="milo-muted booster-collection-hint">Wähle einen gefüllten Dex-Platz, um deine Karten und Varianten anzusehen.</p>
+          <div id="booster-dex" class="booster-dex"></div>
+        </section>
+        <noscript>Bitte aktiviere JavaScript, um Booster zu öffnen.</noscript>
+      </div>
+    </main>
+  </body>
+</html>
