@@ -1,0 +1,37 @@
+const assert = require('node:assert/strict');
+const fs = require('node:fs');
+const vm = require('node:vm');
+const app = fs.readFileSync('app.js', 'utf8');
+const functions = app.slice(app.indexOf('function hasAccountPermission('), app.indexOf('window.SCHWALBOGA_AUTH ='));
+const context = vm.createContext({ authSession: null, authRecoveryMode: false });
+vm.runInContext(functions, context);
+const evaluate = expression => vm.runInContext(expression, context);
+assert.equal(evaluate('canEditCosts()'), false);
+assert.equal(evaluate('getMiloQuizAdminId()'), null);
+context.authSession = { user: { id: 'account-1', user_metadata: { site_access: { permissions: { edit_costs: true, play_milo: true } } } } };
+assert.equal(evaluate('canEditCosts()'), false, 'Editable user metadata cannot grant rights');
+context.authSession.user.app_metadata = { site_access: { permissions: { edit_costs: true, play_milo: true, view_all_replays: true }, replay_players: ['assigned-player'] } };
+assert.equal(evaluate('canEditCosts()'), true);
+assert.equal(evaluate('getMiloQuizAdminId()'), 'account-1');
+assert.equal(evaluate('getReplayViewer().canViewAll'), true);
+assert.deepEqual(Array.from(evaluate('getReplayViewer().playerNames')), ['assigned-player']);
+context.authSession.user.app_metadata.site_access.permissions.edit_costs = 'true';
+assert.equal(evaluate('canEditCosts()'), false, 'Only boolean permissions grant access');
+context.authRecoveryMode = true;
+assert.equal(evaluate('getMiloQuizAdminId()'), null);
+assert.equal(evaluate('getReplayViewer().canViewAll'), false);
+assert.equal(evaluate('getReplayViewer().playerNames.length'), 0);
+const migration = fs.readFileSync('supabase/account-access-migration.sql', 'utf8');
+assert.doesNotMatch(migration, /create\s+(?:(?:temporary|temp|unlogged)\s+)?table\b/i, 'Bootstrap mapping must not create a table');
+assert.match(migration, /with legacy_account_access\(fingerprint, access\) as \(values/i);
+const assignments = [...migration.matchAll(/'({"permissions":.*?})'::jsonb/g)].map(match => JSON.parse(match[1]));
+assert.equal(assignments.length, 7);
+assert.equal(assignments.filter(a => a.permissions.edit_costs).length, 2);
+assert.equal(assignments.filter(a => a.permissions.view_all_replays).length, 2);
+assert.equal(assignments.filter(a => a.permissions.play_milo).length, 1);
+assert.equal(assignments.filter(a => a.replay_players.length).length, 5);
+for (const file of ['app.js', 'replay-library.js', 'milo-quiz-page.js', 'supabase/cost-system.sql', 'supabase/milo-highscores.sql']) {
+  const source = fs.readFileSync(file, 'utf8');
+  assert.doesNotMatch(source, /ADMIN_EMAIL|adminEmail|accountPlayerNames|auth\.jwt\(\) ->> 'email'/);
+}
+console.log('Account access checks passed (anonymous, forged metadata, assigned rights, recovery, legacy assignment counts).');

@@ -96,27 +96,7 @@ const budgetTotalsByFormat = {
   uber: 115,
 };
 
-const captainTypeCosts = {
-  Water: { tera: 3, z: 3 },
-  Dragon: { tera: 3, z: 3 },
-  Steel: { tera: 3, z: 2 },
-  Fairy: { tera: 3, z: 2 },
-  Flying: { tera: 2, z: 3 },
-  Fighting: { tera: 2, z: 3 },
-  Rock: { tera: 2, z: 3 },
-  Fire: { tera: 2, z: 2 },
-  Grass: { tera: 2, z: 2 },
-  Ground: { tera: 2, z: 2 },
-  Ice: { tera: 2, z: 2 },
-  Ghost: { tera: 2, z: 2 },
-  Dark: { tera: 2, z: 2 },
-  Poison: { tera: 2, z: 1 },
-  Normal: { tera: 1, z: 2 },
-  Electric: { tera: 2, z: 1 },
-  Psychic: { tera: 1, z: 1 },
-  Bug: { tera: 1, z: 1 },
-  Stellar: { tera: 3, z: null },
-};
+const captainTypeCosts = window.CAPTAIN_TYPE_COSTS;
 
 const megaIconPath = 'Type Icons/Mega-Entwicklung_Icon.png';
 const gmaxIconPath = 'Type Icons/Gigantamax_Icon.png';
@@ -697,29 +677,33 @@ let supabaseClient = null;
 let authSession = null;
 let authRecoveryMode = false;
 const authLinkTypeAtLoad = new URLSearchParams(window.location.hash.slice(1)).get('type');
-const COST_ADMIN_EMAILS = new Set(['tenbusch1@gmail.com', 'stefan.gysbers@web.de']);
-const REPLAY_ADMIN_EMAILS = new Set(['schwalboga@gmail.com', 'replay@schwalboga.de']);
+const miloQuizButton = document.querySelector('#milo-quiz-open');
 let sharedCostRows = new Map();
 let sharedCostsReady = false;
 let sharedCostsError = '';
 let tierEditorDraft = new Map();
 
-function currentUserEmail() {
-  return String(authSession?.user?.email ?? '').trim().toLowerCase();
+function hasAccountPermission(permission) {
+  return !authRecoveryMode && authSession?.user?.app_metadata?.site_access?.permissions?.[permission] === true;
 }
 
 function canEditCosts() {
-  return COST_ADMIN_EMAILS.has(currentUserEmail());
+  return hasAccountPermission('edit_costs');
+}
+
+function getMiloQuizAdminId() {
+  return hasAccountPermission('play_milo')
+    ? authSession?.user?.id
+    : null;
 }
 
 function getReplayViewer() {
   const user = authSession?.user ?? null;
-  const email = currentUserEmail();
+  const access = user?.app_metadata?.site_access;
   return {
     authenticated: Boolean(user),
-    email,
-    displayName: String(user?.user_metadata?.display_name ?? '').trim(),
-    canViewAll: REPLAY_ADMIN_EMAILS.has(email),
+    playerNames: !authRecoveryMode && Array.isArray(access?.replay_players) ? access.replay_players : [],
+    canViewAll: hasAccountPermission('view_all_replays'),
   };
 }
 
@@ -838,6 +822,7 @@ function syncAuthUi() {
     authToggle.setAttribute('aria-label', user ? `Konto: ${displayName}` : 'Anmelden');
   }
   if (tierEditorTile) tierEditorTile.hidden = !canEditCosts();
+  if (miloQuizButton) miloQuizButton.hidden = !getMiloQuizAdminId();
   syncBattleModeToggle();
 }
 

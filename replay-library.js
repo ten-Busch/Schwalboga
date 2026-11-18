@@ -6,13 +6,6 @@
   const defaultReplayFile = 'Sehr echtes Replay.html';
   const displayOnlyReplay = window.DEFAULT_REPLAY_DETAILS || null;
   const publicReplayIds = new Set(displayOnlyReplay?.id ? [displayOnlyReplay.id] : []);
-  const accountPlayerNames = new Map([
-    ['tenbusch1@gmail.com', ['tenbusch']],
-    ['stefan.gysbers@web.de', ['gysi1994']],
-    ['robin.nyboer@web.de', ['mrstarli']],
-    ['aweggebakker@uos.de', ['nyantacuga']],
-    ['niklasnykamp16@gmail.com', ['sibra1998']],
-  ]);
   let selectedId = null;
 
   function esc(value) {
@@ -31,11 +24,7 @@
     const viewer = window.SCHWALBOGA_AUTH?.getReplayViewer?.() || {};
     if (viewer.canViewAll) return true;
     if (!viewer.authenticated) return false;
-    const identities = new Set([
-      viewer.displayName,
-      String(viewer.email || '').split('@')[0],
-      ...(accountPlayerNames.get(String(viewer.email || '').toLowerCase()) || []),
-    ].map(normalizePlayer).filter(Boolean));
+    const identities = new Set((viewer.playerNames || []).map(normalizePlayer).filter(Boolean));
     return players(replay).some((player) => identities.has(normalizePlayer(player)));
   }
   function replayTitle(replay) { return players(replay).join(' vs. ') || replay.source?.fileName || 'Replay'; }

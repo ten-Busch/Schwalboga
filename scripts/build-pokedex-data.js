@@ -1,6 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 const vm = require('vm');
+const buildMoveLearnsetCounts = require('./build-move-learnset-counts.js');
 
 const workspaceRoot = process.cwd();
 const sourcePaths = {
@@ -622,3 +623,45 @@ fs.writeFileSync(
 console.log(
   `Generated ${pokedexEntries.length} Pokedex entries at ${outputScriptPath}`,
 );
+
+const abilityTypePath = path.join(outputDirectory, 'ability-type-counts.json');
+const typeNames = [...new Set(pokedexEntries.flatMap((entry) => entry.types))].sort();
+const emptyTypeCounts = () => Object.fromEntries(typeNames.map((type) => [type, 0]));
+const abilityNames = new Map();
+for (const { abilityDetails } of pokedexEntries) {
+  for (const { id, name, names } of abilityDetails) {
+    abilityNames.set(id, { id, name, ...(names ? { names } : {}) });
+  }
+}
+const sortedAbilities = [...abilityNames.values()].sort((left, right) => left.id.localeCompare(right.id, 'en'));
+
+function countAbilitiesByType(entries) {
+  const pokemonByType = emptyTypeCounts();
+  const abilities = Object.fromEntries(sortedAbilities.map(({ id }) => [id, {
+    byType: emptyTypeCounts(),
+    hiddenByType: emptyTypeCounts(),
+  }]));
+
+  for (const { types, abilityDetails } of entries) {
+    const abilityIds = new Set(abilityDetails.map(({ id }) => id));
+    const hiddenIds = new Set(abilityDetails.filter(({ slot }) => slot === 'H').map(({ id }) => id));
+    for (const type of new Set(types)) {
+      pokemonByType[type] += 1;
+      for (const id of abilityIds) abilities[id].byType[type] += 1;
+      for (const id of hiddenIds) abilities[id].hiddenByType[type] += 1;
+    }
+  }
+
+  return { pokemonCount: entries.length, pokemonByType, abilities };
+}
+
+const eligibleEntries = pokedexEntries.filter((entry) => !entry.hidden && !entry.impossible && !entry.unreleased);
+const abilityTypeData = {
+  types: typeNames,
+  abilityNames: Object.fromEntries(sortedAbilities.map(({ id, ...labels }) => [id, labels])),
+  standardForms: countAbilitiesByType(eligibleEntries.filter((entry) => !entry.forme)),
+  includingForms: countAbilitiesByType(eligibleEntries),
+};
+fs.writeFileSync(abilityTypePath, JSON.stringify(abilityTypeData, null, 2) + '\n');
+console.log(`Generated ability counts by type at ${abilityTypePath}`);
+buildMoveLearnsetCounts(pokedexEntries, Moves, outputDirectory);

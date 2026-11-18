@@ -39,10 +39,7 @@ on public.pokemon_costs for insert
 to authenticated
 with check (
   (select auth.uid()) = updated_by
-  and lower(coalesce((select auth.jwt() ->> 'email'), '')) in (
-    'tenbusch1@gmail.com',
-    'stefan.gysbers@web.de'
-  )
+  and (coalesce((select auth.jwt() -> 'app_metadata' -> 'site_access' -> 'permissions' ->> 'edit_costs'), 'false') = 'true')
 );
 
 drop policy if exists "authenticated users can update costs" on public.pokemon_costs;
@@ -51,17 +48,11 @@ create policy "cost administrators can update costs"
 on public.pokemon_costs for update
 to authenticated
 using (
-  lower(coalesce((select auth.jwt() ->> 'email'), '')) in (
-    'tenbusch1@gmail.com',
-    'stefan.gysbers@web.de'
-  )
+  (coalesce((select auth.jwt() -> 'app_metadata' -> 'site_access' -> 'permissions' ->> 'edit_costs'), 'false') = 'true')
 )
 with check (
   (select auth.uid()) = updated_by
-  and lower(coalesce((select auth.jwt() ->> 'email'), '')) in (
-    'tenbusch1@gmail.com',
-    'stefan.gysbers@web.de'
-  )
+  and (coalesce((select auth.jwt() -> 'app_metadata' -> 'site_access' -> 'permissions' ->> 'edit_costs'), 'false') = 'true')
 );
 
 drop policy if exists "authenticated users can read cost history" on public.pokemon_cost_history;
