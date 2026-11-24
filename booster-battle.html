@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Booster Battle · Schwalboga</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;600;700&display=swap">
+    <link rel="stylesheet" href="milo-quiz.css?v=20261118-roster">
+    <link rel="stylesheet" href="milo-cards.css?v=20261119-chase-stars">
+    <link rel="stylesheet" href="milo-booster.css?v=20261119-ditto">
+    <link rel="stylesheet" href="booster-battle.css?v=20261119-set-info">
+    <link rel="stylesheet" href="booster-packaging.css?v=20261119-magma-aqua">
+    <script src="data/pokedex-data.js?v=20261118-type-chart" defer></script>
+    <script src="data/ability-descriptions-de.js?v=20261118" defer></script>
+    <script src="sprite-crystal.js?v=20261118-background" defer></script>
+    <script src="milo-cards.js?v=20261119-magma-aqua" defer></script>
+    <script src="milo-booster.js?v=20261119-ditto" defer></script>
+    <script src="data/natdex-premier.js?v=20261119" defer></script>
+    <script src="booster-game-data.js?v=20261119-magma-aqua" defer></script>
+    <script src="data/magma-aqua.js?v=20261119-ditto" defer></script>
+    <script src="magma-aqua-booster.js?v=20261119-grouped-values" defer></script>
+    <script src="booster-packaging.js?v=20261119-magma-aqua" defer></script>
+    <script src="booster-battle-model.js?v=20261119-boss-bonus" defer></script>
+    <script src="booster-battle.js?v=20261119-boss-bonus" defer></script>
+  </head>
+  <body class="milo-page battle-page">
+    <main id="battle-app" class="battle-app milo-dialog">
+      <header class="battle-header">
+        <div><p class="battle-eyebrow">SCHWALBOGA · GAMES</p><h1>Booster Battle</h1><p class="battle-tagline">Gleiche Packs. Große Pulls. Wer holt den höchsten Wert?</p></div>
+        <nav><button id="battle-fullscreen" type="button">Vollbild</button><a href="index.html#games">Zurück zu Games</a></nav>
+      </header>
+      <section id="battle-setup" class="battle-setup">
+        <div class="battle-intro"><img id="battle-pack-preview" src="assets/tcg/Boosterpack.jpg" alt="Boosterpack" width="130" height="244"><div><h2 id="battle-set-title">Magma VS Aqua</h2><p>Spielt gemeinsam an einem Bildschirm. Seltene Karten bringen mehr Pokédollar. God Packs, Fake-outs und besondere Karten sind mit dabei.</p><p class="battle-private-note">Battle-Pulls bleiben in dieser Partie und werden keiner Sammlung hinzugefügt.</p></div></div>
+        <form id="battle-form">
+          <div class="battle-settings">
+            <label>Wie viele Spieler?<select id="battle-player-count" name="players"><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option><option>7</option><option>8</option><option>9</option><option>10</option></select></label>
+            <label>Wie viele Packs pro Spieler?<input id="battle-packs" name="packs" type="number" min="1" max="100" step="1" value="3" required></label>
+            <div class="battle-set-field"><label for="battle-set">Welches Set?</label><div class="battle-set-controls"><select id="battle-set" name="set"></select><button id="battle-set-info" type="button" aria-label="Karten und Pullrates des gewählten Sets anzeigen" title="Karten &amp; Pullrates">i</button></div></div>
+            <label>In welcher Reihenfolge?<select id="battle-order" name="order"><option value="alternate">Nach jedem Pack abwechseln</option><option value="sequential">Jeder öffnet alle Packs nacheinander</option></select></label>
+          </div>
+          <div id="battle-names" class="battle-names"></div>
+          <div class="battle-scoring"><strong>Geld = Punkte.</strong> Basiswert pro Pokémon, getrennt nach Full Art und Nicht-Full-Art. Alle Typ-, Trainer-, Z-, Tera- und Energy-Foil-Versionen teilen sich die Pullrate. Preisbereiche halten die Seltenheiten in Reihenfolge; innerhalb eines Bereichs zählt die Pullrate. Seltenheitsbonus: Häufig ×1 · Nicht häufig ×1,05 · Selten ×1,10 · Super-selten ×1,15 · Spezial-selten ×1,20. Dazu Full Art ×2 · Trainer ×1,5 · Z/Tera ×1,15. Marc/Adrian: Boss Bonus ×1,1. Boni werden kombiniert. Ditto hat einen festen Wert von 2.500 P (Ditto-Bonus).</div>
+          <p id="battle-error" role="alert" hidden></p>
+          <button class="milo-primary battle-start" type="submit">Battle starten</button>
+        </form>
+      </section>
+      <section id="battle-match" hidden>
+        <div class="battle-turnbar"><div><p class="battle-eyebrow" id="battle-progress"></p><h2 id="battle-turn" aria-live="polite"></h2></div><div class="battle-turn-actions"><button id="battle-open" class="milo-primary" type="button">Booster öffnen</button><button id="battle-reset" type="button">Neue Battle</button></div></div>
+        <section id="battle-results" class="battle-results" aria-label="Ergebnis" hidden></section>
+        <div id="battle-board" class="battle-board"></div>
+      </section>
+      <noscript>Bitte aktiviere JavaScript, um Booster Battle zu spielen.</noscript>
+    </main>
+  </body>
+</html>

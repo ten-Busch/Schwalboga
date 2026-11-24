@@ -28,6 +28,18 @@
 .milo-vote-bar { height: 100%; background: #84e8df; transition: width 150ms ease; }
 .milo-call-options { display: flex; flex-wrap: wrap; gap: 12px; }
 .milo-call-options[hidden] { display: none; }
+.milo-contact-options { align-items: stretch; }
+.milo-dialog .milo-contact-choice { display: flex; align-items: center; gap: 14px; flex: 1 1 210px; text-align: left; }
+.milo-phone-portrait { position: relative; box-sizing: border-box; width: 104px; height: 112px; flex-shrink: 0; border: 2px solid #84e8df; border-radius: 12px; background: linear-gradient(145deg, #33476c, #10182e); padding: 6px; }
+.milo-phone-portrait img { display: block; width: 100%; height: 100%; object-fit: contain; image-rendering: pixelated; }
+.milo-phone-dialogue > .milo-phone-portrait { margin: 0 0 8px 0; box-shadow: 0 5px 16px #0005; }
+.milo-phone-dialogue { margin-top: 18px; }
+.milo-phone-portrait-metallic img { filter: grayscale(1) brightness(1.65) contrast(.8); }
+.milo-phone-portrait-sheen { position: absolute; inset: 6px; mask-size: contain; mask-position: center; mask-repeat: no-repeat; -webkit-mask-size: contain; -webkit-mask-position: center; -webkit-mask-repeat: no-repeat; background: linear-gradient(125deg, transparent 15%, #dce8f999 28%, #fff 34%, #8190a655 41%, transparent 49%, #fff9 65%, transparent 76%); mix-blend-mode: screen; pointer-events: none; }
+@media (max-width: 600px) {
+  .milo-phone-portrait { width: 80px; height: 88px; }
+  .milo-dialog .milo-contact-choice { flex-basis: 100%; }
+}
 .milo-score-records { display: grid; gap: 20px; }
 .milo-score-form { display: flex; flex-wrap: wrap; align-items: end; gap: 12px; padding: 16px; border: 1px solid #3c4d78; border-radius: 12px; }
 .milo-score-form label { display: grid; gap: 5px; }
@@ -359,4 +371,21 @@
 @media (max-width: 360px) {
   .milo-answers { grid-template-columns: minmax(0, 1fr); }
   .milo-ladder li { gap: 4px; }
+}
+.milo-lifeline-icon { width: 84px; height: 52px; object-fit: contain; flex-shrink: 0; }
+.milo-lifeline-history { display: flex; gap: 6px; align-items: center; }
+.milo-lifeline-history .milo-lifeline-icon { width: 52px; height: 34px; }
+.milo-dialog .milo-joker { display: grid; justify-items: center; gap: 3px; border-radius: 12px; min-width: 108px; padding: 8px; }
+.milo-joker:disabled .milo-lifeline-icon { opacity: .8; }
+.milo-bonus-choices { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; margin-block: 16px; }
+.milo-bonus-choice { display: grid; grid-template-columns: auto 1fr; gap: 8px; text-align: left; align-items: center; }
+.milo-bonus-choice span { grid-column: 1 / -1; }
+.milo-bonus-choice[aria-pressed="true"], .milo-mode-choice button[aria-pressed="true"] { border-color: #ffd668; box-shadow: inset 0 0 0 2px #ffd668; }
+.milo-board li { flex-wrap: wrap; }
+.milo-board li .milo-lifeline-history { flex-basis: 100%; }
+@media (max-width: 600px) {
+  .milo-bonus-choices { grid-template-columns: 1fr; }
+  .milo-jokers { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 4px; }
+  .milo-dialog .milo-joker { min-width: 0; font-size: 11px; padding: 4px; }
+  .milo-joker .milo-lifeline-icon { width: 100%; max-width: 84px; }
 }

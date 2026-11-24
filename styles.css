@@ -491,8 +491,9 @@ body.dark-mode .replay-library, body.dark-mode .replay-detail { background: rgba
 
 .hub-action-card[data-hub-action='booster'] {
   --tile-color: var(--water);
-  --tile-image: url('assets/tcg/Boosterpack.jpg');
+  --tile-image: url('assets/sections/draft.webp');
 }
+.hub-action-card[data-hub-action='booster-battle'] { --tile-color: var(--fire); --tile-image: url('assets/tcg/Boosterpack.jpg'); }
 
 .hub-action-card[data-hub-action='draft-room'] {
   --tile-color: var(--ghost);

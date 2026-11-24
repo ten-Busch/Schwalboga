@@ -1,0 +1,23 @@
+.generated-booster { aspect-ratio: 546 / 900; container-type: inline-size; isolation: isolate; }
+.generated-booster .generated-booster-wrapper,
+.generated-booster .generated-booster-tear {
+  background: repeating-linear-gradient(90deg, #fff2 0 1px, transparent 1px 5px),
+    linear-gradient(120deg, #fff9, transparent 20% 70%, #0008),
+    linear-gradient(155deg, var(--pack-primary), var(--pack-secondary));
+  border: 1px solid #fff8; border-radius: 3px;
+}
+.generated-booster-wrapper { display: flex; flex-direction: column; align-items: center; overflow: hidden; color: white; text-align: center; text-shadow: 0 2px 4px #000a; }
+.generated-booster-wrapper::before { content: ''; position: absolute; inset: 25% -25% 17%; border: 1px solid #fff5; border-radius: 50%; transform: rotate(-35deg); background: radial-gradient(ellipse, #fff5, transparent 65%); }
+.generated-booster-wrapper::after { content: ''; position: absolute; inset: auto 0 0; height: 6%; background: repeating-linear-gradient(90deg, #0003 0 1px, #fff2 2px 4px); border-top: 1px solid #fff4; }
+.generated-booster-brand { margin-top: 24%; font: 700 8cqw 'Chakra Petch', sans-serif; letter-spacing: .12em; color: #fff3b6; }
+.generated-booster-series { margin-top: 3%; font: 700 3.4cqw sans-serif; letter-spacing: .12em; }
+.generated-booster-sprite { position: absolute; top: 28%; left: 6%; width: 88%; height: 42%; object-fit: contain; image-rendering: pixelated; filter: drop-shadow(0 8px 7px #0008); }
+.generated-booster-name { margin-top: auto; z-index: 1; font: 700 13cqw/.95 'Chakra Petch', sans-serif; text-transform: uppercase; padding: 4% 6%; color: #fff4c6; transform: rotate(-5deg); text-shadow: 2px 2px #263044, -1px -1px #263044, 0 4px 10px #000; }
+.generated-booster-edition { z-index: 1; font: 700 3.7cqw sans-serif; margin: 4% 0; letter-spacing: .08em; }
+.generated-booster-count { z-index: 1; margin-bottom: 14%; font: 700 4.2cqw sans-serif; padding: 4% 8%; background: #101b3699; border: 1px solid #fff5; border-radius: 20px; }
+.booster-home > .generated-booster { display: block; width: 160px; flex: 0 0 160px; }
+.magma-aqua-pack .generated-booster-wrapper, .magma-aqua-pack .generated-booster-tear { background: repeating-linear-gradient(90deg,#fff2 0 1px,transparent 1px 5px),linear-gradient(120deg,#fff7,transparent 25% 70%,#0008),linear-gradient(105deg,#b42c1c 0%,#e45520 47%,#153d70 49%,#167bb5 100%); }
+.magma-aqua-pack .faction-magma { left: -7%; top: 28%; width: 67%; height: 35%; transform: rotate(-8deg); }
+.magma-aqua-pack .faction-aqua { left: 40%; top: 35%; width: 67%; height: 30%; transform: rotate(8deg); }
+.magma-aqua-pack .generated-booster-name { margin-top: auto; padding-bottom: 2%; font-size: 14cqw; }
+@media(max-width:600px) { .booster-home > .generated-booster { width: 110px; flex-basis: 110px; } }

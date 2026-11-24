@@ -1,8 +1,15 @@
 window.createMiloScoreStore = function createMiloScoreStore(client) {
-  const validScores = new Set([0, 50, 100, 200, 300, 500, 1000, 2000, 4000, 8000,
-    16000, 32000, 64000, 125000, 250000, 500000, 1000000]);
   const valid = (row) => typeof row?.player_name === 'string' && row.player_name.trim().length > 0
-    && row.player_name.length <= 40 && validScores.has(row.score);
+    && row.player_name.length <= 40 && Number.isInteger(row.score) && row.score >= 0 && row.score <= 1000000;
+  const allowed = new Set(['half', 'audience', 'telephone', 'doppelteam', 'genwunner', 'hilfe', 'reroll', 'zerschneider', 'amnesie', 'blank']);
+  function normalizeLifelines(slots, mode) {
+    const ids = ['half', 'audience', 'telephone', 'blank'];
+    return ids.map((id, index) => ({ id: index === 3 && mode === 'risk' && allowed.has(slots?.[index]?.id)
+      ? slots[index].id : id, used: Boolean(slots?.[index]?.used) && (index !== 3 || mode === 'risk') }));
+  }
+  const countUsed = (row) => row.lifelines_used ?? row.lifelines?.filter((slot) => slot.used).length ?? 0;
+  const mapRow = (row) => ({ id: row.id, name: row.player_name, score: row.score, mode: row.run_mode,
+    lifelines: row.lifelines, usedCount: countUsed(row) });
   const prefix = (userId) => `schwalboga-milo-pending:${userId}:`;
   let syncing = null;
 
@@ -60,10 +67,11 @@ window.createMiloScoreStore = function createMiloScoreStore(client) {
       for (const row of rows) localStorage.removeItem(prefix(userId) + row.id);
     }
     const { data, error } = await client.from('milo_highscores')
-      .select('id,player_name,score,created_at,run_mode').eq('is_test', false).eq('is_deleted', false).order('score', { ascending: false })
+      .select('id,player_name,score,created_at,run_mode,lifelines,lifelines_used').eq('is_test', false).eq('is_deleted', false).order('score', { ascending: false })
+      .order('lifelines_used', { ascending: true })
       .order('created_at', { ascending: true }).order('id', { ascending: true }).limit(10);
     if (error) throw error;
-    return data.map((row) => ({ id: row.id, name: row.player_name, score: row.score, mode: row.run_mode }));
+    return data.map(mapRow);
   }
 
   function load(userId) {
@@ -81,19 +89,20 @@ window.createMiloScoreStore = function createMiloScoreStore(client) {
       let lastId;
       while (true) {
         let query = client.from('milo_highscores')
-          .select('id,player_name,score,run_mode,is_test,created_at')
+          .select('id,player_name,score,run_mode,is_test,created_at,lifelines,lifelines_used')
           .eq('is_deleted', false).order('id').limit(1000);
         if (lastId) query = query.gt('id', lastId);
         const { data, error } = await query;
         if (error) throw error;
         rows.push(...data);
-        if (data.length < 1000) return rows.sort((a, b) => b.score - a.score || a.created_at.localeCompare(b.created_at));
+        if (data.length < 1000) return rows.sort((a, b) => b.score - a.score || countUsed(a) - countUsed(b) || a.created_at.localeCompare(b.created_at));
         lastId = data.at(-1).id;
       }
     },
     async update(id, changes) {
       const row = { player_name: changes.player_name.trim(), score: Number(changes.score),
         run_mode: changes.run_mode, is_test: Boolean(changes.is_test) };
+      row.lifelines = normalizeLifelines(changes.lifelines, row.run_mode);
       if (!valid(row) || !['safe', 'risk'].includes(row.run_mode)) throw new Error('Ungültiges Ergebnis.');
       const { data, error } = await client.from('milo_highscores').update(row).eq('id', id)
         .eq('is_deleted', false).select('id').single();
@@ -109,12 +118,12 @@ window.createMiloScoreStore = function createMiloScoreStore(client) {
     },
     async localScores(userId) {
       const rows = pending(userId).filter((row) => row.is_test === false);
-      return rows.sort((a, b) => b.score - a.score).slice(0, 10)
-        .map((row) => ({ name: row.player_name, score: row.score, mode: row.run_mode }));
+      return rows.sort((a, b) => b.score - a.score || countUsed(a) - countUsed(b)).slice(0, 10).map(mapRow);
     },
-    async save(userId, name, score, mode = 'safe', assisted = false) {
+    async save(userId, name, score, mode = 'safe', assisted = false, lifelines = null) {
       const row = { id: crypto.randomUUID(), player_name: name.trim(), score, created_by: userId,
         run_mode: mode, is_test: Boolean(assisted) };
+      row.lifelines = normalizeLifelines(lifelines, mode);
       if (!['safe', 'risk'].includes(mode)) throw new Error('Ungültiger Spielmodus.');
       if (!valid(row)) throw new Error('Ungültiges Ergebnis.');
       try {

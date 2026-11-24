@@ -45,10 +45,48 @@ window.createMiloQuiz = function createMiloQuiz(getAdminId, generateQuestion, sc
   let round;
   let answerHintHeld = false;
   let developerKeyHeld = false;
-  let startDraft = { name: '', mode: 'safe' };
+  let startDraft = { name: '', mode: 'safe', bonus: 'doppelteam' };
+  let setupStep = 'name';
+  const lifelines = {
+    half: ['50:50', '5050', 'Entfernt zwei falsche Antworten.'],
+    audience: ['Publikum', 'publikum', 'Abstimmung vor Ort mit live anpassbaren Stimmen. Auf derselben Frage erneut aufrufbar.'],
+    telephone: ['Telefon', 'telefon', 'Wähle einen von drei Kontakten und lies seinen Rat.'],
+    doppelteam: ['Doppelteam', 'doppelteam', 'Logge zwei Antworten ein. Eine richtige genügt. Nicht nach 50:50 nutzbar.'],
+    genwunner: ['Genwunner', 'genwunner', 'Neue Frage derselben Kategorie mit ausschließlich Pokémon der ersten Generation. Nur bei Pokémon-Namen in der Frage.'],
+    hilfe: ['Hilfe!', 'hilfe', 'Bitte eine Person aus dem Publikum um Rat.'],
+    reroll: ['Reroll', 'reroll', 'Neue Frage, möglichst aus einer anderen Kategorie. Entfernte Antworten erscheinen wieder.'],
+    zerschneider: ['Zerschneider', 'zerschneider', 'Überspringe eine Frage. Ihr Punktewert wird am Ende von deinem Ergebnis abgezogen.'],
+    amnesie: ['Amnesie', 'amnesie', 'Neue Frage aus der nächstleichteren Stufe. Von 100 bis einschließlich 16.000 Punkten nutzbar. Der Gewinn der aktuellen Stufe bleibt gleich.'],
+    blank: ['Kein Wahljoker', 'blank', ''],
+  };
+  const bonuses = ['doppelteam', 'genwunner', 'hilfe', 'reroll', 'zerschneider', 'amnesie'];
+  function icon(id, used = false, unavailable = false) {
+    const image = element('img', 'milo-lifeline-icon');
+    const file = unavailable && !used && id === 'genwunner' ? 'gewunnerna'
+      : unavailable && !used && id === 'amnesie' ? 'amnesiena' : lifelines[id][1] + (used && id !== 'blank' ? 'used' : '');
+    image.src = `assets/wwtbam/${file}.png`;
+    image.alt = `${lifelines[id][0]}${used ? ' · benutzt' : ' · unbenutzt'}`;
+    return image;
+  }
+  function historyIcons(history, mode = 'safe') {
+    const strip = element('div', 'milo-lifeline-history');
+    const slots = history?.length ? history : ['half', 'audience', 'telephone', 'blank'].map((id) => ({ id, used: false }));
+    slots.forEach((slot, index) => {
+      const id = index === 3 && mode !== 'risk' ? 'blank' : slot.id;
+      if (lifelines[id]) strip.append(icon(id, slot.used));
+    });
+    return strip;
+  }
+  const usedCount = (row) => row.usedCount ?? row.lifelines?.filter((slot) => slot.used).length ?? 0;
+  const rankScores = (a, b) => b.score - a.score || usedCount(a) - usedCount(b);
+  function markUsed(id) { const slot = round.lifelines.find((item) => item.id === id); if (slot) slot.used = true; }
+  function hasPokemonPrompt() {
+    return round.question.referencePokemon?.some((p) => [p.name, p.de].some((name) => name && round.question.prompt.includes(name)));
+  }
   let jokerPopup = null;
   let phoneTimer;
-  const safetyPoints = () => round?.mode === 'risk' ? new Set([500, 1000000]) : checkpoints;
+  const safetyPoints = () => (round?.mode ?? (setupStep === 'mode' ? startDraft.mode : 'safe')) === 'risk'
+    ? new Set([500, 1000000]) : checkpoints;
 
   function closeJokerPopup() {
     clearTimeout(phoneTimer);
@@ -84,6 +122,14 @@ window.createMiloQuiz = function createMiloQuiz(getAdminId, generateQuestion, sc
 
   function jokerDisabled(joker) {
     if (!round?.question || round.revealed) return true;
+    if (joker === 'bonus') {
+      if (round.mode !== 'risk') return true;
+      if (round.bonus === 'doppelteam' && round.removed.length) return true;
+      if (round.bonus === 'genwunner' && !hasPokemonPrompt()) return true;
+      if (round.bonus === 'amnesie' && (round.index === 0 || prizes[round.index] > 16000)) return true;
+      return round.bonusUsed && !developerKeyHeld;
+    }
+    if (joker === 'half' && round.doubleActive) return true;
     if (developerKeyHeld) return false;
     if (joker === 'half') return round.halfUsed;
     const state = round[joker];
@@ -151,6 +197,7 @@ window.createMiloQuiz = function createMiloQuiz(getAdminId, generateQuestion, sc
     clearAnswerHint();
     adminId = null;
     round = null;
+    setupStep = 'name';
     scores = [];
     if (dialog.open) dialog.close();
     dialog.remove();
@@ -182,9 +229,10 @@ window.createMiloQuiz = function createMiloQuiz(getAdminId, generateQuestion, sc
       return board;
     }
     const list = element('ol', '');
-    scores.forEach(({ name, score, mode }) => {
+    scores.forEach(({ name, score, mode, lifelines: history }) => {
       const row = element('li', '');
       row.append(element('span', '', `${name} · ${mode === 'risk' ? 'Risk' : 'Safe'}`), element('strong', '', format.format(score)));
+      row.append(historyIcons(history, mode));
       list.append(row);
     });
     board.append(list);
@@ -221,13 +269,9 @@ window.createMiloQuiz = function createMiloQuiz(getAdminId, generateQuestion, sc
         name.required = true;
         name.maxLength = 40;
         field('Spielername', name);
-        const score = element('select', '');
-        for (const value of [0, ...prizes]) {
-          const option = element('option', '', format.format(value));
-          option.value = String(value);
-          option.selected = value === entry.score;
-          score.append(option);
-        }
+        const score = element('input', '');
+        score.type = 'number'; score.min = '0'; score.max = '1000000'; score.step = '1'; score.required = true;
+        score.value = String(entry.score);
         field('Punkte', score);
         const mode = element('select', '');
         for (const [value, text] of [['safe', 'Safe Mode'], ['risk', 'Risk Mode']]) {
@@ -280,12 +324,12 @@ window.createMiloQuiz = function createMiloQuiz(getAdminId, generateQuestion, sc
             return;
           }
           void mutate(() => scoreStore.update(entry.id, {
-            player_name: name.value, score: score.value, run_mode: mode.value, is_test: test.checked,
+            player_name: name.value, score: score.value, run_mode: mode.value, is_test: test.checked, lifelines: entry.lifelines,
           }));
         });
         name.addEventListener('input', () => name.setCustomValidity(''));
         form.append(element('p', 'milo-muted', new Date(entry.created_at).toLocaleString('de-DE')),
-          save, remove, confirmation, feedback);
+          historyIcons(entry.lifelines, entry.run_mode), save, remove, confirmation, feedback);
         records.append(form);
       }
     } catch (error) {
@@ -302,7 +346,7 @@ window.createMiloQuiz = function createMiloQuiz(getAdminId, generateQuestion, sc
     render();
     try {
       const loaded = saveResult
-        ? await scoreStore.save(owner, saveResult.player, saveResult.score, saveResult.mode, saveResult.assisted)
+        ? await scoreStore.save(owner, saveResult.player, saveResult.score, saveResult.mode, saveResult.assisted, saveResult.lifelines)
         : await scoreStore.load(owner);
       if (request !== scoreRequest || owner !== adminId || !isAuthorized()) return;
       scores = loaded;
@@ -332,21 +376,26 @@ window.createMiloQuiz = function createMiloQuiz(getAdminId, generateQuestion, sc
     round.correct = round.question?.correct;
     round.removed = [];
     round.selected = null;
+    round.selectedAnswers = [];
+    round.doubleActive = false;
     round.revealed = false;
     round.packOpened = false;
     round.packStarted = false;
   }
 
-  function replaceDeveloperQuestion(replacement) {
+  function replaceDeveloperQuestion(replacement, assisted = true) {
     clearAnswerHint();
     closeJokerPopup();
-    round.assisted = true;
+    if (assisted) round.assisted = true;
     round.questionId += 1;
+    if (round.telephone?.refundNext) round.telephone = null;
     round.achromasEstimates = null;
     round.question = replacement;
     applyPrediction(round.question);
     round.correct = round.question.correct;
     round.selected = null;
+    round.selectedAnswers = [];
+    round.doubleActive = false;
     round.revealed = false;
     round.removed = [];
     round.packOpened = false;
@@ -401,6 +450,9 @@ window.createMiloQuiz = function createMiloQuiz(getAdminId, generateQuestion, sc
         round.halfUsed = false;
         round.audience = null;
         round.telephone = null;
+        round.bonusUsed = false;
+        round.penalty = 0;
+        round.lifelines.forEach((slot) => { slot.used = false; });
         resetCelebration();
         replaceDeveloperQuestion(replacement);
       }, 'milo-primary'), button('Abbrechen', () => box.close()));
@@ -425,38 +477,20 @@ window.createMiloQuiz = function createMiloQuiz(getAdminId, generateQuestion, sc
     name.value = startDraft.name;
     name.addEventListener('input', () => { startDraft.name = name.value; });
     name.addEventListener('input', () => name.setCustomValidity(''));
-    const modes = element('fieldset', 'milo-mode-choice');
-    modes.append(element('legend', '', 'Spielmodus'));
-    for (const [value, title, description] of [
-      ['safe', 'Safe Mode', 'Sicherheitsstufen bei 500 und 16.000 Punkten.'],
-      ['risk', 'Risk Mode', 'Sicherheitsstufe bei 500 Punkten. Der zusätzliche Wahljoker wird später ergänzt.'],
-    ]) {
-      const choice = element('label', 'milo-mode-option');
-      const radio = element('input', '');
-      radio.type = 'radio';
-      radio.name = 'mode';
-      radio.value = value;
-      radio.checked = startDraft.mode === value;
-      radio.addEventListener('change', () => { startDraft.mode = value; });
-      choice.append(radio, element('strong', '', title), element('span', '', description));
-      modes.append(choice);
-    }
-    const start = element('button', 'milo-primary', 'Spiel starten');
+    const start = element('button', 'milo-primary', 'Weiter');
     start.type = 'submit';
     label.append(name);
-    form.append(label, modes, start);
+    form.append(label, start);
     form.addEventListener('submit', (event) => {
       event.preventDefault();
       if (!isAuthorized()) return close();
-      const player = name.value.trim();
-      if (!player) {
+      if (!name.value.trim()) {
         name.setCustomValidity('Bitte gib einen Namen ein.');
         name.reportValidity();
         return;
       }
-      round = { player, mode: startDraft.mode, index: 0, earned: 0, safe: 0, seen: new Set(),
-        halfUsed: false, audience: null, telephone: null, assisted: false, futureSlots: new Map() };
-      makeStep();
+      startDraft.name = name.value.trim();
+      setupStep = 'mode';
       render(true);
     });
     welcome.append(form);
@@ -486,16 +520,98 @@ window.createMiloQuiz = function createMiloQuiz(getAdminId, generateQuestion, sc
     stage.append(welcome, scoreBoard());
   }
 
+  function renderMode() {
+    const panel = element('section', 'milo-welcome milo-mode-screen');
+    panel.append(element('h3', 'milo-focus', `${startDraft.name}, wähle deinen Spielmodus`));
+    const modes = element('div', 'milo-mode-choice');
+    for (const [id, title, description] of [
+      ['safe', 'Safe Mode', 'Drei Joker. Sicherheitsstufen bei 500 und 16.000 Punkten.'],
+      ['risk', 'Risiko', 'Vier Joker. Keine Sicherheitsstufe bei 16.000 Punkten; 500 bleiben sicher. Wähle einen zusätzlichen Joker.'],
+    ]) {
+      const control = button(`${title} · ${description}`, () => { startDraft.mode = id; render(true); });
+      control.setAttribute('aria-pressed', String(startDraft.mode === id));
+      modes.append(control);
+    }
+    panel.append(modes, element('h4', '', 'Deine Joker'));
+    panel.append(historyIcons(['half', 'audience', 'telephone', startDraft.mode === 'risk' ? startDraft.bonus : 'blank'].map((id) => ({id, used:false})), startDraft.mode));
+    for (const id of ['half', 'audience', 'telephone']) panel.append(element('p', '', `${lifelines[id][0]}: ${lifelines[id][2]}`));
+    panel.append(element('h4', '', 'Wahljoker für Risiko'));
+    const choices = element('div', 'milo-bonus-choices');
+    for (const id of bonuses) {
+      const control = button('', () => { startDraft.bonus = id; render(true); }, 'milo-bonus-choice', startDraft.mode !== 'risk');
+      control.append(icon(id), element('strong', '', lifelines[id][0]), element('span', '', lifelines[id][2]));
+      control.setAttribute('aria-label', lifelines[id][0]);
+      control.setAttribute('aria-pressed', String(startDraft.mode === 'risk' && startDraft.bonus === id));
+      choices.append(control);
+    }
+    panel.append(choices, button('Zurück', () => { setupStep = 'name'; render(true); }), button('Spiel starten', () => {
+      round = { player: startDraft.name, mode: startDraft.mode, bonus: startDraft.bonus, bonusUsed: false,
+        penalty: 0, index: 0, earned: 0, safe: 0, seen: new Set(), halfUsed: false,
+        audience: null, telephone: null, assisted: false, futureSlots: new Map(),
+        lifelines: ['half', 'audience', 'telephone', startDraft.mode === 'risk' ? startDraft.bonus : 'blank'].map((id) => ({id, used:false})) };
+      makeStep(); render(true);
+    }, 'milo-primary'));
+    stage.append(panel);
+  }
+
+  function useBonus() {
+    if (jokerDisabled('bonus')) return;
+    if (developerKeyHeld) round.assisted = true;
+    const id = round.bonus;
+    if (['genwunner', 'reroll', 'amnesie'].includes(id)) {
+      const value = round.question.prize ?? prizes[round.index];
+      let replacement;
+      if (id === 'genwunner') replacement = generateQuestion.genOne?.(value, round.seen, round.question.category);
+      if (id === 'reroll') replacement = generateQuestion(value, round.seen, null, round.question.category)
+        ?? generateQuestion(value, round.seen);
+      if (id === 'amnesie') {
+        const lower = prizes[Math.max(0, prizes.indexOf(value) - 1)];
+        const later = new Set(prizes.filter((prize) => prize > lower).flatMap((prize) => generateQuestion.availableCategories?.(prize) ?? []));
+        const exclusive = (generateQuestion.availableCategories?.(lower) ?? []).filter((category) => !later.has(category));
+        if (exclusive.length && Math.random() < 0.8) {
+          replacement = generateQuestion(lower, round.seen, exclusive[Math.floor(Math.random() * exclusive.length)]);
+        }
+        replacement ??= generateQuestion(lower, round.seen);
+      }
+      if (!replacement) {
+        const box = popup('Keine passende Frage verfügbar');
+        box.append(element('p', '', 'Bitte erneut versuchen. Dein Joker wurde nicht verbraucht.'), button('Schließen', () => box.close()));
+        box.showModal(); return;
+      }
+      round.bonusUsed = true; markUsed(id);
+      replaceDeveloperQuestion(replacement, false);
+      return;
+    }
+    round.bonusUsed = true; markUsed(id);
+    if (id === 'doppelteam') {
+      round.doubleActive = true; round.selectedAnswers = round.selected === null ? [] : [round.selected]; render(true);
+    } else if (id === 'hilfe') {
+      render();
+      const box = popup('Hilfe!');
+      box.append(element('p', '', 'Bitte eine Person aus dem Publikum vor Ort, dich bei dieser Frage zu beraten.'), button('Zurück zur Frage', () => box.close()));
+      box.showModal();
+    } else if (id === 'zerschneider') {
+      round.penalty += prizes[round.index];
+      round.earned = prizes[round.index];
+      if (safetyPoints().has(round.earned)) round.safe = round.earned;
+      round.previousAnswer = round.question.options[round.correct];
+      if (round.index === prizes.length - 1) return finish(round.earned, 'Runde beendet');
+      round.index += 1; makeStep(); render(true);
+    }
+  }
+
   function finish(score, title) {
     if (round.result) return;
+    score = Math.max(0, score - round.penalty);
     round.result = { score, title };
-    if (!round.assisted) scores = [...scores, { name: round.player, score, mode: round.mode }].sort((a, b) => b.score - a.score).slice(0, 10);
+    if (!round.assisted) scores = [...scores, { name: round.player, score, mode: round.mode, lifelines: round.lifelines }].sort(rankScores).slice(0, 10);
     render(true);
-    void refreshScores({ player: round.player, score, mode: round.mode, assisted: round.assisted });
+    void refreshScores({ player: round.player, score, mode: round.mode, assisted: round.assisted, lifelines: round.lifelines });
   }
 
   function audienceJoker() {
     if (jokerDisabled('audience')) return;
+    markUsed('audience');
     if (developerKeyHeld) {
       round.assisted = true;
       if (round.audience?.questionId !== round.questionId) round.audience = null;
@@ -547,8 +663,9 @@ window.createMiloQuiz = function createMiloQuiz(getAdminId, generateQuestion, sc
 
   function telephoneJoker() {
     if (jokerDisabled('telephone')) return;
+    markUsed('telephone');
     const context = {
-      question: round.question, prize: prizes[round.index], player: round.player,
+      question: round.question, prize: round.question.prize ?? prizes[round.index], player: round.player,
       previousAnswer: round.previousAnswer,
       futureAnswerSlot: round.futureSlots.get(round.index + 2),
     };
@@ -563,6 +680,25 @@ window.createMiloQuiz = function createMiloQuiz(getAdminId, generateQuestion, sc
       chosen: null, line: 0, revealedWords: 1,
     };
     const call = round.telephone;
+    function portrait(contact, speaker) {
+      const data = window.getMiloPhonePortrait?.(contact, speaker);
+      if (!data) return null;
+      const frame = element('div', 'milo-phone-portrait');
+      frame.setAttribute('aria-hidden', 'true');
+      const image = element('img', '');
+      image.src = data.src;
+      image.alt = '';
+      image.addEventListener('error', () => frame.remove(), { once: true });
+      frame.append(image);
+      if (data.metallic) {
+        frame.classList.add('milo-phone-portrait-metallic');
+        const sheen = element('span', 'milo-phone-portrait-sheen');
+        sheen.style.maskImage = `url("${data.src}")`;
+        sheen.style.webkitMaskImage = `url("${data.src}")`;
+        frame.append(sheen);
+      }
+      return frame;
+    }
     const availableContacts = developerSelection && call.chosen === null
       ? window.createMiloPhoneContacts(context) : call.contacts;
     const box = popup('Telefonjoker');
@@ -582,15 +718,21 @@ window.createMiloQuiz = function createMiloQuiz(getAdminId, generateQuestion, sc
         box.append(element('p', '', developerSelection
           ? 'Entwicklerauswahl · alle für diese Frage verfügbaren Kontakte.'
           : 'Wähle einen von drei Kontakten.'));
-        const options = element('div', 'milo-call-options');
-        availableContacts.forEach((contact) => options.append(button(contact.name, () => {
+        const options = element('div', 'milo-call-options milo-contact-options');
+        availableContacts.forEach((contact) => {
+          const choice = button('', () => {
           const existing = call.contacts.indexOf(contact);
           if (existing === -1) call.contacts.push(contact);
           call.chosen = existing === -1 ? call.contacts.length - 1 : existing;
           call.line = 0;
           call.revealedWords = 1;
           draw();
-        })));
+          }, 'milo-contact-choice');
+          const image = portrait(contact);
+          if (image) choice.append(image);
+          choice.append(element('span', '', contact.name));
+          options.append(choice);
+        });
         box.append(options);
       } else {
         const contact = call.contacts[call.chosen];
@@ -622,7 +764,11 @@ window.createMiloQuiz = function createMiloQuiz(getAdminId, generateQuestion, sc
         if (current.theme === 'roto') speech.classList.add('milo-roto');
         const text = element('p', '');
         speech.append(element('h3', 'milo-speaker', current.speaker), text);
-        box.append(speech);
+        const dialogue = element('div', 'milo-phone-dialogue');
+        const speakerPortrait = portrait(contact, current.speaker);
+        if (speakerPortrait) dialogue.append(speakerPortrait);
+        dialogue.append(speech);
+        box.append(dialogue);
         const navigation = element('div', 'milo-call-options');
         const back = button('◂ Zurück', () => {
           call.line -= 1;
@@ -638,12 +784,19 @@ window.createMiloQuiz = function createMiloQuiz(getAdminId, generateQuestion, sc
         box.append(navigation);
         if (current.choices) {
           const choices = element('div', 'milo-call-options');
+          const choiceKey = `${contact.id}:${call.line}`;
+          const locked = current.singleChoice ? call.lockedChoices?.[choiceKey] : null;
           current.choices.forEach((choice) => choices.append(button(choice.label, () => {
+            if (choice.disabled || (locked && locked !== choice.label)) return;
+            if (current.singleChoice) {
+              call.lockedChoices ??= {};
+              call.lockedChoices[choiceKey] = choice.label;
+            }
             call.lines.splice(call.line + 1, current.choiceResponseInserted ? 1 : 0, choice.response);
             current.choiceResponseInserted = true;
             call.line += 1;
             draw();
-          })));
+          }, '', Boolean(choice.disabled || (locked && locked !== choice.label)))));
           speech.append(choices);
           next.disabled = !current.choiceResponseInserted;
         }
@@ -690,10 +843,11 @@ window.createMiloQuiz = function createMiloQuiz(getAdminId, generateQuestion, sc
     if (jokerDisabled('half')) return;
     if (developerKeyHeld) round.assisted = true;
     round.halfUsed = true;
+    markUsed('half');
     const wrong = letters.map((_, index) => index).filter((index) => index !== round.correct);
     wrong.splice(Math.floor(Math.random() * wrong.length), 1);
     round.removed = wrong;
-    if (wrong.includes(round.selected)) round.selected = null;
+    if (wrong.includes(round.selected)) { round.selected = null; round.selectedAnswers = []; }
     render(true);
   }
 
@@ -704,6 +858,7 @@ window.createMiloQuiz = function createMiloQuiz(getAdminId, generateQuestion, sc
       element('span', '', `Kontostand ${format.format(round.earned)}`),
       element('span', '', `Sicher ${format.format(round.safe)}`));
     stage.append(status);
+    if (round.penalty) stage.append(element('p', 'milo-muted', `Zerschneider-Abzug am Ende: ${format.format(round.penalty)} Punkte.`));
     const jump = button('Dev · Zu Frage springen', openQuestionJump);
     jump.dataset.miloDev = '';
     stage.append(jump);
@@ -730,15 +885,17 @@ window.createMiloQuiz = function createMiloQuiz(getAdminId, generateQuestion, sc
       return;
     }
     const jokers = element('div', 'milo-jokers');
-    jokers.append(
-      button(round.halfUsed ? '50:50 ✓' : '50:50', useHalfJoker, 'milo-joker', jokerDisabled('half')),
-      button(round.audience ? 'Publikum ✓' : 'Publikum', audienceJoker, 'milo-joker',
-        round.revealed || Boolean(round.audience && round.audience.questionId !== round.questionId)),
-      button(round.telephone ? 'Telefon ✓' : 'Telefon', telephoneJoker, 'milo-joker',
-        round.revealed || Boolean(round.telephone && (round.telephone.refundNext || round.telephone.questionId !== round.questionId))),
-    );
-    [...jokers.children].forEach((control, index) => { control.dataset.miloJoker = ['half', 'audience', 'telephone'][index]; });
-    if (round.mode === 'risk') jokers.append(button('Wahljoker · folgt', null, 'milo-joker', true));
+    for (const [id, action] of [['half', useHalfJoker], ['audience', audienceJoker], ['telephone', telephoneJoker], ['bonus', useBonus]]) {
+      const actual = id === 'bonus' ? (round.mode === 'risk' ? round.bonus : 'blank') : id;
+      const used = round.lifelines.find((slot) => slot.id === actual)?.used;
+      const disabled = jokerDisabled(id);
+      const control = button('', action, 'milo-joker', disabled);
+      control.setAttribute('aria-label', lifelines[actual][0] + (used ? ' · benutzt' : ''));
+      control.title = lifelines[actual][2];
+      control.append(icon(actual, used, disabled), element('span', '', lifelines[actual][0]));
+      control.dataset.miloJoker = id;
+      jokers.append(control);
+    }
     stage.append(jokers);
     const developerControls = element('div', 'milo-actions');
     const developerStatus = element('p', 'milo-muted');
@@ -790,15 +947,19 @@ window.createMiloQuiz = function createMiloQuiz(getAdminId, generateQuestion, sc
     question.append(element('p', 'milo-kicker', `Stufe ${round.index + 1} / ${prizes.length} · ${format.format(prizes[round.index])} Punkte`),
       element('h3', round.revealed ? '' : 'milo-focus', round.question.prompt));
     if (round.question.team) question.append(button('Teamkarten ansehen', openBooster));
+    if (round.doubleActive) question.append(element('p', '', 'Doppelteam: Wähle genau zwei Antworten.'));
     const answers = element('div', 'milo-answers');
     letters.forEach((letter, index) => {
       const removed = round.removed.includes(index);
       const answer = button(removed ? '—' : `${letter} · ${round.question.options[index]}`, () => {
-        round.selected = index;
+        if (round.doubleActive) {
+          if (round.selectedAnswers.includes(index)) round.selectedAnswers = round.selectedAnswers.filter((value) => value !== index);
+          else if (round.selectedAnswers.length < 2) round.selectedAnswers.push(index);
+        } else { round.selected = index; round.selectedAnswers = [index]; }
         for (const [answerIndex, control] of [...answers.children].entries()) {
-          control.setAttribute('aria-pressed', String(answerIndex === index));
+          control.setAttribute('aria-pressed', String(round.selectedAnswers.includes(answerIndex)));
         }
-        actions.querySelector('.milo-primary').disabled = false;
+        actions.querySelector('.milo-primary').disabled = round.doubleActive ? round.selectedAnswers.length !== 2 : round.selected === null;
       }, 'milo-answer', removed || round.revealed);
       const estimate = round.achromasEstimates?.find((item) => item.index === index);
       if (!removed && estimate) {
@@ -808,14 +969,14 @@ window.createMiloQuiz = function createMiloQuiz(getAdminId, generateQuestion, sc
         answer.append(badge);
       }
       if (removed) answer.setAttribute('aria-label', `Antwort ${letter} gestrichen`);
-      answer.setAttribute('aria-pressed', String(round.selected === index));
+      answer.setAttribute('aria-pressed', String(round.selectedAnswers.includes(index)));
       if (round.revealed && index === round.correct) answer.dataset.result = 'correct';
-      if (round.revealed && index === round.selected && index !== round.correct) answer.dataset.result = 'wrong';
+      if (round.revealed && round.selectedAnswers.includes(index) && index !== round.correct) answer.dataset.result = 'wrong';
       answers.append(answer);
     });
     const actions = element('div', 'milo-actions');
     if (round.revealed) {
-      const correct = round.selected === round.correct;
+      const correct = round.selectedAnswers.includes(round.correct);
       const result = element('p', 'milo-focus', correct ? 'Richtig!' : `Falsch. Richtig war ${letters[round.correct]}.`);
       const won = round.earned === prizes.at(-1);
       actions.append(result, button(correct && !won ? 'Nächste Stufe' : 'Ergebnis anzeigen', () => {
@@ -829,15 +990,15 @@ window.createMiloQuiz = function createMiloQuiz(getAdminId, generateQuestion, sc
     } else {
       actions.append(button('Aussteigen', () => finish(round.earned, 'Ausgestiegen')),
         button('Antwort einloggen', () => {
-          if (round.selected === null || round.removed.includes(round.selected)) return;
+          if (round.doubleActive ? round.selectedAnswers.length !== 2 : round.selected === null || round.removed.includes(round.selected)) return;
           round.revealed = true;
-          if (round.selected === round.correct) {
+          if (round.selectedAnswers.includes(round.correct)) {
             round.earned = prizes[round.index];
             if (safetyPoints().has(round.earned)) round.safe = round.earned;
             if (round.earned === 1000000) celebrateMillion();
           }
           render(true);
-        }, 'milo-primary', round.selected === null));
+        }, 'milo-primary', round.doubleActive ? round.selectedAnswers.length !== 2 : round.selected === null));
     }
     stage.append(question, answers, actions);
     if (round.revealed && round.question.explanation) {
@@ -858,7 +1019,7 @@ window.createMiloQuiz = function createMiloQuiz(getAdminId, generateQuestion, sc
       if (round && prize <= (round.result?.score ?? round.earned)) row.classList.add('milo-earned');
       ladder.append(row);
     }
-    if (!round) renderStart();
+    if (!round) { if (setupStep === 'mode') renderMode(); else renderStart(); }
     else if (!round.result) renderRound();
     else {
       const summary = element('section', 'milo-result');
@@ -866,9 +1027,12 @@ window.createMiloQuiz = function createMiloQuiz(getAdminId, generateQuestion, sc
         element('p', '', `${round.player} · ${format.format(round.result.score)} Punkte`));
       if (round.result.unsaved) summary.append(element('p', 'milo-muted', 'Die Bestenliste konnte auf diesem Gerät nicht gespeichert werden.'));
       if (round.assisted) summary.append(element('p', 'milo-muted', 'Entwicklerhilfe verwendet · dieses Ergebnis zählt nicht zur Bestenliste.'));
+      summary.append(historyIcons(round.lifelines, round.mode));
+      if (round.penalty) summary.append(element('p', '', `Enthält ${format.format(round.penalty)} Punkte Zerschneider-Abzug.`));
       summary.append(button('Neue Runde', () => {
         resetCelebration();
         round = null;
+        setupStep = 'name';
         render(true);
       }, 'milo-primary'));
       stage.append(summary, scoreBoard());

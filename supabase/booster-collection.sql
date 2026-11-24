@@ -49,7 +49,7 @@ begin
   if p_pack_id is null or jsonb_typeof(p_cards) is distinct from 'array' then
     raise exception 'Invalid booster';
   end if;
-  if jsonb_array_length(p_cards) <> 5 or octet_length(p_cards::text) > 32768 then
+  if jsonb_array_length(p_cards) not in (5, 6) or octet_length(p_cards::text) > 32768 then
     raise exception 'Invalid booster size';
   end if;
   for card in select value from jsonb_array_elements(p_cards) loop
@@ -64,6 +64,19 @@ begin
     end if;
   end loop;
 
+  -- Five main cards, optionally one independent Energy Foil bonus.
+  if (select count(*) from jsonb_array_elements(p_cards) c
+      where c->'card_data'->'energyFoil' = 'true'::jsonb) <> jsonb_array_length(p_cards) - 5 then
+    raise exception 'Invalid Energy Foil bonus count';
+  end if;
+  if exists (select 1 from jsonb_array_elements(p_cards) c
+      where c->'card_data'->'energyFoil' = 'true'::jsonb
+        and (c->>'variant' <> 'normal' or c->'full_art' <> 'false'::jsonb
+          or coalesce(c->'card_data'->>'trainer', '') <> ''
+          or c->'card_data'->'fullArt' <> 'false'::jsonb)) then
+    raise exception 'Energy Foil cannot combine with other treatments';
+  end if;
+
   insert into public.booster_players(user_id) values(owner_id) on conflict do nothing;
   -- Serialize pack credits per account, including requests from different tabs/devices.
   perform 1 from public.booster_players where user_id = owner_id for update;
@@ -75,7 +88,7 @@ begin
     insert into public.booster_cards(user_id, card_key, pokemon_name, rarity, full_art, variant, card_data, count)
       values(owner_id, card->>'card_key', card->>'pokemon_name', card->>'rarity',
         (card->>'full_art')::boolean, card->>'variant', card->'card_data', 1)
-      on conflict(user_id, card_key) do update set count = public.booster_cards.count + 1;
+      on conflict(user_id, card_key) do update set count = public.booster_cards.count + 1, rarity = excluded.rarity;
   end loop;
   update public.booster_players set packs_opened = packs_opened + 1 where user_id = owner_id;
   return jsonb_build_object('recorded', true);

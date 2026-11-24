@@ -18,6 +18,13 @@
 .is-opening .milo-booster-wrapper { animation: milo-pack-drop .65s .4s ease-in forwards; }
 .milo-booster-status { text-align: center; min-height: 1.5em; font-size: clamp(15px, 1.3vw, 21px); color: #f7e6b5; }
 .milo-booster-actions { display: flex; justify-content: center; flex-wrap: wrap; gap: 12px; }
+.milo-god-seal-light { position: absolute; z-index: 4; left: -40%; top: 8%; width: 180%; height: 80%; opacity: 0; pointer-events: none;
+  background: radial-gradient(ellipse at 50% 0, #fffce4, #ffe68abb 12%, #ffbd2855 32%, transparent 64%);
+  clip-path: polygon(24% 0, 76% 0, 100% 100%, 0 100%); filter: drop-shadow(0 0 25px #ffd55a); transform-origin: center top; }
+.is-opening.is-god-pack .milo-god-seal-light { animation: milo-god-seal 1.7s ease-out both; }
+.milo-booster-dialog.is-god-pack { border-color: #f8da7d; box-shadow: 0 0 70px #eabc4755, 0 24px 100px #000c; }
+.milo-god-announcement { margin: 10px 0 20px; color: #ffdf83; text-align: center; font: 900 clamp(24px, 3vw, 42px) 'Chakra Petch', sans-serif; letter-spacing: .15em; text-shadow: 0 0 20px #ffbb4d; }
+@keyframes milo-god-seal { 0% { opacity: 0; transform: scaleY(.08); } 25% { opacity: 1; transform: scaleY(1); } 65% { opacity: 1; transform: scale(1.5, 1.2); } 100% { opacity: 0; transform: scale(2, 1.6); } }
 .milo-booster-current { position: relative; z-index: 1; padding: 15px; animation: milo-card-reveal .6s cubic-bezier(.17,.7,.22,1) both; }
 .milo-booster-current > .milo-card { width: min(360px, 70vw, 36dvh); }
 .milo-booster-aura { position: absolute; inset: 5%; pointer-events: none; opacity: .4;
@@ -59,3 +66,35 @@
   transition: box-shadow 220ms ease;
 }
 .milo-booster-current > .milo-booster-card-fit { width: min(360px, 70vw, 36dvh); }
+.milo-card > .milo-card-new-badge { position: absolute; top: 38px; right: 7px; z-index: 8; padding: 4px 9px; border: 1px solid #fff4b7; border-radius: 20px; background: #ffe27a; color: #36230a; font: 900 12px/1 Arial, sans-serif; box-shadow: 0 2px 8px #0007; pointer-events: none; }
+.milo-booster-gallery { grid-template-columns: repeat(var(--booster-card-count, 5), minmax(0, 1fr)); }
+.milo-chase-announcement { position: relative; z-index: 4; margin: 8px 0 18px; text-align: center; font: 900 clamp(20px, 3vw, 42px)/1.1 'Chakra Petch', sans-serif; letter-spacing: .12em; color: #fff0a4; text-shadow: 0 0 12px #ffbd4d, 0 0 30px #e27bff; }
+.is-chase-suspense { background: radial-gradient(ellipse, #d4a2ff33, transparent 65%); }
+.milo-chase-seal { font-size: min(190px, 24dvh); color: #fff3a5; filter: drop-shadow(0 0 30px #d2a0ff); animation: milo-chase-charge 2.2s ease-in both; }
+.is-chase-reveal .milo-booster-aura { opacity: 1; inset: -10%; background: repeating-conic-gradient(#ffd67244 0deg 3deg, transparent 5deg 17deg, #c69aff44 20deg 24deg, transparent 25deg 40deg), radial-gradient(ellipse, #ffda8b77, transparent 65%); mask-image: radial-gradient(ellipse, #000, transparent 70%); }
+.is-chase-reveal .milo-booster-current { animation: milo-chase-arrive 1.4s cubic-bezier(.15,.7,.2,1) both; }
+.milo-card[data-chase] { box-shadow: 0 0 14px #ffe3a6, 0 0 40px #cba0ff, 0 15px 35px #000a; }
+.milo-chase-sparks { position: absolute; inset: 0; overflow: hidden; pointer-events: none; z-index: 3; }
+.milo-chase-sparks i { position: absolute; left: 50%; top: 50%; width: 6px; height: 6px; background: #fff4b2; clip-path: polygon(50% 0, 65% 35%, 100% 50%, 65% 65%, 50% 100%, 35% 65%, 0 50%, 35% 35%); animation: milo-chase-spark 1.6s var(--spark-delay) ease-out both; }
+@keyframes milo-chase-charge { from { transform: scale(.3) rotate(-60deg); opacity: .2; } to { transform: scale(1.25) rotate(30deg); opacity: 1; } }
+@keyframes milo-chase-arrive { from { transform: scale(.35) translateY(70px); filter: brightness(1.8); opacity: 0; } 50% { opacity: 1; } to { transform: none; filter: none; } }
+@keyframes milo-chase-spark { from { transform: rotate(var(--spark-angle)) translateX(15px) scale(2); opacity: 1; } to { transform: rotate(var(--spark-angle)) translateX(min(43vw, 450px)) scale(.5); opacity: 0; } }
+.milo-fakeout-stage { pointer-events: none; }
+.milo-fakeout-stage:not(.is-ripping) > .milo-card { visibility: hidden; }
+.milo-fakeout-half { position: absolute; inset: 0; z-index: 5; filter: drop-shadow(0 2px 1px #fff0c7); }
+.milo-fakeout-half.is-top { clip-path: polygon(0 0, 100% 0, 100% 49%, 90% 51%, 80% 48%, 70% 52%, 60% 49%, 50% 52%, 40% 49%, 30% 51%, 20% 48%, 10% 51%, 0 49%); }
+.milo-fakeout-half.is-bottom { clip-path: polygon(0 49%, 10% 51%, 20% 48%, 30% 51%, 40% 49%, 50% 52%, 60% 49%, 70% 52%, 80% 48%, 90% 51%, 100% 49%, 100% 100%, 0 100%); }
+.milo-fakeout-half > .milo-booster-card-fit { width: 100%; height: 100%; }
+.is-ripping .milo-fakeout-half.is-top { animation: milo-card-rip-top 1.15s cubic-bezier(.25,.1,.45,1) forwards; }
+.is-ripping .milo-fakeout-half.is-bottom { animation: milo-card-rip-bottom 1.15s cubic-bezier(.25,.1,.45,1) forwards; }
+@keyframes milo-card-rip-top { 0% { transform: none; opacity: 1; } 75% { opacity: 1; } 18% { transform: translate(-4px, -3px) rotate(-2deg); } 100% { transform: translate(-130px, -180px) rotate(-30deg); opacity: 0; } }
+@keyframes milo-card-rip-bottom { 0% { transform: none; opacity: 1; } 75% { opacity: 1; } 18% { transform: translate(4px, 3px) rotate(2deg); } 100% { transform: translate(130px, 180px) rotate(30deg); opacity: 0; } }
+.milo-ditto-disguise { position: relative; isolation: isolate; width: min(320px,65vw,36dvh); }
+.milo-ditto-disguise::after { content: ''; position: absolute; inset: 0; border-radius: 14px; background: #f28fcf; mix-blend-mode: color; opacity: 0; pointer-events: none; z-index: 8; }
+.milo-ditto-disguise.is-transforming { animation: milo-ditto-morph 3.4s ease-in-out both; }
+.milo-ditto-disguise.is-transforming::after { animation: milo-ditto-pink 3.4s ease-in both; }
+.milo-booster-current.is-ditto-revealed { animation: milo-ditto-jiggle .8s ease-out both; filter: drop-shadow(0 0 24px #ef8ccb88); }
+@keyframes milo-ditto-pink { 0% { opacity: 0; } 45% { opacity: .8; } 100% { opacity: 1; background: #ff9de2; mix-blend-mode: normal; } }
+@keyframes milo-ditto-morph { 0%,15% { transform: scale(1); } 35% { transform: scale(1.04,.96) skew(2deg); } 50% { transform: scale(.93,1.08) skew(-4deg) rotate(-3deg); border-radius: 25%; } 65% { transform: scale(1.12,.89) skew(5deg) rotate(4deg); } 80% { transform: scale(.87,1.13) skew(-7deg) rotate(-5deg); } 93% { transform: scale(1.17,.83) rotate(3deg); } 100% { transform: scale(.92,1.1); } }
+@keyframes milo-ditto-jiggle { 0% { transform: scale(1.14,.84); } 22% { transform: scale(.93,1.08) rotate(-2deg); } 45% { transform: scale(1.05,.96) rotate(1deg); } 70% { transform: scale(.99,1.02); } 100% { transform: scale(1); } }
+@media (prefers-reduced-motion: reduce) { .milo-ditto-disguise.is-transforming, .milo-ditto-disguise.is-transforming::after, .milo-booster-current.is-ditto-revealed { animation: none; } }

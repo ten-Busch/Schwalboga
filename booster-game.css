@@ -17,21 +17,56 @@
 .booster-dex { display: grid; grid-template-columns: repeat(auto-fill, minmax(105px, 1fr)); gap: 9px; }
 .booster-game .booster-dex-slot { display: grid; justify-items: center; align-content: start; min-width: 0; gap: 4px; padding: 10px 5px; min-height: 140px; background: #101b30; }
 .booster-game .booster-dex-slot.is-owned { border-color: #67c6bc; background: #17333c; }
+.booster-game .booster-dex-slot.is-complete { border-color: #f2cd62; background: linear-gradient(145deg, #65501f, #302710); box-shadow: inset 0 0 16px #f8d96522, 0 0 10px #f8d96522; }
+.booster-game .booster-dex-slot.is-complete strong, .booster-game .booster-dex-slot.is-complete small { color: #ffe7a0; }
+.booster-counter .booster-copy-count { color: #a0b4d0; font-size: 11px; }
+.booster-counter strong { overflow-wrap: anywhere; }
 .booster-dex-slot > span:first-child { justify-self: start; font-size: 10px; color: #a0b4d0; }
 .booster-dex-slot img { width: 64px; height: 64px; object-fit: contain; image-rendering: pixelated; }
 .booster-dex-empty { display: grid; place-items: center; height: 64px; font-size: 32px; color: #3f5270; }
 .booster-dex-slot strong { font-size: 12px; overflow-wrap: anywhere; text-align: center; }
 .booster-dex-slot small { color: #92dcd1; font-size: 10px; }
 .booster-game .booster-collection-dialog { width: min(1500px, calc(100vw - 24px)); max-width: none; }
+.booster-collection-footer { display: flex; align-items: center; flex-wrap: wrap; gap: 12px 18px; }
+.booster-missing-summary { flex: 1 1 240px; color: #b8c8df; font-size: 12px; line-height: 1.5; }
+.booster-set-actions { display: flex; align-items: center; gap: 10px; margin-top: 18px; }
+.booster-set-actions .booster-pullrate-button { padding: 6px 10px; font-size: 12px; }
+.booster-admin-dialog { width: min(1100px, calc(100vw - 24px)); max-width: none; }
+.booster-admin-controls { display: grid; gap: 12px; border: 0; padding: 0; min-width: 0; }
+.booster-admin-controls label { display: grid; gap: 6px; font-size: 13px; }
+.booster-admin-controls input, .booster-admin-controls select { min-width: 0; width: 100%; box-sizing: border-box; padding: 9px; border: 1px solid #61759d; border-radius: 7px; background: #152039; color: #edf3ff; font: inherit; }
+.booster-admin-controls select { max-width: 100%; }
+.booster-admin-list { max-height: 350px; overflow: auto; }
+.booster-admin-row { display: grid; grid-template-columns: minmax(0, 1fr) 90px auto auto; gap: 8px; align-items: center; padding: 10px 0; border-bottom: 1px solid #61759d55; font-size: 12px; }
+.booster-admin-row > span { overflow-wrap: anywhere; }
+.booster-admin-row button { font-size: 12px; padding: 8px; }
+.booster-admin-controls .booster-admin-delete { border-color: #db6d76; color: #ffb4bb; margin-top: 14px; }
+@media(max-width:600px) { .booster-admin-row { grid-template-columns: minmax(0, 1fr) 80px; } .booster-admin-controls select { font-size: 11px; } }
+.booster-chase-label { color: #d2deef; font-size: 13px; text-align: center; }
+.booster-chase-rate { color: #ffdf8b; font-size: 20px; }
+.booster-pullrate-list { padding: 0; margin: 24px 0; list-style: none; }
+.booster-pullrate-list li { display: flex; justify-content: space-between; align-items: baseline; gap: 18px; padding: 10px 0; border-bottom: 1px solid #61759d55; font-size: 13px; }
+.booster-pullrate-list strong { color: #ffdf8b; white-space: nowrap; }
+.booster-game .milo-card.is-chase-unowned { filter: grayscale(1); box-shadow: 0 8px 20px #0006; }
+.booster-game .is-chase-unowned .milo-card-foil,
+.booster-game .is-chase-unowned .milo-species-foil,
+.booster-game .is-chase-unowned .milo-energy-foil-pattern,
+.booster-game .is-chase-unowned canvas,
+.booster-game .is-chase-unowned .milo-card-z-attack::before { display: none !important; }
+.booster-game .is-chase-unowned *, .booster-game .is-chase-unowned::before, .booster-game .is-chase-unowned::after { animation: none !important; }
 .booster-collection-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 290px), 1fr)); gap: 22px; margin-block: 20px; }
 .booster-collection-cards > div { display: grid; justify-items: center; gap: 8px; }
 .booster-collection-cards .milo-card { width: 320px; height: 446.984126984px; max-width: none; }
 .booster-collection-cards .booster-card-holder { width: 100%; max-width: 320px; aspect-ratio: 63 / 88; position: relative; }
 .booster-card-holder > .milo-card { position: absolute; transform-origin: top left; transform: scale(var(--collection-scale, 1)); }
 .booster-collection-cards .milo-card:hover { transform: scale(var(--collection-scale, 1)); }
+.booster-collection-cards .milo-card { cursor: zoom-in; }
+.booster-zoom-details { max-width: 440px; margin: 0 auto 18px; color: #b8c8df; font-size: 13px; line-height: 1.5; overflow-wrap: anywhere; }
 @media (max-width: 600px) {
   .booster-game-content { padding: 16px; }
   .booster-home { gap: 18px; padding: 18px; }
   .booster-home-pack { width: 85px; }
   .booster-dex { grid-template-columns: repeat(auto-fill, minmax(85px, 1fr)); }
 }
+
+.booster-collection-heading select { max-width: min(280px, 75vw); padding: 10px; border: 1px solid #61759d; border-radius: 8px; background: #152039; color: #fff; font: inherit; }

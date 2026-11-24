@@ -73739,9 +73739,9 @@ window.POKEDEX_ENTRIES = [
     "num": 58,
     "name": "Growlithe",
     "names": {
-      "de": "Fuakno"
+      "de": "Fukano"
     },
-    "searchText": "0058 58 growlithe fuakno fire",
+    "searchText": "0058 58 growlithe fukano fire",
     "types": [
       "Fire"
     ],
@@ -74608,9 +74608,9 @@ window.POKEDEX_ENTRIES = [
     "num": 58,
     "name": "Growlithe-Hisui",
     "names": {
-      "de": "Fuakno-Hisui"
+      "de": "Fukano-Hisui"
     },
-    "searchText": "0058 58 growlithehisui fuaknohisui fire rock",
+    "searchText": "0058 58 growlithehisui fukanohisui fire rock",
     "types": [
       "Fire",
       "Rock"

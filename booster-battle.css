@@ -1,0 +1,132 @@
+.battle-page { margin: 0; min-height: 100vh; background: radial-gradient(ellipse at 20% 0, #203554, #0a1020 65%); color: #edf3ff; }
+.battle-app.milo-dialog { width: 100%; max-width: 2200px; min-height: 100vh; box-sizing: border-box; margin: auto; padding: clamp(16px, 2vw, 34px); border: 0; border-radius: 0; background: transparent; box-shadow: none; }
+.battle-header, .battle-turnbar { display: flex; align-items: center; justify-content: space-between; gap: 20px; flex-wrap: wrap; }
+.battle-header { padding-bottom: 25px; border-bottom: 1px solid #5b729044; }
+.battle-header h1 { margin: 0; font: 700 clamp(30px, 4vw, 54px)/1.1 'Chakra Petch', sans-serif; }
+.battle-eyebrow { color: #8ccbd4; font: 700 11px 'Chakra Petch', sans-serif; letter-spacing: .16em; margin: 0 0 8px; }
+.battle-tagline { color: #a9bbd4; margin: 10px 0 0; font-size: 14px; }
+.battle-header nav, .battle-turn-actions { display: flex; align-items: center; flex-wrap: wrap; gap: 12px; }
+.battle-header a { color: #c8d9ef; font-size: 13px; text-decoration: none; }
+.battle-setup { max-width: 1000px; margin: 35px auto; padding: clamp(20px, 3vw, 38px); background: #152239; border: 1px solid #405575; border-radius: 20px; }
+.battle-intro { display: flex; gap: 36px; align-items: center; margin-bottom: 30px; }
+.battle-intro > img { width: 110px; height: auto; flex-shrink: 0; transform: rotate(-7deg); box-shadow: 0 15px 30px #0008; }
+.battle-intro > .generated-booster { width: 130px; flex: 0 0 130px; }
+.battle-intro h2 { font: 700 clamp(23px, 3vw, 34px) 'Chakra Petch', sans-serif; margin: 0 0 12px; }
+.battle-intro p { color: #c1cfe2; font-size: 15px; line-height: 1.6; }
+.battle-intro .battle-private-note { color: #88cfc1; font-size: 12px; }
+.battle-settings { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+.battle-set-field { display: grid; gap: 8px; min-width: 0; }
+.battle-set-controls { display: flex; gap: 9px; align-items: center; }
+#battle-set-info { flex: 0 0 29px; width: 29px; height: 29px; padding: 0; border-radius: 50%; font: 700 17px Georgia,serif; color: #e0d39f; }
+.battle-rates-dialog { box-sizing: border-box; width: min(950px,calc(100vw - 28px)); max-width: none; max-height: 92dvh; }
+.battle-rates-note { font-size: 12px; color: #afc1d8; line-height: 1.5; }
+.battle-rates-search { box-sizing: border-box; width: 100%; padding: 10px; color: #edf3ff; background: #0b1528; border: 1px solid #536c8c; border-radius: 8px; }
+.battle-rates-navigation { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 10px; margin: 12px 0; font-size: 12px; color: #bbcbe0; }
+.battle-rates-list { max-height: 50dvh; overflow: auto; list-style: none; padding: 0; margin: 12px 0; }
+.battle-rates-list li { display: flex; justify-content: space-between; gap: 20px; padding: 10px 4px; border-bottom: 1px solid #52647d55; font-size: 12px; line-height: 1.5; }
+.battle-rates-list li span { min-width: 0; overflow-wrap: anywhere; }
+.battle-rates-list strong { flex-shrink: 0; color: #ffe0a0; font-variant-numeric: tabular-nums; }
+.battle-settings label, .battle-names label { display: grid; gap: 8px; font-size: 13px; color: #c6d5e9; min-width: 0; }
+.battle-settings select, .battle-settings input, .battle-names input { box-sizing: border-box; width: 100%; min-width: 0; padding: 12px; color: #edf3ff; background: #0b1528; border: 1px solid #536c8c; border-radius: 9px; font: inherit; }
+.battle-names { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 12px; margin-top: 25px; }
+.battle-scoring { margin: 26px 0; padding: 16px; color: #c2d0e3; background: #24304b; border-left: 3px solid #e2bd66; font-size: 13px; line-height: 1.7; }
+.battle-scoring strong { color: #ffe2a0; }
+.battle-start { min-width: 200px; }
+#battle-error { color: #ffb2b9; font-size: 13px; }
+.battle-turnbar { margin: 24px 0; }
+.battle-turnbar h2 { margin: 0; font: 700 clamp(22px, 2.4vw, 34px) 'Chakra Petch', sans-serif; }
+.battle-board { display: grid; grid-template-columns: repeat(var(--battle-columns, 2), minmax(0, 1fr)); gap: clamp(8px, 1.1vw, 20px); }
+.battle-player { --player-color: #8bd8c7; min-width: 0; background: #142037; border: 1px solid #3b4d69; border-top: 3px solid var(--player-color); border-radius: 14px; padding: clamp(10px, 1vw, 20px); transition: border-color .2s, background .2s; }
+.battle-player.is-active { border-color: var(--player-color); background: #1b2b43; box-shadow: 0 0 24px color-mix(in srgb, var(--player-color) 14%, transparent); }
+.battle-player.is-winner { border-color: #f0cc72; box-shadow: inset 0 0 35px #f1c66411, 0 0 24px #f1c66422; }
+.battle-player-header { display: flex; justify-content: space-between; align-items: baseline; gap: 10px; }
+.battle-player h3 { margin: 0; font: 700 clamp(16px, 1.5vw, 24px) 'Chakra Petch', sans-serif; overflow-wrap: anywhere; }
+.battle-player-rank { color: #94abc7; font-size: 10px; white-space: nowrap; }
+.battle-player-score { color: #ffe1a0; font: 700 clamp(23px, 2.5vw, 39px) 'Chakra Petch', sans-serif; margin: 8px 0; }
+.battle-pack-button { display: block; position: relative; width: 100%; min-height: 85px; padding: 8px !important; background: #0c1729 !important; border-color: #4f6986 !important; text-align: center; }
+.battle-player.is-active .battle-pack-button { border-color: var(--player-color) !important; }
+.battle-pack-button:disabled { opacity: .7; }
+.battle-pack-strip { display: flex; justify-content: center; align-items: center; min-height: 52px; padding-inline: 8px; }
+.battle-pack-strip > img, .battle-pack-strip > .generated-booster { width: 28px; height: 53px; flex: 0 0 28px; object-fit: cover; margin-left: -8px; transform: rotate(-6deg); box-shadow: -2px 2px 5px #0009; }
+.battle-pack-strip > :first-child { margin-left: 0; }
+.battle-pack-strip > span { margin-left: 8px; font-size: 12px; color: #d0def0; }
+.battle-pack-remaining { display: block; color: #a4b9d3; font-size: 11px; margin-top: 7px; }
+.battle-piles { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 10px 6px; margin-top: 18px; }
+.battle-pile { min-width: 0; display: grid; justify-items: center; align-content: start; gap: 5px; padding: 8px 3px !important; background: transparent !important; border-color: transparent !important; }
+.battle-pile:hover:not(:disabled), .battle-pile:focus-visible { background: #243751 !important; border-color: #6f93ba !important; }
+.battle-pile:disabled { opacity: .45; }
+.battle-pile-label { font-size: clamp(8px, .75vw, 11px); color: #b6c9e0; text-align: center; }
+.battle-pile-visual { width: min(100%, 100px); aspect-ratio: 63/88; position: relative; margin: 5px auto 3px; }
+.battle-mini-fit { position: absolute; inset: 0; transform-origin: bottom center; }
+.battle-mini-fit > .milo-card, .battle-mini-fit > .milo-card:hover { position: absolute; left: 0; top: 0; width: 320px; height: 446.984126984px; max-width: none; transform-origin: top left; transform: scale(var(--mini-scale, .25)); pointer-events: none; }
+.battle-pile-empty { position: absolute; inset: 0; display: grid; place-items: center; border: 1px dashed #5c7393; border-radius: 5px; color: #627d9f; font: 26px 'Chakra Petch', sans-serif; background: #101b30; }
+.battle-pile-count { font-size: 11px; color: #e4ebf7; }
+.battle-pile-value { font-size: 10px; color: #e6c887; }
+.battle-results { background: linear-gradient(120deg, #5c4925, #26334a); padding: 24px; border: 1px solid #e3c276; border-radius: 15px; margin-bottom: 24px; }
+.battle-results h2 { color: #ffe4a2; margin: 0 0 18px; font: 700 clamp(23px, 3vw, 40px) 'Chakra Petch', sans-serif; }
+.battle-leaderboard { display: flex; flex-wrap: wrap; gap: 12px 25px; padding: 0; margin: 0; list-style: none; color: #dae6f6; font-size: 14px; }
+.battle-leaderboard strong { color: #ffe2a0; }
+.battle-pile-dialog { width: min(1600px, calc(100vw - 24px)); max-width: none; }
+.battle-pile-gallery { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 270px), 1fr)); gap: 24px; margin-block: 20px; }
+.battle-pull { min-width: 0; display: grid; justify-items: center; align-content: start; gap: 10px; }
+.battle-pull .milo-booster-card-fit { max-width: 320px; }
+.battle-pull .milo-card { cursor: zoom-in; }
+.battle-pull-details { font-size: 12px; color: #b2c6de; text-align: center; line-height: 1.6; }
+.battle-pull-money { color: #ffe2a0; font: 700 24px 'Chakra Petch', sans-serif; }
+.milo-booster-card-subtitle { color: #ffe2a0; font-size: 12px; text-align: center; margin: 10px 0 0; }
+.battle-page .milo-booster-current.has-card-summary, .battle-page .milo-card-presentation { display: grid; grid-template-columns: minmax(130px,1fr) auto minmax(150px,1fr); gap: clamp(16px,3vw,40px); align-items: center; box-sizing: border-box; width: min(1100px,100%); }
+.battle-page .milo-booster-current.has-card-summary > .milo-booster-card-fit, .battle-page .milo-card-presentation > .milo-card-zoom-fit { order: 1; margin: 0; }
+.battle-page .milo-card-modifiers { display: grid; align-content: center; gap: 12px; order: 0; text-align: left; }
+.battle-page .milo-card-modifiers strong { color: #ffda75; font: 700 clamp(18px,2vw,28px)/1.25 'Chakra Petch',sans-serif; text-shadow: 0 1px 8px #ffba3e33; overflow-wrap: anywhere; }
+.battle-page .milo-card-value { display: grid; gap: 8px; order: 2; text-align: right; }
+.battle-page .milo-card-value small { color: #c3a66d; font-size: 10px; letter-spacing: .12em; }
+.battle-page .milo-card-value > strong { color: #fff0bf; font: 700 clamp(30px,4vw,64px)/1.1 'Chakra Petch',sans-serif; white-space: nowrap; }
+.battle-page .milo-booster-current.has-card-summary > .milo-chase-announcement { grid-column: 1/-1; order: -1; }
+.battle-page .milo-card-zoom.has-card-summary { width: min(1100px,calc(100vw - 28px)); max-width: none; box-sizing: border-box; }
+.battle-page .milo-card-value-summary { display: grid; grid-template-columns: minmax(0,1fr) auto; align-items: center; gap: 10px; width: 100%; margin-top: 10px; }
+.battle-page .milo-card-value-summary .milo-card-modifiers { gap: 4px; }
+.battle-page .milo-card-value-summary .milo-card-modifiers strong { font-size: 13px; }
+.battle-page .milo-card-value-summary .milo-card-value strong { font-size: clamp(19px,2vw,28px); }
+.battle-page .milo-card-value-summary .milo-card-value small { font-size: 7px; }
+.battle-page .milo-card-value-detail { grid-column: 1/-1; order: 3; color: #a9bed8; font-size: 10px; text-align: center; }
+@media(max-width:950px) {
+  .battle-page .milo-booster-current.has-card-summary, .battle-page .milo-card-presentation { grid-template-columns: minmax(0,1fr) minmax(0,1fr); gap: 12px; }
+  .battle-page .milo-booster-current.has-card-summary > .milo-booster-card-fit, .battle-page .milo-card-presentation > .milo-card-zoom-fit { grid-column: 1/-1; justify-self: center; order: 0; }
+  .battle-page .milo-card-modifiers { order: 1; }
+  .battle-page .milo-card-value { order: 2; }
+  .battle-page .milo-card-value > strong { font-size: 29px; }
+}
+.battle-app.is-playing .battle-header { padding-bottom: 14px; }
+.battle-app.is-playing .battle-header h1 { font-size: 32px; }
+.battle-app.is-playing .battle-tagline, .battle-app.is-playing .battle-header .battle-eyebrow { display: none; }
+.battle-app.is-playing .battle-turnbar { margin: 18px 0; }
+.battle-app.is-playing .battle-turnbar h2 { font-size: 26px; }
+.is-multi-row .battle-player { padding: 10px; }
+.is-multi-row .battle-player h3 { font-size: clamp(15px, 1.3vw, 21px); }
+.is-multi-row .battle-player-score { font-size: 26px; margin: 4px 0; }
+.is-multi-row .battle-pack-button { min-height: 65px; padding: 5px !important; }
+.is-multi-row .battle-pack-strip { min-height: 36px; }
+.is-multi-row .battle-pack-strip > img, .is-multi-row .battle-pack-strip > .generated-booster { width: 20px; height: 38px; flex-basis: 20px; }
+.is-multi-row .battle-pack-remaining { font-size: 9px; margin-top: 3px; }
+.is-multi-row .battle-piles { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 5px 4px; margin-top: 9px; }
+.is-multi-row .battle-pile { gap: 2px; padding: 3px !important; }
+.is-multi-row .battle-pile-visual { width: min(100%, clamp(32px, 4dvh, 64px)); margin: 3px auto; }
+.is-multi-row .battle-pile-label { min-height: 23px; font-size: 9px; line-height: 1.2; }
+.is-multi-row .battle-pile-count { font-size: 10px; line-height: 1.2; }
+.is-multi-row .battle-pile-value { font-size: 9px; line-height: 1.2; }
+.battle-app.is-finished .battle-turnbar h2 { display: none; }
+.battle-app.is-finished .battle-results { padding: 17px 22px; margin-bottom: 18px; }
+.battle-app.is-finished .battle-results h2 { font-size: 28px; margin-bottom: 12px; }
+@media(max-width:1000px) { .battle-board { grid-template-columns: repeat(var(--battle-tablet-columns, 2), minmax(0, 1fr)); } }
+@media(min-width:1001px) and (max-height:850px) {
+  .battle-app.is-playing { padding: 14px 20px; }
+  .battle-app.is-playing .battle-header h1 { font-size: 26px; }
+  .battle-app.is-playing .battle-header button { padding: 8px 12px; font-size: 13px; }
+  .battle-app.is-playing .battle-turnbar { margin: 12px 0; }
+  .battle-app.is-playing .battle-turnbar h2 { font-size: 22px; }
+  .is-multi-row .battle-piles { grid-template-columns: repeat(5,minmax(0,1fr)); }
+  .is-multi-row .battle-pile-visual { width: min(100%,36px); }
+  .is-multi-row .battle-pile-label { min-height: 21px; font-size: 8px; }
+}
+@media(max-width:650px) { .battle-settings { grid-template-columns: 1fr; } .battle-intro { gap: 22px; } .battle-intro > img { width: 70px; } .battle-board { grid-template-columns: 1fr 1fr; } .battle-header nav { width: 100%; } .battle-piles { grid-template-columns: repeat(2,minmax(0,1fr)); } .battle-player-score { font-size: 25px; } .is-multi-row .battle-pile-visual { width: min(100%,80px); } }
+@media(max-width:420px) { .battle-board { grid-template-columns: 1fr; } .battle-piles { grid-template-columns: repeat(3,minmax(0,1fr)); } }

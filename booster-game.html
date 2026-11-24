@@ -6,18 +6,21 @@
     <title>Booster sammeln · Schwalboga</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;700&display=swap">
     <link rel="stylesheet" href="milo-quiz.css?v=20261118-roster">
-    <link rel="stylesheet" href="milo-cards.css?v=20261118-footer13">
-    <link rel="stylesheet" href="milo-booster.css?v=20261118-fixed-layout3">
-    <link rel="stylesheet" href="booster-game.css?v=20261118">
+    <link rel="stylesheet" href="milo-cards.css?v=20261119-chase-stars">
+    <link rel="stylesheet" href="milo-booster.css?v=20261119-god-pack">
+    <link rel="stylesheet" href="booster-game.css?v=20261119-variant-zoom">
+    <link rel="stylesheet" href="booster-packaging.css?v=20261119">
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2" defer></script>
     <script src="data/supabase-config.js?v=20260820-auth-cost-editor" defer></script>
     <script src="data/pokedex-data.js?v=20261118-type-chart" defer></script>
     <script src="data/ability-descriptions-de.js?v=20261118" defer></script>
     <script src="sprite-crystal.js?v=20261118-background" defer></script>
-    <script src="milo-cards.js?v=20261118-collection14" defer></script>
-    <script src="milo-booster.js?v=20261118-collection6" defer></script>
-    <script src="booster-game-data.js?v=20261118" defer></script>
-    <script src="booster-game.js?v=20261118" defer></script>
+    <script src="milo-cards.js?v=20261119-magma-aqua" defer></script>
+    <script src="milo-booster.js?v=20261119-ditto" defer></script>
+    <script src="data/natdex-premier.js?v=20261119" defer></script>
+    <script src="booster-packaging.js?v=20261119" defer></script>
+    <script src="booster-game-data.js?v=20261119-magma-aqua" defer></script>
+    <script src="booster-game.js?v=20261119-fullart-first" defer></script>
   </head>
   <body class="milo-page">
     <main class="milo-dialog booster-game">
@@ -28,10 +31,10 @@
       <div class="booster-game-content">
         <p id="booster-account" class="milo-muted" role="status">Anmeldung wird geprüft …</p>
         <section class="booster-home" aria-label="Booster öffnen">
-          <img src="assets/tcg/Boosterpack.jpg" alt="Milotic-Boosterpack" class="booster-home-pack">
+          <div id="booster-pack-preview"></div>
           <div>
-            <h2>Noch ein Pack?</h2>
-            <p>Fünf Pokémon, ein großer Hit. Öffne Booster und vervollständige deine Sammlung.</p>
+            <h2>NatDex Premier</h2>
+            <p>Der Low-Power-Draft vom Juni 2026. Fünf Pokémon, ein großer Hit – mit seltenen Trainer-Karten und 1 % Chance auf ein God Pack.</p>
             <button id="booster-open" class="milo-primary" type="button" disabled>Booster öffnen</button>
             <button id="booster-refresh" type="button" hidden>Erneut laden</button>
             <p class="milo-muted">Deine Sammlung wird in deinem Account gespeichert.</p>
@@ -41,8 +44,14 @@
           <div id="booster-counters" class="booster-counters"></div>
           <div class="booster-collection-heading">
             <div><h2>Deine Sammlung</h2><p id="booster-dex-count" class="milo-muted"></p></div>
+            <label>Karten-Dex<select id="booster-set"><option value="all">Alle Sets · Gesamtdex</option></select></label>
             <label>Pokémon suchen<input id="booster-search" type="search" placeholder="Name oder Dex-Nummer" autocomplete="off"></label>
             <label class="booster-owned-filter"><input id="booster-owned-only" type="checkbox"> Nur gesammelte</label>
+          </div>
+          <div class="booster-set-actions">
+            <button id="booster-chase" type="button">Chase-Rares</button>
+            <button id="booster-pullrates" class="booster-pullrate-button" type="button">Pullrate</button>
+            <button id="booster-admin" class="booster-pullrate-button" type="button" hidden>Admin · Sammlung bearbeiten</button>
           </div>
           <p class="milo-muted booster-collection-hint">Wähle einen gefüllten Dex-Platz, um deine Karten und Varianten anzusehen.</p>
           <div id="booster-dex" class="booster-dex"></div>

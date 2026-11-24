@@ -1,3 +1,21 @@
+window.getMiloPhonePortrait = function getMiloPhonePortrait(contact, speaker = contact.name) {
+  // The host must never inherit the portrait of the person being called.
+  if (speaker === 'Günther Lauchzelot') return null;
+  const pokemon = { flegmon: 'slowpoke', pikachu: 'pikachu', xatu: 'xatu', kricketune: 'kricketune', urglmator: 'cramorant' }[contact.id];
+  if (pokemon) return { src: `https://play.pokemonshowdown.com/sprites/gen5/${pokemon}.png`, metallic: contact.id === 'urglmator' };
+  const aliases = {
+    'Gary Eich': 'GaryEich', 'Dita Kiefsling': 'DitaKiefsling', 'Junichi Masuda': 'JunichiMasuda',
+    'Schwerthold und Schildrich': 'SchwertholdundSchildrich', 'Team Rocket': 'TeamRocket', Agnieszka: 'Aga',
+    'Geologe aus Alola': 'Geologe-Alola', 'Geologe aus Paldea': 'Geologe-Paldea',
+    Naturbusche: 'Naturbursche', 'Obdachloser hinterm PokeMarkt': 'Obdachloser',
+    'Pokémon Zensus': 'Pokemon Zensur', 'Pokémon Tutor': 'Pokemon Tutor', 'Pokémon-Verkuppler': 'Pokemon-Verkuppler',
+    'Werte-Experte': 'WerteExperte', 'Trainerschulen-Hausmeister': 'Hausmeister', 'PokéLiga Vorstand': 'Pokeliga-Vorstand',
+    'Roto-Dex': 'RotoDex', 'Pokémon-Züchter': 'Pokemon-Züchter', Glückspieler: 'Glücksspieler',
+  };
+  const file = contact.id === 'ability-expert' ? 'Ability-Expert' : aliases[contact.name] ?? contact.name;
+  return { src: `assets/Trainer/${encodeURIComponent(file)}.png`, metallic: false };
+};
+
 window.createMiloPhoneContacts = function createMiloPhoneContacts(context) {
   const { question, prize, player, previousAnswer } = context;
   const answer = question.options[question.correct];
@@ -14,6 +32,35 @@ window.createMiloPhoneContacts = function createMiloPhoneContacts(context) {
   const contacts = [];
   function add(id, name, usefulness, dialogue, forced = false) {
     contacts.push({ id, name, usefulness, dialogue, forced });
+  }
+  if (prize === 1000000) {
+    const hints = question.team?.phoneHints;
+    const draft = hints?.draft ?? (question.team?.cards ?? []).map((card) => {
+      const p = window.POKEDEX_ENTRIES?.find((p) => p.name === card.pokemonName);
+      return { name: p?.names?.de ?? card.pokemonName, cost: card.cost, selectable: card.variant !== 'mega' };
+    });
+    add('million-draft-expert', 'Draft-Experte', 'semi', () => [
+      line('Draft-Experte', 'Alles klar, ich kann dir den Wert für ein Pokémon sagen.'),
+      { ...line('Draft-Experte', 'Welches Pokémon? Du kannst genau eines auswählen.'), singleChoice: true,
+        choices: draft.map((p) => ({ label: p.name, disabled: !p.selectable,
+          response: line('Draft-Experte', `${p.name}? Okay, in dieser Form ohne weitere Gimmicks kostet es ${p.cost} ${p.cost === 1 ? 'Punkt' : 'Punkte'}.`) })) },
+    ]);
+    add('million-gimmick-fan', 'Gimmick-Fan', 'semi', () => {
+      if (!hints) return [line('Gimmick-Fan', 'Für dieses Team fehlen mir gerade die Gimmick-Kostendaten.')];
+      let text = `Schauen wir mal. Also ${hints.z.typeName}-Z würde in dieser Form ${hints.z.cost} ${hints.z.cost === 1 ? 'Punkt' : 'Punkte'} zusätzlich kosten. Und Tera-${hints.tera.typeName} käme auf zusätzliche ${hints.tera.cost} ${hints.tera.cost === 1 ? 'Punkt' : 'Punkte'}.`;
+      if (hints.mega) {
+        const { name, baseName, difference } = hints.mega;
+        text += difference === 0 ? ` ${name} ist genauso teuer wie ${baseName}.`
+          : ` ${name} ist ${Math.abs(difference)} ${Math.abs(difference) === 1 ? 'Punkt' : 'Punkte'} ${difference > 0 ? 'teurer' : 'günstiger'} als ${baseName}.`;
+      }
+      return [line('Gimmick-Fan', text)];
+    });
+    add('million-comparison-master', 'Vergleichsmeister', 'semi', () => {
+      const rows = hints?.comparisons;
+      if (!rows?.length) return [line('Vergleichsmeister', 'Für dieses Team habe ich gerade keinen passenden Preisvergleich.')];
+      return [line('Vergleichsmeister', `${rows[0].reference} ist genauso teuer wie ${rows[0].comparison}. Das gleiche gilt für ${rows[1].reference} und ${rows[1].comparison}, ${rows[2].reference} ohne Z-Kristall und ${rows[2].comparison}, sowie ${rows[3].reference} ohne Terakristallisierung und ${rows[3].comparison}.`)];
+    });
+    return contacts;
   }
   if (question.category === 'cost-value' && question.upgradeCost) {
     const { kind, typeName, surcharge } = question.upgradeCost;
@@ -75,6 +122,42 @@ window.createMiloPhoneContacts = function createMiloPhoneContacts(context) {
     add('kricketune', 'Zirpeise', 'useless', () => [
       { ...line('Zirpeise', 'Delele whooooo'), stream: 'kricketune' },
     ]);
+  }
+  if (question.category === 'nature-effect' && question.natureQuestion) {
+    const { nature } = question.natureQuestion;
+    const pool = (window.POKEDEX_ENTRIES ?? []).filter((p) => !p.hidden && !p.impossible && !p.unreleased);
+    const matches = (p, highest, lowest) => Object.entries(p.baseStats).every(([stat, value]) =>
+      (stat === highest || p.baseStats[highest] - value > 15)
+      && (stat === lowest || value - p.baseStats[lowest] > 15));
+    const fitting = pool.filter((p) => matches(p, nature.plus, nature.minus));
+    const contrary = pool.filter((p) => matches(p, nature.minus, nature.plus));
+    if (fitting.length && contrary.length) {
+      add('nature-outdoorsman', 'Naturbusche', 'semi', () => {
+        const first = pick(fitting), second = pick(contrary);
+        return [line('Naturbusche', `${nature.de} also? Also ich hatte mal ein ${first.names?.de ?? first.name}, das war ordentlich ${nature.de.toLocaleLowerCase('de-DE')}. Mein ${second.names?.de ?? second.name} eher weniger.`)];
+      });
+    }
+  }
+  if (question.category === 'nature-choice' && question.natureQuestion) {
+    const { stat, direction } = question.natureQuestion;
+    const labels = { atk: 'Angriff', def: 'Verteidigung', spa: 'Spezial-Angriff', spd: 'Spezial-Verteidigung', spe: 'Initiative' };
+    const feminine = ['def', 'spd', 'spe'].includes(stat);
+    const adjective = direction === 1 ? feminine ? 'hohe' : 'hoher' : feminine ? 'niedrige' : 'niedriger';
+    const alternatives = (window.POKEMON_NATURES ?? []).filter((n) => n[direction === 1 ? 'plus' : 'minus'] === stat
+      && !question.options.includes(n.de));
+    if (alternatives.length >= 3) {
+      add('pokemart-homeless', 'Obdachloser hinterm PokeMarkt', 'semi', () => {
+        const names = shuffle(alternatives).slice(0, 3).map((n) => n.de);
+        return [line('Obdachloser hinterm PokeMarkt', `Besonders ${adjective} ${labels[stat]}? Hast dus mal mit ${names[0]}, ${names[1]} oder ${names[2]} versucht?`)];
+      });
+    }
+  }
+  if (['nature-effect', 'nature-choice'].includes(question.category) && question.natureQuestion) {
+    const { nature, stat, direction } = question.natureQuestion;
+    const labels = { atk: 'Angriff', def: 'Verteidigung', spa: 'Spezial-Angriff', spd: 'Spezial-Verteidigung', spe: 'Initiative' };
+    add('mint-merchant', 'Minzenhändler', 'helpful', () => [line('Minzenhändler', question.category === 'nature-effect'
+      ? `${nature.de}? Dafür habe ich eine Minze! Die stärkt ${labels[nature.plus]}, schwächt allerdings ${labels[nature.minus]}.`
+      : `Für ${direction === 1 ? 'mehr' : 'weniger'} ${labels[stat]} würde ich ${nature.de} empfehlen. Die passende Minze habe ich zufällig vorrätig.`)]);
   }
   if (question.category === 'move-percentage' && question.movePercentage) {
     const data = question.movePercentage;
@@ -454,6 +537,7 @@ window.selectMiloPhoneContacts = function selectMiloPhoneContacts(context) {
     return copy;
   }
   const candidates = window.createMiloPhoneContacts(context);
+  if (context.prize === 1000000) return candidates;
   const selected = candidates.filter((contact) => contact.forced);
   const remaining = shuffled(candidates.filter((contact) => !contact.forced));
   const { prize } = context;

@@ -49,6 +49,7 @@ GERMAN_VALUE_CORRECTIONS = {
         "Fletchinder": "Fletiamo",
         "Glalie": "Firnontor",
         "Gorebyss": "Saganabyss",
+        "Growlithe": "Fukano",
         "Luvdisc": "Liebiskus",
         "Mantine": "Mantax",
     },

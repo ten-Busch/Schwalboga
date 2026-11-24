@@ -5,7 +5,7 @@ const path = require('node:path');
 const root = path.resolve(__dirname, '..');
 const context = { window: {} };
 vm.createContext(context);
-for (const file of ['data/pokedex-data.js', 'data/captain-costs.js', 'milo-questions.js']) {
+for (const file of ['data/pokedex-data.js', 'data/captain-costs.js', 'milo-questions.js', 'milo-phone.js']) {
   vm.runInContext(fs.readFileSync(path.join(root, file), 'utf8'), context);
 }
 const { POKEDEX_ENTRIES: entries, POKEDEX_META: meta, CAPTAIN_TYPE_COSTS: captainCosts } = context.window;
@@ -22,6 +22,38 @@ for (const mode of ['singles', 'doubles']) {
     assert.ok(question, `${mode}: generation failed`);
     assert.equal(question.team.mode, mode);
     const cards = question.team.cards;
+    const hints = question.team.phoneHints;
+    assert.equal(hints.draft.length, 5);
+    hints.draft.forEach((row, index) => {
+      assert.equal(row.cost, cards[index].cost);
+      assert.equal(row.selectable, cards[index].variant !== 'mega');
+    });
+    assert.equal(hints.z.cost, cards[2].upgradeCost);
+    assert.equal(hints.tera.cost, cards[3].upgradeCost);
+    if (hints.mega) {
+      const mega = byName.get(cards[4].pokemonName);
+      const base = byName.get(mega.baseSpecies);
+      assert.equal(hints.mega.difference, cards[4].cost - getCost(base, mode));
+    }
+    hints.comparisons.forEach((row, index) => {
+      assert.equal(row.cost, cards[index].cost);
+      assert.equal(getCost(byName.get(row.comparisonPokemonName), mode), row.cost);
+      assert.notEqual(byName.get(row.comparisonPokemonName).num, byName.get(row.pokemonName).num);
+    });
+    for (const player of ['Test', 'André']) {
+      const phoneContext = { question, prize: 1000000, player };
+      const contacts = context.window.selectMiloPhoneContacts(phoneContext);
+      assert.deepEqual(Array.from(contacts, (c) => c.name), ['Draft-Experte', 'Gimmick-Fan', 'Vergleichsmeister']);
+      assert.equal(context.window.createMiloPhoneContacts(phoneContext).length, 3);
+      const choices = contacts[0].dialogue()[1];
+      assert.equal(choices.singleChoice, true);
+      assert.equal(choices.choices.length, 5);
+      choices.choices.forEach((choice, index) => {
+        assert.equal(choice.disabled, cards[index].variant === 'mega');
+        assert.ok(choice.response.text.includes(`kostet es ${cards[index].cost} Punkt`));
+      });
+      assert.ok(contacts.every((c) => c.dialogue().every((line) => !/undefined|NaN/.test(line.text))));
+    }
     assert.deepEqual(Array.from(cards.slice(0, 4), (p) => p.variant), ['normal', 'normal', 'z', 'tera']);
     const hit = byName.get(cards[4].pokemonName);
     assert.ok(cards[4].variant === 'mega' || hasFoil(hit));

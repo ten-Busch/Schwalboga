@@ -1,5 +1,5 @@
-window.createMiloQuestionGenerator = function createMiloQuestionGenerator(entries, moves, getCost, captainCosts = window.CAPTAIN_TYPE_COSTS ?? {}) {
-  const pool = entries.filter((p) => !p.forme && !p.hidden && !p.impossible && !p.unreleased);
+window.createMiloQuestionGenerator = function createMiloQuestionGenerator(entries, moves, getCost, captainCosts = window.CAPTAIN_TYPE_COSTS ?? {}, generationOne = false) {
+  const pool = entries.filter((p) => !p.forme && !p.hidden && !p.impossible && !p.unreleased && (!generationOne || (p.num >= 1 && p.num <= 151)));
   const name = (p) => p.names?.de ?? p.name;
   const key = (value) => value.normalize('NFC').toLowerCase();
   let difficultyDetails = '';
@@ -165,6 +165,65 @@ window.createMiloQuestionGenerator = function createMiloQuestionGenerator(entrie
   const thresholds = [[75, 500], [55, 1000], [40, 2000], [30, 4000], [22, 8000],
     [15, 16000], [8, 32000], [4, 64000], [-Infinity, 125000]];
   const statValue = (p, stat) => stat === 'bst' ? totals.get(p) : p.baseStats[stat];
+  const natureStats = ['atk', 'def', 'spa', 'spd', 'spe'];
+  const natures = (window.POKEMON_NATURES ?? []).filter((n) => n.plus && n.minus && n.plus !== n.minus);
+  const naturePrices = (n) => ['atk', 'spa', 'spe'].includes(n.plus) && ['atk', 'spa'].includes(n.minus)
+    ? [500, 1000] : [n.plus, n.minus].some((stat) => ['atk', 'spa', 'spe'].includes(stat)) ? [2000, 4000] : [8000];
+  const natureAverages = Object.fromEntries(natureStats.map((stat) => {
+    const average = pool.reduce((sum, p) => sum + p.baseStats[stat], 0) / pool.length;
+    const deviation = Math.sqrt(pool.reduce((sum, p) => sum + (p.baseStats[stat] - average) ** 2, 0) / pool.length) || 1;
+    return [stat, { average, deviation }];
+  }));
+  const naturePokemonPools = new Map();
+  function naturePokemon(stat, direction) {
+    const cacheKey = `${stat}:${direction}`;
+    if (!naturePokemonPools.has(cacheKey)) {
+      const { average, deviation } = natureAverages[stat];
+      let total = 0;
+      const rows = pool.map((p) => {
+        total += 1 + 3 * Math.min(3, Math.max(0, direction * (p.baseStats[stat] - average) / deviation));
+        return { p, cumulative: total };
+      });
+      naturePokemonPools.set(cacheKey, { rows, total });
+    }
+    const { rows, total } = naturePokemonPools.get(cacheKey);
+    const roll = Math.random() * total;
+    return rows.find((row) => row.cumulative > roll)?.p ?? rows.at(-1).p;
+  }
+  function natureQuestion(prize, chooseNature = false) {
+    const nature = pick(natures.filter((n) => naturePrices(n).includes(prize)));
+    if (!nature) return null;
+    const direction = Math.random() < .5 ? 1 : -1;
+    const stat = direction === 1 ? nature.plus : nature.minus;
+    const oppositeStat = direction === 1 ? nature.minus : nature.plus;
+    const p = chooseNature ? pick(pool) : naturePokemon(stat, direction);
+    referencePokemon = [p];
+    const explanation = `${nature.de} (${nature.en}): ${statLabels[nature.plus]} +10 % (×1,1), ${statLabels[nature.minus]} −10 % (×0,9).`;
+    difficultyDetails = `Wesen: ${nature.de} (${nature.en}), +${statLabels[nature.plus]}/−${statLabels[nature.minus]}. `
+      + `Zulässige Gewinnstufen: ${naturePrices(nature).map((value) => value.toLocaleString('de-DE')).join(' / ')} €. `
+      + (chooseNature ? 'Eine passende Antwort, das exakt umgekehrte Wesen und zwei Wesen, die nur den jeweils anderen betroffenen Wert teilen.'
+        : `Pokémon-Auswahl gewichtet zugunsten ${direction === 1 ? 'überdurchschnittlicher' : 'unterdurchschnittlicher'} ${statLabels[stat]}: ${name(p)} ${p.baseStats[stat]}, Durchschnitt ${natureAverages[stat].average.toFixed(2)}. Keine neutralen Wesen.`);
+    let result;
+    let answerNatures = null;
+    if (chooseNature) {
+      const opposite = natures.find((n) => n.plus === nature.minus && n.minus === nature.plus);
+      const distractors = shuffle(natures.filter((n) => ![n.plus, n.minus].includes(stat)
+        && [n.plus, n.minus].includes(oppositeStat))).slice(0, 2);
+      if (!opposite || distractors.length !== 2) return null;
+      const adjective = direction === 1 ? feminineStats.has(stat) ? 'hoher' : 'hohem' : feminineStats.has(stat) ? 'niedriger' : 'niedrigem';
+      result = question(`Wenn man ein ${name(p)} mit besonders ${adjective} ${statLabels[stat]} haben möchte, welches Wesen sollte man wählen?`,
+        nature.de, [opposite, ...distractors].map((n) => n.de), explanation);
+      answerNatures = [nature, opposite, ...distractors];
+    } else {
+      const wrong = [oppositeStat, ...shuffle(natureStats.filter((other) => other !== stat && other !== oppositeStat)).slice(0, 2)];
+      result = question(`Ein eher ${nature.de.toLocaleLowerCase('de-DE')} veranlagtes ${name(p)} ist vermutlich bei welchem Wert ${direction === 1 ? 'besser' : 'schlechter'} veranlagt als die Meisten seiner Artgenossen?`,
+        statLabels[stat], wrong.map((other) => statLabels[other]), explanation);
+    }
+    if (result) result.natureQuestion = { nature: { ...nature }, stat, direction, pokemon: p.name,
+      pokemonStat: p.baseStats[stat], statAverage: natureAverages[stat].average,
+      answerNatures: answerNatures ? result.options.map((option) => ({ ...answerNatures.find((n) => n.de === option) })) : null };
+    return result;
+  }
   function isPrime(value) {
     if (value < 2) return false;
     for (let divisor = 2; divisor * divisor <= value; divisor += 1) if (value % divisor === 0) return false;
@@ -583,7 +642,7 @@ window.createMiloQuestionGenerator = function createMiloQuestionGenerator(entrie
 
   function teamQuestion(mode) {
     difficultyDetails = 'Feste Kategorie für 1.000.000 Punkte. Fünf legale Pokémon in Reihenfolge: ohne Spezialfolie über 10 Punkte, ohne Spezialfolie, Z, Tera, Mega oder Pokémon mit Spezialfolie (legendär, mysteriös, Ultrabestie oder Paradox). Keine Ubers (Grundkosten ab 21 im gewählten Format). Z bis 10 und Tera bis 5 Grundkosten; beide Typzuschläge werden addiert. Die zusätzliche Energiekarte zählt nicht. Falsche Zahlen liegen 15–35% vom Gesamtwert entfernt.';
-    const priced = entries.filter((p) => !p.hidden && !p.impossible && !p.unreleased)
+    const priced = entries.filter((p) => !p.hidden && !p.impossible && !p.unreleased && (!generationOne || (p.num >= 1 && p.num <= 151 && !p.forme)))
       .map((p) => ({ pokemon: p, name: p.names?.de ?? p.name, species: p.num, cost: getCost(p, mode),
         mega: /^Mega(?:-|$)/i.test(p.forme ?? '') || /-Mega(?:-|$)/i.test(p.name),
         specialFoil: [...(p.tags ?? []), ...(byName.get(p.baseSpecies)?.tags ?? [])]
@@ -635,19 +694,49 @@ window.createMiloQuestionGenerator = function createMiloQuestionGenerator(entrie
     if (result) result.team = { mode, energyType: pick(Object.keys(captainCosts).filter((type) => Object.hasOwn(types, type))), cards: team.map((p) => ({ pokemonName: p.pokemon.name,
       variant: p.upgrade?.kind ?? (p.mega ? 'mega' : 'normal'), type: p.upgrade?.type ?? p.pokemon.types[0],
       cost: p.cost, upgradeCost: p.upgrade?.cost ?? 0 })) };
+    if (result) {
+      const megaMember = team.find((p) => p.mega);
+      const base = megaMember ? byName.get(megaMember.pokemon.baseSpecies)
+        ?? byName.get(megaMember.pokemon.name.replace(/-Mega(?:-[XY])?$/, '')) : null;
+      const baseCost = base ? getCost(base, mode) : null;
+      const usedComparisons = new Set(team.map((p) => p.species));
+      const comparisons = team.slice(0, 4).map((member) => {
+        const matches = priced.filter((p) => p.cost === member.cost && p.species !== member.species);
+        const unused = matches.filter((p) => !usedComparisons.has(p.species));
+        const other = pick(unused.length ? unused : matches);
+        if (!other) return null;
+        usedComparisons.add(other.species);
+        return { reference: member.name, pokemonName: member.pokemon.name, cost: member.cost,
+          comparison: other.name, comparisonPokemonName: other.pokemon.name };
+      });
+      if (comparisons.some((row) => !row)) return null;
+      const upgradeHint = (kind) => {
+        const member = team.find((p) => p.upgrade?.kind === kind);
+        return { type: member.upgrade.type, typeName: types[member.upgrade.type], cost: member.upgrade.cost };
+      };
+      result.team.phoneHints = {
+        draft: team.map((p) => ({ name: p.name, pokemonName: p.pokemon.name, cost: p.cost, selectable: !p.mega })),
+        z: upgradeHint('z'), tera: upgradeHint('tera'),
+        mega: megaMember && base && Number.isInteger(baseCost) ? { name: megaMember.name, baseName: name(base),
+          cost: megaMember.cost, baseCost, difference: megaMember.cost - baseCost } : null,
+        comparisons,
+      };
+    }
     return result;
   }
 
   const promptKey = (result) => result.prompt === 'Welche Schreibweise ist richtig?'
     ? result.options[result.correct] : result.prompt;
   const categoryHistory = new WeakMap();
-  return function generate(prize, seen = new Set(), requiredCategory = null, excludedCategory = null) {
+  function sourcesFor(prize) {
     const sources = [];
     const add = (category, generate, weight = 1) => sources.push({ category, generate, weight });
-    if (!categoryHistory.has(seen)) categoryHistory.set(seen, new Map());
-    const usage = categoryHistory.get(seen);
     if ([300, 500, 1000].includes(prize)) add('translation', () => translationQuestion(prize), prize === 300 ? 1 : 4);
-    if (spellings.has(prize)) {
+    if ([500, 1000, 2000, 4000, 8000].includes(prize) && natures.length) {
+      add('nature-effect', () => natureQuestion(prize));
+      add('nature-choice', () => natureQuestion(prize, true));
+    }
+    if (spellings.get(prize)?.length) {
       add('spelling', () => {
         const { basic, advanced, answer, prompt } = pick(spellings.get(prize));
         referencePokemon = pool.filter((p) => p.name === answer || name(p) === answer).slice(0, 1);
@@ -671,6 +760,12 @@ window.createMiloQuestionGenerator = function createMiloQuestionGenerator(entrie
       add('team-singles', () => teamQuestion('singles'));
       add('team-doubles', () => teamQuestion('doubles'));
     };
+    return sources;
+  }
+  function generate(prize, seen = new Set(), requiredCategory = null, excludedCategory = null) {
+    const sources = sourcesFor(prize);
+    if (!categoryHistory.has(seen)) categoryHistory.set(seen, new Map());
+    const usage = categoryHistory.get(seen);
     for (let attempt = 0; attempt < 4; attempt += 1) {
       const ordered = sources.filter((source) => (!requiredCategory || source.category === requiredCategory)
         && source.category !== excludedCategory)
@@ -713,5 +808,12 @@ window.createMiloQuestionGenerator = function createMiloQuestionGenerator(entrie
       }
     }
     return null;
+  }
+  generate.availableCategories = (prize) => sourcesFor(prize).map((source) => source.category);
+  let genOne;
+  generate.genOne = (prize, seen, category) => {
+    genOne ??= window.createMiloQuestionGenerator(entries, moves, getCost, captainCosts, true);
+    return genOne(prize, seen, category);
   };
+  return generate;
 };
