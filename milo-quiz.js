@@ -946,6 +946,7 @@ window.createMiloQuiz = function createMiloQuiz(getAdminId, generateQuestion, sc
     const question = element('section', 'milo-question');
     question.append(element('p', 'milo-kicker', `Stufe ${round.index + 1} / ${prizes.length} · ${format.format(prizes[round.index])} Punkte`),
       element('h3', round.revealed ? '' : 'milo-focus', round.question.prompt));
+    if (round.question.rules) question.append(element('p', 'milo-muted milo-question-rules', round.question.rules));
     if (round.question.team) question.append(button('Teamkarten ansehen', openBooster));
     if (round.doubleActive) question.append(element('p', '', 'Doppelteam: Wähle genau zwei Antworten.'));
     const answers = element('div', 'milo-answers');
@@ -999,6 +1000,22 @@ window.createMiloQuiz = function createMiloQuiz(getAdminId, generateQuestion, sc
           }
           render(true);
         }, 'milo-primary', round.doubleActive ? round.selectedAnswers.length !== 2 : round.selected === null));
+    }
+    if (round.question.battle) {
+      const battle = round.question.battle;
+      const context = element('div', 'milo-battle-context');
+      const conditions = element('aside', 'milo-battle-conditions');
+      conditions.setAttribute('aria-label', 'Kampfbedingungen');
+      conditions.append(element('h4', '', 'Kampfbedingungen'),
+        element('p', '', `Verteidiger: ${battle.defender.de} · ${battle.defender.abilityDe}`),
+        element('p', '', `Angreifer: ${battle.attacker.de} · ${battle.attacker.abilityDe}`),
+        element('p', '', 'Beide: Level 100 · neutrales Wesen · 0 EVs · 0 IVs'),
+        element('p', '', 'Volle KP · keine Items, Statusprobleme oder Stufenänderungen'),
+        element('p', '', 'Keine Tera · neutrales Wetter · kein Terrain · Einzelkampf'),
+        element('p', '', 'NatDex-Lernset · Schadensmechanik: Generation 9'),
+        element('p', 'milo-muted', 'Attacken treffen. Keine zufälligen Volltreffer; garantierte Volltreffer zählen, sofern sie nicht verhindert werden. Verglichen wird der berechnete Schaden vor der KP-Begrenzung.'));
+      context.append(conditions);
+      stage.append(context);
     }
     stage.append(question, answers, actions);
     if (round.revealed && round.question.explanation) {

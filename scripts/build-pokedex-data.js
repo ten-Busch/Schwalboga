@@ -668,3 +668,4 @@ const abilityTypeData = {
 fs.writeFileSync(abilityTypePath, JSON.stringify(abilityTypeData, null, 2) + '\n');
 console.log(`Generated ability counts by type at ${abilityTypePath}`);
 buildMoveLearnsetCounts(pokedexEntries, Moves, outputDirectory);
+require('./build-evolution-levels.js')(Pokedex, outputDirectory);

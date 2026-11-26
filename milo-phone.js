@@ -33,6 +33,119 @@ window.createMiloPhoneContacts = function createMiloPhoneContacts(context) {
   function add(id, name, usefulness, dialogue, forced = false) {
     contacts.push({ id, name, usefulness, dialogue, forced });
   }
+  if (question.category === 'damage-comparison' && question.battle) {
+    const battle = question.battle;
+    const best = battle.answers.find((row) => row.label === answer);
+    const number = (value) => value.toLocaleString('de-DE', {maximumFractionDigits: 4});
+    if (battle.attacker.stats && battle.defender.stats) add('damage-stat-nerd', 'DamageCalc-Nerd', 'semi', () => [
+      line('DamageCalc-Nerd', `Schau dir erstmal die Werte an: ${battle.attacker.de} hat ${battle.attacker.stats.atk} Angriff und ${battle.attacker.stats.spa} Spezial-Angriff. Bei ${battle.defender.de} stehen dem ${battle.defender.stats.def} Verteidigung und ${battle.defender.stats.spd} Spezial-Verteidigung gegenüber. Das sind die Werte ohne Fähigkeitsmultiplikatoren. Die Stärke der Attacke und die Fähigkeiten musst du natürlich trotzdem berücksichtigen.`),
+    ]);
+    add('damage-balanced-trainer', 'Ausgeglichener Trainer', 'semi', ({wrong}) => {
+      const visible = battle.answers.filter((row) => row.label === answer || wrong.includes(row.label));
+      const usable = visible.filter((row) => row.matchup.typeMultiplier * row.matchup.abilityTypeModifier > 0);
+      const tiedFactors = usable.filter((row) => usable.some((other) => row !== other
+        && row.matchup.typeMultiplier * row.matchup.abilityTypeModifier === other.matchup.typeMultiplier * other.matchup.abilityTypeModifier));
+      const row = pick(tiedFactors.length ? tiedFactors : usable.length ? usable : visible);
+      const factor = row.matchup;
+      let text = `${row.label} trifft ${battle.defender.de} mit dem Typenfaktor ${number(factor.typeMultiplier)}.`;
+      if (row.id === 'freezedry') text += ' Die besondere Wirkung von Gefriertrockner gegen Wasser ist darin bereits berücksichtigt.';
+      if (factor.abilityTypeModifier !== 1) text += factor.abilityTypeModifier === 0
+        ? ` ${battle.defender.abilityDe} verhindert den Schaden aber vollständig.`
+        : ` Durch ${battle.defender.abilityDe} kommt zusätzlich der Faktor ${number(factor.abilityTypeModifier)} dazu.`;
+      if (factor.contactModifier !== 1) text += ` Weil die Attacke Kontakt herstellt, halbiert ${battle.defender.abilityDe} ihren Schaden zusätzlich.`;
+      text += ' Ob das für den höchsten Schaden reicht, musst du selbst herausfinden. Stärke, Werte und weitere Schadensfaktoren zählen ebenfalls.';
+      return [line('Ausgeglichener Trainer', text)];
+    });
+    add('damage-analyst', 'Kampfanalytiker', 'helpful', () => {
+      const details = [`Die Attacke ist ${best.category === 'Physical' ? 'physisch' : 'speziell'} und hat eine Grundstärke von ${best.power}.`];
+      if (best.stab) details.push('Sie profitiert vom Typenbonus STAB.');
+      details.push(`Ihr Typenfaktor gegen ${battle.defender.de} beträgt ${number(best.matchup.typeMultiplier)}.`);
+      if (best.id === 'freezedry') details.push('Dabei ist die besondere Effektivität von Gefriertrockner gegen Wasser bereits eingerechnet.');
+      if (best.offensePokemon === 'target') details.push('Für diese Attacke zählt der Angriff des Ziels statt des eigenen Angriffs.');
+      if (best.category === 'Special' && best.defenseStat === 'def') details.push('Obwohl sie speziell ist, trifft sie die physische Verteidigung.');
+      if (best.critical) details.push('Ihr garantierter Volltreffer ist eingerechnet.');
+      else if (best.guaranteedCritical) details.push(`Ihr garantierter Volltreffer wird von ${battle.defender.abilityDe} verhindert.`);
+      if (best.abilityEffects.length) details.push(`Die Berechnung berücksichtigt außerdem ${[...new Set(best.abilityEffects)].join(' und ')}.`);
+      return [line('Kampfanalytiker', `Ich habe es durchgerechnet: ${best.label} verursacht zwischen ${best.minimum} und ${best.maximum} KP Schaden, im Durchschnitt ${number(best.average)}. Damit liegt sie vorne.`),
+        line('Kampfanalytiker', details.join(' '))];
+    });
+  }
+  if (question.learning) {
+    const data = question.learning;
+    const helpful = (speaker, wrong) => {
+      let text;
+      if (data.kind === 'evolution-delay') text = `${data.pokemon} lernt ${data.move} in Generation ${data.gen} auf Level ${data.level}. Das ist die nächste neue Level-Attacke nach dem Entwicklungslevel ${data.evolutionLevel}.`;
+      else text = `${data.move} bekommt ${data.pokemon} in Generation ${data.gen} durch ${data.labels[data.method]}. ${data.kind === 'learning-generation' ? `In Generation ${data.fromGen} war es noch ${data.labels[data.from]}.` : 'Keine andere erfasste Lernmethode dieser Generation bietet diese Attacke an.'}`;
+      const rows = data.rows.filter((row) => wrong.includes(row.label));
+      const comparison = rows[0];
+      return [line(speaker, text), ...(comparison && data.kind !== 'learning-generation' ? [line(speaker,
+        `${comparison.label} ist dagegen ${comparison.level ? `auf Level ${comparison.level}` : `durch ${comparison.methods.map((method) => data.labels[method]).join(' oder ')}`} erlernbar.`)] : [])];
+    };
+    add('learning-reminder', 'Attackenerlerner', 'helpful', ({wrong}) => helpful('Attackenerlerner', wrong));
+    if (data.kind !== 'evolution-delay' && data.method === 'M') add('learning-tm-merchant', 'TM-Händler', 'helpful', ({wrong}) => helpful('TM-Händler', wrong));
+    if (data.kind !== 'evolution-delay' && data.method === 'E') add('learning-breeder', 'Pokémon-Züchter', 'helpful', ({wrong}) => helpful('Pokémon-Züchter', wrong));
+    const hint = (speaker, wrong, veteran) => {
+      // A direct exclusion after 50:50 would give away the answer. Supply a
+      // true learnset fact instead, without naming either remaining answer.
+      if (wrong.length < 2) return [line(speaker, veteran
+        ? `In Generation ${data.gen} hatte ${data.pokemon} ${data.levelMoveCount} verschiedene Attacken im Level-Lernset. Vielleicht hilft dir diese Erinnerung weiter.`
+        : `In Generation ${data.gen} sind für ${data.pokemon} insgesamt ${data.methodCount} verschiedene Lernmethoden erfasst. Nur eine Attacke zu kennen reicht also nicht immer.`)];
+      const rejected = wrong[veteran ? wrong.length - 1 : 0];
+      if (data.kind === 'learning-generation') return [line(speaker,
+        `In Generation ${data.gen} bekommt ${data.pokemon} ${data.move} jedenfalls nicht durch ${rejected}. ${veteran ? 'Das hätte ich mir gemerkt.' : 'Das hatten wir gerade im Unterricht!'}`)];
+      const row = data.rows.find((row) => row.label === rejected);
+      return [line(speaker, data.kind === 'evolution-delay'
+        ? `${row.label} lernt ${data.pokemon} in Generation ${data.gen} auf Level ${row.level}. ${veteran ? 'Damals habe ich die Entwicklung auch manchmal aufgeschoben.' : 'Das steht so in meinen Notizen.'}`
+        : `${row.label} bekommt ${data.pokemon} in Generation ${data.gen} durch ${row.methods.map((method) => data.labels[method]).join(' oder ')}. ${veteran ? 'Daran erinnere ich mich noch.' : 'Das hatten wir gerade im Unterricht!'}`)];
+    };
+    add('learning-schoolboy', 'Schuljunge', 'semi', ({wrong}) => hint('Schuljunge', wrong, false));
+    add('learning-veteran', 'Veteran', 'semi', ({wrong}) => hint('Veteran', wrong, true));
+  }
+  if (question.category === 'type-effectiveness' && question.typeEffectiveness) {
+    const data = question.typeEffectiveness;
+    const number = (value) => String(value).replace('.', ',');
+    const correct = data.answers.find((row) => row.label === answer);
+    const abilityEffect = (row, ability) => ability.multiplier === 0
+      ? `${row.label}-Attacken vollständig abgefangen`
+      : `${row.label}-Attacken um den Faktor ${number(ability.modifier)} ${ability.modifier > 1 ? 'verstärkt' : 'abgeschwächt'}`;
+    add('type-safari-warden', 'Safari-Zonen Wärter', 'semi', () => [
+      line('Safari-Zonen Wärter', `${data.pokemon}? Also auf dem Schild steht ${data.types.join(' und ')}. Wie sich das miteinander verrechnet, musste selber wissen.`),
+    ]);
+    if (data.withAbilities && data.answers.some((row) => row.changed)) {
+      add('type-dream-world-visitor', 'Traumwelt-Besucher', 'semi', ({ wrong }) => {
+        const affected = data.answers.filter((row) => row.changed && (row.label === answer || wrong.includes(row.label)));
+        const row = pick(affected);
+        if (!row) {
+          const ability = pick(correct.abilities);
+          return [line('Traumwelt-Besucher', `${data.pokemon} kann übrigens ${ability.name} haben. Damit wird keine deiner verbliebenen Antworten in ihrem Typenfaktor verändert. Vielleicht hilft dir das.`)];
+        }
+        const ability = pick(row.abilities.filter((a) => a.multiplier !== row.base));
+        return [line('Traumwelt-Besucher', `${data.pokemon} kann übrigens ${ability.name} haben. Damit werden ${abilityEffect(row, ability)}. Vielleicht hilft dir das.`)];
+      });
+    }
+    add('type-expert', 'Typen-Experte', 'helpful', ({ wrong }) => {
+      const factors = data.types.map((type, index) => `${correct.label} trifft ${type} mit dem Faktor ${number(correct.factors[index])}`).join(' und ');
+      const pages = [line('Typen-Experte', `Ich würde ${answer} nehmen. ${data.pokemon} ist vom Typ ${data.types.join(' und ')}. ${factors}. ${data.types.length > 1 ? 'Zusammen ergibt das' : 'Das ergibt'} ${number(correct.base)}.`)];
+      if (data.withAbilities) {
+        let detail;
+        if (correct.maximum > correct.base) {
+          const ability = correct.abilities.find((a) => a.multiplier === correct.maximum);
+          detail = `Mit ${ability.name} steigt dieser Faktor sogar auf ${number(correct.maximum)}.`;
+        } else if (correct.maximum < correct.base) {
+          detail = `Auch unter Berücksichtigung seiner Fähigkeiten erreicht dieser Typ höchstens ${number(correct.maximum)}. Das ist unter deinen Antworten trotzdem die beste Wahl.`;
+        } else {
+          const competitor = data.answers.filter((row) => wrong.includes(row.label) && row.changed)
+            .sort((a, b) => b.base - a.base)[0];
+          if (competitor) {
+            const ability = competitor.abilities.find((a) => a.multiplier !== competitor.base);
+            detail = `${competitor.label} würde ohne Fähigkeiten den Faktor ${number(competitor.base)} erreichen. Mit ${ability.name} werden ${abilityEffect(competitor, ability)}. Unter allen möglichen Fähigkeiten erreicht dieser Typ höchstens ${number(competitor.maximum)}.`;
+          } else detail = `Der höchste Faktor bleibt auch unter Berücksichtigung aller möglichen Fähigkeiten bei ${number(correct.maximum)}.`;
+        }
+        pages.push(line('Typen-Experte', `${detail} Der höchste mögliche Faktor für ${answer} beträgt also ${number(correct.maximum)}. Keine deiner anderen Antworten erreicht diesen Wert.`));
+      }
+      return pages;
+    });
+  }
   if (prize === 1000000) {
     const hints = question.team?.phoneHints;
     const draft = hints?.draft ?? (question.team?.cards ?? []).map((card) => {
@@ -118,7 +231,7 @@ window.createMiloPhoneContacts = function createMiloPhoneContacts(context) {
     }
     return copy;
   }
-  if (prize > 1000) {
+  if (prize > 1000 || (prize === 1000 && question.category === 'type-effectiveness')) {
     add('kricketune', 'Zirpeise', 'useless', () => [
       { ...line('Zirpeise', 'Delele whooooo'), stream: 'kricketune' },
     ]);

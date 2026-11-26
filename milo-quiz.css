@@ -303,6 +303,12 @@
 .milo-actions p { margin-inline-end: auto; }
 .milo-answers { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
 .milo-dialog .milo-answer { text-align: left; }
+.milo-question-rules { margin-top: 12px !important; font-size: .8em; line-height: 1.5; }
+.milo-battle-context { display: flex; justify-content: flex-end; }
+.milo-battle-conditions { box-sizing: border-box; width: min(100%, 620px); padding: 14px 18px; border: 1px solid var(--milo-line); border-radius: 16px; background: var(--milo-panel); font-size: .72em; line-height: 1.5; }
+.milo-battle-conditions h4 { margin: 0 0 8px; color: var(--milo-teal); }
+.milo-battle-conditions p + p { margin-top: 4px; }
+@media (max-width: 600px) { .milo-battle-conditions { width: 100%; font-size: .8em; } }
 .milo-dialog .milo-answer-with-estimate { position: relative; padding-right: 5.5em; }
 .milo-achromas-estimate {
   position: absolute;

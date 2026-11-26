@@ -340,7 +340,183 @@ window.createMiloQuestionGenerator = function createMiloQuestionGenerator(entrie
   const types = { Normal: 'Normal', Fire: 'Feuer', Water: 'Wasser', Electric: 'Elektro', Grass: 'Pflanze',
     Ice: 'Eis', Fighting: 'Kampf', Poison: 'Gift', Ground: 'Boden', Flying: 'Flug', Psychic: 'Psycho',
     Bug: 'Käfer', Rock: 'Gestein', Ghost: 'Geist', Dragon: 'Drache', Dark: 'Unlicht', Steel: 'Stahl', Fairy: 'Fee' };
+  // Audited for this question's fixed conditions: no contact, weather, items,
+  // fields, ability bypass or secondary effects. Unknown abilities are excluded.
+  const typeSafeAbilities = new Set(('ironbarbs anticipation swarm chlorophyll overcoat battlearmor sniper keeneye '
+    + 'tintedlens effectspore damp magmaarmor flamebody weakarmor reckless sturdy rockhead sandveil '
+    + 'klutz unnerve runaway pickup technician lightmetal heavymetal shielddust shedskin compoundeyes '
+    + 'insomnia earlybird pressure frisk infiltrator poisonpoint poisontouch rivalry guts quickfeet '
+    + 'limber owntempo oblivious forewarn synchronize innerfocus steadfast moxie justified rattled overgrow blaze '
+    + 'torrent telepathy immunity vitalspirit hypercutter clearbody whitesmoke suctioncups illuminate '
+    + 'stickyhold gluttony ripen hustle naturalcure serenegrace regenerator healer merciless corrosion '
+    + 'skilllink superluck bigpecks stench tangledfeet sweetveil flowerveil ballfetch honeygather').split(' '));
+  const typeModifiers = {
+    levitate: { Ground: 0 }, flashfire: { Fire: 0 }, wellbakedbody: { Fire: 0 },
+    waterabsorb: { Water: 0 }, stormdrain: { Water: 0 }, dryskin: { Water: 0, Fire: 1.25 },
+    voltabsorb: { Electric: 0 }, lightningrod: { Electric: 0 }, motordrive: { Electric: 0 },
+    sapsipper: { Grass: 0 }, eartheater: { Ground: 0 }, fluffy: { Fire: 2 },
+    heatproof: { Fire: 0.5 }, thickfat: { Fire: 0.5, Ice: 0.5 },
+    waterbubble: { Fire: 0.5 }, purifyingsalt: { Ghost: 0.5 },
+    solidrock: {}, filter: {}, prismarmor: {}, wonderguard: {},
+  };
+  const typeChart = window.POKEDEX_META?.typeChart;
+  const typeCandidates = entries.filter((p) => !p.hidden && !p.impossible && !p.unreleased
+    && (!generationOne || (p.num >= 1 && p.num <= 151 && !p.forme))).flatMap((p) => {
+    if (!typeChart || !p.abilityDetails.length || p.abilityDetails.some((a) => !typeSafeAbilities.has(a.id) && !typeModifiers[a.id])) return [];
+    const rows = Object.keys(types).map((type) => {
+      const factors = p.types.map((defense) => typeChart[defense][type]);
+      const base = factors.reduce((a, b) => a * b, 1);
+      const abilities = p.abilityDetails.map((ability) => {
+        let modifier = typeModifiers[ability.id]?.[type] ?? 1;
+        if (['solidrock', 'filter', 'prismarmor'].includes(ability.id) && base > 1) modifier = 0.75;
+        if (ability.id === 'wonderguard' && base <= 1) modifier = 0;
+        return { id: ability.id, name: ability.names?.de ?? ability.name, multiplier: base * modifier, modifier };
+      });
+      return { type, label: types[type], factors, base, abilities,
+        maximum: Math.max(...abilities.map((a) => a.multiplier)),
+        changed: abilities.some((a) => a.multiplier !== base),
+        cancelled: factors.some((factor) => factor > 1) && base <= 1 };
+    });
+    return [{ p, rows }];
+  });
+  function typeQuestion(prize) {
+    const withAbilities = prize >= 8000;
+    for (const candidate of shuffle(typeCandidates)) {
+      const { p, rows } = candidate;
+      const eligible = rows.filter((row) => withAbilities || !row.changed);
+      for (const correct of shuffle(eligible)) {
+        if (prize <= 500 && correct.base !== 4) continue;
+        if (prize >= 1000 && prize <= 4000 && correct.base !== 2) continue;
+        if (prize === 8000 && correct.base !== 4) continue;
+        if (prize === 32000 && (correct.base > 2 || correct.maximum > 2)) continue;
+        const wrong = shuffle(eligible.filter((row) => row.maximum < correct.maximum));
+        if (wrong.length < 3) continue;
+        const chosen = [];
+        const take = (predicate) => {
+          const row = wrong.find((r) => !chosen.includes(r) && predicate(r));
+          if (row) chosen.push(row);
+          return Boolean(row);
+        };
+        if (prize <= 500 && !take((row) => row.base === 2)) continue;
+        if (((prize >= 1000 && prize <= 4000) || prize === 32000) && !take((row) => row.cancelled)) continue;
+        if (prize === 8000 && !take((row) => correct.maximum > correct.base ? row.base === correct.base : row.base === 2)) continue;
+        if (withAbilities && !correct.changed && !chosen.some((row) => row.changed)
+          && !take((row) => row.changed && (prize !== 8000 || row.base <= 1))) continue;
+        while (chosen.length < 3 && take((row) => (prize > 500 && prize !== 8000) || row.base <= 1)) {}
+        if (chosen.length !== 3) continue;
+        referencePokemon = [p];
+        const prompt = withAbilities
+          ? `Welcher dieser Typen kann ${name(p)} unter Berücksichtigung seiner möglichen Fähigkeiten am stärksten treffen?`
+          : prize <= 500 ? `Welcher dieser Typen ist gegen ${name(p)} die beste Wahl, um möglichst viel Schaden anzurichten?`
+            : `Welcher dieser Typen ist gegen ${name(p)} am effektivsten?`;
+        const result = question(prompt, correct.label, chosen.map((row) => row.label));
+        if (!result) continue;
+        const offered = [correct, ...chosen];
+        result.typeEffectiveness = { pokemon: name(p), types: p.types.map((type) => types[type]), withAbilities,
+          answers: result.options.map((option) => offered.find((row) => row.label === option)) };
+        result.rules = [withAbilities ? `Für jeden Angriffstyp zählt der höchste Schadensmultiplikator, der bei einer der möglichen Fähigkeiten von ${name(p)} entsteht.` : '',
+          'Verglichen werden gleich starke Attacken ohne Kontakt. STAB, Items, Wetter, Feldeffekte und das Umgehen von Fähigkeiten bleiben unberücksichtigt.'].filter(Boolean).join(' ');
+        result.explanation = offered.map((row) => `${row.label}: ×${row.maximum}`).join(' · ');
+        difficultyDetails = `Typenvergleich ${withAbilities ? 'mit allen möglichen Fähigkeiten (jeweils höchster Faktor)' : 'ohne relevante Fähigkeitseffekte'}\n${result.explanation}`;
+        return result;
+      }
+    }
+    return null;
+  }
   const moveName = (id) => moves[id].names?.de ?? moves[id].name;
+  const learningLabels = { M: 'eine TM/VM/TR', E: 'Zucht (Ei-Attacke)', T: 'einen Attacken-Tutor', S: 'eine Event-Verteilung', L: 'Levelaufstieg' };
+  const learningMethods = (sources, gen) => [...new Set(sources.filter((s) => s.startsWith(String(gen))).map((s) => s[1]))];
+  const learningRows = (p, gen, includeOtherMethods = false) => Object.entries(p.learnset ?? {}).filter(([id]) => moves[id]).map(([id, sources]) => ({
+    id, label: moveName(id), type: moves[id].type, sources: sources.filter((s) => s.startsWith(String(gen))), methods: learningMethods(sources, gen),
+  })).filter((row) => row.methods.length && (includeOtherMethods || row.methods.every((method) => learningLabels[method])));
+  const learningCache = new Map();
+  function learningCandidates(kind) {
+    if (learningCache.has(kind)) return learningCache.get(kind);
+    const candidates = [];
+    for (const p of pool) {
+      if (kind === 'evolution-delay') {
+        const evolutionLevel = window.POKEMON_EVOLUTION_LEVELS?.[p.name];
+        if (!evolutionLevel) continue;
+        for (let gen = 3; gen <= 9; gen += 1) {
+          const sourceRows = learningRows(p, gen, true);
+          // Multiple levels for one move can reflect different games within
+          // a generation. Without game-specific sources, reject that schedule.
+          if (sourceRows.some((row) => new Set(row.sources.filter((s) => /^\dL\d+$/.test(s)).map((s) => Number(s.slice(2))).filter((level) => level > 0)).size > 1)) continue;
+          const rows = sourceRows.flatMap((row) => {
+            const levels = row.sources.filter((s) => /^\dL\d+$/.test(s)).map((s) => Number(s.slice(2))).filter((level) => level > 0);
+            return levels.length ? [{ ...row, level: Math.min(...levels) }] : [];
+          });
+          const after = rows.filter((row) => row.level > evolutionLevel).sort((a, b) => a.level - b.level);
+          if (!after.length || after.filter((row) => row.level === after[0].level).length !== 1 || rows.length < 4) continue;
+          candidates.push({ p, gen, evolutionLevel, right: after[0], rows });
+        }
+        continue;
+      }
+      // Base species avoid ambiguous access inherited from a pre-evolution.
+      if (p.prevo) continue;
+      if (kind === 'learning-generation') {
+        for (const [id, sources] of Object.entries(p.learnset ?? {})) {
+          if (!moves[id]) continue;
+          for (let a = 3; a <= 8; a += 1) for (let b = a + 1; b <= 9; b += 1) {
+            const from = learningMethods(sources, a), to = learningMethods(sources, b);
+            if (from.length !== 1 || to.length !== 1 || from[0] === to[0] || !learningLabels[from[0]] || !learningLabels[to[0]]) continue;
+            // Nursery transfer (Gen 8) and picnic copying (Gen 9) are not breeding.
+            if (b >= 8 && to[0] === 'E') continue;
+            candidates.push({ p, id, a, b, from: from[0], to: to[0], sources });
+          }
+        }
+        continue;
+      }
+      // Source codes group machines together; egg sources need additional care.
+      for (let gen = 3; gen <= 8; gen += 1) {
+        const rows = learningRows(p, gen).filter((row) => p.types.includes(row.type) === (kind === 'learning-stab'));
+        for (const method of kind === 'learning-stab' ? ['M', 'E', 'T', 'S'] : ['M', 'E', 'T']) {
+          if (gen >= 8 && method === 'E') continue;
+          const right = rows.filter((row) => row.methods.length === 1 && row.methods[0] === method);
+          const wrong = rows.filter((row) => !row.methods.includes(method));
+          if (right.length && wrong.length >= 3) candidates.push({ p, gen, method, right, wrong });
+        }
+      }
+    }
+    learningCache.set(kind, candidates);
+    return candidates;
+  }
+  function learningQuestion(kind) {
+    const candidate = pick(learningCandidates(kind));
+    if (!candidate) return null;
+    const { p } = candidate;
+    referencePokemon = [p];
+    let result, detail;
+    const rules = 'Es zählen die in der genannten Generation erfassten Lernmethoden dieser Form, ohne Transfer aus älteren Generationen. TM, VM und TR bilden eine gemeinsame Kategorie.';
+    if (kind === 'learning-generation') {
+      const { id, a, b, from, to, sources } = candidate;
+      const wrong = Object.keys(learningLabels).filter((method) => method !== from && method !== to);
+      result = question(`In Generation ${a} lernt ${name(p)} ${moveName(id)} durch ${learningLabels[from]}, in Generation ${b} allerdings durch …`, learningLabels[to], wrong.map((method) => learningLabels[method]));
+      detail = { kind, pokemon: name(p), gen: b, fromGen: a, from, method: to, move: moveName(id), labels: learningLabels, sources,
+        rows: [to, ...wrong].map((method) => ({ label: learningLabels[method], methods: [method], correct: method === to })) };
+    } else if (kind === 'evolution-delay') {
+      const { gen, evolutionLevel, right, rows } = candidate;
+      const wrong = shuffle(rows.filter((row) => row.id !== right.id && row.level !== right.level)).slice(0, 3);
+      result = question(`${name(p)} entwickelt sich ab Level ${evolutionLevel}. Wenn man die Entwicklung in Generation ${gen} aufschiebt, kann man ihm auf Level ${right.level} allerdings vorher noch welche Attacke beibringen?`, right.label, wrong.map((row) => row.label));
+      detail = { kind, pokemon: name(p), gen, evolutionLevel, level: right.level, method: 'L', move: right.label, labels: learningLabels, rows: [right, ...wrong] };
+    } else {
+      const { gen, method } = candidate;
+      const right = pick(candidate.right), wrong = shuffle(candidate.wrong).slice(0, 3);
+      result = question(`Welche dieser Attacken kann ${name(p)} in Generation ${gen} nur durch ${learningLabels[method]} erlernen?`, right.label, wrong.map((row) => row.label));
+      detail = { kind, pokemon: name(p), gen, method, move: right.label, labels: learningLabels, rows: [right, ...wrong] };
+    }
+    if (!result) return null;
+    const referenceRows = learningRows(p, detail.gen);
+    detail.levelMoveCount = referenceRows.filter((row) => row.methods.includes('L')).length;
+    detail.methodCount = new Set(referenceRows.flatMap((row) => row.methods)).size;
+    result.learning = detail;
+    result.rules = rules;
+    result.explanation = kind === 'learning-generation'
+      ? `${detail.move}: Generation ${detail.fromGen} → ${learningLabels[detail.from]}; Generation ${detail.gen} → ${learningLabels[detail.method]}.`
+      : detail.rows.map((row) => `${row.label}: ${row.sources.join(', ')}`).join(' · ');
+    difficultyDetails = `${kind}\n${result.explanation}\n${rules}`;
+    return result;
+  }
   const learned = new Map(pool.map((p) => [p, new Set(p.moveIds.filter((id) => moves[id]))]));
   const moveIds = [...new Set([...learned.values()].flatMap((ids) => [...ids]))];
   const offType = (p, id) => !p.types.includes(moves[id].type);
@@ -728,9 +904,24 @@ window.createMiloQuestionGenerator = function createMiloQuestionGenerator(entrie
   const promptKey = (result) => result.prompt === 'Welche Schreibweise ist richtig?'
     ? result.options[result.correct] : result.prompt;
   const categoryHistory = new WeakMap();
+  let damageGenerator;
+  function damageQuestion(prize) {
+    damageGenerator ??= window.createMiloDamageGenerator(pool, moves);
+    const result = damageGenerator(prize);
+    if (result) difficultyDetails = result.difficultyDetails;
+    return result;
+  }
   function sourcesFor(prize) {
     const sources = [];
     const add = (category, generate, weight = 1) => sources.push({ category, generate, weight });
+    if (window.createMiloDamageGenerator && (window.MiloCalc ?? window.calc)?.Generations && [32000, 64000, 125000, 250000, 500000].includes(prize)) add('damage-comparison', () => damageQuestion(prize));
+    if ([200, 300, 500, 1000, 2000, 4000, 8000, 16000, 32000].includes(prize)) add('type-effectiveness', () => typeQuestion(prize));
+    if ([16000, 32000].includes(prize)) add('learning-offtype', () => learningQuestion('learning-offtype'));
+    if ([64000, 125000].includes(prize)) add('learning-stab', () => learningQuestion('learning-stab'));
+    if (prize === 250000) {
+      if (window.POKEMON_EVOLUTION_LEVELS) add('evolution-delay', () => learningQuestion('evolution-delay'));
+      add('learning-generation', () => learningQuestion('learning-generation'));
+    }
     if ([300, 500, 1000].includes(prize)) add('translation', () => translationQuestion(prize), prize === 300 ? 1 : 4);
     if ([500, 1000, 2000, 4000, 8000].includes(prize) && natures.length) {
       add('nature-effect', () => natureQuestion(prize));
