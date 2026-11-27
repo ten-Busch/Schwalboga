@@ -1,7 +1,7 @@
 window.getMiloPhonePortrait = function getMiloPhonePortrait(contact, speaker = contact.name) {
-  // The host must never inherit the portrait of the person being called.
-  if (speaker === 'Günther Lauchzelot') return null;
-  const pokemon = { flegmon: 'slowpoke', pikachu: 'pikachu', xatu: 'xatu', kricketune: 'kricketune', urglmator: 'cramorant' }[contact.id];
+  // Host lines always use his own portrait, including calls to Pokémon.
+  if (speaker === 'Günther Jauchzelot') return { src: `assets/Trainer/${encodeURIComponent('Günther')}.png`, metallic: false };
+  const pokemon = { flegmon: 'slowpoke', pikachu: 'pikachu', kricketune: 'kricketune', urglmator: 'cramorant' }[contact.id];
   if (pokemon) return { src: `https://play.pokemonshowdown.com/sprites/gen5/${pokemon}.png`, metallic: contact.id === 'urglmator' };
   const aliases = {
     'Gary Eich': 'GaryEich', 'Dita Kiefsling': 'DitaKiefsling', 'Junichi Masuda': 'JunichiMasuda',
@@ -215,13 +215,6 @@ window.createMiloPhoneContacts = function createMiloPhoneContacts(context) {
       });
     }
   }
-  if ([4000, 8000].includes(prize)) {
-    const slot = context.futureAnswerSlot ?? Math.floor(Math.random() * 4);
-    add('xatu', 'Xatu', 'useless', () => [{
-      ...line('Xatu', `Ich sehe... die Antwort ist ${'ABCD'[slot]}. Aber nicht jetzt... in der Frage nach der nächsten...`),
-      theme: 'xatu', predictionSlot: slot,
-    }]);
-  }
   const pick = (items) => items[Math.floor(Math.random() * items.length)];
   function shuffle(items) {
     const copy = [...items];
@@ -389,7 +382,7 @@ window.createMiloPhoneContacts = function createMiloPhoneContacts(context) {
         }
         return line('Pikachu', words.join(' '));
       });
-      return [...lines, line('Günther Lauchzelot', 'Okay, die Zeit ist um. Ich hoffe das war hilfreich.')];
+      return [...lines, line('Günther Jauchzelot', 'Okay, die Zeit ist um. Ich hoffe das war hilfreich.')];
     });
   }
   const missingAbility = ['ability-association', 'ability-type', 'ability-evolution'].includes(question.category);
@@ -578,7 +571,7 @@ window.createMiloPhoneContacts = function createMiloPhoneContacts(context) {
     ]);
     add('frank', 'Frank', 'useless', () => [
       line('Frank', '.... .... .... ....', { interval: 2000 }),
-      { ...line('Günther Lauchzelot', 'Äh, scheint als wäre der gute Herr nicht erreichbar. Naja. Dann bekommen sie den Telefonjoker erstattet. Aber erst bei der nächsten Frage!'), refund: true },
+      { ...line('Günther Jauchzelot', 'Äh, scheint als wäre der gute Herr nicht erreichbar. Naja. Dann bekommen sie den Telefonjoker erstattet. Aber erst bei der nächsten Frage!'), refund: true },
     ]);
   }
   if ([100, 200].includes(prize) && previousAnswer) {

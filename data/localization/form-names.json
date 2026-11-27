@@ -1,0 +1,1067 @@
+{
+  "venusaurmega": {
+    "de": "Bisaflor-Mega"
+  },
+  "venusaurgmax": {
+    "de": "Bisaflor-GMAX"
+  },
+  "charizardmegax": {
+    "de": "Glurak-Mega-X"
+  },
+  "charizardmegay": {
+    "de": "Glurak-Mega-Y"
+  },
+  "charizardgmax": {
+    "de": "Glurak-GMAX"
+  },
+  "blastoisemega": {
+    "de": "Turtok-Mega"
+  },
+  "blastoisegmax": {
+    "de": "Turtok-GMAX"
+  },
+  "butterfreegmax": {
+    "de": "Smettbo-GMAX"
+  },
+  "beedrillmega": {
+    "de": "Bibor-Mega"
+  },
+  "pidgeotmega": {
+    "de": "Tauboss-Mega"
+  },
+  "rattataalola": {
+    "de": "Rattfratz-Alola"
+  },
+  "raticatealola": {
+    "de": "Rattikarl-Alola"
+  },
+  "raticatealolatotem": {
+    "de": "Rattikarl-Alola-Totem"
+  },
+  "pikachucosplay": {
+    "de": "Pikachu-Cosplay"
+  },
+  "pikachurockstar": {
+    "de": "Pikachu-Rock-Star"
+  },
+  "pikachubelle": {
+    "de": "Pikachu-Belle"
+  },
+  "pikachupopstar": {
+    "de": "Pikachu-Pop-Star"
+  },
+  "pikachuphd": {
+    "de": "Pikachu-PhD"
+  },
+  "pikachulibre": {
+    "de": "Pikachu-Libre"
+  },
+  "pikachuoriginal": {
+    "de": "Pikachu-Original"
+  },
+  "pikachuhoenn": {
+    "de": "Pikachu-Hoenn"
+  },
+  "pikachusinnoh": {
+    "de": "Pikachu-Sinnoh"
+  },
+  "pikachuunova": {
+    "de": "Pikachu-Unova"
+  },
+  "pikachukalos": {
+    "de": "Pikachu-Kalos"
+  },
+  "pikachualola": {
+    "de": "Pikachu-Alola"
+  },
+  "pikachupartner": {
+    "de": "Pikachu-Partner"
+  },
+  "pikachustarter": {
+    "de": "Pikachu-Starter"
+  },
+  "pikachugmax": {
+    "de": "Pikachu-GMAX"
+  },
+  "pikachuworld": {
+    "de": "Pikachu-World"
+  },
+  "raichualola": {
+    "de": "Raichu-Alola"
+  },
+  "raichumegax": {
+    "de": "Raichu-Mega-X"
+  },
+  "raichumegay": {
+    "de": "Raichu-Mega-Y"
+  },
+  "sandshrewalola": {
+    "de": "Sandan-Alola"
+  },
+  "sandslashalola": {
+    "de": "Sandamer-Alola"
+  },
+  "clefablemega": {
+    "de": "Pixi-Mega"
+  },
+  "vulpixalola": {
+    "de": "Vulpix-Alola"
+  },
+  "ninetalesalola": {
+    "de": "Vulnona-Alola"
+  },
+  "diglettalola": {
+    "de": "Digda-Alola"
+  },
+  "dugtrioalola": {
+    "de": "Digdri-Alola"
+  },
+  "meowthalola": {
+    "de": "Mauzi-Alola"
+  },
+  "meowthgalar": {
+    "de": "Mauzi-Galar"
+  },
+  "meowthgmax": {
+    "de": "Mauzi-GMAX"
+  },
+  "persianalola": {
+    "de": "Snobilikat-Alola"
+  },
+  "growlithehisui": {
+    "de": "Fukano-Hisui"
+  },
+  "arcaninehisui": {
+    "de": "Arkani-Hisui"
+  },
+  "alakazammega": {
+    "de": "Simsala-Mega"
+  },
+  "machampgmax": {
+    "de": "Machomei-GMAX"
+  },
+  "victreebelmega": {
+    "de": "Sarzenia-Mega"
+  },
+  "geodudealola": {
+    "de": "Kleinstein-Alola"
+  },
+  "graveleralola": {
+    "de": "Georok-Alola"
+  },
+  "golemalola": {
+    "de": "Geowaz-Alola"
+  },
+  "ponytagalar": {
+    "de": "Ponita-Galar"
+  },
+  "rapidashgalar": {
+    "de": "Gallopa-Galar"
+  },
+  "slowpokegalar": {
+    "de": "Flegmon-Galar"
+  },
+  "slowbromega": {
+    "de": "Lahmus-Mega"
+  },
+  "slowbrogalar": {
+    "de": "Lahmus-Galar"
+  },
+  "farfetchdgalar": {
+    "de": "Porenta-Galar"
+  },
+  "grimeralola": {
+    "de": "Sleima-Alola"
+  },
+  "mukalola": {
+    "de": "Sleimok-Alola"
+  },
+  "gengarmega": {
+    "de": "Gengar-Mega"
+  },
+  "gengargmax": {
+    "de": "Gengar-GMAX"
+  },
+  "kinglergmax": {
+    "de": "Kingler-GMAX"
+  },
+  "voltorbhisui": {
+    "de": "Voltobal-Hisui"
+  },
+  "electrodehisui": {
+    "de": "Lektrobal-Hisui"
+  },
+  "exeggutoralola": {
+    "de": "Kokowei-Alola"
+  },
+  "marowakalola": {
+    "de": "Knogga-Alola"
+  },
+  "marowakalolatotem": {
+    "de": "Knogga-Alola-Totem"
+  },
+  "weezinggalar": {
+    "de": "Smogmog-Galar"
+  },
+  "kangaskhanmega": {
+    "de": "Kangama-Mega"
+  },
+  "starmiemega": {
+    "de": "Starmie-Mega"
+  },
+  "mrmimegalar": {
+    "de": "Pantimos-Galar"
+  },
+  "pinsirmega": {
+    "de": "Pinsir-Mega"
+  },
+  "taurospaldeacombat": {
+    "de": "Tauros-Paldea-Gefecht"
+  },
+  "taurospaldeablaze": {
+    "de": "Tauros-Paldea-Flammen"
+  },
+  "taurospaldeaaqua": {
+    "de": "Tauros-Paldea-Fluten"
+  },
+  "gyaradosmega": {
+    "de": "Garados-Mega"
+  },
+  "laprasgmax": {
+    "de": "Lapras-GMAX"
+  },
+  "eeveestarter": {
+    "de": "Evoli-Starter"
+  },
+  "eeveegmax": {
+    "de": "Evoli-GMAX"
+  },
+  "aerodactylmega": {
+    "de": "Aerodactyl-Mega"
+  },
+  "snorlaxgmax": {
+    "de": "Relaxo-GMAX"
+  },
+  "articunogalar": {
+    "de": "Arktos-Galar"
+  },
+  "zapdosgalar": {
+    "de": "Zapdos-Galar"
+  },
+  "moltresgalar": {
+    "de": "Lavados-Galar"
+  },
+  "dragonitemega": {
+    "de": "Dragoran-Mega"
+  },
+  "mewtwomegax": {
+    "de": "Mewtu-Mega-X"
+  },
+  "mewtwomegay": {
+    "de": "Mewtu-Mega-Y"
+  },
+  "meganiummega": {
+    "de": "Meganie-Mega"
+  },
+  "typhlosionhisui": {
+    "de": "Tornupto-Hisui"
+  },
+  "feraligatrmega": {
+    "de": "Impergator-Mega"
+  },
+  "pichuspikyeared": {
+    "de": "Pichu-Spiky-eared"
+  },
+  "ampharosmega": {
+    "de": "Ampharos-Mega"
+  },
+  "wooperpaldea": {
+    "de": "Felino-Paldea"
+  },
+  "slowkinggalar": {
+    "de": "Laschoking-Galar"
+  },
+  "steelixmega": {
+    "de": "Stahlos-Mega"
+  },
+  "qwilfishhisui": {
+    "de": "Baldorfish-Hisui"
+  },
+  "scizormega": {
+    "de": "Scherox-Mega"
+  },
+  "heracrossmega": {
+    "de": "Skaraborn-Mega"
+  },
+  "sneaselhisui": {
+    "de": "Sniebel-Hisui"
+  },
+  "corsolagalar": {
+    "de": "Corasonn-Galar"
+  },
+  "skarmorymega": {
+    "de": "Panzaeron-Mega"
+  },
+  "houndoommega": {
+    "de": "Hundemon-Mega"
+  },
+  "tyranitarmega": {
+    "de": "Despotar-Mega"
+  },
+  "sceptilemega": {
+    "de": "Gewaldro-Mega"
+  },
+  "blazikenmega": {
+    "de": "Lohgock-Mega"
+  },
+  "swampertmega": {
+    "de": "Sumpex-Mega"
+  },
+  "zigzagoongalar": {
+    "de": "Zigzachs-Galar"
+  },
+  "linoonegalar": {
+    "de": "Geradaks-Galar"
+  },
+  "gardevoirmega": {
+    "de": "Guardevoir-Mega"
+  },
+  "sableyemega": {
+    "de": "Zobiris-Mega"
+  },
+  "mawilemega": {
+    "de": "Flunkifer-Mega"
+  },
+  "aggronmega": {
+    "de": "Stolloss-Mega"
+  },
+  "medichammega": {
+    "de": "Meditalis-Mega"
+  },
+  "manectricmega": {
+    "de": "Voltenso-Mega"
+  },
+  "sharpedomega": {
+    "de": "Tohaido-Mega"
+  },
+  "cameruptmega": {
+    "de": "Camerupt-Mega"
+  },
+  "altariamega": {
+    "de": "Altaria-Mega"
+  },
+  "castformsunny": {
+    "de": "Formeo-Sunny"
+  },
+  "castformrainy": {
+    "de": "Formeo-Rainy"
+  },
+  "castformsnowy": {
+    "de": "Formeo-Snowy"
+  },
+  "banettemega": {
+    "de": "Banette-Mega"
+  },
+  "chimechomega": {
+    "de": "Palimpalim-Mega"
+  },
+  "absolmega": {
+    "de": "Absol-Mega"
+  },
+  "absolmegaz": {
+    "de": "Absol-Mega-Z"
+  },
+  "glaliemega": {
+    "de": "Firnontor-Mega"
+  },
+  "salamencemega": {
+    "de": "Brutalanda-Mega"
+  },
+  "metagrossmega": {
+    "de": "Metagross-Mega"
+  },
+  "latiasmega": {
+    "de": "Latias-Mega"
+  },
+  "latiosmega": {
+    "de": "Latios-Mega"
+  },
+  "kyogreprimal": {
+    "de": "Kyogre-Proto"
+  },
+  "groudonprimal": {
+    "de": "Groudon-Proto"
+  },
+  "rayquazamega": {
+    "de": "Rayquaza-Mega"
+  },
+  "deoxysattack": {
+    "de": "Deoxys-Angriff"
+  },
+  "deoxysdefense": {
+    "de": "Deoxys-Verteidigung"
+  },
+  "deoxysspeed": {
+    "de": "Deoxys-Initiative"
+  },
+  "staraptormega": {
+    "de": "Staraptor-Mega"
+  },
+  "wormadamsandy": {
+    "de": "Burmadame-Sand"
+  },
+  "wormadamtrash": {
+    "de": "Burmadame-Lumpen"
+  },
+  "cherrimsunshine": {
+    "de": "Kinoso-Sunshine"
+  },
+  "lopunnymega": {
+    "de": "Schlapor-Mega"
+  },
+  "garchompmega": {
+    "de": "Knakrack-Mega"
+  },
+  "garchompmegaz": {
+    "de": "Knakrack-Mega-Z"
+  },
+  "lucariomega": {
+    "de": "Lucario-Mega"
+  },
+  "lucariomegaz": {
+    "de": "Lucario-Mega-Z"
+  },
+  "abomasnowmega": {
+    "de": "Rexblisar-Mega"
+  },
+  "gallademega": {
+    "de": "Galagladi-Mega"
+  },
+  "froslassmega": {
+    "de": "Frosdedje-Mega"
+  },
+  "rotomheat": {
+    "de": "Rotom-Hitze"
+  },
+  "rotomwash": {
+    "de": "Rotom-Wasch"
+  },
+  "rotomfrost": {
+    "de": "Rotom-Frost"
+  },
+  "rotomfan": {
+    "de": "Rotom-Wirbel"
+  },
+  "rotommow": {
+    "de": "Rotom-Schneid"
+  },
+  "dialgaorigin": {
+    "de": "Dialga-Origin"
+  },
+  "palkiaorigin": {
+    "de": "Palkia-Origin"
+  },
+  "heatranmega": {
+    "de": "Heatran-Mega"
+  },
+  "giratinaorigin": {
+    "de": "Giratina-Origin"
+  },
+  "darkraimega": {
+    "de": "Darkrai-Mega"
+  },
+  "shayminsky": {
+    "de": "Shaymin-Himmel"
+  },
+  "arceusbug": {
+    "de": "Arceus-Käfer"
+  },
+  "arceusdark": {
+    "de": "Arceus-Unlicht"
+  },
+  "arceusdragon": {
+    "de": "Arceus-Drache"
+  },
+  "arceuselectric": {
+    "de": "Arceus-Elektro"
+  },
+  "arceusfairy": {
+    "de": "Arceus-Fee"
+  },
+  "arceusfighting": {
+    "de": "Arceus-Kampf"
+  },
+  "arceusfire": {
+    "de": "Arceus-Feuer"
+  },
+  "arceusflying": {
+    "de": "Arceus-Flug"
+  },
+  "arceusghost": {
+    "de": "Arceus-Geist"
+  },
+  "arceusgrass": {
+    "de": "Arceus-Pflanze"
+  },
+  "arceusground": {
+    "de": "Arceus-Boden"
+  },
+  "arceusice": {
+    "de": "Arceus-Eis"
+  },
+  "arceuspoison": {
+    "de": "Arceus-Gift"
+  },
+  "arceuspsychic": {
+    "de": "Arceus-Psycho"
+  },
+  "arceusrock": {
+    "de": "Arceus-Gestein"
+  },
+  "arceussteel": {
+    "de": "Arceus-Stahl"
+  },
+  "arceuswater": {
+    "de": "Arceus-Wasser"
+  },
+  "emboarmega": {
+    "de": "Flambirex-Mega"
+  },
+  "samurotthisui": {
+    "de": "Admurai-Hisui"
+  },
+  "excadrillmega": {
+    "de": "Stalobor-Mega"
+  },
+  "audinomega": {
+    "de": "Ohrdoch-Mega"
+  },
+  "scolipedemega": {
+    "de": "Cerapendra-Mega"
+  },
+  "lilliganthisui": {
+    "de": "Dressella-Hisui"
+  },
+  "basculinbluestriped": {
+    "de": "Barschuft-Blue-Striped"
+  },
+  "basculinwhitestriped": {
+    "de": "Barschuft-White-Striped"
+  },
+  "darumakagalar": {
+    "de": "Flampion-Galar"
+  },
+  "darmanitanzen": {
+    "de": "Flampivian-Zen"
+  },
+  "darmanitangalar": {
+    "de": "Flampivian-Galar"
+  },
+  "darmanitangalarzen": {
+    "de": "Flampivian-Galar-Zen"
+  },
+  "scraftymega": {
+    "de": "Irokex-Mega"
+  },
+  "yamaskgalar": {
+    "de": "Makabaja-Galar"
+  },
+  "garbodorgmax": {
+    "de": "Deponitox-GMAX"
+  },
+  "zoruahisui": {
+    "de": "Zorua-Hisui"
+  },
+  "zoroarkhisui": {
+    "de": "Zoroark-Hisui"
+  },
+  "eelektrossmega": {
+    "de": "Zapplarang-Mega"
+  },
+  "chandeluremega": {
+    "de": "Skelabra-Mega"
+  },
+  "stunfiskgalar": {
+    "de": "Flunschlik-Galar"
+  },
+  "golurkmega": {
+    "de": "Golgantes-Mega"
+  },
+  "braviaryhisui": {
+    "de": "Washakwil-Hisui"
+  },
+  "tornadustherian": {
+    "de": "Boreos-Tiergeist"
+  },
+  "thundurustherian": {
+    "de": "Voltolos-Tiergeist"
+  },
+  "landorustherian": {
+    "de": "Demeteros-Tiergeist"
+  },
+  "kyuremblack": {
+    "de": "Kyurem-Schwarz"
+  },
+  "kyuremwhite": {
+    "de": "Kyurem-Weiß"
+  },
+  "keldeoresolute": {
+    "de": "Keldeo-Resolute"
+  },
+  "meloettapirouette": {
+    "de": "Meloetta-Pirouette"
+  },
+  "genesectdouse": {
+    "de": "Genesect-Douse"
+  },
+  "genesectshock": {
+    "de": "Genesect-Shock"
+  },
+  "genesectburn": {
+    "de": "Genesect-Burn"
+  },
+  "genesectchill": {
+    "de": "Genesect-Chill"
+  },
+  "chesnaughtmega": {
+    "de": "Brigaron-Mega"
+  },
+  "delphoxmega": {
+    "de": "Fennexis-Mega"
+  },
+  "greninjabond": {
+    "de": "Quajutsu-Bond"
+  },
+  "greninjaash": {
+    "de": "Quajutsu-Ash"
+  },
+  "greninjamega": {
+    "de": "Quajutsu-Mega"
+  },
+  "vivillonfancy": {
+    "de": "Vivillon-Fancy"
+  },
+  "vivillonpokeball": {
+    "de": "Vivillon-Pokeball"
+  },
+  "pyroarmega": {
+    "de": "Pyroleo-Mega"
+  },
+  "floetteeternal": {
+    "de": "Floette-Eternal"
+  },
+  "floettemega": {
+    "de": "Floette-Mega"
+  },
+  "meowsticf": {
+    "de": "Psiaugon-F"
+  },
+  "meowsticmmega": {
+    "de": "Psiaugon-M-Mega"
+  },
+  "meowsticfmega": {
+    "de": "Psiaugon-F-Mega"
+  },
+  "aegislashblade": {
+    "de": "Durengard-Blade"
+  },
+  "malamarmega": {
+    "de": "Calamanero-Mega"
+  },
+  "barbaraclemega": {
+    "de": "Thanathora-Mega"
+  },
+  "dragalgemega": {
+    "de": "Tandrak-Mega"
+  },
+  "hawluchamega": {
+    "de": "Resladero-Mega"
+  },
+  "sliggoohisui": {
+    "de": "Viscargot-Hisui"
+  },
+  "goodrahisui": {
+    "de": "Viscogon-Hisui"
+  },
+  "pumpkaboosmall": {
+    "de": "Irrbis-Small"
+  },
+  "pumpkaboolarge": {
+    "de": "Irrbis-Large"
+  },
+  "pumpkaboosuper": {
+    "de": "Irrbis-Super"
+  },
+  "gourgeistsmall": {
+    "de": "Pumpdjinn-Small"
+  },
+  "gourgeistlarge": {
+    "de": "Pumpdjinn-Large"
+  },
+  "gourgeistsuper": {
+    "de": "Pumpdjinn-Super"
+  },
+  "avalugghisui": {
+    "de": "Arktilas-Hisui"
+  },
+  "xerneasneutral": {
+    "de": "Xerneas-Neutral"
+  },
+  "zygarde10": {
+    "de": "Zygarde-10%"
+  },
+  "zygardecomplete": {
+    "de": "Zygarde-Complete"
+  },
+  "zygardemega": {
+    "de": "Zygarde-Mega"
+  },
+  "dianciemega": {
+    "de": "Diancie-Mega"
+  },
+  "hoopaunbound": {
+    "de": "Hoopa-Entfesselt"
+  },
+  "decidueyehisui": {
+    "de": "Silvarro-Hisui"
+  },
+  "gumshoostotem": {
+    "de": "Manguspektor-Totem"
+  },
+  "vikavolttotem": {
+    "de": "Donarion-Totem"
+  },
+  "crabominablemega": {
+    "de": "Krawell-Mega"
+  },
+  "oricoriopompom": {
+    "de": "Choreogel-Pom-Pom"
+  },
+  "oricoriopau": {
+    "de": "Choreogel-Pa'u"
+  },
+  "oricoriosensu": {
+    "de": "Choreogel-Sensu"
+  },
+  "ribombeetotem": {
+    "de": "Bandelby-Totem"
+  },
+  "rockruffdusk": {
+    "de": "Wuffels-Zwielicht"
+  },
+  "lycanrocmidnight": {
+    "de": "Wolwerock-Nacht"
+  },
+  "lycanrocdusk": {
+    "de": "Wolwerock-Zwielicht"
+  },
+  "wishiwashischool": {
+    "de": "Lusardin-School"
+  },
+  "araquanidtotem": {
+    "de": "Aranestro-Totem"
+  },
+  "lurantistotem": {
+    "de": "Mantidea-Totem"
+  },
+  "salazzletotem": {
+    "de": "Amfira-Totem"
+  },
+  "golisopodmega": {
+    "de": "Tectass-Mega"
+  },
+  "silvallybug": {
+    "de": "Amigento-Käfer"
+  },
+  "silvallydark": {
+    "de": "Amigento-Unlicht"
+  },
+  "silvallydragon": {
+    "de": "Amigento-Drache"
+  },
+  "silvallyelectric": {
+    "de": "Amigento-Elektro"
+  },
+  "silvallyfairy": {
+    "de": "Amigento-Fee"
+  },
+  "silvallyfighting": {
+    "de": "Amigento-Kampf"
+  },
+  "silvallyfire": {
+    "de": "Amigento-Feuer"
+  },
+  "silvallyflying": {
+    "de": "Amigento-Flug"
+  },
+  "silvallyghost": {
+    "de": "Amigento-Geist"
+  },
+  "silvallygrass": {
+    "de": "Amigento-Pflanze"
+  },
+  "silvallyground": {
+    "de": "Amigento-Boden"
+  },
+  "silvallyice": {
+    "de": "Amigento-Eis"
+  },
+  "silvallypoison": {
+    "de": "Amigento-Gift"
+  },
+  "silvallypsychic": {
+    "de": "Amigento-Psycho"
+  },
+  "silvallyrock": {
+    "de": "Amigento-Gestein"
+  },
+  "silvallysteel": {
+    "de": "Amigento-Stahl"
+  },
+  "silvallywater": {
+    "de": "Amigento-Wasser"
+  },
+  "miniormeteor": {
+    "de": "Meteno-Meteor"
+  },
+  "togedemarutotem": {
+    "de": "Togedemaru-Totem"
+  },
+  "mimikyubusted": {
+    "de": "Mimigma-Busted"
+  },
+  "mimikyutotem": {
+    "de": "Mimigma-Totem"
+  },
+  "mimikyubustedtotem": {
+    "de": "Mimigma-Busted-Totem"
+  },
+  "drampamega": {
+    "de": "Sen-Long-Mega"
+  },
+  "kommoototem": {
+    "de": "Grandiras-Totem"
+  },
+  "necrozmaduskmane": {
+    "de": "Necrozma-Abendmähne"
+  },
+  "necrozmadawnwings": {
+    "de": "Necrozma-Morgenschwingen"
+  },
+  "necrozmaultra": {
+    "de": "Necrozma-Ultra"
+  },
+  "magearnaoriginal": {
+    "de": "Magearna-Original"
+  },
+  "magearnamega": {
+    "de": "Magearna-Mega"
+  },
+  "magearnaoriginalmega": {
+    "de": "Magearna-Original-Mega"
+  },
+  "zeraoramega": {
+    "de": "Zeraora-Mega"
+  },
+  "melmetalgmax": {
+    "de": "Melmetal-GMAX"
+  },
+  "rillaboomgmax": {
+    "de": "Gortrom-GMAX"
+  },
+  "cinderacegmax": {
+    "de": "Liberlo-GMAX"
+  },
+  "inteleongmax": {
+    "de": "Intelleon-GMAX"
+  },
+  "corviknightgmax": {
+    "de": "Krarmor-GMAX"
+  },
+  "orbeetlegmax": {
+    "de": "Maritellit-GMAX"
+  },
+  "drednawgmax": {
+    "de": "Kamalm-GMAX"
+  },
+  "coalossalgmax": {
+    "de": "Montecarbo-GMAX"
+  },
+  "flapplegmax": {
+    "de": "Drapfel-GMAX"
+  },
+  "appletungmax": {
+    "de": "Schlapfel-GMAX"
+  },
+  "sandacondagmax": {
+    "de": "Sanaconda-GMAX"
+  },
+  "cramorantgulping": {
+    "de": "Urgl"
+  },
+  "cramorantgorging": {
+    "de": "Urgl"
+  },
+  "toxtricitylowkey": {
+    "de": "Riffex-Low-Key"
+  },
+  "toxtricitygmax": {
+    "de": "Riffex-GMAX"
+  },
+  "toxtricitylowkeygmax": {
+    "de": "Riffex-Low-Key-GMAX"
+  },
+  "centiskorchgmax": {
+    "de": "Infernopod-GMAX"
+  },
+  "sinisteaantique": {
+    "de": "Fatalitee-Antique"
+  },
+  "polteageistantique": {
+    "de": "Mortipot-Antique"
+  },
+  "hatterenegmax": {
+    "de": "Silembrim-GMAX"
+  },
+  "grimmsnarlgmax": {
+    "de": "Olangaar-GMAX"
+  },
+  "alcremiegmax": {
+    "de": "Pokusan-GMAX"
+  },
+  "falinksmega": {
+    "de": "Legios-Mega"
+  },
+  "eiscuenoice": {
+    "de": "Kubuin-Noice"
+  },
+  "indeedeef": {
+    "de": "Servol-F"
+  },
+  "morpekohangry": {
+    "de": "Morpeko-Hangry"
+  },
+  "copperajahgmax": {
+    "de": "Patinaraja-GMAX"
+  },
+  "duraludongmax": {
+    "de": "Duraludon-GMAX"
+  },
+  "zaciancrowned": {
+    "de": "Zacian-König"
+  },
+  "zamazentacrowned": {
+    "de": "Zamazenta-König"
+  },
+  "eternatuseternamax": {
+    "de": "Endynalos-Eternamax"
+  },
+  "urshifurapidstrike": {
+    "de": "Wulaosu-Fließender Stil"
+  },
+  "urshifugmax": {
+    "de": "Wulaosu-GMAX"
+  },
+  "urshifurapidstrikegmax": {
+    "de": "Wulaosu-Fließender Stil-GMAX"
+  },
+  "zarudedada": {
+    "de": "Zarude-Dada"
+  },
+  "calyrexice": {
+    "de": "Coronospa-Schimmel"
+  },
+  "calyrexshadow": {
+    "de": "Coronospa-Rappe"
+  },
+  "ursalunabloodmoon": {
+    "de": "Ursaluna-Blutmond"
+  },
+  "basculegionf": {
+    "de": "Salmagnis-F"
+  },
+  "enamorustherian": {
+    "de": "Cupidos-Tiergeist"
+  },
+  "oinkolognef": {
+    "de": "Fragrunz-F"
+  },
+  "mausholdfour": {
+    "de": "Famieps-Four"
+  },
+  "squawkabillyblue": {
+    "de": "Krawalloro-Blau"
+  },
+  "squawkabillyyellow": {
+    "de": "Krawalloro-Gelb"
+  },
+  "squawkabillywhite": {
+    "de": "Krawalloro-Weiß"
+  },
+  "scovillainmega": {
+    "de": "Halupenjo-Mega"
+  },
+  "palafinhero": {
+    "de": "Delfinator-Hero"
+  },
+  "glimmoramega": {
+    "de": "Lumiflora-Mega"
+  },
+  "tatsugiridroopy": {
+    "de": "Nigiragi-Droopy"
+  },
+  "tatsugiristretchy": {
+    "de": "Nigiragi-Stretchy"
+  },
+  "tatsugiricurlymega": {
+    "de": "Nigiragi-Curly-Mega"
+  },
+  "tatsugiridroopymega": {
+    "de": "Nigiragi-Droopy-Mega"
+  },
+  "tatsugiristretchymega": {
+    "de": "Nigiragi-Stretchy-Mega"
+  },
+  "dudunsparcethreesegment": {
+    "de": "Dummimisel-Three-Segment"
+  },
+  "baxcaliburmega": {
+    "de": "Espinodon-Mega"
+  },
+  "gimmighoulroaming": {
+    "de": "Gierspenst-Roaming"
+  },
+  "poltchageistartisan": {
+    "de": "Mortcha-Artisan"
+  },
+  "sinistchamasterpiece": {
+    "de": "Fatalitcha-Masterpiece"
+  },
+  "ogerponwellspring": {
+    "de": "Ogerpon-Brunnen"
+  },
+  "ogerponhearthflame": {
+    "de": "Ogerpon-Ofen"
+  },
+  "ogerponcornerstone": {
+    "de": "Ogerpon-Fundament"
+  },
+  "ogerpontealtera": {
+    "de": "Ogerpon-Teal-Tera"
+  },
+  "ogerponwellspringtera": {
+    "de": "Ogerpon-Brunnen-Tera"
+  },
+  "ogerponhearthflametera": {
+    "de": "Ogerpon-Ofen-Tera"
+  },
+  "ogerponcornerstonetera": {
+    "de": "Ogerpon-Fundament-Tera"
+  },
+  "terapagosterastal": {
+    "de": "Terapagos-Terastal"
+  },
+  "terapagosstellar": {
+    "de": "Terapagos-Stellar"
+  }
+}

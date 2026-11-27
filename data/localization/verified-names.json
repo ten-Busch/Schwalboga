@@ -1,0 +1,6869 @@
+{
+  "pokemon": {
+    "bulbasaur": {
+      "de": "Bisasam"
+    },
+    "ivysaur": {
+      "de": "Bisaknosp"
+    },
+    "venusaur": {
+      "de": "Bisaflor"
+    },
+    "charmander": {
+      "de": "Glumanda"
+    },
+    "charmeleon": {
+      "de": "Glutexo"
+    },
+    "charizard": {
+      "de": "Glurak"
+    },
+    "squirtle": {
+      "de": "Schiggy"
+    },
+    "wartortle": {
+      "de": "Schillok"
+    },
+    "blastoise": {
+      "de": "Turtok"
+    },
+    "caterpie": {
+      "de": "Raupy"
+    },
+    "metapod": {
+      "de": "Safcon"
+    },
+    "butterfree": {
+      "de": "Smettbo"
+    },
+    "weedle": {
+      "de": "Hornliu"
+    },
+    "kakuna": {
+      "de": "Kokuna"
+    },
+    "beedrill": {
+      "de": "Bibor"
+    },
+    "pidgey": {
+      "de": "Taubsi"
+    },
+    "pidgeotto": {
+      "de": "Tauboga"
+    },
+    "pidgeot": {
+      "de": "Tauboss"
+    },
+    "rattata": {
+      "de": "Rattfratz"
+    },
+    "raticate": {
+      "de": "Rattikarl"
+    },
+    "spearow": {
+      "de": "Habitak"
+    },
+    "fearow": {
+      "de": "Ibitak"
+    },
+    "ekans": {
+      "de": "Rettan"
+    },
+    "arbok": {
+      "de": "Arbok"
+    },
+    "pikachu": {
+      "de": "Pikachu"
+    },
+    "raichu": {
+      "de": "Raichu"
+    },
+    "sandshrew": {
+      "de": "Sandan"
+    },
+    "sandslash": {
+      "de": "Sandamer"
+    },
+    "nidoranf": {
+      "de": "Nidoran♀"
+    },
+    "nidorina": {
+      "de": "Nidorina"
+    },
+    "nidoqueen": {
+      "de": "Nidoqueen"
+    },
+    "nidoranm": {
+      "de": "Nidoran♂"
+    },
+    "nidorino": {
+      "de": "Nidorino"
+    },
+    "nidoking": {
+      "de": "Nidoking"
+    },
+    "clefairy": {
+      "de": "Piepi"
+    },
+    "clefable": {
+      "de": "Pixi"
+    },
+    "vulpix": {
+      "de": "Vulpix"
+    },
+    "ninetales": {
+      "de": "Vulnona"
+    },
+    "jigglypuff": {
+      "de": "Pummeluff"
+    },
+    "wigglytuff": {
+      "de": "Knuddeluff"
+    },
+    "zubat": {
+      "de": "Zubat"
+    },
+    "golbat": {
+      "de": "Golbat"
+    },
+    "oddish": {
+      "de": "Myrapla"
+    },
+    "gloom": {
+      "de": "Duflor"
+    },
+    "vileplume": {
+      "de": "Giflor"
+    },
+    "paras": {
+      "de": "Paras"
+    },
+    "parasect": {
+      "de": "Parasek"
+    },
+    "venonat": {
+      "de": "Bluzuk"
+    },
+    "venomoth": {
+      "de": "Omot"
+    },
+    "diglett": {
+      "de": "Digda"
+    },
+    "dugtrio": {
+      "de": "Digdri"
+    },
+    "meowth": {
+      "de": "Mauzi"
+    },
+    "persian": {
+      "de": "Snobilikat"
+    },
+    "psyduck": {
+      "de": "Enton"
+    },
+    "golduck": {
+      "de": "Entoron"
+    },
+    "mankey": {
+      "de": "Menki"
+    },
+    "primeape": {
+      "de": "Rasaff"
+    },
+    "growlithe": {
+      "de": "Fukano"
+    },
+    "arcanine": {
+      "de": "Arkani"
+    },
+    "poliwag": {
+      "de": "Quapsel"
+    },
+    "poliwhirl": {
+      "de": "Quaputzi"
+    },
+    "poliwrath": {
+      "de": "Quappo"
+    },
+    "abra": {
+      "de": "Abra"
+    },
+    "kadabra": {
+      "de": "Kadabra"
+    },
+    "alakazam": {
+      "de": "Simsala"
+    },
+    "machop": {
+      "de": "Machollo"
+    },
+    "machoke": {
+      "de": "Maschock"
+    },
+    "machamp": {
+      "de": "Machomei"
+    },
+    "bellsprout": {
+      "de": "Knofensa"
+    },
+    "weepinbell": {
+      "de": "Ultrigaria"
+    },
+    "victreebel": {
+      "de": "Sarzenia"
+    },
+    "tentacool": {
+      "de": "Tentacha"
+    },
+    "tentacruel": {
+      "de": "Tentoxa"
+    },
+    "geodude": {
+      "de": "Kleinstein"
+    },
+    "graveler": {
+      "de": "Georok"
+    },
+    "golem": {
+      "de": "Geowaz"
+    },
+    "ponyta": {
+      "de": "Ponita"
+    },
+    "rapidash": {
+      "de": "Gallopa"
+    },
+    "slowpoke": {
+      "de": "Flegmon"
+    },
+    "slowbro": {
+      "de": "Lahmus"
+    },
+    "magnemite": {
+      "de": "Magnetilo"
+    },
+    "magneton": {
+      "de": "Magneton"
+    },
+    "farfetchd": {
+      "de": "Porenta"
+    },
+    "doduo": {
+      "de": "Dodu"
+    },
+    "dodrio": {
+      "de": "Dodri"
+    },
+    "seel": {
+      "de": "Jurob"
+    },
+    "dewgong": {
+      "de": "Jugong"
+    },
+    "grimer": {
+      "de": "Sleima"
+    },
+    "muk": {
+      "de": "Sleimok"
+    },
+    "shellder": {
+      "de": "Muschas"
+    },
+    "cloyster": {
+      "de": "Austos"
+    },
+    "gastly": {
+      "de": "Nebulak"
+    },
+    "haunter": {
+      "de": "Alpollo"
+    },
+    "gengar": {
+      "de": "Gengar"
+    },
+    "onix": {
+      "de": "Onix"
+    },
+    "drowzee": {
+      "de": "Traumato"
+    },
+    "hypno": {
+      "de": "Hypno"
+    },
+    "krabby": {
+      "de": "Krabby"
+    },
+    "kingler": {
+      "de": "Kingler"
+    },
+    "voltorb": {
+      "de": "Voltobal"
+    },
+    "electrode": {
+      "de": "Lektrobal"
+    },
+    "exeggcute": {
+      "de": "Owei"
+    },
+    "exeggutor": {
+      "de": "Kokowei"
+    },
+    "cubone": {
+      "de": "Tragosso"
+    },
+    "marowak": {
+      "de": "Knogga"
+    },
+    "hitmonlee": {
+      "de": "Kicklee"
+    },
+    "hitmonchan": {
+      "de": "Nockchan"
+    },
+    "lickitung": {
+      "de": "Schlurp"
+    },
+    "koffing": {
+      "de": "Smogon"
+    },
+    "weezing": {
+      "de": "Smogmog"
+    },
+    "rhyhorn": {
+      "de": "Rihorn"
+    },
+    "rhydon": {
+      "de": "Rizeros"
+    },
+    "chansey": {
+      "de": "Chaneira"
+    },
+    "tangela": {
+      "de": "Tangela"
+    },
+    "kangaskhan": {
+      "de": "Kangama"
+    },
+    "horsea": {
+      "de": "Seeper"
+    },
+    "seadra": {
+      "de": "Seemon"
+    },
+    "goldeen": {
+      "de": "Goldini"
+    },
+    "seaking": {
+      "de": "Golking"
+    },
+    "staryu": {
+      "de": "Sterndu"
+    },
+    "starmie": {
+      "de": "Starmie"
+    },
+    "mrmime": {
+      "de": "Pantimos"
+    },
+    "scyther": {
+      "de": "Sichlor"
+    },
+    "jynx": {
+      "de": "Rossana"
+    },
+    "electabuzz": {
+      "de": "Elektek"
+    },
+    "magmar": {
+      "de": "Magmar"
+    },
+    "pinsir": {
+      "de": "Pinsir"
+    },
+    "tauros": {
+      "de": "Tauros"
+    },
+    "magikarp": {
+      "de": "Karpador"
+    },
+    "gyarados": {
+      "de": "Garados"
+    },
+    "lapras": {
+      "de": "Lapras"
+    },
+    "ditto": {
+      "de": "Ditto"
+    },
+    "eevee": {
+      "de": "Evoli"
+    },
+    "vaporeon": {
+      "de": "Aquana"
+    },
+    "jolteon": {
+      "de": "Blitza"
+    },
+    "flareon": {
+      "de": "Flamara"
+    },
+    "porygon": {
+      "de": "Porygon"
+    },
+    "omanyte": {
+      "de": "Amonitas"
+    },
+    "omastar": {
+      "de": "Amoroso"
+    },
+    "kabuto": {
+      "de": "Kabuto"
+    },
+    "kabutops": {
+      "de": "Kabutops"
+    },
+    "aerodactyl": {
+      "de": "Aerodactyl"
+    },
+    "snorlax": {
+      "de": "Relaxo"
+    },
+    "articuno": {
+      "de": "Arktos"
+    },
+    "zapdos": {
+      "de": "Zapdos"
+    },
+    "moltres": {
+      "de": "Lavados"
+    },
+    "dratini": {
+      "de": "Dratini"
+    },
+    "dragonair": {
+      "de": "Dragonir"
+    },
+    "dragonite": {
+      "de": "Dragoran"
+    },
+    "mewtwo": {
+      "de": "Mewtu"
+    },
+    "mew": {
+      "de": "Mew"
+    },
+    "chikorita": {
+      "de": "Endivie"
+    },
+    "bayleef": {
+      "de": "Lorblatt"
+    },
+    "meganium": {
+      "de": "Meganie"
+    },
+    "cyndaquil": {
+      "de": "Feurigel"
+    },
+    "quilava": {
+      "de": "Igelavar"
+    },
+    "typhlosion": {
+      "de": "Tornupto"
+    },
+    "totodile": {
+      "de": "Karnimani"
+    },
+    "croconaw": {
+      "de": "Tyracroc"
+    },
+    "feraligatr": {
+      "de": "Impergator"
+    },
+    "sentret": {
+      "de": "Wiesor"
+    },
+    "furret": {
+      "de": "Wiesenior"
+    },
+    "hoothoot": {
+      "de": "Hoothoot"
+    },
+    "noctowl": {
+      "de": "Noctuh"
+    },
+    "ledyba": {
+      "de": "Ledyba"
+    },
+    "ledian": {
+      "de": "Ledian"
+    },
+    "spinarak": {
+      "de": "Webarak"
+    },
+    "ariados": {
+      "de": "Ariados"
+    },
+    "crobat": {
+      "de": "Iksbat"
+    },
+    "chinchou": {
+      "de": "Lampi"
+    },
+    "lanturn": {
+      "de": "Lanturn"
+    },
+    "pichu": {
+      "de": "Pichu"
+    },
+    "cleffa": {
+      "de": "Pii"
+    },
+    "igglybuff": {
+      "de": "Fluffeluff"
+    },
+    "togepi": {
+      "de": "Togepi"
+    },
+    "togetic": {
+      "de": "Togetic"
+    },
+    "natu": {
+      "de": "Natu"
+    },
+    "xatu": {
+      "de": "Xatu"
+    },
+    "mareep": {
+      "de": "Voltilamm"
+    },
+    "flaaffy": {
+      "de": "Waaty"
+    },
+    "ampharos": {
+      "de": "Ampharos"
+    },
+    "bellossom": {
+      "de": "Blubella"
+    },
+    "marill": {
+      "de": "Marill"
+    },
+    "azumarill": {
+      "de": "Azumarill"
+    },
+    "sudowoodo": {
+      "de": "Mogelbaum"
+    },
+    "politoed": {
+      "de": "Quaxo"
+    },
+    "hoppip": {
+      "de": "Hoppspross"
+    },
+    "skiploom": {
+      "de": "Hubelupf"
+    },
+    "jumpluff": {
+      "de": "Papungha"
+    },
+    "aipom": {
+      "de": "Griffel"
+    },
+    "sunkern": {
+      "de": "Sonnkern"
+    },
+    "sunflora": {
+      "de": "Sonnflora"
+    },
+    "yanma": {
+      "de": "Yanma"
+    },
+    "wooper": {
+      "de": "Felino"
+    },
+    "quagsire": {
+      "de": "Morlord"
+    },
+    "espeon": {
+      "de": "Psiana"
+    },
+    "umbreon": {
+      "de": "Nachtara"
+    },
+    "murkrow": {
+      "de": "Kramurx"
+    },
+    "slowking": {
+      "de": "Laschoking"
+    },
+    "misdreavus": {
+      "de": "Traunfugil"
+    },
+    "unown": {
+      "de": "Icognito"
+    },
+    "wobbuffet": {
+      "de": "Woingenau"
+    },
+    "girafarig": {
+      "de": "Girafarig"
+    },
+    "pineco": {
+      "de": "Tannza"
+    },
+    "forretress": {
+      "de": "Forstellka"
+    },
+    "dunsparce": {
+      "de": "Dummisel"
+    },
+    "gligar": {
+      "de": "Skorgla"
+    },
+    "steelix": {
+      "de": "Stahlos"
+    },
+    "snubbull": {
+      "de": "Snubbull"
+    },
+    "granbull": {
+      "de": "Granbull"
+    },
+    "qwilfish": {
+      "de": "Baldorfish"
+    },
+    "scizor": {
+      "de": "Scherox"
+    },
+    "shuckle": {
+      "de": "Pottrott"
+    },
+    "heracross": {
+      "de": "Skaraborn"
+    },
+    "sneasel": {
+      "de": "Sniebel"
+    },
+    "teddiursa": {
+      "de": "Teddiursa"
+    },
+    "ursaring": {
+      "de": "Ursaring"
+    },
+    "slugma": {
+      "de": "Schneckmag"
+    },
+    "magcargo": {
+      "de": "Magcargo"
+    },
+    "swinub": {
+      "de": "Quiekel"
+    },
+    "piloswine": {
+      "de": "Keifel"
+    },
+    "corsola": {
+      "de": "Corasonn"
+    },
+    "remoraid": {
+      "de": "Remoraid"
+    },
+    "octillery": {
+      "de": "Octillery"
+    },
+    "delibird": {
+      "de": "Botogel"
+    },
+    "mantine": {
+      "de": "Mantax"
+    },
+    "skarmory": {
+      "de": "Panzaeron"
+    },
+    "houndour": {
+      "de": "Hunduster"
+    },
+    "houndoom": {
+      "de": "Hundemon"
+    },
+    "kingdra": {
+      "de": "Seedraking"
+    },
+    "phanpy": {
+      "de": "Phanpy"
+    },
+    "donphan": {
+      "de": "Donphan"
+    },
+    "porygon2": {
+      "de": "Porygon2"
+    },
+    "stantler": {
+      "de": "Damhirplex"
+    },
+    "smeargle": {
+      "de": "Farbeagle"
+    },
+    "tyrogue": {
+      "de": "Rabauz"
+    },
+    "hitmontop": {
+      "de": "Kapoera"
+    },
+    "smoochum": {
+      "de": "Kussilla"
+    },
+    "elekid": {
+      "de": "Elekid"
+    },
+    "magby": {
+      "de": "Magby"
+    },
+    "miltank": {
+      "de": "Miltank"
+    },
+    "blissey": {
+      "de": "Heiteira"
+    },
+    "raikou": {
+      "de": "Raikou"
+    },
+    "entei": {
+      "de": "Entei"
+    },
+    "suicune": {
+      "de": "Suicune"
+    },
+    "larvitar": {
+      "de": "Larvitar"
+    },
+    "pupitar": {
+      "de": "Pupitar"
+    },
+    "tyranitar": {
+      "de": "Despotar"
+    },
+    "lugia": {
+      "de": "Lugia"
+    },
+    "hooh": {
+      "de": "Ho-Oh"
+    },
+    "celebi": {
+      "de": "Celebi"
+    },
+    "treecko": {
+      "de": "Geckarbor"
+    },
+    "grovyle": {
+      "de": "Reptain"
+    },
+    "sceptile": {
+      "de": "Gewaldro"
+    },
+    "torchic": {
+      "de": "Flemmli"
+    },
+    "combusken": {
+      "de": "Jungglut"
+    },
+    "blaziken": {
+      "de": "Lohgock"
+    },
+    "mudkip": {
+      "de": "Hydropi"
+    },
+    "marshtomp": {
+      "de": "Moorabbel"
+    },
+    "swampert": {
+      "de": "Sumpex"
+    },
+    "poochyena": {
+      "de": "Fiffyen"
+    },
+    "mightyena": {
+      "de": "Magnayen"
+    },
+    "zigzagoon": {
+      "de": "Zigzachs"
+    },
+    "linoone": {
+      "de": "Geradaks"
+    },
+    "wurmple": {
+      "de": "Waumpel"
+    },
+    "silcoon": {
+      "de": "Schaloko"
+    },
+    "beautifly": {
+      "de": "Papinella"
+    },
+    "cascoon": {
+      "de": "Panekon"
+    },
+    "dustox": {
+      "de": "Pudox"
+    },
+    "lotad": {
+      "de": "Loturzel"
+    },
+    "lombre": {
+      "de": "Lombrero"
+    },
+    "ludicolo": {
+      "de": "Kappalores"
+    },
+    "seedot": {
+      "de": "Samurzel"
+    },
+    "nuzleaf": {
+      "de": "Blanas"
+    },
+    "shiftry": {
+      "de": "Tengulist"
+    },
+    "taillow": {
+      "de": "Schwalbini"
+    },
+    "swellow": {
+      "de": "Schwalboss"
+    },
+    "wingull": {
+      "de": "Wingull"
+    },
+    "pelipper": {
+      "de": "Pelipper"
+    },
+    "ralts": {
+      "de": "Trasla"
+    },
+    "kirlia": {
+      "de": "Kirlia"
+    },
+    "gardevoir": {
+      "de": "Guardevoir"
+    },
+    "surskit": {
+      "de": "Gehweiher"
+    },
+    "masquerain": {
+      "de": "Maskeregen"
+    },
+    "shroomish": {
+      "de": "Knilz"
+    },
+    "breloom": {
+      "de": "Kapilz"
+    },
+    "slakoth": {
+      "de": "Bummelz"
+    },
+    "vigoroth": {
+      "de": "Muntier"
+    },
+    "slaking": {
+      "de": "Letarking"
+    },
+    "nincada": {
+      "de": "Nincada"
+    },
+    "ninjask": {
+      "de": "Ninjask"
+    },
+    "shedinja": {
+      "de": "Ninjatom"
+    },
+    "whismur": {
+      "de": "Flurmel"
+    },
+    "loudred": {
+      "de": "Krakeelo"
+    },
+    "exploud": {
+      "de": "Krawumms"
+    },
+    "makuhita": {
+      "de": "Makuhita"
+    },
+    "hariyama": {
+      "de": "Hariyama"
+    },
+    "azurill": {
+      "de": "Azurill"
+    },
+    "nosepass": {
+      "de": "Nasgnet"
+    },
+    "skitty": {
+      "de": "Eneco"
+    },
+    "delcatty": {
+      "de": "Enekoro"
+    },
+    "sableye": {
+      "de": "Zobiris"
+    },
+    "mawile": {
+      "de": "Flunkifer"
+    },
+    "aron": {
+      "de": "Stollunior"
+    },
+    "lairon": {
+      "de": "Stollrak"
+    },
+    "aggron": {
+      "de": "Stolloss"
+    },
+    "meditite": {
+      "de": "Meditie"
+    },
+    "medicham": {
+      "de": "Meditalis"
+    },
+    "electrike": {
+      "de": "Frizelbliz"
+    },
+    "manectric": {
+      "de": "Voltenso"
+    },
+    "plusle": {
+      "de": "Plusle"
+    },
+    "minun": {
+      "de": "Minun"
+    },
+    "volbeat": {
+      "de": "Volbeat"
+    },
+    "illumise": {
+      "de": "Illumise"
+    },
+    "roselia": {
+      "de": "Roselia"
+    },
+    "gulpin": {
+      "de": "Schluppuck"
+    },
+    "swalot": {
+      "de": "Schlukwech"
+    },
+    "carvanha": {
+      "de": "Kanivanha"
+    },
+    "sharpedo": {
+      "de": "Tohaido"
+    },
+    "wailmer": {
+      "de": "Wailmer"
+    },
+    "wailord": {
+      "de": "Wailord"
+    },
+    "numel": {
+      "de": "Camaub"
+    },
+    "camerupt": {
+      "de": "Camerupt"
+    },
+    "torkoal": {
+      "de": "Qurtel"
+    },
+    "spoink": {
+      "de": "Spoink"
+    },
+    "grumpig": {
+      "de": "Groink"
+    },
+    "spinda": {
+      "de": "Pandir"
+    },
+    "trapinch": {
+      "de": "Knacklion"
+    },
+    "vibrava": {
+      "de": "Vibrava"
+    },
+    "flygon": {
+      "de": "Libelldra"
+    },
+    "cacnea": {
+      "de": "Tuska"
+    },
+    "cacturne": {
+      "de": "Noktuska"
+    },
+    "swablu": {
+      "de": "Wablu"
+    },
+    "altaria": {
+      "de": "Altaria"
+    },
+    "zangoose": {
+      "de": "Sengo"
+    },
+    "seviper": {
+      "de": "Vipitis"
+    },
+    "lunatone": {
+      "de": "Lunastein"
+    },
+    "solrock": {
+      "de": "Sonnfel"
+    },
+    "barboach": {
+      "de": "Schmerbe"
+    },
+    "whiscash": {
+      "de": "Welsar"
+    },
+    "corphish": {
+      "de": "Krebscorps"
+    },
+    "crawdaunt": {
+      "de": "Krebutack"
+    },
+    "baltoy": {
+      "de": "Puppance"
+    },
+    "claydol": {
+      "de": "Lepumentas"
+    },
+    "lileep": {
+      "de": "Liliep"
+    },
+    "cradily": {
+      "de": "Wielie"
+    },
+    "anorith": {
+      "de": "Anorith"
+    },
+    "armaldo": {
+      "de": "Armaldo"
+    },
+    "feebas": {
+      "de": "Barschwa"
+    },
+    "milotic": {
+      "de": "Milotic"
+    },
+    "castform": {
+      "de": "Formeo"
+    },
+    "kecleon": {
+      "de": "Kecleon"
+    },
+    "shuppet": {
+      "de": "Shuppet"
+    },
+    "banette": {
+      "de": "Banette"
+    },
+    "duskull": {
+      "de": "Zwirrlicht"
+    },
+    "dusclops": {
+      "de": "Zwirrklop"
+    },
+    "tropius": {
+      "de": "Tropius"
+    },
+    "chimecho": {
+      "de": "Palimpalim"
+    },
+    "absol": {
+      "de": "Absol"
+    },
+    "wynaut": {
+      "de": "Isso"
+    },
+    "snorunt": {
+      "de": "Schneppke"
+    },
+    "glalie": {
+      "de": "Firnontor"
+    },
+    "spheal": {
+      "de": "Seemops"
+    },
+    "sealeo": {
+      "de": "Seejong"
+    },
+    "walrein": {
+      "de": "Walraisa"
+    },
+    "clamperl": {
+      "de": "Perlu"
+    },
+    "huntail": {
+      "de": "Aalabyss"
+    },
+    "gorebyss": {
+      "de": "Saganabyss"
+    },
+    "relicanth": {
+      "de": "Relicanth"
+    },
+    "luvdisc": {
+      "de": "Liebiskus"
+    },
+    "bagon": {
+      "de": "Kindwurm"
+    },
+    "shelgon": {
+      "de": "Draschel"
+    },
+    "salamence": {
+      "de": "Brutalanda"
+    },
+    "beldum": {
+      "de": "Tanhel"
+    },
+    "metang": {
+      "de": "Metang"
+    },
+    "metagross": {
+      "de": "Metagross"
+    },
+    "regirock": {
+      "de": "Regirock"
+    },
+    "regice": {
+      "de": "Regice"
+    },
+    "registeel": {
+      "de": "Registeel"
+    },
+    "latias": {
+      "de": "Latias"
+    },
+    "latios": {
+      "de": "Latios"
+    },
+    "kyogre": {
+      "de": "Kyogre"
+    },
+    "groudon": {
+      "de": "Groudon"
+    },
+    "rayquaza": {
+      "de": "Rayquaza"
+    },
+    "jirachi": {
+      "de": "Jirachi"
+    },
+    "deoxys": {
+      "de": "Deoxys"
+    },
+    "turtwig": {
+      "de": "Chelast"
+    },
+    "grotle": {
+      "de": "Chelcarain"
+    },
+    "torterra": {
+      "de": "Chelterrar"
+    },
+    "chimchar": {
+      "de": "Panflam"
+    },
+    "monferno": {
+      "de": "Panpyro"
+    },
+    "infernape": {
+      "de": "Panferno"
+    },
+    "piplup": {
+      "de": "Plinfa"
+    },
+    "prinplup": {
+      "de": "Pliprin"
+    },
+    "empoleon": {
+      "de": "Impoleon"
+    },
+    "starly": {
+      "de": "Staralili"
+    },
+    "staravia": {
+      "de": "Staravia"
+    },
+    "staraptor": {
+      "de": "Staraptor"
+    },
+    "bidoof": {
+      "de": "Bidiza"
+    },
+    "bibarel": {
+      "de": "Bidifas"
+    },
+    "kricketot": {
+      "de": "Zirpurze"
+    },
+    "kricketune": {
+      "de": "Zirpeise"
+    },
+    "shinx": {
+      "de": "Sheinux"
+    },
+    "luxio": {
+      "de": "Luxio"
+    },
+    "luxray": {
+      "de": "Luxtra"
+    },
+    "budew": {
+      "de": "Knospi"
+    },
+    "roserade": {
+      "de": "Roserade"
+    },
+    "cranidos": {
+      "de": "Koknodon"
+    },
+    "rampardos": {
+      "de": "Rameidon"
+    },
+    "shieldon": {
+      "de": "Schilterus"
+    },
+    "bastiodon": {
+      "de": "Bollterus"
+    },
+    "burmy": {
+      "de": "Burmy"
+    },
+    "wormadam": {
+      "de": "Burmadame"
+    },
+    "mothim": {
+      "de": "Moterpel"
+    },
+    "combee": {
+      "de": "Wadribie"
+    },
+    "vespiquen": {
+      "de": "Honweisel"
+    },
+    "pachirisu": {
+      "de": "Pachirisu"
+    },
+    "buizel": {
+      "de": "Bamelin"
+    },
+    "floatzel": {
+      "de": "Bojelin"
+    },
+    "cherubi": {
+      "de": "Kikugi"
+    },
+    "cherrim": {
+      "de": "Kinoso"
+    },
+    "shellos": {
+      "de": "Schalellos"
+    },
+    "gastrodon": {
+      "de": "Gastrodon"
+    },
+    "ambipom": {
+      "de": "Ambidiffel"
+    },
+    "drifloon": {
+      "de": "Driftlon"
+    },
+    "drifblim": {
+      "de": "Drifzepeli"
+    },
+    "buneary": {
+      "de": "Haspiror"
+    },
+    "lopunny": {
+      "de": "Schlapor"
+    },
+    "mismagius": {
+      "de": "Traunmagil"
+    },
+    "honchkrow": {
+      "de": "Kramshef"
+    },
+    "glameow": {
+      "de": "Charmian"
+    },
+    "purugly": {
+      "de": "Shnurgarst"
+    },
+    "chingling": {
+      "de": "Klingplim"
+    },
+    "stunky": {
+      "de": "Skunkapuh"
+    },
+    "skuntank": {
+      "de": "Skuntank"
+    },
+    "bronzor": {
+      "de": "Bronzel"
+    },
+    "bronzong": {
+      "de": "Bronzong"
+    },
+    "bonsly": {
+      "de": "Mobai"
+    },
+    "mimejr": {
+      "de": "Pantimimi"
+    },
+    "happiny": {
+      "de": "Wonneira"
+    },
+    "chatot": {
+      "de": "Plaudagei"
+    },
+    "spiritomb": {
+      "de": "Kryppuk"
+    },
+    "gible": {
+      "de": "Kaumalat"
+    },
+    "gabite": {
+      "de": "Knarksel"
+    },
+    "garchomp": {
+      "de": "Knakrack"
+    },
+    "munchlax": {
+      "de": "Mampfaxo"
+    },
+    "riolu": {
+      "de": "Riolu"
+    },
+    "lucario": {
+      "de": "Lucario"
+    },
+    "hippopotas": {
+      "de": "Hippopotas"
+    },
+    "hippowdon": {
+      "de": "Hippoterus"
+    },
+    "skorupi": {
+      "de": "Pionskora"
+    },
+    "drapion": {
+      "de": "Piondragi"
+    },
+    "croagunk": {
+      "de": "Glibunkel"
+    },
+    "toxicroak": {
+      "de": "Toxiquak"
+    },
+    "carnivine": {
+      "de": "Venuflibis"
+    },
+    "finneon": {
+      "de": "Finneon"
+    },
+    "lumineon": {
+      "de": "Lumineon"
+    },
+    "mantyke": {
+      "de": "Mantirps"
+    },
+    "snover": {
+      "de": "Shnebedeck"
+    },
+    "abomasnow": {
+      "de": "Rexblisar"
+    },
+    "weavile": {
+      "de": "Snibunna"
+    },
+    "magnezone": {
+      "de": "Magnezone"
+    },
+    "lickilicky": {
+      "de": "Schlurplek"
+    },
+    "rhyperior": {
+      "de": "Rihornior"
+    },
+    "tangrowth": {
+      "de": "Tangoloss"
+    },
+    "electivire": {
+      "de": "Elevoltek"
+    },
+    "magmortar": {
+      "de": "Magbrant"
+    },
+    "togekiss": {
+      "de": "Togekiss"
+    },
+    "yanmega": {
+      "de": "Yanmega"
+    },
+    "leafeon": {
+      "de": "Folipurba"
+    },
+    "glaceon": {
+      "de": "Glaziola"
+    },
+    "gliscor": {
+      "de": "Skorgro"
+    },
+    "mamoswine": {
+      "de": "Mamutel"
+    },
+    "porygonz": {
+      "de": "Porygon-Z"
+    },
+    "gallade": {
+      "de": "Galagladi"
+    },
+    "probopass": {
+      "de": "Voluminas"
+    },
+    "dusknoir": {
+      "de": "Zwirrfinst"
+    },
+    "froslass": {
+      "de": "Frosdedje"
+    },
+    "rotom": {
+      "de": "Rotom"
+    },
+    "uxie": {
+      "de": "Selfe"
+    },
+    "mesprit": {
+      "de": "Vesprit"
+    },
+    "azelf": {
+      "de": "Tobutz"
+    },
+    "dialga": {
+      "de": "Dialga"
+    },
+    "palkia": {
+      "de": "Palkia"
+    },
+    "heatran": {
+      "de": "Heatran"
+    },
+    "regigigas": {
+      "de": "Regigigas"
+    },
+    "giratina": {
+      "de": "Giratina"
+    },
+    "cresselia": {
+      "de": "Cresselia"
+    },
+    "phione": {
+      "de": "Phione"
+    },
+    "manaphy": {
+      "de": "Manaphy"
+    },
+    "darkrai": {
+      "de": "Darkrai"
+    },
+    "shaymin": {
+      "de": "Shaymin"
+    },
+    "arceus": {
+      "de": "Arceus"
+    },
+    "victini": {
+      "de": "Victini"
+    },
+    "snivy": {
+      "de": "Serpifeu"
+    },
+    "servine": {
+      "de": "Efoserp"
+    },
+    "serperior": {
+      "de": "Serpiroyal"
+    },
+    "tepig": {
+      "de": "Floink"
+    },
+    "pignite": {
+      "de": "Ferkokel"
+    },
+    "emboar": {
+      "de": "Flambirex"
+    },
+    "oshawott": {
+      "de": "Ottaro"
+    },
+    "dewott": {
+      "de": "Zwottronin"
+    },
+    "samurott": {
+      "de": "Admurai"
+    },
+    "patrat": {
+      "de": "Nagelotz"
+    },
+    "watchog": {
+      "de": "Kukmarda"
+    },
+    "lillipup": {
+      "de": "Yorkleff"
+    },
+    "herdier": {
+      "de": "Terribark"
+    },
+    "stoutland": {
+      "de": "Bissbark"
+    },
+    "purrloin": {
+      "de": "Felilou"
+    },
+    "liepard": {
+      "de": "Kleoparda"
+    },
+    "pansage": {
+      "de": "Vegimak"
+    },
+    "simisage": {
+      "de": "Vegichita"
+    },
+    "pansear": {
+      "de": "Grillmak"
+    },
+    "simisear": {
+      "de": "Grillchita"
+    },
+    "panpour": {
+      "de": "Sodamak"
+    },
+    "simipour": {
+      "de": "Sodachita"
+    },
+    "munna": {
+      "de": "Somniam"
+    },
+    "musharna": {
+      "de": "Somnivora"
+    },
+    "pidove": {
+      "de": "Dusselgurr"
+    },
+    "tranquill": {
+      "de": "Navitaub"
+    },
+    "unfezant": {
+      "de": "Fasasnob"
+    },
+    "blitzle": {
+      "de": "Elezeba"
+    },
+    "zebstrika": {
+      "de": "Zebritz"
+    },
+    "roggenrola": {
+      "de": "Kiesling"
+    },
+    "boldore": {
+      "de": "Sedimantur"
+    },
+    "gigalith": {
+      "de": "Brockoloss"
+    },
+    "woobat": {
+      "de": "Fleknoil"
+    },
+    "swoobat": {
+      "de": "Fletiamo"
+    },
+    "drilbur": {
+      "de": "Rotomurf"
+    },
+    "excadrill": {
+      "de": "Stalobor"
+    },
+    "audino": {
+      "de": "Ohrdoch"
+    },
+    "timburr": {
+      "de": "Praktibalk"
+    },
+    "gurdurr": {
+      "de": "Strepoli"
+    },
+    "conkeldurr": {
+      "de": "Meistagrif"
+    },
+    "tympole": {
+      "de": "Schallquap"
+    },
+    "palpitoad": {
+      "de": "Mebrana"
+    },
+    "seismitoad": {
+      "de": "Branawarz"
+    },
+    "throh": {
+      "de": "Jiutesto"
+    },
+    "sawk": {
+      "de": "Karadonis"
+    },
+    "sewaddle": {
+      "de": "Strawickl"
+    },
+    "swadloon": {
+      "de": "Folikon"
+    },
+    "leavanny": {
+      "de": "Matrifol"
+    },
+    "venipede": {
+      "de": "Toxiped"
+    },
+    "whirlipede": {
+      "de": "Rollum"
+    },
+    "scolipede": {
+      "de": "Cerapendra"
+    },
+    "cottonee": {
+      "de": "Waumboll"
+    },
+    "whimsicott": {
+      "de": "Elfun"
+    },
+    "petilil": {
+      "de": "Lilminip"
+    },
+    "lilligant": {
+      "de": "Dressella"
+    },
+    "basculin": {
+      "de": "Barschuft"
+    },
+    "sandile": {
+      "de": "Ganovil"
+    },
+    "krokorok": {
+      "de": "Rokkaiman"
+    },
+    "krookodile": {
+      "de": "Rabigator"
+    },
+    "darumaka": {
+      "de": "Flampion"
+    },
+    "darmanitan": {
+      "de": "Flampivian"
+    },
+    "maractus": {
+      "de": "Maracamba"
+    },
+    "dwebble": {
+      "de": "Lithomith"
+    },
+    "crustle": {
+      "de": "Castellith"
+    },
+    "scraggy": {
+      "de": "Zurrokex"
+    },
+    "scrafty": {
+      "de": "Irokex"
+    },
+    "sigilyph": {
+      "de": "Symvolara"
+    },
+    "yamask": {
+      "de": "Makabaja"
+    },
+    "cofagrigus": {
+      "de": "Echnatoll"
+    },
+    "tirtouga": {
+      "de": "Galapaflos"
+    },
+    "carracosta": {
+      "de": "Karippas"
+    },
+    "archen": {
+      "de": "Flapteryx"
+    },
+    "archeops": {
+      "de": "Aeropteryx"
+    },
+    "trubbish": {
+      "de": "Unratütox"
+    },
+    "garbodor": {
+      "de": "Deponitox"
+    },
+    "zorua": {
+      "de": "Zorua"
+    },
+    "zoroark": {
+      "de": "Zoroark"
+    },
+    "minccino": {
+      "de": "Picochilla"
+    },
+    "cinccino": {
+      "de": "Chillabell"
+    },
+    "gothita": {
+      "de": "Mollimorba"
+    },
+    "gothorita": {
+      "de": "Hypnomorba"
+    },
+    "gothitelle": {
+      "de": "Morbitesse"
+    },
+    "solosis": {
+      "de": "Monozyto"
+    },
+    "duosion": {
+      "de": "Mitodos"
+    },
+    "reuniclus": {
+      "de": "Zytomega"
+    },
+    "ducklett": {
+      "de": "Piccolente"
+    },
+    "swanna": {
+      "de": "Swaroness"
+    },
+    "vanillite": {
+      "de": "Gelatini"
+    },
+    "vanillish": {
+      "de": "Gelatroppo"
+    },
+    "vanilluxe": {
+      "de": "Gelatwino"
+    },
+    "deerling": {
+      "de": "Sesokitz"
+    },
+    "sawsbuck": {
+      "de": "Kronjuwild"
+    },
+    "emolga": {
+      "de": "Emolga"
+    },
+    "karrablast": {
+      "de": "Laukaps"
+    },
+    "escavalier": {
+      "de": "Cavalanzas"
+    },
+    "foongus": {
+      "de": "Tarnpignon"
+    },
+    "amoonguss": {
+      "de": "Hutsassa"
+    },
+    "frillish": {
+      "de": "Quabbel"
+    },
+    "jellicent": {
+      "de": "Apoquallyp"
+    },
+    "alomomola": {
+      "de": "Mamolida"
+    },
+    "joltik": {
+      "de": "Wattzapf"
+    },
+    "galvantula": {
+      "de": "Voltula"
+    },
+    "ferroseed": {
+      "de": "Kastadur"
+    },
+    "ferrothorn": {
+      "de": "Tentantel"
+    },
+    "klink": {
+      "de": "Klikk"
+    },
+    "klang": {
+      "de": "Kliklak"
+    },
+    "klinklang": {
+      "de": "Klikdiklak"
+    },
+    "tynamo": {
+      "de": "Zapplardin"
+    },
+    "eelektrik": {
+      "de": "Zapplalek"
+    },
+    "eelektross": {
+      "de": "Zapplarang"
+    },
+    "elgyem": {
+      "de": "Pygraulon"
+    },
+    "beheeyem": {
+      "de": "Megalon"
+    },
+    "litwick": {
+      "de": "Lichtel"
+    },
+    "lampent": {
+      "de": "Laternecto"
+    },
+    "chandelure": {
+      "de": "Skelabra"
+    },
+    "axew": {
+      "de": "Milza"
+    },
+    "fraxure": {
+      "de": "Sharfax"
+    },
+    "haxorus": {
+      "de": "Maxax"
+    },
+    "cubchoo": {
+      "de": "Petznief"
+    },
+    "beartic": {
+      "de": "Siberio"
+    },
+    "cryogonal": {
+      "de": "Frigometri"
+    },
+    "shelmet": {
+      "de": "Schnuthelm"
+    },
+    "accelgor": {
+      "de": "Hydragil"
+    },
+    "stunfisk": {
+      "de": "Flunschlik"
+    },
+    "mienfoo": {
+      "de": "Lin-Fu"
+    },
+    "mienshao": {
+      "de": "Wie-Shu"
+    },
+    "druddigon": {
+      "de": "Shardrago"
+    },
+    "golett": {
+      "de": "Golbit"
+    },
+    "golurk": {
+      "de": "Golgantes"
+    },
+    "pawniard": {
+      "de": "Gladiantri"
+    },
+    "bisharp": {
+      "de": "Caesurio"
+    },
+    "bouffalant": {
+      "de": "Bisofank"
+    },
+    "rufflet": {
+      "de": "Geronimatz"
+    },
+    "braviary": {
+      "de": "Washakwil"
+    },
+    "vullaby": {
+      "de": "Skallyk"
+    },
+    "mandibuzz": {
+      "de": "Grypheldis"
+    },
+    "heatmor": {
+      "de": "Furnifraß"
+    },
+    "durant": {
+      "de": "Fermicula"
+    },
+    "deino": {
+      "de": "Kapuno"
+    },
+    "zweilous": {
+      "de": "Duodino"
+    },
+    "hydreigon": {
+      "de": "Trikephalo"
+    },
+    "larvesta": {
+      "de": "Ignivor"
+    },
+    "volcarona": {
+      "de": "Ramoth"
+    },
+    "cobalion": {
+      "de": "Kobalium"
+    },
+    "terrakion": {
+      "de": "Terrakium"
+    },
+    "virizion": {
+      "de": "Viridium"
+    },
+    "tornadus": {
+      "de": "Boreos"
+    },
+    "thundurus": {
+      "de": "Voltolos"
+    },
+    "reshiram": {
+      "de": "Reshiram"
+    },
+    "zekrom": {
+      "de": "Zekrom"
+    },
+    "landorus": {
+      "de": "Demeteros"
+    },
+    "kyurem": {
+      "de": "Kyurem"
+    },
+    "keldeo": {
+      "de": "Keldeo"
+    },
+    "meloetta": {
+      "de": "Meloetta"
+    },
+    "genesect": {
+      "de": "Genesect"
+    },
+    "chespin": {
+      "de": "Igamaro"
+    },
+    "quilladin": {
+      "de": "Igastarnish"
+    },
+    "chesnaught": {
+      "de": "Brigaron"
+    },
+    "fennekin": {
+      "de": "Fynx"
+    },
+    "braixen": {
+      "de": "Rutena"
+    },
+    "delphox": {
+      "de": "Fennexis"
+    },
+    "froakie": {
+      "de": "Froxy"
+    },
+    "frogadier": {
+      "de": "Amphizel"
+    },
+    "greninja": {
+      "de": "Quajutsu"
+    },
+    "bunnelby": {
+      "de": "Scoppel"
+    },
+    "diggersby": {
+      "de": "Grebbit"
+    },
+    "fletchling": {
+      "de": "Dartiri"
+    },
+    "fletchinder": {
+      "de": "Dartignis"
+    },
+    "talonflame": {
+      "de": "Fiaro"
+    },
+    "scatterbug": {
+      "de": "Purmel"
+    },
+    "spewpa": {
+      "de": "Puponcho"
+    },
+    "vivillon": {
+      "de": "Vivillon"
+    },
+    "litleo": {
+      "de": "Leufeo"
+    },
+    "pyroar": {
+      "de": "Pyroleo"
+    },
+    "flabebe": {
+      "de": "Flabébé"
+    },
+    "floette": {
+      "de": "Floette"
+    },
+    "florges": {
+      "de": "Florges"
+    },
+    "skiddo": {
+      "de": "Mähikel"
+    },
+    "gogoat": {
+      "de": "Chevrumm"
+    },
+    "pancham": {
+      "de": "Pam-Pam"
+    },
+    "pangoro": {
+      "de": "Pandagro"
+    },
+    "furfrou": {
+      "de": "Coiffwaff"
+    },
+    "espurr": {
+      "de": "Psiau"
+    },
+    "meowstic": {
+      "de": "Psiaugon"
+    },
+    "honedge": {
+      "de": "Gramokles"
+    },
+    "doublade": {
+      "de": "Duokles"
+    },
+    "aegislash": {
+      "de": "Durengard"
+    },
+    "spritzee": {
+      "de": "Parfi"
+    },
+    "aromatisse": {
+      "de": "Parfinesse"
+    },
+    "swirlix": {
+      "de": "Flauschling"
+    },
+    "slurpuff": {
+      "de": "Sabbaione"
+    },
+    "inkay": {
+      "de": "Iscalar"
+    },
+    "malamar": {
+      "de": "Calamanero"
+    },
+    "binacle": {
+      "de": "Bithora"
+    },
+    "barbaracle": {
+      "de": "Thanathora"
+    },
+    "skrelp": {
+      "de": "Algitt"
+    },
+    "dragalge": {
+      "de": "Tandrak"
+    },
+    "clauncher": {
+      "de": "Scampisto"
+    },
+    "clawitzer": {
+      "de": "Wummer"
+    },
+    "helioptile": {
+      "de": "Eguana"
+    },
+    "heliolisk": {
+      "de": "Elezard"
+    },
+    "tyrunt": {
+      "de": "Balgoras"
+    },
+    "tyrantrum": {
+      "de": "Monargoras"
+    },
+    "amaura": {
+      "de": "Amarino"
+    },
+    "aurorus": {
+      "de": "Amagarga"
+    },
+    "sylveon": {
+      "de": "Feelinara"
+    },
+    "hawlucha": {
+      "de": "Resladero"
+    },
+    "dedenne": {
+      "de": "Dedenne"
+    },
+    "carbink": {
+      "de": "Rocara"
+    },
+    "goomy": {
+      "de": "Viscora"
+    },
+    "sliggoo": {
+      "de": "Viscargot"
+    },
+    "goodra": {
+      "de": "Viscogon"
+    },
+    "klefki": {
+      "de": "Clavion"
+    },
+    "phantump": {
+      "de": "Paragoni"
+    },
+    "trevenant": {
+      "de": "Trombork"
+    },
+    "pumpkaboo": {
+      "de": "Irrbis"
+    },
+    "gourgeist": {
+      "de": "Pumpdjinn"
+    },
+    "bergmite": {
+      "de": "Arktip"
+    },
+    "avalugg": {
+      "de": "Arktilas"
+    },
+    "noibat": {
+      "de": "eF-eM"
+    },
+    "noivern": {
+      "de": "UHaFnir"
+    },
+    "xerneas": {
+      "de": "Xerneas"
+    },
+    "yveltal": {
+      "de": "Yveltal"
+    },
+    "zygarde": {
+      "de": "Zygarde"
+    },
+    "diancie": {
+      "de": "Diancie"
+    },
+    "hoopa": {
+      "de": "Hoopa"
+    },
+    "volcanion": {
+      "de": "Volcanion"
+    },
+    "rowlet": {
+      "de": "Bauz"
+    },
+    "dartrix": {
+      "de": "Arboretoss"
+    },
+    "decidueye": {
+      "de": "Silvarro"
+    },
+    "litten": {
+      "de": "Flamiau"
+    },
+    "torracat": {
+      "de": "Miezunder"
+    },
+    "incineroar": {
+      "de": "Fuegro"
+    },
+    "popplio": {
+      "de": "Robball"
+    },
+    "brionne": {
+      "de": "Marikeck"
+    },
+    "primarina": {
+      "de": "Primarene"
+    },
+    "pikipek": {
+      "de": "Peppeck"
+    },
+    "trumbeak": {
+      "de": "Trompeck"
+    },
+    "toucannon": {
+      "de": "Tukanon"
+    },
+    "yungoos": {
+      "de": "Mangunior"
+    },
+    "gumshoos": {
+      "de": "Manguspektor"
+    },
+    "grubbin": {
+      "de": "Mabula"
+    },
+    "charjabug": {
+      "de": "Akkup"
+    },
+    "vikavolt": {
+      "de": "Donarion"
+    },
+    "crabrawler": {
+      "de": "Krabbox"
+    },
+    "crabominable": {
+      "de": "Krawell"
+    },
+    "oricorio": {
+      "de": "Choreogel"
+    },
+    "cutiefly": {
+      "de": "Wommel"
+    },
+    "ribombee": {
+      "de": "Bandelby"
+    },
+    "rockruff": {
+      "de": "Wuffels"
+    },
+    "lycanroc": {
+      "de": "Wolwerock"
+    },
+    "wishiwashi": {
+      "de": "Lusardin"
+    },
+    "mareanie": {
+      "de": "Garstella"
+    },
+    "toxapex": {
+      "de": "Aggrostella"
+    },
+    "mudbray": {
+      "de": "Pampuli"
+    },
+    "mudsdale": {
+      "de": "Pampross"
+    },
+    "dewpider": {
+      "de": "Araqua"
+    },
+    "araquanid": {
+      "de": "Aranestro"
+    },
+    "fomantis": {
+      "de": "Imantis"
+    },
+    "lurantis": {
+      "de": "Mantidea"
+    },
+    "morelull": {
+      "de": "Bubungus"
+    },
+    "shiinotic": {
+      "de": "Lamellux"
+    },
+    "salandit": {
+      "de": "Molunk"
+    },
+    "salazzle": {
+      "de": "Amfira"
+    },
+    "stufful": {
+      "de": "Velursi"
+    },
+    "bewear": {
+      "de": "Kosturso"
+    },
+    "bounsweet": {
+      "de": "Frubberl"
+    },
+    "steenee": {
+      "de": "Frubaila"
+    },
+    "tsareena": {
+      "de": "Fruyal"
+    },
+    "comfey": {
+      "de": "Curelei"
+    },
+    "oranguru": {
+      "de": "Kommandutan"
+    },
+    "passimian": {
+      "de": "Quartermak"
+    },
+    "wimpod": {
+      "de": "Reißlaus"
+    },
+    "golisopod": {
+      "de": "Tectass"
+    },
+    "sandygast": {
+      "de": "Sankabuh"
+    },
+    "palossand": {
+      "de": "Colossand"
+    },
+    "pyukumuku": {
+      "de": "Gufa"
+    },
+    "typenull": {
+      "de": "Typ:Null"
+    },
+    "silvally": {
+      "de": "Amigento"
+    },
+    "minior": {
+      "de": "Meteno"
+    },
+    "komala": {
+      "de": "Koalelu"
+    },
+    "turtonator": {
+      "de": "Tortunator"
+    },
+    "togedemaru": {
+      "de": "Togedemaru"
+    },
+    "mimikyu": {
+      "de": "Mimigma"
+    },
+    "bruxish": {
+      "de": "Knirfish"
+    },
+    "drampa": {
+      "de": "Sen-Long"
+    },
+    "dhelmise": {
+      "de": "Moruda"
+    },
+    "jangmoo": {
+      "de": "Miniras"
+    },
+    "hakamoo": {
+      "de": "Mediras"
+    },
+    "kommoo": {
+      "de": "Grandiras"
+    },
+    "tapukoko": {
+      "de": "Kapu-Riki"
+    },
+    "tapulele": {
+      "de": "Kapu-Fala"
+    },
+    "tapubulu": {
+      "de": "Kapu-Toro"
+    },
+    "tapufini": {
+      "de": "Kapu-Kime"
+    },
+    "cosmog": {
+      "de": "Cosmog"
+    },
+    "cosmoem": {
+      "de": "Cosmovum"
+    },
+    "solgaleo": {
+      "de": "Solgaleo"
+    },
+    "lunala": {
+      "de": "Lunala"
+    },
+    "nihilego": {
+      "de": "Anego"
+    },
+    "buzzwole": {
+      "de": "Masskito"
+    },
+    "pheromosa": {
+      "de": "Schabelle"
+    },
+    "xurkitree": {
+      "de": "Voltriant"
+    },
+    "celesteela": {
+      "de": "Kaguron"
+    },
+    "kartana": {
+      "de": "Katagami"
+    },
+    "guzzlord": {
+      "de": "Schlingking"
+    },
+    "necrozma": {
+      "de": "Necrozma"
+    },
+    "magearna": {
+      "de": "Magearna"
+    },
+    "marshadow": {
+      "de": "Marshadow"
+    },
+    "poipole": {
+      "de": "Venicro"
+    },
+    "naganadel": {
+      "de": "Agoyon"
+    },
+    "stakataka": {
+      "de": "Muramura"
+    },
+    "blacephalon": {
+      "de": "Kopplosio"
+    },
+    "zeraora": {
+      "de": "Zeraora"
+    },
+    "meltan": {
+      "de": "Meltan"
+    },
+    "melmetal": {
+      "de": "Melmetal"
+    },
+    "grookey": {
+      "de": "Chimpep"
+    },
+    "thwackey": {
+      "de": "Chimstix"
+    },
+    "rillaboom": {
+      "de": "Gortrom"
+    },
+    "scorbunny": {
+      "de": "Hopplo"
+    },
+    "raboot": {
+      "de": "Kickerlo"
+    },
+    "cinderace": {
+      "de": "Liberlo"
+    },
+    "sobble": {
+      "de": "Memmeon"
+    },
+    "drizzile": {
+      "de": "Phlegleon"
+    },
+    "inteleon": {
+      "de": "Intelleon"
+    },
+    "skwovet": {
+      "de": "Raffel"
+    },
+    "greedent": {
+      "de": "Schlaraffel"
+    },
+    "rookidee": {
+      "de": "Meikro"
+    },
+    "corvisquire": {
+      "de": "Kranoviz"
+    },
+    "corviknight": {
+      "de": "Krarmor"
+    },
+    "blipbug": {
+      "de": "Sensect"
+    },
+    "dottler": {
+      "de": "Keradar"
+    },
+    "orbeetle": {
+      "de": "Maritellit"
+    },
+    "nickit": {
+      "de": "Kleptifux"
+    },
+    "thievul": {
+      "de": "Gaunux"
+    },
+    "gossifleur": {
+      "de": "Cottini"
+    },
+    "eldegoss": {
+      "de": "Cottomi"
+    },
+    "wooloo": {
+      "de": "Wolly"
+    },
+    "dubwool": {
+      "de": "Zwollock"
+    },
+    "chewtle": {
+      "de": "Kamehaps"
+    },
+    "drednaw": {
+      "de": "Kamalm"
+    },
+    "yamper": {
+      "de": "Voldi"
+    },
+    "boltund": {
+      "de": "Bellektro"
+    },
+    "rolycoly": {
+      "de": "Klonkett"
+    },
+    "carkol": {
+      "de": "Wagong"
+    },
+    "coalossal": {
+      "de": "Montecarbo"
+    },
+    "applin": {
+      "de": "Knapfel"
+    },
+    "flapple": {
+      "de": "Drapfel"
+    },
+    "appletun": {
+      "de": "Schlapfel"
+    },
+    "silicobra": {
+      "de": "Salanga"
+    },
+    "sandaconda": {
+      "de": "Sanaconda"
+    },
+    "cramorant": {
+      "de": "Urgl"
+    },
+    "arrokuda": {
+      "de": "Pikuda"
+    },
+    "barraskewda": {
+      "de": "Barrakiefa"
+    },
+    "toxel": {
+      "de": "Toxel"
+    },
+    "toxtricity": {
+      "de": "Riffex"
+    },
+    "sizzlipede": {
+      "de": "Thermopod"
+    },
+    "centiskorch": {
+      "de": "Infernopod"
+    },
+    "clobbopus": {
+      "de": "Klopptopus"
+    },
+    "grapploct": {
+      "de": "Kaocto"
+    },
+    "sinistea": {
+      "de": "Fatalitee"
+    },
+    "polteageist": {
+      "de": "Mortipot"
+    },
+    "hatenna": {
+      "de": "Brimova"
+    },
+    "hattrem": {
+      "de": "Brimano"
+    },
+    "hatterene": {
+      "de": "Silembrim"
+    },
+    "impidimp": {
+      "de": "Bähmon"
+    },
+    "morgrem": {
+      "de": "Pelzebub"
+    },
+    "grimmsnarl": {
+      "de": "Olangaar"
+    },
+    "obstagoon": {
+      "de": "Barrikadax"
+    },
+    "perrserker": {
+      "de": "Mauzinger"
+    },
+    "cursola": {
+      "de": "Gorgasonn"
+    },
+    "sirfetchd": {
+      "de": "Lauchzelot"
+    },
+    "mrrime": {
+      "de": "Pantifrost"
+    },
+    "runerigus": {
+      "de": "Oghnatoll"
+    },
+    "milcery": {
+      "de": "Hokumil"
+    },
+    "alcremie": {
+      "de": "Pokusan"
+    },
+    "falinks": {
+      "de": "Legios"
+    },
+    "pincurchin": {
+      "de": "Britzigel"
+    },
+    "snom": {
+      "de": "Snomnom"
+    },
+    "frosmoth": {
+      "de": "Mottineva"
+    },
+    "stonjourner": {
+      "de": "Humanolith"
+    },
+    "eiscue": {
+      "de": "Kubuin"
+    },
+    "indeedee": {
+      "de": "Servol"
+    },
+    "morpeko": {
+      "de": "Morpeko"
+    },
+    "cufant": {
+      "de": "Kupfanti"
+    },
+    "copperajah": {
+      "de": "Patinaraja"
+    },
+    "dracozolt": {
+      "de": "Lectragon"
+    },
+    "arctozolt": {
+      "de": "Lecryodon"
+    },
+    "dracovish": {
+      "de": "Pescragon"
+    },
+    "arctovish": {
+      "de": "Pescryodon"
+    },
+    "duraludon": {
+      "de": "Duraludon"
+    },
+    "dreepy": {
+      "de": "Grolldra"
+    },
+    "drakloak": {
+      "de": "Phandra"
+    },
+    "dragapult": {
+      "de": "Katapuldra"
+    },
+    "zacian": {
+      "de": "Zacian"
+    },
+    "zamazenta": {
+      "de": "Zamazenta"
+    },
+    "eternatus": {
+      "de": "Endynalos"
+    },
+    "kubfu": {
+      "de": "Dakuma"
+    },
+    "urshifu": {
+      "de": "Wulaosu"
+    },
+    "zarude": {
+      "de": "Zarude"
+    },
+    "regieleki": {
+      "de": "Regieleki"
+    },
+    "regidrago": {
+      "de": "Regidrago"
+    },
+    "glastrier": {
+      "de": "Polaross"
+    },
+    "spectrier": {
+      "de": "Phantoross"
+    },
+    "calyrex": {
+      "de": "Coronospa"
+    },
+    "wyrdeer": {
+      "de": "Damythir"
+    },
+    "kleavor": {
+      "de": "Axantor"
+    },
+    "ursaluna": {
+      "de": "Ursaluna"
+    },
+    "basculegion": {
+      "de": "Salmagnis"
+    },
+    "sneasler": {
+      "de": "Snieboss"
+    },
+    "overqwil": {
+      "de": "Myriador"
+    },
+    "enamorus": {
+      "de": "Cupidos"
+    },
+    "sprigatito": {
+      "de": "Felori"
+    },
+    "floragato": {
+      "de": "Feliospa"
+    },
+    "meowscarada": {
+      "de": "Maskagato"
+    },
+    "fuecoco": {
+      "de": "Krokel"
+    },
+    "crocalor": {
+      "de": "Lokroko"
+    },
+    "skeledirge": {
+      "de": "Skelokrok"
+    },
+    "quaxly": {
+      "de": "Kwaks"
+    },
+    "quaxwell": {
+      "de": "Fuentente"
+    },
+    "quaquaval": {
+      "de": "Bailonda"
+    },
+    "lechonk": {
+      "de": "Ferkuli"
+    },
+    "oinkologne": {
+      "de": "Fragrunz"
+    },
+    "tarountula": {
+      "de": "Tarundel"
+    },
+    "spidops": {
+      "de": "Spinsidias"
+    },
+    "nymble": {
+      "de": "Micrick"
+    },
+    "lokix": {
+      "de": "Lextremo"
+    },
+    "pawmi": {
+      "de": "Pamo"
+    },
+    "pawmo": {
+      "de": "Pamamo"
+    },
+    "pawmot": {
+      "de": "Pamomamo"
+    },
+    "tandemaus": {
+      "de": "Zwieps"
+    },
+    "maushold": {
+      "de": "Famieps"
+    },
+    "fidough": {
+      "de": "Hefel"
+    },
+    "dachsbun": {
+      "de": "Backel"
+    },
+    "smoliv": {
+      "de": "Olini"
+    },
+    "dolliv": {
+      "de": "Olivinio"
+    },
+    "arboliva": {
+      "de": "Olithena"
+    },
+    "squawkabilly": {
+      "de": "Krawalloro"
+    },
+    "nacli": {
+      "de": "Geosali"
+    },
+    "naclstack": {
+      "de": "Sedisal"
+    },
+    "garganacl": {
+      "de": "Saltigant"
+    },
+    "charcadet": {
+      "de": "Knarbon"
+    },
+    "armarouge": {
+      "de": "Crimanzo"
+    },
+    "ceruledge": {
+      "de": "Azugladis"
+    },
+    "tadbulb": {
+      "de": "Blipp"
+    },
+    "bellibolt": {
+      "de": "Wampitz"
+    },
+    "wattrel": {
+      "de": "Voltrel"
+    },
+    "kilowattrel": {
+      "de": "Voltrean"
+    },
+    "maschiff": {
+      "de": "Mobtiff"
+    },
+    "mabosstiff": {
+      "de": "Mastifioso"
+    },
+    "shroodle": {
+      "de": "Sproxi"
+    },
+    "grafaiai": {
+      "de": "Affiti"
+    },
+    "bramblin": {
+      "de": "Weherba"
+    },
+    "brambleghast": {
+      "de": "Horrerba"
+    },
+    "toedscool": {
+      "de": "Tentagra"
+    },
+    "toedscruel": {
+      "de": "Tenterra"
+    },
+    "klawf": {
+      "de": "Klibbe"
+    },
+    "capsakid": {
+      "de": "Chilingel"
+    },
+    "scovillain": {
+      "de": "Halupenjo"
+    },
+    "rellor": {
+      "de": "Relluk"
+    },
+    "rabsca": {
+      "de": "Skarabaks"
+    },
+    "flittle": {
+      "de": "Flattutu"
+    },
+    "espathra": {
+      "de": "Psiopatra"
+    },
+    "tinkatink": {
+      "de": "Forgita"
+    },
+    "tinkatuff": {
+      "de": "Tafforgita"
+    },
+    "tinkaton": {
+      "de": "Granforgita"
+    },
+    "wiglett": {
+      "de": "Schligda"
+    },
+    "wugtrio": {
+      "de": "Schligdri"
+    },
+    "bombirdier": {
+      "de": "Adebom"
+    },
+    "finizen": {
+      "de": "Normifin"
+    },
+    "palafin": {
+      "de": "Delfinator"
+    },
+    "varoom": {
+      "de": "Knattox"
+    },
+    "revavroom": {
+      "de": "Knattatox"
+    },
+    "cyclizar": {
+      "de": "Mopex"
+    },
+    "orthworm": {
+      "de": "Schlurm"
+    },
+    "glimmet": {
+      "de": "Lumispross"
+    },
+    "glimmora": {
+      "de": "Lumiflora"
+    },
+    "greavard": {
+      "de": "Gruff"
+    },
+    "houndstone": {
+      "de": "Friedwuff"
+    },
+    "flamigo": {
+      "de": "Flaminkno"
+    },
+    "cetoddle": {
+      "de": "Flaniwal"
+    },
+    "cetitan": {
+      "de": "Kolowal"
+    },
+    "veluza": {
+      "de": "Agiluza"
+    },
+    "dondozo": {
+      "de": "Heerashai"
+    },
+    "tatsugiri": {
+      "de": "Nigiragi"
+    },
+    "annihilape": {
+      "de": "Epitaff"
+    },
+    "clodsire": {
+      "de": "Suelord"
+    },
+    "farigiraf": {
+      "de": "Farigiraf"
+    },
+    "dudunsparce": {
+      "de": "Dummimisel"
+    },
+    "kingambit": {
+      "de": "Gladimperio"
+    },
+    "greattusk": {
+      "de": "Riesenzahn"
+    },
+    "screamtail": {
+      "de": "Brüllschweif"
+    },
+    "brutebonnet": {
+      "de": "Wutpilz"
+    },
+    "fluttermane": {
+      "de": "Flatterhaar"
+    },
+    "slitherwing": {
+      "de": "Kriechflügel"
+    },
+    "sandyshocks": {
+      "de": "Sandfell"
+    },
+    "irontreads": {
+      "de": "Eisenrad"
+    },
+    "ironbundle": {
+      "de": "Eisenbündel"
+    },
+    "ironhands": {
+      "de": "Eisenhand"
+    },
+    "ironjugulis": {
+      "de": "Eisenhals"
+    },
+    "ironmoth": {
+      "de": "Eisenfalter"
+    },
+    "ironthorns": {
+      "de": "Eisendorn"
+    },
+    "frigibax": {
+      "de": "Frospino"
+    },
+    "arctibax": {
+      "de": "Cryospino"
+    },
+    "baxcalibur": {
+      "de": "Espinodon"
+    },
+    "gimmighoul": {
+      "de": "Gierspenst"
+    },
+    "gholdengo": {
+      "de": "Monetigo"
+    },
+    "wochien": {
+      "de": "Chongjian"
+    },
+    "chienpao": {
+      "de": "Baojian"
+    },
+    "tinglu": {
+      "de": "Dinglu"
+    },
+    "chiyu": {
+      "de": "Yuyu"
+    },
+    "roaringmoon": {
+      "de": "Donnersichel"
+    },
+    "ironvaliant": {
+      "de": "Eisenkrieger"
+    },
+    "koraidon": {
+      "de": "Koraidon"
+    },
+    "miraidon": {
+      "de": "Miraidon"
+    },
+    "walkingwake": {
+      "de": "Windewoge"
+    },
+    "ironleaves": {
+      "de": "Eisenblatt"
+    },
+    "dipplin": {
+      "de": "Sirapfel"
+    },
+    "poltchageist": {
+      "de": "Mortcha"
+    },
+    "sinistcha": {
+      "de": "Fatalitcha"
+    },
+    "okidogi": {
+      "de": "Boninu"
+    },
+    "munkidori": {
+      "de": "Benesaru"
+    },
+    "fezandipiti": {
+      "de": "Beatori"
+    },
+    "ogerpon": {
+      "de": "Ogerpon"
+    },
+    "archaludon": {
+      "de": "Briduradon"
+    },
+    "hydrapple": {
+      "de": "Hydrapfel"
+    },
+    "gougingfire": {
+      "de": "Keilflamme"
+    },
+    "ragingbolt": {
+      "de": "Furienblitz"
+    },
+    "ironboulder": {
+      "de": "Eisenfels"
+    },
+    "ironcrown": {
+      "de": "Eisenhaupt"
+    },
+    "terapagos": {
+      "de": "Terapagos"
+    },
+    "pecharunt": {
+      "de": "Infamomo"
+    }
+  },
+  "moves": {
+    "10000000voltthunderbolt": {
+      "de": "Tausendfacher Donnerblitz"
+    },
+    "absorb": {
+      "de": "Absorber"
+    },
+    "accelerock": {
+      "de": "Turbofelsen"
+    },
+    "acid": {
+      "de": "Säure"
+    },
+    "acidarmor": {
+      "de": "Säurepanzer"
+    },
+    "aciddownpour": {
+      "de": "Vernichtender Säureregen"
+    },
+    "acidspray": {
+      "de": "Säurespeier"
+    },
+    "acrobatics": {
+      "de": "Akrobatik"
+    },
+    "acupressure": {
+      "de": "Akupressur"
+    },
+    "aerialace": {
+      "de": "Aero-Ass"
+    },
+    "aeroblast": {
+      "de": "Luftstoß"
+    },
+    "afteryou": {
+      "de": "Galanterie"
+    },
+    "agility": {
+      "de": "Agilität"
+    },
+    "aircutter": {
+      "de": "Windschnitt"
+    },
+    "airslash": {
+      "de": "Luftschnitt"
+    },
+    "alloutpummeling": {
+      "de": "Fulminante Faustschläge"
+    },
+    "alluringvoice": {
+      "de": "Lockstimme"
+    },
+    "allyswitch": {
+      "de": "Seitentausch"
+    },
+    "amnesia": {
+      "de": "Amnesie"
+    },
+    "anchorshot": {
+      "de": "Ankerschuss"
+    },
+    "ancientpower": {
+      "de": "Antik-Kraft"
+    },
+    "appleacid": {
+      "de": "Apfelsäure"
+    },
+    "aquacutter": {
+      "de": "Aquaschnitt"
+    },
+    "aquajet": {
+      "de": "Wasserdüse"
+    },
+    "aquaring": {
+      "de": "Wasserring"
+    },
+    "aquastep": {
+      "de": "Wogentanz"
+    },
+    "aquatail": {
+      "de": "Nassschweif"
+    },
+    "armorcannon": {
+      "de": "Rüstungskanone"
+    },
+    "armthrust": {
+      "de": "Armstoß"
+    },
+    "aromatherapy": {
+      "de": "Aromakur"
+    },
+    "aromaticmist": {
+      "de": "Duftwolke"
+    },
+    "assist": {
+      "de": "Zuschuss"
+    },
+    "assurance": {
+      "de": "Gewissheit"
+    },
+    "astonish": {
+      "de": "Erstauner"
+    },
+    "astralbarrage": {
+      "de": "Astralfragmente"
+    },
+    "attackorder": {
+      "de": "Schlagbefehl"
+    },
+    "attract": {
+      "de": "Anziehung"
+    },
+    "aurasphere": {
+      "de": "Aurasphäre"
+    },
+    "aurawheel": {
+      "de": "Aura-Rad"
+    },
+    "aurorabeam": {
+      "de": "Aurorastrahl"
+    },
+    "auroraveil": {
+      "de": "Auroraschleier"
+    },
+    "autotomize": {
+      "de": "Autotomie"
+    },
+    "avalanche": {
+      "de": "Lawine"
+    },
+    "axekick": {
+      "de": "Fersenkick"
+    },
+    "babydolleyes": {
+      "de": "Kulleraugen"
+    },
+    "baddybad": {
+      "de": "Quälzone"
+    },
+    "banefulbunker": {
+      "de": "Bunker"
+    },
+    "barbbarrage": {
+      "de": "Giftstachelregen"
+    },
+    "barrage": {
+      "de": "Stakkato"
+    },
+    "barrier": {
+      "de": "Barriere"
+    },
+    "batonpass": {
+      "de": "Stafette"
+    },
+    "beakblast": {
+      "de": "Schnabelkanone"
+    },
+    "beatup": {
+      "de": "Prügler"
+    },
+    "behemothbash": {
+      "de": "Gigantenstoß"
+    },
+    "behemothblade": {
+      "de": "Gigantenhieb"
+    },
+    "belch": {
+      "de": "Rülpser"
+    },
+    "bellydrum": {
+      "de": "Bauchtrommel"
+    },
+    "bestow": {
+      "de": "Offerte"
+    },
+    "bide": {
+      "de": "Geduld"
+    },
+    "bind": {
+      "de": "Klammergriff"
+    },
+    "bite": {
+      "de": "Biss"
+    },
+    "bitterblade": {
+      "de": "Reueschwert"
+    },
+    "bittermalice": {
+      "de": "Niedertracht"
+    },
+    "blackholeeclipse": {
+      "de": "Schwarzes Loch des Grauens"
+    },
+    "blastburn": {
+      "de": "Lohekanonade"
+    },
+    "blazekick": {
+      "de": "Feuerfeger"
+    },
+    "blazingtorque": {
+      "de": "Hitzeturbo"
+    },
+    "bleakwindstorm": {
+      "de": "Polarorkan"
+    },
+    "blizzard": {
+      "de": "Blizzard"
+    },
+    "block": {
+      "de": "Rückentzug"
+    },
+    "bloodmoon": {
+      "de": "Blutmond"
+    },
+    "bloomdoom": {
+      "de": "Brillante Blütenpracht"
+    },
+    "blueflare": {
+      "de": "Blauflammen"
+    },
+    "bodypress": {
+      "de": "Body Press"
+    },
+    "bodyslam": {
+      "de": "Bodyslam"
+    },
+    "boltbeak": {
+      "de": "Schockschnabel"
+    },
+    "boltstrike": {
+      "de": "Blitzschlag"
+    },
+    "boneclub": {
+      "de": "Knochenkeule"
+    },
+    "bonemerang": {
+      "de": "Knochmerang"
+    },
+    "bonerush": {
+      "de": "Knochenhatz"
+    },
+    "boomburst": {
+      "de": "Überschallknall"
+    },
+    "bounce": {
+      "de": "Sprungfeder"
+    },
+    "bouncybubble": {
+      "de": "Blubbsauger"
+    },
+    "branchpoke": {
+      "de": "Zweigstoß"
+    },
+    "bravebird": {
+      "de": "Sturzflug"
+    },
+    "breakingswipe": {
+      "de": "Breitseite"
+    },
+    "breakneckblitz": {
+      "de": "Hyper-Sprintangriff"
+    },
+    "brickbreak": {
+      "de": "Durchbruch"
+    },
+    "brine": {
+      "de": "Lake"
+    },
+    "brutalswing": {
+      "de": "Wirbler"
+    },
+    "bubble": {
+      "de": "Blubber"
+    },
+    "bubblebeam": {
+      "de": "Blubbstrahl"
+    },
+    "bugbite": {
+      "de": "Käferbiss"
+    },
+    "bugbuzz": {
+      "de": "Käfergebrumm"
+    },
+    "bulkup": {
+      "de": "Protzer"
+    },
+    "bulldoze": {
+      "de": "Dampfwalze"
+    },
+    "bulletpunch": {
+      "de": "Patronenhieb"
+    },
+    "bulletseed": {
+      "de": "Kugelsaat"
+    },
+    "burningbulwark": {
+      "de": "Flammenschild"
+    },
+    "burningjealousy": {
+      "de": "Neidflammen"
+    },
+    "burnup": {
+      "de": "Ausbrennen"
+    },
+    "buzzybuzz": {
+      "de": "Knisterladung"
+    },
+    "calmmind": {
+      "de": "Gedankengut"
+    },
+    "camouflage": {
+      "de": "Tarnung"
+    },
+    "captivate": {
+      "de": "Liebreiz"
+    },
+    "catastropika": {
+      "de": "Perfektes Pika-Projektil"
+    },
+    "ceaselessedge": {
+      "de": "Klingenschwall"
+    },
+    "celebrate": {
+      "de": "Ehrentag"
+    },
+    "charge": {
+      "de": "Ladevorgang"
+    },
+    "chargebeam": {
+      "de": "Ladestrahl"
+    },
+    "charm": {
+      "de": "Charme"
+    },
+    "chatter": {
+      "de": "Geschwätz"
+    },
+    "chillingwater": {
+      "de": "Kalte Dusche"
+    },
+    "chillyreception": {
+      "de": "Eisige Stimmung"
+    },
+    "chipaway": {
+      "de": "Zermürben"
+    },
+    "chloroblast": {
+      "de": "Chlorostrahl"
+    },
+    "circlethrow": {
+      "de": "Überkopfwurf"
+    },
+    "clamp": {
+      "de": "Schnapper"
+    },
+    "clangingscales": {
+      "de": "Schuppenrasseln"
+    },
+    "clangoroussoul": {
+      "de": "Seelentanz"
+    },
+    "clangoroussoulblaze": {
+      "de": "Rasselnder Seelentanz"
+    },
+    "clearsmog": {
+      "de": "Klärsmog"
+    },
+    "closecombat": {
+      "de": "Nahkampf"
+    },
+    "coaching": {
+      "de": "Coaching"
+    },
+    "coil": {
+      "de": "Einrollen"
+    },
+    "collisioncourse": {
+      "de": "Kollisionskurs"
+    },
+    "combattorque": {
+      "de": "Raufturbo"
+    },
+    "cometpunch": {
+      "de": "Kometenhieb"
+    },
+    "comeuppance": {
+      "de": "Vendetta"
+    },
+    "confide": {
+      "de": "Vertrauenssache"
+    },
+    "confuseray": {
+      "de": "Konfusstrahl"
+    },
+    "confusion": {
+      "de": "Konfusion"
+    },
+    "constrict": {
+      "de": "Umklammerung"
+    },
+    "continentalcrush": {
+      "de": "Apokalyptische Steinpresse"
+    },
+    "conversion": {
+      "de": "Umwandlung"
+    },
+    "conversion2": {
+      "de": "Umwandlung 2"
+    },
+    "copycat": {
+      "de": "Imitator"
+    },
+    "coreenforcer": {
+      "de": "Sanktionskern"
+    },
+    "corkscrewcrash": {
+      "de": "Turbo-Spiralkombo"
+    },
+    "corrosivegas": {
+      "de": "Korrosionsgas"
+    },
+    "cosmicpower": {
+      "de": "Kosmik-Kraft"
+    },
+    "cottonguard": {
+      "de": "Watteschild"
+    },
+    "cottonspore": {
+      "de": "Baumwollsaat"
+    },
+    "counter": {
+      "de": "Konter"
+    },
+    "courtchange": {
+      "de": "Seitenwechsel"
+    },
+    "covet": {
+      "de": "Bezirzer"
+    },
+    "crabhammer": {
+      "de": "Krabbhammer"
+    },
+    "craftyshield": {
+      "de": "Trickschutz"
+    },
+    "crosschop": {
+      "de": "Kreuzhieb"
+    },
+    "crosspoison": {
+      "de": "Giftstreich"
+    },
+    "crunch": {
+      "de": "Knirscher"
+    },
+    "crushclaw": {
+      "de": "Zermalmklaue"
+    },
+    "crushgrip": {
+      "de": "Quetschgriff"
+    },
+    "curse": {
+      "de": "Fluch"
+    },
+    "cut": {
+      "de": "Zerschneider"
+    },
+    "darkestlariat": {
+      "de": "Dark Lariat"
+    },
+    "darkpulse": {
+      "de": "Finsteraura"
+    },
+    "darkvoid": {
+      "de": "Schlummerort"
+    },
+    "dazzlinggleam": {
+      "de": "Zauberschein"
+    },
+    "decorate": {
+      "de": "Verzierung"
+    },
+    "defendorder": {
+      "de": "Blockbefehl"
+    },
+    "defensecurl": {
+      "de": "Einigler"
+    },
+    "defog": {
+      "de": "Auflockern"
+    },
+    "destinybond": {
+      "de": "Abgangsbund"
+    },
+    "detect": {
+      "de": "Scanner"
+    },
+    "devastatingdrake": {
+      "de": "Drastisches Drachendröhnen"
+    },
+    "diamondstorm": {
+      "de": "Diamantsturm"
+    },
+    "dig": {
+      "de": "Schaufler"
+    },
+    "direclaw": {
+      "de": "Unheilsklauen"
+    },
+    "disable": {
+      "de": "Aussetzer"
+    },
+    "disarmingvoice": {
+      "de": "Säuselstimme"
+    },
+    "discharge": {
+      "de": "Ladungsstoß"
+    },
+    "dive": {
+      "de": "Taucher"
+    },
+    "dizzypunch": {
+      "de": "Irrschlag"
+    },
+    "doodle": {
+      "de": "Abpausen"
+    },
+    "doomdesire": {
+      "de": "Kismetwunsch"
+    },
+    "doubleedge": {
+      "de": "Risikotackle"
+    },
+    "doublehit": {
+      "de": "Doppelschlag"
+    },
+    "doubleironbash": {
+      "de": "Panzerfäuste"
+    },
+    "doublekick": {
+      "de": "Doppelkick"
+    },
+    "doubleshock": {
+      "de": "Zweifachladung"
+    },
+    "doubleslap": {
+      "de": "Duplexhieb"
+    },
+    "doubleteam": {
+      "de": "Doppelteam"
+    },
+    "dracometeor": {
+      "de": "Draco Meteor"
+    },
+    "dragonascent": {
+      "de": "Zenitstürmer"
+    },
+    "dragonbreath": {
+      "de": "Feuerodem"
+    },
+    "dragoncheer": {
+      "de": "Drachenschrei"
+    },
+    "dragonclaw": {
+      "de": "Drachenklaue"
+    },
+    "dragondance": {
+      "de": "Drachentanz"
+    },
+    "dragondarts": {
+      "de": "Drachenpfeile"
+    },
+    "dragonenergy": {
+      "de": "Drachenkräfte"
+    },
+    "dragonhammer": {
+      "de": "Drachenhammer"
+    },
+    "dragonpulse": {
+      "de": "Drachenpuls"
+    },
+    "dragonrage": {
+      "de": "Drachenwut"
+    },
+    "dragonrush": {
+      "de": "Drachenstoß"
+    },
+    "dragontail": {
+      "de": "Drachenrute"
+    },
+    "drainingkiss": {
+      "de": "Diebeskuss"
+    },
+    "drainpunch": {
+      "de": "Ableithieb"
+    },
+    "dreameater": {
+      "de": "Traumfresser"
+    },
+    "drillpeck": {
+      "de": "Bohrschnabel"
+    },
+    "drillrun": {
+      "de": "Schlagbohrer"
+    },
+    "drumbeating": {
+      "de": "Trommelschläge"
+    },
+    "dualchop": {
+      "de": "Doppelhieb"
+    },
+    "dualwingbeat": {
+      "de": "Doppelflügel"
+    },
+    "dynamaxcannon": {
+      "de": "Dynamax-Kanone"
+    },
+    "dynamicpunch": {
+      "de": "Wuchtschlag"
+    },
+    "earthpower": {
+      "de": "Erdkräfte"
+    },
+    "earthquake": {
+      "de": "Erdbeben"
+    },
+    "echoedvoice": {
+      "de": "Widerhall"
+    },
+    "eerieimpulse": {
+      "de": "Mystowellen"
+    },
+    "eeriespell": {
+      "de": "Schauderspruch"
+    },
+    "eggbomb": {
+      "de": "Eierbombe"
+    },
+    "electricterrain": {
+      "de": "Elektrofeld"
+    },
+    "electrify": {
+      "de": "Elektrifizierung"
+    },
+    "electroball": {
+      "de": "Elektroball"
+    },
+    "electrodrift": {
+      "de": "Blitztour"
+    },
+    "electroshot": {
+      "de": "Stromstrahl"
+    },
+    "electroweb": {
+      "de": "Elektronetz"
+    },
+    "embargo": {
+      "de": "Itemsperre"
+    },
+    "ember": {
+      "de": "Glut"
+    },
+    "encore": {
+      "de": "Zugabe"
+    },
+    "endeavor": {
+      "de": "Notsituation"
+    },
+    "endure": {
+      "de": "Ausdauer"
+    },
+    "energyball": {
+      "de": "Energieball"
+    },
+    "entrainment": {
+      "de": "Zwango"
+    },
+    "eruption": {
+      "de": "Eruption"
+    },
+    "esperwing": {
+      "de": "Auraschwingen"
+    },
+    "eternabeam": {
+      "de": "Unendynastrahlen"
+    },
+    "expandingforce": {
+      "de": "Flächenmacht"
+    },
+    "explosion": {
+      "de": "Explosion"
+    },
+    "extrasensory": {
+      "de": "Sondersensor"
+    },
+    "extremeevoboost": {
+      "de": "Macht der Neun"
+    },
+    "extremespeed": {
+      "de": "Turbotempo"
+    },
+    "facade": {
+      "de": "Fassade"
+    },
+    "fairylock": {
+      "de": "Feenschloss"
+    },
+    "fairywind": {
+      "de": "Feenbrise"
+    },
+    "fakeout": {
+      "de": "Mogelhieb"
+    },
+    "faketears": {
+      "de": "Trugträne"
+    },
+    "falsesurrender": {
+      "de": "Kniefalltrick"
+    },
+    "falseswipe": {
+      "de": "Trugschlag"
+    },
+    "featherdance": {
+      "de": "Daunenreigen"
+    },
+    "feint": {
+      "de": "Offenlegung"
+    },
+    "feintattack": {
+      "de": "Finte"
+    },
+    "fellstinger": {
+      "de": "Stachelfinale"
+    },
+    "ficklebeam": {
+      "de": "Launenlaser"
+    },
+    "fierydance": {
+      "de": "Feuerreigen"
+    },
+    "fierywrath": {
+      "de": "Brennender Zorn"
+    },
+    "filletaway": {
+      "de": "Abspaltung"
+    },
+    "finalgambit": {
+      "de": "Wagemut"
+    },
+    "fireblast": {
+      "de": "Feuersturm"
+    },
+    "firefang": {
+      "de": "Feuerzahn"
+    },
+    "firelash": {
+      "de": "Feuerpeitsche"
+    },
+    "firepledge": {
+      "de": "Feuersäulen"
+    },
+    "firepunch": {
+      "de": "Feuerschlag"
+    },
+    "firespin": {
+      "de": "Feuerwirbel"
+    },
+    "firstimpression": {
+      "de": "Überrumpler"
+    },
+    "fishiousrend": {
+      "de": "Kiemenbiss"
+    },
+    "fissure": {
+      "de": "Geofissur"
+    },
+    "flail": {
+      "de": "Dreschflegel"
+    },
+    "flameburst": {
+      "de": "Funkenflug"
+    },
+    "flamecharge": {
+      "de": "Nitroladung"
+    },
+    "flamethrower": {
+      "de": "Flammenwurf"
+    },
+    "flamewheel": {
+      "de": "Flammenrad"
+    },
+    "flareblitz": {
+      "de": "Flammenblitz"
+    },
+    "flash": {
+      "de": "Blitz"
+    },
+    "flashcannon": {
+      "de": "Lichtkanone"
+    },
+    "flatter": {
+      "de": "Schmeichler"
+    },
+    "fleurcannon": {
+      "de": "Kanonenbouquet"
+    },
+    "fling": {
+      "de": "Schleuder"
+    },
+    "flipturn": {
+      "de": "Rollwende"
+    },
+    "floatyfall": {
+      "de": "Schwebesturz"
+    },
+    "floralhealing": {
+      "de": "Florakur"
+    },
+    "flowershield": {
+      "de": "Floraschutz"
+    },
+    "flowertrick": {
+      "de": "Blumentrick"
+    },
+    "fly": {
+      "de": "Fliegen"
+    },
+    "flyingpress": {
+      "de": "Flying Press"
+    },
+    "focusblast": {
+      "de": "Fokusstoß"
+    },
+    "focusenergy": {
+      "de": "Energiefokus"
+    },
+    "focuspunch": {
+      "de": "Power-Punch"
+    },
+    "followme": {
+      "de": "Spotlight"
+    },
+    "forcepalm": {
+      "de": "Kraftwelle"
+    },
+    "foresight": {
+      "de": "Scharfblick"
+    },
+    "forestscurse": {
+      "de": "Waldesfluch"
+    },
+    "foulplay": {
+      "de": "Schmarotzer"
+    },
+    "freezedry": {
+      "de": "Gefriertrockner"
+    },
+    "freezeshock": {
+      "de": "Frostvolt"
+    },
+    "freezingglare": {
+      "de": "Eisiger Blick"
+    },
+    "freezyfrost": {
+      "de": "Klirrfrost"
+    },
+    "frenzyplant": {
+      "de": "Flora-Statue"
+    },
+    "frostbreath": {
+      "de": "Eisesodem"
+    },
+    "frustration": {
+      "de": "Frustration"
+    },
+    "furyattack": {
+      "de": "Furienschlag"
+    },
+    "furycutter": {
+      "de": "Zornklinge"
+    },
+    "furyswipes": {
+      "de": "Kratzfurie"
+    },
+    "fusionbolt": {
+      "de": "Kreuzdonner"
+    },
+    "fusionflare": {
+      "de": "Kreuzflamme"
+    },
+    "futuresight": {
+      "de": "Seher"
+    },
+    "gastroacid": {
+      "de": "Magensäfte"
+    },
+    "geargrind": {
+      "de": "Klikkdiskus"
+    },
+    "gearup": {
+      "de": "Hilfsmechanik"
+    },
+    "genesissupernova": {
+      "de": "Supernova des Ursprungs"
+    },
+    "geomancy": {
+      "de": "Geokontrolle"
+    },
+    "gigadrain": {
+      "de": "Gigasauger"
+    },
+    "gigaimpact": {
+      "de": "Gigastoß"
+    },
+    "gigatonhammer": {
+      "de": "Riesenhammer"
+    },
+    "gigavolthavoc": {
+      "de": "Gigavolt-Funkensalve"
+    },
+    "glaciallance": {
+      "de": "Blizzardlanze"
+    },
+    "glaciate": {
+      "de": "Eiszeit"
+    },
+    "glaiverush": {
+      "de": "Großklingenstoß"
+    },
+    "glare": {
+      "de": "Schlangenblick"
+    },
+    "glitzyglow": {
+      "de": "Pulsieraura"
+    },
+    "gmaxbefuddle": {
+      "de": "Giga-Benebelung"
+    },
+    "gmaxcannonade": {
+      "de": "Giga-Beschuss"
+    },
+    "gmaxcentiferno": {
+      "de": "Giga-Feuerkessel"
+    },
+    "gmaxchistrike": {
+      "de": "Giga-Fokusschlag"
+    },
+    "gmaxcuddle": {
+      "de": "Giga-Gekuschel"
+    },
+    "gmaxdepletion": {
+      "de": "Giga-Dämpfer"
+    },
+    "gmaxdrumsolo": {
+      "de": "Giga-Getrommel"
+    },
+    "gmaxfinale": {
+      "de": "Giga-Lichtblick"
+    },
+    "gmaxfireball": {
+      "de": "Giga-Brandball"
+    },
+    "gmaxfoamburst": {
+      "de": "Giga-Schaumbad"
+    },
+    "gmaxgoldrush": {
+      "de": "Giga-Münzregen"
+    },
+    "gmaxgravitas": {
+      "de": "Giga-Astrowellen"
+    },
+    "gmaxhydrosnipe": {
+      "de": "Giga-Schütze"
+    },
+    "gmaxmalodor": {
+      "de": "Giga-Gestank"
+    },
+    "gmaxmeltdown": {
+      "de": "Giga-Schmelze"
+    },
+    "gmaxoneblow": {
+      "de": "Giga-Einzelhieb"
+    },
+    "gmaxrapidflow": {
+      "de": "Giga-Multihieb"
+    },
+    "gmaxreplenish": {
+      "de": "Giga-Recycling"
+    },
+    "gmaxresonance": {
+      "de": "Giga-Melodie"
+    },
+    "gmaxsandblast": {
+      "de": "Giga-Sandstoß"
+    },
+    "gmaxsmite": {
+      "de": "Giga-Sanktion"
+    },
+    "gmaxsnooze": {
+      "de": "Giga-Gähnzwang"
+    },
+    "gmaxsteelsurge": {
+      "de": "Giga-Stahlschlag"
+    },
+    "gmaxstonesurge": {
+      "de": "Giga-Geröll"
+    },
+    "gmaxstunshock": {
+      "de": "Giga-Voltschlag"
+    },
+    "gmaxsweetness": {
+      "de": "Giga-Nektarflut"
+    },
+    "gmaxtartness": {
+      "de": "Giga-Säureguss"
+    },
+    "gmaxterror": {
+      "de": "Giga-Spuksperre"
+    },
+    "gmaxvinelash": {
+      "de": "Giga-Geißel"
+    },
+    "gmaxvolcalith": {
+      "de": "Giga-Schlacke"
+    },
+    "gmaxvoltcrash": {
+      "de": "Giga-Blitzhagel"
+    },
+    "gmaxwildfire": {
+      "de": "Giga-Feuerflug"
+    },
+    "gmaxwindrage": {
+      "de": "Giga-Sturmstoß"
+    },
+    "grassknot": {
+      "de": "Strauchler"
+    },
+    "grasspledge": {
+      "de": "Pflanzensäulen"
+    },
+    "grasswhistle": {
+      "de": "Grasflöte"
+    },
+    "grassyglide": {
+      "de": "Grasrutsche"
+    },
+    "grassyterrain": {
+      "de": "Grasfeld"
+    },
+    "gravapple": {
+      "de": "Gravitation"
+    },
+    "gravity": {
+      "de": "Erdanziehung"
+    },
+    "growl": {
+      "de": "Heuler"
+    },
+    "growth": {
+      "de": "Wachstum"
+    },
+    "grudge": {
+      "de": "Nachspiel"
+    },
+    "guardianofalola": {
+      "de": "Alolas Wächter"
+    },
+    "guardsplit": {
+      "de": "Schutzteiler"
+    },
+    "guardswap": {
+      "de": "Schutztausch"
+    },
+    "guillotine": {
+      "de": "Guillotine"
+    },
+    "gunkshot": {
+      "de": "Mülltreffer"
+    },
+    "gust": {
+      "de": "Windstoß"
+    },
+    "gyroball": {
+      "de": "Gyroball"
+    },
+    "hail": {
+      "de": "Hagelsturm"
+    },
+    "hammerarm": {
+      "de": "Hammerarm"
+    },
+    "happyhour": {
+      "de": "Goldene Zeiten"
+    },
+    "harden": {
+      "de": "Härtner"
+    },
+    "hardpress": {
+      "de": "Stahlpresse"
+    },
+    "haze": {
+      "de": "Dunkelnebel"
+    },
+    "headbutt": {
+      "de": "Kopfnuss"
+    },
+    "headcharge": {
+      "de": "Steinschädel"
+    },
+    "headlongrush": {
+      "de": "Schmetterramme"
+    },
+    "headsmash": {
+      "de": "Kopfstoß"
+    },
+    "healbell": {
+      "de": "Vitalglocke"
+    },
+    "healblock": {
+      "de": "Heilblockade"
+    },
+    "healingwish": {
+      "de": "Heilopfer"
+    },
+    "healorder": {
+      "de": "Heilbefehl"
+    },
+    "healpulse": {
+      "de": "Heilwoge"
+    },
+    "heartstamp": {
+      "de": "Herzstempel"
+    },
+    "heartswap": {
+      "de": "Statustausch"
+    },
+    "heatcrash": {
+      "de": "Brandstempel"
+    },
+    "heatwave": {
+      "de": "Hitzewelle"
+    },
+    "heavyslam": {
+      "de": "Rammboss"
+    },
+    "helpinghand": {
+      "de": "Rechte Hand"
+    },
+    "hex": {
+      "de": "Bürde"
+    },
+    "hiddenpower": {
+      "de": "Kraftreserve"
+    },
+    "hiddenpowerbug": {
+      "de": "Kraftreserve (Käfer)"
+    },
+    "hiddenpowerdark": {
+      "de": "Kraftreserve (Unlicht)"
+    },
+    "hiddenpowerdragon": {
+      "de": "Kraftreserve (Drache)"
+    },
+    "hiddenpowerelectric": {
+      "de": "Kraftreserve (Elektro)"
+    },
+    "hiddenpowerfighting": {
+      "de": "Kraftreserve (Kampf)"
+    },
+    "hiddenpowerfire": {
+      "de": "Kraftreserve (Feuer)"
+    },
+    "hiddenpowerflying": {
+      "de": "Kraftreserve (Flug)"
+    },
+    "hiddenpowerghost": {
+      "de": "Kraftreserve (Geist)"
+    },
+    "hiddenpowergrass": {
+      "de": "Kraftreserve (Pflanze)"
+    },
+    "hiddenpowerground": {
+      "de": "Kraftreserve (Boden)"
+    },
+    "hiddenpowerice": {
+      "de": "Kraftreserve (Eis)"
+    },
+    "hiddenpowerpoison": {
+      "de": "Kraftreserve (Gift)"
+    },
+    "hiddenpowerpsychic": {
+      "de": "Kraftreserve (Psycho)"
+    },
+    "hiddenpowerrock": {
+      "de": "Kraftreserve (Gestein)"
+    },
+    "hiddenpowersteel": {
+      "de": "Kraftreserve (Stahl)"
+    },
+    "hiddenpowerwater": {
+      "de": "Kraftreserve (Wasser)"
+    },
+    "highhorsepower": {
+      "de": "Pferdestärke"
+    },
+    "highjumpkick": {
+      "de": "Turmkick"
+    },
+    "holdback": {
+      "de": "Zurückhaltung"
+    },
+    "holdhands": {
+      "de": "Händchenhalten"
+    },
+    "honeclaws": {
+      "de": "Klauenwetzer"
+    },
+    "hornattack": {
+      "de": "Hornattacke"
+    },
+    "horndrill": {
+      "de": "Hornbohrer"
+    },
+    "hornleech": {
+      "de": "Holzgeweih"
+    },
+    "howl": {
+      "de": "Jauler"
+    },
+    "hurricane": {
+      "de": "Orkan"
+    },
+    "hydrocannon": {
+      "de": "Aquahaubitze"
+    },
+    "hydropump": {
+      "de": "Hydropumpe"
+    },
+    "hydrosteam": {
+      "de": "Hydrodampf"
+    },
+    "hydrovortex": {
+      "de": "Super-Wassertornado"
+    },
+    "hyperbeam": {
+      "de": "Hyperstrahl"
+    },
+    "hyperdrill": {
+      "de": "Hyperbohrer"
+    },
+    "hyperfang": {
+      "de": "Hyperzahn"
+    },
+    "hyperspacefury": {
+      "de": "Dimensionswahn"
+    },
+    "hyperspacehole": {
+      "de": "Dimensionsloch"
+    },
+    "hypervoice": {
+      "de": "Schallwelle"
+    },
+    "hypnosis": {
+      "de": "Hypnose"
+    },
+    "iceball": {
+      "de": "Frostbeule"
+    },
+    "icebeam": {
+      "de": "Eisstrahl"
+    },
+    "iceburn": {
+      "de": "Frosthauch"
+    },
+    "icefang": {
+      "de": "Eiszahn"
+    },
+    "icehammer": {
+      "de": "Eishammer"
+    },
+    "icepunch": {
+      "de": "Eishieb"
+    },
+    "iceshard": {
+      "de": "Eissplitter"
+    },
+    "icespinner": {
+      "de": "Eiskreisel"
+    },
+    "iciclecrash": {
+      "de": "Eiszapfhagel"
+    },
+    "iciclespear": {
+      "de": "Eisspeer"
+    },
+    "icywind": {
+      "de": "Eissturm"
+    },
+    "imprison": {
+      "de": "Begrenzer"
+    },
+    "incinerate": {
+      "de": "Einäschern"
+    },
+    "infernalparade": {
+      "de": "Phantomparade"
+    },
+    "inferno": {
+      "de": "Inferno"
+    },
+    "infernooverdrive": {
+      "de": "Dynamische Maxiflamme"
+    },
+    "infestation": {
+      "de": "Plage"
+    },
+    "ingrain": {
+      "de": "Verwurzler"
+    },
+    "instruct": {
+      "de": "Kommando"
+    },
+    "iondeluge": {
+      "de": "Plasmaschauer"
+    },
+    "irondefense": {
+      "de": "Eisenabwehr"
+    },
+    "ironhead": {
+      "de": "Eisenschädel"
+    },
+    "irontail": {
+      "de": "Eisenschweif"
+    },
+    "ivycudgel": {
+      "de": "Rankenkeule"
+    },
+    "jawlock": {
+      "de": "Fesselbiss"
+    },
+    "jetpunch": {
+      "de": "Düsenhieb"
+    },
+    "judgment": {
+      "de": "Urteilskraft"
+    },
+    "jumpkick": {
+      "de": "Sprungkick"
+    },
+    "junglehealing": {
+      "de": "Dschungelheilung"
+    },
+    "karatechop": {
+      "de": "Karateschlag"
+    },
+    "kinesis": {
+      "de": "Psykraft"
+    },
+    "kingsshield": {
+      "de": "Königsschild"
+    },
+    "knockoff": {
+      "de": "Abschlag"
+    },
+    "kowtowcleave": {
+      "de": "Kniefallspalter"
+    },
+    "landswrath": {
+      "de": "Bodengewalt"
+    },
+    "laserfocus": {
+      "de": "Konzentration"
+    },
+    "lashout": {
+      "de": "Frustventil"
+    },
+    "lastresort": {
+      "de": "Zuflucht"
+    },
+    "lastrespects": {
+      "de": "Letzte Ehre"
+    },
+    "lavaplume": {
+      "de": "Flammensturm"
+    },
+    "leafage": {
+      "de": "Blattwerk"
+    },
+    "leafblade": {
+      "de": "Laubklinge"
+    },
+    "leafstorm": {
+      "de": "Blättersturm"
+    },
+    "leaftornado": {
+      "de": "Grasmixer"
+    },
+    "leechlife": {
+      "de": "Blutsauger"
+    },
+    "leechseed": {
+      "de": "Egelsamen"
+    },
+    "leer": {
+      "de": "Silberblick"
+    },
+    "letssnuggleforever": {
+      "de": "Herzliche Knuddelkloppe"
+    },
+    "lick": {
+      "de": "Schlecker"
+    },
+    "lifedew": {
+      "de": "Lebenstropfen"
+    },
+    "lightofruin": {
+      "de": "Lux Calamitatis"
+    },
+    "lightscreen": {
+      "de": "Lichtschild"
+    },
+    "lightthatburnsthesky": {
+      "de": "Licht des Erlöschens"
+    },
+    "liquidation": {
+      "de": "Aquadurchstoß"
+    },
+    "lockon": {
+      "de": "Zielschuss"
+    },
+    "lovelykiss": {
+      "de": "Todeskuss"
+    },
+    "lowkick": {
+      "de": "Fußkick"
+    },
+    "lowsweep": {
+      "de": "Fußtritt"
+    },
+    "luckychant": {
+      "de": "Beschwörung"
+    },
+    "luminacrash": {
+      "de": "Lichteinschlag"
+    },
+    "lunarblessing": {
+      "de": "Lunargebet"
+    },
+    "lunardance": {
+      "de": "Lunartanz"
+    },
+    "lunge": {
+      "de": "Anfallen"
+    },
+    "lusterpurge": {
+      "de": "Scheinwerfer"
+    },
+    "machpunch": {
+      "de": "Tempohieb"
+    },
+    "magicalleaf": {
+      "de": "Zauberblatt"
+    },
+    "magicaltorque": {
+      "de": "Zauberturbo"
+    },
+    "magiccoat": {
+      "de": "Magiemantel"
+    },
+    "magicpowder": {
+      "de": "Magiepuder"
+    },
+    "magicroom": {
+      "de": "Magieraum"
+    },
+    "magmastorm": {
+      "de": "Lavasturm"
+    },
+    "magnetbomb": {
+      "de": "Magnetbombe"
+    },
+    "magneticflux": {
+      "de": "Magnetregler"
+    },
+    "magnetrise": {
+      "de": "Magnetflug"
+    },
+    "magnitude": {
+      "de": "Intensität"
+    },
+    "makeitrain": {
+      "de": "Goldrausch"
+    },
+    "maliciousmoonsault": {
+      "de": "Hyper Dark Crusher"
+    },
+    "malignantchain": {
+      "de": "Giftkettung"
+    },
+    "matblock": {
+      "de": "Tatami-Schild"
+    },
+    "matchagotcha": {
+      "de": "Quirlschuss"
+    },
+    "maxairstream": {
+      "de": "Dyna-Düse"
+    },
+    "maxdarkness": {
+      "de": "Dyna-Dunkel"
+    },
+    "maxflare": {
+      "de": "Dyna-Brand"
+    },
+    "maxflutterby": {
+      "de": "Dyna-Schwarm"
+    },
+    "maxgeyser": {
+      "de": "Dyna-Flut"
+    },
+    "maxguard": {
+      "de": "Dyna-Wall"
+    },
+    "maxhailstorm": {
+      "de": "Dyna-Frost"
+    },
+    "maxknuckle": {
+      "de": "Dyna-Faust"
+    },
+    "maxlightning": {
+      "de": "Dyna-Gewitter"
+    },
+    "maxmindstorm": {
+      "de": "Dyna-Kinese"
+    },
+    "maxooze": {
+      "de": "Dyna-Giftschwall"
+    },
+    "maxovergrowth": {
+      "de": "Dyna-Flora"
+    },
+    "maxphantasm": {
+      "de": "Dyna-Spuk"
+    },
+    "maxquake": {
+      "de": "Dyna-Erdstoß"
+    },
+    "maxrockfall": {
+      "de": "Dyna-Brocken"
+    },
+    "maxstarfall": {
+      "de": "Dyna-Zauber"
+    },
+    "maxsteelspike": {
+      "de": "Dyna-Stahlzacken"
+    },
+    "maxstrike": {
+      "de": "Dyna-Angriff"
+    },
+    "maxwyrmwind": {
+      "de": "Dyna-Wyrm"
+    },
+    "meanlook": {
+      "de": "Horrorblick"
+    },
+    "meditate": {
+      "de": "Meditation"
+    },
+    "mefirst": {
+      "de": "Egotrip"
+    },
+    "megadrain": {
+      "de": "Megasauger"
+    },
+    "megahorn": {
+      "de": "Vielender"
+    },
+    "megakick": {
+      "de": "Megakick"
+    },
+    "megapunch": {
+      "de": "Megahieb"
+    },
+    "memento": {
+      "de": "Memento-Mori"
+    },
+    "menacingmoonrazemaelstrom": {
+      "de": "Geballter Mondlaser"
+    },
+    "metalburst": {
+      "de": "Metallstoß"
+    },
+    "metalclaw": {
+      "de": "Metallklaue"
+    },
+    "metalsound": {
+      "de": "Metallsound"
+    },
+    "meteorassault": {
+      "de": "Sternensturm"
+    },
+    "meteorbeam": {
+      "de": "Meteorstrahl"
+    },
+    "meteormash": {
+      "de": "Sternenhieb"
+    },
+    "metronome": {
+      "de": "Metronom"
+    },
+    "mightycleave": {
+      "de": "Wuchtklinge"
+    },
+    "milkdrink": {
+      "de": "Milchgetränk"
+    },
+    "mimic": {
+      "de": "Mimikry"
+    },
+    "mindblown": {
+      "de": "Knallkopf"
+    },
+    "mindreader": {
+      "de": "Willensleser"
+    },
+    "minimize": {
+      "de": "Komprimator"
+    },
+    "miracleeye": {
+      "de": "Wunderauge"
+    },
+    "mirrorcoat": {
+      "de": "Spiegelcape"
+    },
+    "mirrormove": {
+      "de": "Spiegeltrick"
+    },
+    "mirrorshot": {
+      "de": "Spiegelsalve"
+    },
+    "mist": {
+      "de": "Weißnebel"
+    },
+    "mistball": {
+      "de": "Nebelball"
+    },
+    "mistyexplosion": {
+      "de": "Nebelexplosion"
+    },
+    "mistyterrain": {
+      "de": "Nebelfeld"
+    },
+    "moonblast": {
+      "de": "Mondgewalt"
+    },
+    "moongeistbeam": {
+      "de": "Schattenstrahl"
+    },
+    "moonlight": {
+      "de": "Mondschein"
+    },
+    "morningsun": {
+      "de": "Morgengrauen"
+    },
+    "mortalspin": {
+      "de": "Letalwirbler"
+    },
+    "mountaingale": {
+      "de": "Frostfallwind"
+    },
+    "mudbomb": {
+      "de": "Schlammbombe"
+    },
+    "muddywater": {
+      "de": "Lehmbrühe"
+    },
+    "mudshot": {
+      "de": "Lehmschuss"
+    },
+    "mudslap": {
+      "de": "Lehmschelle"
+    },
+    "mudsport": {
+      "de": "Lehmsuhler"
+    },
+    "multiattack": {
+      "de": "Multi-Angriff"
+    },
+    "mysticalfire": {
+      "de": "Magieflamme"
+    },
+    "mysticalpower": {
+      "de": "Mythenkraft"
+    },
+    "nastyplot": {
+      "de": "Ränkeschmied"
+    },
+    "naturalgift": {
+      "de": "Beerenkräfte"
+    },
+    "naturepower": {
+      "de": "Natur-Kraft"
+    },
+    "naturesmadness": {
+      "de": "Naturzorn"
+    },
+    "needlearm": {
+      "de": "Nietenranke"
+    },
+    "neverendingnightmare": {
+      "de": "Ewige Nacht"
+    },
+    "nightdaze": {
+      "de": "Nachtflut"
+    },
+    "nightmare": {
+      "de": "Nachtmahr"
+    },
+    "nightshade": {
+      "de": "Nachtnebel"
+    },
+    "nightslash": {
+      "de": "Nachthieb"
+    },
+    "nihillight": {
+      "de": "Tilgungslicht"
+    },
+    "nobleroar": {
+      "de": "Kampfgebrüll"
+    },
+    "noretreat": {
+      "de": "Finalformation"
+    },
+    "noxioustorque": {
+      "de": "Toxiturbo"
+    },
+    "nuzzle": {
+      "de": "Wangenrubbler"
+    },
+    "oblivionwing": {
+      "de": "Unheilsschwingen"
+    },
+    "obstruct": {
+      "de": "Abblocker"
+    },
+    "oceanicoperetta": {
+      "de": "Grandiose Meeressymphonie"
+    },
+    "octazooka": {
+      "de": "Octazooka"
+    },
+    "octolock": {
+      "de": "Octoklammer"
+    },
+    "odorsleuth": {
+      "de": "Schnüffler"
+    },
+    "ominouswind": {
+      "de": "Unheilböen"
+    },
+    "orderup": {
+      "de": "Auftischen"
+    },
+    "originpulse": {
+      "de": "Ursprungswoge"
+    },
+    "outrage": {
+      "de": "Wutanfall"
+    },
+    "overdrive": {
+      "de": "Overdrive"
+    },
+    "overheat": {
+      "de": "Hitzekoller"
+    },
+    "painsplit": {
+      "de": "Leidteiler"
+    },
+    "paraboliccharge": {
+      "de": "Parabolladung"
+    },
+    "partingshot": {
+      "de": "Abgangstirade"
+    },
+    "payback": {
+      "de": "Gegenstoß"
+    },
+    "payday": {
+      "de": "Zahltag"
+    },
+    "peck": {
+      "de": "Pikser"
+    },
+    "perishsong": {
+      "de": "Abgesang"
+    },
+    "petalblizzard": {
+      "de": "Blütenwirbel"
+    },
+    "petaldance": {
+      "de": "Blättertanz"
+    },
+    "phantomforce": {
+      "de": "Phantomkraft"
+    },
+    "photongeyser": {
+      "de": "Photonen-Geysir"
+    },
+    "pikapapow": {
+      "de": "Pika-Flash"
+    },
+    "pinmissile": {
+      "de": "Nadelrakete"
+    },
+    "plasmafists": {
+      "de": "Plasmafäuste"
+    },
+    "playnice": {
+      "de": "Kameradschaft"
+    },
+    "playrough": {
+      "de": "Knuddler"
+    },
+    "pluck": {
+      "de": "Pflücker"
+    },
+    "poisonfang": {
+      "de": "Giftzahn"
+    },
+    "poisongas": {
+      "de": "Giftwolke"
+    },
+    "poisonjab": {
+      "de": "Gifthieb"
+    },
+    "poisonpowder": {
+      "de": "Giftpuder"
+    },
+    "poisonsting": {
+      "de": "Giftstachel"
+    },
+    "poisontail": {
+      "de": "Giftschweif"
+    },
+    "pollenpuff": {
+      "de": "Pollenknödel"
+    },
+    "poltergeist": {
+      "de": "Poltergeist"
+    },
+    "populationbomb": {
+      "de": "Mäuseplage"
+    },
+    "pounce": {
+      "de": "Anspringen"
+    },
+    "pound": {
+      "de": "Klaps"
+    },
+    "powder": {
+      "de": "Pulverschleuder"
+    },
+    "powdersnow": {
+      "de": "Pulverschnee"
+    },
+    "powergem": {
+      "de": "Juwelenkraft"
+    },
+    "powershift": {
+      "de": "Kraftwechsel"
+    },
+    "powersplit": {
+      "de": "Kraftteiler"
+    },
+    "powerswap": {
+      "de": "Krafttausch"
+    },
+    "powertrick": {
+      "de": "Krafttrick"
+    },
+    "powertrip": {
+      "de": "Überheblichkeit"
+    },
+    "poweruppunch": {
+      "de": "Steigerungshieb"
+    },
+    "powerwhip": {
+      "de": "Blattgeißel"
+    },
+    "precipiceblades": {
+      "de": "Abgrundsklinge"
+    },
+    "present": {
+      "de": "Geschenk"
+    },
+    "prismaticlaser": {
+      "de": "Prisma-Laser"
+    },
+    "protect": {
+      "de": "Schutzschild"
+    },
+    "psybeam": {
+      "de": "Psystrahl"
+    },
+    "psyblade": {
+      "de": "Psychoschneide"
+    },
+    "psychic": {
+      "de": "Psychokinese"
+    },
+    "psychicfangs": {
+      "de": "Psychobeißer"
+    },
+    "psychicnoise": {
+      "de": "Psycholärm"
+    },
+    "psychicterrain": {
+      "de": "Psychofeld"
+    },
+    "psychoboost": {
+      "de": "Psyschub"
+    },
+    "psychocut": {
+      "de": "Psychoklinge"
+    },
+    "psychoshift": {
+      "de": "Psybann"
+    },
+    "psychup": {
+      "de": "Psycho-Plus"
+    },
+    "psyshieldbash": {
+      "de": "Barrierenstoß"
+    },
+    "psyshock": {
+      "de": "Psychoschock"
+    },
+    "psystrike": {
+      "de": "Psychostoß"
+    },
+    "psywave": {
+      "de": "Psywelle"
+    },
+    "pulverizingpancake": {
+      "de": "Schluss mit lustig"
+    },
+    "punishment": {
+      "de": "Strafattacke"
+    },
+    "purify": {
+      "de": "Läuterung"
+    },
+    "pursuit": {
+      "de": "Verfolgung"
+    },
+    "pyroball": {
+      "de": "Feuerball"
+    },
+    "quash": {
+      "de": "Verzögerung"
+    },
+    "quickattack": {
+      "de": "Ruckzuckhieb"
+    },
+    "quickguard": {
+      "de": "Rapidschutz"
+    },
+    "quiverdance": {
+      "de": "Falterreigen"
+    },
+    "rage": {
+      "de": "Raserei"
+    },
+    "ragefist": {
+      "de": "Zornesfaust"
+    },
+    "ragepowder": {
+      "de": "Wutpulver"
+    },
+    "ragingbull": {
+      "de": "Rasender Stier"
+    },
+    "ragingfury": {
+      "de": "Flammenwut"
+    },
+    "raindance": {
+      "de": "Regentanz"
+    },
+    "rapidspin": {
+      "de": "Turbodreher"
+    },
+    "razorleaf": {
+      "de": "Rasierblatt"
+    },
+    "razorshell": {
+      "de": "Kalkklinge"
+    },
+    "razorwind": {
+      "de": "Klingensturm"
+    },
+    "recover": {
+      "de": "Genesung"
+    },
+    "recycle": {
+      "de": "Aufbereitung"
+    },
+    "reflect": {
+      "de": "Reflektor"
+    },
+    "reflecttype": {
+      "de": "Typenspiegel"
+    },
+    "refresh": {
+      "de": "Heilung"
+    },
+    "relicsong": {
+      "de": "Urgesang"
+    },
+    "rest": {
+      "de": "Erholung"
+    },
+    "retaliate": {
+      "de": "Heimzahlung"
+    },
+    "return": {
+      "de": "Rückkehr"
+    },
+    "revelationdance": {
+      "de": "Wecktanz"
+    },
+    "revenge": {
+      "de": "Vergeltung"
+    },
+    "reversal": {
+      "de": "Gegenschlag"
+    },
+    "revivalblessing": {
+      "de": "Vitalsegen"
+    },
+    "risingvoltage": {
+      "de": "Hochspannung"
+    },
+    "roar": {
+      "de": "Brüller"
+    },
+    "roaroftime": {
+      "de": "Zeitenlärm"
+    },
+    "rockblast": {
+      "de": "Felswurf"
+    },
+    "rockclimb": {
+      "de": "Kraxler"
+    },
+    "rockpolish": {
+      "de": "Steinpolitur"
+    },
+    "rockslide": {
+      "de": "Steinhagel"
+    },
+    "rocksmash": {
+      "de": "Zertrümmerer"
+    },
+    "rockthrow": {
+      "de": "Steinwurf"
+    },
+    "rocktomb": {
+      "de": "Felsgrab"
+    },
+    "rockwrecker": {
+      "de": "Felswerfer"
+    },
+    "roleplay": {
+      "de": "Rollenspiel"
+    },
+    "rollingkick": {
+      "de": "Fegekick"
+    },
+    "rollout": {
+      "de": "Walzer"
+    },
+    "roost": {
+      "de": "Ruheort"
+    },
+    "rototiller": {
+      "de": "Pflüger"
+    },
+    "round": {
+      "de": "Kanon"
+    },
+    "ruination": {
+      "de": "Verderben"
+    },
+    "sacredfire": {
+      "de": "Läuterfeuer"
+    },
+    "sacredsword": {
+      "de": "Sanctoklinge"
+    },
+    "safeguard": {
+      "de": "Bodyguard"
+    },
+    "saltcure": {
+      "de": "Pökelsalz"
+    },
+    "sandattack": {
+      "de": "Sandwirbel"
+    },
+    "sandsearstorm": {
+      "de": "Wüstenorkan"
+    },
+    "sandstorm": {
+      "de": "Sandsturm"
+    },
+    "sandtomb": {
+      "de": "Sandgrab"
+    },
+    "sappyseed": {
+      "de": "Sprießbomben"
+    },
+    "savagespinout": {
+      "de": "Wirbelnder Insektenhieb"
+    },
+    "scald": {
+      "de": "Siedewasser"
+    },
+    "scaleshot": {
+      "de": "Schuppenschuss"
+    },
+    "scaryface": {
+      "de": "Grimasse"
+    },
+    "scorchingsands": {
+      "de": "Brandsand"
+    },
+    "scratch": {
+      "de": "Kratzer"
+    },
+    "screech": {
+      "de": "Kreideschrei"
+    },
+    "searingshot": {
+      "de": "Flammenball"
+    },
+    "searingsunrazesmash": {
+      "de": "Schmetternde Sonnenwalze"
+    },
+    "secretpower": {
+      "de": "Geheimpower"
+    },
+    "secretsword": {
+      "de": "Mystoschwert"
+    },
+    "seedbomb": {
+      "de": "Samenbomben"
+    },
+    "seedflare": {
+      "de": "Schocksamen"
+    },
+    "seismictoss": {
+      "de": "Geowurf"
+    },
+    "selfdestruct": {
+      "de": "Finale"
+    },
+    "shadowball": {
+      "de": "Spukball"
+    },
+    "shadowbone": {
+      "de": "Schattenknochen"
+    },
+    "shadowclaw": {
+      "de": "Dunkelklaue"
+    },
+    "shadowforce": {
+      "de": "Schemenkraft"
+    },
+    "shadowpunch": {
+      "de": "Finsterfaust"
+    },
+    "shadowsneak": {
+      "de": "Schattenstoß"
+    },
+    "sharpen": {
+      "de": "Schärfer"
+    },
+    "shatteredpsyche": {
+      "de": "Psycho-Schmetterschlag"
+    },
+    "shedtail": {
+      "de": "Schwanzabwurf"
+    },
+    "sheercold": {
+      "de": "Eiseskälte"
+    },
+    "shellsidearm": {
+      "de": "Muschelwaffe"
+    },
+    "shellsmash": {
+      "de": "Hausbruch"
+    },
+    "shelltrap": {
+      "de": "Panzerfalle"
+    },
+    "shelter": {
+      "de": "Refugium"
+    },
+    "shiftgear": {
+      "de": "Gangwechsel"
+    },
+    "shockwave": {
+      "de": "Schockwelle"
+    },
+    "shoreup": {
+      "de": "Sandsammler"
+    },
+    "signalbeam": {
+      "de": "Ampelleuchte"
+    },
+    "silktrap": {
+      "de": "Fadenfalle"
+    },
+    "silverwind": {
+      "de": "Silberhauch"
+    },
+    "simplebeam": {
+      "de": "Wankelstrahl"
+    },
+    "sing": {
+      "de": "Gesang"
+    },
+    "sinisterarrowraid": {
+      "de": "Schatten-Pfeilregen"
+    },
+    "sizzlyslide": {
+      "de": "Flackerbrand"
+    },
+    "sketch": {
+      "de": "Nachahmer"
+    },
+    "skillswap": {
+      "de": "Fähigkeitstausch"
+    },
+    "skittersmack": {
+      "de": "Krabbelkracher"
+    },
+    "skullbash": {
+      "de": "Schädelwumme"
+    },
+    "skyattack": {
+      "de": "Himmelsfeger"
+    },
+    "skydrop": {
+      "de": "Freier Fall"
+    },
+    "skyuppercut": {
+      "de": "Himmelhieb"
+    },
+    "slackoff": {
+      "de": "Tagedieb"
+    },
+    "slam": {
+      "de": "Slam"
+    },
+    "slash": {
+      "de": "Schlitzer"
+    },
+    "sleeppowder": {
+      "de": "Schlafpuder"
+    },
+    "sleeptalk": {
+      "de": "Schlafrede"
+    },
+    "sludge": {
+      "de": "Schlammbad"
+    },
+    "sludgebomb": {
+      "de": "Matschbombe"
+    },
+    "sludgewave": {
+      "de": "Schlammwoge"
+    },
+    "smackdown": {
+      "de": "Katapult"
+    },
+    "smartstrike": {
+      "de": "Schmalhorn"
+    },
+    "smellingsalts": {
+      "de": "Riechsalz"
+    },
+    "smog": {
+      "de": "Smog"
+    },
+    "smokescreen": {
+      "de": "Rauchwolke"
+    },
+    "snaptrap": {
+      "de": "Fangeisen"
+    },
+    "snarl": {
+      "de": "Standpauke"
+    },
+    "snatch": {
+      "de": "Übernahme"
+    },
+    "snipeshot": {
+      "de": "Präzisionsschuss"
+    },
+    "snore": {
+      "de": "Schnarcher"
+    },
+    "snowscape": {
+      "de": "Schneelandschaft"
+    },
+    "soak": {
+      "de": "Überflutung"
+    },
+    "softboiled": {
+      "de": "Weichei"
+    },
+    "solarbeam": {
+      "de": "Solarstrahl"
+    },
+    "solarblade": {
+      "de": "Solarklinge"
+    },
+    "sonicboom": {
+      "de": "Ultraschall"
+    },
+    "soulstealing7starstrike": {
+      "de": "Sternbild des Seelenraubes"
+    },
+    "spacialrend": {
+      "de": "Raumschlag"
+    },
+    "spark": {
+      "de": "Funkensprung"
+    },
+    "sparklingaria": {
+      "de": "Schaumserenade"
+    },
+    "sparklyswirl": {
+      "de": "Glitzersturm"
+    },
+    "spectralthief": {
+      "de": "Diebesschatten"
+    },
+    "speedswap": {
+      "de": "Initiativetausch"
+    },
+    "spicyextract": {
+      "de": "Chili-Essenz"
+    },
+    "spiderweb": {
+      "de": "Spinnennetz"
+    },
+    "spikecannon": {
+      "de": "Dornkanone"
+    },
+    "spikes": {
+      "de": "Stachler"
+    },
+    "spikyshield": {
+      "de": "Schutzstacheln"
+    },
+    "spinout": {
+      "de": "Reifendrehung"
+    },
+    "spiritbreak": {
+      "de": "Seelenbruch"
+    },
+    "spiritshackle": {
+      "de": "Schattenfessel"
+    },
+    "spite": {
+      "de": "Groll"
+    },
+    "spitup": {
+      "de": "Entfessler"
+    },
+    "splash": {
+      "de": "Platscher"
+    },
+    "splinteredstormshards": {
+      "de": "Fataler Steinregen"
+    },
+    "splishysplash": {
+      "de": "Plätschersurfer"
+    },
+    "spore": {
+      "de": "Pilzspore"
+    },
+    "spotlight": {
+      "de": "Rampenlicht"
+    },
+    "springtidestorm": {
+      "de": "Frühlingsorkan"
+    },
+    "stealthrock": {
+      "de": "Tarnsteine"
+    },
+    "steameruption": {
+      "de": "Dampfschwall"
+    },
+    "steamroller": {
+      "de": "Quetschwalze"
+    },
+    "steelbeam": {
+      "de": "Stahlstrahl"
+    },
+    "steelroller": {
+      "de": "Eisenwalze"
+    },
+    "steelwing": {
+      "de": "Stahlflügel"
+    },
+    "stickyweb": {
+      "de": "Klebenetz"
+    },
+    "stockpile": {
+      "de": "Horter"
+    },
+    "stokedsparksurfer": {
+      "de": "Blitz-Wellenritt"
+    },
+    "stomp": {
+      "de": "Stampfer"
+    },
+    "stompingtantrum": {
+      "de": "Fruststampfer"
+    },
+    "stoneaxe": {
+      "de": "Felsaxt"
+    },
+    "stoneedge": {
+      "de": "Steinkante"
+    },
+    "storedpower": {
+      "de": "Kraftvorrat"
+    },
+    "stormthrow": {
+      "de": "Bergsturm"
+    },
+    "strangesteam": {
+      "de": "Wunderdampf"
+    },
+    "strength": {
+      "de": "Stärke"
+    },
+    "strengthsap": {
+      "de": "Kraftabsorber"
+    },
+    "stringshot": {
+      "de": "Fadenschuss"
+    },
+    "struggle": {
+      "de": "Verzweifler"
+    },
+    "strugglebug": {
+      "de": "Käfertrutz"
+    },
+    "stuffcheeks": {
+      "de": "Backenstopfer"
+    },
+    "stunspore": {
+      "de": "Stachelspore"
+    },
+    "submission": {
+      "de": "Überroller"
+    },
+    "substitute": {
+      "de": "Delegator"
+    },
+    "subzeroslammer": {
+      "de": "Tobender Geofrost"
+    },
+    "suckerpunch": {
+      "de": "Tiefschlag"
+    },
+    "sunnyday": {
+      "de": "Sonnentag"
+    },
+    "sunsteelstrike": {
+      "de": "Stahlgestirn"
+    },
+    "supercellslam": {
+      "de": "Donnerstoß"
+    },
+    "superfang": {
+      "de": "Superzahn"
+    },
+    "superpower": {
+      "de": "Kraftkoloss"
+    },
+    "supersonic": {
+      "de": "Superschall"
+    },
+    "supersonicskystrike": {
+      "de": "Finaler Steilflug"
+    },
+    "surf": {
+      "de": "Surfer"
+    },
+    "surgingstrikes": {
+      "de": "Trefferschwall"
+    },
+    "swagger": {
+      "de": "Angeberei"
+    },
+    "swallow": {
+      "de": "Verzehrer"
+    },
+    "sweetkiss": {
+      "de": "Bitterkuss"
+    },
+    "sweetscent": {
+      "de": "Lockduft"
+    },
+    "swift": {
+      "de": "Sternschauer"
+    },
+    "switcheroo": {
+      "de": "Wechseldich"
+    },
+    "swordsdance": {
+      "de": "Schwerttanz"
+    },
+    "synchronoise": {
+      "de": "Synchrolärm"
+    },
+    "synthesis": {
+      "de": "Synthese"
+    },
+    "syrupbomb": {
+      "de": "Sirupbombe"
+    },
+    "tachyoncutter": {
+      "de": "Tachyon-Schnitt"
+    },
+    "tackle": {
+      "de": "Tackle"
+    },
+    "tailglow": {
+      "de": "Schweifglanz"
+    },
+    "tailslap": {
+      "de": "Kehrschelle"
+    },
+    "tailwhip": {
+      "de": "Rutenschlag"
+    },
+    "tailwind": {
+      "de": "Rückenwind"
+    },
+    "takedown": {
+      "de": "Bodycheck"
+    },
+    "takeheart": {
+      "de": "Mutschub"
+    },
+    "tarshot": {
+      "de": "Teerschuss"
+    },
+    "taunt": {
+      "de": "Verhöhner"
+    },
+    "tearfullook": {
+      "de": "Tränendrüse"
+    },
+    "teatime": {
+      "de": "Teatime"
+    },
+    "technoblast": {
+      "de": "Techblaster"
+    },
+    "tectonicrage": {
+      "de": "Seismische Eruption"
+    },
+    "teeterdance": {
+      "de": "Taumeltanz"
+    },
+    "telekinesis": {
+      "de": "Telekinese"
+    },
+    "teleport": {
+      "de": "Teleport"
+    },
+    "temperflare": {
+      "de": "Frustflamme"
+    },
+    "terablast": {
+      "de": "Tera-Ausbruch"
+    },
+    "terastarstorm": {
+      "de": "Tera-Sternhagel"
+    },
+    "terrainpulse": {
+      "de": "Feldimpuls"
+    },
+    "thief": {
+      "de": "Raub"
+    },
+    "thousandarrows": {
+      "de": "Tausend Pfeile"
+    },
+    "thousandwaves": {
+      "de": "Tausend Wellen"
+    },
+    "thrash": {
+      "de": "Fuchtler"
+    },
+    "throatchop": {
+      "de": "Neck Strike"
+    },
+    "thunder": {
+      "de": "Donner"
+    },
+    "thunderbolt": {
+      "de": "Donnerblitz"
+    },
+    "thundercage": {
+      "de": "Blitzgefängnis"
+    },
+    "thunderclap": {
+      "de": "Sturmblitz"
+    },
+    "thunderfang": {
+      "de": "Donnerzahn"
+    },
+    "thunderouskick": {
+      "de": "Donnernder Tritt"
+    },
+    "thunderpunch": {
+      "de": "Donnerschlag"
+    },
+    "thundershock": {
+      "de": "Donnerschock"
+    },
+    "thunderwave": {
+      "de": "Donnerwelle"
+    },
+    "tickle": {
+      "de": "Spaßkanone"
+    },
+    "tidyup": {
+      "de": "Aufräumen"
+    },
+    "topsyturvy": {
+      "de": "Invertigo"
+    },
+    "torchsong": {
+      "de": "Loderlied"
+    },
+    "torment": {
+      "de": "Folterknecht"
+    },
+    "toxic": {
+      "de": "Toxin"
+    },
+    "toxicspikes": {
+      "de": "Giftspitzen"
+    },
+    "toxicthread": {
+      "de": "Giftfaden"
+    },
+    "trailblaze": {
+      "de": "Wegbereiter"
+    },
+    "transform": {
+      "de": "Wandler"
+    },
+    "triattack": {
+      "de": "Triplette"
+    },
+    "trick": {
+      "de": "Trickbetrug"
+    },
+    "trickortreat": {
+      "de": "Halloween"
+    },
+    "trickroom": {
+      "de": "Bizarroraum"
+    },
+    "triplearrows": {
+      "de": "Drillingspfeile"
+    },
+    "tripleaxel": {
+      "de": "Dreifach-Axel"
+    },
+    "tripledive": {
+      "de": "Tauchtriade"
+    },
+    "triplekick": {
+      "de": "Dreifachkick"
+    },
+    "tropkick": {
+      "de": "Tropenkick"
+    },
+    "trumpcard": {
+      "de": "Trumpfkarte"
+    },
+    "twinbeam": {
+      "de": "Doppelstrahl"
+    },
+    "twineedle": {
+      "de": "Duonadel"
+    },
+    "twinkletackle": {
+      "de": "Entzückender Sternenstoß"
+    },
+    "twister": {
+      "de": "Windhose"
+    },
+    "upperhand": {
+      "de": "Schnellkonter"
+    },
+    "uproar": {
+      "de": "Aufruhr"
+    },
+    "uturn": {
+      "de": "Kehrtwende"
+    },
+    "vacuumwave": {
+      "de": "Vakuumwelle"
+    },
+    "vcreate": {
+      "de": "V-Generator"
+    },
+    "veeveevolley": {
+      "de": "Evo-Crash"
+    },
+    "venomdrench": {
+      "de": "Giftfalle"
+    },
+    "venoshock": {
+      "de": "Giftschock"
+    },
+    "victorydance": {
+      "de": "Siegestanz"
+    },
+    "vinewhip": {
+      "de": "Rankenhieb"
+    },
+    "visegrip": {
+      "de": "Klammer"
+    },
+    "vitalthrow": {
+      "de": "Überwurf"
+    },
+    "voltswitch": {
+      "de": "Voltwechsel"
+    },
+    "volttackle": {
+      "de": "Volttackle"
+    },
+    "wakeupslap": {
+      "de": "Weckruf"
+    },
+    "waterfall": {
+      "de": "Kaskade"
+    },
+    "watergun": {
+      "de": "Aquaknarre"
+    },
+    "waterpledge": {
+      "de": "Wassersäulen"
+    },
+    "waterpulse": {
+      "de": "Aquawelle"
+    },
+    "watershuriken": {
+      "de": "Wasser-Shuriken"
+    },
+    "watersport": {
+      "de": "Nassmacher"
+    },
+    "waterspout": {
+      "de": "Fontränen"
+    },
+    "wavecrash": {
+      "de": "Wellentackle"
+    },
+    "weatherball": {
+      "de": "Meteorologe"
+    },
+    "whirlpool": {
+      "de": "Whirlpool"
+    },
+    "whirlwind": {
+      "de": "Wirbelwind"
+    },
+    "wickedblow": {
+      "de": "Finstertreffer"
+    },
+    "wickedtorque": {
+      "de": "Finsterturbo"
+    },
+    "wideguard": {
+      "de": "Rundumschutz"
+    },
+    "wildboltstorm": {
+      "de": "Donnerorkan"
+    },
+    "wildcharge": {
+      "de": "Stromstoß"
+    },
+    "willowisp": {
+      "de": "Irrlicht"
+    },
+    "wingattack": {
+      "de": "Flügelschlag"
+    },
+    "wish": {
+      "de": "Wunschtraum"
+    },
+    "withdraw": {
+      "de": "Panzerschutz"
+    },
+    "wonderroom": {
+      "de": "Wunderraum"
+    },
+    "woodhammer": {
+      "de": "Holzhammer"
+    },
+    "workup": {
+      "de": "Kraftschub"
+    },
+    "worryseed": {
+      "de": "Sorgensamen"
+    },
+    "wrap": {
+      "de": "Wickel"
+    },
+    "wringout": {
+      "de": "Auswringen"
+    },
+    "xscissor": {
+      "de": "Kreuzschere"
+    },
+    "yawn": {
+      "de": "Gähner"
+    },
+    "zapcannon": {
+      "de": "Blitzkanone"
+    },
+    "zenheadbutt": {
+      "de": "Zen-Kopfstoß"
+    },
+    "zingzap": {
+      "de": "Elektropikser"
+    },
+    "zippyzap": {
+      "de": "Britzelturbo"
+    }
+  },
+  "abilities": {
+    "adaptability": {
+      "de": "Anpassung"
+    },
+    "aerilate": {
+      "de": "Zenithaut"
+    },
+    "aftermath": {
+      "de": "Finalschlag"
+    },
+    "airlock": {
+      "de": "Klimaschutz"
+    },
+    "analytic": {
+      "de": "Analyse"
+    },
+    "angerpoint": {
+      "de": "Kurzschluss"
+    },
+    "angershell": {
+      "de": "Wutpanzer"
+    },
+    "anticipation": {
+      "de": "Vorahnung"
+    },
+    "arenatrap": {
+      "de": "Ausweglos"
+    },
+    "armortail": {
+      "de": "Schweifrüstung"
+    },
+    "aromaveil": {
+      "de": "Dufthülle"
+    },
+    "asone": {
+      "de": "Reitgespann"
+    },
+    "asoneglastrier": {
+      "de": "Reitgespann"
+    },
+    "asonespectrier": {
+      "de": "Reitgespann"
+    },
+    "aurabreak": {
+      "de": "Aura-Umkehr"
+    },
+    "baddreams": {
+      "de": "Alptraum"
+    },
+    "ballfetch": {
+      "de": "Apport"
+    },
+    "battery": {
+      "de": "Batterie"
+    },
+    "battlearmor": {
+      "de": "Kampfpanzer"
+    },
+    "battlebond": {
+      "de": "Freundschaftsakt"
+    },
+    "beadsofruin": {
+      "de": "Unheilsjuwelen"
+    },
+    "beastboost": {
+      "de": "Bestien-Boost"
+    },
+    "berserk": {
+      "de": "Wutausbruch"
+    },
+    "bigpecks": {
+      "de": "Brustbieter"
+    },
+    "blaze": {
+      "de": "Großbrand"
+    },
+    "bulletproof": {
+      "de": "Kugelsicher"
+    },
+    "cheekpouch": {
+      "de": "Backentaschen"
+    },
+    "chillingneigh": {
+      "de": "Helles Wiehern"
+    },
+    "chlorophyll": {
+      "de": "Chlorophyll"
+    },
+    "clearbody": {
+      "de": "Neutraltorso"
+    },
+    "cloudnine": {
+      "de": "Wolke Sieben"
+    },
+    "colorchange": {
+      "de": "Farbwechsel"
+    },
+    "comatose": {
+      "de": "Dauerschlaf"
+    },
+    "commander": {
+      "de": "Kommandant"
+    },
+    "competitive": {
+      "de": "Unbeugsamkeit"
+    },
+    "compoundeyes": {
+      "de": "Facettenauge"
+    },
+    "contrary": {
+      "de": "Umkehrung"
+    },
+    "corrosion": {
+      "de": "Korrosion"
+    },
+    "costar": {
+      "de": "Synchronauftritt"
+    },
+    "cottondown": {
+      "de": "Wollflaum"
+    },
+    "cudchew": {
+      "de": "Wiederkäuer"
+    },
+    "curiousmedicine": {
+      "de": "Kuriose Arznei"
+    },
+    "cursedbody": {
+      "de": "Tastfluch"
+    },
+    "cutecharm": {
+      "de": "Charmebolzen"
+    },
+    "damp": {
+      "de": "Feuchtigkeit"
+    },
+    "dancer": {
+      "de": "Tänzer"
+    },
+    "darkaura": {
+      "de": "Dunkelaura"
+    },
+    "dauntlessshield": {
+      "de": "Wackerer Schild"
+    },
+    "dazzling": {
+      "de": "Buntkörper"
+    },
+    "defeatist": {
+      "de": "Schwächling"
+    },
+    "defiant": {
+      "de": "Siegeswille"
+    },
+    "deltastream": {
+      "de": "Delta-Wind"
+    },
+    "desolateland": {
+      "de": "Endland"
+    },
+    "disguise": {
+      "de": "Kostümspuk"
+    },
+    "download": {
+      "de": "Download"
+    },
+    "dragonsmaw": {
+      "de": "Drachenkiefer"
+    },
+    "drizzle": {
+      "de": "Niesel"
+    },
+    "drought": {
+      "de": "Dürre"
+    },
+    "dryskin": {
+      "de": "Trockenheit"
+    },
+    "earlybird": {
+      "de": "Frühwecker"
+    },
+    "eartheater": {
+      "de": "Bodenschmaus"
+    },
+    "effectspore": {
+      "de": "Sporenwirt"
+    },
+    "electricsurge": {
+      "de": "Elektro-Erzeuger"
+    },
+    "electromorphosis": {
+      "de": "Dynamo"
+    },
+    "embodyaspectcornerstone": {
+      "de": "Erinnerungskraft"
+    },
+    "embodyaspecthearthflame": {
+      "de": "Erinnerungskraft"
+    },
+    "embodyaspectteal": {
+      "de": "Erinnerungskraft"
+    },
+    "embodyaspectwellspring": {
+      "de": "Erinnerungskraft"
+    },
+    "emergencyexit": {
+      "de": "Rückzug"
+    },
+    "fairyaura": {
+      "de": "Feenaura"
+    },
+    "filter": {
+      "de": "Filter"
+    },
+    "flamebody": {
+      "de": "Flammkörper"
+    },
+    "flareboost": {
+      "de": "Hitzewahn"
+    },
+    "flashfire": {
+      "de": "Feuerfänger"
+    },
+    "flowergift": {
+      "de": "Pflanzengabe"
+    },
+    "flowerveil": {
+      "de": "Blütenhülle"
+    },
+    "fluffy": {
+      "de": "Flauschigkeit"
+    },
+    "forecast": {
+      "de": "Prognose"
+    },
+    "forewarn": {
+      "de": "Vorwarnung"
+    },
+    "friendguard": {
+      "de": "Freundeshut"
+    },
+    "frisk": {
+      "de": "Schnüffler"
+    },
+    "fullmetalbody": {
+      "de": "Metallprotektor"
+    },
+    "furcoat": {
+      "de": "Fellkleid"
+    },
+    "galewings": {
+      "de": "Orkanschwingen"
+    },
+    "galvanize": {
+      "de": "Elektrohaut"
+    },
+    "gluttony": {
+      "de": "Völlerei"
+    },
+    "goodasgold": {
+      "de": "Goldkörper"
+    },
+    "gooey": {
+      "de": "Viskosität"
+    },
+    "gorillatactics": {
+      "de": "Affenfokus"
+    },
+    "grasspelt": {
+      "de": "Pflanzenpelz"
+    },
+    "grassysurge": {
+      "de": "Gras-Erzeuger"
+    },
+    "grimneigh": {
+      "de": "Dunkles Wiehern"
+    },
+    "guarddog": {
+      "de": "Wachhund"
+    },
+    "gulpmissile": {
+      "de": "Würggeschoss"
+    },
+    "guts": {
+      "de": "Adrenalin"
+    },
+    "hadronengine": {
+      "de": "Hadronen-Motor"
+    },
+    "harvest": {
+      "de": "Reiche Ernte"
+    },
+    "healer": {
+      "de": "Heilherz"
+    },
+    "heatproof": {
+      "de": "Hitzeschutz"
+    },
+    "heavymetal": {
+      "de": "Schwermetall"
+    },
+    "honeygather": {
+      "de": "Honigmaul"
+    },
+    "hospitality": {
+      "de": "Gastlichkeit"
+    },
+    "hugepower": {
+      "de": "Kraftkoloss"
+    },
+    "hungerswitch": {
+      "de": "Heißhunger"
+    },
+    "hustle": {
+      "de": "Übereifer"
+    },
+    "hydration": {
+      "de": "Hydration"
+    },
+    "hypercutter": {
+      "de": "Scherenmacht"
+    },
+    "icebody": {
+      "de": "Eishaut"
+    },
+    "iceface": {
+      "de": "Tiefkühlkopf"
+    },
+    "icescales": {
+      "de": "Eisflügelstaub"
+    },
+    "illuminate": {
+      "de": "Erleuchtung"
+    },
+    "illusion": {
+      "de": "Trugbild"
+    },
+    "immunity": {
+      "de": "Immunität"
+    },
+    "imposter": {
+      "de": "Doppelgänger"
+    },
+    "infiltrator": {
+      "de": "Schwebedurch"
+    },
+    "innardsout": {
+      "de": "Magenkrempler"
+    },
+    "innerfocus": {
+      "de": "Konzentrator"
+    },
+    "insomnia": {
+      "de": "Insomnia"
+    },
+    "intimidate": {
+      "de": "Bedroher"
+    },
+    "intrepidsword": {
+      "de": "Kühnes Schwert"
+    },
+    "ironbarbs": {
+      "de": "Eisenstachel"
+    },
+    "ironfist": {
+      "de": "Eisenfaust"
+    },
+    "justified": {
+      "de": "Redlichkeit"
+    },
+    "keeneye": {
+      "de": "Adlerauge"
+    },
+    "klutz": {
+      "de": "Tollpatsch"
+    },
+    "leafguard": {
+      "de": "Floraschild"
+    },
+    "levitate": {
+      "de": "Schwebe"
+    },
+    "libero": {
+      "de": "Libero"
+    },
+    "lightmetal": {
+      "de": "Leichtmetall"
+    },
+    "lightningrod": {
+      "de": "Blitzfänger"
+    },
+    "limber": {
+      "de": "Flexibilität"
+    },
+    "lingeringaroma": {
+      "de": "Duftschwade"
+    },
+    "liquidooze": {
+      "de": "Kloakensoße"
+    },
+    "liquidvoice": {
+      "de": "Plätscherstimme"
+    },
+    "longreach": {
+      "de": "Langstrecke"
+    },
+    "magicbounce": {
+      "de": "Magiespiegel"
+    },
+    "magicguard": {
+      "de": "Magieschild"
+    },
+    "magician": {
+      "de": "Zauberer"
+    },
+    "magmaarmor": {
+      "de": "Magmapanzer"
+    },
+    "magnetpull": {
+      "de": "Magnetfalle"
+    },
+    "marvelscale": {
+      "de": "Notschutz"
+    },
+    "megalauncher": {
+      "de": "Megawumme"
+    },
+    "merciless": {
+      "de": "Quälerei"
+    },
+    "mimicry": {
+      "de": "Mimese"
+    },
+    "mindseye": {
+      "de": "Geistiges Auge"
+    },
+    "minus": {
+      "de": "Minus"
+    },
+    "mirrorarmor": {
+      "de": "Spiegelrüstung"
+    },
+    "mistysurge": {
+      "de": "Nebel-Erzeuger"
+    },
+    "moldbreaker": {
+      "de": "Überbrückung"
+    },
+    "moody": {
+      "de": "Gefühlswippe"
+    },
+    "motordrive": {
+      "de": "Starthilfe"
+    },
+    "moxie": {
+      "de": "Hochmut"
+    },
+    "multiscale": {
+      "de": "Multischuppe"
+    },
+    "multitype": {
+      "de": "Variabilität"
+    },
+    "mummy": {
+      "de": "Mumie"
+    },
+    "myceliummight": {
+      "de": "Myzelienkraft"
+    },
+    "naturalcure": {
+      "de": "Innere Kraft"
+    },
+    "neuroforce": {
+      "de": "Zerebralmacht"
+    },
+    "neutralizinggas": {
+      "de": "Reaktionsgas"
+    },
+    "noguard": {
+      "de": "Schildlos"
+    },
+    "normalize": {
+      "de": "Regulierung"
+    },
+    "oblivious": {
+      "de": "Dösigkeit"
+    },
+    "opportunist": {
+      "de": "Profiteur"
+    },
+    "orichalcumpulse": {
+      "de": "Orichalkum-Puls"
+    },
+    "overcoat": {
+      "de": "Partikelschutz"
+    },
+    "overgrow": {
+      "de": "Notdünger"
+    },
+    "owntempo": {
+      "de": "Gleichmut"
+    },
+    "parentalbond": {
+      "de": "Familienbande"
+    },
+    "pastelveil": {
+      "de": "Pastellhülle"
+    },
+    "perishbody": {
+      "de": "Unheilskörper"
+    },
+    "pickpocket": {
+      "de": "Langfinger"
+    },
+    "pickup": {
+      "de": "Mitnahme"
+    },
+    "pixilate": {
+      "de": "Feenschicht"
+    },
+    "plus": {
+      "de": "Plus"
+    },
+    "poisonheal": {
+      "de": "Giftheilung"
+    },
+    "poisonpoint": {
+      "de": "Giftdorn"
+    },
+    "poisonpuppeteer": {
+      "de": "Giftpuppenspiel"
+    },
+    "poisontouch": {
+      "de": "Giftgriff"
+    },
+    "powerconstruct": {
+      "de": "Scharwandel"
+    },
+    "powerofalchemy": {
+      "de": "Chemiekraft"
+    },
+    "powerspot": {
+      "de": "Kraftquelle"
+    },
+    "prankster": {
+      "de": "Strolch"
+    },
+    "pressure": {
+      "de": "Erzwinger"
+    },
+    "primordialsea": {
+      "de": "Urmeer"
+    },
+    "prismarmor": {
+      "de": "Prismarüstung"
+    },
+    "propellertail": {
+      "de": "Schraubflosse"
+    },
+    "protean": {
+      "de": "Wandlungskunst"
+    },
+    "protosynthesis": {
+      "de": "Paläosynthese"
+    },
+    "psychicsurge": {
+      "de": "Psycho-Erzeuger"
+    },
+    "punkrock": {
+      "de": "Punk Rock"
+    },
+    "purepower": {
+      "de": "Mentalkraft"
+    },
+    "purifyingsalt": {
+      "de": "Läutersalz"
+    },
+    "quarkdrive": {
+      "de": "Quantenantrieb"
+    },
+    "queenlymajesty": {
+      "de": "Majestät"
+    },
+    "quickdraw": {
+      "de": "Schnellschuss"
+    },
+    "quickfeet": {
+      "de": "Rasanz"
+    },
+    "raindish": {
+      "de": "Regengenuss"
+    },
+    "rattled": {
+      "de": "Hasenfuß"
+    },
+    "receiver": {
+      "de": "Receiver"
+    },
+    "reckless": {
+      "de": "Achtlos"
+    },
+    "refrigerate": {
+      "de": "Frostschicht"
+    },
+    "regenerator": {
+      "de": "Belebekraft"
+    },
+    "ripen": {
+      "de": "Heranreifen"
+    },
+    "rivalry": {
+      "de": "Rivalität"
+    },
+    "rkssystem": {
+      "de": "Alpha-System"
+    },
+    "rockhead": {
+      "de": "Steinhaupt"
+    },
+    "rockypayload": {
+      "de": "Steinträger"
+    },
+    "roughskin": {
+      "de": "Rauhaut"
+    },
+    "runaway": {
+      "de": "Angsthase"
+    },
+    "sandforce": {
+      "de": "Sandgewalt"
+    },
+    "sandrush": {
+      "de": "Sandscharrer"
+    },
+    "sandspit": {
+      "de": "Sandspeier"
+    },
+    "sandstream": {
+      "de": "Sandsturm"
+    },
+    "sandveil": {
+      "de": "Sandschleier"
+    },
+    "sapsipper": {
+      "de": "Vegetarier"
+    },
+    "schooling": {
+      "de": "Fischschwarm"
+    },
+    "scrappy": {
+      "de": "Rauflust"
+    },
+    "screencleaner": {
+      "de": "Hemmungslos"
+    },
+    "seedsower": {
+      "de": "Streusaat"
+    },
+    "serenegrace": {
+      "de": "Edelmut"
+    },
+    "shadowshield": {
+      "de": "Phantomschutz"
+    },
+    "shadowtag": {
+      "de": "Wegsperre"
+    },
+    "sharpness": {
+      "de": "Scharfkantig"
+    },
+    "shedskin": {
+      "de": "Expidermis"
+    },
+    "sheerforce": {
+      "de": "Rohe Gewalt"
+    },
+    "shellarmor": {
+      "de": "Panzerhaut"
+    },
+    "shielddust": {
+      "de": "Puderabwehr"
+    },
+    "shieldsdown": {
+      "de": "Limitschild"
+    },
+    "simple": {
+      "de": "Wankelmut"
+    },
+    "skilllink": {
+      "de": "Wertelink"
+    },
+    "slowstart": {
+      "de": "Saumselig"
+    },
+    "slushrush": {
+      "de": "Schneescharrer"
+    },
+    "sniper": {
+      "de": "Superschütze"
+    },
+    "snowcloak": {
+      "de": "Schneemantel"
+    },
+    "snowwarning": {
+      "de": "Schneeschauer"
+    },
+    "solarpower": {
+      "de": "Solarkraft"
+    },
+    "solidrock": {
+      "de": "Felskern"
+    },
+    "soulheart": {
+      "de": "Seelenherz"
+    },
+    "soundproof": {
+      "de": "Lärmschutz"
+    },
+    "speedboost": {
+      "de": "Temposchub"
+    },
+    "stakeout": {
+      "de": "Beschattung"
+    },
+    "stall": {
+      "de": "Zeitspiel"
+    },
+    "stalwart": {
+      "de": "Stahlrückgrat"
+    },
+    "stamina": {
+      "de": "Zähigkeit"
+    },
+    "stancechange": {
+      "de": "Taktikwechsel"
+    },
+    "static": {
+      "de": "Statik"
+    },
+    "steadfast": {
+      "de": "Felsenfest"
+    },
+    "steamengine": {
+      "de": "Dampfantrieb"
+    },
+    "steelworker": {
+      "de": "Stahlprofi"
+    },
+    "steelyspirit": {
+      "de": "Stählerner Wille"
+    },
+    "stench": {
+      "de": "Duftnote"
+    },
+    "stickyhold": {
+      "de": "Klebekörper"
+    },
+    "stormdrain": {
+      "de": "Sturmsog"
+    },
+    "strongjaw": {
+      "de": "Titankiefer"
+    },
+    "sturdy": {
+      "de": "Robustheit"
+    },
+    "suctioncups": {
+      "de": "Saugnapf"
+    },
+    "superluck": {
+      "de": "Glückspilz"
+    },
+    "supersweetsyrup": {
+      "de": "Süßer Nektar"
+    },
+    "supremeoverlord": {
+      "de": "Feldherr"
+    },
+    "surgesurfer": {
+      "de": "Surf-Schweif"
+    },
+    "swarm": {
+      "de": "Hexaplaga"
+    },
+    "sweetveil": {
+      "de": "Zuckerhülle"
+    },
+    "swiftswim": {
+      "de": "Wassertempo"
+    },
+    "swordofruin": {
+      "de": "Unheilsschwert"
+    },
+    "symbiosis": {
+      "de": "Symbiose"
+    },
+    "synchronize": {
+      "de": "Synchro"
+    },
+    "tabletsofruin": {
+      "de": "Unheilstafeln"
+    },
+    "tangledfeet": {
+      "de": "Taumelschritt"
+    },
+    "tanglinghair": {
+      "de": "Lockenkopf"
+    },
+    "technician": {
+      "de": "Techniker"
+    },
+    "telepathy": {
+      "de": "Telepathie"
+    },
+    "teraformzero": {
+      "de": "Teraforming Null"
+    },
+    "terashell": {
+      "de": "Tera-Panzer"
+    },
+    "terashift": {
+      "de": "Tera-Wandel"
+    },
+    "teravolt": {
+      "de": "Teravolt"
+    },
+    "thermalexchange": {
+      "de": "Thermowandel"
+    },
+    "thickfat": {
+      "de": "Speckschicht"
+    },
+    "tintedlens": {
+      "de": "Aufwertung"
+    },
+    "torrent": {
+      "de": "Sturzbach"
+    },
+    "toughclaws": {
+      "de": "Krallenwucht"
+    },
+    "toxicboost": {
+      "de": "Giftwahn"
+    },
+    "toxicchain": {
+      "de": "Giftkette"
+    },
+    "toxicdebris": {
+      "de": "Giftbelag"
+    },
+    "trace": {
+      "de": "Erfassen"
+    },
+    "transistor": {
+      "de": "Transistor"
+    },
+    "triage": {
+      "de": "Heilwandel"
+    },
+    "truant": {
+      "de": "Schnarchnase"
+    },
+    "turboblaze": {
+      "de": "Turbobrand"
+    },
+    "unaware": {
+      "de": "Unkenntnis"
+    },
+    "unburden": {
+      "de": "Entlastung"
+    },
+    "unnerve": {
+      "de": "Anspannung"
+    },
+    "unseenfist": {
+      "de": "Verborgene Faust"
+    },
+    "vesselofruin": {
+      "de": "Unheilsgefäß"
+    },
+    "victorystar": {
+      "de": "Triumphstern"
+    },
+    "vitalspirit": {
+      "de": "Munterkeit"
+    },
+    "voltabsorb": {
+      "de": "Voltabsorber"
+    },
+    "wanderingspirit": {
+      "de": "Rastlose Seele"
+    },
+    "waterabsorb": {
+      "de": "H2O-Absorber"
+    },
+    "waterbubble": {
+      "de": "Wasserblase"
+    },
+    "watercompaction": {
+      "de": "Verklumpen"
+    },
+    "waterveil": {
+      "de": "Aquahülle"
+    },
+    "weakarmor": {
+      "de": "Bruchrüstung"
+    },
+    "wellbakedbody": {
+      "de": "Knusperkruste"
+    },
+    "whitesmoke": {
+      "de": "Pulverrauch"
+    },
+    "wimpout": {
+      "de": "Reißaus"
+    },
+    "windpower": {
+      "de": "Windkraft"
+    },
+    "windrider": {
+      "de": "Windreiter"
+    },
+    "wonderguard": {
+      "de": "Wunderwache"
+    },
+    "wonderskin": {
+      "de": "Wunderhaut"
+    },
+    "zenmode": {
+      "de": "Trance-Modus"
+    },
+    "zerotohero": {
+      "de": "Superwechsel"
+    }
+  }
+}

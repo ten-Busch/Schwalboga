@@ -1,0 +1,3678 @@
+{
+  "sourceCommit": "a5311f9f55a84376fd2e2499b25d9fb9640d9f2d",
+  "summary": {
+    "pokemon": {
+      "checked": 1026,
+      "matched": 1025,
+      "changed": 38
+    },
+    "moves": {
+      "checked": 954,
+      "matched": 951,
+      "changed": 42
+    },
+    "abilities": {
+      "checked": 319,
+      "matched": 311,
+      "changed": 22
+    }
+  },
+  "changes": [
+    {
+      "kind": "pokemon",
+      "id": "nidoranf",
+      "en": "Nidoran-F",
+      "before": "Nidoran-F",
+      "after": "Nidoran♀",
+      "previousExplicit": false
+    },
+    {
+      "kind": "pokemon",
+      "id": "nidoranm",
+      "en": "Nidoran-M",
+      "before": "Nidoran-M",
+      "after": "Nidoran♂",
+      "previousExplicit": false
+    },
+    {
+      "kind": "pokemon",
+      "id": "mankey",
+      "en": "Mankey",
+      "before": "Mankey",
+      "after": "Menki",
+      "previousExplicit": false
+    },
+    {
+      "kind": "pokemon",
+      "id": "ponyta",
+      "en": "Ponyta",
+      "before": "Ponyta",
+      "after": "Ponita",
+      "previousExplicit": false
+    },
+    {
+      "kind": "pokemon",
+      "id": "haunter",
+      "en": "Haunter",
+      "before": "Apollo",
+      "after": "Alpollo",
+      "previousExplicit": true
+    },
+    {
+      "kind": "pokemon",
+      "id": "hitmonchan",
+      "en": "Hitmonchan",
+      "before": "Nokchan",
+      "after": "Nockchan",
+      "previousExplicit": true
+    },
+    {
+      "kind": "pokemon",
+      "id": "magikarp",
+      "en": "Magikarp",
+      "before": "Magikarp",
+      "after": "Karpador",
+      "previousExplicit": false
+    },
+    {
+      "kind": "pokemon",
+      "id": "cyndaquil",
+      "en": "Cyndaquil",
+      "before": "Feuriegel",
+      "after": "Feurigel",
+      "previousExplicit": true
+    },
+    {
+      "kind": "pokemon",
+      "id": "igglybuff",
+      "en": "Igglybuff",
+      "before": "Fluffefeluff",
+      "after": "Fluffeluff",
+      "previousExplicit": true
+    },
+    {
+      "kind": "pokemon",
+      "id": "sunflora",
+      "en": "Sunflora",
+      "before": "Sonflora",
+      "after": "Sonnflora",
+      "previousExplicit": true
+    },
+    {
+      "kind": "pokemon",
+      "id": "pineco",
+      "en": "Pineco",
+      "before": "Tanza",
+      "after": "Tannza",
+      "previousExplicit": true
+    },
+    {
+      "kind": "pokemon",
+      "id": "heracross",
+      "en": "Heracross",
+      "before": "Skarabon",
+      "after": "Skaraborn",
+      "previousExplicit": true
+    },
+    {
+      "kind": "pokemon",
+      "id": "treecko",
+      "en": "Treecko",
+      "before": "Geckabor",
+      "after": "Geckarbor",
+      "previousExplicit": true
+    },
+    {
+      "kind": "pokemon",
+      "id": "marshtomp",
+      "en": "Marshtomp",
+      "before": "Moorabble",
+      "after": "Moorabbel",
+      "previousExplicit": true
+    },
+    {
+      "kind": "pokemon",
+      "id": "swalot",
+      "en": "Swalot",
+      "before": "Schluckwech",
+      "after": "Schlukwech",
+      "previousExplicit": true
+    },
+    {
+      "kind": "pokemon",
+      "id": "vibrava",
+      "en": "Vibrava",
+      "before": "Vibrara",
+      "after": "Vibrava",
+      "previousExplicit": true
+    },
+    {
+      "kind": "pokemon",
+      "id": "shuppet",
+      "en": "Shuppet",
+      "before": "Bannette",
+      "after": "Shuppet",
+      "previousExplicit": true
+    },
+    {
+      "kind": "pokemon",
+      "id": "swoobat",
+      "en": "Swoobat",
+      "before": "Fletiano",
+      "after": "Fletiamo",
+      "previousExplicit": true
+    },
+    {
+      "kind": "pokemon",
+      "id": "terrakion",
+      "en": "Terrakion",
+      "before": "Terrakion",
+      "after": "Terrakium",
+      "previousExplicit": false
+    },
+    {
+      "kind": "pokemon",
+      "id": "virizion",
+      "en": "Virizion",
+      "before": "Virizion",
+      "after": "Viridium",
+      "previousExplicit": false
+    },
+    {
+      "kind": "pokemon",
+      "id": "fletchinder",
+      "en": "Fletchinder",
+      "before": "Fletiamo",
+      "after": "Dartignis",
+      "previousExplicit": true
+    },
+    {
+      "kind": "pokemon",
+      "id": "meowstic",
+      "en": "Meowstic",
+      "before": "Meowstic",
+      "after": "Psiaugon",
+      "previousExplicit": false
+    },
+    {
+      "kind": "pokemon",
+      "id": "aromatisse",
+      "en": "Aromatisse",
+      "before": "Aromatisse",
+      "after": "Parfinesse",
+      "previousExplicit": false
+    },
+    {
+      "kind": "pokemon",
+      "id": "rockruff",
+      "en": "Rockruff",
+      "before": "Wufffels",
+      "after": "Wuffels",
+      "previousExplicit": true
+    },
+    {
+      "kind": "pokemon",
+      "id": "dewpider",
+      "en": "Dewpider",
+      "before": "Dewpider",
+      "after": "Araqua",
+      "previousExplicit": false
+    },
+    {
+      "kind": "pokemon",
+      "id": "stufful",
+      "en": "Stufful",
+      "before": "Velirsi",
+      "after": "Velursi",
+      "previousExplicit": true
+    },
+    {
+      "kind": "pokemon",
+      "id": "komala",
+      "en": "Komala",
+      "before": "Koaleul",
+      "after": "Koalelu",
+      "previousExplicit": true
+    },
+    {
+      "kind": "pokemon",
+      "id": "turtonator",
+      "en": "Turtonator",
+      "before": "Turtonator",
+      "after": "Tortunator",
+      "previousExplicit": false
+    },
+    {
+      "kind": "pokemon",
+      "id": "cosmoem",
+      "en": "Cosmoem",
+      "before": "Cosmoem",
+      "after": "Cosmovum",
+      "previousExplicit": false
+    },
+    {
+      "kind": "pokemon",
+      "id": "rolycoly",
+      "en": "Rolycoly",
+      "before": "Klonkette",
+      "after": "Klonkett",
+      "previousExplicit": true
+    },
+    {
+      "kind": "pokemon",
+      "id": "snom",
+      "en": "Snom",
+      "before": "Snom",
+      "after": "Snomnom",
+      "previousExplicit": false
+    },
+    {
+      "kind": "pokemon",
+      "id": "pawmot",
+      "en": "Pawmot",
+      "before": "Pawmot",
+      "after": "Pamomamo",
+      "previousExplicit": false
+    },
+    {
+      "kind": "pokemon",
+      "id": "tinkatuff",
+      "en": "Tinkatuff",
+      "before": "Tinkatuff",
+      "after": "Tafforgita",
+      "previousExplicit": false
+    },
+    {
+      "kind": "pokemon",
+      "id": "tinkaton",
+      "en": "Tinkaton",
+      "before": "Tinkaton",
+      "after": "Granforgita",
+      "previousExplicit": false
+    },
+    {
+      "kind": "pokemon",
+      "id": "wochien",
+      "en": "Wo-Chien",
+      "before": "Wo-Chien",
+      "after": "Chongjian",
+      "previousExplicit": false
+    },
+    {
+      "kind": "pokemon",
+      "id": "chienpao",
+      "en": "Chien-Pao",
+      "before": "Chien-Pao",
+      "after": "Baojian",
+      "previousExplicit": false
+    },
+    {
+      "kind": "pokemon",
+      "id": "tinglu",
+      "en": "Ting-Lu",
+      "before": "Ting-Lu",
+      "after": "Dinglu",
+      "previousExplicit": false
+    },
+    {
+      "kind": "pokemon",
+      "id": "chiyu",
+      "en": "Chi-Yu",
+      "before": "Chi-Yu",
+      "after": "Yuyu",
+      "previousExplicit": false
+    },
+    {
+      "kind": "moves",
+      "id": "absorb",
+      "en": "Absorb",
+      "before": "Absorb",
+      "after": "Absorber",
+      "previousExplicit": false
+    },
+    {
+      "kind": "moves",
+      "id": "acrobatics",
+      "en": "Acrobatics",
+      "before": "Acrobatik",
+      "after": "Akrobatik",
+      "previousExplicit": true
+    },
+    {
+      "kind": "moves",
+      "id": "bloodmoon",
+      "en": "Blood Moon",
+      "before": "Blood Moon",
+      "after": "Blutmond",
+      "previousExplicit": false
+    },
+    {
+      "kind": "moves",
+      "id": "bubble",
+      "en": "Bubble",
+      "before": "Bubbler",
+      "after": "Blubber",
+      "previousExplicit": true
+    },
+    {
+      "kind": "moves",
+      "id": "charm",
+      "en": "Charm",
+      "before": "Charm",
+      "after": "Charme",
+      "previousExplicit": false
+    },
+    {
+      "kind": "moves",
+      "id": "comeuppance",
+      "en": "Comeuppance",
+      "before": "Vandetta",
+      "after": "Vendetta",
+      "previousExplicit": true
+    },
+    {
+      "kind": "moves",
+      "id": "conversion2",
+      "en": "Conversion 2",
+      "before": "Conversion 2",
+      "after": "Umwandlung 2",
+      "previousExplicit": false
+    },
+    {
+      "kind": "moves",
+      "id": "darkestlariat",
+      "en": "Darkest Lariat",
+      "before": "Darkest Lariat",
+      "after": "Dark Lariat",
+      "previousExplicit": false
+    },
+    {
+      "kind": "moves",
+      "id": "echoedvoice",
+      "en": "Echoed Voice",
+      "before": "Widerfall",
+      "after": "Widerhall",
+      "previousExplicit": true
+    },
+    {
+      "kind": "moves",
+      "id": "followme",
+      "en": "Follow Me",
+      "before": "Follow Me",
+      "after": "Spotlight",
+      "previousExplicit": false
+    },
+    {
+      "kind": "moves",
+      "id": "grassyglide",
+      "en": "Grassy Glide",
+      "before": "Grasrutche",
+      "after": "Grasrutsche",
+      "previousExplicit": true
+    },
+    {
+      "kind": "moves",
+      "id": "hiddenpowerbug",
+      "en": "Hidden Power Bug",
+      "before": "Hidden Power Bug",
+      "after": "Kraftreserve (Käfer)",
+      "previousExplicit": false
+    },
+    {
+      "kind": "moves",
+      "id": "hiddenpowerdark",
+      "en": "Hidden Power Dark",
+      "before": "Hidden Power Dark",
+      "after": "Kraftreserve (Unlicht)",
+      "previousExplicit": false
+    },
+    {
+      "kind": "moves",
+      "id": "hiddenpowerdragon",
+      "en": "Hidden Power Dragon",
+      "before": "Hidden Power Dragon",
+      "after": "Kraftreserve (Drache)",
+      "previousExplicit": false
+    },
+    {
+      "kind": "moves",
+      "id": "hiddenpowerelectric",
+      "en": "Hidden Power Electric",
+      "before": "Hidden Power Electric",
+      "after": "Kraftreserve (Elektro)",
+      "previousExplicit": false
+    },
+    {
+      "kind": "moves",
+      "id": "hiddenpowerfighting",
+      "en": "Hidden Power Fighting",
+      "before": "Hidden Power Fighting",
+      "after": "Kraftreserve (Kampf)",
+      "previousExplicit": false
+    },
+    {
+      "kind": "moves",
+      "id": "hiddenpowerfire",
+      "en": "Hidden Power Fire",
+      "before": "Hidden Power Fire",
+      "after": "Kraftreserve (Feuer)",
+      "previousExplicit": false
+    },
+    {
+      "kind": "moves",
+      "id": "hiddenpowerflying",
+      "en": "Hidden Power Flying",
+      "before": "Hidden Power Flying",
+      "after": "Kraftreserve (Flug)",
+      "previousExplicit": false
+    },
+    {
+      "kind": "moves",
+      "id": "hiddenpowerghost",
+      "en": "Hidden Power Ghost",
+      "before": "Hidden Power Ghost",
+      "after": "Kraftreserve (Geist)",
+      "previousExplicit": false
+    },
+    {
+      "kind": "moves",
+      "id": "hiddenpowergrass",
+      "en": "Hidden Power Grass",
+      "before": "Hidden Power Grass",
+      "after": "Kraftreserve (Pflanze)",
+      "previousExplicit": false
+    },
+    {
+      "kind": "moves",
+      "id": "hiddenpowerground",
+      "en": "Hidden Power Ground",
+      "before": "Hidden Power Ground",
+      "after": "Kraftreserve (Boden)",
+      "previousExplicit": false
+    },
+    {
+      "kind": "moves",
+      "id": "hiddenpowerice",
+      "en": "Hidden Power Ice",
+      "before": "Hidden Power Ice",
+      "after": "Kraftreserve (Eis)",
+      "previousExplicit": false
+    },
+    {
+      "kind": "moves",
+      "id": "hiddenpowerpoison",
+      "en": "Hidden Power Poison",
+      "before": "Hidden Power Poison",
+      "after": "Kraftreserve (Gift)",
+      "previousExplicit": false
+    },
+    {
+      "kind": "moves",
+      "id": "hiddenpowerpsychic",
+      "en": "Hidden Power Psychic",
+      "before": "Hidden Power Psychic",
+      "after": "Kraftreserve (Psycho)",
+      "previousExplicit": false
+    },
+    {
+      "kind": "moves",
+      "id": "hiddenpowerrock",
+      "en": "Hidden Power Rock",
+      "before": "Hidden Power Rock",
+      "after": "Kraftreserve (Gestein)",
+      "previousExplicit": false
+    },
+    {
+      "kind": "moves",
+      "id": "hiddenpowersteel",
+      "en": "Hidden Power Steel",
+      "before": "Hidden Power Steel",
+      "after": "Kraftreserve (Stahl)",
+      "previousExplicit": false
+    },
+    {
+      "kind": "moves",
+      "id": "hiddenpowerwater",
+      "en": "Hidden Power Water",
+      "before": "Hidden Power Water",
+      "after": "Kraftreserve (Wasser)",
+      "previousExplicit": false
+    },
+    {
+      "kind": "moves",
+      "id": "hypnosis",
+      "en": "Hypnosis",
+      "before": "Hypnosis",
+      "after": "Hypnose",
+      "previousExplicit": false
+    },
+    {
+      "kind": "moves",
+      "id": "memento",
+      "en": "Memento",
+      "before": "Memento",
+      "after": "Memento-Mori",
+      "previousExplicit": false
+    },
+    {
+      "kind": "moves",
+      "id": "metalsound",
+      "en": "Metal Sound",
+      "before": "Metalsound",
+      "after": "Metallsound",
+      "previousExplicit": true
+    },
+    {
+      "kind": "moves",
+      "id": "metronome",
+      "en": "Metronome",
+      "before": "Metronome",
+      "after": "Metronom",
+      "previousExplicit": false
+    },
+    {
+      "kind": "moves",
+      "id": "psyshock",
+      "en": "Psyshock",
+      "before": "Psychoshock",
+      "after": "Psychoschock",
+      "previousExplicit": true
+    },
+    {
+      "kind": "moves",
+      "id": "ragepowder",
+      "en": "Rage Powder",
+      "before": "Wulpulver",
+      "after": "Wutpulver",
+      "previousExplicit": true
+    },
+    {
+      "kind": "moves",
+      "id": "reflect",
+      "en": "Reflect",
+      "before": "Reflecktor",
+      "after": "Reflektor",
+      "previousExplicit": true
+    },
+    {
+      "kind": "moves",
+      "id": "sappyseed",
+      "en": "Sappy Seed",
+      "before": "Sprießomben",
+      "after": "Sprießbomben",
+      "previousExplicit": true
+    },
+    {
+      "kind": "moves",
+      "id": "snipeshot",
+      "en": "Snipe Shot",
+      "before": "Präisionsschuss",
+      "after": "Präzisionsschuss",
+      "previousExplicit": true
+    },
+    {
+      "kind": "moves",
+      "id": "stealthrock",
+      "en": "Stealth Rock",
+      "before": "Tarnstein",
+      "after": "Tarnsteine",
+      "previousExplicit": true
+    },
+    {
+      "kind": "moves",
+      "id": "surf",
+      "en": "Surf",
+      "before": "Surf",
+      "after": "Surfer",
+      "previousExplicit": false
+    },
+    {
+      "kind": "moves",
+      "id": "sweetkiss",
+      "en": "Sweet Kiss",
+      "before": "Bitterkaus",
+      "after": "Bitterkuss",
+      "previousExplicit": true
+    },
+    {
+      "kind": "moves",
+      "id": "trick",
+      "en": "Trick",
+      "before": "Trick",
+      "after": "Trickbetrug",
+      "previousExplicit": false
+    },
+    {
+      "kind": "moves",
+      "id": "trickortreat",
+      "en": "Trick-or-Treat",
+      "before": "Trick-or-Treat",
+      "after": "Halloween",
+      "previousExplicit": false
+    },
+    {
+      "kind": "moves",
+      "id": "wavecrash",
+      "en": "Wave Crash",
+      "before": "Wallentackle",
+      "after": "Wellentackle",
+      "previousExplicit": true
+    },
+    {
+      "kind": "abilities",
+      "id": "asoneglastrier",
+      "en": "As One (Glastrier)",
+      "before": "As One (Glastrier)",
+      "after": "Reitgespann",
+      "previousExplicit": false
+    },
+    {
+      "kind": "abilities",
+      "id": "asonespectrier",
+      "en": "As One (Spectrier)",
+      "before": "As One (Spectrier)",
+      "after": "Reitgespann",
+      "previousExplicit": false
+    },
+    {
+      "kind": "abilities",
+      "id": "battery",
+      "en": "Battery",
+      "before": "Battery",
+      "after": "Batterie",
+      "previousExplicit": false
+    },
+    {
+      "kind": "abilities",
+      "id": "darkaura",
+      "en": "Dark Aura",
+      "before": "Dankelaura",
+      "after": "Dunkelaura",
+      "previousExplicit": true
+    },
+    {
+      "kind": "abilities",
+      "id": "defiant",
+      "en": "Defiant",
+      "before": "Seigeswille",
+      "after": "Siegeswille",
+      "previousExplicit": true
+    },
+    {
+      "kind": "abilities",
+      "id": "embodyaspectcornerstone",
+      "en": "Embody Aspect (Cornerstone)",
+      "before": "Embody Aspect (Cornerstone)",
+      "after": "Erinnerungskraft",
+      "previousExplicit": false
+    },
+    {
+      "kind": "abilities",
+      "id": "embodyaspecthearthflame",
+      "en": "Embody Aspect (Hearthflame)",
+      "before": "Embody Aspect (Hearthflame)",
+      "after": "Erinnerungskraft",
+      "previousExplicit": false
+    },
+    {
+      "kind": "abilities",
+      "id": "embodyaspectteal",
+      "en": "Embody Aspect (Teal)",
+      "before": "Embody Aspect (Teal)",
+      "after": "Erinnerungskraft",
+      "previousExplicit": false
+    },
+    {
+      "kind": "abilities",
+      "id": "embodyaspectwellspring",
+      "en": "Embody Aspect (Wellspring)",
+      "before": "Embody Aspect (Wellspring)",
+      "after": "Erinnerungskraft",
+      "previousExplicit": false
+    },
+    {
+      "kind": "abilities",
+      "id": "hospitality",
+      "en": "Hospitality",
+      "before": "Gastlichkei",
+      "after": "Gastlichkeit",
+      "previousExplicit": true
+    },
+    {
+      "kind": "abilities",
+      "id": "overcoat",
+      "en": "Overcoat",
+      "before": "Wetterfest",
+      "after": "Partikelschutz",
+      "previousExplicit": true
+    },
+    {
+      "kind": "abilities",
+      "id": "owntempo",
+      "en": "Own Tempo",
+      "before": "Tempomacher",
+      "after": "Gleichmut",
+      "previousExplicit": true
+    },
+    {
+      "kind": "abilities",
+      "id": "poisonheal",
+      "en": "Poison Heal",
+      "before": "Aufheber",
+      "after": "Giftheilung",
+      "previousExplicit": true
+    },
+    {
+      "kind": "abilities",
+      "id": "reckless",
+      "en": "Reckless",
+      "before": "Atchlos",
+      "after": "Achtlos",
+      "previousExplicit": true
+    },
+    {
+      "kind": "abilities",
+      "id": "snowwarning",
+      "en": "Snow Warning",
+      "before": "Hagelalarm",
+      "after": "Schneeschauer",
+      "previousExplicit": true
+    },
+    {
+      "kind": "abilities",
+      "id": "static",
+      "en": "Static",
+      "before": "Static",
+      "after": "Statik",
+      "previousExplicit": false
+    },
+    {
+      "kind": "abilities",
+      "id": "stickyhold",
+      "en": "Sticky Hold",
+      "before": "Wertehalter",
+      "after": "Klebekörper",
+      "previousExplicit": true
+    },
+    {
+      "kind": "abilities",
+      "id": "symbiosis",
+      "en": "Symbiosis",
+      "before": "Nutznießer",
+      "after": "Symbiose",
+      "previousExplicit": true
+    },
+    {
+      "kind": "abilities",
+      "id": "synchronize",
+      "en": "Synchronize",
+      "before": "Synchronize",
+      "after": "Synchro",
+      "previousExplicit": false
+    },
+    {
+      "kind": "abilities",
+      "id": "tangledfeet",
+      "en": "Tangled Feet",
+      "before": "Fußangel",
+      "after": "Taumelschritt",
+      "previousExplicit": true
+    },
+    {
+      "kind": "abilities",
+      "id": "tintedlens",
+      "en": "Tinted Lens",
+      "before": "Finalschlag",
+      "after": "Aufwertung",
+      "previousExplicit": true
+    },
+    {
+      "kind": "abilities",
+      "id": "trace",
+      "en": "Trace",
+      "before": "Fährte",
+      "after": "Erfassen",
+      "previousExplicit": true
+    }
+  ],
+  "unmatched": [
+    {
+      "kind": "pokemon",
+      "id": "schwalboga",
+      "name": "Schwalboga",
+      "num": 2000,
+      "reason": "No official name-table match"
+    },
+    {
+      "kind": "moves",
+      "id": "paleowave",
+      "name": "Paleo Wave",
+      "reason": "No official name-table match"
+    },
+    {
+      "kind": "moves",
+      "id": "shadowstrike",
+      "name": "Shadow Strike",
+      "reason": "No official name-table match"
+    },
+    {
+      "kind": "moves",
+      "id": "polarflare",
+      "name": "Polar Flare",
+      "reason": "No official name-table match"
+    },
+    {
+      "kind": "abilities",
+      "id": "noability",
+      "name": "No Ability",
+      "reason": "No official name-table match"
+    },
+    {
+      "kind": "abilities",
+      "id": "dragonize",
+      "name": "Dragonize",
+      "reason": "No official name-table match"
+    },
+    {
+      "kind": "abilities",
+      "id": "megasol",
+      "name": "Mega Sol",
+      "reason": "No official name-table match"
+    },
+    {
+      "kind": "abilities",
+      "id": "piercingdrill",
+      "name": "Piercing Drill",
+      "reason": "No official name-table match"
+    },
+    {
+      "kind": "abilities",
+      "id": "spicyspray",
+      "name": "Spicy Spray",
+      "reason": "No official name-table match"
+    },
+    {
+      "kind": "abilities",
+      "id": "mountaineer",
+      "name": "Mountaineer",
+      "reason": "No official name-table match"
+    },
+    {
+      "kind": "abilities",
+      "id": "rebound",
+      "name": "Rebound",
+      "reason": "No official name-table match"
+    },
+    {
+      "kind": "abilities",
+      "id": "persistent",
+      "name": "Persistent",
+      "reason": "No official name-table match"
+    }
+  ],
+  "derived": [
+    {
+      "id": "hiddenpowerbug",
+      "reason": "Official Hidden Power name with a type annotation; not a separate official move name"
+    },
+    {
+      "id": "hiddenpowerdark",
+      "reason": "Official Hidden Power name with a type annotation; not a separate official move name"
+    },
+    {
+      "id": "hiddenpowerdragon",
+      "reason": "Official Hidden Power name with a type annotation; not a separate official move name"
+    },
+    {
+      "id": "hiddenpowerelectric",
+      "reason": "Official Hidden Power name with a type annotation; not a separate official move name"
+    },
+    {
+      "id": "hiddenpowerfighting",
+      "reason": "Official Hidden Power name with a type annotation; not a separate official move name"
+    },
+    {
+      "id": "hiddenpowerfire",
+      "reason": "Official Hidden Power name with a type annotation; not a separate official move name"
+    },
+    {
+      "id": "hiddenpowerflying",
+      "reason": "Official Hidden Power name with a type annotation; not a separate official move name"
+    },
+    {
+      "id": "hiddenpowerghost",
+      "reason": "Official Hidden Power name with a type annotation; not a separate official move name"
+    },
+    {
+      "id": "hiddenpowergrass",
+      "reason": "Official Hidden Power name with a type annotation; not a separate official move name"
+    },
+    {
+      "id": "hiddenpowerground",
+      "reason": "Official Hidden Power name with a type annotation; not a separate official move name"
+    },
+    {
+      "id": "hiddenpowerice",
+      "reason": "Official Hidden Power name with a type annotation; not a separate official move name"
+    },
+    {
+      "id": "hiddenpowerpoison",
+      "reason": "Official Hidden Power name with a type annotation; not a separate official move name"
+    },
+    {
+      "id": "hiddenpowerpsychic",
+      "reason": "Official Hidden Power name with a type annotation; not a separate official move name"
+    },
+    {
+      "id": "hiddenpowerrock",
+      "reason": "Official Hidden Power name with a type annotation; not a separate official move name"
+    },
+    {
+      "id": "hiddenpowersteel",
+      "reason": "Official Hidden Power name with a type annotation; not a separate official move name"
+    },
+    {
+      "id": "hiddenpowerwater",
+      "reason": "Official Hidden Power name with a type annotation; not a separate official move name"
+    }
+  ],
+  "forms": [
+    {
+      "id": "venusaurmega",
+      "name": "Venusaur-Mega",
+      "baseSpecies": "Venusaur",
+      "translation": "Bisaflor-Mega",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "venusaurgmax",
+      "name": "Venusaur-Gmax",
+      "baseSpecies": "Venusaur",
+      "translation": "Bisaflor-GMAX",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "charizardmegax",
+      "name": "Charizard-Mega-X",
+      "baseSpecies": "Charizard",
+      "translation": "Glurak-Mega-X",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "charizardmegay",
+      "name": "Charizard-Mega-Y",
+      "baseSpecies": "Charizard",
+      "translation": "Glurak-Mega-Y",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "charizardgmax",
+      "name": "Charizard-Gmax",
+      "baseSpecies": "Charizard",
+      "translation": "Glurak-GMAX",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "blastoisemega",
+      "name": "Blastoise-Mega",
+      "baseSpecies": "Blastoise",
+      "translation": "Turtok-Mega",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "blastoisegmax",
+      "name": "Blastoise-Gmax",
+      "baseSpecies": "Blastoise",
+      "translation": "Turtok-GMAX",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "butterfreegmax",
+      "name": "Butterfree-Gmax",
+      "baseSpecies": "Butterfree",
+      "translation": "Smettbo-GMAX",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "beedrillmega",
+      "name": "Beedrill-Mega",
+      "baseSpecies": "Beedrill",
+      "translation": "Bibor-Mega",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "pidgeotmega",
+      "name": "Pidgeot-Mega",
+      "baseSpecies": "Pidgeot",
+      "translation": "Tauboss-Mega",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "rattataalola",
+      "name": "Rattata-Alola",
+      "baseSpecies": "Rattata",
+      "translation": "Rattfratz-Alola",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "raticatealola",
+      "name": "Raticate-Alola",
+      "baseSpecies": "Raticate",
+      "translation": "Rattikarl-Alola",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "raticatealolatotem",
+      "name": "Raticate-Alola-Totem",
+      "baseSpecies": "Raticate",
+      "translation": "Rattikarl-Alola-Totem",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "pikachucosplay",
+      "name": "Pikachu-Cosplay",
+      "baseSpecies": "Pikachu",
+      "translation": "Pikachu-Cosplay",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "pikachurockstar",
+      "name": "Pikachu-Rock-Star",
+      "baseSpecies": "Pikachu",
+      "translation": "Pikachu-Rock-Star",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "pikachubelle",
+      "name": "Pikachu-Belle",
+      "baseSpecies": "Pikachu",
+      "translation": "Pikachu-Belle",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "pikachupopstar",
+      "name": "Pikachu-Pop-Star",
+      "baseSpecies": "Pikachu",
+      "translation": "Pikachu-Pop-Star",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "pikachuphd",
+      "name": "Pikachu-PhD",
+      "baseSpecies": "Pikachu",
+      "translation": "Pikachu-PhD",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "pikachulibre",
+      "name": "Pikachu-Libre",
+      "baseSpecies": "Pikachu",
+      "translation": "Pikachu-Libre",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "pikachuoriginal",
+      "name": "Pikachu-Original",
+      "baseSpecies": "Pikachu",
+      "translation": "Pikachu-Original",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "pikachuhoenn",
+      "name": "Pikachu-Hoenn",
+      "baseSpecies": "Pikachu",
+      "translation": "Pikachu-Hoenn",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "pikachusinnoh",
+      "name": "Pikachu-Sinnoh",
+      "baseSpecies": "Pikachu",
+      "translation": "Pikachu-Sinnoh",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "pikachuunova",
+      "name": "Pikachu-Unova",
+      "baseSpecies": "Pikachu",
+      "translation": "Pikachu-Unova",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "pikachukalos",
+      "name": "Pikachu-Kalos",
+      "baseSpecies": "Pikachu",
+      "translation": "Pikachu-Kalos",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "pikachualola",
+      "name": "Pikachu-Alola",
+      "baseSpecies": "Pikachu",
+      "translation": "Pikachu-Alola",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "pikachupartner",
+      "name": "Pikachu-Partner",
+      "baseSpecies": "Pikachu",
+      "translation": "Pikachu-Partner",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "pikachustarter",
+      "name": "Pikachu-Starter",
+      "baseSpecies": "Pikachu",
+      "translation": "Pikachu-Starter",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "pikachugmax",
+      "name": "Pikachu-Gmax",
+      "baseSpecies": "Pikachu",
+      "translation": "Pikachu-GMAX",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "pikachuworld",
+      "name": "Pikachu-World",
+      "baseSpecies": "Pikachu",
+      "translation": "Pikachu-World",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "raichualola",
+      "name": "Raichu-Alola",
+      "baseSpecies": "Raichu",
+      "translation": "Raichu-Alola",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "raichumegax",
+      "name": "Raichu-Mega-X",
+      "baseSpecies": "Raichu",
+      "translation": "Raichu-Mega-X",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "raichumegay",
+      "name": "Raichu-Mega-Y",
+      "baseSpecies": "Raichu",
+      "translation": "Raichu-Mega-Y",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "sandshrewalola",
+      "name": "Sandshrew-Alola",
+      "baseSpecies": "Sandshrew",
+      "translation": "Sandan-Alola",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "sandslashalola",
+      "name": "Sandslash-Alola",
+      "baseSpecies": "Sandslash",
+      "translation": "Sandamer-Alola",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "clefablemega",
+      "name": "Clefable-Mega",
+      "baseSpecies": "Clefable",
+      "translation": "Pixi-Mega",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "vulpixalola",
+      "name": "Vulpix-Alola",
+      "baseSpecies": "Vulpix",
+      "translation": "Vulpix-Alola",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "ninetalesalola",
+      "name": "Ninetales-Alola",
+      "baseSpecies": "Ninetales",
+      "translation": "Vulnona-Alola",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "diglettalola",
+      "name": "Diglett-Alola",
+      "baseSpecies": "Diglett",
+      "translation": "Digda-Alola",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "dugtrioalola",
+      "name": "Dugtrio-Alola",
+      "baseSpecies": "Dugtrio",
+      "translation": "Digdri-Alola",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "meowthalola",
+      "name": "Meowth-Alola",
+      "baseSpecies": "Meowth",
+      "translation": "Mauzi-Alola",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "meowthgalar",
+      "name": "Meowth-Galar",
+      "baseSpecies": "Meowth",
+      "translation": "Mauzi-Galar",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "meowthgmax",
+      "name": "Meowth-Gmax",
+      "baseSpecies": "Meowth",
+      "translation": "Mauzi-GMAX",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "persianalola",
+      "name": "Persian-Alola",
+      "baseSpecies": "Persian",
+      "translation": "Snobilikat-Alola",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "growlithehisui",
+      "name": "Growlithe-Hisui",
+      "baseSpecies": "Growlithe",
+      "translation": "Fukano-Hisui",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "arcaninehisui",
+      "name": "Arcanine-Hisui",
+      "baseSpecies": "Arcanine",
+      "translation": "Arkani-Hisui",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "alakazammega",
+      "name": "Alakazam-Mega",
+      "baseSpecies": "Alakazam",
+      "translation": "Simsala-Mega",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "machampgmax",
+      "name": "Machamp-Gmax",
+      "baseSpecies": "Machamp",
+      "translation": "Machomei-GMAX",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "victreebelmega",
+      "name": "Victreebel-Mega",
+      "baseSpecies": "Victreebel",
+      "translation": "Sarzenia-Mega",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "geodudealola",
+      "name": "Geodude-Alola",
+      "baseSpecies": "Geodude",
+      "translation": "Kleinstein-Alola",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "graveleralola",
+      "name": "Graveler-Alola",
+      "baseSpecies": "Graveler",
+      "translation": "Georok-Alola",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "golemalola",
+      "name": "Golem-Alola",
+      "baseSpecies": "Golem",
+      "translation": "Geowaz-Alola",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "ponytagalar",
+      "name": "Ponyta-Galar",
+      "baseSpecies": "Ponyta",
+      "translation": "Ponyta-Galar",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "rapidashgalar",
+      "name": "Rapidash-Galar",
+      "baseSpecies": "Rapidash",
+      "translation": "Gallopa-Galar",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "slowpokegalar",
+      "name": "Slowpoke-Galar",
+      "baseSpecies": "Slowpoke",
+      "translation": "Flegmon-Galar",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "slowbromega",
+      "name": "Slowbro-Mega",
+      "baseSpecies": "Slowbro",
+      "translation": "Lahmus-Mega",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "slowbrogalar",
+      "name": "Slowbro-Galar",
+      "baseSpecies": "Slowbro",
+      "translation": "Lahmus-Galar",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "farfetchdgalar",
+      "name": "Farfetch’d-Galar",
+      "baseSpecies": "Farfetch’d",
+      "translation": "Porenta-Galar",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "grimeralola",
+      "name": "Grimer-Alola",
+      "baseSpecies": "Grimer",
+      "translation": "Sleima-Alola",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "mukalola",
+      "name": "Muk-Alola",
+      "baseSpecies": "Muk",
+      "translation": "Sleimok-Alola",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "gengarmega",
+      "name": "Gengar-Mega",
+      "baseSpecies": "Gengar",
+      "translation": "Gengar-Mega",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "gengargmax",
+      "name": "Gengar-Gmax",
+      "baseSpecies": "Gengar",
+      "translation": "Gengar-GMAX",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "kinglergmax",
+      "name": "Kingler-Gmax",
+      "baseSpecies": "Kingler",
+      "translation": "Kingler-GMAX",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "voltorbhisui",
+      "name": "Voltorb-Hisui",
+      "baseSpecies": "Voltorb",
+      "translation": "Voltobal-Hisui",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "electrodehisui",
+      "name": "Electrode-Hisui",
+      "baseSpecies": "Electrode",
+      "translation": "Lektrobal-Hisui",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "exeggutoralola",
+      "name": "Exeggutor-Alola",
+      "baseSpecies": "Exeggutor",
+      "translation": "Kokowei-Alola",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "marowakalola",
+      "name": "Marowak-Alola",
+      "baseSpecies": "Marowak",
+      "translation": "Knogga-Alola",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "marowakalolatotem",
+      "name": "Marowak-Alola-Totem",
+      "baseSpecies": "Marowak",
+      "translation": "Knogga-Alola-Totem",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "weezinggalar",
+      "name": "Weezing-Galar",
+      "baseSpecies": "Weezing",
+      "translation": "Smogmog-Galar",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "kangaskhanmega",
+      "name": "Kangaskhan-Mega",
+      "baseSpecies": "Kangaskhan",
+      "translation": "Kangama-Mega",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "starmiemega",
+      "name": "Starmie-Mega",
+      "baseSpecies": "Starmie",
+      "translation": "Starmie-Mega",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "mrmimegalar",
+      "name": "Mr. Mime-Galar",
+      "baseSpecies": "Mr. Mime",
+      "translation": "Pantimos-Galar",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "pinsirmega",
+      "name": "Pinsir-Mega",
+      "baseSpecies": "Pinsir",
+      "translation": "Pinsir-Mega",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "taurospaldeacombat",
+      "name": "Tauros-Paldea-Combat",
+      "baseSpecies": "Tauros",
+      "translation": "Tauros-Paldea-Gefecht",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "taurospaldeablaze",
+      "name": "Tauros-Paldea-Blaze",
+      "baseSpecies": "Tauros",
+      "translation": "Tauros-Paldea-Flammen",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "taurospaldeaaqua",
+      "name": "Tauros-Paldea-Aqua",
+      "baseSpecies": "Tauros",
+      "translation": "Tauros-Paldea-Fluten",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "gyaradosmega",
+      "name": "Gyarados-Mega",
+      "baseSpecies": "Gyarados",
+      "translation": "Garados-Mega",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "laprasgmax",
+      "name": "Lapras-Gmax",
+      "baseSpecies": "Lapras",
+      "translation": "Lapras-GMAX",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "eeveestarter",
+      "name": "Eevee-Starter",
+      "baseSpecies": "Eevee",
+      "translation": "Eevee-Starter",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "eeveegmax",
+      "name": "Eevee-Gmax",
+      "baseSpecies": "Eevee",
+      "translation": "Evoli-GMAX",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "aerodactylmega",
+      "name": "Aerodactyl-Mega",
+      "baseSpecies": "Aerodactyl",
+      "translation": "Aerodactyl-Mega",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "snorlaxgmax",
+      "name": "Snorlax-Gmax",
+      "baseSpecies": "Snorlax",
+      "translation": "Relaxo-GMAX",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "articunogalar",
+      "name": "Articuno-Galar",
+      "baseSpecies": "Articuno",
+      "translation": "Arktos-Galar",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "zapdosgalar",
+      "name": "Zapdos-Galar",
+      "baseSpecies": "Zapdos",
+      "translation": "Zapdos-Galar",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "moltresgalar",
+      "name": "Moltres-Galar",
+      "baseSpecies": "Moltres",
+      "translation": "Lavados-Galar",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "dragonitemega",
+      "name": "Dragonite-Mega",
+      "baseSpecies": "Dragonite",
+      "translation": "Dragoran-Mega",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "mewtwomegax",
+      "name": "Mewtwo-Mega-X",
+      "baseSpecies": "Mewtwo",
+      "translation": "Mewtu-Mega-X",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "mewtwomegay",
+      "name": "Mewtwo-Mega-Y",
+      "baseSpecies": "Mewtwo",
+      "translation": "Mewtu-Mega-Y",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "meganiummega",
+      "name": "Meganium-Mega",
+      "baseSpecies": "Meganium",
+      "translation": "Meganie-Mega",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "typhlosionhisui",
+      "name": "Typhlosion-Hisui",
+      "baseSpecies": "Typhlosion",
+      "translation": "Tornupto-Hisui",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "feraligatrmega",
+      "name": "Feraligatr-Mega",
+      "baseSpecies": "Feraligatr",
+      "translation": "Impergator-Mega",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "pichuspikyeared",
+      "name": "Pichu-Spiky-eared",
+      "baseSpecies": "Pichu",
+      "translation": "Pichu-Spiky-eared",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "ampharosmega",
+      "name": "Ampharos-Mega",
+      "baseSpecies": "Ampharos",
+      "translation": "Ampharos-Mega",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "wooperpaldea",
+      "name": "Wooper-Paldea",
+      "baseSpecies": "Wooper",
+      "translation": "Wooper-Paldea",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "slowkinggalar",
+      "name": "Slowking-Galar",
+      "baseSpecies": "Slowking",
+      "translation": "Laschoking-Galar",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "steelixmega",
+      "name": "Steelix-Mega",
+      "baseSpecies": "Steelix",
+      "translation": "Stahlos-Mega",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "qwilfishhisui",
+      "name": "Qwilfish-Hisui",
+      "baseSpecies": "Qwilfish",
+      "translation": "Baldorfish-Hisui",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "scizormega",
+      "name": "Scizor-Mega",
+      "baseSpecies": "Scizor",
+      "translation": "Scherox-Mega",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "heracrossmega",
+      "name": "Heracross-Mega",
+      "baseSpecies": "Heracross",
+      "translation": "Skarabon-Mega",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "sneaselhisui",
+      "name": "Sneasel-Hisui",
+      "baseSpecies": "Sneasel",
+      "translation": "Sniebel-Hisui",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "corsolagalar",
+      "name": "Corsola-Galar",
+      "baseSpecies": "Corsola",
+      "translation": "Corasonn-Galar",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "skarmorymega",
+      "name": "Skarmory-Mega",
+      "baseSpecies": "Skarmory",
+      "translation": "Panzaeron-Mega",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "houndoommega",
+      "name": "Houndoom-Mega",
+      "baseSpecies": "Houndoom",
+      "translation": "Hundemon-Mega",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "tyranitarmega",
+      "name": "Tyranitar-Mega",
+      "baseSpecies": "Tyranitar",
+      "translation": "Despotar-Mega",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "sceptilemega",
+      "name": "Sceptile-Mega",
+      "baseSpecies": "Sceptile",
+      "translation": "Gewaldro-Mega",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "blazikenmega",
+      "name": "Blaziken-Mega",
+      "baseSpecies": "Blaziken",
+      "translation": "Lohgock-Mega",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "swampertmega",
+      "name": "Swampert-Mega",
+      "baseSpecies": "Swampert",
+      "translation": "Sumpex-Mega",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "zigzagoongalar",
+      "name": "Zigzagoon-Galar",
+      "baseSpecies": "Zigzagoon",
+      "translation": "Zigzachs-Galar",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "linoonegalar",
+      "name": "Linoone-Galar",
+      "baseSpecies": "Linoone",
+      "translation": "Geradaks-Galar",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "gardevoirmega",
+      "name": "Gardevoir-Mega",
+      "baseSpecies": "Gardevoir",
+      "translation": "Guardevoir-Mega",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "sableyemega",
+      "name": "Sableye-Mega",
+      "baseSpecies": "Sableye",
+      "translation": "Zobiris-Mega",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "mawilemega",
+      "name": "Mawile-Mega",
+      "baseSpecies": "Mawile",
+      "translation": "Flunkifer-Mega",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "aggronmega",
+      "name": "Aggron-Mega",
+      "baseSpecies": "Aggron",
+      "translation": "Stolloss-Mega",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "medichammega",
+      "name": "Medicham-Mega",
+      "baseSpecies": "Medicham",
+      "translation": "Meditalis-Mega",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "manectricmega",
+      "name": "Manectric-Mega",
+      "baseSpecies": "Manectric",
+      "translation": "Voltenso-Mega",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "sharpedomega",
+      "name": "Sharpedo-Mega",
+      "baseSpecies": "Sharpedo",
+      "translation": "Tohaido-Mega",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "cameruptmega",
+      "name": "Camerupt-Mega",
+      "baseSpecies": "Camerupt",
+      "translation": "Camerupt-Mega",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "altariamega",
+      "name": "Altaria-Mega",
+      "baseSpecies": "Altaria",
+      "translation": "Altaria-Mega",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "castformsunny",
+      "name": "Castform-Sunny",
+      "baseSpecies": "Castform",
+      "translation": "Castform-Sunny",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "castformrainy",
+      "name": "Castform-Rainy",
+      "baseSpecies": "Castform",
+      "translation": "Castform-Rainy",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "castformsnowy",
+      "name": "Castform-Snowy",
+      "baseSpecies": "Castform",
+      "translation": "Castform-Snowy",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "banettemega",
+      "name": "Banette-Mega",
+      "baseSpecies": "Banette",
+      "translation": "Banette-Mega",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "chimechomega",
+      "name": "Chimecho-Mega",
+      "baseSpecies": "Chimecho",
+      "translation": "Palimpalim-Mega",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "absolmega",
+      "name": "Absol-Mega",
+      "baseSpecies": "Absol",
+      "translation": "Absol-Mega",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "absolmegaz",
+      "name": "Absol-Mega-Z",
+      "baseSpecies": "Absol",
+      "translation": "Absol-Mega-Z",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "glaliemega",
+      "name": "Glalie-Mega",
+      "baseSpecies": "Glalie",
+      "translation": "Firnontor-Mega",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "salamencemega",
+      "name": "Salamence-Mega",
+      "baseSpecies": "Salamence",
+      "translation": "Brutalanda-Mega",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "metagrossmega",
+      "name": "Metagross-Mega",
+      "baseSpecies": "Metagross",
+      "translation": "Metagross-Mega",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "latiasmega",
+      "name": "Latias-Mega",
+      "baseSpecies": "Latias",
+      "translation": "Latias-Mega",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "latiosmega",
+      "name": "Latios-Mega",
+      "baseSpecies": "Latios",
+      "translation": "Latios-Mega",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "kyogreprimal",
+      "name": "Kyogre-Primal",
+      "baseSpecies": "Kyogre",
+      "translation": "Kyogre-Proto",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "groudonprimal",
+      "name": "Groudon-Primal",
+      "baseSpecies": "Groudon",
+      "translation": "Groudon-Proto",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "rayquazamega",
+      "name": "Rayquaza-Mega",
+      "baseSpecies": "Rayquaza",
+      "translation": "Rayquaza-Mega",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "deoxysattack",
+      "name": "Deoxys-Attack",
+      "baseSpecies": "Deoxys",
+      "translation": "Deoxys-Angriff",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "deoxysdefense",
+      "name": "Deoxys-Defense",
+      "baseSpecies": "Deoxys",
+      "translation": "Deoxys-Verteidigung",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "deoxysspeed",
+      "name": "Deoxys-Speed",
+      "baseSpecies": "Deoxys",
+      "translation": "Deoxys-Initiative",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "staraptormega",
+      "name": "Staraptor-Mega",
+      "baseSpecies": "Staraptor",
+      "translation": "Staraptor-Mega",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "wormadamsandy",
+      "name": "Wormadam-Sandy",
+      "baseSpecies": "Wormadam",
+      "translation": "Burmadame-Sand",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "wormadamtrash",
+      "name": "Wormadam-Trash",
+      "baseSpecies": "Wormadam",
+      "translation": "Burmadame-Lumpen",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "cherrimsunshine",
+      "name": "Cherrim-Sunshine",
+      "baseSpecies": "Cherrim",
+      "translation": "Cherrim-Sunshine",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "lopunnymega",
+      "name": "Lopunny-Mega",
+      "baseSpecies": "Lopunny",
+      "translation": "Schlapor-Mega",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "garchompmega",
+      "name": "Garchomp-Mega",
+      "baseSpecies": "Garchomp",
+      "translation": "Knakrack-Mega",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "garchompmegaz",
+      "name": "Garchomp-Mega-Z",
+      "baseSpecies": "Garchomp",
+      "translation": "Garchomp-Mega-Z",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "lucariomega",
+      "name": "Lucario-Mega",
+      "baseSpecies": "Lucario",
+      "translation": "Lucario-Mega",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "lucariomegaz",
+      "name": "Lucario-Mega-Z",
+      "baseSpecies": "Lucario",
+      "translation": "Lucario-Mega-Z",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "abomasnowmega",
+      "name": "Abomasnow-Mega",
+      "baseSpecies": "Abomasnow",
+      "translation": "Rexblisar-Mega",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "gallademega",
+      "name": "Gallade-Mega",
+      "baseSpecies": "Gallade",
+      "translation": "Galagladi-Mega",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "froslassmega",
+      "name": "Froslass-Mega",
+      "baseSpecies": "Froslass",
+      "translation": "Frosdedje-Mega",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "rotomheat",
+      "name": "Rotom-Heat",
+      "baseSpecies": "Rotom",
+      "translation": "Rotom-Hitze",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "rotomwash",
+      "name": "Rotom-Wash",
+      "baseSpecies": "Rotom",
+      "translation": "Rotom-Wasch",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "rotomfrost",
+      "name": "Rotom-Frost",
+      "baseSpecies": "Rotom",
+      "translation": "Rotom-Frost",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "rotomfan",
+      "name": "Rotom-Fan",
+      "baseSpecies": "Rotom",
+      "translation": "Rotom-Wirbel",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "rotommow",
+      "name": "Rotom-Mow",
+      "baseSpecies": "Rotom",
+      "translation": "Rotom-Schneid",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "dialgaorigin",
+      "name": "Dialga-Origin",
+      "baseSpecies": "Dialga",
+      "translation": "Dialga-Origin",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "palkiaorigin",
+      "name": "Palkia-Origin",
+      "baseSpecies": "Palkia",
+      "translation": "Palkia-Origin",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "heatranmega",
+      "name": "Heatran-Mega",
+      "baseSpecies": "Heatran",
+      "translation": "Heatran-Mega",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "giratinaorigin",
+      "name": "Giratina-Origin",
+      "baseSpecies": "Giratina",
+      "translation": "Giratina-Origin",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "darkraimega",
+      "name": "Darkrai-Mega",
+      "baseSpecies": "Darkrai",
+      "translation": "Darkrai-Mega",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "shayminsky",
+      "name": "Shaymin-Sky",
+      "baseSpecies": "Shaymin",
+      "translation": "Shaymin-Himmel",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "arceusbug",
+      "name": "Arceus-Bug",
+      "baseSpecies": "Arceus",
+      "translation": "Arceus-Käfer",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "arceusdark",
+      "name": "Arceus-Dark",
+      "baseSpecies": "Arceus",
+      "translation": "Arceus-Unlicht",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "arceusdragon",
+      "name": "Arceus-Dragon",
+      "baseSpecies": "Arceus",
+      "translation": "Arceus-Drache",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "arceuselectric",
+      "name": "Arceus-Electric",
+      "baseSpecies": "Arceus",
+      "translation": "Arceus-Elektro",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "arceusfairy",
+      "name": "Arceus-Fairy",
+      "baseSpecies": "Arceus",
+      "translation": "Arceus-Fee",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "arceusfighting",
+      "name": "Arceus-Fighting",
+      "baseSpecies": "Arceus",
+      "translation": "Arceus-Kampf",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "arceusfire",
+      "name": "Arceus-Fire",
+      "baseSpecies": "Arceus",
+      "translation": "Arceus-Feuer",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "arceusflying",
+      "name": "Arceus-Flying",
+      "baseSpecies": "Arceus",
+      "translation": "Arceus-Flug",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "arceusghost",
+      "name": "Arceus-Ghost",
+      "baseSpecies": "Arceus",
+      "translation": "Arceus-Geist",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "arceusgrass",
+      "name": "Arceus-Grass",
+      "baseSpecies": "Arceus",
+      "translation": "Arceus-Pflanze",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "arceusground",
+      "name": "Arceus-Ground",
+      "baseSpecies": "Arceus",
+      "translation": "Arceus-Boden",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "arceusice",
+      "name": "Arceus-Ice",
+      "baseSpecies": "Arceus",
+      "translation": "Arceus-Eis",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "arceuspoison",
+      "name": "Arceus-Poison",
+      "baseSpecies": "Arceus",
+      "translation": "Arceus-Gift",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "arceuspsychic",
+      "name": "Arceus-Psychic",
+      "baseSpecies": "Arceus",
+      "translation": "Arceus-Psycho",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "arceusrock",
+      "name": "Arceus-Rock",
+      "baseSpecies": "Arceus",
+      "translation": "Arceus-Gestein",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "arceussteel",
+      "name": "Arceus-Steel",
+      "baseSpecies": "Arceus",
+      "translation": "Arceus-Stahl",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "arceuswater",
+      "name": "Arceus-Water",
+      "baseSpecies": "Arceus",
+      "translation": "Arceus-Wasser",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "emboarmega",
+      "name": "Emboar-Mega",
+      "baseSpecies": "Emboar",
+      "translation": "Flambirex-Mega",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "samurotthisui",
+      "name": "Samurott-Hisui",
+      "baseSpecies": "Samurott",
+      "translation": "Admurai-Hisui",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "excadrillmega",
+      "name": "Excadrill-Mega",
+      "baseSpecies": "Excadrill",
+      "translation": "Stalobor-Mega",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "audinomega",
+      "name": "Audino-Mega",
+      "baseSpecies": "Audino",
+      "translation": "Ohrdoch-Mega",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "scolipedemega",
+      "name": "Scolipede-Mega",
+      "baseSpecies": "Scolipede",
+      "translation": "Cerapendra-Mega",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "lilliganthisui",
+      "name": "Lilligant-Hisui",
+      "baseSpecies": "Lilligant",
+      "translation": "Dressella-Hisui",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "basculinbluestriped",
+      "name": "Basculin-Blue-Striped",
+      "baseSpecies": "Basculin",
+      "translation": "Basculin-Blue-Striped",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "basculinwhitestriped",
+      "name": "Basculin-White-Striped",
+      "baseSpecies": "Basculin",
+      "translation": "Basculin-White-Striped",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "darumakagalar",
+      "name": "Darumaka-Galar",
+      "baseSpecies": "Darumaka",
+      "translation": "Flampion-Galar",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "darmanitanzen",
+      "name": "Darmanitan-Zen",
+      "baseSpecies": "Darmanitan",
+      "translation": "Darmanitan-Zen",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "darmanitangalar",
+      "name": "Darmanitan-Galar",
+      "baseSpecies": "Darmanitan",
+      "translation": "Flampivian-Galar",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "darmanitangalarzen",
+      "name": "Darmanitan-Galar-Zen",
+      "baseSpecies": "Darmanitan",
+      "translation": "Darmanitan-Galar-Zen",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "scraftymega",
+      "name": "Scrafty-Mega",
+      "baseSpecies": "Scrafty",
+      "translation": "Irokex-Mega",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "yamaskgalar",
+      "name": "Yamask-Galar",
+      "baseSpecies": "Yamask",
+      "translation": "Makabaja-Galar",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "garbodorgmax",
+      "name": "Garbodor-Gmax",
+      "baseSpecies": "Garbodor",
+      "translation": "Deponitox-GMAX",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "zoruahisui",
+      "name": "Zorua-Hisui",
+      "baseSpecies": "Zorua",
+      "translation": "Zorua-Hisui",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "zoroarkhisui",
+      "name": "Zoroark-Hisui",
+      "baseSpecies": "Zoroark",
+      "translation": "Zoroark-Hisui",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "eelektrossmega",
+      "name": "Eelektross-Mega",
+      "baseSpecies": "Eelektross",
+      "translation": "Zapplarang-Mega",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "chandeluremega",
+      "name": "Chandelure-Mega",
+      "baseSpecies": "Chandelure",
+      "translation": "Skelabra-Mega",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "stunfiskgalar",
+      "name": "Stunfisk-Galar",
+      "baseSpecies": "Stunfisk",
+      "translation": "Flunschlik-Galar",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "golurkmega",
+      "name": "Golurk-Mega",
+      "baseSpecies": "Golurk",
+      "translation": "Golgantes-Mega",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "braviaryhisui",
+      "name": "Braviary-Hisui",
+      "baseSpecies": "Braviary",
+      "translation": "Washakwil-Hisui",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "tornadustherian",
+      "name": "Tornadus-Therian",
+      "baseSpecies": "Tornadus",
+      "translation": "Boreos-Tiergeist",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "thundurustherian",
+      "name": "Thundurus-Therian",
+      "baseSpecies": "Thundurus",
+      "translation": "Voltolos-Tiergeist",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "landorustherian",
+      "name": "Landorus-Therian",
+      "baseSpecies": "Landorus",
+      "translation": "Demeteros-Tiergeist",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "kyuremblack",
+      "name": "Kyurem-Black",
+      "baseSpecies": "Kyurem",
+      "translation": "Kyurem-Schwarz",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "kyuremwhite",
+      "name": "Kyurem-White",
+      "baseSpecies": "Kyurem",
+      "translation": "Kyurem-Weiß",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "keldeoresolute",
+      "name": "Keldeo-Resolute",
+      "baseSpecies": "Keldeo",
+      "translation": "Keldeo-Resolute",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "meloettapirouette",
+      "name": "Meloetta-Pirouette",
+      "baseSpecies": "Meloetta",
+      "translation": "Meloetta-Pirouette",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "genesectdouse",
+      "name": "Genesect-Douse",
+      "baseSpecies": "Genesect",
+      "translation": "Genesect-Douse",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "genesectshock",
+      "name": "Genesect-Shock",
+      "baseSpecies": "Genesect",
+      "translation": "Genesect-Shock",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "genesectburn",
+      "name": "Genesect-Burn",
+      "baseSpecies": "Genesect",
+      "translation": "Genesect-Burn",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "genesectchill",
+      "name": "Genesect-Chill",
+      "baseSpecies": "Genesect",
+      "translation": "Genesect-Chill",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "chesnaughtmega",
+      "name": "Chesnaught-Mega",
+      "baseSpecies": "Chesnaught",
+      "translation": "Brigaron-Mega",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "delphoxmega",
+      "name": "Delphox-Mega",
+      "baseSpecies": "Delphox",
+      "translation": "Fennexis-Mega",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "greninjabond",
+      "name": "Greninja-Bond",
+      "baseSpecies": "Greninja",
+      "translation": "Greninja-Bond",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "greninjaash",
+      "name": "Greninja-Ash",
+      "baseSpecies": "Greninja",
+      "translation": "Greninja-Ash",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "greninjamega",
+      "name": "Greninja-Mega",
+      "baseSpecies": "Greninja",
+      "translation": "Quajutsu-Mega",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "vivillonfancy",
+      "name": "Vivillon-Fancy",
+      "baseSpecies": "Vivillon",
+      "translation": "Vivillon-Fancy",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "vivillonpokeball",
+      "name": "Vivillon-Pokeball",
+      "baseSpecies": "Vivillon",
+      "translation": "Vivillon-Pokeball",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "pyroarmega",
+      "name": "Pyroar-Mega",
+      "baseSpecies": "Pyroar",
+      "translation": "Pyroleo-Mega",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "floetteeternal",
+      "name": "Floette-Eternal",
+      "baseSpecies": "Floette",
+      "translation": "Floette-Eternal",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "floettemega",
+      "name": "Floette-Mega",
+      "baseSpecies": "Floette",
+      "translation": "Floette-Mega",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "meowsticf",
+      "name": "Meowstic-F",
+      "baseSpecies": "Meowstic",
+      "translation": "Meowstic-F",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "meowsticmmega",
+      "name": "Meowstic-M-Mega",
+      "baseSpecies": "Meowstic",
+      "translation": "Meowstic-M-Mega",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "meowsticfmega",
+      "name": "Meowstic-F-Mega",
+      "baseSpecies": "Meowstic",
+      "translation": "Meowstic-F-Mega",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "aegislashblade",
+      "name": "Aegislash-Blade",
+      "baseSpecies": "Aegislash",
+      "translation": "Aegislash-Blade",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "malamarmega",
+      "name": "Malamar-Mega",
+      "baseSpecies": "Malamar",
+      "translation": "Calamanero-Mega",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "barbaraclemega",
+      "name": "Barbaracle-Mega",
+      "baseSpecies": "Barbaracle",
+      "translation": "Thanathora-Mega",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "dragalgemega",
+      "name": "Dragalge-Mega",
+      "baseSpecies": "Dragalge",
+      "translation": "Tandrak-Mega",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "hawluchamega",
+      "name": "Hawlucha-Mega",
+      "baseSpecies": "Hawlucha",
+      "translation": "Resladero-Mega",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "sliggoohisui",
+      "name": "Sliggoo-Hisui",
+      "baseSpecies": "Sliggoo",
+      "translation": "Viscargot-Hisui",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "goodrahisui",
+      "name": "Goodra-Hisui",
+      "baseSpecies": "Goodra",
+      "translation": "Viscogon-Hisui",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "pumpkaboosmall",
+      "name": "Pumpkaboo-Small",
+      "baseSpecies": "Pumpkaboo",
+      "translation": "Pumpkaboo-Small",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "pumpkaboolarge",
+      "name": "Pumpkaboo-Large",
+      "baseSpecies": "Pumpkaboo",
+      "translation": "Pumpkaboo-Large",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "pumpkaboosuper",
+      "name": "Pumpkaboo-Super",
+      "baseSpecies": "Pumpkaboo",
+      "translation": "Pumpkaboo-Super",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "gourgeistsmall",
+      "name": "Gourgeist-Small",
+      "baseSpecies": "Gourgeist",
+      "translation": "Gourgeist-Small",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "gourgeistlarge",
+      "name": "Gourgeist-Large",
+      "baseSpecies": "Gourgeist",
+      "translation": "Gourgeist-Large",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "gourgeistsuper",
+      "name": "Gourgeist-Super",
+      "baseSpecies": "Gourgeist",
+      "translation": "Gourgeist-Super",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "avalugghisui",
+      "name": "Avalugg-Hisui",
+      "baseSpecies": "Avalugg",
+      "translation": "Arktilas-Hisui",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "xerneasneutral",
+      "name": "Xerneas-Neutral",
+      "baseSpecies": "Xerneas",
+      "translation": "Xerneas-Neutral",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "zygarde10",
+      "name": "Zygarde-10%",
+      "baseSpecies": "Zygarde",
+      "translation": "Zygarde-10%",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "zygardecomplete",
+      "name": "Zygarde-Complete",
+      "baseSpecies": "Zygarde",
+      "translation": "Zygarde-Complete",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "zygardemega",
+      "name": "Zygarde-Mega",
+      "baseSpecies": "Zygarde",
+      "translation": "Zygarde-Mega",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "dianciemega",
+      "name": "Diancie-Mega",
+      "baseSpecies": "Diancie",
+      "translation": "Diancie-Mega",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "hoopaunbound",
+      "name": "Hoopa-Unbound",
+      "baseSpecies": "Hoopa",
+      "translation": "Hoopa-Entfesselt",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "decidueyehisui",
+      "name": "Decidueye-Hisui",
+      "baseSpecies": "Decidueye",
+      "translation": "Silvarro-Hisui",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "gumshoostotem",
+      "name": "Gumshoos-Totem",
+      "baseSpecies": "Gumshoos",
+      "translation": "Manguspektor-Totem",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "vikavolttotem",
+      "name": "Vikavolt-Totem",
+      "baseSpecies": "Vikavolt",
+      "translation": "Donarion-Totem",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "crabominablemega",
+      "name": "Crabominable-Mega",
+      "baseSpecies": "Crabominable",
+      "translation": "Krawell-Mega",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "oricoriopompom",
+      "name": "Oricorio-Pom-Pom",
+      "baseSpecies": "Oricorio",
+      "translation": "Oricorio-Pom-Pom",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "oricoriopau",
+      "name": "Oricorio-Pa'u",
+      "baseSpecies": "Oricorio",
+      "translation": "Oricorio-Pa'u",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "oricoriosensu",
+      "name": "Oricorio-Sensu",
+      "baseSpecies": "Oricorio",
+      "translation": "Oricorio-Sensu",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "ribombeetotem",
+      "name": "Ribombee-Totem",
+      "baseSpecies": "Ribombee",
+      "translation": "Bandelby-Totem",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "rockruffdusk",
+      "name": "Rockruff-Dusk",
+      "baseSpecies": "Rockruff",
+      "translation": "Wufffels-Zwielicht",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "lycanrocmidnight",
+      "name": "Lycanroc-Midnight",
+      "baseSpecies": "Lycanroc",
+      "translation": "Wolwerock-Nacht",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "lycanrocdusk",
+      "name": "Lycanroc-Dusk",
+      "baseSpecies": "Lycanroc",
+      "translation": "Wolwerock-Zwielicht",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "wishiwashischool",
+      "name": "Wishiwashi-School",
+      "baseSpecies": "Wishiwashi",
+      "translation": "Wishiwashi-School",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "araquanidtotem",
+      "name": "Araquanid-Totem",
+      "baseSpecies": "Araquanid",
+      "translation": "Aranestro-Totem",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "lurantistotem",
+      "name": "Lurantis-Totem",
+      "baseSpecies": "Lurantis",
+      "translation": "Mantidea-Totem",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "salazzletotem",
+      "name": "Salazzle-Totem",
+      "baseSpecies": "Salazzle",
+      "translation": "Amfira-Totem",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "golisopodmega",
+      "name": "Golisopod-Mega",
+      "baseSpecies": "Golisopod",
+      "translation": "Tectass-Mega",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "silvallybug",
+      "name": "Silvally-Bug",
+      "baseSpecies": "Silvally",
+      "translation": "Amigento-Käfer",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "silvallydark",
+      "name": "Silvally-Dark",
+      "baseSpecies": "Silvally",
+      "translation": "Amigento-Unlicht",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "silvallydragon",
+      "name": "Silvally-Dragon",
+      "baseSpecies": "Silvally",
+      "translation": "Amigento-Drache",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "silvallyelectric",
+      "name": "Silvally-Electric",
+      "baseSpecies": "Silvally",
+      "translation": "Amigento-Elektro",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "silvallyfairy",
+      "name": "Silvally-Fairy",
+      "baseSpecies": "Silvally",
+      "translation": "Amigento-Fee",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "silvallyfighting",
+      "name": "Silvally-Fighting",
+      "baseSpecies": "Silvally",
+      "translation": "Amigento-Kampf",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "silvallyfire",
+      "name": "Silvally-Fire",
+      "baseSpecies": "Silvally",
+      "translation": "Amigento-Feuer",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "silvallyflying",
+      "name": "Silvally-Flying",
+      "baseSpecies": "Silvally",
+      "translation": "Amigento-Flug",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "silvallyghost",
+      "name": "Silvally-Ghost",
+      "baseSpecies": "Silvally",
+      "translation": "Amigento-Geist",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "silvallygrass",
+      "name": "Silvally-Grass",
+      "baseSpecies": "Silvally",
+      "translation": "Amigento-Pflanze",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "silvallyground",
+      "name": "Silvally-Ground",
+      "baseSpecies": "Silvally",
+      "translation": "Amigento-Boden",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "silvallyice",
+      "name": "Silvally-Ice",
+      "baseSpecies": "Silvally",
+      "translation": "Amigento-Eis",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "silvallypoison",
+      "name": "Silvally-Poison",
+      "baseSpecies": "Silvally",
+      "translation": "Amigento-Gift",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "silvallypsychic",
+      "name": "Silvally-Psychic",
+      "baseSpecies": "Silvally",
+      "translation": "Amigento-Psycho",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "silvallyrock",
+      "name": "Silvally-Rock",
+      "baseSpecies": "Silvally",
+      "translation": "Amigento-Gestein",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "silvallysteel",
+      "name": "Silvally-Steel",
+      "baseSpecies": "Silvally",
+      "translation": "Amigento-Stahl",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "silvallywater",
+      "name": "Silvally-Water",
+      "baseSpecies": "Silvally",
+      "translation": "Amigento-Wasser",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "miniormeteor",
+      "name": "Minior-Meteor",
+      "baseSpecies": "Minior",
+      "translation": "Minior-Meteor",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "togedemarutotem",
+      "name": "Togedemaru-Totem",
+      "baseSpecies": "Togedemaru",
+      "translation": "Togedemaru-Totem",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "mimikyubusted",
+      "name": "Mimikyu-Busted",
+      "baseSpecies": "Mimikyu",
+      "translation": "Mimikyu-Busted",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "mimikyutotem",
+      "name": "Mimikyu-Totem",
+      "baseSpecies": "Mimikyu",
+      "translation": "Mimigma-Totem",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "mimikyubustedtotem",
+      "name": "Mimikyu-Busted-Totem",
+      "baseSpecies": "Mimikyu",
+      "translation": "Mimikyu-Busted-Totem",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "drampamega",
+      "name": "Drampa-Mega",
+      "baseSpecies": "Drampa",
+      "translation": "Sen-Long-Mega",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "kommoototem",
+      "name": "Kommo-o-Totem",
+      "baseSpecies": "Kommo-o",
+      "translation": "Grandiras-Totem",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "necrozmaduskmane",
+      "name": "Necrozma-Dusk-Mane",
+      "baseSpecies": "Necrozma",
+      "translation": "Necrozma-Abendmähne",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "necrozmadawnwings",
+      "name": "Necrozma-Dawn-Wings",
+      "baseSpecies": "Necrozma",
+      "translation": "Necrozma-Morgenschwingen",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "necrozmaultra",
+      "name": "Necrozma-Ultra",
+      "baseSpecies": "Necrozma",
+      "translation": "Necrozma-Ultra",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "magearnaoriginal",
+      "name": "Magearna-Original",
+      "baseSpecies": "Magearna",
+      "translation": "Magearna-Original",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "magearnamega",
+      "name": "Magearna-Mega",
+      "baseSpecies": "Magearna",
+      "translation": "Magearna-Mega",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "magearnaoriginalmega",
+      "name": "Magearna-Original-Mega",
+      "baseSpecies": "Magearna",
+      "translation": "Magearna-Original-Mega",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "zeraoramega",
+      "name": "Zeraora-Mega",
+      "baseSpecies": "Zeraora",
+      "translation": "Zeraora-Mega",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "melmetalgmax",
+      "name": "Melmetal-Gmax",
+      "baseSpecies": "Melmetal",
+      "translation": "Melmetal-GMAX",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "rillaboomgmax",
+      "name": "Rillaboom-Gmax",
+      "baseSpecies": "Rillaboom",
+      "translation": "Gortrom-GMAX",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "cinderacegmax",
+      "name": "Cinderace-Gmax",
+      "baseSpecies": "Cinderace",
+      "translation": "Liberlo-GMAX",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "inteleongmax",
+      "name": "Inteleon-Gmax",
+      "baseSpecies": "Inteleon",
+      "translation": "Intelleon-GMAX",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "corviknightgmax",
+      "name": "Corviknight-Gmax",
+      "baseSpecies": "Corviknight",
+      "translation": "Krarmor-GMAX",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "orbeetlegmax",
+      "name": "Orbeetle-Gmax",
+      "baseSpecies": "Orbeetle",
+      "translation": "Maritellit-GMAX",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "drednawgmax",
+      "name": "Drednaw-Gmax",
+      "baseSpecies": "Drednaw",
+      "translation": "Kamalm-GMAX",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "coalossalgmax",
+      "name": "Coalossal-Gmax",
+      "baseSpecies": "Coalossal",
+      "translation": "Montecarbo-GMAX",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "flapplegmax",
+      "name": "Flapple-Gmax",
+      "baseSpecies": "Flapple",
+      "translation": "Drapfel-GMAX",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "appletungmax",
+      "name": "Appletun-Gmax",
+      "baseSpecies": "Appletun",
+      "translation": "Schlapfel-GMAX",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "sandacondagmax",
+      "name": "Sandaconda-Gmax",
+      "baseSpecies": "Sandaconda",
+      "translation": "Sanaconda-GMAX",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "cramorantgulping",
+      "name": "Cramorant-Gulping",
+      "baseSpecies": "Cramorant",
+      "translation": "Urgl",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "cramorantgorging",
+      "name": "Cramorant-Gorging",
+      "baseSpecies": "Cramorant",
+      "translation": "Urgl",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "toxtricitylowkey",
+      "name": "Toxtricity-Low-Key",
+      "baseSpecies": "Toxtricity",
+      "translation": "Riffex-Low-Key",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "toxtricitygmax",
+      "name": "Toxtricity-Gmax",
+      "baseSpecies": "Toxtricity",
+      "translation": "Riffex-GMAX",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "toxtricitylowkeygmax",
+      "name": "Toxtricity-Low-Key-Gmax",
+      "baseSpecies": "Toxtricity",
+      "translation": "Riffex-Low-Key-GMAX",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "centiskorchgmax",
+      "name": "Centiskorch-Gmax",
+      "baseSpecies": "Centiskorch",
+      "translation": "Infernopod-GMAX",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "sinisteaantique",
+      "name": "Sinistea-Antique",
+      "baseSpecies": "Sinistea",
+      "translation": "Fatalitee-Antique",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "polteageistantique",
+      "name": "Polteageist-Antique",
+      "baseSpecies": "Polteageist",
+      "translation": "Mortipot-Antique",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "hatterenegmax",
+      "name": "Hatterene-Gmax",
+      "baseSpecies": "Hatterene",
+      "translation": "Silembrim-GMAX",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "grimmsnarlgmax",
+      "name": "Grimmsnarl-Gmax",
+      "baseSpecies": "Grimmsnarl",
+      "translation": "Olangaar-GMAX",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "alcremiegmax",
+      "name": "Alcremie-Gmax",
+      "baseSpecies": "Alcremie",
+      "translation": "Pokusan-GMAX",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "falinksmega",
+      "name": "Falinks-Mega",
+      "baseSpecies": "Falinks",
+      "translation": "Legios-Mega",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "eiscuenoice",
+      "name": "Eiscue-Noice",
+      "baseSpecies": "Eiscue",
+      "translation": "Eiscue-Noice",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "indeedeef",
+      "name": "Indeedee-F",
+      "baseSpecies": "Indeedee",
+      "translation": "Servol-F",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "morpekohangry",
+      "name": "Morpeko-Hangry",
+      "baseSpecies": "Morpeko",
+      "translation": "Morpeko-Hangry",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "copperajahgmax",
+      "name": "Copperajah-Gmax",
+      "baseSpecies": "Copperajah",
+      "translation": "Patinaraja-GMAX",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "duraludongmax",
+      "name": "Duraludon-Gmax",
+      "baseSpecies": "Duraludon",
+      "translation": "Duraludon-GMAX",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "zaciancrowned",
+      "name": "Zacian-Crowned",
+      "baseSpecies": "Zacian",
+      "translation": "Zacian-König",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "zamazentacrowned",
+      "name": "Zamazenta-Crowned",
+      "baseSpecies": "Zamazenta",
+      "translation": "Zamazenta-König",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "eternatuseternamax",
+      "name": "Eternatus-Eternamax",
+      "baseSpecies": "Eternatus",
+      "translation": "Endynalos-Eternamax",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "urshifurapidstrike",
+      "name": "Urshifu-Rapid-Strike",
+      "baseSpecies": "Urshifu",
+      "translation": "Wulaosu-Fließender Stil",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "urshifugmax",
+      "name": "Urshifu-Gmax",
+      "baseSpecies": "Urshifu",
+      "translation": "Wulaosu-GMAX",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "urshifurapidstrikegmax",
+      "name": "Urshifu-Rapid-Strike-Gmax",
+      "baseSpecies": "Urshifu",
+      "translation": "Wulaosu-Fließender Stil-GMAX",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "zarudedada",
+      "name": "Zarude-Dada",
+      "baseSpecies": "Zarude",
+      "translation": "Zarude-Dada",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "calyrexice",
+      "name": "Calyrex-Ice",
+      "baseSpecies": "Calyrex",
+      "translation": "Coronospa-Schimmel",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "calyrexshadow",
+      "name": "Calyrex-Shadow",
+      "baseSpecies": "Calyrex",
+      "translation": "Coronospa-Rappe",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "ursalunabloodmoon",
+      "name": "Ursaluna-Bloodmoon",
+      "baseSpecies": "Ursaluna",
+      "translation": "Ursaluna-Blutmond",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "basculegionf",
+      "name": "Basculegion-F",
+      "baseSpecies": "Basculegion",
+      "translation": "Salmagnis-F",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "enamorustherian",
+      "name": "Enamorus-Therian",
+      "baseSpecies": "Enamorus",
+      "translation": "Cupidos-Tiergeist",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "oinkolognef",
+      "name": "Oinkologne-F",
+      "baseSpecies": "Oinkologne",
+      "translation": "Fragrunz-F",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "mausholdfour",
+      "name": "Maushold-Four",
+      "baseSpecies": "Maushold",
+      "translation": "Maushold-Four",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "squawkabillyblue",
+      "name": "Squawkabilly-Blue",
+      "baseSpecies": "Squawkabilly",
+      "translation": "Krawalloro-Blau",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "squawkabillyyellow",
+      "name": "Squawkabilly-Yellow",
+      "baseSpecies": "Squawkabilly",
+      "translation": "Krawalloro-Gelb",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "squawkabillywhite",
+      "name": "Squawkabilly-White",
+      "baseSpecies": "Squawkabilly",
+      "translation": "Krawalloro-Weiß",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "scovillainmega",
+      "name": "Scovillain-Mega",
+      "baseSpecies": "Scovillain",
+      "translation": "Halupenjo-Mega",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "palafinhero",
+      "name": "Palafin-Hero",
+      "baseSpecies": "Palafin",
+      "translation": "Delfinator-Hero",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "glimmoramega",
+      "name": "Glimmora-Mega",
+      "baseSpecies": "Glimmora",
+      "translation": "Lumiflora-Mega",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "tatsugiridroopy",
+      "name": "Tatsugiri-Droopy",
+      "baseSpecies": "Tatsugiri",
+      "translation": "Nigiragi-Droopy",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "tatsugiristretchy",
+      "name": "Tatsugiri-Stretchy",
+      "baseSpecies": "Tatsugiri",
+      "translation": "Nigiragi-Stretchy",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "tatsugiricurlymega",
+      "name": "Tatsugiri-Curly-Mega",
+      "baseSpecies": "Tatsugiri",
+      "translation": "Nigiragi-Curly-Mega",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "tatsugiridroopymega",
+      "name": "Tatsugiri-Droopy-Mega",
+      "baseSpecies": "Tatsugiri",
+      "translation": "Nigiragi-Droopy-Mega",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "tatsugiristretchymega",
+      "name": "Tatsugiri-Stretchy-Mega",
+      "baseSpecies": "Tatsugiri",
+      "translation": "Nigiragi-Stretchy-Mega",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "dudunsparcethreesegment",
+      "name": "Dudunsparce-Three-Segment",
+      "baseSpecies": "Dudunsparce",
+      "translation": "Dummimisel-Three-Segment",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "baxcaliburmega",
+      "name": "Baxcalibur-Mega",
+      "baseSpecies": "Baxcalibur",
+      "translation": "Espinodon-Mega",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "gimmighoulroaming",
+      "name": "Gimmighoul-Roaming",
+      "baseSpecies": "Gimmighoul",
+      "translation": "Gierspenst-Roaming",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "poltchageistartisan",
+      "name": "Poltchageist-Artisan",
+      "baseSpecies": "Poltchageist",
+      "translation": "Mortcha-Artisan",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "sinistchamasterpiece",
+      "name": "Sinistcha-Masterpiece",
+      "baseSpecies": "Sinistcha",
+      "translation": "Fatalitcha-Masterpiece",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "ogerponwellspring",
+      "name": "Ogerpon-Wellspring",
+      "baseSpecies": "Ogerpon",
+      "translation": "Ogerpon-Brunnen",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "ogerponhearthflame",
+      "name": "Ogerpon-Hearthflame",
+      "baseSpecies": "Ogerpon",
+      "translation": "Ogerpon-Ofen",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "ogerponcornerstone",
+      "name": "Ogerpon-Cornerstone",
+      "baseSpecies": "Ogerpon",
+      "translation": "Ogerpon-Fundament",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "ogerpontealtera",
+      "name": "Ogerpon-Teal-Tera",
+      "baseSpecies": "Ogerpon",
+      "translation": "Ogerpon-Teal-Tera",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "ogerponwellspringtera",
+      "name": "Ogerpon-Wellspring-Tera",
+      "baseSpecies": "Ogerpon",
+      "translation": "Ogerpon-Brunnen-Tera",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "ogerponhearthflametera",
+      "name": "Ogerpon-Hearthflame-Tera",
+      "baseSpecies": "Ogerpon",
+      "translation": "Ogerpon-Ofen-Tera",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "ogerponcornerstonetera",
+      "name": "Ogerpon-Cornerstone-Tera",
+      "baseSpecies": "Ogerpon",
+      "translation": "Ogerpon-Fundament-Tera",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "terapagosterastal",
+      "name": "Terapagos-Terastal",
+      "baseSpecies": "Terapagos",
+      "translation": "Terapagos-Terastal",
+      "status": "Composed form label; base name audited separately"
+    },
+    {
+      "id": "terapagosstellar",
+      "name": "Terapagos-Stellar",
+      "baseSpecies": "Terapagos",
+      "translation": "Terapagos-Stellar",
+      "status": "Composed form label; base name audited separately"
+    }
+  ],
+  "formChanges": [
+    {
+      "id": "ponytagalar",
+      "en": "Ponyta-Galar",
+      "before": "Ponyta-Galar",
+      "after": "Ponita-Galar"
+    },
+    {
+      "id": "eeveestarter",
+      "en": "Eevee-Starter",
+      "before": "Eevee-Starter",
+      "after": "Evoli-Starter"
+    },
+    {
+      "id": "wooperpaldea",
+      "en": "Wooper-Paldea",
+      "before": "Wooper-Paldea",
+      "after": "Felino-Paldea"
+    },
+    {
+      "id": "heracrossmega",
+      "en": "Heracross-Mega",
+      "before": "Skarabon-Mega",
+      "after": "Skaraborn-Mega"
+    },
+    {
+      "id": "castformsunny",
+      "en": "Castform-Sunny",
+      "before": "Castform-Sunny",
+      "after": "Formeo-Sunny"
+    },
+    {
+      "id": "castformrainy",
+      "en": "Castform-Rainy",
+      "before": "Castform-Rainy",
+      "after": "Formeo-Rainy"
+    },
+    {
+      "id": "castformsnowy",
+      "en": "Castform-Snowy",
+      "before": "Castform-Snowy",
+      "after": "Formeo-Snowy"
+    },
+    {
+      "id": "cherrimsunshine",
+      "en": "Cherrim-Sunshine",
+      "before": "Cherrim-Sunshine",
+      "after": "Kinoso-Sunshine"
+    },
+    {
+      "id": "garchompmegaz",
+      "en": "Garchomp-Mega-Z",
+      "before": "Garchomp-Mega-Z",
+      "after": "Knakrack-Mega-Z"
+    },
+    {
+      "id": "basculinbluestriped",
+      "en": "Basculin-Blue-Striped",
+      "before": "Basculin-Blue-Striped",
+      "after": "Barschuft-Blue-Striped"
+    },
+    {
+      "id": "basculinwhitestriped",
+      "en": "Basculin-White-Striped",
+      "before": "Basculin-White-Striped",
+      "after": "Barschuft-White-Striped"
+    },
+    {
+      "id": "darmanitanzen",
+      "en": "Darmanitan-Zen",
+      "before": "Darmanitan-Zen",
+      "after": "Flampivian-Zen"
+    },
+    {
+      "id": "darmanitangalarzen",
+      "en": "Darmanitan-Galar-Zen",
+      "before": "Darmanitan-Galar-Zen",
+      "after": "Flampivian-Galar-Zen"
+    },
+    {
+      "id": "greninjabond",
+      "en": "Greninja-Bond",
+      "before": "Greninja-Bond",
+      "after": "Quajutsu-Bond"
+    },
+    {
+      "id": "greninjaash",
+      "en": "Greninja-Ash",
+      "before": "Greninja-Ash",
+      "after": "Quajutsu-Ash"
+    },
+    {
+      "id": "meowsticf",
+      "en": "Meowstic-F",
+      "before": "Meowstic-F",
+      "after": "Psiaugon-F"
+    },
+    {
+      "id": "meowsticmmega",
+      "en": "Meowstic-M-Mega",
+      "before": "Meowstic-M-Mega",
+      "after": "Psiaugon-M-Mega"
+    },
+    {
+      "id": "meowsticfmega",
+      "en": "Meowstic-F-Mega",
+      "before": "Meowstic-F-Mega",
+      "after": "Psiaugon-F-Mega"
+    },
+    {
+      "id": "aegislashblade",
+      "en": "Aegislash-Blade",
+      "before": "Aegislash-Blade",
+      "after": "Durengard-Blade"
+    },
+    {
+      "id": "pumpkaboosmall",
+      "en": "Pumpkaboo-Small",
+      "before": "Pumpkaboo-Small",
+      "after": "Irrbis-Small"
+    },
+    {
+      "id": "pumpkaboolarge",
+      "en": "Pumpkaboo-Large",
+      "before": "Pumpkaboo-Large",
+      "after": "Irrbis-Large"
+    },
+    {
+      "id": "pumpkaboosuper",
+      "en": "Pumpkaboo-Super",
+      "before": "Pumpkaboo-Super",
+      "after": "Irrbis-Super"
+    },
+    {
+      "id": "gourgeistsmall",
+      "en": "Gourgeist-Small",
+      "before": "Gourgeist-Small",
+      "after": "Pumpdjinn-Small"
+    },
+    {
+      "id": "gourgeistlarge",
+      "en": "Gourgeist-Large",
+      "before": "Gourgeist-Large",
+      "after": "Pumpdjinn-Large"
+    },
+    {
+      "id": "gourgeistsuper",
+      "en": "Gourgeist-Super",
+      "before": "Gourgeist-Super",
+      "after": "Pumpdjinn-Super"
+    },
+    {
+      "id": "oricoriopompom",
+      "en": "Oricorio-Pom-Pom",
+      "before": "Oricorio-Pom-Pom",
+      "after": "Choreogel-Pom-Pom"
+    },
+    {
+      "id": "oricoriopau",
+      "en": "Oricorio-Pa'u",
+      "before": "Oricorio-Pa'u",
+      "after": "Choreogel-Pa'u"
+    },
+    {
+      "id": "oricoriosensu",
+      "en": "Oricorio-Sensu",
+      "before": "Oricorio-Sensu",
+      "after": "Choreogel-Sensu"
+    },
+    {
+      "id": "rockruffdusk",
+      "en": "Rockruff-Dusk",
+      "before": "Wufffels-Zwielicht",
+      "after": "Wuffels-Zwielicht"
+    },
+    {
+      "id": "wishiwashischool",
+      "en": "Wishiwashi-School",
+      "before": "Wishiwashi-School",
+      "after": "Lusardin-School"
+    },
+    {
+      "id": "miniormeteor",
+      "en": "Minior-Meteor",
+      "before": "Minior-Meteor",
+      "after": "Meteno-Meteor"
+    },
+    {
+      "id": "mimikyubusted",
+      "en": "Mimikyu-Busted",
+      "before": "Mimikyu-Busted",
+      "after": "Mimigma-Busted"
+    },
+    {
+      "id": "mimikyubustedtotem",
+      "en": "Mimikyu-Busted-Totem",
+      "before": "Mimikyu-Busted-Totem",
+      "after": "Mimigma-Busted-Totem"
+    },
+    {
+      "id": "eiscuenoice",
+      "en": "Eiscue-Noice",
+      "before": "Eiscue-Noice",
+      "after": "Kubuin-Noice"
+    },
+    {
+      "id": "mausholdfour",
+      "en": "Maushold-Four",
+      "before": "Maushold-Four",
+      "after": "Famieps-Four"
+    }
+  ]
+}

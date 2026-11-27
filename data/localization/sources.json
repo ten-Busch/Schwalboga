@@ -1,0 +1,37 @@
+{
+  "description": "German in-game names, mirrored in PKHeX. PKHeX is a community project, not an official Pokémon website.",
+  "repository": "https://github.com/kwsch/PKHeX",
+  "commit": "a5311f9f55a84376fd2e2499b25d9fb9640d9f2d",
+  "files": [
+    {
+      "filename": "text_Species_en.txt",
+      "url": "https://raw.githubusercontent.com/kwsch/PKHeX/a5311f9f55a84376fd2e2499b25d9fb9640d9f2d/PKHeX.Core/Resources/text/other/en/text_Species_en.txt",
+      "sha256": "cffb48727a4321f171abad8fd8d3e0342fccfa7a1684f371b2535feecaed6798"
+    },
+    {
+      "filename": "text_Species_de.txt",
+      "url": "https://raw.githubusercontent.com/kwsch/PKHeX/a5311f9f55a84376fd2e2499b25d9fb9640d9f2d/PKHeX.Core/Resources/text/other/de/text_Species_de.txt",
+      "sha256": "b54e723969c5918c3c54be839f65d193384a8821d1f593f14e720c0b75463465"
+    },
+    {
+      "filename": "text_Moves_en.txt",
+      "url": "https://raw.githubusercontent.com/kwsch/PKHeX/a5311f9f55a84376fd2e2499b25d9fb9640d9f2d/PKHeX.Core/Resources/text/other/en/text_Moves_en.txt",
+      "sha256": "0530e3b28b58bd674769375bb25fb2afd35ef49a522283e33ece6d1f2bcdb719"
+    },
+    {
+      "filename": "text_Moves_de.txt",
+      "url": "https://raw.githubusercontent.com/kwsch/PKHeX/a5311f9f55a84376fd2e2499b25d9fb9640d9f2d/PKHeX.Core/Resources/text/other/de/text_Moves_de.txt",
+      "sha256": "0a135ece4aea56dcbfa38009f4e478583ac55a2fb153c65a1744c6b9b84d422c"
+    },
+    {
+      "filename": "text_Abilities_en.txt",
+      "url": "https://raw.githubusercontent.com/kwsch/PKHeX/a5311f9f55a84376fd2e2499b25d9fb9640d9f2d/PKHeX.Core/Resources/text/other/en/text_Abilities_en.txt",
+      "sha256": "84a3caeaa9f238545225e8d9987e8fbefde4f074f7d5289cd575f8db8961b4e5"
+    },
+    {
+      "filename": "text_Abilities_de.txt",
+      "url": "https://raw.githubusercontent.com/kwsch/PKHeX/a5311f9f55a84376fd2e2499b25d9fb9640d9f2d/PKHeX.Core/Resources/text/other/de/text_Abilities_de.txt",
+      "sha256": "be71a7c9dc4c4c983ddb9c79025bf8736b6bb7d51b1cc712639be407c875a8bb"
+    }
+  ]
+}

@@ -149,11 +149,15 @@ window.createMiloQuestionGenerator = function createMiloQuestionGenerator(entrie
     for (const [answer, prompt] of forms) {
       if (!/^[a-zäöüß]+$/i.test(answer)) continue;
       const { basic, advanced, easy } = typos(answer);
-      if (easy.length >= 3) spellings.get(p.num <= 151 ? 50 : 100).push({ answer, prompt, basic: easy });
+      if (easy.length >= 3) {
+        const candidate = { answer, prompt, basic: easy };
+        spellings.get(p.num <= 151 ? 50 : 100).push(candidate);
+        if (generationOne) spellings.get(100).push(candidate);
+      }
       if (basic.length >= 2 && advanced.some((typo) => !basic.includes(typo))) {
         const candidate = { answer, prompt, basic, advanced: advanced.filter((typo) => !basic.includes(typo)) };
         spellings.get(200).push(candidate);
-        if (p.num > 386) spellings.get(300).push(candidate);
+        if (p.num > 386 || generationOne) spellings.get(300).push(candidate);
       }
     }
   }

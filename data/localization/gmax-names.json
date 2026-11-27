@@ -1,0 +1,135 @@
+{
+  "description": "Supplementary community cross-check of Gigantamax battle-only move names, absent from PKHeX save-editing name tables. Publisher spot checks recorded separately; this is not an official publisher source.",
+  "url": "https://www.bisafans.de/spiele/editionen/schild-schwert/neue-attacken.php",
+  "sha256": "7ec27bf8d61b5b9359e502efd9700a0e4c6418b661b2b6058f8c86d1760a0a27",
+  "names": [
+    {
+      "en": "G-Max Gravitas",
+      "de": "Giga-Astrowellen"
+    },
+    {
+      "en": "G-Max Befuddle",
+      "de": "Giga-Benebelung"
+    },
+    {
+      "en": "G-Max Cannonade",
+      "de": "Giga-Beschuss"
+    },
+    {
+      "en": "G-Max Volt Crash",
+      "de": "Giga-Blitzhagel"
+    },
+    {
+      "en": "G-Max Fireball",
+      "de": "Giga-Brandball"
+    },
+    {
+      "en": "G-Max Depletion",
+      "de": "Giga-Dämpfer"
+    },
+    {
+      "en": "G-Max One Blow",
+      "de": "Giga-Einzelhieb"
+    },
+    {
+      "en": "G-Max Wildfire",
+      "de": "Giga-Feuerflug"
+    },
+    {
+      "en": "G-Max Centiferno",
+      "de": "Giga-Feuerkessel"
+    },
+    {
+      "en": "G-Max Chi Strike",
+      "de": "Giga-Fokusschlag"
+    },
+    {
+      "en": "G-Max Snooze",
+      "de": "Giga-Gähnzwang"
+    },
+    {
+      "en": "G-Max Vine Lash",
+      "de": "Giga-Geißel"
+    },
+    {
+      "en": "G-Max Cuddle",
+      "de": "Giga-Gekuschel"
+    },
+    {
+      "en": "G-Max Stonesurge",
+      "de": "Giga-Geröll"
+    },
+    {
+      "en": "G-Max Malodor",
+      "de": "Giga-Gestank"
+    },
+    {
+      "en": "G-Max Drum Solo",
+      "de": "Giga-Getrommel"
+    },
+    {
+      "en": "G-Max Finale",
+      "de": "Giga-Lichtblick"
+    },
+    {
+      "en": "G-Max Resonance",
+      "de": "Giga-Melodie"
+    },
+    {
+      "en": "G-Max Gold Rush",
+      "de": "Giga-Münzregen"
+    },
+    {
+      "en": "G-Max Rapid Flow",
+      "de": "Giga-Multihieb"
+    },
+    {
+      "en": "G-Max Sweetness",
+      "de": "Giga-Nektarflut"
+    },
+    {
+      "en": "G-Max Tartness",
+      "de": "Giga-Säureguss"
+    },
+    {
+      "en": "G-Max Sandblast",
+      "de": "Giga-Sandstoß"
+    },
+    {
+      "en": "G-Max Smite",
+      "de": "Giga-Sanktion"
+    },
+    {
+      "en": "G-Max Foam Burst",
+      "de": "Giga-Schaumbad"
+    },
+    {
+      "en": "G-Max Volcalith",
+      "de": "Giga-Schlacke"
+    },
+    {
+      "en": "G-Max Meltdown",
+      "de": "Giga-Schmelze"
+    },
+    {
+      "en": "G-Max Hydrosnipe",
+      "de": "Giga-Schütze"
+    },
+    {
+      "en": "G-Max Terror",
+      "de": "Giga-Spuksperre"
+    },
+    {
+      "en": "G-Max Steelsurge",
+      "de": "Giga-Stahlschlag"
+    },
+    {
+      "en": "G-Max Wind Rage",
+      "de": "Giga-Sturmstoß"
+    },
+    {
+      "en": "G-Max Stun Shock",
+      "de": "Giga-Voltschlag"
+    }
+  ]
+}

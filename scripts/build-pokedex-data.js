@@ -210,6 +210,11 @@ const MovesText = loadExportedObject({
 const Translations = fs.existsSync(sourcePaths.translations)
   ? JSON.parse(fs.readFileSync(sourcePaths.translations, 'utf8'))
   : { pokemon: {}, moves: {}, abilities: {} };
+const verifiedNames = JSON.parse(fs.readFileSync(path.join(outputDirectory, 'localization', 'verified-names.json'), 'utf8'));
+for (const kind of ['pokemon', 'moves', 'abilities']) {
+  Translations[kind] = { ...(Translations[kind] ?? {}), ...verifiedNames[kind] };
+}
+Object.assign(Translations.pokemon, JSON.parse(fs.readFileSync(path.join(outputDirectory, 'localization', 'form-names.json'), 'utf8')));
 
 const movesSourceText = fs.readFileSync(sourcePaths.moves, 'utf8');
 const moveEntries = parseTopLevelEntries(movesSourceText);

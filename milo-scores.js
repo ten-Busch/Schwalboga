@@ -1,7 +1,7 @@
 window.createMiloScoreStore = function createMiloScoreStore(client) {
   const valid = (row) => typeof row?.player_name === 'string' && row.player_name.trim().length > 0
     && row.player_name.length <= 40 && Number.isInteger(row.score) && row.score >= 0 && row.score <= 1000000;
-  const allowed = new Set(['half', 'audience', 'telephone', 'doppelteam', 'genwunner', 'hilfe', 'reroll', 'zerschneider', 'amnesie', 'blank']);
+  const allowed = new Set(['half', 'audience', 'telephone', 'doppelteam', 'genwunner', 'hilfe', 'reroll', 'zerschneider', 'amnesie', 'seher', 'metronom', 'blank']);
   function normalizeLifelines(slots, mode) {
     const ids = ['half', 'audience', 'telephone', 'blank'];
     return ids.map((id, index) => ({ id: index === 3 && mode === 'risk' && allowed.has(slots?.[index]?.id)

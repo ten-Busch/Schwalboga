@@ -10,6 +10,8 @@ import openpyxl
 ROOT = Path(__file__).resolve().parents[1]
 WORKBOOK_PATH = ROOT / "files" / "International List of Pokémon Names.xlsx"
 OUTPUT_PATH = ROOT / "data" / "translations.json"
+VERIFIED_NAMES_PATH = ROOT / "data" / "localization" / "verified-names.json"
+FORM_NAMES_PATH = ROOT / "data" / "localization" / "form-names.json"
 
 NAME_CORRECTIONS = {
     "pokemon": {
@@ -163,6 +165,8 @@ def main():
         "abilities": "Abilities",
     }
     output = {"locales": ["de"]}
+    verified = json.loads(VERIFIED_NAMES_PATH.read_text(encoding="utf-8"))
+    forms = json.loads(FORM_NAMES_PATH.read_text(encoding="utf-8"))
     unmatched = {}
     ambiguous = {}
 
@@ -175,6 +179,11 @@ def main():
             sources[kind],
         )
         translations.update(MANUAL_TRANSLATIONS.get(kind, {}))
+        # Audited in-game spellings take precedence over spreadsheet values,
+        # including explicit identity translations such as Pikachu -> Pikachu.
+        translations.update(verified.get(kind, {}))
+        if kind == "pokemon":
+            translations.update(forms)
         translations = dict(sorted(translations.items()))
         output[kind] = translations
 

@@ -52,18 +52,21 @@ window.createMiloQuiz = function createMiloQuiz(getAdminId, generateQuestion, sc
     audience: ['Publikum', 'publikum', 'Abstimmung vor Ort mit live anpassbaren Stimmen. Auf derselben Frage erneut aufrufbar.'],
     telephone: ['Telefon', 'telefon', 'Wähle einen von drei Kontakten und lies seinen Rat.'],
     doppelteam: ['Doppelteam', 'doppelteam', 'Logge zwei Antworten ein. Eine richtige genügt. Nicht nach 50:50 nutzbar.'],
-    genwunner: ['Genwunner', 'genwunner', 'Neue Frage derselben Kategorie mit ausschließlich Pokémon der ersten Generation. Nur bei Pokémon-Namen in der Frage.'],
+    genwunner: ['Genwunner', 'genwunner', 'Neue Frage derselben Kategorie mit ausschließlich Pokémon der ersten Generation. Verfügbar bei Pokémon-Namen in der Frage oder den Antworten, auch bei Schreibweisen und Pokémon-Übersetzungen.'],
     hilfe: ['Hilfe!', 'hilfe', 'Bitte eine Person aus dem Publikum um Rat.'],
     reroll: ['Reroll', 'reroll', 'Neue Frage, möglichst aus einer anderen Kategorie. Entfernte Antworten erscheinen wieder.'],
     zerschneider: ['Zerschneider', 'zerschneider', 'Überspringe eine Frage. Ihr Punktewert wird am Ende von deinem Ergebnis abgezogen.'],
     amnesie: ['Amnesie', 'amnesie', 'Neue Frage aus der nächstleichteren Stufe. Von 100 bis einschließlich 16.000 Punkten nutzbar. Der Gewinn der aktuellen Stufe bleibt gleich.'],
+    seher: ['Seher', 'seher', 'Verrät den richtigen Antwortbuchstaben der Frage nach der nächsten. Nutzbar von 50 bis 125.000 Punkten; die Vorhersage reicht bis 500.000.'],
+    metronom: ['Metronom', 'metronom', 'Gewährt beim Anklicken einen zufälligen zusätzlichen Standardjoker. Beim Telefonjoker wird einer der drei verfügbaren Kontakte zufällig angerufen. Die Standardjoker bleiben unberührt.'],
     blank: ['Kein Wahljoker', 'blank', ''],
   };
-  const bonuses = ['doppelteam', 'genwunner', 'hilfe', 'reroll', 'zerschneider', 'amnesie'];
+  const bonuses = ['doppelteam', 'genwunner', 'hilfe', 'reroll', 'zerschneider', 'amnesie', 'seher', 'metronom'];
   function icon(id, used = false, unavailable = false) {
     const image = element('img', 'milo-lifeline-icon');
     const file = unavailable && !used && id === 'genwunner' ? 'gewunnerna'
-      : unavailable && !used && id === 'amnesie' ? 'amnesiena' : lifelines[id][1] + (used && id !== 'blank' ? 'used' : '');
+      : unavailable && !used && id === 'amnesie' ? 'amnesiena'
+        : unavailable && !used && id === 'seher' ? 'seherna' : lifelines[id][1] + (used && id !== 'blank' ? 'used' : '');
     image.src = `assets/wwtbam/${file}.png`;
     image.alt = `${lifelines[id][0]}${used ? ' · benutzt' : ' · unbenutzt'}`;
     return image;
@@ -80,16 +83,40 @@ window.createMiloQuiz = function createMiloQuiz(getAdminId, generateQuestion, sc
   const usedCount = (row) => row.usedCount ?? row.lifelines?.filter((slot) => slot.used).length ?? 0;
   const rankScores = (a, b) => b.score - a.score || usedCount(a) - usedCount(b);
   function markUsed(id) { const slot = round.lifelines.find((item) => item.id === id); if (slot) slot.used = true; }
-  function hasPokemonPrompt() {
-    return round.question.referencePokemon?.some((p) => [p.name, p.de].some((name) => name && round.question.prompt.includes(name)));
+  function hasPokemonNames() {
+    const texts = [round.question.prompt, ...round.question.options];
+    return round.question.referencePokemon?.some((p) => [p.name, p.de].some((name) => name && texts.some((text) => text.includes(name))));
   }
   let jokerPopup = null;
   let phoneTimer;
+  let metronomTimer;
+  let estimateTimer;
+  let estimateSourceIndex = 0;
+  function estimateSources() {
+    return [
+      {id: 'audience', name: 'Publikum', values: round?.audienceEstimates},
+      {id: 'achromas', name: 'Achromas', values: round?.achromasEstimates},
+    ].filter((source) => source.values?.length);
+  }
+  function updateAnswerEstimates() {
+    const sources = estimateSources();
+    if (!sources.length) return;
+    const source = sources[estimateSourceIndex % sources.length];
+    stage.querySelectorAll('[data-milo-estimate]').forEach((badge) => {
+      const value = source.values.find((item) => item.index === Number(badge.dataset.miloEstimate));
+      if (!value) return;
+      badge.className = `milo-answer-estimate milo-${source.id === 'audience' ? 'audience' : 'achromas'}-estimate`;
+      badge.dataset.source = source.id;
+      badge.replaceChildren(element('small', 'milo-estimate-source', source.name), element('span', '', `${value.percent}%`));
+      badge.setAttribute('aria-label', `${source.name}: ${value.percent} Prozent`);
+    });
+  }
   const safetyPoints = () => (round?.mode ?? (setupStep === 'mode' ? startDraft.mode : 'safe')) === 'risk'
     ? new Set([500, 1000000]) : checkpoints;
 
   function closeJokerPopup() {
     clearTimeout(phoneTimer);
+    clearTimeout(metronomTimer);
     if (jokerPopup?.open) jokerPopup.close();
     jokerPopup?.remove();
     jokerPopup = null;
@@ -125,13 +152,17 @@ window.createMiloQuiz = function createMiloQuiz(getAdminId, generateQuestion, sc
     if (joker === 'bonus') {
       if (round.mode !== 'risk') return true;
       if (round.bonus === 'doppelteam' && round.removed.length) return true;
-      if (round.bonus === 'genwunner' && !hasPokemonPrompt()) return true;
+      if (round.bonus === 'genwunner' && !hasPokemonNames()) return true;
       if (round.bonus === 'amnesie' && (round.index === 0 || prizes[round.index] > 16000)) return true;
+      if (round.bonus === 'seher' && (prizes[round.index] > 125000 || !prizes[round.index + 2])) return true;
+      if (round.bonus === 'metronom' && round.metronom?.questionId === round.questionId
+        && (round.metronom.refunded || round.metronom.kind === 'audience'
+          || (round.metronom.kind === 'telephone' && !round.metronom.telephone?.refundNext))) return false;
       return round.bonusUsed && !developerKeyHeld;
     }
     if (joker === 'half' && round.doubleActive) return true;
     if (developerKeyHeld) return false;
-    if (joker === 'half') return round.halfUsed;
+    if (joker === 'half') return round.halfUsed || round.removed.length > 0;
     const state = round[joker];
     return Boolean(state && (state.refundNext || state.questionId !== round.questionId));
   }
@@ -190,6 +221,7 @@ window.createMiloQuiz = function createMiloQuiz(getAdminId, generateQuestion, sc
   }
 
   function close() {
+    clearInterval(estimateTimer);
     closeJokerPopup();
     scoreRequest += 1;
     clearDeveloperKey();
@@ -368,7 +400,10 @@ window.createMiloQuiz = function createMiloQuiz(getAdminId, generateQuestion, sc
   function makeStep() {
     closeJokerPopup();
     round.questionId = (round.questionId ?? 0) + 1;
+    refundMetronomPhone();
     round.achromasEstimates = null;
+    round.audienceEstimates = null;
+    estimateSourceIndex = 0;
     if (round.telephone?.refundNext) round.telephone = null;
     const prize = prizes[round.index];
     round.question = generateQuestion(prize, round.seen);
@@ -388,8 +423,11 @@ window.createMiloQuiz = function createMiloQuiz(getAdminId, generateQuestion, sc
     closeJokerPopup();
     if (assisted) round.assisted = true;
     round.questionId += 1;
+    refundMetronomPhone();
     if (round.telephone?.refundNext) round.telephone = null;
     round.achromasEstimates = null;
+    round.audienceEstimates = null;
+    estimateSourceIndex = 0;
     round.question = replacement;
     applyPrediction(round.question);
     round.correct = round.question.correct;
@@ -451,6 +489,7 @@ window.createMiloQuiz = function createMiloQuiz(getAdminId, generateQuestion, sc
         round.audience = null;
         round.telephone = null;
         round.bonusUsed = false;
+        round.metronom = null;
         round.penalty = 0;
         round.lifelines.forEach((slot) => { slot.used = false; });
         resetCelebration();
@@ -558,6 +597,45 @@ window.createMiloQuiz = function createMiloQuiz(getAdminId, generateQuestion, sc
     if (jokerDisabled('bonus')) return;
     if (developerKeyHeld) round.assisted = true;
     const id = round.bonus;
+    if (id === 'metronom') {
+      const fresh = !round.metronom || round.metronom.refunded || round.metronom.questionId !== round.questionId || developerKeyHeld;
+      if (fresh) {
+        const context = phoneContext();
+        const notCalled = (contact) => !calledPeople().has(contact.name);
+        let contacts = (window.selectMiloPhoneContacts?.(context) ?? []).filter(notCalled);
+        if (!contacts.length) contacts = (window.createMiloPhoneContacts?.(context) ?? []).filter(notCalled);
+        const eligible = [];
+        if (!round.removed.length) eligible.push('half');
+        if (round.audience?.questionId !== round.questionId && round.metronom?.audience?.questionId !== round.questionId) eligible.push('audience');
+        if (contacts.length) eligible.push('telephone');
+        if (!eligible.length) return;
+        round.metronom = {questionId: round.questionId, eligible, contacts, kind: eligible[Math.floor(Math.random() * eligible.length)]};
+      }
+      round.metronom.refunded = false;
+      round.bonusUsed = true; markUsed(id);
+      if (fresh) animateMetronom();
+      else activateMetronom();
+      return;
+    }
+    if (id === 'seher') {
+      const target = round.index + 2;
+      const slot = round.futureSlots.get(target) ?? Math.floor(Math.random() * 4);
+      round.futureSlots.set(target, slot);
+      round.bonusUsed = true; markUsed(id); render();
+      const box = popup('Seher');
+      const dialogue = element('div', 'milo-phone-dialogue');
+      const portrait = element('div', 'milo-phone-portrait milo-seher-portrait');
+      const sprite = element('img', '');
+      sprite.src = window.POKEDEX_ENTRIES?.find((p) => p.name === 'Grumpig')?.sprite
+        ?? 'https://play.pokemonshowdown.com/sprites/gen5/grumpig.png';
+      sprite.alt = 'Groink';
+      portrait.append(sprite);
+      const speech = element('section', 'milo-phone milo-xatu');
+      speech.append(element('p', '', `Ich sehe... die Antwort ist ${letters[slot]}. Aber nicht jetzt... in der Frage nach der nächsten...`));
+      dialogue.append(portrait, speech);
+      box.append(dialogue, element('p', 'milo-muted', `Vorhersage für die ${format.format(prizes[target])}-Punkte-Frage.`), button('Zurück zur Frage', () => box.close()));
+      box.showModal(); return;
+    }
     if (['genwunner', 'reroll', 'amnesie'].includes(id)) {
       const value = round.question.prize ?? prizes[round.index];
       let replacement;
@@ -579,6 +657,7 @@ window.createMiloQuiz = function createMiloQuiz(getAdminId, generateQuestion, sc
         box.showModal(); return;
       }
       round.bonusUsed = true; markUsed(id);
+      if (id === 'genwunner') replacement.genwunnerStyle = true;
       replaceDeveloperQuestion(replacement, false);
       return;
     }
@@ -609,15 +688,81 @@ window.createMiloQuiz = function createMiloQuiz(getAdminId, generateQuestion, sc
     void refreshScores({ player: round.player, score, mode: round.mode, assisted: round.assisted, lifelines: round.lifelines });
   }
 
-  function audienceJoker() {
-    if (jokerDisabled('audience')) return;
-    markUsed('audience');
+  function refundMetronomPhone() {
+    if (round.metronom?.telephone?.refundNext || round.metronom?.refunded) round.metronom = {questionId: round.questionId, refunded: true};
+  }
+
+  function activateMetronom() {
+    if (round.metronom.kind === 'audience') return audienceJoker(true);
+    if (round.metronom.kind === 'telephone') return telephoneJoker(true);
+    const alreadyActive = round.removed.length > 0;
+    if (!alreadyActive) useHalfJoker(true);
+    render();
+    const box = popup('Metronom · 50:50');
+    box.append(element('p', '', alreadyActive ? '50:50 ist bei dieser Frage bereits aktiv. Es können keine weiteren Antworten gestrichen werden.'
+      : 'Metronom hat zwei falsche Antworten gestrichen, ohne einen deiner Standardjoker zu verbrauchen.'), button('Zurück zur Frage', () => box.close()));
+    box.showModal();
+  }
+
+  function animateMetronom() {
+    render();
+    const owner = round, selection = round.metronom, questionId = round.questionId;
+    const kinds = ['half', 'audience', 'telephone'];
+    const target = kinds.indexOf(selection.kind);
+    const box = popup('Metronom');
+    box.classList.add('milo-metronom-dialog');
+    box.addEventListener('cancel', (event) => event.preventDefault());
+    const reel = element('div', 'milo-metronom-reel');
+    const options = kinds.map((id) => {
+      const option = element('div', 'milo-metronom-option');
+      option.append(icon(id), element('strong', '', lifelines[id][0]));
+      reel.append(option);
+      return option;
+    });
+    const pointer = element('div', 'milo-metronom-pointer', '☝️');
+    pointer.setAttribute('aria-hidden', 'true');
+    reel.append(pointer);
+    const status = element('p', 'milo-muted', 'Metronom wählt einen Joker …');
+    status.setAttribute('role', 'status');
+    box.append(reel, status); box.showModal();
+    const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const totalSteps = reduced ? 0 : 9 + target;
+    let step = 0;
+    const active = () => box.open && isAuthorized() && round === owner && round.questionId === questionId && round.metronom === selection;
+    function tick() {
+      if (!active()) return;
+      const done = step >= totalSteps;
+      const eligible = selection.eligible ?? kinds;
+      const slot = done ? target : kinds.indexOf(eligible[step % eligible.length]);
+      options.forEach((option, index) => {
+        option.classList.toggle('is-active', index === slot);
+        option.classList.toggle('is-selected', done && index === slot);
+      });
+      if (done) {
+        pointer.classList.add('is-stopped');
+        status.textContent = `${lifelines[selection.kind][0]} wird eingesetzt!`;
+        metronomTimer = setTimeout(() => {
+          if (!active()) return;
+          closeJokerPopup(); activateMetronom();
+        }, reduced ? 120 : 500);
+      } else {
+        step += 1;
+        metronomTimer = setTimeout(tick, 65 + step * 11);
+      }
+    }
+    tick();
+  }
+
+  function audienceJoker(extra = false) {
+    if (!extra && jokerDisabled('audience')) return;
+    if (!extra) markUsed('audience');
     if (developerKeyHeld) {
       round.assisted = true;
-      if (round.audience?.questionId !== round.questionId) round.audience = null;
+      if (!extra && round.audience?.questionId !== round.questionId) round.audience = null;
     }
-    round.audience ??= { questionId: round.questionId, votes: [0, 0, 0, 0] };
-    const box = popup('Publikumsjoker');
+    const state = extra ? (round.metronom.audience ??= {questionId: round.questionId, votes: [0, 0, 0, 0]})
+      : (round.audience ??= { questionId: round.questionId, votes: [0, 0, 0, 0] });
+    const box = popup(extra ? 'Metronom · Publikumsjoker' : 'Publikumsjoker');
     box.append(element('p', '', 'Bitte stimmt vor Ort ab. Tragt die Stimmen für A, B, C und D mit + und − ein.'));
     box.append(element('p', 'milo-joker-question', round.question.prompt));
     const graph = element('div', 'milo-votes');
@@ -625,10 +770,17 @@ window.createMiloQuiz = function createMiloQuiz(getAdminId, generateQuestion, sc
     const totalLabel = element('p', 'milo-muted');
     totalLabel.setAttribute('aria-live', 'polite');
     function update() {
-      const total = round.audience.votes.reduce((sum, count) => sum + count, 0);
+      const total = state.votes.reduce((sum, count) => sum + count, 0);
+      const percentages = state.votes.map((count) => total ? count / total * 100 : 0);
+      const rounded = percentages.map(Math.floor);
+      const order = percentages.map((value, index) => ({index, fraction: value - rounded[index]})).sort((a, b) => b.fraction - a.fraction || a.index - b.index);
+      const remainder = total ? 100 - rounded.reduce((sum, value) => sum + value, 0) : 0;
+      for (let i = 0; i < remainder; i++) rounded[order[i].index] += 1;
+      round.audienceEstimates = rounded.map((percent, index) => ({index, percent}));
+      updateAnswerEstimates();
       rows.forEach(({ bar, label, minus }, index) => {
-        const count = round.audience.votes[index];
-        const percent = total ? count / total * 100 : 0;
+        const count = state.votes[index];
+        const percent = rounded[index];
         bar.style.width = `${percent}%`;
         bar.parentElement.setAttribute('aria-valuenow', String(count));
         bar.parentElement.setAttribute('aria-valuemax', String(Math.max(1, total)));
@@ -646,8 +798,8 @@ window.createMiloQuiz = function createMiloQuiz(getAdminId, generateQuestion, sc
       track.setAttribute('aria-valuemin', '0');
       const bar = element('div', 'milo-vote-bar');
       track.append(bar);
-      const minus = button('−', () => { round.audience.votes[index] = Math.max(0, round.audience.votes[index] - 1); update(); });
-      const plus = button('+', () => { round.audience.votes[index] += 1; update(); }, '', round.removed.includes(index));
+      const minus = button('−', () => { state.votes[index] = Math.max(0, state.votes[index] - 1); update(); });
+      const plus = button('+', () => { state.votes[index] += 1; update(); }, '', round.removed.includes(index));
       minus.setAttribute('aria-label', `Stimme für ${letters[index]} entfernen`);
       plus.setAttribute('aria-label', `Stimme für ${letters[index]} hinzufügen`);
       row.append(element('strong', '', `${letters[index]} · ${answer}`), track, label, minus, plus);
@@ -661,25 +813,36 @@ window.createMiloQuiz = function createMiloQuiz(getAdminId, generateQuestion, sc
     box.showModal();
   }
 
-  function telephoneJoker() {
-    if (jokerDisabled('telephone')) return;
-    markUsed('telephone');
-    const context = {
+  function calledPeople() {
+    if (round.phoneHistory?.questionId !== round.questionId) round.phoneHistory = {questionId: round.questionId, names: new Set()};
+    return round.phoneHistory.names;
+  }
+
+  function phoneContext() {
+    return {
       question: round.question, prize: round.question.prize ?? prizes[round.index], player: round.player,
       previousAnswer: round.previousAnswer,
       futureAnswerSlot: round.futureSlots.get(round.index + 2),
     };
-    const developerSelection = developerKeyHeld;
+  }
+
+  function telephoneJoker(extra = false) {
+    if (!extra && jokerDisabled('telephone')) return;
+    if (!extra) markUsed('telephone');
+    const context = phoneContext();
+    const developerSelection = developerKeyHeld && !extra;
     if (developerSelection) {
       round.assisted = true;
       round.telephone = null;
     }
-    round.telephone ??= {
+    const makeCall = () => ({
       questionId: round.questionId,
-      contacts: window.selectMiloPhoneContacts(context),
+      contacts: extra ? round.metronom.contacts : window.selectMiloPhoneContacts(context),
       chosen: null, line: 0, revealedWords: 1,
-    };
-    const call = round.telephone;
+    });
+    const call = extra ? (round.metronom.telephone ??= makeCall()) : (round.telephone ??= makeCall());
+    if (extra && call.chosen === null) call.chosen = Math.floor(Math.random() * call.contacts.length);
+    const callActive = () => isAuthorized() && (extra ? round?.metronom?.telephone : round?.telephone) === call && round?.questionId === call.questionId;
     function portrait(contact, speaker) {
       const data = window.getMiloPhonePortrait?.(contact, speaker);
       if (!data) return null;
@@ -705,7 +868,7 @@ window.createMiloQuiz = function createMiloQuiz(getAdminId, generateQuestion, sc
     box.classList.add('milo-phone-dialog');
     box.addEventListener('close', () => {
       clearTimeout(phoneTimer);
-      if (isAuthorized() && round.telephone === call && round.questionId === call.questionId && call.spokenEstimates) {
+      if (callActive() && call.spokenEstimates) {
         round.achromasEstimates = call.spokenEstimates;
         render();
       }
@@ -736,6 +899,7 @@ window.createMiloQuiz = function createMiloQuiz(getAdminId, generateQuestion, sc
         box.append(options);
       } else {
         const contact = call.contacts[call.chosen];
+        calledPeople().add(contact.name);
         const visibleWrong = round.question.options.filter((_, index) => index !== round.correct && !round.removed.includes(index));
         const signature = round.removed.join(',');
         if (!call.lines || call.signature !== signature) {
@@ -744,7 +908,7 @@ window.createMiloQuiz = function createMiloQuiz(getAdminId, generateQuestion, sc
             [visibleWrong[i], visibleWrong[j]] = [visibleWrong[j], visibleWrong[i]];
           }
           const introduction = {
-            speaker: 'Günther Lauchzelot',
+            speaker: 'Günther Jauchzelot',
             text: `Okay, ${contact.name} am Apparat? ${round.player} ist bei der ${format.format(prizes[round.index])}€ Frage! Ihre Zeit läuft ab jetzt.`,
           };
           call.lines = [
@@ -755,7 +919,14 @@ window.createMiloQuiz = function createMiloQuiz(getAdminId, generateQuestion, sc
           call.line = Math.min(call.line, call.lines.length - 1);
         }
         const current = call.lines[call.line];
-        if (current.predictionSlot !== undefined) round.futureSlots.set(round.index + 2, current.predictionSlot);
+        if (current.predictionSlot !== undefined) {
+          const fixedSlot = round.futureSlots.get(round.index + 2);
+          if (fixedSlot !== undefined && fixedSlot !== current.predictionSlot) {
+            current.predictionSlot = fixedSlot;
+            current.text = current.text.replace(/Antwort ist [ABCD]/, `Antwort ist ${letters[fixedSlot]}`);
+          }
+          round.futureSlots.set(round.index + 2, current.predictionSlot);
+        }
         if (current.estimates) call.spokenEstimates = current.estimates;
         if (current.refund) call.refundNext = true;
         const speech = element('section', 'milo-phone');
@@ -809,7 +980,7 @@ window.createMiloQuiz = function createMiloQuiz(getAdminId, generateQuestion, sc
             text.scrollTop = text.scrollHeight;
             next.disabled = call.line === call.lines.length - 1 || state.elapsed < 10000;
             if (state.elapsed < 10000) phoneTimer = setTimeout(() => {
-              if (!box.open || !isAuthorized() || round.telephone !== call) return;
+              if (!box.open || !callActive()) return;
               state.elapsed = Math.min(10000, state.elapsed + 100);
               state.count += 1 + Math.ceil((state.elapsed / 1000) ** 2);
               stream();
@@ -823,7 +994,7 @@ window.createMiloQuiz = function createMiloQuiz(getAdminId, generateQuestion, sc
             next.disabled = call.line === call.lines.length - 1 || call.revealedWords < words.length;
             if (call.revealedWords < words.length) {
               phoneTimer = setTimeout(() => {
-                if (!box.open || !isAuthorized() || round.telephone !== call) return;
+                if (!box.open || !callActive()) return;
                 call.revealedWords += 1;
                 reveal();
               }, current.interval);
@@ -839,11 +1010,10 @@ window.createMiloQuiz = function createMiloQuiz(getAdminId, generateQuestion, sc
     draw();
   }
 
-  function useHalfJoker() {
-    if (jokerDisabled('half')) return;
+  function useHalfJoker(extra = false) {
+    if (!extra && jokerDisabled('half')) return;
     if (developerKeyHeld) round.assisted = true;
-    round.halfUsed = true;
-    markUsed('half');
+    if (!extra) { round.halfUsed = true; markUsed('half'); }
     const wrong = letters.map((_, index) => index).filter((index) => index !== round.correct);
     wrong.splice(Math.floor(Math.random() * wrong.length), 1);
     round.removed = wrong;
@@ -887,7 +1057,10 @@ window.createMiloQuiz = function createMiloQuiz(getAdminId, generateQuestion, sc
     const jokers = element('div', 'milo-jokers');
     for (const [id, action] of [['half', useHalfJoker], ['audience', audienceJoker], ['telephone', telephoneJoker], ['bonus', useBonus]]) {
       const actual = id === 'bonus' ? (round.mode === 'risk' ? round.bonus : 'blank') : id;
-      const used = round.lifelines.find((slot) => slot.id === actual)?.used;
+      const recordedUsed = round.lifelines.find((slot) => slot.id === actual)?.used;
+      // A refunded call is available again, while history still records its use.
+      const used = actual === 'telephone' && !round.telephone ? false
+        : actual === 'metronom' && round.metronom?.refunded ? false : recordedUsed;
       const disabled = jokerDisabled(id);
       const control = button('', action, 'milo-joker', disabled);
       control.setAttribute('aria-label', lifelines[actual][0] + (used ? ' · benutzt' : ''));
@@ -944,6 +1117,7 @@ window.createMiloQuiz = function createMiloQuiz(getAdminId, generateQuestion, sc
     stage.append(developerControls, developerStatus);
 
     const question = element('section', 'milo-question');
+    if (round.question.genwunnerStyle) question.classList.add('milo-gb-box');
     question.append(element('p', 'milo-kicker', `Stufe ${round.index + 1} / ${prizes.length} · ${format.format(prizes[round.index])} Punkte`),
       element('h3', round.revealed ? '' : 'milo-focus', round.question.prompt));
     if (round.question.rules) question.append(element('p', 'milo-muted milo-question-rules', round.question.rules));
@@ -962,11 +1136,11 @@ window.createMiloQuiz = function createMiloQuiz(getAdminId, generateQuestion, sc
         }
         actions.querySelector('.milo-primary').disabled = round.doubleActive ? round.selectedAnswers.length !== 2 : round.selected === null;
       }, 'milo-answer', removed || round.revealed);
-      const estimate = round.achromasEstimates?.find((item) => item.index === index);
-      if (!removed && estimate) {
+      if (round.question.genwunnerStyle) answer.classList.add('milo-gb-box');
+      if (!removed && estimateSources().length) {
         answer.classList.add('milo-answer-with-estimate');
-        const badge = element('span', 'milo-achromas-estimate', `${estimate.percent}%`);
-        badge.setAttribute('aria-label', `Achromas: ${estimate.percent} Prozent`);
+        const badge = element('span', 'milo-answer-estimate');
+        badge.dataset.miloEstimate = String(index);
         answer.append(badge);
       }
       if (removed) answer.setAttribute('aria-label', `Antwort ${letter} gestrichen`);
@@ -1013,7 +1187,7 @@ window.createMiloQuiz = function createMiloQuiz(getAdminId, generateQuestion, sc
         element('p', '', 'Volle KP · keine Items, Statusprobleme oder Stufenänderungen'),
         element('p', '', 'Keine Tera · neutrales Wetter · kein Terrain · Einzelkampf'),
         element('p', '', 'NatDex-Lernset · Schadensmechanik: Generation 9'),
-        element('p', 'milo-muted', 'Attacken treffen. Keine zufälligen Volltreffer; garantierte Volltreffer zählen, sofern sie nicht verhindert werden. Verglichen wird der berechnete Schaden vor der KP-Begrenzung.'));
+        element('p', 'milo-muted milo-battle-note', 'Attacken treffen. Nur garantierte Volltreffer zählen, sofern sie nicht verhindert werden. Schaden vor der KP-Begrenzung.'));
       context.append(conditions);
       stage.append(context);
     }
@@ -1024,6 +1198,7 @@ window.createMiloQuiz = function createMiloQuiz(getAdminId, generateQuestion, sc
   }
 
   function render(focus = false) {
+    clearInterval(estimateTimer);
     stage.replaceChildren();
     ladder.replaceChildren();
     for (const [index, prize] of [...prizes.entries()].reverse()) {
@@ -1053,6 +1228,15 @@ window.createMiloQuiz = function createMiloQuiz(getAdminId, generateQuestion, sc
         render(true);
       }, 'milo-primary'));
       stage.append(summary, scoreBoard());
+    }
+    updateAnswerEstimates();
+    if (round && !round.result && estimateSources().length > 1 && stage.querySelector('[data-milo-estimate]')) {
+      const owner = round, questionId = round.questionId;
+      estimateTimer = setInterval(() => {
+        if (!isAuthorized() || round !== owner || round.questionId !== questionId) { clearInterval(estimateTimer); return; }
+        estimateSourceIndex += 1;
+        updateAnswerEstimates();
+      }, 3000);
     }
     updateAnswerHint();
     updateDeveloperControls();

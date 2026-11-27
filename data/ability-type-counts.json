@@ -87,10 +87,16 @@
       }
     },
     "asoneglastrier": {
-      "name": "As One (Glastrier)"
+      "name": "As One (Glastrier)",
+      "names": {
+        "de": "Reitgespann"
+      }
     },
     "asonespectrier": {
-      "name": "As One (Spectrier)"
+      "name": "As One (Spectrier)",
+      "names": {
+        "de": "Reitgespann"
+      }
     },
     "aurabreak": {
       "name": "Aura Break",
@@ -111,7 +117,10 @@
       }
     },
     "battery": {
-      "name": "Battery"
+      "name": "Battery",
+      "names": {
+        "de": "Batterie"
+      }
     },
     "battlearmor": {
       "name": "Battle Armor",
@@ -174,7 +183,10 @@
       }
     },
     "chlorophyll": {
-      "name": "Chlorophyll"
+      "name": "Chlorophyll",
+      "names": {
+        "de": "Chlorophyll"
+      }
     },
     "clearbody": {
       "name": "Clear Body",
@@ -281,7 +293,7 @@
     "darkaura": {
       "name": "Dark Aura",
       "names": {
-        "de": "Dankelaura"
+        "de": "Dunkelaura"
       }
     },
     "dauntlessshield": {
@@ -305,7 +317,7 @@
     "defiant": {
       "name": "Defiant",
       "names": {
-        "de": "Seigeswille"
+        "de": "Siegeswille"
       }
     },
     "deltastream": {
@@ -327,7 +339,10 @@
       }
     },
     "download": {
-      "name": "Download"
+      "name": "Download",
+      "names": {
+        "de": "Download"
+      }
     },
     "dragonize": {
       "name": "Dragonize",
@@ -393,16 +408,28 @@
       }
     },
     "embodyaspectcornerstone": {
-      "name": "Embody Aspect (Cornerstone)"
+      "name": "Embody Aspect (Cornerstone)",
+      "names": {
+        "de": "Erinnerungskraft"
+      }
     },
     "embodyaspecthearthflame": {
-      "name": "Embody Aspect (Hearthflame)"
+      "name": "Embody Aspect (Hearthflame)",
+      "names": {
+        "de": "Erinnerungskraft"
+      }
     },
     "embodyaspectteal": {
-      "name": "Embody Aspect (Teal)"
+      "name": "Embody Aspect (Teal)",
+      "names": {
+        "de": "Erinnerungskraft"
+      }
     },
     "embodyaspectwellspring": {
-      "name": "Embody Aspect (Wellspring)"
+      "name": "Embody Aspect (Wellspring)",
+      "names": {
+        "de": "Erinnerungskraft"
+      }
     },
     "emergencyexit": {
       "name": "Emergency Exit",
@@ -417,7 +444,10 @@
       }
     },
     "filter": {
-      "name": "Filter"
+      "name": "Filter",
+      "names": {
+        "de": "Filter"
+      }
     },
     "firemane": {
       "name": "Fire Mane"
@@ -605,7 +635,7 @@
     "hospitality": {
       "name": "Hospitality",
       "names": {
-        "de": "Gastlichkei"
+        "de": "Gastlichkeit"
       }
     },
     "hugepower": {
@@ -627,7 +657,10 @@
       }
     },
     "hydration": {
-      "name": "Hydration"
+      "name": "Hydration",
+      "names": {
+        "de": "Hydration"
+      }
     },
     "hypercutter": {
       "name": "Hyper Cutter",
@@ -696,7 +729,10 @@
       }
     },
     "insomnia": {
-      "name": "Insomnia"
+      "name": "Insomnia",
+      "names": {
+        "de": "Insomnia"
+      }
     },
     "intimidate": {
       "name": "Intimidate",
@@ -753,7 +789,10 @@
       }
     },
     "libero": {
-      "name": "Libero"
+      "name": "Libero",
+      "names": {
+        "de": "Libero"
+      }
     },
     "lightmetal": {
       "name": "Light Metal",
@@ -864,7 +903,10 @@
       }
     },
     "minus": {
-      "name": "Minus"
+      "name": "Minus",
+      "names": {
+        "de": "Minus"
+      }
     },
     "mirrorarmor": {
       "name": "Mirror Armor",
@@ -977,7 +1019,7 @@
     "overcoat": {
       "name": "Overcoat",
       "names": {
-        "de": "Wetterfest"
+        "de": "Partikelschutz"
       }
     },
     "overgrow": {
@@ -989,7 +1031,7 @@
     "owntempo": {
       "name": "Own Tempo",
       "names": {
-        "de": "Tempomacher"
+        "de": "Gleichmut"
       }
     },
     "parentalbond": {
@@ -1035,12 +1077,15 @@
       }
     },
     "plus": {
-      "name": "Plus"
+      "name": "Plus",
+      "names": {
+        "de": "Plus"
+      }
     },
     "poisonheal": {
       "name": "Poison Heal",
       "names": {
-        "de": "Aufheber"
+        "de": "Giftheilung"
       }
     },
     "poisonpoint": {
@@ -1128,7 +1173,10 @@
       }
     },
     "punkrock": {
-      "name": "Punk Rock"
+      "name": "Punk Rock",
+      "names": {
+        "de": "Punk Rock"
+      }
     },
     "purepower": {
       "name": "Pure Power",
@@ -1179,12 +1227,15 @@
       }
     },
     "receiver": {
-      "name": "Receiver"
+      "name": "Receiver",
+      "names": {
+        "de": "Receiver"
+      }
     },
     "reckless": {
       "name": "Reckless",
       "names": {
-        "de": "Atchlos"
+        "de": "Achtlos"
       }
     },
     "refrigerate": {
@@ -1394,7 +1445,7 @@
     "snowwarning": {
       "name": "Snow Warning",
       "names": {
-        "de": "Hagelalarm"
+        "de": "Schneeschauer"
       }
     },
     "solarpower": {
@@ -1464,7 +1515,10 @@
       }
     },
     "static": {
-      "name": "Static"
+      "name": "Static",
+      "names": {
+        "de": "Statik"
+      }
     },
     "steadfast": {
       "name": "Steadfast",
@@ -1499,7 +1553,7 @@
     "stickyhold": {
       "name": "Sticky Hold",
       "names": {
-        "de": "Wertehalter"
+        "de": "Klebekörper"
       }
     },
     "stormdrain": {
@@ -1577,11 +1631,14 @@
     "symbiosis": {
       "name": "Symbiosis",
       "names": {
-        "de": "Nutznießer"
+        "de": "Symbiose"
       }
     },
     "synchronize": {
-      "name": "Synchronize"
+      "name": "Synchronize",
+      "names": {
+        "de": "Synchro"
+      }
     },
     "tabletsofruin": {
       "name": "Tablets of Ruin",
@@ -1592,7 +1649,7 @@
     "tangledfeet": {
       "name": "Tangled Feet",
       "names": {
-        "de": "Fußangel"
+        "de": "Taumelschritt"
       }
     },
     "tanglinghair": {
@@ -1632,7 +1689,10 @@
       }
     },
     "teravolt": {
-      "name": "Teravolt"
+      "name": "Teravolt",
+      "names": {
+        "de": "Teravolt"
+      }
     },
     "thermalexchange": {
       "name": "Thermal Exchange",
@@ -1649,7 +1709,7 @@
     "tintedlens": {
       "name": "Tinted Lens",
       "names": {
-        "de": "Finalschlag"
+        "de": "Aufwertung"
       }
     },
     "torrent": {
@@ -1685,11 +1745,14 @@
     "trace": {
       "name": "Trace",
       "names": {
-        "de": "Fährte"
+        "de": "Erfassen"
       }
     },
     "transistor": {
-      "name": "Transistor"
+      "name": "Transistor",
+      "names": {
+        "de": "Transistor"
+      }
     },
     "triage": {
       "name": "Triage",

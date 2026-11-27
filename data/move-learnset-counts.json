@@ -36,7 +36,10 @@
     "absorb": {
       "name": "Absorb",
       "type": "Grass",
-      "category": "Special"
+      "category": "Special",
+      "names": {
+        "de": "Absorber"
+      }
     },
     "accelerock": {
       "name": "Accelerock",
@@ -81,7 +84,7 @@
     "acrobatics": {
       "name": "Acrobatics",
       "names": {
-        "de": "Acrobatik"
+        "de": "Akrobatik"
       },
       "type": "Flying",
       "category": "Physical"
@@ -569,7 +572,10 @@
     "blizzard": {
       "name": "Blizzard",
       "type": "Ice",
-      "category": "Special"
+      "category": "Special",
+      "names": {
+        "de": "Blizzard"
+      }
     },
     "block": {
       "name": "Block",
@@ -582,7 +588,10 @@
     "bloodmoon": {
       "name": "Blood Moon",
       "type": "Normal",
-      "category": "Special"
+      "category": "Special",
+      "names": {
+        "de": "Blutmond"
+      }
     },
     "bloomdoom": {
       "name": "Bloom Doom",
@@ -603,7 +612,10 @@
     "bodypress": {
       "name": "Body Press",
       "type": "Fighting",
-      "category": "Physical"
+      "category": "Physical",
+      "names": {
+        "de": "Body Press"
+      }
     },
     "bodyslam": {
       "name": "Body Slam",
@@ -736,7 +748,7 @@
     "bubble": {
       "name": "Bubble",
       "names": {
-        "de": "Bubbler"
+        "de": "Blubber"
       },
       "type": "Water",
       "category": "Special"
@@ -896,7 +908,10 @@
     "charm": {
       "name": "Charm",
       "type": "Fairy",
-      "category": "Status"
+      "category": "Status",
+      "names": {
+        "de": "Charme"
+      }
     },
     "chatter": {
       "name": "Chatter",
@@ -997,7 +1012,10 @@
     "coaching": {
       "name": "Coaching",
       "type": "Fighting",
-      "category": "Status"
+      "category": "Status",
+      "names": {
+        "de": "Coaching"
+      }
     },
     "coil": {
       "name": "Coil",
@@ -1034,7 +1052,7 @@
     "comeuppance": {
       "name": "Comeuppance",
       "names": {
-        "de": "Vandetta"
+        "de": "Vendetta"
       },
       "type": "Dark",
       "category": "Physical"
@@ -1090,7 +1108,10 @@
     "conversion2": {
       "name": "Conversion 2",
       "type": "Normal",
-      "category": "Status"
+      "category": "Status",
+      "names": {
+        "de": "Umwandlung 2"
+      }
     },
     "copycat": {
       "name": "Copycat",
@@ -1247,7 +1268,10 @@
     "darkestlariat": {
       "name": "Darkest Lariat",
       "type": "Dark",
-      "category": "Physical"
+      "category": "Physical",
+      "names": {
+        "de": "Dark Lariat"
+      }
     },
     "darkpulse": {
       "name": "Dark Pulse",
@@ -1468,7 +1492,10 @@
     "dracometeor": {
       "name": "Draco Meteor",
       "type": "Dragon",
-      "category": "Special"
+      "category": "Special",
+      "names": {
+        "de": "Draco Meteor"
+      }
     },
     "dragonascent": {
       "name": "Dragon Ascent",
@@ -1665,7 +1692,7 @@
     "echoedvoice": {
       "name": "Echoed Voice",
       "names": {
-        "de": "Widerfall"
+        "de": "Widerhall"
       },
       "type": "Normal",
       "category": "Special"
@@ -1801,7 +1828,10 @@
     "eruption": {
       "name": "Eruption",
       "type": "Fire",
-      "category": "Special"
+      "category": "Special",
+      "names": {
+        "de": "Eruption"
+      }
     },
     "esperwing": {
       "name": "Esper Wing",
@@ -1830,7 +1860,10 @@
     "explosion": {
       "name": "Explosion",
       "type": "Normal",
-      "category": "Physical"
+      "category": "Physical",
+      "names": {
+        "de": "Explosion"
+      }
     },
     "extrasensory": {
       "name": "Extrasensory",
@@ -2195,7 +2228,10 @@
     "flyingpress": {
       "name": "Flying Press",
       "type": "Fighting",
-      "category": "Physical"
+      "category": "Physical",
+      "names": {
+        "de": "Flying Press"
+      }
     },
     "focusblast": {
       "name": "Focus Blast",
@@ -2224,7 +2260,10 @@
     "followme": {
       "name": "Follow Me",
       "type": "Normal",
-      "category": "Status"
+      "category": "Status",
+      "names": {
+        "de": "Spotlight"
+      }
     },
     "forcepalm": {
       "name": "Force Palm",
@@ -2309,7 +2348,10 @@
     "frustration": {
       "name": "Frustration",
       "type": "Normal",
-      "category": "Physical"
+      "category": "Physical",
+      "names": {
+        "de": "Frustration"
+      }
     },
     "furyattack": {
       "name": "Fury Attack",
@@ -2762,7 +2804,7 @@
     "grassyglide": {
       "name": "Grassy Glide",
       "names": {
-        "de": "Grasrutche"
+        "de": "Grasrutsche"
       },
       "type": "Grass",
       "category": "Physical"
@@ -2842,7 +2884,10 @@
     "guillotine": {
       "name": "Guillotine",
       "type": "Normal",
-      "category": "Physical"
+      "category": "Physical",
+      "names": {
+        "de": "Guillotine"
+      }
     },
     "gunkshot": {
       "name": "Gunk Shot",
@@ -3055,82 +3100,130 @@
     "hiddenpowerbug": {
       "name": "Hidden Power Bug",
       "type": "Bug",
-      "category": "Special"
+      "category": "Special",
+      "names": {
+        "de": "Kraftreserve (Käfer)"
+      }
     },
     "hiddenpowerdark": {
       "name": "Hidden Power Dark",
       "type": "Dark",
-      "category": "Special"
+      "category": "Special",
+      "names": {
+        "de": "Kraftreserve (Unlicht)"
+      }
     },
     "hiddenpowerdragon": {
       "name": "Hidden Power Dragon",
       "type": "Dragon",
-      "category": "Special"
+      "category": "Special",
+      "names": {
+        "de": "Kraftreserve (Drache)"
+      }
     },
     "hiddenpowerelectric": {
       "name": "Hidden Power Electric",
       "type": "Electric",
-      "category": "Special"
+      "category": "Special",
+      "names": {
+        "de": "Kraftreserve (Elektro)"
+      }
     },
     "hiddenpowerfighting": {
       "name": "Hidden Power Fighting",
       "type": "Fighting",
-      "category": "Special"
+      "category": "Special",
+      "names": {
+        "de": "Kraftreserve (Kampf)"
+      }
     },
     "hiddenpowerfire": {
       "name": "Hidden Power Fire",
       "type": "Fire",
-      "category": "Special"
+      "category": "Special",
+      "names": {
+        "de": "Kraftreserve (Feuer)"
+      }
     },
     "hiddenpowerflying": {
       "name": "Hidden Power Flying",
       "type": "Flying",
-      "category": "Special"
+      "category": "Special",
+      "names": {
+        "de": "Kraftreserve (Flug)"
+      }
     },
     "hiddenpowerghost": {
       "name": "Hidden Power Ghost",
       "type": "Ghost",
-      "category": "Special"
+      "category": "Special",
+      "names": {
+        "de": "Kraftreserve (Geist)"
+      }
     },
     "hiddenpowergrass": {
       "name": "Hidden Power Grass",
       "type": "Grass",
-      "category": "Special"
+      "category": "Special",
+      "names": {
+        "de": "Kraftreserve (Pflanze)"
+      }
     },
     "hiddenpowerground": {
       "name": "Hidden Power Ground",
       "type": "Ground",
-      "category": "Special"
+      "category": "Special",
+      "names": {
+        "de": "Kraftreserve (Boden)"
+      }
     },
     "hiddenpowerice": {
       "name": "Hidden Power Ice",
       "type": "Ice",
-      "category": "Special"
+      "category": "Special",
+      "names": {
+        "de": "Kraftreserve (Eis)"
+      }
     },
     "hiddenpowerpoison": {
       "name": "Hidden Power Poison",
       "type": "Poison",
-      "category": "Special"
+      "category": "Special",
+      "names": {
+        "de": "Kraftreserve (Gift)"
+      }
     },
     "hiddenpowerpsychic": {
       "name": "Hidden Power Psychic",
       "type": "Psychic",
-      "category": "Special"
+      "category": "Special",
+      "names": {
+        "de": "Kraftreserve (Psycho)"
+      }
     },
     "hiddenpowerrock": {
       "name": "Hidden Power Rock",
       "type": "Rock",
-      "category": "Special"
+      "category": "Special",
+      "names": {
+        "de": "Kraftreserve (Gestein)"
+      }
     },
     "hiddenpowersteel": {
       "name": "Hidden Power Steel",
       "type": "Steel",
-      "category": "Special"
+      "category": "Special",
+      "names": {
+        "de": "Kraftreserve (Stahl)"
+      }
     },
     "hiddenpowerwater": {
       "name": "Hidden Power Water",
       "type": "Water",
-      "category": "Special"
+      "category": "Special",
+      "names": {
+        "de": "Kraftreserve (Wasser)"
+      }
     },
     "highhorsepower": {
       "name": "High Horsepower",
@@ -3295,7 +3388,10 @@
     "hypnosis": {
       "name": "Hypnosis",
       "type": "Psychic",
-      "category": "Status"
+      "category": "Status",
+      "names": {
+        "de": "Hypnose"
+      }
     },
     "iceball": {
       "name": "Ice Ball",
@@ -3412,7 +3508,10 @@
     "inferno": {
       "name": "Inferno",
       "type": "Fire",
-      "category": "Special"
+      "category": "Special",
+      "names": {
+        "de": "Inferno"
+      }
     },
     "infernooverdrive": {
       "name": "Inferno Overdrive",
@@ -4145,7 +4244,10 @@
     "memento": {
       "name": "Memento",
       "type": "Dark",
-      "category": "Status"
+      "category": "Status",
+      "names": {
+        "de": "Memento-Mori"
+      }
     },
     "menacingmoonrazemaelstrom": {
       "name": "Menacing Moonraze Maelstrom",
@@ -4174,7 +4276,7 @@
     "metalsound": {
       "name": "Metal Sound",
       "names": {
-        "de": "Metalsound"
+        "de": "Metallsound"
       },
       "type": "Steel",
       "category": "Status"
@@ -4206,7 +4308,10 @@
     "metronome": {
       "name": "Metronome",
       "type": "Normal",
-      "category": "Status"
+      "category": "Status",
+      "names": {
+        "de": "Metronom"
+      }
     },
     "mightycleave": {
       "name": "Mighty Cleave",
@@ -4579,7 +4684,10 @@
     "octazooka": {
       "name": "Octazooka",
       "type": "Water",
-      "category": "Special"
+      "category": "Special",
+      "names": {
+        "de": "Octazooka"
+      }
     },
     "octolock": {
       "name": "Octolock",
@@ -4632,7 +4740,10 @@
     "overdrive": {
       "name": "Overdrive",
       "type": "Electric",
-      "category": "Special"
+      "category": "Special",
+      "names": {
+        "de": "Overdrive"
+      }
     },
     "overheat": {
       "name": "Overheat",
@@ -4847,7 +4958,10 @@
     "poltergeist": {
       "name": "Poltergeist",
       "type": "Ghost",
-      "category": "Physical"
+      "category": "Physical",
+      "names": {
+        "de": "Poltergeist"
+      }
     },
     "populationbomb": {
       "name": "Population Bomb",
@@ -5076,7 +5190,7 @@
     "psyshock": {
       "name": "Psyshock",
       "names": {
-        "de": "Psychoshock"
+        "de": "Psychoschock"
       },
       "type": "Psychic",
       "category": "Special"
@@ -5188,7 +5302,7 @@
     "ragepowder": {
       "name": "Rage Powder",
       "names": {
-        "de": "Wulpulver"
+        "de": "Wutpulver"
       },
       "type": "Bug",
       "category": "Status"
@@ -5268,7 +5382,7 @@
     "reflect": {
       "name": "Reflect",
       "names": {
-        "de": "Reflecktor"
+        "de": "Reflektor"
       },
       "type": "Psychic",
       "category": "Status"
@@ -5564,7 +5678,7 @@
     "sappyseed": {
       "name": "Sappy Seed",
       "names": {
-        "de": "Sprießomben"
+        "de": "Sprießbomben"
       },
       "type": "Grass",
       "category": "Physical"
@@ -5953,7 +6067,10 @@
     "slam": {
       "name": "Slam",
       "type": "Normal",
-      "category": "Physical"
+      "category": "Physical",
+      "names": {
+        "de": "Slam"
+      }
     },
     "slash": {
       "name": "Slash",
@@ -6030,7 +6147,10 @@
     "smog": {
       "name": "Smog",
       "type": "Poison",
-      "category": "Special"
+      "category": "Special",
+      "names": {
+        "de": "Smog"
+      }
     },
     "smokescreen": {
       "name": "Smokescreen",
@@ -6067,7 +6187,7 @@
     "snipeshot": {
       "name": "Snipe Shot",
       "names": {
-        "de": "Präisionsschuss"
+        "de": "Präzisionsschuss"
       },
       "type": "Water",
       "category": "Special"
@@ -6315,7 +6435,7 @@
     "stealthrock": {
       "name": "Stealth Rock",
       "names": {
-        "de": "Tarnstein"
+        "de": "Tarnsteine"
       },
       "type": "Rock",
       "category": "Status"
@@ -6587,7 +6707,10 @@
     "surf": {
       "name": "Surf",
       "type": "Water",
-      "category": "Special"
+      "category": "Special",
+      "names": {
+        "de": "Surfer"
+      }
     },
     "surgingstrikes": {
       "name": "Surging Strikes",
@@ -6616,7 +6739,7 @@
     "sweetkiss": {
       "name": "Sweet Kiss",
       "names": {
-        "de": "Bitterkaus"
+        "de": "Bitterkuss"
       },
       "type": "Fairy",
       "category": "Status"
@@ -6688,7 +6811,10 @@
     "tackle": {
       "name": "Tackle",
       "type": "Normal",
-      "category": "Physical"
+      "category": "Physical",
+      "names": {
+        "de": "Tackle"
+      }
     },
     "tailglow": {
       "name": "Tail Glow",
@@ -6765,7 +6891,10 @@
     "teatime": {
       "name": "Teatime",
       "type": "Normal",
-      "category": "Status"
+      "category": "Status",
+      "names": {
+        "de": "Teatime"
+      }
     },
     "technoblast": {
       "name": "Techno Blast",
@@ -6802,7 +6931,10 @@
     "teleport": {
       "name": "Teleport",
       "type": "Psychic",
-      "category": "Status"
+      "category": "Status",
+      "names": {
+        "de": "Teleport"
+      }
     },
     "temperflare": {
       "name": "Temper Flare",
@@ -7039,12 +7171,18 @@
     "trick": {
       "name": "Trick",
       "type": "Psychic",
-      "category": "Status"
+      "category": "Status",
+      "names": {
+        "de": "Trickbetrug"
+      }
     },
     "trickortreat": {
       "name": "Trick-or-Treat",
       "type": "Ghost",
-      "category": "Status"
+      "category": "Status",
+      "names": {
+        "de": "Halloween"
+      }
     },
     "trickroom": {
       "name": "Trick Room",
@@ -7313,7 +7451,7 @@
     "wavecrash": {
       "name": "Wave Crash",
       "names": {
-        "de": "Wallentackle"
+        "de": "Wellentackle"
       },
       "type": "Water",
       "category": "Physical"
@@ -7329,7 +7467,10 @@
     "whirlpool": {
       "name": "Whirlpool",
       "type": "Water",
-      "category": "Special"
+      "category": "Special",
+      "names": {
+        "de": "Whirlpool"
+      }
     },
     "whirlwind": {
       "name": "Whirlwind",

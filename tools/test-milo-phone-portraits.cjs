@@ -13,10 +13,11 @@ const trainerFiles = new Set(fs.readdirSync(path.join(root,'assets/Trainer')).fi
 for (const contact of contacts) {
   const data = portrait(contact);
   assert.ok(data.src);
-  assert.equal(portrait(contact,'Günther Lauchzelot'),null);
+  assert.equal(decodeURIComponent(portrait(contact,'Günther Jauchzelot').src),'assets/Trainer/Günther.png');
+  assert.equal(portrait(contact,'Günther Jauchzelot').metallic,false);
   if (data.src.startsWith('assets/') && !['type-safari-warden', 'type-expert', 'damage-analyst'].includes(contact.id)) assert.ok(trainerFiles.has(decodeURIComponent(data.src.split('/').at(-1))), contact.name+': '+data.src);
 }
-for(const [id,species] of Object.entries({flegmon:'slowpoke',pikachu:'pikachu',xatu:'xatu',kricketune:'kricketune',urglmator:'cramorant'})) {
+for(const [id,species] of Object.entries({flegmon:'slowpoke',pikachu:'pikachu',kricketune:'kricketune',urglmator:'cramorant'})) {
   const data=portrait({id,name:id}); assert.ok(data.src.endsWith(`/${species}.png`)); assert.equal(data.metallic,id==='urglmator');
 }
 assert.ok(portrait({id:'aga',name:'Agnieszka'},'Aga').src.endsWith('/Aga.png'));
@@ -38,7 +39,7 @@ async function main() {
     await page.goto('http://localhost:4848/');
     await page.evaluate(()=>{
       window.selectMiloPhoneContacts=()=>[
-        {id:'frank',name:'Frank',dialogue:()=>[{speaker:'Frank',text:'Hallo!'},{speaker:'Günther Lauchzelot',text:'Die Zeit ist um.'}]},
+        {id:'frank',name:'Frank',dialogue:()=>[{speaker:'Frank',text:'Hallo!'},{speaker:'Günther Jauchzelot',text:'Die Zeit ist um.'}]},
         {id:'urglmator',name:'Urglmator',dialogue:()=>[{speaker:'Urglmator',text:'BRRRRT... DING.',theme:'matrix'}]},
         {id:'pikachu',name:'Pikachu',dialogue:()=>[{speaker:'Pikachu',text:'Pika!'}]},
       ];
@@ -51,14 +52,14 @@ async function main() {
   await setup();
   assert.equal(await page.locator('.milo-contact-choice .milo-phone-portrait').count(),3);
   await page.getByRole('button',{name:'Frank',exact:true}).click();
-  assert.equal(await page.locator('.milo-phone-dialogue > .milo-phone-portrait').count(),0);
+  assert.equal(decodeURIComponent(await page.locator('.milo-phone-dialogue > .milo-phone-portrait img').getAttribute('src')),'assets/Trainer/Günther.png');
   await page.getByRole('button',{name:'Weiter ▸',exact:true}).click();
   const frame=page.locator('.milo-phone-dialogue > .milo-phone-portrait');
   assert.ok((await frame.locator('img').getAttribute('src')).endsWith('/Frank.png'));
   await frame.locator('img').evaluate((image)=>image.decode());
   if(process.env.MILO_QA_DIR) await page.screenshot({path:path.join(process.env.MILO_QA_DIR,'milo-phone-portrait.png')});
   await page.getByRole('button',{name:'Weiter ▸',exact:true}).click();
-  assert.equal(await frame.count(),0);
+  assert.equal(decodeURIComponent(await frame.locator('img').getAttribute('src')),'assets/Trainer/Günther.png');
   await page.getByRole('button',{name:'◂ Zurück',exact:true}).click();
   assert.equal(await frame.count(),1);
   await page.setViewportSize({width:390,height:844});

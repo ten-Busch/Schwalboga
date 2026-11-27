@@ -15,7 +15,7 @@ async function main() {
   const { POKEDEX_ENTRIES: entries, POKEDEX_META: meta } = context.window;
   const generate = context.window.createMiloQuestionGenerator(entries, meta.movesById, (p, mode) => p[mode === 'doubles' ? 'cost_dbl' : 'cost']);
   const names = new Map(entries.filter((p) => !p.forme).flatMap((p) => [[p.name, p.num], [p.names?.de, p.num]]));
-  for (const [prize, category] of [[500, 'stat-comparison'], [1000, 'stat-value'], [8000, 'nature-effect'], [16000, 'shared-three'], [32000, 'shared-four'], [125000, 'stat-comparison']]) {
+  for (const [prize, category] of [[50, 'spelling'], [100, 'spelling'], [200, 'spelling'], [300, 'spelling'], [300, 'translation'], [500, 'stat-comparison'], [1000, 'stat-value'], [8000, 'nature-effect'], [16000, 'shared-three'], [32000, 'shared-four'], [125000, 'stat-comparison']]) {
     let count = 0;
     for (let i = 0; i < 10; i++) {
       const q = generate.genOne(prize, new Set(), category);
@@ -42,16 +42,22 @@ async function main() {
     if (!fs.existsSync(file)) return route.abort();
     await route.fulfill({body:fs.readFileSync(file), contentType:file.endsWith('.css')?'text/css':file.endsWith('.js')?'text/javascript':'image/png'});
   });
-  async function setup(bonus, noPokemon = false) {
+  async function setup(bonus, noPokemon = false, answerOnly = false) {
     await page.goto('http://localhost:4848/');
-    await page.evaluate(({noPokemon}) => {
+    await page.evaluate(({noPokemon, answerOnly}) => {
       window.requests = []; window.saved = [];
+      window.selectMiloPhoneContacts = () => ['Alpha','Beta','Gamma'].map(name => ({id:name,name,dialogue:()=>[{speaker:name,text:'Hallo',spoken:true}]}));
       let sequence = 0;
       function gen(prize, seen, required, excluded) {
         window.requests.push({prize,required,excluded});
         const q = { prompt: `${noPokemon ? 'Welche Zahl passt' : 'Welchen Wert hat Pikachu'}? ${++sequence}`, options:['25','35','45','55'], correct:0,
           category:required ?? (excluded === 'stat-value' ? 'nature-effect' : 'stat-value'), prize,
           referencePokemon:noPokemon ? [] : [{name:'Pikachu',de:'Pikachu'}] };
+        if (answerOnly) {
+          q.prompt = 'Welche Schreibweise ist richtig?';
+          q.options = ['Pikachu','Pikkachu','Pakichu','Pikachuu'];
+          q.category = 'spelling';
+        }
         return q;
       }
       gen.genOne = (prize, seen, category) => { window.genOneCalled = true; return gen(prize,seen,category); };
@@ -61,11 +67,11 @@ async function main() {
         save:async(...args)=> {window.saved.push(args);return [{name:args[1],score:args[2],mode:args[3],lifelines:args[5]}];},
       });
       quiz.open('admin');
-    }, {noPokemon});
+    }, {noPokemon, answerOnly});
     assert.equal(await page.getByRole('button',{name:'Safe Mode',exact:false}).count(),0);
     await page.locator('input[name=player]').fill('Test');
     await page.getByRole('button',{name:'Weiter',exact:true}).click();
-    assert.equal(await page.locator('.milo-bonus-choice').count(),6);
+    assert.equal(await page.locator('.milo-bonus-choice').count(),8);
     if (bonus) {
       await page.getByRole('button',{name:/^Risiko ·/}).click();
       await page.getByRole('button',{name:bonus,exact:true}).click();
@@ -90,6 +96,131 @@ async function main() {
   await setup(null);
   assert.ok((await joker('bonus').locator('img').getAttribute('src')).endsWith('blank.png'));
   assert.equal(await joker('bonus').isDisabled(),true);
+  // Seher's two-question-ahead slot scheduling.
+  await setup('Seher');
+  await page.evaluate(()=>{window.originalRandom=Math.random;Math.random=()=>0.8;});
+  await joker('bonus').click();
+  assert.ok((await page.locator('.milo-joker-dialog').textContent()).includes('Antwort ist D'));
+  await page.evaluate(()=>{Math.random=window.originalRandom;});
+  await page.getByRole('button',{name:'Zurück zur Frage',exact:true}).click();
+  await answer(); await answer();
+  await page.locator('.milo-answer').nth(3).click();
+  await page.getByRole('button',{name:'Antwort einloggen',exact:true}).click();
+  assert.ok((await page.locator('.milo-actions').last().textContent()).includes('Richtig!'));
+  assert.ok((await joker('bonus').locator('img').getAttribute('src')).endsWith('seherused.png'));
+  await setup('Seher'); await jump(12);
+  await joker('bonus').click();
+  assert.ok((await page.locator('.milo-joker-dialog').textContent()).includes('500.000-Punkte-Frage'));
+  await page.getByRole('button',{name:'Zurück zur Frage',exact:true}).click();
+  await jump(13);assert.equal(await joker('bonus').isDisabled(),true);
+  assert.ok((await joker('bonus').locator('img').getAttribute('src')).endsWith('seherna.png'));
+
+  let animationCaptured=false;
+  async function forceMetronom(value) {
+    await page.evaluate((value)=>{window.originalRandom=Math.random;Math.random=()=>value;},value);
+    await joker('bonus').click();
+    if(await page.locator('.milo-metronom-dialog').count() && !await page.evaluate(()=>matchMedia('(prefers-reduced-motion: reduce)').matches)) {
+      assert.equal(await page.locator('.milo-metronom-option').count(),3);
+      assert.equal(await page.locator('.milo-metronom-option.is-active').count(),1);
+      assert.equal(await page.locator('.milo-metronom-pointer').textContent(),'☝️');
+      await page.keyboard.press('Escape');
+      assert.equal(await page.locator('.milo-metronom-dialog').count(),1);
+      if(process.argv.includes('--screenshots')&&!animationCaptured) {
+        await page.screenshot({path:path.join(screenshotDir,'milo-metronom-animation.png')});animationCaptured=true;
+      }
+    }
+    await page.locator('.milo-metronom-dialog').waitFor({state:'detached'});
+    await page.evaluate(()=>{Math.random=window.originalRandom;});
+  }
+  async function checkBonusOnlyUsed() {
+    await page.getByRole('button',{name:'Aussteigen',exact:true}).click();
+    await page.waitForFunction(()=>saved.length===1);
+    const slots=await page.evaluate(()=>saved[0][5]);
+    assert.deepEqual(slots.map(slot=>slot.used),[false,false,false,true]);
+    assert.equal(slots[3].id,'metronom');
+  }
+  await setup('Metronom'); await forceMetronom(0.1);
+  assert.equal(await page.locator('.milo-answer:disabled').count(),2);
+  await page.getByRole('button',{name:'Zurück zur Frage',exact:true}).click();
+  await answer();assert.equal(await joker('half').isDisabled(),false);
+  await checkBonusOnlyUsed();
+  await setup('Metronom');await joker('half').click();await answer();await forceMetronom(.1);
+  assert.equal(await page.locator('.milo-answer:disabled').count(),2);
+  await page.getByRole('button',{name:'Zurück zur Frage',exact:true}).click();await answer();
+  assert.equal(await joker('half').isDisabled(),true); // previously spent standard stays spent
+  await setup('Metronom');await joker('half').click();await forceMetronom(.1);
+  assert.equal(await page.locator('.milo-answer:disabled').count(),2); // never removes a third answer
+  assert.ok((await page.locator('.milo-joker-dialog').textContent()).includes('Publikumsjoker'));
+  await page.getByRole('button',{name:'Zurück zur Frage',exact:true}).click();
+
+  await setup('Metronom');await joker('audience').click();
+  await page.getByRole('button',{name:'Zurück zur Frage',exact:true}).click();
+  await forceMetronom(.5); // audience excluded: the upper half of the draw is phone
+  assert.equal(await page.locator('.milo-phone-dialog').count(),1);
+  await page.getByRole('button',{name:'Zurück zur Frage',exact:true}).click();
+
+  await setup('Metronom');await joker('half').click();await joker('audience').click();
+  await page.getByRole('button',{name:'Zurück zur Frage',exact:true}).click();
+  await forceMetronom(.01); // only telephone remains, even at the lowest random value
+  assert.equal(await page.locator('.milo-phone-dialog').count(),1);
+  await page.getByRole('button',{name:'Zurück zur Frage',exact:true}).click();
+
+  await setup('Metronom'); await forceMetronom(0.5);
+  await page.getByLabel('Stimme für A hinzufügen',{exact:true}).click();
+  await page.getByRole('button',{name:'Zurück zur Frage',exact:true}).click();
+  assert.equal(await joker('audience').isDisabled(),false);
+  await joker('bonus').click();
+  assert.ok((await page.locator('.milo-joker-dialog').textContent()).includes('1 Stimmen insgesamt'));
+  await page.getByRole('button',{name:'Zurück zur Frage',exact:true}).click();
+  await checkBonusOnlyUsed();
+
+  async function mockPhone(refund=false) {
+    await page.evaluate((refund)=>{
+      window.selectMiloPhoneContacts=()=>['Alpha','Beta','Gamma'].map((name,index)=>({id:name,name,
+        dialogue:()=>[{speaker:name,text:`Kontakt ${index}`,spoken:true,...(refund?{refund:true}:{})}]}));
+    },refund);
+  }
+  await setup('Metronom');await mockPhone();
+  await joker('telephone').click();await page.getByRole('button',{name:'Gamma',exact:true}).click();
+  await page.getByRole('button',{name:'Zurück zur Frage',exact:true}).click();
+  await forceMetronom(.9);
+  assert.ok((await page.locator('.milo-phone p').textContent()).includes('Beta am Apparat'));
+  await page.getByRole('button',{name:'Zurück zur Frage',exact:true}).click();
+  await setup('Hilfe!');await mockPhone(true);
+  await joker('telephone').click();await page.getByRole('button',{name:'Alpha',exact:true}).click();
+  await page.getByRole('button',{name:'Weiter ▸',exact:true}).click();
+  await page.getByRole('button',{name:'Zurück zur Frage',exact:true}).click();
+  assert.equal(await joker('telephone').isDisabled(),true);
+  assert.ok((await joker('telephone').locator('img').getAttribute('src')).endsWith('telefonused.png'));
+  await answer();
+  assert.equal(await joker('telephone').isDisabled(),false);
+  assert.ok((await joker('telephone').locator('img').getAttribute('src')).endsWith('telefon.png'));
+  await joker('telephone').click();await page.getByRole('button',{name:'Beta',exact:true}).click();
+  assert.ok((await joker('telephone').locator('img').getAttribute('src')).endsWith('telefonused.png'));
+  await page.getByRole('button',{name:'Zurück zur Frage',exact:true}).click();
+  await setup('Metronom'); await mockPhone(); await forceMetronom(0.9);
+  assert.equal(await page.getByRole('button',{name:'Gamma',exact:true}).count(),0); // no caller selection
+  assert.ok((await page.locator('.milo-phone p').textContent()).includes('Gamma am Apparat'));
+  await page.getByRole('button',{name:'Weiter ▸',exact:true}).click();
+  assert.equal(await page.locator('.milo-speaker').textContent(),'Gamma');
+  await page.getByRole('button',{name:'Zurück zur Frage',exact:true}).click();
+  assert.equal(await joker('telephone').isDisabled(),false);
+  await joker('bonus').click();assert.equal(await page.locator('.milo-speaker').textContent(),'Gamma');
+  await page.getByRole('button',{name:'Zurück zur Frage',exact:true}).click();
+  await checkBonusOnlyUsed();
+
+  await setup('Metronom'); await mockPhone(true); await forceMetronom(0.9);
+  await page.getByRole('button',{name:'Weiter ▸',exact:true}).click();
+  await page.getByRole('button',{name:'Zurück zur Frage',exact:true}).click();
+  assert.equal(await joker('bonus').isDisabled(),true);
+  await answer(); await answer(); // refunded Metronom remains available
+  assert.equal(await joker('bonus').isDisabled(),false);
+  assert.ok((await joker('bonus').locator('img').getAttribute('src')).endsWith('metronom.png'));
+  await forceMetronom(0.1); // a fresh random draw can now select 50:50
+  assert.equal(await page.locator('.milo-answer:disabled').count(),2);
+  assert.ok((await page.locator('.milo-joker-dialog').textContent()).includes('Metronom · 50:50'));
+  assert.ok((await joker('telephone').locator('img').getAttribute('src')).endsWith('telefon.png'));
+  await page.getByRole('button',{name:'Zurück zur Frage',exact:true}).click();
   await setup('Doppelteam');
   await joker('bonus').click();
   assert.equal(await joker('half').isDisabled(),true);
@@ -123,6 +254,24 @@ async function main() {
   await joker('bonus').click();
   assert.equal(await page.evaluate(()=>genOneCalled),true);
   assert.equal(await page.evaluate(()=>requests.at(-1).required),'stat-value');
+
+  await setup('Genwunner',false,true);
+  assert.equal(await joker('bonus').isDisabled(),false);
+  await joker('bonus').click();
+  assert.equal(await page.evaluate(()=>genOneCalled),true);
+  assert.equal(await page.evaluate(()=>requests.at(-1).required),'spelling');
+  assert.equal(await page.locator('.milo-question.milo-gb-box').count(),1);
+  assert.equal(await page.locator('.milo-answer.milo-gb-box').count(),4);
+  assert.equal(await page.locator('.milo-gb-box').count(),5);
+  assert.equal(await page.locator('.milo-question').evaluate(el=>getComputedStyle(el).backgroundColor),'rgb(255, 255, 255)');
+  await page.locator('.milo-answer').first().click();
+  assert.equal(await page.locator('.milo-answer').first().getAttribute('aria-pressed'),'true');
+  if (process.argv.includes('--screenshots')) {
+    await page.evaluate(()=>document.fonts.ready);
+    await page.screenshot({path:path.join(screenshotDir,'milo-genwunner-gb.png')});
+  }
+  await answer();
+  assert.equal(await page.locator('.milo-gb-box').count(),0);
 
   await setup('Hilfe!');
   await joker('bonus').click();
@@ -164,8 +313,16 @@ async function main() {
     const file=path.join(screenshotDir,'milo-lifelines-mobile.png');
     await page.screenshot({path:file}); console.log('Screenshots: '+path.dirname(file));
   }
+  await page.emulateMedia({reducedMotion:'reduce'});
+  await setup('Metronom');await forceMetronom(.1);
+  assert.equal(await page.locator('.milo-answer:disabled').count(),2);
+  await page.getByRole('button',{name:'Zurück zur Frage',exact:true}).click();
+  await page.emulateMedia({reducedMotion:'no-preference'});
+  await setup('Metronom');await joker('bonus').click();
+  await page.evaluate(()=>quiz.close());
+  assert.equal(await page.locator('.milo-dialog').count(),0);
   assert.deepEqual(errors,[]);
   await browser.close();
-  console.log('Passed: Gen 1 data constraints, separate setup, six bonus lifelines, 50:50 interactions, easier prize/category, 242k scoring, stored history/icons and mobile width.');
+  console.log('Passed: eight bonus lifelines, Seher scheduling/cap, all Metronom branches, independent standard uses, reopening/refunds, Gen 1, 50:50 interactions, 242k scoring, stored history/icons and mobile width.');
 }
 main().catch((error)=>{console.error(error);process.exit(1);});

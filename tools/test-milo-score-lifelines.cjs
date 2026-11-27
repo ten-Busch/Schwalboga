@@ -51,6 +51,12 @@ async function main() {
   assert.equal(scores[0].lifelines.length,4);
   assert.ok(orders.includes('lifelines_used'));
   assert.equal(storage.size,0);
+  for(const bonus of ['seher','metronom']) {
+    const slots=['half','audience','telephone',bonus].map((id,index)=>({id,used:index===3}));
+    const result=await store.save(owner,bonus,200000,'risk',false,slots);
+    assert.equal(result.find(row=>row.name===bonus).lifelines[3].id,bonus);
+    assert.equal(result.find(row=>row.name===bonus).usedCount,1);
+  }
   await assert.rejects(store.save(owner,'Too much',1000001,'risk'));
   await assert.rejects(store.save(owner,'Fraction',242000.5,'risk'));
   await db.close();

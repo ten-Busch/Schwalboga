@@ -114,7 +114,7 @@ async function browserCheck() {
   const panel=page.getByRole('complementary',{name:'Kampfbedingungen'});
   assert.ok((await panel.textContent()).includes('0 EVs · 0 IVs'));
   assert.ok((await panel.textContent()).includes('Angreifer:'));assert.ok((await panel.textContent()).includes('Verteidiger:'));
-  const p=await panel.boundingBox(),q=await page.locator('.milo-question').boundingBox();assert.ok(p.y+p.height<=q.y);assert.ok(p.width<q.width);assert.ok(Math.abs(p.x+p.width-q.x-q.width)<2);
+  const p=await panel.boundingBox(),q=await page.locator('.milo-question').boundingBox();assert.ok(p.y+p.height<=q.y);assert.ok(Math.abs(p.width-q.width)<2);assert.ok(Math.abs(p.x-q.x)<2);assert.ok(p.height<210,`Conditions panel too tall: ${p.height}`);
   if(process.env.MILO_QA_DIR)await page.screenshot({path:path.join(process.env.MILO_QA_DIR,'milo-damage-desktop.png'),fullPage:true});
   await page.setViewportSize({width:390,height:844});assert.ok(await panel.evaluate(p=>p.scrollWidth<=p.clientWidth));
   if(process.env.MILO_QA_DIR)await page.screenshot({path:path.join(process.env.MILO_QA_DIR,'milo-damage-mobile.png'),fullPage:true});

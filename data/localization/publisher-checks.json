@@ -1,0 +1,11 @@
+{
+  "description": "Publisher pages used as spot checks alongside the bulk in-game name tables. Only names, not descriptions, are reproduced here.",
+  "moves": {
+    "gmaxreplenish": {"de": "Giga-Recycling", "url": "https://swordshield.pokemon.com/de-de/pokemon-galar-region/gigantamax-snorlax/"},
+    "gmaxwildfire": {"de": "Giga-Feuerflug", "url": "https://swordshield.pokemon.com/de-de/pokemon-galar-region/gigantamax-charizard/"},
+    "gmaxstunshock": {"de": "Giga-Voltschlag", "url": "https://swordshield.pokemon.com/de-de/pokemon-galar-region/gigantamax-toxtricity/"},
+    "gmaxvoltcrash": {"de": "Giga-Blitzhagel", "url": "https://swordshield.pokemon.com/de-de/pokemon-galar-region/gigantamax-pikachu/"}
+  },
+  "pokemon": {},
+  "abilities": {}
+}

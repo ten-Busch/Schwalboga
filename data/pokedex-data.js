@@ -32,7 +32,10 @@ window.POKEDEX_ENTRIES = [
         "id": "chlorophyll",
         "name": "Chlorophyll",
         "shortDesc": "If Sunny Day is active, this Pokemon's Speed is doubled.",
-        "desc": "If Sunny Day is active, this Pokemon's Speed is doubled. This effect is prevented if this Pokemon is holding a Utility Umbrella."
+        "desc": "If Sunny Day is active, this Pokemon's Speed is doubled. This effect is prevented if this Pokemon is holding a Utility Umbrella.",
+        "names": {
+          "de": "Chlorophyll"
+        }
       }
     ],
     "baseStats": {
@@ -905,7 +908,10 @@ window.POKEDEX_ENTRIES = [
         "id": "chlorophyll",
         "name": "Chlorophyll",
         "shortDesc": "If Sunny Day is active, this Pokemon's Speed is doubled.",
-        "desc": "If Sunny Day is active, this Pokemon's Speed is doubled. This effect is prevented if this Pokemon is holding a Utility Umbrella."
+        "desc": "If Sunny Day is active, this Pokemon's Speed is doubled. This effect is prevented if this Pokemon is holding a Utility Umbrella.",
+        "names": {
+          "de": "Chlorophyll"
+        }
       }
     ],
     "baseStats": {
@@ -1651,7 +1657,10 @@ window.POKEDEX_ENTRIES = [
         "id": "chlorophyll",
         "name": "Chlorophyll",
         "shortDesc": "If Sunny Day is active, this Pokemon's Speed is doubled.",
-        "desc": "If Sunny Day is active, this Pokemon's Speed is doubled. This effect is prevented if this Pokemon is holding a Utility Umbrella."
+        "desc": "If Sunny Day is active, this Pokemon's Speed is doubled. This effect is prevented if this Pokemon is holding a Utility Umbrella.",
+        "names": {
+          "de": "Chlorophyll"
+        }
       }
     ],
     "baseStats": {
@@ -3376,7 +3385,10 @@ window.POKEDEX_ENTRIES = [
         "id": "chlorophyll",
         "name": "Chlorophyll",
         "shortDesc": "If Sunny Day is active, this Pokemon's Speed is doubled.",
-        "desc": "If Sunny Day is active, this Pokemon's Speed is doubled. This effect is prevented if this Pokemon is holding a Utility Umbrella."
+        "desc": "If Sunny Day is active, this Pokemon's Speed is doubled. This effect is prevented if this Pokemon is holding a Utility Umbrella.",
+        "names": {
+          "de": "Chlorophyll"
+        }
       }
     ],
     "baseStats": {
@@ -15845,7 +15857,7 @@ window.POKEDEX_ENTRIES = [
         "id": "tintedlens",
         "name": "Tinted Lens",
         "names": {
-          "de": "Finalschlag"
+          "de": "Aufwertung"
         },
         "shortDesc": "This Pokemon's attacks that are not very effective on a target deal double damage.",
         "desc": "This Pokemon's attacks that are not very effective on a target deal double damage."
@@ -16603,7 +16615,7 @@ window.POKEDEX_ENTRIES = [
         "id": "tintedlens",
         "name": "Tinted Lens",
         "names": {
-          "de": "Finalschlag"
+          "de": "Aufwertung"
         },
         "shortDesc": "This Pokemon's attacks that are not very effective on a target deal double damage.",
         "desc": "This Pokemon's attacks that are not very effective on a target deal double damage."
@@ -18962,7 +18974,7 @@ window.POKEDEX_ENTRIES = [
         "id": "tangledfeet",
         "name": "Tangled Feet",
         "names": {
-          "de": "Fußangel"
+          "de": "Taumelschritt"
         },
         "shortDesc": "This Pokemon's evasiveness is doubled as long as it is confused.",
         "desc": "This Pokemon's evasiveness is doubled as long as it is confused."
@@ -19578,7 +19590,7 @@ window.POKEDEX_ENTRIES = [
         "id": "tangledfeet",
         "name": "Tangled Feet",
         "names": {
-          "de": "Fußangel"
+          "de": "Taumelschritt"
         },
         "shortDesc": "This Pokemon's evasiveness is doubled as long as it is confused.",
         "desc": "This Pokemon's evasiveness is doubled as long as it is confused."
@@ -20143,7 +20155,7 @@ window.POKEDEX_ENTRIES = [
         "id": "tangledfeet",
         "name": "Tangled Feet",
         "names": {
-          "de": "Fußangel"
+          "de": "Taumelschritt"
         },
         "shortDesc": "This Pokemon's evasiveness is doubled as long as it is confused.",
         "desc": "This Pokemon's evasiveness is doubled as long as it is confused."
@@ -26864,7 +26876,10 @@ window.POKEDEX_ENTRIES = [
     "stellar_defense": 1,
     "water_defense": 1,
     "sprite": "https://play.pokemonshowdown.com/sprites/gen5/arbok.png",
-    "displayNumber": "#0024"
+    "displayNumber": "#0024",
+    "names": {
+      "de": "Arbok"
+    }
   },
   {
     "speciesId": "pikachu",
@@ -26885,7 +26900,10 @@ window.POKEDEX_ENTRIES = [
         "id": "static",
         "name": "Static",
         "shortDesc": "30% chance a Pokemon making contact with this Pokemon will be paralyzed.",
-        "desc": "30% chance a Pokemon making contact with this Pokemon will be paralyzed."
+        "desc": "30% chance a Pokemon making contact with this Pokemon will be paralyzed.",
+        "names": {
+          "de": "Statik"
+        }
       },
       {
         "slot": "H",
@@ -28067,7 +28085,10 @@ window.POKEDEX_ENTRIES = [
     "stellar_defense": 1,
     "water_defense": 1,
     "sprite": "https://play.pokemonshowdown.com/sprites/gen5/pikachu.png",
-    "displayNumber": "#0025"
+    "displayNumber": "#0025",
+    "names": {
+      "de": "Pikachu"
+    }
   },
   {
     "speciesId": "pikachucosplay",
@@ -28377,7 +28398,10 @@ window.POKEDEX_ENTRIES = [
     "stellar_defense": 1,
     "water_defense": 1,
     "sprite": "https://play.pokemonshowdown.com/sprites/gen5/pikachu-cosplay.png",
-    "displayNumber": "#0025"
+    "displayNumber": "#0025",
+    "names": {
+      "de": "Pikachu-Cosplay"
+    }
   },
   {
     "speciesId": "pikachurockstar",
@@ -28458,7 +28482,10 @@ window.POKEDEX_ENTRIES = [
     "stellar_defense": 1,
     "water_defense": 1,
     "sprite": "https://play.pokemonshowdown.com/sprites/gen5/pikachu-rockstar.png",
-    "displayNumber": "#0025"
+    "displayNumber": "#0025",
+    "names": {
+      "de": "Pikachu-Rock-Star"
+    }
   },
   {
     "speciesId": "pikachubelle",
@@ -28539,7 +28566,10 @@ window.POKEDEX_ENTRIES = [
     "stellar_defense": 1,
     "water_defense": 1,
     "sprite": "https://play.pokemonshowdown.com/sprites/gen5/pikachu-belle.png",
-    "displayNumber": "#0025"
+    "displayNumber": "#0025",
+    "names": {
+      "de": "Pikachu-Belle"
+    }
   },
   {
     "speciesId": "pikachupopstar",
@@ -28620,7 +28650,10 @@ window.POKEDEX_ENTRIES = [
     "stellar_defense": 1,
     "water_defense": 1,
     "sprite": "https://play.pokemonshowdown.com/sprites/gen5/pikachu-popstar.png",
-    "displayNumber": "#0025"
+    "displayNumber": "#0025",
+    "names": {
+      "de": "Pikachu-Pop-Star"
+    }
   },
   {
     "speciesId": "pikachuphd",
@@ -28699,7 +28732,10 @@ window.POKEDEX_ENTRIES = [
     "stellar_defense": 1,
     "water_defense": 1,
     "sprite": "https://play.pokemonshowdown.com/sprites/gen5/pikachu-phd.png",
-    "displayNumber": "#0025"
+    "displayNumber": "#0025",
+    "names": {
+      "de": "Pikachu-PhD"
+    }
   },
   {
     "speciesId": "pikachulibre",
@@ -28780,7 +28816,10 @@ window.POKEDEX_ENTRIES = [
     "stellar_defense": 1,
     "water_defense": 1,
     "sprite": "https://play.pokemonshowdown.com/sprites/gen5/pikachu-libre.png",
-    "displayNumber": "#0025"
+    "displayNumber": "#0025",
+    "names": {
+      "de": "Pikachu-Libre"
+    }
   },
   {
     "speciesId": "pikachuoriginal",
@@ -28804,7 +28843,10 @@ window.POKEDEX_ENTRIES = [
         "id": "static",
         "name": "Static",
         "shortDesc": "30% chance a Pokemon making contact with this Pokemon will be paralyzed.",
-        "desc": "30% chance a Pokemon making contact with this Pokemon will be paralyzed."
+        "desc": "30% chance a Pokemon making contact with this Pokemon will be paralyzed.",
+        "names": {
+          "de": "Statik"
+        }
       },
       {
         "slot": "H",
@@ -29362,7 +29404,10 @@ window.POKEDEX_ENTRIES = [
         "id": "static",
         "name": "Static",
         "shortDesc": "30% chance a Pokemon making contact with this Pokemon will be paralyzed.",
-        "desc": "30% chance a Pokemon making contact with this Pokemon will be paralyzed."
+        "desc": "30% chance a Pokemon making contact with this Pokemon will be paralyzed.",
+        "names": {
+          "de": "Statik"
+        }
       },
       {
         "slot": "H",
@@ -29899,7 +29944,10 @@ window.POKEDEX_ENTRIES = [
     "stellar_defense": 1,
     "water_defense": 1,
     "sprite": "https://play.pokemonshowdown.com/sprites/gen5/pikachu-hoenn.png",
-    "displayNumber": "#0025"
+    "displayNumber": "#0025",
+    "names": {
+      "de": "Pikachu-Hoenn"
+    }
   },
   {
     "speciesId": "pikachusinnoh",
@@ -29920,7 +29968,10 @@ window.POKEDEX_ENTRIES = [
         "id": "static",
         "name": "Static",
         "shortDesc": "30% chance a Pokemon making contact with this Pokemon will be paralyzed.",
-        "desc": "30% chance a Pokemon making contact with this Pokemon will be paralyzed."
+        "desc": "30% chance a Pokemon making contact with this Pokemon will be paralyzed.",
+        "names": {
+          "de": "Statik"
+        }
       },
       {
         "slot": "H",
@@ -30457,7 +30508,10 @@ window.POKEDEX_ENTRIES = [
     "stellar_defense": 1,
     "water_defense": 1,
     "sprite": "https://play.pokemonshowdown.com/sprites/gen5/pikachu-sinnoh.png",
-    "displayNumber": "#0025"
+    "displayNumber": "#0025",
+    "names": {
+      "de": "Pikachu-Sinnoh"
+    }
   },
   {
     "speciesId": "pikachuunova",
@@ -30478,7 +30532,10 @@ window.POKEDEX_ENTRIES = [
         "id": "static",
         "name": "Static",
         "shortDesc": "30% chance a Pokemon making contact with this Pokemon will be paralyzed.",
-        "desc": "30% chance a Pokemon making contact with this Pokemon will be paralyzed."
+        "desc": "30% chance a Pokemon making contact with this Pokemon will be paralyzed.",
+        "names": {
+          "de": "Statik"
+        }
       },
       {
         "slot": "H",
@@ -31015,7 +31072,10 @@ window.POKEDEX_ENTRIES = [
     "stellar_defense": 1,
     "water_defense": 1,
     "sprite": "https://play.pokemonshowdown.com/sprites/gen5/pikachu-unova.png",
-    "displayNumber": "#0025"
+    "displayNumber": "#0025",
+    "names": {
+      "de": "Pikachu-Unova"
+    }
   },
   {
     "speciesId": "pikachukalos",
@@ -31036,7 +31096,10 @@ window.POKEDEX_ENTRIES = [
         "id": "static",
         "name": "Static",
         "shortDesc": "30% chance a Pokemon making contact with this Pokemon will be paralyzed.",
-        "desc": "30% chance a Pokemon making contact with this Pokemon will be paralyzed."
+        "desc": "30% chance a Pokemon making contact with this Pokemon will be paralyzed.",
+        "names": {
+          "de": "Statik"
+        }
       },
       {
         "slot": "H",
@@ -31573,7 +31636,10 @@ window.POKEDEX_ENTRIES = [
     "stellar_defense": 1,
     "water_defense": 1,
     "sprite": "https://play.pokemonshowdown.com/sprites/gen5/pikachu-kalos.png",
-    "displayNumber": "#0025"
+    "displayNumber": "#0025",
+    "names": {
+      "de": "Pikachu-Kalos"
+    }
   },
   {
     "speciesId": "pikachualola",
@@ -31597,7 +31663,10 @@ window.POKEDEX_ENTRIES = [
         "id": "static",
         "name": "Static",
         "shortDesc": "30% chance a Pokemon making contact with this Pokemon will be paralyzed.",
-        "desc": "30% chance a Pokemon making contact with this Pokemon will be paralyzed."
+        "desc": "30% chance a Pokemon making contact with this Pokemon will be paralyzed.",
+        "names": {
+          "de": "Statik"
+        }
       },
       {
         "slot": "H",
@@ -32155,7 +32224,10 @@ window.POKEDEX_ENTRIES = [
         "id": "static",
         "name": "Static",
         "shortDesc": "30% chance a Pokemon making contact with this Pokemon will be paralyzed.",
-        "desc": "30% chance a Pokemon making contact with this Pokemon will be paralyzed."
+        "desc": "30% chance a Pokemon making contact with this Pokemon will be paralyzed.",
+        "names": {
+          "de": "Statik"
+        }
       },
       {
         "slot": "H",
@@ -32692,7 +32764,10 @@ window.POKEDEX_ENTRIES = [
     "stellar_defense": 1,
     "water_defense": 1,
     "sprite": "https://play.pokemonshowdown.com/sprites/gen5/pikachu-partner.png",
-    "displayNumber": "#0025"
+    "displayNumber": "#0025",
+    "names": {
+      "de": "Pikachu-Partner"
+    }
   },
   {
     "speciesId": "pikachustarter",
@@ -32713,7 +32788,10 @@ window.POKEDEX_ENTRIES = [
         "id": "static",
         "name": "Static",
         "shortDesc": "30% chance a Pokemon making contact with this Pokemon will be paralyzed.",
-        "desc": "30% chance a Pokemon making contact with this Pokemon will be paralyzed."
+        "desc": "30% chance a Pokemon making contact with this Pokemon will be paralyzed.",
+        "names": {
+          "de": "Statik"
+        }
       },
       {
         "slot": "H",
@@ -33103,7 +33181,10 @@ window.POKEDEX_ENTRIES = [
     "stellar_defense": 1,
     "water_defense": 1,
     "sprite": "https://play.pokemonshowdown.com/sprites/gen5/pikachu-starter.png",
-    "displayNumber": "#0025"
+    "displayNumber": "#0025",
+    "names": {
+      "de": "Pikachu-Starter"
+    }
   },
   {
     "speciesId": "pikachugmax",
@@ -33127,7 +33208,10 @@ window.POKEDEX_ENTRIES = [
         "id": "static",
         "name": "Static",
         "shortDesc": "30% chance a Pokemon making contact with this Pokemon will be paralyzed.",
-        "desc": "30% chance a Pokemon making contact with this Pokemon will be paralyzed."
+        "desc": "30% chance a Pokemon making contact with this Pokemon will be paralyzed.",
+        "names": {
+          "de": "Statik"
+        }
       },
       {
         "slot": "H",
@@ -34294,7 +34378,10 @@ window.POKEDEX_ENTRIES = [
         "id": "static",
         "name": "Static",
         "shortDesc": "30% chance a Pokemon making contact with this Pokemon will be paralyzed.",
-        "desc": "30% chance a Pokemon making contact with this Pokemon will be paralyzed."
+        "desc": "30% chance a Pokemon making contact with this Pokemon will be paralyzed.",
+        "names": {
+          "de": "Statik"
+        }
       },
       {
         "slot": "H",
@@ -34715,7 +34802,10 @@ window.POKEDEX_ENTRIES = [
     "stellar_defense": 1,
     "water_defense": 1,
     "sprite": "https://play.pokemonshowdown.com/sprites/gen5/pikachu-world.png",
-    "displayNumber": "#0025"
+    "displayNumber": "#0025",
+    "names": {
+      "de": "Pikachu-World"
+    }
   },
   {
     "speciesId": "raichu",
@@ -34736,7 +34826,10 @@ window.POKEDEX_ENTRIES = [
         "id": "static",
         "name": "Static",
         "shortDesc": "30% chance a Pokemon making contact with this Pokemon will be paralyzed.",
-        "desc": "30% chance a Pokemon making contact with this Pokemon will be paralyzed."
+        "desc": "30% chance a Pokemon making contact with this Pokemon will be paralyzed.",
+        "names": {
+          "de": "Statik"
+        }
       },
       {
         "slot": "H",
@@ -35607,7 +35700,10 @@ window.POKEDEX_ENTRIES = [
     "stellar_defense": 1,
     "water_defense": 1,
     "sprite": "https://play.pokemonshowdown.com/sprites/gen5/raichu.png",
-    "displayNumber": "#0026"
+    "displayNumber": "#0026",
+    "names": {
+      "de": "Raichu"
+    }
   },
   {
     "speciesId": "raichualola",
@@ -41128,7 +41224,7 @@ window.POKEDEX_ENTRIES = [
     "sourceIndex": 62,
     "num": 29,
     "name": "Nidoran-F",
-    "searchText": "0029 29 nidoranf poison",
+    "searchText": "0029 29 nidoranf poison nidoran",
     "types": [
       "Poison"
     ],
@@ -41896,7 +41992,10 @@ window.POKEDEX_ENTRIES = [
     "stellar_defense": 1,
     "water_defense": 1,
     "sprite": "https://play.pokemonshowdown.com/sprites/gen5/nidoran-f.png",
-    "displayNumber": "#0029"
+    "displayNumber": "#0029",
+    "names": {
+      "de": "Nidoran♀"
+    }
   },
   {
     "speciesId": "nidorina",
@@ -42601,7 +42700,10 @@ window.POKEDEX_ENTRIES = [
     "stellar_defense": 1,
     "water_defense": 1,
     "sprite": "https://play.pokemonshowdown.com/sprites/gen5/nidorina.png",
-    "displayNumber": "#0030"
+    "displayNumber": "#0030",
+    "names": {
+      "de": "Nidorina"
+    }
   },
   {
     "speciesId": "nidoqueen",
@@ -43696,14 +43798,17 @@ window.POKEDEX_ENTRIES = [
     "stellar_defense": 1,
     "water_defense": 2,
     "sprite": "https://play.pokemonshowdown.com/sprites/gen5/nidoqueen.png",
-    "displayNumber": "#0031"
+    "displayNumber": "#0031",
+    "names": {
+      "de": "Nidoqueen"
+    }
   },
   {
     "speciesId": "nidoranm",
     "sourceIndex": 65,
     "num": 32,
     "name": "Nidoran-M",
-    "searchText": "0032 32 nidoranm poison",
+    "searchText": "0032 32 nidoranm poison nidoran",
     "types": [
       "Poison"
     ],
@@ -44481,7 +44586,10 @@ window.POKEDEX_ENTRIES = [
     "stellar_defense": 1,
     "water_defense": 1,
     "sprite": "https://play.pokemonshowdown.com/sprites/gen5/nidoran-m.png",
-    "displayNumber": "#0032"
+    "displayNumber": "#0032",
+    "names": {
+      "de": "Nidoran♂"
+    }
   },
   {
     "speciesId": "nidorino",
@@ -45183,7 +45291,10 @@ window.POKEDEX_ENTRIES = [
     "stellar_defense": 1,
     "water_defense": 1,
     "sprite": "https://play.pokemonshowdown.com/sprites/gen5/nidorino.png",
-    "displayNumber": "#0033"
+    "displayNumber": "#0033",
+    "names": {
+      "de": "Nidorino"
+    }
   },
   {
     "speciesId": "nidoking",
@@ -46281,7 +46392,10 @@ window.POKEDEX_ENTRIES = [
     "stellar_defense": 1,
     "water_defense": 2,
     "sprite": "https://play.pokemonshowdown.com/sprites/gen5/nidoking.png",
-    "displayNumber": "#0034"
+    "displayNumber": "#0034",
+    "names": {
+      "de": "Nidoking"
+    }
   },
   {
     "speciesId": "clefairy",
@@ -50999,7 +51113,10 @@ window.POKEDEX_ENTRIES = [
     "stellar_defense": 1,
     "water_defense": 2,
     "sprite": "https://play.pokemonshowdown.com/sprites/gen5/vulpix.png",
-    "displayNumber": "#0037"
+    "displayNumber": "#0037",
+    "names": {
+      "de": "Vulpix"
+    }
   },
   {
     "speciesId": "vulpixalola",
@@ -51033,7 +51150,7 @@ window.POKEDEX_ENTRIES = [
         "id": "snowwarning",
         "name": "Snow Warning",
         "names": {
-          "de": "Hagelalarm"
+          "de": "Schneeschauer"
         },
         "shortDesc": "On switch-in, this Pokemon summons Snow.",
         "desc": "On switch-in, this Pokemon summons Snow."
@@ -52412,7 +52529,7 @@ window.POKEDEX_ENTRIES = [
         "id": "snowwarning",
         "name": "Snow Warning",
         "names": {
-          "de": "Hagelalarm"
+          "de": "Schneeschauer"
         },
         "shortDesc": "On switch-in, this Pokemon summons Snow.",
         "desc": "On switch-in, this Pokemon summons Snow."
@@ -56177,7 +56294,10 @@ window.POKEDEX_ENTRIES = [
     "stellar_defense": 1,
     "water_defense": 1,
     "sprite": "https://play.pokemonshowdown.com/sprites/gen5/zubat.png",
-    "displayNumber": "#0041"
+    "displayNumber": "#0041",
+    "names": {
+      "de": "Zubat"
+    }
   },
   {
     "speciesId": "golbat",
@@ -56899,7 +57019,10 @@ window.POKEDEX_ENTRIES = [
     "stellar_defense": 1,
     "water_defense": 1,
     "sprite": "https://play.pokemonshowdown.com/sprites/gen5/golbat.png",
-    "displayNumber": "#0042"
+    "displayNumber": "#0042",
+    "names": {
+      "de": "Golbat"
+    }
   },
   {
     "speciesId": "oddish",
@@ -56924,7 +57047,10 @@ window.POKEDEX_ENTRIES = [
         "id": "chlorophyll",
         "name": "Chlorophyll",
         "shortDesc": "If Sunny Day is active, this Pokemon's Speed is doubled.",
-        "desc": "If Sunny Day is active, this Pokemon's Speed is doubled. This effect is prevented if this Pokemon is holding a Utility Umbrella."
+        "desc": "If Sunny Day is active, this Pokemon's Speed is doubled. This effect is prevented if this Pokemon is holding a Utility Umbrella.",
+        "names": {
+          "de": "Chlorophyll"
+        }
       },
       {
         "slot": "H",
@@ -57662,7 +57788,10 @@ window.POKEDEX_ENTRIES = [
         "id": "chlorophyll",
         "name": "Chlorophyll",
         "shortDesc": "If Sunny Day is active, this Pokemon's Speed is doubled.",
-        "desc": "If Sunny Day is active, this Pokemon's Speed is doubled. This effect is prevented if this Pokemon is holding a Utility Umbrella."
+        "desc": "If Sunny Day is active, this Pokemon's Speed is doubled. This effect is prevented if this Pokemon is holding a Utility Umbrella.",
+        "names": {
+          "de": "Chlorophyll"
+        }
       },
       {
         "slot": "H",
@@ -58337,7 +58466,10 @@ window.POKEDEX_ENTRIES = [
         "id": "chlorophyll",
         "name": "Chlorophyll",
         "shortDesc": "If Sunny Day is active, this Pokemon's Speed is doubled.",
-        "desc": "If Sunny Day is active, this Pokemon's Speed is doubled. This effect is prevented if this Pokemon is holding a Utility Umbrella."
+        "desc": "If Sunny Day is active, this Pokemon's Speed is doubled. This effect is prevented if this Pokemon is holding a Utility Umbrella.",
+        "names": {
+          "de": "Chlorophyll"
+        }
       },
       {
         "slot": "H",
@@ -59770,7 +59902,10 @@ window.POKEDEX_ENTRIES = [
       0.5
     ],
     "sprite": "https://play.pokemonshowdown.com/sprites/gen5/paras.png",
-    "displayNumber": "#0046"
+    "displayNumber": "#0046",
+    "names": {
+      "de": "Paras"
+    }
   },
   {
     "speciesId": "parasect",
@@ -60494,7 +60629,7 @@ window.POKEDEX_ENTRIES = [
         "id": "tintedlens",
         "name": "Tinted Lens",
         "names": {
-          "de": "Finalschlag"
+          "de": "Aufwertung"
         },
         "shortDesc": "This Pokemon's attacks that are not very effective on a target deal double damage.",
         "desc": "This Pokemon's attacks that are not very effective on a target deal double damage."
@@ -61203,7 +61338,7 @@ window.POKEDEX_ENTRIES = [
         "id": "tintedlens",
         "name": "Tinted Lens",
         "names": {
-          "de": "Finalschlag"
+          "de": "Aufwertung"
         },
         "shortDesc": "This Pokemon's attacks that are not very effective on a target deal double damage.",
         "desc": "This Pokemon's attacks that are not very effective on a target deal double damage."
@@ -71682,7 +71817,7 @@ window.POKEDEX_ENTRIES = [
     "sourceIndex": 98,
     "num": 56,
     "name": "Mankey",
-    "searchText": "0056 56 mankey fighting",
+    "searchText": "0056 56 mankey fighting menki",
     "types": [
       "Fighting"
     ],
@@ -71717,7 +71852,7 @@ window.POKEDEX_ENTRIES = [
         "id": "defiant",
         "name": "Defiant",
         "names": {
-          "de": "Seigeswille"
+          "de": "Siegeswille"
         },
         "shortDesc": "This Pokemon's Attack is raised by 2 for each of its stats that is lowered by a foe.",
         "desc": "This Pokemon's Attack is raised by 2 stages for each of its stat stages that is lowered by an opposing Pokemon."
@@ -72722,7 +72857,10 @@ window.POKEDEX_ENTRIES = [
     "stellar_defense": 1,
     "water_defense": 1,
     "sprite": "https://play.pokemonshowdown.com/sprites/gen5/mankey.png",
-    "displayNumber": "#0056"
+    "displayNumber": "#0056",
+    "names": {
+      "de": "Menki"
+    }
   },
   {
     "speciesId": "primeape",
@@ -72767,7 +72905,7 @@ window.POKEDEX_ENTRIES = [
         "id": "defiant",
         "name": "Defiant",
         "names": {
-          "de": "Seigeswille"
+          "de": "Siegeswille"
         },
         "shortDesc": "This Pokemon's Attack is raised by 2 for each of its stats that is lowered by a foe.",
         "desc": "This Pokemon's Attack is raised by 2 stages for each of its stat stages that is lowered by an opposing Pokemon."
@@ -78738,7 +78876,10 @@ window.POKEDEX_ENTRIES = [
         "id": "synchronize",
         "name": "Synchronize",
         "shortDesc": "If another Pokemon burns/poisons/paralyzes this Pokemon, it also gets that status.",
-        "desc": "If another Pokemon burns, paralyzes, poisons, or badly poisons this Pokemon, that Pokemon receives the same non-volatile status condition."
+        "desc": "If another Pokemon burns, paralyzes, poisons, or badly poisons this Pokemon, that Pokemon receives the same non-volatile status condition.",
+        "names": {
+          "de": "Synchro"
+        }
       },
       {
         "slot": "1",
@@ -79574,7 +79715,10 @@ window.POKEDEX_ENTRIES = [
     "stellar_defense": 1,
     "water_defense": 1,
     "sprite": "https://play.pokemonshowdown.com/sprites/gen5/abra.png",
-    "displayNumber": "#0063"
+    "displayNumber": "#0063",
+    "names": {
+      "de": "Abra"
+    }
   },
   {
     "speciesId": "kadabra",
@@ -79596,7 +79740,10 @@ window.POKEDEX_ENTRIES = [
         "id": "synchronize",
         "name": "Synchronize",
         "shortDesc": "If another Pokemon burns/poisons/paralyzes this Pokemon, it also gets that status.",
-        "desc": "If another Pokemon burns, paralyzes, poisons, or badly poisons this Pokemon, that Pokemon receives the same non-volatile status condition."
+        "desc": "If another Pokemon burns, paralyzes, poisons, or badly poisons this Pokemon, that Pokemon receives the same non-volatile status condition.",
+        "names": {
+          "de": "Synchro"
+        }
       },
       {
         "slot": "1",
@@ -80488,7 +80635,10 @@ window.POKEDEX_ENTRIES = [
     "stellar_defense": 1,
     "water_defense": 1,
     "sprite": "https://play.pokemonshowdown.com/sprites/gen5/kadabra.png",
-    "displayNumber": "#0064"
+    "displayNumber": "#0064",
+    "names": {
+      "de": "Kadabra"
+    }
   },
   {
     "speciesId": "alakazam",
@@ -80513,7 +80663,10 @@ window.POKEDEX_ENTRIES = [
         "id": "synchronize",
         "name": "Synchronize",
         "shortDesc": "If another Pokemon burns/poisons/paralyzes this Pokemon, it also gets that status.",
-        "desc": "If another Pokemon burns, paralyzes, poisons, or badly poisons this Pokemon, that Pokemon receives the same non-volatile status condition."
+        "desc": "If another Pokemon burns, paralyzes, poisons, or badly poisons this Pokemon, that Pokemon receives the same non-volatile status condition.",
+        "names": {
+          "de": "Synchro"
+        }
       },
       {
         "slot": "1",
@@ -81483,7 +81636,7 @@ window.POKEDEX_ENTRIES = [
         "id": "trace",
         "name": "Trace",
         "names": {
-          "de": "Fährte"
+          "de": "Erfassen"
         },
         "shortDesc": "On switch-in, or when it can, this Pokemon copies a random adjacent foe's Ability.",
         "desc": "On switch-in, this Pokemon copies a random opposing Pokemon's Ability. Abilities that cannot be copied are As One, Battle Bond, Comatose, Commander, Disguise, Embody Aspect, Flower Gift, Forecast, Hunger Switch, Ice Face, Illusion, Imposter, Multitype, Neutralizing Gas, Poison Puppeteer, Power Construct, Power of Alchemy, Protosynthesis, Quark Drive, Receiver, RKS System, Schooling, Shields Down, Stance Change, Teraform Zero, Tera Shell, Tera Shift, Trace, Zen Mode, and Zero to Hero. If no opposing Pokemon has an Ability that can be copied, this Ability will activate as soon as one does."
@@ -86001,7 +86154,10 @@ window.POKEDEX_ENTRIES = [
         "id": "chlorophyll",
         "name": "Chlorophyll",
         "shortDesc": "If Sunny Day is active, this Pokemon's Speed is doubled.",
-        "desc": "If Sunny Day is active, this Pokemon's Speed is doubled. This effect is prevented if this Pokemon is holding a Utility Umbrella."
+        "desc": "If Sunny Day is active, this Pokemon's Speed is doubled. This effect is prevented if this Pokemon is holding a Utility Umbrella.",
+        "names": {
+          "de": "Chlorophyll"
+        }
       },
       {
         "slot": "H",
@@ -86748,7 +86904,10 @@ window.POKEDEX_ENTRIES = [
         "id": "chlorophyll",
         "name": "Chlorophyll",
         "shortDesc": "If Sunny Day is active, this Pokemon's Speed is doubled.",
-        "desc": "If Sunny Day is active, this Pokemon's Speed is doubled. This effect is prevented if this Pokemon is holding a Utility Umbrella."
+        "desc": "If Sunny Day is active, this Pokemon's Speed is doubled. This effect is prevented if this Pokemon is holding a Utility Umbrella.",
+        "names": {
+          "de": "Chlorophyll"
+        }
       },
       {
         "slot": "H",
@@ -87419,7 +87578,10 @@ window.POKEDEX_ENTRIES = [
         "id": "chlorophyll",
         "name": "Chlorophyll",
         "shortDesc": "If Sunny Day is active, this Pokemon's Speed is doubled.",
-        "desc": "If Sunny Day is active, this Pokemon's Speed is doubled. This effect is prevented if this Pokemon is holding a Utility Umbrella."
+        "desc": "If Sunny Day is active, this Pokemon's Speed is doubled. This effect is prevented if this Pokemon is holding a Utility Umbrella.",
+        "names": {
+          "de": "Chlorophyll"
+        }
       },
       {
         "slot": "H",
@@ -94538,7 +94700,7 @@ window.POKEDEX_ENTRIES = [
     "sourceIndex": 127,
     "num": 77,
     "name": "Ponyta",
-    "searchText": "0077 77 ponyta fire",
+    "searchText": "0077 77 ponyta fire ponita",
     "types": [
       "Fire"
     ],
@@ -95222,7 +95384,10 @@ window.POKEDEX_ENTRIES = [
     "stellar_defense": 1,
     "water_defense": 2,
     "sprite": "https://play.pokemonshowdown.com/sprites/gen5/ponyta.png",
-    "displayNumber": "#0077"
+    "displayNumber": "#0077",
+    "names": {
+      "de": "Ponita"
+    }
   },
   {
     "speciesId": "ponytagalar",
@@ -95230,9 +95395,9 @@ window.POKEDEX_ENTRIES = [
     "num": 77,
     "name": "Ponyta-Galar",
     "names": {
-      "de": "Ponyta-Galar"
+      "de": "Ponita-Galar"
     },
-    "searchText": "0077 77 ponytagalar ponytagalar psychic",
+    "searchText": "0077 77 ponytagalar ponytagalar psychic ponitagalar",
     "types": [
       "Psychic"
     ],
@@ -96617,7 +96782,7 @@ window.POKEDEX_ENTRIES = [
         "id": "owntempo",
         "name": "Own Tempo",
         "names": {
-          "de": "Tempomacher"
+          "de": "Gleichmut"
         },
         "shortDesc": "This Pokemon cannot be confused. Immune to Intimidate.",
         "desc": "This Pokemon cannot be confused. Gaining this Ability while confused cures it. This Pokemon is immune to the effect of the Intimidate Ability."
@@ -97723,7 +97888,7 @@ window.POKEDEX_ENTRIES = [
         "id": "owntempo",
         "name": "Own Tempo",
         "names": {
-          "de": "Tempomacher"
+          "de": "Gleichmut"
         },
         "shortDesc": "This Pokemon cannot be confused. Immune to Intimidate.",
         "desc": "This Pokemon cannot be confused. Gaining this Ability while confused cures it. This Pokemon is immune to the effect of the Intimidate Ability."
@@ -98221,7 +98386,7 @@ window.POKEDEX_ENTRIES = [
         "id": "owntempo",
         "name": "Own Tempo",
         "names": {
-          "de": "Tempomacher"
+          "de": "Gleichmut"
         },
         "shortDesc": "This Pokemon cannot be confused. Immune to Intimidate.",
         "desc": "This Pokemon cannot be confused. Gaining this Ability while confused cures it. This Pokemon is immune to the effect of the Intimidate Ability."
@@ -100618,7 +100783,7 @@ window.POKEDEX_ENTRIES = [
         "id": "owntempo",
         "name": "Own Tempo",
         "names": {
-          "de": "Tempomacher"
+          "de": "Gleichmut"
         },
         "shortDesc": "This Pokemon cannot be confused. Immune to Intimidate.",
         "desc": "This Pokemon cannot be confused. Gaining this Ability while confused cures it. This Pokemon is immune to the effect of the Intimidate Ability."
@@ -102707,7 +102872,10 @@ window.POKEDEX_ENTRIES = [
     "stellar_defense": 1,
     "water_defense": 1,
     "sprite": "https://play.pokemonshowdown.com/sprites/gen5/magneton.png",
-    "displayNumber": "#0082"
+    "displayNumber": "#0082",
+    "names": {
+      "de": "Magneton"
+    }
   },
   {
     "speciesId": "farfetchd",
@@ -102753,7 +102921,7 @@ window.POKEDEX_ENTRIES = [
         "id": "defiant",
         "name": "Defiant",
         "names": {
-          "de": "Seigeswille"
+          "de": "Siegeswille"
         },
         "shortDesc": "This Pokemon's Attack is raised by 2 for each of its stats that is lowered by a foe.",
         "desc": "This Pokemon's Attack is raised by 2 stages for each of its stat stages that is lowered by an opposing Pokemon."
@@ -103958,7 +104126,7 @@ window.POKEDEX_ENTRIES = [
         "id": "tangledfeet",
         "name": "Tangled Feet",
         "names": {
-          "de": "Fußangel"
+          "de": "Taumelschritt"
         },
         "shortDesc": "This Pokemon's evasiveness is doubled as long as it is confused.",
         "desc": "This Pokemon's evasiveness is doubled as long as it is confused."
@@ -104650,7 +104818,7 @@ window.POKEDEX_ENTRIES = [
         "id": "tangledfeet",
         "name": "Tangled Feet",
         "names": {
-          "de": "Fußangel"
+          "de": "Taumelschritt"
         },
         "shortDesc": "This Pokemon's evasiveness is doubled as long as it is confused.",
         "desc": "This Pokemon's evasiveness is doubled as long as it is confused."
@@ -105343,7 +105511,10 @@ window.POKEDEX_ENTRIES = [
         "id": "hydration",
         "name": "Hydration",
         "shortDesc": "This Pokemon has its status cured at the end of each turn if Rain Dance is active.",
-        "desc": "This Pokemon has its non-volatile status condition cured at the end of each turn if Rain Dance is active. This effect is prevented if this Pokemon is holding a Utility Umbrella."
+        "desc": "This Pokemon has its non-volatile status condition cured at the end of each turn if Rain Dance is active. This effect is prevented if this Pokemon is holding a Utility Umbrella.",
+        "names": {
+          "de": "Hydration"
+        }
       },
       {
         "slot": "H",
@@ -106154,7 +106325,10 @@ window.POKEDEX_ENTRIES = [
         "id": "hydration",
         "name": "Hydration",
         "shortDesc": "This Pokemon has its status cured at the end of each turn if Rain Dance is active.",
-        "desc": "This Pokemon has its non-volatile status condition cured at the end of each turn if Rain Dance is active. This effect is prevented if this Pokemon is holding a Utility Umbrella."
+        "desc": "This Pokemon has its non-volatile status condition cured at the end of each turn if Rain Dance is active. This effect is prevented if this Pokemon is holding a Utility Umbrella.",
+        "names": {
+          "de": "Hydration"
+        }
       },
       {
         "slot": "H",
@@ -106893,7 +107067,7 @@ window.POKEDEX_ENTRIES = [
         "id": "stickyhold",
         "name": "Sticky Hold",
         "names": {
-          "de": "Wertehalter"
+          "de": "Klebekörper"
         },
         "shortDesc": "This Pokemon cannot lose its held item due to another Pokemon's Ability or attack.",
         "desc": "This Pokemon cannot lose its held item due to another Pokemon's Ability or attack, unless the attack knocks out this Pokemon. A Sticky Barb will be transferred to other Pokemon regardless of this Ability."
@@ -108389,7 +108563,7 @@ window.POKEDEX_ENTRIES = [
         "id": "stickyhold",
         "name": "Sticky Hold",
         "names": {
-          "de": "Wertehalter"
+          "de": "Klebekörper"
         },
         "shortDesc": "This Pokemon cannot lose its held item due to another Pokemon's Ability or attack.",
         "desc": "This Pokemon cannot lose its held item due to another Pokemon's Ability or attack, unless the attack knocks out this Pokemon. A Sticky Barb will be transferred to other Pokemon regardless of this Ability."
@@ -109890,7 +110064,7 @@ window.POKEDEX_ENTRIES = [
         "id": "overcoat",
         "name": "Overcoat",
         "names": {
-          "de": "Wetterfest"
+          "de": "Partikelschutz"
         },
         "shortDesc": "This Pokemon is immune to powder moves, Sandstorm damage, and Effect Spore.",
         "desc": "This Pokemon is immune to powder moves, damage from Sandstorm, and the effects of Rage Powder and the Effect Spore Ability."
@@ -110662,7 +110836,7 @@ window.POKEDEX_ENTRIES = [
         "id": "overcoat",
         "name": "Overcoat",
         "names": {
-          "de": "Wetterfest"
+          "de": "Partikelschutz"
         },
         "shortDesc": "This Pokemon is immune to powder moves, Sandstorm damage, and Effect Spore.",
         "desc": "This Pokemon is immune to powder moves, damage from Sandstorm, and the effects of Rage Powder and the Effect Spore Ability."
@@ -112335,9 +112509,9 @@ window.POKEDEX_ENTRIES = [
     "num": 93,
     "name": "Haunter",
     "names": {
-      "de": "Apollo"
+      "de": "Alpollo"
     },
-    "searchText": "0093 93 haunter apollo ghost poison",
+    "searchText": "0093 93 haunter apollo ghost poison alpollo",
     "types": [
       "Ghost",
       "Poison"
@@ -114365,7 +114539,10 @@ window.POKEDEX_ENTRIES = [
     "stellar_defense": 1,
     "water_defense": 1,
     "sprite": "https://play.pokemonshowdown.com/sprites/gen5/gengar.png",
-    "displayNumber": "#0094"
+    "displayNumber": "#0094",
+    "names": {
+      "de": "Gengar"
+    }
   },
   {
     "speciesId": "gengarmega",
@@ -117465,7 +117642,10 @@ window.POKEDEX_ENTRIES = [
     "stellar_defense": 1,
     "water_defense": 4,
     "sprite": "https://play.pokemonshowdown.com/sprites/gen5/onix.png",
-    "displayNumber": "#0095"
+    "displayNumber": "#0095",
+    "names": {
+      "de": "Onix"
+    }
   },
   {
     "speciesId": "drowzee",
@@ -117490,7 +117670,10 @@ window.POKEDEX_ENTRIES = [
         "id": "insomnia",
         "name": "Insomnia",
         "shortDesc": "This Pokemon cannot fall asleep. Gaining this Ability while asleep cures it.",
-        "desc": "This Pokemon cannot fall asleep. Gaining this Ability while asleep cures it."
+        "desc": "This Pokemon cannot fall asleep. Gaining this Ability while asleep cures it.",
+        "names": {
+          "de": "Insomnia"
+        }
       },
       {
         "slot": "1",
@@ -118502,7 +118685,10 @@ window.POKEDEX_ENTRIES = [
         "id": "insomnia",
         "name": "Insomnia",
         "shortDesc": "This Pokemon cannot fall asleep. Gaining this Ability while asleep cures it.",
-        "desc": "This Pokemon cannot fall asleep. Gaining this Ability while asleep cures it."
+        "desc": "This Pokemon cannot fall asleep. Gaining this Ability while asleep cures it.",
+        "names": {
+          "de": "Insomnia"
+        }
       },
       {
         "slot": "1",
@@ -119461,7 +119647,10 @@ window.POKEDEX_ENTRIES = [
     "stellar_defense": 1,
     "water_defense": 1,
     "sprite": "https://play.pokemonshowdown.com/sprites/gen5/hypno.png",
-    "displayNumber": "#0097"
+    "displayNumber": "#0097",
+    "names": {
+      "de": "Hypno"
+    }
   },
   {
     "speciesId": "krabby",
@@ -120263,7 +120452,10 @@ window.POKEDEX_ENTRIES = [
     "stellar_defense": 1,
     "water_defense": 0.5,
     "sprite": "https://play.pokemonshowdown.com/sprites/gen5/krabby.png",
-    "displayNumber": "#0098"
+    "displayNumber": "#0098",
+    "names": {
+      "de": "Krabby"
+    }
   },
   {
     "speciesId": "kingler",
@@ -121036,7 +121228,10 @@ window.POKEDEX_ENTRIES = [
     "stellar_defense": 1,
     "water_defense": 0.5,
     "sprite": "https://play.pokemonshowdown.com/sprites/gen5/kingler.png",
-    "displayNumber": "#0099"
+    "displayNumber": "#0099",
+    "names": {
+      "de": "Kingler"
+    }
   },
   {
     "speciesId": "kinglergmax",
@@ -121847,7 +122042,10 @@ window.POKEDEX_ENTRIES = [
         "id": "static",
         "name": "Static",
         "shortDesc": "30% chance a Pokemon making contact with this Pokemon will be paralyzed.",
-        "desc": "30% chance a Pokemon making contact with this Pokemon will be paralyzed."
+        "desc": "30% chance a Pokemon making contact with this Pokemon will be paralyzed.",
+        "names": {
+          "de": "Statik"
+        }
       },
       {
         "slot": "H",
@@ -122512,7 +122710,10 @@ window.POKEDEX_ENTRIES = [
         "id": "static",
         "name": "Static",
         "shortDesc": "30% chance a Pokemon making contact with this Pokemon will be paralyzed.",
-        "desc": "30% chance a Pokemon making contact with this Pokemon will be paralyzed."
+        "desc": "30% chance a Pokemon making contact with this Pokemon will be paralyzed.",
+        "names": {
+          "de": "Statik"
+        }
       },
       {
         "slot": "H",
@@ -122815,7 +123016,10 @@ window.POKEDEX_ENTRIES = [
         "id": "static",
         "name": "Static",
         "shortDesc": "30% chance a Pokemon making contact with this Pokemon will be paralyzed.",
-        "desc": "30% chance a Pokemon making contact with this Pokemon will be paralyzed."
+        "desc": "30% chance a Pokemon making contact with this Pokemon will be paralyzed.",
+        "names": {
+          "de": "Statik"
+        }
       },
       {
         "slot": "H",
@@ -123505,7 +123709,10 @@ window.POKEDEX_ENTRIES = [
         "id": "static",
         "name": "Static",
         "shortDesc": "30% chance a Pokemon making contact with this Pokemon will be paralyzed.",
-        "desc": "30% chance a Pokemon making contact with this Pokemon will be paralyzed."
+        "desc": "30% chance a Pokemon making contact with this Pokemon will be paralyzed.",
+        "names": {
+          "de": "Statik"
+        }
       },
       {
         "slot": "H",
@@ -123808,7 +124015,10 @@ window.POKEDEX_ENTRIES = [
         "id": "chlorophyll",
         "name": "Chlorophyll",
         "shortDesc": "If Sunny Day is active, this Pokemon's Speed is doubled.",
-        "desc": "If Sunny Day is active, this Pokemon's Speed is doubled. This effect is prevented if this Pokemon is holding a Utility Umbrella."
+        "desc": "If Sunny Day is active, this Pokemon's Speed is doubled. This effect is prevented if this Pokemon is holding a Utility Umbrella.",
+        "names": {
+          "de": "Chlorophyll"
+        }
       },
       {
         "slot": "H",
@@ -124687,7 +124897,10 @@ window.POKEDEX_ENTRIES = [
         "id": "chlorophyll",
         "name": "Chlorophyll",
         "shortDesc": "If Sunny Day is active, this Pokemon's Speed is doubled.",
-        "desc": "If Sunny Day is active, this Pokemon's Speed is doubled. This effect is prevented if this Pokemon is holding a Utility Umbrella."
+        "desc": "If Sunny Day is active, this Pokemon's Speed is doubled. This effect is prevented if this Pokemon is holding a Utility Umbrella.",
+        "names": {
+          "de": "Chlorophyll"
+        }
       },
       {
         "slot": "H",
@@ -129094,7 +129307,7 @@ window.POKEDEX_ENTRIES = [
         "id": "reckless",
         "name": "Reckless",
         "names": {
-          "de": "Atchlos"
+          "de": "Achtlos"
         },
         "shortDesc": "This Pokemon's attacks with recoil or crash damage have 1.2x power; not Struggle.",
         "desc": "This Pokemon's attacks with recoil or crash damage have their power multiplied by 1.2. Does not affect Struggle."
@@ -129959,9 +130172,9 @@ window.POKEDEX_ENTRIES = [
     "num": 107,
     "name": "Hitmonchan",
     "names": {
-      "de": "Nokchan"
+      "de": "Nockchan"
     },
-    "searchText": "0107 107 hitmonchan nokchan fighting",
+    "searchText": "0107 107 hitmonchan nokchan fighting nockchan",
     "types": [
       "Fighting"
     ],
@@ -130884,7 +131097,7 @@ window.POKEDEX_ENTRIES = [
         "id": "owntempo",
         "name": "Own Tempo",
         "names": {
-          "de": "Tempomacher"
+          "de": "Gleichmut"
         },
         "shortDesc": "This Pokemon cannot be confused. Immune to Intimidate.",
         "desc": "This Pokemon cannot be confused. Gaining this Ability while confused cures it. This Pokemon is immune to the effect of the Intimidate Ability."
@@ -134045,7 +134258,7 @@ window.POKEDEX_ENTRIES = [
         "id": "reckless",
         "name": "Reckless",
         "names": {
-          "de": "Atchlos"
+          "de": "Achtlos"
         },
         "shortDesc": "This Pokemon's attacks with recoil or crash damage have 1.2x power; not Struggle.",
         "desc": "This Pokemon's attacks with recoil or crash damage have their power multiplied by 1.2. Does not affect Struggle."
@@ -135096,7 +135309,7 @@ window.POKEDEX_ENTRIES = [
         "id": "reckless",
         "name": "Reckless",
         "names": {
-          "de": "Atchlos"
+          "de": "Achtlos"
         },
         "shortDesc": "This Pokemon's attacks with recoil or crash damage have 1.2x power; not Struggle.",
         "desc": "This Pokemon's attacks with recoil or crash damage have their power multiplied by 1.2. Does not affect Struggle."
@@ -137591,7 +137804,10 @@ window.POKEDEX_ENTRIES = [
         "id": "chlorophyll",
         "name": "Chlorophyll",
         "shortDesc": "If Sunny Day is active, this Pokemon's Speed is doubled.",
-        "desc": "If Sunny Day is active, this Pokemon's Speed is doubled. This effect is prevented if this Pokemon is holding a Utility Umbrella."
+        "desc": "If Sunny Day is active, this Pokemon's Speed is doubled. This effect is prevented if this Pokemon is holding a Utility Umbrella.",
+        "names": {
+          "de": "Chlorophyll"
+        }
       },
       {
         "slot": "1",
@@ -138367,7 +138583,10 @@ window.POKEDEX_ENTRIES = [
     "stellar_defense": 1,
     "water_defense": 0.5,
     "sprite": "https://play.pokemonshowdown.com/sprites/gen5/tangela.png",
-    "displayNumber": "#0114"
+    "displayNumber": "#0114",
+    "names": {
+      "de": "Tangela"
+    }
   },
   {
     "speciesId": "kangaskhan",
@@ -145033,7 +145252,10 @@ window.POKEDEX_ENTRIES = [
     "stellar_defense": 1,
     "water_defense": 0.5,
     "sprite": "https://play.pokemonshowdown.com/sprites/gen5/starmie.png",
-    "displayNumber": "#0121"
+    "displayNumber": "#0121",
+    "names": {
+      "de": "Starmie"
+    }
   },
   {
     "speciesId": "starmiemega",
@@ -145847,7 +146069,10 @@ window.POKEDEX_ENTRIES = [
         "id": "filter",
         "name": "Filter",
         "shortDesc": "This Pokemon receives 3/4 damage from supereffective attacks.",
-        "desc": "This Pokemon receives 3/4 damage from supereffective attacks."
+        "desc": "This Pokemon receives 3/4 damage from supereffective attacks.",
+        "names": {
+          "de": "Filter"
+        }
       },
       {
         "slot": "H",
@@ -149381,7 +149606,10 @@ window.POKEDEX_ENTRIES = [
         "id": "static",
         "name": "Static",
         "shortDesc": "30% chance a Pokemon making contact with this Pokemon will be paralyzed.",
-        "desc": "30% chance a Pokemon making contact with this Pokemon will be paralyzed."
+        "desc": "30% chance a Pokemon making contact with this Pokemon will be paralyzed.",
+        "names": {
+          "de": "Statik"
+        }
       },
       {
         "slot": "H",
@@ -151112,7 +151340,10 @@ window.POKEDEX_ENTRIES = [
     "stellar_defense": 1,
     "water_defense": 2,
     "sprite": "https://play.pokemonshowdown.com/sprites/gen5/magmar.png",
-    "displayNumber": "#0126"
+    "displayNumber": "#0126",
+    "names": {
+      "de": "Magmar"
+    }
   },
   {
     "speciesId": "pinsir",
@@ -151937,7 +152168,10 @@ window.POKEDEX_ENTRIES = [
     "stellar_defense": 1,
     "water_defense": 1,
     "sprite": "https://play.pokemonshowdown.com/sprites/gen5/pinsir.png",
-    "displayNumber": "#0127"
+    "displayNumber": "#0127",
+    "names": {
+      "de": "Pinsir"
+    }
   },
   {
     "speciesId": "pinsirmega",
@@ -153675,7 +153909,10 @@ window.POKEDEX_ENTRIES = [
     "stellar_defense": 1,
     "water_defense": 1,
     "sprite": "https://play.pokemonshowdown.com/sprites/gen5/tauros.png",
-    "displayNumber": "#0128"
+    "displayNumber": "#0128",
+    "names": {
+      "de": "Tauros"
+    }
   },
   {
     "speciesId": "taurospaldeacombat",
@@ -154677,7 +154914,7 @@ window.POKEDEX_ENTRIES = [
     "sourceIndex": 203,
     "num": 129,
     "name": "Magikarp",
-    "searchText": "0129 129 magikarp water",
+    "searchText": "0129 129 magikarp water karpador",
     "types": [
       "Water"
     ],
@@ -154831,7 +155068,10 @@ window.POKEDEX_ENTRIES = [
     "stellar_defense": 1,
     "water_defense": 0.5,
     "sprite": "https://play.pokemonshowdown.com/sprites/gen5/magikarp.png",
-    "displayNumber": "#0129"
+    "displayNumber": "#0129",
+    "names": {
+      "de": "Karpador"
+    }
   },
   {
     "speciesId": "gyarados",
@@ -156774,7 +157014,10 @@ window.POKEDEX_ENTRIES = [
         "id": "hydration",
         "name": "Hydration",
         "shortDesc": "This Pokemon has its status cured at the end of each turn if Rain Dance is active.",
-        "desc": "This Pokemon has its non-volatile status condition cured at the end of each turn if Rain Dance is active. This effect is prevented if this Pokemon is holding a Utility Umbrella."
+        "desc": "This Pokemon has its non-volatile status condition cured at the end of each turn if Rain Dance is active. This effect is prevented if this Pokemon is holding a Utility Umbrella.",
+        "names": {
+          "de": "Hydration"
+        }
       }
     ],
     "baseStats": {
@@ -157777,7 +158020,10 @@ window.POKEDEX_ENTRIES = [
       0.5
     ],
     "sprite": "https://play.pokemonshowdown.com/sprites/gen5/lapras.png",
-    "displayNumber": "#0131"
+    "displayNumber": "#0131",
+    "names": {
+      "de": "Lapras"
+    }
   },
   {
     "speciesId": "laprasgmax",
@@ -157823,7 +158069,10 @@ window.POKEDEX_ENTRIES = [
         "id": "hydration",
         "name": "Hydration",
         "shortDesc": "This Pokemon has its status cured at the end of each turn if Rain Dance is active.",
-        "desc": "This Pokemon has its non-volatile status condition cured at the end of each turn if Rain Dance is active. This effect is prevented if this Pokemon is holding a Utility Umbrella."
+        "desc": "This Pokemon has its non-volatile status condition cured at the end of each turn if Rain Dance is active. This effect is prevented if this Pokemon is holding a Utility Umbrella.",
+        "names": {
+          "de": "Hydration"
+        }
       }
     ],
     "baseStats": {
@@ -158925,7 +159174,10 @@ window.POKEDEX_ENTRIES = [
     "stellar_defense": 1,
     "water_defense": 1,
     "sprite": "https://play.pokemonshowdown.com/sprites/gen5/ditto.png",
-    "displayNumber": "#0132"
+    "displayNumber": "#0132",
+    "names": {
+      "de": "Ditto"
+    }
   },
   {
     "speciesId": "eevee",
@@ -159739,7 +159991,7 @@ window.POKEDEX_ENTRIES = [
     "sourceIndex": 210,
     "num": 133,
     "name": "Eevee-Starter",
-    "searchText": "0133 133 eeveestarter normal",
+    "searchText": "0133 133 eeveestarter normal evolistarter",
     "types": [
       "Normal"
     ],
@@ -160123,7 +160375,10 @@ window.POKEDEX_ENTRIES = [
     "stellar_defense": 1,
     "water_defense": 1,
     "sprite": "https://play.pokemonshowdown.com/sprites/gen5/eevee-starter.png",
-    "displayNumber": "#0133"
+    "displayNumber": "#0133",
+    "names": {
+      "de": "Evoli-Starter"
+    }
   },
   {
     "speciesId": "eeveegmax",
@@ -160950,7 +161205,10 @@ window.POKEDEX_ENTRIES = [
         "id": "hydration",
         "name": "Hydration",
         "shortDesc": "This Pokemon has its status cured at the end of each turn if Rain Dance is active.",
-        "desc": "This Pokemon has its non-volatile status condition cured at the end of each turn if Rain Dance is active. This effect is prevented if this Pokemon is holding a Utility Umbrella."
+        "desc": "This Pokemon has its non-volatile status condition cured at the end of each turn if Rain Dance is active. This effect is prevented if this Pokemon is holding a Utility Umbrella.",
+        "names": {
+          "de": "Hydration"
+        }
       }
     ],
     "baseStats": {
@@ -163581,7 +163839,7 @@ window.POKEDEX_ENTRIES = [
         "id": "trace",
         "name": "Trace",
         "names": {
-          "de": "Fährte"
+          "de": "Erfassen"
         },
         "shortDesc": "On switch-in, or when it can, this Pokemon copies a random adjacent foe's Ability.",
         "desc": "On switch-in, this Pokemon copies a random opposing Pokemon's Ability. Abilities that cannot be copied are As One, Battle Bond, Comatose, Commander, Disguise, Embody Aspect, Flower Gift, Forecast, Hunger Switch, Ice Face, Illusion, Imposter, Multitype, Neutralizing Gas, Poison Puppeteer, Power Construct, Power of Alchemy, Protosynthesis, Quark Drive, Receiver, RKS System, Schooling, Shields Down, Stance Change, Teraform Zero, Tera Shell, Tera Shift, Trace, Zen Mode, and Zero to Hero. If no opposing Pokemon has an Ability that can be copied, this Ability will activate as soon as one does."
@@ -163591,7 +163849,10 @@ window.POKEDEX_ENTRIES = [
         "id": "download",
         "name": "Download",
         "shortDesc": "On switch-in, Attack or Sp. Atk is raised 1 stage based on the foes' weaker Defense.",
-        "desc": "On switch-in, this Pokemon's Attack or Special Attack is raised by 1 stage based on the weaker combined defensive stat of all opposing Pokemon. Attack is raised if their Defense is lower, and Special Attack is raised if their Special Defense is the same or lower."
+        "desc": "On switch-in, this Pokemon's Attack or Special Attack is raised by 1 stage based on the weaker combined defensive stat of all opposing Pokemon. Attack is raised if their Defense is lower, and Special Attack is raised if their Special Defense is the same or lower.",
+        "names": {
+          "de": "Download"
+        }
       },
       {
         "slot": "H",
@@ -164415,7 +164676,10 @@ window.POKEDEX_ENTRIES = [
     "stellar_defense": 1,
     "water_defense": 1,
     "sprite": "https://play.pokemonshowdown.com/sprites/gen5/porygon.png",
-    "displayNumber": "#0137"
+    "displayNumber": "#0137",
+    "names": {
+      "de": "Porygon"
+    }
   },
   {
     "speciesId": "omanyte",
@@ -166777,7 +167041,10 @@ window.POKEDEX_ENTRIES = [
     "stellar_defense": 1,
     "water_defense": 1,
     "sprite": "https://play.pokemonshowdown.com/sprites/gen5/kabuto.png",
-    "displayNumber": "#0140"
+    "displayNumber": "#0140",
+    "names": {
+      "de": "Kabuto"
+    }
   },
   {
     "speciesId": "kabutops",
@@ -167670,7 +167937,10 @@ window.POKEDEX_ENTRIES = [
     "stellar_defense": 1,
     "water_defense": 1,
     "sprite": "https://play.pokemonshowdown.com/sprites/gen5/kabutops.png",
-    "displayNumber": "#0141"
+    "displayNumber": "#0141",
+    "names": {
+      "de": "Kabutops"
+    }
   },
   {
     "speciesId": "aerodactyl",
@@ -168606,7 +168876,10 @@ window.POKEDEX_ENTRIES = [
     "stellar_defense": 1,
     "water_defense": 2,
     "sprite": "https://play.pokemonshowdown.com/sprites/gen5/aerodactyl.png",
-    "displayNumber": "#0142"
+    "displayNumber": "#0142",
+    "names": {
+      "de": "Aerodactyl"
+    }
   },
   {
     "speciesId": "aerodactylmega",
@@ -173303,7 +173576,10 @@ window.POKEDEX_ENTRIES = [
         "id": "static",
         "name": "Static",
         "shortDesc": "30% chance a Pokemon making contact with this Pokemon will be paralyzed.",
-        "desc": "30% chance a Pokemon making contact with this Pokemon will be paralyzed."
+        "desc": "30% chance a Pokemon making contact with this Pokemon will be paralyzed.",
+        "names": {
+          "de": "Statik"
+        }
       }
     ],
     "baseStats": {
@@ -174116,7 +174392,10 @@ window.POKEDEX_ENTRIES = [
     "stellar_defense": 1,
     "water_defense": 1,
     "sprite": "https://play.pokemonshowdown.com/sprites/gen5/zapdos.png",
-    "displayNumber": "#0145"
+    "displayNumber": "#0145",
+    "names": {
+      "de": "Zapdos"
+    }
   },
   {
     "speciesId": "zapdosgalar",
@@ -174140,7 +174419,7 @@ window.POKEDEX_ENTRIES = [
         "id": "defiant",
         "name": "Defiant",
         "names": {
-          "de": "Seigeswille"
+          "de": "Siegeswille"
         },
         "shortDesc": "This Pokemon's Attack is raised by 2 for each of its stats that is lowered by a foe.",
         "desc": "This Pokemon's Attack is raised by 2 stages for each of its stat stages that is lowered by an opposing Pokemon."
@@ -176581,7 +176860,10 @@ window.POKEDEX_ENTRIES = [
     "stellar_defense": 1,
     "water_defense": 0.5,
     "sprite": "https://play.pokemonshowdown.com/sprites/gen5/dratini.png",
-    "displayNumber": "#0147"
+    "displayNumber": "#0147",
+    "names": {
+      "de": "Dratini"
+    }
   },
   {
     "speciesId": "dragonair",
@@ -182852,7 +183134,10 @@ window.POKEDEX_ENTRIES = [
         "id": "insomnia",
         "name": "Insomnia",
         "shortDesc": "This Pokemon cannot fall asleep. Gaining this Ability while asleep cures it.",
-        "desc": "This Pokemon cannot fall asleep. Gaining this Ability while asleep cures it."
+        "desc": "This Pokemon cannot fall asleep. Gaining this Ability while asleep cures it.",
+        "names": {
+          "de": "Insomnia"
+        }
       }
     ],
     "baseStats": {
@@ -184295,7 +184580,10 @@ window.POKEDEX_ENTRIES = [
         "id": "synchronize",
         "name": "Synchronize",
         "shortDesc": "If another Pokemon burns/poisons/paralyzes this Pokemon, it also gets that status.",
-        "desc": "If another Pokemon burns, paralyzes, poisons, or badly poisons this Pokemon, that Pokemon receives the same non-volatile status condition."
+        "desc": "If another Pokemon burns, paralyzes, poisons, or badly poisons this Pokemon, that Pokemon receives the same non-volatile status condition.",
+        "names": {
+          "de": "Synchro"
+        }
       }
     ],
     "baseStats": {
@@ -187003,7 +187291,10 @@ window.POKEDEX_ENTRIES = [
     "stellar_defense": 1,
     "water_defense": 1,
     "sprite": "https://play.pokemonshowdown.com/sprites/gen5/mew.png",
-    "displayNumber": "#0151"
+    "displayNumber": "#0151",
+    "names": {
+      "de": "Mew"
+    }
   },
   {
     "speciesId": "chikorita",
@@ -189884,9 +190175,9 @@ window.POKEDEX_ENTRIES = [
     "num": 155,
     "name": "Cyndaquil",
     "names": {
-      "de": "Feuriegel"
+      "de": "Feurigel"
     },
-    "searchText": "0155 155 cyndaquil feuriegel fire",
+    "searchText": "0155 155 cyndaquil feuriegel fire feurigel",
     "types": [
       "Fire"
     ],
@@ -197812,7 +198103,10 @@ window.POKEDEX_ENTRIES = [
         "id": "insomnia",
         "name": "Insomnia",
         "shortDesc": "This Pokemon cannot fall asleep. Gaining this Ability while asleep cures it.",
-        "desc": "This Pokemon cannot fall asleep. Gaining this Ability while asleep cures it."
+        "desc": "This Pokemon cannot fall asleep. Gaining this Ability while asleep cures it.",
+        "names": {
+          "de": "Insomnia"
+        }
       },
       {
         "slot": "1",
@@ -197829,7 +198123,7 @@ window.POKEDEX_ENTRIES = [
         "id": "tintedlens",
         "name": "Tinted Lens",
         "names": {
-          "de": "Finalschlag"
+          "de": "Aufwertung"
         },
         "shortDesc": "This Pokemon's attacks that are not very effective on a target deal double damage.",
         "desc": "This Pokemon's attacks that are not very effective on a target deal double damage."
@@ -198641,7 +198935,10 @@ window.POKEDEX_ENTRIES = [
     "stellar_defense": 1,
     "water_defense": 1,
     "sprite": "https://play.pokemonshowdown.com/sprites/gen5/hoothoot.png",
-    "displayNumber": "#0163"
+    "displayNumber": "#0163",
+    "names": {
+      "de": "Hoothoot"
+    }
   },
   {
     "speciesId": "noctowl",
@@ -198667,7 +198964,10 @@ window.POKEDEX_ENTRIES = [
         "id": "insomnia",
         "name": "Insomnia",
         "shortDesc": "This Pokemon cannot fall asleep. Gaining this Ability while asleep cures it.",
-        "desc": "This Pokemon cannot fall asleep. Gaining this Ability while asleep cures it."
+        "desc": "This Pokemon cannot fall asleep. Gaining this Ability while asleep cures it.",
+        "names": {
+          "de": "Insomnia"
+        }
       },
       {
         "slot": "1",
@@ -198684,7 +198984,7 @@ window.POKEDEX_ENTRIES = [
         "id": "tintedlens",
         "name": "Tinted Lens",
         "names": {
-          "de": "Finalschlag"
+          "de": "Aufwertung"
         },
         "shortDesc": "This Pokemon's attacks that are not very effective on a target deal double damage.",
         "desc": "This Pokemon's attacks that are not very effective on a target deal double damage."
@@ -200147,7 +200447,10 @@ window.POKEDEX_ENTRIES = [
     "stellar_defense": 1,
     "water_defense": 1,
     "sprite": "https://play.pokemonshowdown.com/sprites/gen5/ledyba.png",
-    "displayNumber": "#0165"
+    "displayNumber": "#0165",
+    "names": {
+      "de": "Ledyba"
+    }
   },
   {
     "speciesId": "ledian",
@@ -200797,7 +201100,10 @@ window.POKEDEX_ENTRIES = [
     "stellar_defense": 1,
     "water_defense": 1,
     "sprite": "https://play.pokemonshowdown.com/sprites/gen5/ledian.png",
-    "displayNumber": "#0166"
+    "displayNumber": "#0166",
+    "names": {
+      "de": "Ledian"
+    }
   },
   {
     "speciesId": "spinarak",
@@ -200833,7 +201139,10 @@ window.POKEDEX_ENTRIES = [
         "id": "insomnia",
         "name": "Insomnia",
         "shortDesc": "This Pokemon cannot fall asleep. Gaining this Ability while asleep cures it.",
-        "desc": "This Pokemon cannot fall asleep. Gaining this Ability while asleep cures it."
+        "desc": "This Pokemon cannot fall asleep. Gaining this Ability while asleep cures it.",
+        "names": {
+          "de": "Insomnia"
+        }
       },
       {
         "slot": "H",
@@ -201562,7 +201871,10 @@ window.POKEDEX_ENTRIES = [
         "id": "insomnia",
         "name": "Insomnia",
         "shortDesc": "This Pokemon cannot fall asleep. Gaining this Ability while asleep cures it.",
-        "desc": "This Pokemon cannot fall asleep. Gaining this Ability while asleep cures it."
+        "desc": "This Pokemon cannot fall asleep. Gaining this Ability while asleep cures it.",
+        "names": {
+          "de": "Insomnia"
+        }
       },
       {
         "slot": "H",
@@ -202227,7 +202539,10 @@ window.POKEDEX_ENTRIES = [
     "stellar_defense": 1,
     "water_defense": 1,
     "sprite": "https://play.pokemonshowdown.com/sprites/gen5/ariados.png",
-    "displayNumber": "#0168"
+    "displayNumber": "#0168",
+    "names": {
+      "de": "Ariados"
+    }
   },
   {
     "speciesId": "crobat",
@@ -204496,7 +204811,10 @@ window.POKEDEX_ENTRIES = [
       0.5
     ],
     "sprite": "https://play.pokemonshowdown.com/sprites/gen5/lanturn.png",
-    "displayNumber": "#0171"
+    "displayNumber": "#0171",
+    "names": {
+      "de": "Lanturn"
+    }
   },
   {
     "speciesId": "pichu",
@@ -204517,7 +204835,10 @@ window.POKEDEX_ENTRIES = [
         "id": "static",
         "name": "Static",
         "shortDesc": "30% chance a Pokemon making contact with this Pokemon will be paralyzed.",
-        "desc": "30% chance a Pokemon making contact with this Pokemon will be paralyzed."
+        "desc": "30% chance a Pokemon making contact with this Pokemon will be paralyzed.",
+        "names": {
+          "de": "Statik"
+        }
       },
       {
         "slot": "H",
@@ -205290,7 +205611,10 @@ window.POKEDEX_ENTRIES = [
     "stellar_defense": 1,
     "water_defense": 1,
     "sprite": "https://play.pokemonshowdown.com/sprites/gen5/pichu.png",
-    "displayNumber": "#0172"
+    "displayNumber": "#0172",
+    "names": {
+      "de": "Pichu"
+    }
   },
   {
     "speciesId": "pichuspikyeared",
@@ -205310,7 +205634,10 @@ window.POKEDEX_ENTRIES = [
         "id": "static",
         "name": "Static",
         "shortDesc": "30% chance a Pokemon making contact with this Pokemon will be paralyzed.",
-        "desc": "30% chance a Pokemon making contact with this Pokemon will be paralyzed."
+        "desc": "30% chance a Pokemon making contact with this Pokemon will be paralyzed.",
+        "names": {
+          "de": "Statik"
+        }
       }
     ],
     "baseStats": {
@@ -205546,7 +205873,10 @@ window.POKEDEX_ENTRIES = [
     "stellar_defense": 1,
     "water_defense": 1,
     "sprite": "https://play.pokemonshowdown.com/sprites/gen5/pichu-spikyeared.png",
-    "displayNumber": "#0172"
+    "displayNumber": "#0172",
+    "names": {
+      "de": "Pichu-Spiky-eared"
+    }
   },
   {
     "speciesId": "cleffa",
@@ -206504,9 +206834,9 @@ window.POKEDEX_ENTRIES = [
     "num": 174,
     "name": "Igglybuff",
     "names": {
-      "de": "Fluffefeluff"
+      "de": "Fluffeluff"
     },
-    "searchText": "0174 174 igglybuff fluffefeluff normal fairy",
+    "searchText": "0174 174 igglybuff fluffefeluff normal fairy fluffeluff",
     "types": [
       "Normal",
       "Fairy"
@@ -208285,7 +208615,10 @@ window.POKEDEX_ENTRIES = [
     "stellar_defense": 1,
     "water_defense": 1,
     "sprite": "https://play.pokemonshowdown.com/sprites/gen5/togepi.png",
-    "displayNumber": "#0175"
+    "displayNumber": "#0175",
+    "names": {
+      "de": "Togepi"
+    }
   },
   {
     "speciesId": "togetic",
@@ -209230,7 +209563,10 @@ window.POKEDEX_ENTRIES = [
     "stellar_defense": 1,
     "water_defense": 1,
     "sprite": "https://play.pokemonshowdown.com/sprites/gen5/togetic.png",
-    "displayNumber": "#0176"
+    "displayNumber": "#0176",
+    "names": {
+      "de": "Togetic"
+    }
   },
   {
     "speciesId": "natu",
@@ -209253,7 +209589,10 @@ window.POKEDEX_ENTRIES = [
         "id": "synchronize",
         "name": "Synchronize",
         "shortDesc": "If another Pokemon burns/poisons/paralyzes this Pokemon, it also gets that status.",
-        "desc": "If another Pokemon burns, paralyzes, poisons, or badly poisons this Pokemon, that Pokemon receives the same non-volatile status condition."
+        "desc": "If another Pokemon burns, paralyzes, poisons, or badly poisons this Pokemon, that Pokemon receives the same non-volatile status condition.",
+        "names": {
+          "de": "Synchro"
+        }
       },
       {
         "slot": "1",
@@ -210081,7 +210420,10 @@ window.POKEDEX_ENTRIES = [
     "stellar_defense": 1,
     "water_defense": 1,
     "sprite": "https://play.pokemonshowdown.com/sprites/gen5/natu.png",
-    "displayNumber": "#0177"
+    "displayNumber": "#0177",
+    "names": {
+      "de": "Natu"
+    }
   },
   {
     "speciesId": "xatu",
@@ -210104,7 +210446,10 @@ window.POKEDEX_ENTRIES = [
         "id": "synchronize",
         "name": "Synchronize",
         "shortDesc": "If another Pokemon burns/poisons/paralyzes this Pokemon, it also gets that status.",
-        "desc": "If another Pokemon burns, paralyzes, poisons, or badly poisons this Pokemon, that Pokemon receives the same non-volatile status condition."
+        "desc": "If another Pokemon burns, paralyzes, poisons, or badly poisons this Pokemon, that Pokemon receives the same non-volatile status condition.",
+        "names": {
+          "de": "Synchro"
+        }
       },
       {
         "slot": "1",
@@ -210884,7 +211229,10 @@ window.POKEDEX_ENTRIES = [
     "stellar_defense": 1,
     "water_defense": 1,
     "sprite": "https://play.pokemonshowdown.com/sprites/gen5/xatu.png",
-    "displayNumber": "#0178"
+    "displayNumber": "#0178",
+    "names": {
+      "de": "Xatu"
+    }
   },
   {
     "speciesId": "mareep",
@@ -210908,14 +211256,20 @@ window.POKEDEX_ENTRIES = [
         "id": "static",
         "name": "Static",
         "shortDesc": "30% chance a Pokemon making contact with this Pokemon will be paralyzed.",
-        "desc": "30% chance a Pokemon making contact with this Pokemon will be paralyzed."
+        "desc": "30% chance a Pokemon making contact with this Pokemon will be paralyzed.",
+        "names": {
+          "de": "Statik"
+        }
       },
       {
         "slot": "H",
         "id": "plus",
         "name": "Plus",
         "shortDesc": "If an active ally has this Ability or the Minus Ability, this Pokemon's Sp. Atk is 1.5x.",
-        "desc": "If an active ally has this Ability or the Minus Ability, this Pokemon's Special Attack is multiplied by 1.5."
+        "desc": "If an active ally has this Ability or the Minus Ability, this Pokemon's Special Attack is multiplied by 1.5.",
+        "names": {
+          "de": "Plus"
+        }
       }
     ],
     "baseStats": {
@@ -211588,14 +211942,20 @@ window.POKEDEX_ENTRIES = [
         "id": "static",
         "name": "Static",
         "shortDesc": "30% chance a Pokemon making contact with this Pokemon will be paralyzed.",
-        "desc": "30% chance a Pokemon making contact with this Pokemon will be paralyzed."
+        "desc": "30% chance a Pokemon making contact with this Pokemon will be paralyzed.",
+        "names": {
+          "de": "Statik"
+        }
       },
       {
         "slot": "H",
         "id": "plus",
         "name": "Plus",
         "shortDesc": "If an active ally has this Ability or the Minus Ability, this Pokemon's Sp. Atk is 1.5x.",
-        "desc": "If an active ally has this Ability or the Minus Ability, this Pokemon's Special Attack is multiplied by 1.5."
+        "desc": "If an active ally has this Ability or the Minus Ability, this Pokemon's Special Attack is multiplied by 1.5.",
+        "names": {
+          "de": "Plus"
+        }
       }
     ],
     "baseStats": {
@@ -212276,14 +212636,20 @@ window.POKEDEX_ENTRIES = [
         "id": "static",
         "name": "Static",
         "shortDesc": "30% chance a Pokemon making contact with this Pokemon will be paralyzed.",
-        "desc": "30% chance a Pokemon making contact with this Pokemon will be paralyzed."
+        "desc": "30% chance a Pokemon making contact with this Pokemon will be paralyzed.",
+        "names": {
+          "de": "Statik"
+        }
       },
       {
         "slot": "H",
         "id": "plus",
         "name": "Plus",
         "shortDesc": "If an active ally has this Ability or the Minus Ability, this Pokemon's Sp. Atk is 1.5x.",
-        "desc": "If an active ally has this Ability or the Minus Ability, this Pokemon's Special Attack is multiplied by 1.5."
+        "desc": "If an active ally has this Ability or the Minus Ability, this Pokemon's Special Attack is multiplied by 1.5.",
+        "names": {
+          "de": "Plus"
+        }
       }
     ],
     "baseStats": {
@@ -213058,7 +213424,10 @@ window.POKEDEX_ENTRIES = [
     "stellar_defense": 1,
     "water_defense": 1,
     "sprite": "https://play.pokemonshowdown.com/sprites/gen5/ampharos.png",
-    "displayNumber": "#0181"
+    "displayNumber": "#0181",
+    "names": {
+      "de": "Ampharos"
+    }
   },
   {
     "speciesId": "ampharosmega",
@@ -213879,7 +214248,10 @@ window.POKEDEX_ENTRIES = [
         "id": "chlorophyll",
         "name": "Chlorophyll",
         "shortDesc": "If Sunny Day is active, this Pokemon's Speed is doubled.",
-        "desc": "If Sunny Day is active, this Pokemon's Speed is doubled. This effect is prevented if this Pokemon is holding a Utility Umbrella."
+        "desc": "If Sunny Day is active, this Pokemon's Speed is doubled. This effect is prevented if this Pokemon is holding a Utility Umbrella.",
+        "names": {
+          "de": "Chlorophyll"
+        }
       },
       {
         "slot": "H",
@@ -215493,7 +215865,10 @@ window.POKEDEX_ENTRIES = [
     "stellar_defense": 1,
     "water_defense": 0.5,
     "sprite": "https://play.pokemonshowdown.com/sprites/gen5/marill.png",
-    "displayNumber": "#0183"
+    "displayNumber": "#0183",
+    "names": {
+      "de": "Marill"
+    }
   },
   {
     "speciesId": "azumarill",
@@ -216374,7 +216749,10 @@ window.POKEDEX_ENTRIES = [
     "stellar_defense": 1,
     "water_defense": 0.5,
     "sprite": "https://play.pokemonshowdown.com/sprites/gen5/azumarill.png",
-    "displayNumber": "#0184"
+    "displayNumber": "#0184",
+    "names": {
+      "de": "Azumarill"
+    }
   },
   {
     "speciesId": "sudowoodo",
@@ -218131,7 +218509,10 @@ window.POKEDEX_ENTRIES = [
         "id": "chlorophyll",
         "name": "Chlorophyll",
         "shortDesc": "If Sunny Day is active, this Pokemon's Speed is doubled.",
-        "desc": "If Sunny Day is active, this Pokemon's Speed is doubled. This effect is prevented if this Pokemon is holding a Utility Umbrella."
+        "desc": "If Sunny Day is active, this Pokemon's Speed is doubled. This effect is prevented if this Pokemon is holding a Utility Umbrella.",
+        "names": {
+          "de": "Chlorophyll"
+        }
       },
       {
         "slot": "1",
@@ -218883,7 +219264,10 @@ window.POKEDEX_ENTRIES = [
         "id": "chlorophyll",
         "name": "Chlorophyll",
         "shortDesc": "If Sunny Day is active, this Pokemon's Speed is doubled.",
-        "desc": "If Sunny Day is active, this Pokemon's Speed is doubled. This effect is prevented if this Pokemon is holding a Utility Umbrella."
+        "desc": "If Sunny Day is active, this Pokemon's Speed is doubled. This effect is prevented if this Pokemon is holding a Utility Umbrella.",
+        "names": {
+          "de": "Chlorophyll"
+        }
       },
       {
         "slot": "1",
@@ -219545,7 +219929,10 @@ window.POKEDEX_ENTRIES = [
         "id": "chlorophyll",
         "name": "Chlorophyll",
         "shortDesc": "If Sunny Day is active, this Pokemon's Speed is doubled.",
-        "desc": "If Sunny Day is active, this Pokemon's Speed is doubled. This effect is prevented if this Pokemon is holding a Utility Umbrella."
+        "desc": "If Sunny Day is active, this Pokemon's Speed is doubled. This effect is prevented if this Pokemon is holding a Utility Umbrella.",
+        "names": {
+          "de": "Chlorophyll"
+        }
       },
       {
         "slot": "1",
@@ -221225,7 +221612,10 @@ window.POKEDEX_ENTRIES = [
         "id": "chlorophyll",
         "name": "Chlorophyll",
         "shortDesc": "If Sunny Day is active, this Pokemon's Speed is doubled.",
-        "desc": "If Sunny Day is active, this Pokemon's Speed is doubled. This effect is prevented if this Pokemon is holding a Utility Umbrella."
+        "desc": "If Sunny Day is active, this Pokemon's Speed is doubled. This effect is prevented if this Pokemon is holding a Utility Umbrella.",
+        "names": {
+          "de": "Chlorophyll"
+        }
       },
       {
         "slot": "1",
@@ -221863,9 +222253,9 @@ window.POKEDEX_ENTRIES = [
     "num": 192,
     "name": "Sunflora",
     "names": {
-      "de": "Sonflora"
+      "de": "Sonnflora"
     },
-    "searchText": "0192 192 sunflora sonflora grass",
+    "searchText": "0192 192 sunflora sonflora grass sonnflora",
     "types": [
       "Grass"
     ],
@@ -221880,7 +222270,10 @@ window.POKEDEX_ENTRIES = [
         "id": "chlorophyll",
         "name": "Chlorophyll",
         "shortDesc": "If Sunny Day is active, this Pokemon's Speed is doubled.",
-        "desc": "If Sunny Day is active, this Pokemon's Speed is doubled. This effect is prevented if this Pokemon is holding a Utility Umbrella."
+        "desc": "If Sunny Day is active, this Pokemon's Speed is doubled. This effect is prevented if this Pokemon is holding a Utility Umbrella.",
+        "names": {
+          "de": "Chlorophyll"
+        }
       },
       {
         "slot": "1",
@@ -223186,7 +223579,10 @@ window.POKEDEX_ENTRIES = [
     "stellar_defense": 1,
     "water_defense": 1,
     "sprite": "https://play.pokemonshowdown.com/sprites/gen5/yanma.png",
-    "displayNumber": "#0193"
+    "displayNumber": "#0193",
+    "names": {
+      "de": "Yanma"
+    }
   },
   {
     "speciesId": "wooper",
@@ -224087,7 +224483,7 @@ window.POKEDEX_ENTRIES = [
     "sourceIndex": 286,
     "num": 194,
     "name": "Wooper-Paldea",
-    "searchText": "0194 194 wooperpaldea poison ground",
+    "searchText": "0194 194 wooperpaldea poison ground felinopaldea",
     "types": [
       "Poison",
       "Ground"
@@ -224438,7 +224834,10 @@ window.POKEDEX_ENTRIES = [
       2
     ],
     "sprite": "https://play.pokemonshowdown.com/sprites/gen5/wooper-paldea.png",
-    "displayNumber": "#0194"
+    "displayNumber": "#0194",
+    "names": {
+      "de": "Felino-Paldea"
+    }
   },
   {
     "speciesId": "quagsire",
@@ -225365,7 +225764,10 @@ window.POKEDEX_ENTRIES = [
         "id": "synchronize",
         "name": "Synchronize",
         "shortDesc": "If another Pokemon burns/poisons/paralyzes this Pokemon, it also gets that status.",
-        "desc": "If another Pokemon burns, paralyzes, poisons, or badly poisons this Pokemon, that Pokemon receives the same non-volatile status condition."
+        "desc": "If another Pokemon burns, paralyzes, poisons, or badly poisons this Pokemon, that Pokemon receives the same non-volatile status condition.",
+        "names": {
+          "de": "Synchro"
+        }
       },
       {
         "slot": "H",
@@ -226258,7 +226660,10 @@ window.POKEDEX_ENTRIES = [
         "id": "synchronize",
         "name": "Synchronize",
         "shortDesc": "If another Pokemon burns/poisons/paralyzes this Pokemon, it also gets that status.",
-        "desc": "If another Pokemon burns, paralyzes, poisons, or badly poisons this Pokemon, that Pokemon receives the same non-volatile status condition."
+        "desc": "If another Pokemon burns, paralyzes, poisons, or badly poisons this Pokemon, that Pokemon receives the same non-volatile status condition.",
+        "names": {
+          "de": "Synchro"
+        }
       },
       {
         "slot": "H",
@@ -227121,7 +227526,10 @@ window.POKEDEX_ENTRIES = [
         "id": "insomnia",
         "name": "Insomnia",
         "shortDesc": "This Pokemon cannot fall asleep. Gaining this Ability while asleep cures it.",
-        "desc": "This Pokemon cannot fall asleep. Gaining this Ability while asleep cures it."
+        "desc": "This Pokemon cannot fall asleep. Gaining this Ability while asleep cures it.",
+        "names": {
+          "de": "Insomnia"
+        }
       },
       {
         "slot": "1",
@@ -227984,7 +228392,7 @@ window.POKEDEX_ENTRIES = [
         "id": "owntempo",
         "name": "Own Tempo",
         "names": {
-          "de": "Tempomacher"
+          "de": "Gleichmut"
         },
         "shortDesc": "This Pokemon cannot be confused. Immune to Intimidate.",
         "desc": "This Pokemon cannot be confused. Gaining this Ability while confused cures it. This Pokemon is immune to the effect of the Intimidate Ability."
@@ -229148,7 +229556,7 @@ window.POKEDEX_ENTRIES = [
         "id": "owntempo",
         "name": "Own Tempo",
         "names": {
-          "de": "Tempomacher"
+          "de": "Gleichmut"
         },
         "shortDesc": "This Pokemon cannot be confused. Immune to Intimidate.",
         "desc": "This Pokemon cannot be confused. Gaining this Ability while confused cures it. This Pokemon is immune to the effect of the Intimidate Ability."
@@ -231943,7 +232351,10 @@ window.POKEDEX_ENTRIES = [
     "stellar_defense": 1,
     "water_defense": 1,
     "sprite": "https://play.pokemonshowdown.com/sprites/gen5/girafarig.png",
-    "displayNumber": "#0203"
+    "displayNumber": "#0203",
+    "names": {
+      "de": "Girafarig"
+    }
   },
   {
     "speciesId": "pineco",
@@ -231951,9 +232362,9 @@ window.POKEDEX_ENTRIES = [
     "num": 204,
     "name": "Pineco",
     "names": {
-      "de": "Tanza"
+      "de": "Tannza"
     },
-    "searchText": "0204 204 pineco tanza bug",
+    "searchText": "0204 204 pineco tanza bug tannza",
     "types": [
       "Bug"
     ],
@@ -231977,7 +232388,7 @@ window.POKEDEX_ENTRIES = [
         "id": "overcoat",
         "name": "Overcoat",
         "names": {
-          "de": "Wetterfest"
+          "de": "Partikelschutz"
         },
         "shortDesc": "This Pokemon is immune to powder moves, Sandstorm damage, and Effect Spore.",
         "desc": "This Pokemon is immune to powder moves, damage from Sandstorm, and the effects of Rage Powder and the Effect Spore Ability."
@@ -232724,7 +233135,7 @@ window.POKEDEX_ENTRIES = [
         "id": "overcoat",
         "name": "Overcoat",
         "names": {
-          "de": "Wetterfest"
+          "de": "Partikelschutz"
         },
         "shortDesc": "This Pokemon is immune to powder moves, Sandstorm damage, and Effect Spore.",
         "desc": "This Pokemon is immune to powder moves, damage from Sandstorm, and the effects of Rage Powder and the Effect Spore Ability."
@@ -238224,7 +238635,10 @@ window.POKEDEX_ENTRIES = [
     "stellar_defense": 1,
     "water_defense": 1,
     "sprite": "https://play.pokemonshowdown.com/sprites/gen5/snubbull.png",
-    "displayNumber": "#0209"
+    "displayNumber": "#0209",
+    "names": {
+      "de": "Snubbull"
+    }
   },
   {
     "speciesId": "granbull",
@@ -239202,7 +239616,10 @@ window.POKEDEX_ENTRIES = [
     "stellar_defense": 1,
     "water_defense": 1,
     "sprite": "https://play.pokemonshowdown.com/sprites/gen5/granbull.png",
-    "displayNumber": "#0210"
+    "displayNumber": "#0210",
+    "names": {
+      "de": "Granbull"
+    }
   },
   {
     "speciesId": "qwilfish",
@@ -243078,9 +243495,9 @@ window.POKEDEX_ENTRIES = [
     "num": 214,
     "name": "Heracross",
     "names": {
-      "de": "Skarabon"
+      "de": "Skaraborn"
     },
-    "searchText": "0214 214 heracross skarabon bug fighting",
+    "searchText": "0214 214 heracross skarabon bug fighting skaraborn",
     "types": [
       "Bug",
       "Fighting"
@@ -244014,9 +244431,9 @@ window.POKEDEX_ENTRIES = [
     "num": 214,
     "name": "Heracross-Mega",
     "names": {
-      "de": "Skarabon-Mega"
+      "de": "Skaraborn-Mega"
     },
-    "searchText": "0214 214 heracrossmega skarabonmega bug fighting",
+    "searchText": "0214 214 heracrossmega skarabonmega bug fighting skarabornmega",
     "types": [
       "Bug",
       "Fighting"
@@ -247299,7 +247716,10 @@ window.POKEDEX_ENTRIES = [
     "stellar_defense": 1,
     "water_defense": 1,
     "sprite": "https://play.pokemonshowdown.com/sprites/gen5/teddiursa.png",
-    "displayNumber": "#0216"
+    "displayNumber": "#0216",
+    "names": {
+      "de": "Teddiursa"
+    }
   },
   {
     "speciesId": "ursaring",
@@ -248180,7 +248600,10 @@ window.POKEDEX_ENTRIES = [
     "stellar_defense": 1,
     "water_defense": 1,
     "sprite": "https://play.pokemonshowdown.com/sprites/gen5/ursaring.png",
-    "displayNumber": "#0217"
+    "displayNumber": "#0217",
+    "names": {
+      "de": "Ursaring"
+    }
   },
   {
     "speciesId": "slugma",
@@ -249646,7 +250069,10 @@ window.POKEDEX_ENTRIES = [
     "stellar_defense": 1,
     "water_defense": 4,
     "sprite": "https://play.pokemonshowdown.com/sprites/gen5/magcargo.png",
-    "displayNumber": "#0219"
+    "displayNumber": "#0219",
+    "names": {
+      "de": "Magcargo"
+    }
   },
   {
     "speciesId": "swinub",
@@ -253192,7 +253618,10 @@ window.POKEDEX_ENTRIES = [
     "stellar_defense": 1,
     "water_defense": 0.5,
     "sprite": "https://play.pokemonshowdown.com/sprites/gen5/remoraid.png",
-    "displayNumber": "#0223"
+    "displayNumber": "#0223",
+    "names": {
+      "de": "Remoraid"
+    }
   },
   {
     "speciesId": "octillery",
@@ -253926,7 +254355,10 @@ window.POKEDEX_ENTRIES = [
     "stellar_defense": 1,
     "water_defense": 0.5,
     "sprite": "https://play.pokemonshowdown.com/sprites/gen5/octillery.png",
-    "displayNumber": "#0224"
+    "displayNumber": "#0224",
+    "names": {
+      "de": "Octillery"
+    }
   },
   {
     "speciesId": "delibird",
@@ -253972,7 +254404,10 @@ window.POKEDEX_ENTRIES = [
         "id": "insomnia",
         "name": "Insomnia",
         "shortDesc": "This Pokemon cannot fall asleep. Gaining this Ability while asleep cures it.",
-        "desc": "This Pokemon cannot fall asleep. Gaining this Ability while asleep cures it."
+        "desc": "This Pokemon cannot fall asleep. Gaining this Ability while asleep cures it.",
+        "names": {
+          "de": "Insomnia"
+        }
       }
     ],
     "baseStats": {
@@ -261177,7 +261612,10 @@ window.POKEDEX_ENTRIES = [
     "stellar_defense": 1,
     "water_defense": 2,
     "sprite": "https://play.pokemonshowdown.com/sprites/gen5/phanpy.png",
-    "displayNumber": "#0231"
+    "displayNumber": "#0231",
+    "names": {
+      "de": "Phanpy"
+    }
   },
   {
     "speciesId": "donphan",
@@ -261939,7 +262377,10 @@ window.POKEDEX_ENTRIES = [
     "stellar_defense": 1,
     "water_defense": 2,
     "sprite": "https://play.pokemonshowdown.com/sprites/gen5/donphan.png",
-    "displayNumber": "#0232"
+    "displayNumber": "#0232",
+    "names": {
+      "de": "Donphan"
+    }
   },
   {
     "speciesId": "porygon2",
@@ -261961,7 +262402,7 @@ window.POKEDEX_ENTRIES = [
         "id": "trace",
         "name": "Trace",
         "names": {
-          "de": "Fährte"
+          "de": "Erfassen"
         },
         "shortDesc": "On switch-in, or when it can, this Pokemon copies a random adjacent foe's Ability.",
         "desc": "On switch-in, this Pokemon copies a random opposing Pokemon's Ability. Abilities that cannot be copied are As One, Battle Bond, Comatose, Commander, Disguise, Embody Aspect, Flower Gift, Forecast, Hunger Switch, Ice Face, Illusion, Imposter, Multitype, Neutralizing Gas, Poison Puppeteer, Power Construct, Power of Alchemy, Protosynthesis, Quark Drive, Receiver, RKS System, Schooling, Shields Down, Stance Change, Teraform Zero, Tera Shell, Tera Shift, Trace, Zen Mode, and Zero to Hero. If no opposing Pokemon has an Ability that can be copied, this Ability will activate as soon as one does."
@@ -261971,7 +262412,10 @@ window.POKEDEX_ENTRIES = [
         "id": "download",
         "name": "Download",
         "shortDesc": "On switch-in, Attack or Sp. Atk is raised 1 stage based on the foes' weaker Defense.",
-        "desc": "On switch-in, this Pokemon's Attack or Special Attack is raised by 1 stage based on the weaker combined defensive stat of all opposing Pokemon. Attack is raised if their Defense is lower, and Special Attack is raised if their Special Defense is the same or lower."
+        "desc": "On switch-in, this Pokemon's Attack or Special Attack is raised by 1 stage based on the weaker combined defensive stat of all opposing Pokemon. Attack is raised if their Defense is lower, and Special Attack is raised if their Special Defense is the same or lower.",
+        "names": {
+          "de": "Download"
+        }
       },
       {
         "slot": "H",
@@ -262734,7 +263178,10 @@ window.POKEDEX_ENTRIES = [
     "stellar_defense": 1,
     "water_defense": 1,
     "sprite": "https://play.pokemonshowdown.com/sprites/gen5/porygon2.png",
-    "displayNumber": "#0233"
+    "displayNumber": "#0233",
+    "names": {
+      "de": "Porygon2"
+    }
   },
   {
     "speciesId": "stantler",
@@ -263666,7 +264113,7 @@ window.POKEDEX_ENTRIES = [
         "id": "owntempo",
         "name": "Own Tempo",
         "names": {
-          "de": "Tempomacher"
+          "de": "Gleichmut"
         },
         "shortDesc": "This Pokemon cannot be confused. Immune to Intimidate.",
         "desc": "This Pokemon cannot be confused. Gaining this Ability while confused cures it. This Pokemon is immune to the effect of the Intimidate Ability."
@@ -265268,7 +265715,10 @@ window.POKEDEX_ENTRIES = [
         "id": "hydration",
         "name": "Hydration",
         "shortDesc": "This Pokemon has its status cured at the end of each turn if Rain Dance is active.",
-        "desc": "This Pokemon has its non-volatile status condition cured at the end of each turn if Rain Dance is active. This effect is prevented if this Pokemon is holding a Utility Umbrella."
+        "desc": "This Pokemon has its non-volatile status condition cured at the end of each turn if Rain Dance is active. This effect is prevented if this Pokemon is holding a Utility Umbrella.",
+        "names": {
+          "de": "Hydration"
+        }
       }
     ],
     "baseStats": {
@@ -266078,7 +266528,10 @@ window.POKEDEX_ENTRIES = [
         "id": "static",
         "name": "Static",
         "shortDesc": "30% chance a Pokemon making contact with this Pokemon will be paralyzed.",
-        "desc": "30% chance a Pokemon making contact with this Pokemon will be paralyzed."
+        "desc": "30% chance a Pokemon making contact with this Pokemon will be paralyzed.",
+        "names": {
+          "de": "Statik"
+        }
       },
       {
         "slot": "H",
@@ -266885,7 +267338,10 @@ window.POKEDEX_ENTRIES = [
     "stellar_defense": 1,
     "water_defense": 1,
     "sprite": "https://play.pokemonshowdown.com/sprites/gen5/elekid.png",
-    "displayNumber": "#0239"
+    "displayNumber": "#0239",
+    "names": {
+      "de": "Elekid"
+    }
   },
   {
     "speciesId": "magby",
@@ -267676,7 +268132,10 @@ window.POKEDEX_ENTRIES = [
     "stellar_defense": 1,
     "water_defense": 2,
     "sprite": "https://play.pokemonshowdown.com/sprites/gen5/magby.png",
-    "displayNumber": "#0240"
+    "displayNumber": "#0240",
+    "names": {
+      "de": "Magby"
+    }
   },
   {
     "speciesId": "miltank",
@@ -268617,7 +269076,10 @@ window.POKEDEX_ENTRIES = [
     "stellar_defense": 1,
     "water_defense": 1,
     "sprite": "https://play.pokemonshowdown.com/sprites/gen5/miltank.png",
-    "displayNumber": "#0241"
+    "displayNumber": "#0241",
+    "names": {
+      "de": "Miltank"
+    }
   },
   {
     "speciesId": "blissey",
@@ -270611,7 +271073,10 @@ window.POKEDEX_ENTRIES = [
     "stellar_defense": 1,
     "water_defense": 1,
     "sprite": "https://play.pokemonshowdown.com/sprites/gen5/raikou.png",
-    "displayNumber": "#0243"
+    "displayNumber": "#0243",
+    "names": {
+      "de": "Raikou"
+    }
   },
   {
     "speciesId": "entei",
@@ -271429,7 +271894,10 @@ window.POKEDEX_ENTRIES = [
     "stellar_defense": 1,
     "water_defense": 2,
     "sprite": "https://play.pokemonshowdown.com/sprites/gen5/entei.png",
-    "displayNumber": "#0244"
+    "displayNumber": "#0244",
+    "names": {
+      "de": "Entei"
+    }
   },
   {
     "speciesId": "suicune",
@@ -272261,7 +272729,10 @@ window.POKEDEX_ENTRIES = [
     "stellar_defense": 1,
     "water_defense": 0.5,
     "sprite": "https://play.pokemonshowdown.com/sprites/gen5/suicune.png",
-    "displayNumber": "#0245"
+    "displayNumber": "#0245",
+    "names": {
+      "de": "Suicune"
+    }
   },
   {
     "speciesId": "larvitar",
@@ -273093,7 +273564,10 @@ window.POKEDEX_ENTRIES = [
     "stellar_defense": 1,
     "water_defense": 4,
     "sprite": "https://play.pokemonshowdown.com/sprites/gen5/larvitar.png",
-    "displayNumber": "#0246"
+    "displayNumber": "#0246",
+    "names": {
+      "de": "Larvitar"
+    }
   },
   {
     "speciesId": "pupitar",
@@ -273843,7 +274317,10 @@ window.POKEDEX_ENTRIES = [
     "stellar_defense": 1,
     "water_defense": 4,
     "sprite": "https://play.pokemonshowdown.com/sprites/gen5/pupitar.png",
-    "displayNumber": "#0247"
+    "displayNumber": "#0247",
+    "names": {
+      "de": "Pupitar"
+    }
   },
   {
     "speciesId": "tyranitar",
@@ -277363,7 +277840,10 @@ window.POKEDEX_ENTRIES = [
     "stellar_defense": 1,
     "water_defense": 1,
     "sprite": "https://play.pokemonshowdown.com/sprites/gen5/lugia.png",
-    "displayNumber": "#0249"
+    "displayNumber": "#0249",
+    "names": {
+      "de": "Lugia"
+    }
   },
   {
     "speciesId": "hooh",
@@ -278362,7 +278842,10 @@ window.POKEDEX_ENTRIES = [
     "stellar_defense": 1,
     "water_defense": 2,
     "sprite": "https://play.pokemonshowdown.com/sprites/gen5/hooh.png",
-    "displayNumber": "#0250"
+    "displayNumber": "#0250",
+    "names": {
+      "de": "Ho-Oh"
+    }
   },
   {
     "speciesId": "celebi",
@@ -279263,7 +279746,10 @@ window.POKEDEX_ENTRIES = [
     "stellar_defense": 1,
     "water_defense": 0.5,
     "sprite": "https://play.pokemonshowdown.com/sprites/gen5/celebi.png",
-    "displayNumber": "#0251"
+    "displayNumber": "#0251",
+    "names": {
+      "de": "Celebi"
+    }
   },
   {
     "speciesId": "treecko",
@@ -279271,9 +279757,9 @@ window.POKEDEX_ENTRIES = [
     "num": 252,
     "name": "Treecko",
     "names": {
-      "de": "Geckabor"
+      "de": "Geckarbor"
     },
-    "searchText": "0252 252 treecko geckabor grass",
+    "searchText": "0252 252 treecko geckabor grass geckarbor",
     "types": [
       "Grass"
     ],
@@ -287346,9 +287832,9 @@ window.POKEDEX_ENTRIES = [
     "num": 259,
     "name": "Marshtomp",
     "names": {
-      "de": "Moorabble"
+      "de": "Moorabbel"
     },
-    "searchText": "0259 259 marshtomp moorabble water ground",
+    "searchText": "0259 259 marshtomp moorabble water ground moorabbel",
     "types": [
       "Water",
       "Ground"
@@ -295089,7 +295575,7 @@ window.POKEDEX_ENTRIES = [
         "id": "owntempo",
         "name": "Own Tempo",
         "names": {
-          "de": "Tempomacher"
+          "de": "Gleichmut"
         },
         "shortDesc": "This Pokemon cannot be confused. Immune to Intimidate.",
         "desc": "This Pokemon cannot be confused. Gaining this Ability while confused cures it. This Pokemon is immune to the effect of the Intimidate Ability."
@@ -295807,7 +296293,7 @@ window.POKEDEX_ENTRIES = [
         "id": "owntempo",
         "name": "Own Tempo",
         "names": {
-          "de": "Tempomacher"
+          "de": "Gleichmut"
         },
         "shortDesc": "This Pokemon cannot be confused. Immune to Intimidate.",
         "desc": "This Pokemon cannot be confused. Gaining this Ability while confused cures it. This Pokemon is immune to the effect of the Intimidate Ability."
@@ -296624,7 +297110,7 @@ window.POKEDEX_ENTRIES = [
         "id": "owntempo",
         "name": "Own Tempo",
         "names": {
-          "de": "Tempomacher"
+          "de": "Gleichmut"
         },
         "shortDesc": "This Pokemon cannot be confused. Immune to Intimidate.",
         "desc": "This Pokemon cannot be confused. Gaining this Ability while confused cures it. This Pokemon is immune to the effect of the Intimidate Ability."
@@ -297449,7 +297935,10 @@ window.POKEDEX_ENTRIES = [
         "id": "chlorophyll",
         "name": "Chlorophyll",
         "shortDesc": "If Sunny Day is active, this Pokemon's Speed is doubled.",
-        "desc": "If Sunny Day is active, this Pokemon's Speed is doubled. This effect is prevented if this Pokemon is holding a Utility Umbrella."
+        "desc": "If Sunny Day is active, this Pokemon's Speed is doubled. This effect is prevented if this Pokemon is holding a Utility Umbrella.",
+        "names": {
+          "de": "Chlorophyll"
+        }
       },
       {
         "slot": "1",
@@ -298145,7 +298634,10 @@ window.POKEDEX_ENTRIES = [
         "id": "chlorophyll",
         "name": "Chlorophyll",
         "shortDesc": "If Sunny Day is active, this Pokemon's Speed is doubled.",
-        "desc": "If Sunny Day is active, this Pokemon's Speed is doubled. This effect is prevented if this Pokemon is holding a Utility Umbrella."
+        "desc": "If Sunny Day is active, this Pokemon's Speed is doubled. This effect is prevented if this Pokemon is holding a Utility Umbrella.",
+        "names": {
+          "de": "Chlorophyll"
+        }
       },
       {
         "slot": "1",
@@ -299006,7 +299498,10 @@ window.POKEDEX_ENTRIES = [
         "id": "chlorophyll",
         "name": "Chlorophyll",
         "shortDesc": "If Sunny Day is active, this Pokemon's Speed is doubled.",
-        "desc": "If Sunny Day is active, this Pokemon's Speed is doubled. This effect is prevented if this Pokemon is holding a Utility Umbrella."
+        "desc": "If Sunny Day is active, this Pokemon's Speed is doubled. This effect is prevented if this Pokemon is holding a Utility Umbrella.",
+        "names": {
+          "de": "Chlorophyll"
+        }
       },
       {
         "slot": "1",
@@ -301057,7 +301552,10 @@ window.POKEDEX_ENTRIES = [
         "id": "hydration",
         "name": "Hydration",
         "shortDesc": "This Pokemon has its status cured at the end of each turn if Rain Dance is active.",
-        "desc": "This Pokemon has its non-volatile status condition cured at the end of each turn if Rain Dance is active. This effect is prevented if this Pokemon is holding a Utility Umbrella."
+        "desc": "This Pokemon has its non-volatile status condition cured at the end of each turn if Rain Dance is active. This effect is prevented if this Pokemon is holding a Utility Umbrella.",
+        "names": {
+          "de": "Hydration"
+        }
       },
       {
         "slot": "H",
@@ -301750,7 +302248,10 @@ window.POKEDEX_ENTRIES = [
     "stellar_defense": 1,
     "water_defense": 0.5,
     "sprite": "https://play.pokemonshowdown.com/sprites/gen5/wingull.png",
-    "displayNumber": "#0278"
+    "displayNumber": "#0278",
+    "names": {
+      "de": "Wingull"
+    }
   },
   {
     "speciesId": "pelipper",
@@ -302540,7 +303041,10 @@ window.POKEDEX_ENTRIES = [
     "stellar_defense": 1,
     "water_defense": 0.5,
     "sprite": "https://play.pokemonshowdown.com/sprites/gen5/pelipper.png",
-    "displayNumber": "#0279"
+    "displayNumber": "#0279",
+    "names": {
+      "de": "Pelipper"
+    }
   },
   {
     "speciesId": "ralts",
@@ -302566,14 +303070,17 @@ window.POKEDEX_ENTRIES = [
         "id": "synchronize",
         "name": "Synchronize",
         "shortDesc": "If another Pokemon burns/poisons/paralyzes this Pokemon, it also gets that status.",
-        "desc": "If another Pokemon burns, paralyzes, poisons, or badly poisons this Pokemon, that Pokemon receives the same non-volatile status condition."
+        "desc": "If another Pokemon burns, paralyzes, poisons, or badly poisons this Pokemon, that Pokemon receives the same non-volatile status condition.",
+        "names": {
+          "de": "Synchro"
+        }
       },
       {
         "slot": "1",
         "id": "trace",
         "name": "Trace",
         "names": {
-          "de": "Fährte"
+          "de": "Erfassen"
         },
         "shortDesc": "On switch-in, or when it can, this Pokemon copies a random adjacent foe's Ability.",
         "desc": "On switch-in, this Pokemon copies a random opposing Pokemon's Ability. Abilities that cannot be copied are As One, Battle Bond, Comatose, Commander, Disguise, Embody Aspect, Flower Gift, Forecast, Hunger Switch, Ice Face, Illusion, Imposter, Multitype, Neutralizing Gas, Poison Puppeteer, Power Construct, Power of Alchemy, Protosynthesis, Quark Drive, Receiver, RKS System, Schooling, Shields Down, Stance Change, Teraform Zero, Tera Shell, Tera Shift, Trace, Zen Mode, and Zero to Hero. If no opposing Pokemon has an Ability that can be copied, this Ability will activate as soon as one does."
@@ -303545,14 +304052,17 @@ window.POKEDEX_ENTRIES = [
         "id": "synchronize",
         "name": "Synchronize",
         "shortDesc": "If another Pokemon burns/poisons/paralyzes this Pokemon, it also gets that status.",
-        "desc": "If another Pokemon burns, paralyzes, poisons, or badly poisons this Pokemon, that Pokemon receives the same non-volatile status condition."
+        "desc": "If another Pokemon burns, paralyzes, poisons, or badly poisons this Pokemon, that Pokemon receives the same non-volatile status condition.",
+        "names": {
+          "de": "Synchro"
+        }
       },
       {
         "slot": "1",
         "id": "trace",
         "name": "Trace",
         "names": {
-          "de": "Fährte"
+          "de": "Erfassen"
         },
         "shortDesc": "On switch-in, or when it can, this Pokemon copies a random adjacent foe's Ability.",
         "desc": "On switch-in, this Pokemon copies a random opposing Pokemon's Ability. Abilities that cannot be copied are As One, Battle Bond, Comatose, Commander, Disguise, Embody Aspect, Flower Gift, Forecast, Hunger Switch, Ice Face, Illusion, Imposter, Multitype, Neutralizing Gas, Poison Puppeteer, Power Construct, Power of Alchemy, Protosynthesis, Quark Drive, Receiver, RKS System, Schooling, Shields Down, Stance Change, Teraform Zero, Tera Shell, Tera Shift, Trace, Zen Mode, and Zero to Hero. If no opposing Pokemon has an Ability that can be copied, this Ability will activate as soon as one does."
@@ -304405,7 +304915,10 @@ window.POKEDEX_ENTRIES = [
     "stellar_defense": 1,
     "water_defense": 1,
     "sprite": "https://play.pokemonshowdown.com/sprites/gen5/kirlia.png",
-    "displayNumber": "#0281"
+    "displayNumber": "#0281",
+    "names": {
+      "de": "Kirlia"
+    }
   },
   {
     "speciesId": "gardevoir",
@@ -304431,14 +304944,17 @@ window.POKEDEX_ENTRIES = [
         "id": "synchronize",
         "name": "Synchronize",
         "shortDesc": "If another Pokemon burns/poisons/paralyzes this Pokemon, it also gets that status.",
-        "desc": "If another Pokemon burns, paralyzes, poisons, or badly poisons this Pokemon, that Pokemon receives the same non-volatile status condition."
+        "desc": "If another Pokemon burns, paralyzes, poisons, or badly poisons this Pokemon, that Pokemon receives the same non-volatile status condition.",
+        "names": {
+          "de": "Synchro"
+        }
       },
       {
         "slot": "1",
         "id": "trace",
         "name": "Trace",
         "names": {
-          "de": "Fährte"
+          "de": "Erfassen"
         },
         "shortDesc": "On switch-in, or when it can, this Pokemon copies a random adjacent foe's Ability.",
         "desc": "On switch-in, this Pokemon copies a random opposing Pokemon's Ability. Abilities that cannot be copied are As One, Battle Bond, Comatose, Commander, Disguise, Embody Aspect, Flower Gift, Forecast, Hunger Switch, Ice Face, Illusion, Imposter, Multitype, Neutralizing Gas, Poison Puppeteer, Power Construct, Power of Alchemy, Protosynthesis, Quark Drive, Receiver, RKS System, Schooling, Shields Down, Stance Change, Teraform Zero, Tera Shell, Tera Shift, Trace, Zen Mode, and Zero to Hero. If no opposing Pokemon has an Ability that can be copied, this Ability will activate as soon as one does."
@@ -307754,7 +308270,7 @@ window.POKEDEX_ENTRIES = [
         "id": "poisonheal",
         "name": "Poison Heal",
         "names": {
-          "de": "Aufheber"
+          "de": "Giftheilung"
         },
         "shortDesc": "This Pokemon is healed by 1/8 of its max HP each turn when poisoned; no HP loss.",
         "desc": "If this Pokemon is poisoned, it restores 1/8 of its maximum HP, rounded down, at the end of each turn instead of losing HP."
@@ -308367,7 +308883,7 @@ window.POKEDEX_ENTRIES = [
         "id": "poisonheal",
         "name": "Poison Heal",
         "names": {
-          "de": "Aufheber"
+          "de": "Giftheilung"
         },
         "shortDesc": "This Pokemon is healed by 1/8 of its max HP each turn when poisoned; no HP loss.",
         "desc": "If this Pokemon is poisoned, it restores 1/8 of its maximum HP, rounded down, at the end of each turn instead of losing HP."
@@ -312204,7 +312720,10 @@ window.POKEDEX_ENTRIES = [
     "stellar_defense": 1,
     "water_defense": 2,
     "sprite": "https://play.pokemonshowdown.com/sprites/gen5/nincada.png",
-    "displayNumber": "#0290"
+    "displayNumber": "#0290",
+    "names": {
+      "de": "Nincada"
+    }
   },
   {
     "speciesId": "ninjask",
@@ -312818,7 +313337,10 @@ window.POKEDEX_ENTRIES = [
     "stellar_defense": 1,
     "water_defense": 1,
     "sprite": "https://play.pokemonshowdown.com/sprites/gen5/ninjask.png",
-    "displayNumber": "#0291"
+    "displayNumber": "#0291",
+    "names": {
+      "de": "Ninjask"
+    }
   },
   {
     "speciesId": "shedinja",
@@ -316463,7 +316985,10 @@ window.POKEDEX_ENTRIES = [
     "stellar_defense": 1,
     "water_defense": 1,
     "sprite": "https://play.pokemonshowdown.com/sprites/gen5/makuhita.png",
-    "displayNumber": "#0296"
+    "displayNumber": "#0296",
+    "names": {
+      "de": "Makuhita"
+    }
   },
   {
     "speciesId": "hariyama",
@@ -317269,7 +317794,10 @@ window.POKEDEX_ENTRIES = [
     "stellar_defense": 1,
     "water_defense": 1,
     "sprite": "https://play.pokemonshowdown.com/sprites/gen5/hariyama.png",
-    "displayNumber": "#0297"
+    "displayNumber": "#0297",
+    "names": {
+      "de": "Hariyama"
+    }
   },
   {
     "speciesId": "azurill",
@@ -317946,7 +318474,10 @@ window.POKEDEX_ENTRIES = [
     "stellar_defense": 1,
     "water_defense": 1,
     "sprite": "https://play.pokemonshowdown.com/sprites/gen5/azurill.png",
-    "displayNumber": "#0298"
+    "displayNumber": "#0298",
+    "names": {
+      "de": "Azurill"
+    }
   },
   {
     "speciesId": "nosepass",
@@ -326713,7 +327244,10 @@ window.POKEDEX_ENTRIES = [
         "id": "filter",
         "name": "Filter",
         "shortDesc": "This Pokemon receives 3/4 damage from supereffective attacks.",
-        "desc": "This Pokemon receives 3/4 damage from supereffective attacks."
+        "desc": "This Pokemon receives 3/4 damage from supereffective attacks.",
+        "names": {
+          "de": "Filter"
+        }
       }
     ],
     "baseStats": {
@@ -330383,7 +330917,10 @@ window.POKEDEX_ENTRIES = [
         "id": "static",
         "name": "Static",
         "shortDesc": "30% chance a Pokemon making contact with this Pokemon will be paralyzed.",
-        "desc": "30% chance a Pokemon making contact with this Pokemon will be paralyzed."
+        "desc": "30% chance a Pokemon making contact with this Pokemon will be paralyzed.",
+        "names": {
+          "de": "Statik"
+        }
       },
       {
         "slot": "1",
@@ -330400,7 +330937,10 @@ window.POKEDEX_ENTRIES = [
         "id": "minus",
         "name": "Minus",
         "shortDesc": "If an active ally has this Ability or the Plus Ability, this Pokemon's Sp. Atk is 1.5x.",
-        "desc": "If an active ally has this Ability or the Plus Ability, this Pokemon's Special Attack is multiplied by 1.5."
+        "desc": "If an active ally has this Ability or the Plus Ability, this Pokemon's Special Attack is multiplied by 1.5.",
+        "names": {
+          "de": "Minus"
+        }
       }
     ],
     "baseStats": {
@@ -331025,7 +331565,10 @@ window.POKEDEX_ENTRIES = [
         "id": "static",
         "name": "Static",
         "shortDesc": "30% chance a Pokemon making contact with this Pokemon will be paralyzed.",
-        "desc": "30% chance a Pokemon making contact with this Pokemon will be paralyzed."
+        "desc": "30% chance a Pokemon making contact with this Pokemon will be paralyzed.",
+        "names": {
+          "de": "Statik"
+        }
       },
       {
         "slot": "1",
@@ -331042,7 +331585,10 @@ window.POKEDEX_ENTRIES = [
         "id": "minus",
         "name": "Minus",
         "shortDesc": "If an active ally has this Ability or the Plus Ability, this Pokemon's Sp. Atk is 1.5x.",
-        "desc": "If an active ally has this Ability or the Plus Ability, this Pokemon's Special Attack is multiplied by 1.5."
+        "desc": "If an active ally has this Ability or the Plus Ability, this Pokemon's Special Attack is multiplied by 1.5.",
+        "names": {
+          "de": "Minus"
+        }
       }
     ],
     "baseStats": {
@@ -332263,7 +332809,10 @@ window.POKEDEX_ENTRIES = [
         "id": "plus",
         "name": "Plus",
         "shortDesc": "If an active ally has this Ability or the Minus Ability, this Pokemon's Sp. Atk is 1.5x.",
-        "desc": "If an active ally has this Ability or the Minus Ability, this Pokemon's Special Attack is multiplied by 1.5."
+        "desc": "If an active ally has this Ability or the Minus Ability, this Pokemon's Special Attack is multiplied by 1.5.",
+        "names": {
+          "de": "Plus"
+        }
       },
       {
         "slot": "H",
@@ -332967,7 +333516,10 @@ window.POKEDEX_ENTRIES = [
     "stellar_defense": 1,
     "water_defense": 1,
     "sprite": "https://play.pokemonshowdown.com/sprites/gen5/plusle.png",
-    "displayNumber": "#0311"
+    "displayNumber": "#0311",
+    "names": {
+      "de": "Plusle"
+    }
   },
   {
     "speciesId": "minun",
@@ -332988,7 +333540,10 @@ window.POKEDEX_ENTRIES = [
         "id": "minus",
         "name": "Minus",
         "shortDesc": "If an active ally has this Ability or the Plus Ability, this Pokemon's Sp. Atk is 1.5x.",
-        "desc": "If an active ally has this Ability or the Plus Ability, this Pokemon's Special Attack is multiplied by 1.5."
+        "desc": "If an active ally has this Ability or the Plus Ability, this Pokemon's Special Attack is multiplied by 1.5.",
+        "names": {
+          "de": "Minus"
+        }
       },
       {
         "slot": "H",
@@ -333687,7 +334242,10 @@ window.POKEDEX_ENTRIES = [
     "stellar_defense": 1,
     "water_defense": 1,
     "sprite": "https://play.pokemonshowdown.com/sprites/gen5/minun.png",
-    "displayNumber": "#0312"
+    "displayNumber": "#0312",
+    "names": {
+      "de": "Minun"
+    }
   },
   {
     "speciesId": "volbeat",
@@ -334470,7 +335028,10 @@ window.POKEDEX_ENTRIES = [
     "stellar_defense": 1,
     "water_defense": 1,
     "sprite": "https://play.pokemonshowdown.com/sprites/gen5/volbeat.png",
-    "displayNumber": "#0313"
+    "displayNumber": "#0313",
+    "names": {
+      "de": "Volbeat"
+    }
   },
   {
     "speciesId": "illumise",
@@ -334502,7 +335063,7 @@ window.POKEDEX_ENTRIES = [
         "id": "tintedlens",
         "name": "Tinted Lens",
         "names": {
-          "de": "Finalschlag"
+          "de": "Aufwertung"
         },
         "shortDesc": "This Pokemon's attacks that are not very effective on a target deal double damage.",
         "desc": "This Pokemon's attacks that are not very effective on a target deal double damage."
@@ -335267,7 +335828,10 @@ window.POKEDEX_ENTRIES = [
     "stellar_defense": 1,
     "water_defense": 1,
     "sprite": "https://play.pokemonshowdown.com/sprites/gen5/illumise.png",
-    "displayNumber": "#0314"
+    "displayNumber": "#0314",
+    "names": {
+      "de": "Illumise"
+    }
   },
   {
     "speciesId": "roselia",
@@ -335969,7 +336533,10 @@ window.POKEDEX_ENTRIES = [
     "stellar_defense": 1,
     "water_defense": 0.5,
     "sprite": "https://play.pokemonshowdown.com/sprites/gen5/roselia.png",
-    "displayNumber": "#0315"
+    "displayNumber": "#0315",
+    "names": {
+      "de": "Roselia"
+    }
   },
   {
     "speciesId": "gulpin",
@@ -336004,7 +336571,7 @@ window.POKEDEX_ENTRIES = [
         "id": "stickyhold",
         "name": "Sticky Hold",
         "names": {
-          "de": "Wertehalter"
+          "de": "Klebekörper"
         },
         "shortDesc": "This Pokemon cannot lose its held item due to another Pokemon's Ability or attack.",
         "desc": "This Pokemon cannot lose its held item due to another Pokemon's Ability or attack, unless the attack knocks out this Pokemon. A Sticky Barb will be transferred to other Pokemon regardless of this Ability."
@@ -336725,9 +337292,9 @@ window.POKEDEX_ENTRIES = [
     "num": 317,
     "name": "Swalot",
     "names": {
-      "de": "Schluckwech"
+      "de": "Schlukwech"
     },
-    "searchText": "0317 317 swalot schluckwech poison",
+    "searchText": "0317 317 swalot schluckwech poison schlukwech",
     "types": [
       "Poison"
     ],
@@ -336752,7 +337319,7 @@ window.POKEDEX_ENTRIES = [
         "id": "stickyhold",
         "name": "Sticky Hold",
         "names": {
-          "de": "Wertehalter"
+          "de": "Klebekörper"
         },
         "shortDesc": "This Pokemon cannot lose its held item due to another Pokemon's Ability or attack.",
         "desc": "This Pokemon cannot lose its held item due to another Pokemon's Ability or attack, unless the attack knocks out this Pokemon. A Sticky Barb will be transferred to other Pokemon regardless of this Ability."
@@ -340259,7 +340826,10 @@ window.POKEDEX_ENTRIES = [
     "stellar_defense": 1,
     "water_defense": 0.5,
     "sprite": "https://play.pokemonshowdown.com/sprites/gen5/wailmer.png",
-    "displayNumber": "#0320"
+    "displayNumber": "#0320",
+    "names": {
+      "de": "Wailmer"
+    }
   },
   {
     "speciesId": "wailord",
@@ -340904,7 +341474,10 @@ window.POKEDEX_ENTRIES = [
     "stellar_defense": 1,
     "water_defense": 0.5,
     "sprite": "https://play.pokemonshowdown.com/sprites/gen5/wailord.png",
-    "displayNumber": "#0321"
+    "displayNumber": "#0321",
+    "names": {
+      "de": "Wailord"
+    }
   },
   {
     "speciesId": "numel",
@@ -340950,7 +341523,7 @@ window.POKEDEX_ENTRIES = [
         "id": "owntempo",
         "name": "Own Tempo",
         "names": {
-          "de": "Tempomacher"
+          "de": "Gleichmut"
         },
         "shortDesc": "This Pokemon cannot be confused. Immune to Intimidate.",
         "desc": "This Pokemon cannot be confused. Gaining this Ability while confused cures it. This Pokemon is immune to the effect of the Intimidate Ability."
@@ -342420,7 +342993,10 @@ window.POKEDEX_ENTRIES = [
     "stellar_defense": 1,
     "water_defense": 4,
     "sprite": "https://play.pokemonshowdown.com/sprites/gen5/camerupt.png",
-    "displayNumber": "#0323"
+    "displayNumber": "#0323",
+    "names": {
+      "de": "Camerupt"
+    }
   },
   {
     "speciesId": "cameruptmega",
@@ -343993,7 +344569,7 @@ window.POKEDEX_ENTRIES = [
         "id": "owntempo",
         "name": "Own Tempo",
         "names": {
-          "de": "Tempomacher"
+          "de": "Gleichmut"
         },
         "shortDesc": "This Pokemon cannot be confused. Immune to Intimidate.",
         "desc": "This Pokemon cannot be confused. Gaining this Ability while confused cures it. This Pokemon is immune to the effect of the Intimidate Ability."
@@ -344771,7 +345347,10 @@ window.POKEDEX_ENTRIES = [
     "stellar_defense": 1,
     "water_defense": 1,
     "sprite": "https://play.pokemonshowdown.com/sprites/gen5/spoink.png",
-    "displayNumber": "#0325"
+    "displayNumber": "#0325",
+    "names": {
+      "de": "Spoink"
+    }
   },
   {
     "speciesId": "grumpig",
@@ -344806,7 +345385,7 @@ window.POKEDEX_ENTRIES = [
         "id": "owntempo",
         "name": "Own Tempo",
         "names": {
-          "de": "Tempomacher"
+          "de": "Gleichmut"
         },
         "shortDesc": "This Pokemon cannot be confused. Immune to Intimidate.",
         "desc": "This Pokemon cannot be confused. Gaining this Ability while confused cures it. This Pokemon is immune to the effect of the Intimidate Ability."
@@ -345729,7 +346308,7 @@ window.POKEDEX_ENTRIES = [
         "id": "owntempo",
         "name": "Own Tempo",
         "names": {
-          "de": "Tempomacher"
+          "de": "Gleichmut"
         },
         "shortDesc": "This Pokemon cannot be confused. Immune to Intimidate.",
         "desc": "This Pokemon cannot be confused. Gaining this Ability while confused cures it. This Pokemon is immune to the effect of the Intimidate Ability."
@@ -345739,7 +346318,7 @@ window.POKEDEX_ENTRIES = [
         "id": "tangledfeet",
         "name": "Tangled Feet",
         "names": {
-          "de": "Fußangel"
+          "de": "Taumelschritt"
         },
         "shortDesc": "This Pokemon's evasiveness is doubled as long as it is confused.",
         "desc": "This Pokemon's evasiveness is doubled as long as it is confused."
@@ -347203,7 +347782,7 @@ window.POKEDEX_ENTRIES = [
     "num": 329,
     "name": "Vibrava",
     "names": {
-      "de": "Vibrara"
+      "de": "Vibrava"
     },
     "searchText": "0329 329 vibrava vibrara ground dragon",
     "types": [
@@ -352204,7 +352783,10 @@ window.POKEDEX_ENTRIES = [
     "stellar_defense": 1,
     "water_defense": 0.5,
     "sprite": "https://play.pokemonshowdown.com/sprites/gen5/altaria.png",
-    "displayNumber": "#0334"
+    "displayNumber": "#0334",
+    "names": {
+      "de": "Altaria"
+    }
   },
   {
     "speciesId": "altariamega",
@@ -356607,7 +357189,10 @@ window.POKEDEX_ENTRIES = [
         "id": "hydration",
         "name": "Hydration",
         "shortDesc": "This Pokemon has its status cured at the end of each turn if Rain Dance is active.",
-        "desc": "This Pokemon has its non-volatile status condition cured at the end of each turn if Rain Dance is active. This effect is prevented if this Pokemon is holding a Utility Umbrella."
+        "desc": "This Pokemon has its non-volatile status condition cured at the end of each turn if Rain Dance is active. This effect is prevented if this Pokemon is holding a Utility Umbrella.",
+        "names": {
+          "de": "Hydration"
+        }
       }
     ],
     "baseStats": {
@@ -357300,7 +357885,10 @@ window.POKEDEX_ENTRIES = [
         "id": "hydration",
         "name": "Hydration",
         "shortDesc": "This Pokemon has its status cured at the end of each turn if Rain Dance is active.",
-        "desc": "This Pokemon has its non-volatile status condition cured at the end of each turn if Rain Dance is active. This effect is prevented if this Pokemon is holding a Utility Umbrella."
+        "desc": "This Pokemon has its non-volatile status condition cured at the end of each turn if Rain Dance is active. This effect is prevented if this Pokemon is holding a Utility Umbrella.",
+        "names": {
+          "de": "Hydration"
+        }
       }
     ],
     "baseStats": {
@@ -363196,7 +363784,10 @@ window.POKEDEX_ENTRIES = [
     "stellar_defense": 1,
     "water_defense": 2,
     "sprite": "https://play.pokemonshowdown.com/sprites/gen5/anorith.png",
-    "displayNumber": "#0347"
+    "displayNumber": "#0347",
+    "names": {
+      "de": "Anorith"
+    }
   },
   {
     "speciesId": "armaldo",
@@ -363879,7 +364470,10 @@ window.POKEDEX_ENTRIES = [
     "stellar_defense": 1,
     "water_defense": 2,
     "sprite": "https://play.pokemonshowdown.com/sprites/gen5/armaldo.png",
-    "displayNumber": "#0348"
+    "displayNumber": "#0348",
+    "names": {
+      "de": "Armaldo"
+    }
   },
   {
     "speciesId": "feebas",
@@ -365204,7 +365798,10 @@ window.POKEDEX_ENTRIES = [
     "stellar_defense": 1,
     "water_defense": 0.5,
     "sprite": "https://play.pokemonshowdown.com/sprites/gen5/milotic.png",
-    "displayNumber": "#0350"
+    "displayNumber": "#0350",
+    "names": {
+      "de": "Milotic"
+    }
   },
   {
     "speciesId": "castform",
@@ -365811,7 +366408,7 @@ window.POKEDEX_ENTRIES = [
     "sourceIndex": 468,
     "num": 351,
     "name": "Castform-Sunny",
-    "searchText": "0351 351 castformsunny fire",
+    "searchText": "0351 351 castformsunny fire formeosunny",
     "types": [
       "Fire"
     ],
@@ -366392,14 +366989,17 @@ window.POKEDEX_ENTRIES = [
     "stellar_defense": 1,
     "water_defense": 2,
     "sprite": "https://play.pokemonshowdown.com/sprites/gen5/castform-sunny.png",
-    "displayNumber": "#0351"
+    "displayNumber": "#0351",
+    "names": {
+      "de": "Formeo-Sunny"
+    }
   },
   {
     "speciesId": "castformrainy",
     "sourceIndex": 469,
     "num": 351,
     "name": "Castform-Rainy",
-    "searchText": "0351 351 castformrainy water",
+    "searchText": "0351 351 castformrainy water formeorainy",
     "types": [
       "Water"
     ],
@@ -366980,14 +367580,17 @@ window.POKEDEX_ENTRIES = [
     "stellar_defense": 1,
     "water_defense": 0.5,
     "sprite": "https://play.pokemonshowdown.com/sprites/gen5/castform-rainy.png",
-    "displayNumber": "#0351"
+    "displayNumber": "#0351",
+    "names": {
+      "de": "Formeo-Rainy"
+    }
   },
   {
     "speciesId": "castformsnowy",
     "sourceIndex": 470,
     "num": 351,
     "name": "Castform-Snowy",
-    "searchText": "0351 351 castformsnowy ice",
+    "searchText": "0351 351 castformsnowy ice formeosnowy",
     "types": [
       "Ice"
     ],
@@ -367568,7 +368171,10 @@ window.POKEDEX_ENTRIES = [
     "stellar_defense": 1,
     "water_defense": 1,
     "sprite": "https://play.pokemonshowdown.com/sprites/gen5/castform-snowy.png",
-    "displayNumber": "#0351"
+    "displayNumber": "#0351",
+    "names": {
+      "de": "Formeo-Snowy"
+    }
   },
   {
     "speciesId": "kecleon",
@@ -368466,7 +369072,10 @@ window.POKEDEX_ENTRIES = [
     "stellar_defense": 1,
     "water_defense": 1,
     "sprite": "https://play.pokemonshowdown.com/sprites/gen5/kecleon.png",
-    "displayNumber": "#0352"
+    "displayNumber": "#0352",
+    "names": {
+      "de": "Kecleon"
+    }
   },
   {
     "speciesId": "shuppet",
@@ -368474,7 +369083,7 @@ window.POKEDEX_ENTRIES = [
     "num": 353,
     "name": "Shuppet",
     "names": {
-      "de": "Bannette"
+      "de": "Shuppet"
     },
     "searchText": "0353 353 shuppet bannette ghost",
     "types": [
@@ -368491,7 +369100,10 @@ window.POKEDEX_ENTRIES = [
         "id": "insomnia",
         "name": "Insomnia",
         "shortDesc": "This Pokemon cannot fall asleep. Gaining this Ability while asleep cures it.",
-        "desc": "This Pokemon cannot fall asleep. Gaining this Ability while asleep cures it."
+        "desc": "This Pokemon cannot fall asleep. Gaining this Ability while asleep cures it.",
+        "names": {
+          "de": "Insomnia"
+        }
       },
       {
         "slot": "1",
@@ -369282,7 +369894,10 @@ window.POKEDEX_ENTRIES = [
         "id": "insomnia",
         "name": "Insomnia",
         "shortDesc": "This Pokemon cannot fall asleep. Gaining this Ability while asleep cures it.",
-        "desc": "This Pokemon cannot fall asleep. Gaining this Ability while asleep cures it."
+        "desc": "This Pokemon cannot fall asleep. Gaining this Ability while asleep cures it.",
+        "names": {
+          "de": "Insomnia"
+        }
       },
       {
         "slot": "1",
@@ -372565,7 +373180,10 @@ window.POKEDEX_ENTRIES = [
         "id": "chlorophyll",
         "name": "Chlorophyll",
         "shortDesc": "If Sunny Day is active, this Pokemon's Speed is doubled.",
-        "desc": "If Sunny Day is active, this Pokemon's Speed is doubled. This effect is prevented if this Pokemon is holding a Utility Umbrella."
+        "desc": "If Sunny Day is active, this Pokemon's Speed is doubled. This effect is prevented if this Pokemon is holding a Utility Umbrella.",
+        "names": {
+          "de": "Chlorophyll"
+        }
       },
       {
         "slot": "1",
@@ -373347,7 +373965,10 @@ window.POKEDEX_ENTRIES = [
     "stellar_defense": 1,
     "water_defense": 0.5,
     "sprite": "https://play.pokemonshowdown.com/sprites/gen5/tropius.png",
-    "displayNumber": "#0357"
+    "displayNumber": "#0357",
+    "names": {
+      "de": "Tropius"
+    }
   },
   {
     "speciesId": "chimecho",
@@ -376005,7 +376626,10 @@ window.POKEDEX_ENTRIES = [
     "stellar_defense": 1,
     "water_defense": 1,
     "sprite": "https://play.pokemonshowdown.com/sprites/gen5/absol.png",
-    "displayNumber": "#0359"
+    "displayNumber": "#0359",
+    "names": {
+      "de": "Absol"
+    }
   },
   {
     "speciesId": "absolmega",
@@ -377999,7 +378623,10 @@ window.POKEDEX_ENTRIES = [
     "stellar_defense": 1,
     "water_defense": 1,
     "sprite": "https://play.pokemonshowdown.com/sprites/gen5/absol-mega-z.png",
-    "displayNumber": "#0359"
+    "displayNumber": "#0359",
+    "names": {
+      "de": "Absol-Mega-Z"
+    }
   },
   {
     "speciesId": "wynaut",
@@ -383153,7 +383780,10 @@ window.POKEDEX_ENTRIES = [
         "id": "hydration",
         "name": "Hydration",
         "shortDesc": "This Pokemon has its status cured at the end of each turn if Rain Dance is active.",
-        "desc": "This Pokemon has its non-volatile status condition cured at the end of each turn if Rain Dance is active. This effect is prevented if this Pokemon is holding a Utility Umbrella."
+        "desc": "This Pokemon has its non-volatile status condition cured at the end of each turn if Rain Dance is active. This effect is prevented if this Pokemon is holding a Utility Umbrella.",
+        "names": {
+          "de": "Hydration"
+        }
       }
     ],
     "baseStats": {
@@ -384358,7 +384988,10 @@ window.POKEDEX_ENTRIES = [
     "stellar_defense": 1,
     "water_defense": 1,
     "sprite": "https://play.pokemonshowdown.com/sprites/gen5/relicanth.png",
-    "displayNumber": "#0369"
+    "displayNumber": "#0369",
+    "names": {
+      "de": "Relicanth"
+    }
   },
   {
     "speciesId": "luvdisc",
@@ -384392,7 +385025,10 @@ window.POKEDEX_ENTRIES = [
         "id": "hydration",
         "name": "Hydration",
         "shortDesc": "This Pokemon has its status cured at the end of each turn if Rain Dance is active.",
-        "desc": "This Pokemon has its non-volatile status condition cured at the end of each turn if Rain Dance is active. This effect is prevented if this Pokemon is holding a Utility Umbrella."
+        "desc": "This Pokemon has its non-volatile status condition cured at the end of each turn if Rain Dance is active. This effect is prevented if this Pokemon is holding a Utility Umbrella.",
+        "names": {
+          "de": "Hydration"
+        }
       }
     ],
     "baseStats": {
@@ -385698,7 +386334,7 @@ window.POKEDEX_ENTRIES = [
         "id": "overcoat",
         "name": "Overcoat",
         "names": {
-          "de": "Wetterfest"
+          "de": "Partikelschutz"
         },
         "shortDesc": "This Pokemon is immune to powder moves, Sandstorm damage, and Effect Spore.",
         "desc": "This Pokemon is immune to powder moves, damage from Sandstorm, and the effects of Rage Powder and the Effect Spore Ability."
@@ -389038,7 +389674,10 @@ window.POKEDEX_ENTRIES = [
     "stellar_defense": 1,
     "water_defense": 1,
     "sprite": "https://play.pokemonshowdown.com/sprites/gen5/metang.png",
-    "displayNumber": "#0375"
+    "displayNumber": "#0375",
+    "names": {
+      "de": "Metang"
+    }
   },
   {
     "speciesId": "metagross",
@@ -389964,7 +390603,10 @@ window.POKEDEX_ENTRIES = [
     "stellar_defense": 1,
     "water_defense": 1,
     "sprite": "https://play.pokemonshowdown.com/sprites/gen5/metagross.png",
-    "displayNumber": "#0376"
+    "displayNumber": "#0376",
+    "names": {
+      "de": "Metagross"
+    }
   },
   {
     "speciesId": "metagrossmega",
@@ -391705,7 +392347,10 @@ window.POKEDEX_ENTRIES = [
     "stellar_defense": 1,
     "water_defense": 2,
     "sprite": "https://play.pokemonshowdown.com/sprites/gen5/regirock.png",
-    "displayNumber": "#0377"
+    "displayNumber": "#0377",
+    "names": {
+      "de": "Regirock"
+    }
   },
   {
     "speciesId": "regice",
@@ -392504,7 +393149,10 @@ window.POKEDEX_ENTRIES = [
     "stellar_defense": 1,
     "water_defense": 1,
     "sprite": "https://play.pokemonshowdown.com/sprites/gen5/regice.png",
-    "displayNumber": "#0378"
+    "displayNumber": "#0378",
+    "names": {
+      "de": "Regice"
+    }
   },
   {
     "speciesId": "registeel",
@@ -393351,7 +393999,10 @@ window.POKEDEX_ENTRIES = [
     "stellar_defense": 1,
     "water_defense": 1,
     "sprite": "https://play.pokemonshowdown.com/sprites/gen5/registeel.png",
-    "displayNumber": "#0379"
+    "displayNumber": "#0379",
+    "names": {
+      "de": "Registeel"
+    }
   },
   {
     "speciesId": "latias",
@@ -394444,7 +395095,10 @@ window.POKEDEX_ENTRIES = [
     "stellar_defense": 1,
     "water_defense": 0.5,
     "sprite": "https://play.pokemonshowdown.com/sprites/gen5/latias.png",
-    "displayNumber": "#0380"
+    "displayNumber": "#0380",
+    "names": {
+      "de": "Latias"
+    }
   },
   {
     "speciesId": "latiasmega",
@@ -396591,7 +397245,10 @@ window.POKEDEX_ENTRIES = [
     "stellar_defense": 1,
     "water_defense": 0.5,
     "sprite": "https://play.pokemonshowdown.com/sprites/gen5/latios.png",
-    "displayNumber": "#0381"
+    "displayNumber": "#0381",
+    "names": {
+      "de": "Latios"
+    }
   },
   {
     "speciesId": "latiosmega",
@@ -398411,7 +399068,10 @@ window.POKEDEX_ENTRIES = [
     "stellar_defense": 1,
     "water_defense": 0.5,
     "sprite": "https://play.pokemonshowdown.com/sprites/gen5/kyogre.png",
-    "displayNumber": "#0382"
+    "displayNumber": "#0382",
+    "names": {
+      "de": "Kyogre"
+    }
   },
   {
     "speciesId": "kyogreprimal",
@@ -400150,7 +400810,10 @@ window.POKEDEX_ENTRIES = [
     "stellar_defense": 1,
     "water_defense": 2,
     "sprite": "https://play.pokemonshowdown.com/sprites/gen5/groudon.png",
-    "displayNumber": "#0383"
+    "displayNumber": "#0383",
+    "names": {
+      "de": "Groudon"
+    }
   },
   {
     "speciesId": "groudonprimal",
@@ -402144,7 +402807,10 @@ window.POKEDEX_ENTRIES = [
     "stellar_defense": 1,
     "water_defense": 0.5,
     "sprite": "https://play.pokemonshowdown.com/sprites/gen5/rayquaza.png",
-    "displayNumber": "#0384"
+    "displayNumber": "#0384",
+    "names": {
+      "de": "Rayquaza"
+    }
   },
   {
     "speciesId": "rayquazamega",
@@ -404183,7 +404849,10 @@ window.POKEDEX_ENTRIES = [
     "stellar_defense": 1,
     "water_defense": 1,
     "sprite": "https://play.pokemonshowdown.com/sprites/gen5/jirachi.png",
-    "displayNumber": "#0385"
+    "displayNumber": "#0385",
+    "names": {
+      "de": "Jirachi"
+    }
   },
   {
     "speciesId": "deoxys",
@@ -405308,7 +405977,10 @@ window.POKEDEX_ENTRIES = [
     "stellar_defense": 1,
     "water_defense": 1,
     "sprite": "https://play.pokemonshowdown.com/sprites/gen5/deoxys.png",
-    "displayNumber": "#0386"
+    "displayNumber": "#0386",
+    "names": {
+      "de": "Deoxys"
+    }
   },
   {
     "speciesId": "deoxysattack",
@@ -415254,7 +415926,7 @@ window.POKEDEX_ENTRIES = [
         "id": "reckless",
         "name": "Reckless",
         "names": {
-          "de": "Atchlos"
+          "de": "Achtlos"
         },
         "shortDesc": "This Pokemon's attacks with recoil or crash damage have 1.2x power; not Struggle.",
         "desc": "This Pokemon's attacks with recoil or crash damage have their power multiplied by 1.2. Does not affect Struggle."
@@ -415811,7 +416483,7 @@ window.POKEDEX_ENTRIES = [
         "id": "reckless",
         "name": "Reckless",
         "names": {
-          "de": "Atchlos"
+          "de": "Achtlos"
         },
         "shortDesc": "This Pokemon's attacks with recoil or crash damage have 1.2x power; not Struggle.",
         "desc": "This Pokemon's attacks with recoil or crash damage have their power multiplied by 1.2. Does not affect Struggle."
@@ -416267,7 +416939,10 @@ window.POKEDEX_ENTRIES = [
     "stellar_defense": 1,
     "water_defense": 1,
     "sprite": "https://play.pokemonshowdown.com/sprites/gen5/staravia.png",
-    "displayNumber": "#0397"
+    "displayNumber": "#0397",
+    "names": {
+      "de": "Staravia"
+    }
   },
   {
     "speciesId": "staraptor",
@@ -416299,7 +416974,7 @@ window.POKEDEX_ENTRIES = [
         "id": "reckless",
         "name": "Reckless",
         "names": {
-          "de": "Atchlos"
+          "de": "Achtlos"
         },
         "shortDesc": "This Pokemon's attacks with recoil or crash damage have 1.2x power; not Struggle.",
         "desc": "This Pokemon's attacks with recoil or crash damage have their power multiplied by 1.2. Does not affect Struggle."
@@ -416795,7 +417470,10 @@ window.POKEDEX_ENTRIES = [
     "stellar_defense": 1,
     "water_defense": 1,
     "sprite": "https://play.pokemonshowdown.com/sprites/gen5/staraptor.png",
-    "displayNumber": "#0398"
+    "displayNumber": "#0398",
+    "names": {
+      "de": "Staraptor"
+    }
   },
   {
     "speciesId": "staraptormega",
@@ -420539,7 +421217,10 @@ window.POKEDEX_ENTRIES = [
     "stellar_defense": 1,
     "water_defense": 1,
     "sprite": "https://play.pokemonshowdown.com/sprites/gen5/luxio.png",
-    "displayNumber": "#0404"
+    "displayNumber": "#0404",
+    "names": {
+      "de": "Luxio"
+    }
   },
   {
     "speciesId": "luxray",
@@ -422260,7 +422941,10 @@ window.POKEDEX_ENTRIES = [
     "stellar_defense": 1,
     "water_defense": 0.5,
     "sprite": "https://play.pokemonshowdown.com/sprites/gen5/roserade.png",
-    "displayNumber": "#0407"
+    "displayNumber": "#0407",
+    "names": {
+      "de": "Roserade"
+    }
   },
   {
     "speciesId": "cranidos",
@@ -425151,7 +425835,7 @@ window.POKEDEX_ENTRIES = [
         "id": "overcoat",
         "name": "Overcoat",
         "names": {
-          "de": "Wetterfest"
+          "de": "Partikelschutz"
         },
         "shortDesc": "This Pokemon is immune to powder moves, Sandstorm damage, and Effect Spore.",
         "desc": "This Pokemon is immune to powder moves, damage from Sandstorm, and the effects of Rage Powder and the Effect Spore Ability."
@@ -425275,7 +425959,10 @@ window.POKEDEX_ENTRIES = [
     "stellar_defense": 1,
     "water_defense": 1,
     "sprite": "https://play.pokemonshowdown.com/sprites/gen5/burmy.png",
-    "displayNumber": "#0412"
+    "displayNumber": "#0412",
+    "names": {
+      "de": "Burmy"
+    }
   },
   {
     "speciesId": "wormadam",
@@ -425310,7 +425997,7 @@ window.POKEDEX_ENTRIES = [
         "id": "overcoat",
         "name": "Overcoat",
         "names": {
-          "de": "Wetterfest"
+          "de": "Partikelschutz"
         },
         "shortDesc": "This Pokemon is immune to powder moves, Sandstorm damage, and Effect Spore.",
         "desc": "This Pokemon is immune to powder moves, damage from Sandstorm, and the effects of Rage Powder and the Effect Spore Ability."
@@ -425819,7 +426506,7 @@ window.POKEDEX_ENTRIES = [
         "id": "overcoat",
         "name": "Overcoat",
         "names": {
-          "de": "Wetterfest"
+          "de": "Partikelschutz"
         },
         "shortDesc": "This Pokemon is immune to powder moves, Sandstorm damage, and Effect Spore.",
         "desc": "This Pokemon is immune to powder moves, damage from Sandstorm, and the effects of Rage Powder and the Effect Spore Ability."
@@ -426323,7 +427010,7 @@ window.POKEDEX_ENTRIES = [
         "id": "overcoat",
         "name": "Overcoat",
         "names": {
-          "de": "Wetterfest"
+          "de": "Partikelschutz"
         },
         "shortDesc": "This Pokemon is immune to powder moves, Sandstorm damage, and Effect Spore.",
         "desc": "This Pokemon is immune to powder moves, damage from Sandstorm, and the effects of Rage Powder and the Effect Spore Ability."
@@ -426822,7 +427509,7 @@ window.POKEDEX_ENTRIES = [
         "id": "tintedlens",
         "name": "Tinted Lens",
         "names": {
-          "de": "Finalschlag"
+          "de": "Aufwertung"
         },
         "shortDesc": "This Pokemon's attacks that are not very effective on a target deal double damage.",
         "desc": "This Pokemon's attacks that are not very effective on a target deal double damage."
@@ -428957,7 +429644,10 @@ window.POKEDEX_ENTRIES = [
     "stellar_defense": 1,
     "water_defense": 1,
     "sprite": "https://play.pokemonshowdown.com/sprites/gen5/pachirisu.png",
-    "displayNumber": "#0417"
+    "displayNumber": "#0417",
+    "names": {
+      "de": "Pachirisu"
+    }
   },
   {
     "speciesId": "buizel",
@@ -430316,7 +431006,10 @@ window.POKEDEX_ENTRIES = [
         "id": "chlorophyll",
         "name": "Chlorophyll",
         "shortDesc": "If Sunny Day is active, this Pokemon's Speed is doubled.",
-        "desc": "If Sunny Day is active, this Pokemon's Speed is doubled. This effect is prevented if this Pokemon is holding a Utility Umbrella."
+        "desc": "If Sunny Day is active, this Pokemon's Speed is doubled. This effect is prevented if this Pokemon is holding a Utility Umbrella.",
+        "names": {
+          "de": "Chlorophyll"
+        }
       }
     ],
     "baseStats": {
@@ -431290,7 +431983,7 @@ window.POKEDEX_ENTRIES = [
     "sourceIndex": 561,
     "num": 421,
     "name": "Cherrim-Sunshine",
-    "searchText": "0421 421 cherrimsunshine grass",
+    "searchText": "0421 421 cherrimsunshine grass kinososunshine",
     "types": [
       "Grass"
     ],
@@ -431749,7 +432442,10 @@ window.POKEDEX_ENTRIES = [
     "stellar_defense": 1,
     "water_defense": 0.5,
     "sprite": "https://play.pokemonshowdown.com/sprites/gen5/cherrim-sunshine.png",
-    "displayNumber": "#0421"
+    "displayNumber": "#0421",
+    "names": {
+      "de": "Kinoso-Sunshine"
+    }
   },
   {
     "speciesId": "shellos",
@@ -431774,7 +432470,7 @@ window.POKEDEX_ENTRIES = [
         "id": "stickyhold",
         "name": "Sticky Hold",
         "names": {
-          "de": "Wertehalter"
+          "de": "Klebekörper"
         },
         "shortDesc": "This Pokemon cannot lose its held item due to another Pokemon's Ability or attack.",
         "desc": "This Pokemon cannot lose its held item due to another Pokemon's Ability or attack, unless the attack knocks out this Pokemon. A Sticky Barb will be transferred to other Pokemon regardless of this Ability."
@@ -432434,7 +433130,7 @@ window.POKEDEX_ENTRIES = [
         "id": "stickyhold",
         "name": "Sticky Hold",
         "names": {
-          "de": "Wertehalter"
+          "de": "Klebekörper"
         },
         "shortDesc": "This Pokemon cannot lose its held item due to another Pokemon's Ability or attack.",
         "desc": "This Pokemon cannot lose its held item due to another Pokemon's Ability or attack, unless the attack knocks out this Pokemon. A Sticky Barb will be transferred to other Pokemon regardless of this Ability."
@@ -433082,7 +433778,10 @@ window.POKEDEX_ENTRIES = [
       1
     ],
     "sprite": "https://play.pokemonshowdown.com/sprites/gen5/gastrodon.png",
-    "displayNumber": "#0423"
+    "displayNumber": "#0423",
+    "names": {
+      "de": "Gastrodon"
+    }
   },
   {
     "speciesId": "ambipom",
@@ -438490,7 +439189,10 @@ window.POKEDEX_ENTRIES = [
         "id": "insomnia",
         "name": "Insomnia",
         "shortDesc": "This Pokemon cannot fall asleep. Gaining this Ability while asleep cures it.",
-        "desc": "This Pokemon cannot fall asleep. Gaining this Ability while asleep cures it."
+        "desc": "This Pokemon cannot fall asleep. Gaining this Ability while asleep cures it.",
+        "names": {
+          "de": "Insomnia"
+        }
       },
       {
         "slot": "1",
@@ -439167,7 +439869,7 @@ window.POKEDEX_ENTRIES = [
         "id": "owntempo",
         "name": "Own Tempo",
         "names": {
-          "de": "Tempomacher"
+          "de": "Gleichmut"
         },
         "shortDesc": "This Pokemon cannot be confused. Immune to Intimidate.",
         "desc": "This Pokemon cannot be confused. Gaining this Ability while confused cures it. This Pokemon is immune to the effect of the Intimidate Ability."
@@ -439770,7 +440472,7 @@ window.POKEDEX_ENTRIES = [
         "id": "owntempo",
         "name": "Own Tempo",
         "names": {
-          "de": "Tempomacher"
+          "de": "Gleichmut"
         },
         "shortDesc": "This Pokemon cannot be confused. Immune to Intimidate.",
         "desc": "This Pokemon cannot be confused. Gaining this Ability while confused cures it. This Pokemon is immune to the effect of the Intimidate Ability."
@@ -439780,7 +440482,7 @@ window.POKEDEX_ENTRIES = [
         "id": "defiant",
         "name": "Defiant",
         "names": {
-          "de": "Seigeswille"
+          "de": "Siegeswille"
         },
         "shortDesc": "This Pokemon's Attack is raised by 2 for each of its stats that is lowered by a foe.",
         "desc": "This Pokemon's Attack is raised by 2 stages for each of its stat stages that is lowered by an opposing Pokemon."
@@ -442500,7 +443202,10 @@ window.POKEDEX_ENTRIES = [
     "stellar_defense": 1,
     "water_defense": 1,
     "sprite": "https://play.pokemonshowdown.com/sprites/gen5/skuntank.png",
-    "displayNumber": "#0435"
+    "displayNumber": "#0435",
+    "names": {
+      "de": "Skuntank"
+    }
   },
   {
     "speciesId": "bronzor",
@@ -444109,7 +444814,10 @@ window.POKEDEX_ENTRIES = [
       1
     ],
     "sprite": "https://play.pokemonshowdown.com/sprites/gen5/bronzong.png",
-    "displayNumber": "#0437"
+    "displayNumber": "#0437",
+    "names": {
+      "de": "Bronzong"
+    }
   },
   {
     "speciesId": "bonsly",
@@ -444817,7 +445525,10 @@ window.POKEDEX_ENTRIES = [
         "id": "filter",
         "name": "Filter",
         "shortDesc": "This Pokemon receives 3/4 damage from supereffective attacks.",
-        "desc": "This Pokemon receives 3/4 damage from supereffective attacks."
+        "desc": "This Pokemon receives 3/4 damage from supereffective attacks.",
+        "names": {
+          "de": "Filter"
+        }
       },
       {
         "slot": "H",
@@ -446284,7 +446995,7 @@ window.POKEDEX_ENTRIES = [
         "id": "tangledfeet",
         "name": "Tangled Feet",
         "names": {
-          "de": "Fußangel"
+          "de": "Taumelschritt"
         },
         "shortDesc": "This Pokemon's evasiveness is doubled as long as it is confused.",
         "desc": "This Pokemon's evasiveness is doubled as long as it is confused."
@@ -450504,7 +451215,7 @@ window.POKEDEX_ENTRIES = [
     "sourceIndex": 590,
     "num": 445,
     "name": "Garchomp-Mega-Z",
-    "searchText": "0445 445 garchompmegaz dragon",
+    "searchText": "0445 445 garchompmegaz dragon knakrackmegaz",
     "types": [
       "Dragon"
     ],
@@ -451283,7 +451994,10 @@ window.POKEDEX_ENTRIES = [
     "stellar_defense": 1,
     "water_defense": 0.5,
     "sprite": "https://play.pokemonshowdown.com/sprites/gen5/garchomp-mega-z.png",
-    "displayNumber": "#0445"
+    "displayNumber": "#0445",
+    "names": {
+      "de": "Knakrack-Mega-Z"
+    }
   },
   {
     "speciesId": "munchlax",
@@ -453053,7 +453767,10 @@ window.POKEDEX_ENTRIES = [
     "stellar_defense": 1,
     "water_defense": 1,
     "sprite": "https://play.pokemonshowdown.com/sprites/gen5/riolu.png",
-    "displayNumber": "#0447"
+    "displayNumber": "#0447",
+    "names": {
+      "de": "Riolu"
+    }
   },
   {
     "speciesId": "lucario",
@@ -454031,7 +454748,10 @@ window.POKEDEX_ENTRIES = [
     "stellar_defense": 1,
     "water_defense": 1,
     "sprite": "https://play.pokemonshowdown.com/sprites/gen5/lucario.png",
-    "displayNumber": "#0448"
+    "displayNumber": "#0448",
+    "names": {
+      "de": "Lucario"
+    }
   },
   {
     "speciesId": "lucariomega",
@@ -455932,7 +456652,10 @@ window.POKEDEX_ENTRIES = [
     "stellar_defense": 1,
     "water_defense": 1,
     "sprite": "https://play.pokemonshowdown.com/sprites/gen5/lucario-mega-z.png",
-    "displayNumber": "#0448"
+    "displayNumber": "#0448",
+    "names": {
+      "de": "Lucario-Mega-Z"
+    }
   },
   {
     "speciesId": "hippopotas",
@@ -456544,7 +457267,10 @@ window.POKEDEX_ENTRIES = [
     "stellar_defense": 1,
     "water_defense": 2,
     "sprite": "https://play.pokemonshowdown.com/sprites/gen5/hippopotas.png",
-    "displayNumber": "#0449"
+    "displayNumber": "#0449",
+    "names": {
+      "de": "Hippopotas"
+    }
   },
   {
     "speciesId": "hippowdon",
@@ -461629,7 +462355,10 @@ window.POKEDEX_ENTRIES = [
       0.5
     ],
     "sprite": "https://play.pokemonshowdown.com/sprites/gen5/finneon.png",
-    "displayNumber": "#0456"
+    "displayNumber": "#0456",
+    "names": {
+      "de": "Finneon"
+    }
   },
   {
     "speciesId": "lumineon",
@@ -462202,7 +462931,10 @@ window.POKEDEX_ENTRIES = [
       0.5
     ],
     "sprite": "https://play.pokemonshowdown.com/sprites/gen5/lumineon.png",
-    "displayNumber": "#0457"
+    "displayNumber": "#0457",
+    "names": {
+      "de": "Lumineon"
+    }
   },
   {
     "speciesId": "mantyke",
@@ -462822,7 +463554,7 @@ window.POKEDEX_ENTRIES = [
         "id": "snowwarning",
         "name": "Snow Warning",
         "names": {
-          "de": "Hagelalarm"
+          "de": "Schneeschauer"
         },
         "shortDesc": "On switch-in, this Pokemon summons Snow.",
         "desc": "On switch-in, this Pokemon summons Snow."
@@ -463491,7 +464223,7 @@ window.POKEDEX_ENTRIES = [
         "id": "snowwarning",
         "name": "Snow Warning",
         "names": {
-          "de": "Hagelalarm"
+          "de": "Schneeschauer"
         },
         "shortDesc": "On switch-in, this Pokemon summons Snow.",
         "desc": "On switch-in, this Pokemon summons Snow."
@@ -464263,7 +464995,7 @@ window.POKEDEX_ENTRIES = [
         "id": "snowwarning",
         "name": "Snow Warning",
         "names": {
-          "de": "Hagelalarm"
+          "de": "Schneeschauer"
         },
         "shortDesc": "On switch-in, this Pokemon summons Snow.",
         "desc": "On switch-in, this Pokemon summons Snow."
@@ -466608,7 +467340,10 @@ window.POKEDEX_ENTRIES = [
     "stellar_defense": 1,
     "water_defense": 1,
     "sprite": "https://play.pokemonshowdown.com/sprites/gen5/magnezone.png",
-    "displayNumber": "#0462"
+    "displayNumber": "#0462",
+    "names": {
+      "de": "Magnezone"
+    }
   },
   {
     "speciesId": "lickilicky",
@@ -466633,7 +467368,7 @@ window.POKEDEX_ENTRIES = [
         "id": "owntempo",
         "name": "Own Tempo",
         "names": {
-          "de": "Tempomacher"
+          "de": "Gleichmut"
         },
         "shortDesc": "This Pokemon cannot be confused. Immune to Intimidate.",
         "desc": "This Pokemon cannot be confused. Gaining this Ability while confused cures it. This Pokemon is immune to the effect of the Intimidate Ability."
@@ -467448,7 +468183,7 @@ window.POKEDEX_ENTRIES = [
         "id": "reckless",
         "name": "Reckless",
         "names": {
-          "de": "Atchlos"
+          "de": "Achtlos"
         },
         "shortDesc": "This Pokemon's attacks with recoil or crash damage have 1.2x power; not Struggle.",
         "desc": "This Pokemon's attacks with recoil or crash damage have their power multiplied by 1.2. Does not affect Struggle."
@@ -468448,7 +469183,10 @@ window.POKEDEX_ENTRIES = [
         "id": "chlorophyll",
         "name": "Chlorophyll",
         "shortDesc": "If Sunny Day is active, this Pokemon's Speed is doubled.",
-        "desc": "If Sunny Day is active, this Pokemon's Speed is doubled. This effect is prevented if this Pokemon is holding a Utility Umbrella."
+        "desc": "If Sunny Day is active, this Pokemon's Speed is doubled. This effect is prevented if this Pokemon is holding a Utility Umbrella.",
+        "names": {
+          "de": "Chlorophyll"
+        }
       },
       {
         "slot": "1",
@@ -471520,7 +472258,10 @@ window.POKEDEX_ENTRIES = [
     "stellar_defense": 1,
     "water_defense": 1,
     "sprite": "https://play.pokemonshowdown.com/sprites/gen5/togekiss.png",
-    "displayNumber": "#0468"
+    "displayNumber": "#0468",
+    "names": {
+      "de": "Togekiss"
+    }
   },
   {
     "speciesId": "yanmega",
@@ -471553,7 +472294,7 @@ window.POKEDEX_ENTRIES = [
         "id": "tintedlens",
         "name": "Tinted Lens",
         "names": {
-          "de": "Finalschlag"
+          "de": "Aufwertung"
         },
         "shortDesc": "This Pokemon's attacks that are not very effective on a target deal double damage.",
         "desc": "This Pokemon's attacks that are not very effective on a target deal double damage."
@@ -472134,7 +472875,10 @@ window.POKEDEX_ENTRIES = [
     "stellar_defense": 1,
     "water_defense": 1,
     "sprite": "https://play.pokemonshowdown.com/sprites/gen5/yanmega.png",
-    "displayNumber": "#0469"
+    "displayNumber": "#0469",
+    "names": {
+      "de": "Yanmega"
+    }
   },
   {
     "speciesId": "leafeon",
@@ -472168,7 +472912,10 @@ window.POKEDEX_ENTRIES = [
         "id": "chlorophyll",
         "name": "Chlorophyll",
         "shortDesc": "If Sunny Day is active, this Pokemon's Speed is doubled.",
-        "desc": "If Sunny Day is active, this Pokemon's Speed is doubled. This effect is prevented if this Pokemon is holding a Utility Umbrella."
+        "desc": "If Sunny Day is active, this Pokemon's Speed is doubled. This effect is prevented if this Pokemon is holding a Utility Umbrella.",
+        "names": {
+          "de": "Chlorophyll"
+        }
       }
     ],
     "baseStats": {
@@ -473646,7 +474393,7 @@ window.POKEDEX_ENTRIES = [
         "id": "poisonheal",
         "name": "Poison Heal",
         "names": {
-          "de": "Aufheber"
+          "de": "Giftheilung"
         },
         "shortDesc": "This Pokemon is healed by 1/8 of its max HP each turn when poisoned; no HP loss.",
         "desc": "If this Pokemon is poisoned, it restores 1/8 of its maximum HP, rounded down, at the end of each turn instead of losing HP."
@@ -475180,7 +475927,10 @@ window.POKEDEX_ENTRIES = [
         "id": "download",
         "name": "Download",
         "shortDesc": "On switch-in, Attack or Sp. Atk is raised 1 stage based on the foes' weaker Defense.",
-        "desc": "On switch-in, this Pokemon's Attack or Special Attack is raised by 1 stage based on the weaker combined defensive stat of all opposing Pokemon. Attack is raised if their Defense is lower, and Special Attack is raised if their Special Defense is the same or lower."
+        "desc": "On switch-in, this Pokemon's Attack or Special Attack is raised by 1 stage based on the weaker combined defensive stat of all opposing Pokemon. Attack is raised if their Defense is lower, and Special Attack is raised if their Special Defense is the same or lower.",
+        "names": {
+          "de": "Download"
+        }
       },
       {
         "slot": "H",
@@ -475878,7 +476628,10 @@ window.POKEDEX_ENTRIES = [
     "stellar_defense": 1,
     "water_defense": 1,
     "sprite": "https://play.pokemonshowdown.com/sprites/gen5/porygonz.png",
-    "displayNumber": "#0474"
+    "displayNumber": "#0474",
+    "names": {
+      "de": "Porygon-Z"
+    }
   },
   {
     "speciesId": "gallade",
@@ -480621,7 +481374,7 @@ window.POKEDEX_ENTRIES = [
         "id": "snowwarning",
         "name": "Snow Warning",
         "names": {
-          "de": "Hagelalarm"
+          "de": "Schneeschauer"
         },
         "shortDesc": "On switch-in, this Pokemon summons Snow.",
         "desc": "On switch-in, this Pokemon summons Snow."
@@ -482000,7 +482753,10 @@ window.POKEDEX_ENTRIES = [
     "stellar_defense": 1,
     "water_defense": 1,
     "sprite": "https://play.pokemonshowdown.com/sprites/gen5/rotom.png",
-    "displayNumber": "#0479"
+    "displayNumber": "#0479",
+    "names": {
+      "de": "Rotom"
+    }
   },
   {
     "speciesId": "rotomheat",
@@ -482267,7 +483023,10 @@ window.POKEDEX_ENTRIES = [
     "stellar_defense": 1,
     "water_defense": 1,
     "sprite": "https://play.pokemonshowdown.com/sprites/gen5/rotom-frost.png",
-    "displayNumber": "#0479"
+    "displayNumber": "#0479",
+    "names": {
+      "de": "Rotom-Frost"
+    }
   },
   {
     "speciesId": "rotomfan",
@@ -485931,7 +486690,10 @@ window.POKEDEX_ENTRIES = [
     "stellar_defense": 1,
     "water_defense": 0.5,
     "sprite": "https://play.pokemonshowdown.com/sprites/gen5/dialga.png",
-    "displayNumber": "#0483"
+    "displayNumber": "#0483",
+    "names": {
+      "de": "Dialga"
+    }
   },
   {
     "speciesId": "dialgaorigin",
@@ -486792,7 +487554,10 @@ window.POKEDEX_ENTRIES = [
     "stellar_defense": 1,
     "water_defense": 0.5,
     "sprite": "https://play.pokemonshowdown.com/sprites/gen5/dialga-origin.png",
-    "displayNumber": "#0483"
+    "displayNumber": "#0483",
+    "names": {
+      "de": "Dialga-Origin"
+    }
   },
   {
     "speciesId": "palkia",
@@ -487688,7 +488453,10 @@ window.POKEDEX_ENTRIES = [
     "stellar_defense": 1,
     "water_defense": 0.25,
     "sprite": "https://play.pokemonshowdown.com/sprites/gen5/palkia.png",
-    "displayNumber": "#0484"
+    "displayNumber": "#0484",
+    "names": {
+      "de": "Palkia"
+    }
   },
   {
     "speciesId": "palkiaorigin",
@@ -488577,7 +489345,10 @@ window.POKEDEX_ENTRIES = [
     "stellar_defense": 1,
     "water_defense": 0.25,
     "sprite": "https://play.pokemonshowdown.com/sprites/gen5/palkia-origin.png",
-    "displayNumber": "#0484"
+    "displayNumber": "#0484",
+    "names": {
+      "de": "Palkia-Origin"
+    }
   },
   {
     "speciesId": "heatran",
@@ -489354,7 +490125,10 @@ window.POKEDEX_ENTRIES = [
     "stellar_defense": 1,
     "water_defense": 2,
     "sprite": "https://play.pokemonshowdown.com/sprites/gen5/heatran.png",
-    "displayNumber": "#0485"
+    "displayNumber": "#0485",
+    "names": {
+      "de": "Heatran"
+    }
   },
   {
     "speciesId": "heatranmega",
@@ -490884,7 +491658,10 @@ window.POKEDEX_ENTRIES = [
     "stellar_defense": 1,
     "water_defense": 1,
     "sprite": "https://play.pokemonshowdown.com/sprites/gen5/regigigas.png",
-    "displayNumber": "#0486"
+    "displayNumber": "#0486",
+    "names": {
+      "de": "Regigigas"
+    }
   },
   {
     "speciesId": "giratina",
@@ -491749,7 +492526,10 @@ window.POKEDEX_ENTRIES = [
     "stellar_defense": 1,
     "water_defense": 0.5,
     "sprite": "https://play.pokemonshowdown.com/sprites/gen5/giratina.png",
-    "displayNumber": "#0487"
+    "displayNumber": "#0487",
+    "names": {
+      "de": "Giratina"
+    }
   },
   {
     "speciesId": "giratinaorigin",
@@ -492596,7 +493376,10 @@ window.POKEDEX_ENTRIES = [
     "stellar_defense": 1,
     "water_defense": 0.5,
     "sprite": "https://play.pokemonshowdown.com/sprites/gen5/giratina-origin.png",
-    "displayNumber": "#0487"
+    "displayNumber": "#0487",
+    "names": {
+      "de": "Giratina-Origin"
+    }
   },
   {
     "speciesId": "cresselia",
@@ -493302,7 +494085,10 @@ window.POKEDEX_ENTRIES = [
     "stellar_defense": 1,
     "water_defense": 1,
     "sprite": "https://play.pokemonshowdown.com/sprites/gen5/cresselia.png",
-    "displayNumber": "#0488"
+    "displayNumber": "#0488",
+    "names": {
+      "de": "Cresselia"
+    }
   },
   {
     "speciesId": "phione",
@@ -493322,7 +494108,10 @@ window.POKEDEX_ENTRIES = [
         "id": "hydration",
         "name": "Hydration",
         "shortDesc": "This Pokemon has its status cured at the end of each turn if Rain Dance is active.",
-        "desc": "This Pokemon has its non-volatile status condition cured at the end of each turn if Rain Dance is active. This effect is prevented if this Pokemon is holding a Utility Umbrella."
+        "desc": "This Pokemon has its non-volatile status condition cured at the end of each turn if Rain Dance is active. This effect is prevented if this Pokemon is holding a Utility Umbrella.",
+        "names": {
+          "de": "Hydration"
+        }
       }
     ],
     "baseStats": {
@@ -493833,7 +494622,10 @@ window.POKEDEX_ENTRIES = [
     "stellar_defense": 1,
     "water_defense": 0.5,
     "sprite": "https://play.pokemonshowdown.com/sprites/gen5/phione.png",
-    "displayNumber": "#0489"
+    "displayNumber": "#0489",
+    "names": {
+      "de": "Phione"
+    }
   },
   {
     "speciesId": "manaphy",
@@ -493853,7 +494645,10 @@ window.POKEDEX_ENTRIES = [
         "id": "hydration",
         "name": "Hydration",
         "shortDesc": "This Pokemon has its status cured at the end of each turn if Rain Dance is active.",
-        "desc": "This Pokemon has its non-volatile status condition cured at the end of each turn if Rain Dance is active. This effect is prevented if this Pokemon is holding a Utility Umbrella."
+        "desc": "This Pokemon has its non-volatile status condition cured at the end of each turn if Rain Dance is active. This effect is prevented if this Pokemon is holding a Utility Umbrella.",
+        "names": {
+          "de": "Hydration"
+        }
       }
     ],
     "baseStats": {
@@ -494497,7 +495292,10 @@ window.POKEDEX_ENTRIES = [
     "stellar_defense": 1,
     "water_defense": 0.5,
     "sprite": "https://play.pokemonshowdown.com/sprites/gen5/manaphy.png",
-    "displayNumber": "#0490"
+    "displayNumber": "#0490",
+    "names": {
+      "de": "Manaphy"
+    }
   },
   {
     "speciesId": "darkrai",
@@ -495289,7 +496087,10 @@ window.POKEDEX_ENTRIES = [
     "stellar_defense": 1,
     "water_defense": 1,
     "sprite": "https://play.pokemonshowdown.com/sprites/gen5/darkrai.png",
-    "displayNumber": "#0491"
+    "displayNumber": "#0491",
+    "names": {
+      "de": "Darkrai"
+    }
   },
   {
     "speciesId": "darkraimega",
@@ -496675,7 +497476,10 @@ window.POKEDEX_ENTRIES = [
     "stellar_defense": 1,
     "water_defense": 0.5,
     "sprite": "https://play.pokemonshowdown.com/sprites/gen5/shaymin.png",
-    "displayNumber": "#0492"
+    "displayNumber": "#0492",
+    "names": {
+      "de": "Shaymin"
+    }
   },
   {
     "speciesId": "shayminsky",
@@ -498522,7 +499326,10 @@ window.POKEDEX_ENTRIES = [
     "stellar_defense": 1,
     "water_defense": 1,
     "sprite": "https://play.pokemonshowdown.com/sprites/gen5/arceus.png",
-    "displayNumber": "#0493"
+    "displayNumber": "#0493",
+    "names": {
+      "de": "Arceus"
+    }
   },
   {
     "speciesId": "arceusbug",
@@ -519966,7 +520773,10 @@ window.POKEDEX_ENTRIES = [
     "stellar_defense": 1,
     "water_defense": 2,
     "sprite": "https://play.pokemonshowdown.com/sprites/gen5/victini.png",
-    "displayNumber": "#0494"
+    "displayNumber": "#0494",
+    "names": {
+      "de": "Victini"
+    }
   },
   {
     "speciesId": "snivy",
@@ -522928,7 +523738,7 @@ window.POKEDEX_ENTRIES = [
         "id": "reckless",
         "name": "Reckless",
         "names": {
-          "de": "Atchlos"
+          "de": "Achtlos"
         },
         "shortDesc": "This Pokemon's attacks with recoil or crash damage have 1.2x power; not Struggle.",
         "desc": "This Pokemon's attacks with recoil or crash damage have their power multiplied by 1.2. Does not affect Struggle."
@@ -533405,7 +534215,10 @@ window.POKEDEX_ENTRIES = [
         "id": "synchronize",
         "name": "Synchronize",
         "shortDesc": "If another Pokemon burns/poisons/paralyzes this Pokemon, it also gets that status.",
-        "desc": "If another Pokemon burns, paralyzes, poisons, or badly poisons this Pokemon, that Pokemon receives the same non-volatile status condition."
+        "desc": "If another Pokemon burns, paralyzes, poisons, or badly poisons this Pokemon, that Pokemon receives the same non-volatile status condition.",
+        "names": {
+          "de": "Synchro"
+        }
       },
       {
         "slot": "H",
@@ -534022,7 +534835,10 @@ window.POKEDEX_ENTRIES = [
         "id": "synchronize",
         "name": "Synchronize",
         "shortDesc": "If another Pokemon burns/poisons/paralyzes this Pokemon, it also gets that status.",
-        "desc": "If another Pokemon burns, paralyzes, poisons, or badly poisons this Pokemon, that Pokemon receives the same non-volatile status condition."
+        "desc": "If another Pokemon burns, paralyzes, poisons, or badly poisons this Pokemon, that Pokemon receives the same non-volatile status condition.",
+        "names": {
+          "de": "Synchro"
+        }
       },
       {
         "slot": "H",
@@ -538981,9 +539797,9 @@ window.POKEDEX_ENTRIES = [
     "num": 528,
     "name": "Swoobat",
     "names": {
-      "de": "Fletiano"
+      "de": "Fletiamo"
     },
-    "searchText": "0528 528 swoobat fletiano psychic flying",
+    "searchText": "0528 528 swoobat fletiano psychic flying fletiamo",
     "types": [
       "Psychic",
       "Flying"
@@ -545125,7 +545941,10 @@ window.POKEDEX_ENTRIES = [
         "id": "hydration",
         "name": "Hydration",
         "shortDesc": "This Pokemon has its status cured at the end of each turn if Rain Dance is active.",
-        "desc": "This Pokemon has its non-volatile status condition cured at the end of each turn if Rain Dance is active. This effect is prevented if this Pokemon is holding a Utility Umbrella."
+        "desc": "This Pokemon has its non-volatile status condition cured at the end of each turn if Rain Dance is active. This effect is prevented if this Pokemon is holding a Utility Umbrella.",
+        "names": {
+          "de": "Hydration"
+        }
       },
       {
         "slot": "H",
@@ -545595,7 +546414,10 @@ window.POKEDEX_ENTRIES = [
         "id": "hydration",
         "name": "Hydration",
         "shortDesc": "This Pokemon has its status cured at the end of each turn if Rain Dance is active.",
-        "desc": "This Pokemon has its non-volatile status condition cured at the end of each turn if Rain Dance is active. This effect is prevented if this Pokemon is holding a Utility Umbrella."
+        "desc": "This Pokemon has its non-volatile status condition cured at the end of each turn if Rain Dance is active. This effect is prevented if this Pokemon is holding a Utility Umbrella.",
+        "names": {
+          "de": "Hydration"
+        }
       },
       {
         "slot": "H",
@@ -547805,14 +548627,17 @@ window.POKEDEX_ENTRIES = [
         "id": "chlorophyll",
         "name": "Chlorophyll",
         "shortDesc": "If Sunny Day is active, this Pokemon's Speed is doubled.",
-        "desc": "If Sunny Day is active, this Pokemon's Speed is doubled. This effect is prevented if this Pokemon is holding a Utility Umbrella."
+        "desc": "If Sunny Day is active, this Pokemon's Speed is doubled. This effect is prevented if this Pokemon is holding a Utility Umbrella.",
+        "names": {
+          "de": "Chlorophyll"
+        }
       },
       {
         "slot": "H",
         "id": "overcoat",
         "name": "Overcoat",
         "names": {
-          "de": "Wetterfest"
+          "de": "Partikelschutz"
         },
         "shortDesc": "This Pokemon is immune to powder moves, Sandstorm damage, and Effect Spore.",
         "desc": "This Pokemon is immune to powder moves, damage from Sandstorm, and the effects of Rage Powder and the Effect Spore Ability."
@@ -548315,14 +549140,17 @@ window.POKEDEX_ENTRIES = [
         "id": "chlorophyll",
         "name": "Chlorophyll",
         "shortDesc": "If Sunny Day is active, this Pokemon's Speed is doubled.",
-        "desc": "If Sunny Day is active, this Pokemon's Speed is doubled. This effect is prevented if this Pokemon is holding a Utility Umbrella."
+        "desc": "If Sunny Day is active, this Pokemon's Speed is doubled. This effect is prevented if this Pokemon is holding a Utility Umbrella.",
+        "names": {
+          "de": "Chlorophyll"
+        }
       },
       {
         "slot": "H",
         "id": "overcoat",
         "name": "Overcoat",
         "names": {
-          "de": "Wetterfest"
+          "de": "Partikelschutz"
         },
         "shortDesc": "This Pokemon is immune to powder moves, Sandstorm damage, and Effect Spore.",
         "desc": "This Pokemon is immune to powder moves, damage from Sandstorm, and the effects of Rage Powder and the Effect Spore Ability."
@@ -548761,14 +549589,17 @@ window.POKEDEX_ENTRIES = [
         "id": "chlorophyll",
         "name": "Chlorophyll",
         "shortDesc": "If Sunny Day is active, this Pokemon's Speed is doubled.",
-        "desc": "If Sunny Day is active, this Pokemon's Speed is doubled. This effect is prevented if this Pokemon is holding a Utility Umbrella."
+        "desc": "If Sunny Day is active, this Pokemon's Speed is doubled. This effect is prevented if this Pokemon is holding a Utility Umbrella.",
+        "names": {
+          "de": "Chlorophyll"
+        }
       },
       {
         "slot": "H",
         "id": "overcoat",
         "name": "Overcoat",
         "names": {
-          "de": "Wetterfest"
+          "de": "Partikelschutz"
         },
         "shortDesc": "This Pokemon is immune to powder moves, Sandstorm damage, and Effect Spore.",
         "desc": "This Pokemon is immune to powder moves, damage from Sandstorm, and the effects of Rage Powder and the Effect Spore Ability."
@@ -551389,7 +552220,10 @@ window.POKEDEX_ENTRIES = [
         "id": "chlorophyll",
         "name": "Chlorophyll",
         "shortDesc": "If Sunny Day is active, this Pokemon's Speed is doubled.",
-        "desc": "If Sunny Day is active, this Pokemon's Speed is doubled. This effect is prevented if this Pokemon is holding a Utility Umbrella."
+        "desc": "If Sunny Day is active, this Pokemon's Speed is doubled. This effect is prevented if this Pokemon is holding a Utility Umbrella.",
+        "names": {
+          "de": "Chlorophyll"
+        }
       }
     ],
     "baseStats": {
@@ -551953,7 +552787,10 @@ window.POKEDEX_ENTRIES = [
         "id": "chlorophyll",
         "name": "Chlorophyll",
         "shortDesc": "If Sunny Day is active, this Pokemon's Speed is doubled.",
-        "desc": "If Sunny Day is active, this Pokemon's Speed is doubled. This effect is prevented if this Pokemon is holding a Utility Umbrella."
+        "desc": "If Sunny Day is active, this Pokemon's Speed is doubled. This effect is prevented if this Pokemon is holding a Utility Umbrella.",
+        "names": {
+          "de": "Chlorophyll"
+        }
       }
     ],
     "baseStats": {
@@ -552515,14 +553352,17 @@ window.POKEDEX_ENTRIES = [
         "id": "chlorophyll",
         "name": "Chlorophyll",
         "shortDesc": "If Sunny Day is active, this Pokemon's Speed is doubled.",
-        "desc": "If Sunny Day is active, this Pokemon's Speed is doubled. This effect is prevented if this Pokemon is holding a Utility Umbrella."
+        "desc": "If Sunny Day is active, this Pokemon's Speed is doubled. This effect is prevented if this Pokemon is holding a Utility Umbrella.",
+        "names": {
+          "de": "Chlorophyll"
+        }
       },
       {
         "slot": "1",
         "id": "owntempo",
         "name": "Own Tempo",
         "names": {
-          "de": "Tempomacher"
+          "de": "Gleichmut"
         },
         "shortDesc": "This Pokemon cannot be confused. Immune to Intimidate.",
         "desc": "This Pokemon cannot be confused. Gaining this Ability while confused cures it. This Pokemon is immune to the effect of the Intimidate Ability."
@@ -553052,14 +553892,17 @@ window.POKEDEX_ENTRIES = [
         "id": "chlorophyll",
         "name": "Chlorophyll",
         "shortDesc": "If Sunny Day is active, this Pokemon's Speed is doubled.",
-        "desc": "If Sunny Day is active, this Pokemon's Speed is doubled. This effect is prevented if this Pokemon is holding a Utility Umbrella."
+        "desc": "If Sunny Day is active, this Pokemon's Speed is doubled. This effect is prevented if this Pokemon is holding a Utility Umbrella.",
+        "names": {
+          "de": "Chlorophyll"
+        }
       },
       {
         "slot": "1",
         "id": "owntempo",
         "name": "Own Tempo",
         "names": {
-          "de": "Tempomacher"
+          "de": "Gleichmut"
         },
         "shortDesc": "This Pokemon cannot be confused. Immune to Intimidate.",
         "desc": "This Pokemon cannot be confused. Gaining this Ability while confused cures it. This Pokemon is immune to the effect of the Intimidate Ability."
@@ -553596,7 +554439,10 @@ window.POKEDEX_ENTRIES = [
         "id": "chlorophyll",
         "name": "Chlorophyll",
         "shortDesc": "If Sunny Day is active, this Pokemon's Speed is doubled.",
-        "desc": "If Sunny Day is active, this Pokemon's Speed is doubled. This effect is prevented if this Pokemon is holding a Utility Umbrella."
+        "desc": "If Sunny Day is active, this Pokemon's Speed is doubled. This effect is prevented if this Pokemon is holding a Utility Umbrella.",
+        "names": {
+          "de": "Chlorophyll"
+        }
       },
       {
         "slot": "1",
@@ -553957,7 +554803,7 @@ window.POKEDEX_ENTRIES = [
         "id": "reckless",
         "name": "Reckless",
         "names": {
-          "de": "Atchlos"
+          "de": "Achtlos"
         },
         "shortDesc": "This Pokemon's attacks with recoil or crash damage have 1.2x power; not Struggle.",
         "desc": "This Pokemon's attacks with recoil or crash damage have their power multiplied by 1.2. Does not affect Struggle."
@@ -554565,7 +555411,7 @@ window.POKEDEX_ENTRIES = [
     "sourceIndex": 735,
     "num": 550,
     "name": "Basculin-Blue-Striped",
-    "searchText": "0550 550 basculinbluestriped water",
+    "searchText": "0550 550 basculinbluestriped water barschuftbluestriped",
     "types": [
       "Water"
     ],
@@ -555174,14 +556020,17 @@ window.POKEDEX_ENTRIES = [
     "stellar_defense": 1,
     "water_defense": 0.5,
     "sprite": "https://play.pokemonshowdown.com/sprites/gen5/basculin-bluestriped.png",
-    "displayNumber": "#0550"
+    "displayNumber": "#0550",
+    "names": {
+      "de": "Barschuft-Blue-Striped"
+    }
   },
   {
     "speciesId": "basculinwhitestriped",
     "sourceIndex": 736,
     "num": 550,
     "name": "Basculin-White-Striped",
-    "searchText": "0550 550 basculinwhitestriped water",
+    "searchText": "0550 550 basculinwhitestriped water barschuftwhitestriped",
     "types": [
       "Water"
     ],
@@ -555474,7 +556323,10 @@ window.POKEDEX_ENTRIES = [
     "stellar_defense": 1,
     "water_defense": 0.5,
     "sprite": "https://play.pokemonshowdown.com/sprites/gen5/basculin-whitestriped.png",
-    "displayNumber": "#0550"
+    "displayNumber": "#0550",
+    "names": {
+      "de": "Barschuft-White-Striped"
+    }
   },
   {
     "speciesId": "sandile",
@@ -559336,7 +560188,7 @@ window.POKEDEX_ENTRIES = [
     "sourceIndex": 743,
     "num": 555,
     "name": "Darmanitan-Zen",
-    "searchText": "0555 555 darmanitanzen fire psychic",
+    "searchText": "0555 555 darmanitanzen fire psychic flampivianzen",
     "types": [
       "Fire",
       "Psychic"
@@ -559980,7 +560832,10 @@ window.POKEDEX_ENTRIES = [
     "stellar_defense": 1,
     "water_defense": 2,
     "sprite": "https://play.pokemonshowdown.com/sprites/gen5/darmanitan-zen.png",
-    "displayNumber": "#0555"
+    "displayNumber": "#0555",
+    "names": {
+      "de": "Flampivian-Zen"
+    }
   },
   {
     "speciesId": "darmanitangalar",
@@ -560360,7 +561215,7 @@ window.POKEDEX_ENTRIES = [
     "sourceIndex": 745,
     "num": 555,
     "name": "Darmanitan-Galar-Zen",
-    "searchText": "0555 555 darmanitangalarzen ice fire",
+    "searchText": "0555 555 darmanitangalarzen ice fire flampiviangalarzen",
     "types": [
       "Ice",
       "Fire"
@@ -561004,7 +561859,10 @@ window.POKEDEX_ENTRIES = [
     "stellar_defense": 1,
     "water_defense": 2,
     "sprite": "https://play.pokemonshowdown.com/sprites/gen5/darmanitan-galarzen.png",
-    "displayNumber": "#0555"
+    "displayNumber": "#0555",
+    "names": {
+      "de": "Flampivian-Galar-Zen"
+    }
   },
   {
     "speciesId": "maractus",
@@ -561039,7 +561897,10 @@ window.POKEDEX_ENTRIES = [
         "id": "chlorophyll",
         "name": "Chlorophyll",
         "shortDesc": "If Sunny Day is active, this Pokemon's Speed is doubled.",
-        "desc": "If Sunny Day is active, this Pokemon's Speed is doubled. This effect is prevented if this Pokemon is holding a Utility Umbrella."
+        "desc": "If Sunny Day is active, this Pokemon's Speed is doubled. This effect is prevented if this Pokemon is holding a Utility Umbrella.",
+        "names": {
+          "de": "Chlorophyll"
+        }
       },
       {
         "slot": "H",
@@ -565123,7 +565984,7 @@ window.POKEDEX_ENTRIES = [
         "id": "tintedlens",
         "name": "Tinted Lens",
         "names": {
-          "de": "Finalschlag"
+          "de": "Aufwertung"
         },
         "shortDesc": "This Pokemon's attacks that are not very effective on a target deal double damage.",
         "desc": "This Pokemon's attacks that are not very effective on a target deal double damage."
@@ -569621,7 +570482,7 @@ window.POKEDEX_ENTRIES = [
         "id": "stickyhold",
         "name": "Sticky Hold",
         "names": {
-          "de": "Wertehalter"
+          "de": "Klebekörper"
         },
         "shortDesc": "This Pokemon cannot lose its held item due to another Pokemon's Ability or attack.",
         "desc": "This Pokemon cannot lose its held item due to another Pokemon's Ability or attack, unless the attack knocks out this Pokemon. A Sticky Barb will be transferred to other Pokemon regardless of this Ability."
@@ -571854,7 +572715,10 @@ window.POKEDEX_ENTRIES = [
     "stellar_defense": 1,
     "water_defense": 1,
     "sprite": "https://play.pokemonshowdown.com/sprites/gen5/zorua.png",
-    "displayNumber": "#0570"
+    "displayNumber": "#0570",
+    "names": {
+      "de": "Zorua"
+    }
   },
   {
     "speciesId": "zoruahisui",
@@ -572921,7 +573785,10 @@ window.POKEDEX_ENTRIES = [
     "stellar_defense": 1,
     "water_defense": 1,
     "sprite": "https://play.pokemonshowdown.com/sprites/gen5/zoroark.png",
-    "displayNumber": "#0571"
+    "displayNumber": "#0571",
+    "names": {
+      "de": "Zoroark"
+    }
   },
   {
     "speciesId": "zoroarkhisui",
@@ -576794,7 +577661,7 @@ window.POKEDEX_ENTRIES = [
         "id": "overcoat",
         "name": "Overcoat",
         "names": {
-          "de": "Wetterfest"
+          "de": "Partikelschutz"
         },
         "shortDesc": "This Pokemon is immune to powder moves, Sandstorm damage, and Effect Spore.",
         "desc": "This Pokemon is immune to powder moves, damage from Sandstorm, and the effects of Rage Powder and the Effect Spore Ability."
@@ -577488,7 +578355,7 @@ window.POKEDEX_ENTRIES = [
         "id": "overcoat",
         "name": "Overcoat",
         "names": {
-          "de": "Wetterfest"
+          "de": "Partikelschutz"
         },
         "shortDesc": "This Pokemon is immune to powder moves, Sandstorm damage, and Effect Spore.",
         "desc": "This Pokemon is immune to powder moves, damage from Sandstorm, and the effects of Rage Powder and the Effect Spore Ability."
@@ -578150,7 +579017,7 @@ window.POKEDEX_ENTRIES = [
         "id": "overcoat",
         "name": "Overcoat",
         "names": {
-          "de": "Wetterfest"
+          "de": "Partikelschutz"
         },
         "shortDesc": "This Pokemon is immune to powder moves, Sandstorm damage, and Effect Spore.",
         "desc": "This Pokemon is immune to powder moves, damage from Sandstorm, and the effects of Rage Powder and the Effect Spore Ability."
@@ -578966,7 +579833,10 @@ window.POKEDEX_ENTRIES = [
         "id": "hydration",
         "name": "Hydration",
         "shortDesc": "This Pokemon has its status cured at the end of each turn if Rain Dance is active.",
-        "desc": "This Pokemon has its non-volatile status condition cured at the end of each turn if Rain Dance is active. This effect is prevented if this Pokemon is holding a Utility Umbrella."
+        "desc": "This Pokemon has its non-volatile status condition cured at the end of each turn if Rain Dance is active. This effect is prevented if this Pokemon is holding a Utility Umbrella.",
+        "names": {
+          "de": "Hydration"
+        }
       }
     ],
     "baseStats": {
@@ -579465,7 +580335,10 @@ window.POKEDEX_ENTRIES = [
         "id": "hydration",
         "name": "Hydration",
         "shortDesc": "This Pokemon has its status cured at the end of each turn if Rain Dance is active.",
-        "desc": "This Pokemon has its non-volatile status condition cured at the end of each turn if Rain Dance is active. This effect is prevented if this Pokemon is holding a Utility Umbrella."
+        "desc": "This Pokemon has its non-volatile status condition cured at the end of each turn if Rain Dance is active. This effect is prevented if this Pokemon is holding a Utility Umbrella.",
+        "names": {
+          "de": "Hydration"
+        }
       }
     ],
     "baseStats": {
@@ -580846,7 +581719,7 @@ window.POKEDEX_ENTRIES = [
         "id": "snowwarning",
         "name": "Snow Warning",
         "names": {
-          "de": "Hagelalarm"
+          "de": "Schneeschauer"
         },
         "shortDesc": "On switch-in, this Pokemon summons Snow.",
         "desc": "On switch-in, this Pokemon summons Snow."
@@ -581297,7 +582170,10 @@ window.POKEDEX_ENTRIES = [
         "id": "chlorophyll",
         "name": "Chlorophyll",
         "shortDesc": "If Sunny Day is active, this Pokemon's Speed is doubled.",
-        "desc": "If Sunny Day is active, this Pokemon's Speed is doubled. This effect is prevented if this Pokemon is holding a Utility Umbrella."
+        "desc": "If Sunny Day is active, this Pokemon's Speed is doubled. This effect is prevented if this Pokemon is holding a Utility Umbrella.",
+        "names": {
+          "de": "Chlorophyll"
+        }
       },
       {
         "slot": "1",
@@ -581866,7 +582742,10 @@ window.POKEDEX_ENTRIES = [
         "id": "chlorophyll",
         "name": "Chlorophyll",
         "shortDesc": "If Sunny Day is active, this Pokemon's Speed is doubled.",
-        "desc": "If Sunny Day is active, this Pokemon's Speed is doubled. This effect is prevented if this Pokemon is holding a Utility Umbrella."
+        "desc": "If Sunny Day is active, this Pokemon's Speed is doubled. This effect is prevented if this Pokemon is holding a Utility Umbrella.",
+        "names": {
+          "de": "Chlorophyll"
+        }
       },
       {
         "slot": "1",
@@ -582450,7 +583329,10 @@ window.POKEDEX_ENTRIES = [
         "id": "static",
         "name": "Static",
         "shortDesc": "30% chance a Pokemon making contact with this Pokemon will be paralyzed.",
-        "desc": "30% chance a Pokemon making contact with this Pokemon will be paralyzed."
+        "desc": "30% chance a Pokemon making contact with this Pokemon will be paralyzed.",
+        "names": {
+          "de": "Statik"
+        }
       },
       {
         "slot": "H",
@@ -582977,7 +583859,10 @@ window.POKEDEX_ENTRIES = [
     "stellar_defense": 1,
     "water_defense": 1,
     "sprite": "https://play.pokemonshowdown.com/sprites/gen5/emolga.png",
-    "displayNumber": "#0587"
+    "displayNumber": "#0587",
+    "names": {
+      "de": "Emolga"
+    }
   },
   {
     "speciesId": "karrablast",
@@ -583505,7 +584390,7 @@ window.POKEDEX_ENTRIES = [
         "id": "overcoat",
         "name": "Overcoat",
         "names": {
-          "de": "Wetterfest"
+          "de": "Partikelschutz"
         },
         "shortDesc": "This Pokemon is immune to powder moves, Sandstorm damage, and Effect Spore.",
         "desc": "This Pokemon is immune to powder moves, damage from Sandstorm, and the effects of Rage Powder and the Effect Spore Ability."
@@ -586182,7 +587067,10 @@ window.POKEDEX_ENTRIES = [
         "id": "hydration",
         "name": "Hydration",
         "shortDesc": "This Pokemon has its status cured at the end of each turn if Rain Dance is active.",
-        "desc": "This Pokemon has its non-volatile status condition cured at the end of each turn if Rain Dance is active. This effect is prevented if this Pokemon is holding a Utility Umbrella."
+        "desc": "This Pokemon has its non-volatile status condition cured at the end of each turn if Rain Dance is active. This effect is prevented if this Pokemon is holding a Utility Umbrella.",
+        "names": {
+          "de": "Hydration"
+        }
       },
       {
         "slot": "H",
@@ -589021,14 +589909,20 @@ window.POKEDEX_ENTRIES = [
         "id": "plus",
         "name": "Plus",
         "shortDesc": "If an active ally has this Ability or the Minus Ability, this Pokemon's Sp. Atk is 1.5x.",
-        "desc": "If an active ally has this Ability or the Minus Ability, this Pokemon's Special Attack is multiplied by 1.5."
+        "desc": "If an active ally has this Ability or the Minus Ability, this Pokemon's Special Attack is multiplied by 1.5.",
+        "names": {
+          "de": "Plus"
+        }
       },
       {
         "slot": "1",
         "id": "minus",
         "name": "Minus",
         "shortDesc": "If an active ally has this Ability or the Plus Ability, this Pokemon's Sp. Atk is 1.5x.",
-        "desc": "If an active ally has this Ability or the Plus Ability, this Pokemon's Special Attack is multiplied by 1.5."
+        "desc": "If an active ally has this Ability or the Plus Ability, this Pokemon's Special Attack is multiplied by 1.5.",
+        "names": {
+          "de": "Minus"
+        }
       },
       {
         "slot": "H",
@@ -589464,14 +590358,20 @@ window.POKEDEX_ENTRIES = [
         "id": "plus",
         "name": "Plus",
         "shortDesc": "If an active ally has this Ability or the Minus Ability, this Pokemon's Sp. Atk is 1.5x.",
-        "desc": "If an active ally has this Ability or the Minus Ability, this Pokemon's Special Attack is multiplied by 1.5."
+        "desc": "If an active ally has this Ability or the Minus Ability, this Pokemon's Special Attack is multiplied by 1.5.",
+        "names": {
+          "de": "Plus"
+        }
       },
       {
         "slot": "1",
         "id": "minus",
         "name": "Minus",
         "shortDesc": "If an active ally has this Ability or the Plus Ability, this Pokemon's Sp. Atk is 1.5x.",
-        "desc": "If an active ally has this Ability or the Plus Ability, this Pokemon's Special Attack is multiplied by 1.5."
+        "desc": "If an active ally has this Ability or the Plus Ability, this Pokemon's Special Attack is multiplied by 1.5.",
+        "names": {
+          "de": "Minus"
+        }
       },
       {
         "slot": "H",
@@ -589915,14 +590815,20 @@ window.POKEDEX_ENTRIES = [
         "id": "plus",
         "name": "Plus",
         "shortDesc": "If an active ally has this Ability or the Minus Ability, this Pokemon's Sp. Atk is 1.5x.",
-        "desc": "If an active ally has this Ability or the Minus Ability, this Pokemon's Special Attack is multiplied by 1.5."
+        "desc": "If an active ally has this Ability or the Minus Ability, this Pokemon's Special Attack is multiplied by 1.5.",
+        "names": {
+          "de": "Plus"
+        }
       },
       {
         "slot": "1",
         "id": "minus",
         "name": "Minus",
         "shortDesc": "If an active ally has this Ability or the Plus Ability, this Pokemon's Sp. Atk is 1.5x.",
-        "desc": "If an active ally has this Ability or the Plus Ability, this Pokemon's Special Attack is multiplied by 1.5."
+        "desc": "If an active ally has this Ability or the Plus Ability, this Pokemon's Special Attack is multiplied by 1.5.",
+        "names": {
+          "de": "Minus"
+        }
       },
       {
         "slot": "H",
@@ -592332,7 +593238,10 @@ window.POKEDEX_ENTRIES = [
         "id": "synchronize",
         "name": "Synchronize",
         "shortDesc": "If another Pokemon burns/poisons/paralyzes this Pokemon, it also gets that status.",
-        "desc": "If another Pokemon burns, paralyzes, poisons, or badly poisons this Pokemon, that Pokemon receives the same non-volatile status condition."
+        "desc": "If another Pokemon burns, paralyzes, poisons, or badly poisons this Pokemon, that Pokemon receives the same non-volatile status condition.",
+        "names": {
+          "de": "Synchro"
+        }
       },
       {
         "slot": "H",
@@ -592988,7 +593897,10 @@ window.POKEDEX_ENTRIES = [
         "id": "synchronize",
         "name": "Synchronize",
         "shortDesc": "If another Pokemon burns/poisons/paralyzes this Pokemon, it also gets that status.",
-        "desc": "If another Pokemon burns, paralyzes, poisons, or badly poisons this Pokemon, that Pokemon receives the same non-volatile status condition."
+        "desc": "If another Pokemon burns, paralyzes, poisons, or badly poisons this Pokemon, that Pokemon receives the same non-volatile status condition.",
+        "names": {
+          "de": "Synchro"
+        }
       },
       {
         "slot": "H",
@@ -600100,7 +601012,10 @@ window.POKEDEX_ENTRIES = [
         "id": "hydration",
         "name": "Hydration",
         "shortDesc": "This Pokemon has its status cured at the end of each turn if Rain Dance is active.",
-        "desc": "This Pokemon has its non-volatile status condition cured at the end of each turn if Rain Dance is active. This effect is prevented if this Pokemon is holding a Utility Umbrella."
+        "desc": "This Pokemon has its non-volatile status condition cured at the end of each turn if Rain Dance is active. This effect is prevented if this Pokemon is holding a Utility Umbrella.",
+        "names": {
+          "de": "Hydration"
+        }
       },
       {
         "slot": "1",
@@ -600117,7 +601032,7 @@ window.POKEDEX_ENTRIES = [
         "id": "overcoat",
         "name": "Overcoat",
         "names": {
-          "de": "Wetterfest"
+          "de": "Partikelschutz"
         },
         "shortDesc": "This Pokemon is immune to powder moves, Sandstorm damage, and Effect Spore.",
         "desc": "This Pokemon is immune to powder moves, damage from Sandstorm, and the effects of Rage Powder and the Effect Spore Ability."
@@ -600566,14 +601481,17 @@ window.POKEDEX_ENTRIES = [
         "id": "hydration",
         "name": "Hydration",
         "shortDesc": "This Pokemon has its status cured at the end of each turn if Rain Dance is active.",
-        "desc": "This Pokemon has its non-volatile status condition cured at the end of each turn if Rain Dance is active. This effect is prevented if this Pokemon is holding a Utility Umbrella."
+        "desc": "This Pokemon has its non-volatile status condition cured at the end of each turn if Rain Dance is active. This effect is prevented if this Pokemon is holding a Utility Umbrella.",
+        "names": {
+          "de": "Hydration"
+        }
       },
       {
         "slot": "1",
         "id": "stickyhold",
         "name": "Sticky Hold",
         "names": {
-          "de": "Wertehalter"
+          "de": "Klebekörper"
         },
         "shortDesc": "This Pokemon cannot lose its held item due to another Pokemon's Ability or attack.",
         "desc": "This Pokemon cannot lose its held item due to another Pokemon's Ability or attack, unless the attack knocks out this Pokemon. A Sticky Barb will be transferred to other Pokemon regardless of this Ability."
@@ -601056,7 +601974,10 @@ window.POKEDEX_ENTRIES = [
         "id": "static",
         "name": "Static",
         "shortDesc": "30% chance a Pokemon making contact with this Pokemon will be paralyzed.",
-        "desc": "30% chance a Pokemon making contact with this Pokemon will be paralyzed."
+        "desc": "30% chance a Pokemon making contact with this Pokemon will be paralyzed.",
+        "names": {
+          "de": "Statik"
+        }
       },
       {
         "slot": "1",
@@ -602017,7 +602938,7 @@ window.POKEDEX_ENTRIES = [
         "id": "reckless",
         "name": "Reckless",
         "names": {
-          "de": "Atchlos"
+          "de": "Achtlos"
         },
         "shortDesc": "This Pokemon's attacks with recoil or crash damage have 1.2x power; not Struggle.",
         "desc": "This Pokemon's attacks with recoil or crash damage have their power multiplied by 1.2. Does not affect Struggle."
@@ -602719,7 +603640,7 @@ window.POKEDEX_ENTRIES = [
         "id": "reckless",
         "name": "Reckless",
         "names": {
-          "de": "Atchlos"
+          "de": "Achtlos"
         },
         "shortDesc": "This Pokemon's attacks with recoil or crash damage have 1.2x power; not Struggle.",
         "desc": "This Pokemon's attacks with recoil or crash damage have their power multiplied by 1.2. Does not affect Struggle."
@@ -606500,7 +607421,7 @@ window.POKEDEX_ENTRIES = [
         "id": "defiant",
         "name": "Defiant",
         "names": {
-          "de": "Seigeswille"
+          "de": "Siegeswille"
         },
         "shortDesc": "This Pokemon's Attack is raised by 2 for each of its stats that is lowered by a foe.",
         "desc": "This Pokemon's Attack is raised by 2 stages for each of its stat stages that is lowered by an opposing Pokemon."
@@ -607219,7 +608140,7 @@ window.POKEDEX_ENTRIES = [
         "id": "defiant",
         "name": "Defiant",
         "names": {
-          "de": "Seigeswille"
+          "de": "Siegeswille"
         },
         "shortDesc": "This Pokemon's Attack is raised by 2 for each of its stats that is lowered by a foe.",
         "desc": "This Pokemon's Attack is raised by 2 stages for each of its stat stages that is lowered by an opposing Pokemon."
@@ -607936,7 +608857,7 @@ window.POKEDEX_ENTRIES = [
         "id": "reckless",
         "name": "Reckless",
         "names": {
-          "de": "Atchlos"
+          "de": "Achtlos"
         },
         "shortDesc": "This Pokemon's attacks with recoil or crash damage have 1.2x power; not Struggle.",
         "desc": "This Pokemon's attacks with recoil or crash damage have their power multiplied by 1.2. Does not affect Struggle."
@@ -609111,7 +610032,7 @@ window.POKEDEX_ENTRIES = [
         "id": "defiant",
         "name": "Defiant",
         "names": {
-          "de": "Seigeswille"
+          "de": "Siegeswille"
         },
         "shortDesc": "This Pokemon's Attack is raised by 2 for each of its stats that is lowered by a foe.",
         "desc": "This Pokemon's Attack is raised by 2 stages for each of its stat stages that is lowered by an opposing Pokemon."
@@ -609722,7 +610643,7 @@ window.POKEDEX_ENTRIES = [
         "id": "tintedlens",
         "name": "Tinted Lens",
         "names": {
-          "de": "Finalschlag"
+          "de": "Aufwertung"
         },
         "shortDesc": "This Pokemon's attacks that are not very effective on a target deal double damage.",
         "desc": "This Pokemon's attacks that are not very effective on a target deal double damage."
@@ -610103,7 +611024,7 @@ window.POKEDEX_ENTRIES = [
         "id": "overcoat",
         "name": "Overcoat",
         "names": {
-          "de": "Wetterfest"
+          "de": "Partikelschutz"
         },
         "shortDesc": "This Pokemon is immune to powder moves, Sandstorm damage, and Effect Spore.",
         "desc": "This Pokemon is immune to powder moves, damage from Sandstorm, and the effects of Rage Powder and the Effect Spore Ability."
@@ -610734,7 +611655,7 @@ window.POKEDEX_ENTRIES = [
         "id": "overcoat",
         "name": "Overcoat",
         "names": {
-          "de": "Wetterfest"
+          "de": "Partikelschutz"
         },
         "shortDesc": "This Pokemon is immune to powder moves, Sandstorm damage, and Effect Spore.",
         "desc": "This Pokemon is immune to powder moves, damage from Sandstorm, and the effects of Rage Powder and the Effect Spore Ability."
@@ -616399,7 +617320,7 @@ window.POKEDEX_ENTRIES = [
     "sourceIndex": 842,
     "num": 639,
     "name": "Terrakion",
-    "searchText": "0639 639 terrakion rock fighting",
+    "searchText": "0639 639 terrakion rock fighting terrakium",
     "types": [
       "Rock",
       "Fighting"
@@ -617037,14 +617958,17 @@ window.POKEDEX_ENTRIES = [
     "stellar_defense": 1,
     "water_defense": 2,
     "sprite": "https://play.pokemonshowdown.com/sprites/gen5/terrakion.png",
-    "displayNumber": "#0639"
+    "displayNumber": "#0639",
+    "names": {
+      "de": "Terrakium"
+    }
   },
   {
     "speciesId": "virizion",
     "sourceIndex": 843,
     "num": 640,
     "name": "Virizion",
-    "searchText": "0640 640 virizion grass fighting",
+    "searchText": "0640 640 virizion grass fighting viridium",
     "types": [
       "Grass",
       "Fighting"
@@ -617702,7 +618626,10 @@ window.POKEDEX_ENTRIES = [
     "stellar_defense": 1,
     "water_defense": 0.5,
     "sprite": "https://play.pokemonshowdown.com/sprites/gen5/virizion.png",
-    "displayNumber": "#0640"
+    "displayNumber": "#0640",
+    "names": {
+      "de": "Viridium"
+    }
   },
   {
     "speciesId": "tornadus",
@@ -617736,7 +618663,7 @@ window.POKEDEX_ENTRIES = [
         "id": "defiant",
         "name": "Defiant",
         "names": {
-          "de": "Seigeswille"
+          "de": "Siegeswille"
         },
         "shortDesc": "This Pokemon's Attack is raised by 2 for each of its stats that is lowered by a foe.",
         "desc": "This Pokemon's Attack is raised by 2 stages for each of its stat stages that is lowered by an opposing Pokemon."
@@ -619147,7 +620074,7 @@ window.POKEDEX_ENTRIES = [
         "id": "defiant",
         "name": "Defiant",
         "names": {
-          "de": "Seigeswille"
+          "de": "Siegeswille"
         },
         "shortDesc": "This Pokemon's Attack is raised by 2 for each of its stats that is lowered by a foe.",
         "desc": "This Pokemon's Attack is raised by 2 stages for each of its stat stages that is lowered by an opposing Pokemon."
@@ -621376,7 +622303,10 @@ window.POKEDEX_ENTRIES = [
     "stellar_defense": 1,
     "water_defense": 1,
     "sprite": "https://play.pokemonshowdown.com/sprites/gen5/reshiram.png",
-    "displayNumber": "#0643"
+    "displayNumber": "#0643",
+    "names": {
+      "de": "Reshiram"
+    }
   },
   {
     "speciesId": "zekrom",
@@ -621397,7 +622327,10 @@ window.POKEDEX_ENTRIES = [
         "id": "teravolt",
         "name": "Teravolt",
         "shortDesc": "This Pokemon's moves and their effects ignore the Abilities of other Pokemon.",
-        "desc": "This Pokemon's moves and their effects ignore certain Abilities of other Pokemon. The Abilities that can be negated are Armor Tail, Aroma Veil, Aura Break, Battle Armor, Big Pecks, Bulletproof, Clear Body, Contrary, Damp, Dazzling, Disguise, Dry Skin, Earth Eater, Filter, Flash Fire, Flower Gift, Flower Veil, Fluffy, Friend Guard, Fur Coat, Good as Gold, Grass Pelt, Guard Dog, Heatproof, Heavy Metal, Hyper Cutter, Ice Face, Ice Scales, Illuminate, Immunity, Inner Focus, Insomnia, Keen Eye, Leaf Guard, Levitate, Light Metal, Lightning Rod, Limber, Magic Bounce, Magma Armor, Marvel Scale, Mind's Eye, Mirror Armor, Motor Drive, Multiscale, Oblivious, Overcoat, Own Tempo, Pastel Veil, Punk Rock, Purifying Salt, Queenly Majesty, Sand Veil, Sap Sipper, Shell Armor, Shield Dust, Simple, Snow Cloak, Solid Rock, Soundproof, Sticky Hold, Storm Drain, Sturdy, Suction Cups, Sweet Veil, Tangled Feet, Telepathy, Tera Shell, Thermal Exchange, Thick Fat, Unaware, Vital Spirit, Volt Absorb, Water Absorb, Water Bubble, Water Veil, Well-Baked Body, White Smoke, Wind Rider, Wonder Guard, and Wonder Skin. This affects every other Pokemon on the field, whether or not it is a target of this Pokemon's move, and whether or not their Ability is beneficial to this Pokemon."
+        "desc": "This Pokemon's moves and their effects ignore certain Abilities of other Pokemon. The Abilities that can be negated are Armor Tail, Aroma Veil, Aura Break, Battle Armor, Big Pecks, Bulletproof, Clear Body, Contrary, Damp, Dazzling, Disguise, Dry Skin, Earth Eater, Filter, Flash Fire, Flower Gift, Flower Veil, Fluffy, Friend Guard, Fur Coat, Good as Gold, Grass Pelt, Guard Dog, Heatproof, Heavy Metal, Hyper Cutter, Ice Face, Ice Scales, Illuminate, Immunity, Inner Focus, Insomnia, Keen Eye, Leaf Guard, Levitate, Light Metal, Lightning Rod, Limber, Magic Bounce, Magma Armor, Marvel Scale, Mind's Eye, Mirror Armor, Motor Drive, Multiscale, Oblivious, Overcoat, Own Tempo, Pastel Veil, Punk Rock, Purifying Salt, Queenly Majesty, Sand Veil, Sap Sipper, Shell Armor, Shield Dust, Simple, Snow Cloak, Solid Rock, Soundproof, Sticky Hold, Storm Drain, Sturdy, Suction Cups, Sweet Veil, Tangled Feet, Telepathy, Tera Shell, Thermal Exchange, Thick Fat, Unaware, Vital Spirit, Volt Absorb, Water Absorb, Water Bubble, Water Veil, Well-Baked Body, White Smoke, Wind Rider, Wonder Guard, and Wonder Skin. This affects every other Pokemon on the field, whether or not it is a target of this Pokemon's move, and whether or not their Ability is beneficial to this Pokemon.",
+        "names": {
+          "de": "Teravolt"
+        }
       }
     ],
     "baseStats": {
@@ -622157,7 +623090,10 @@ window.POKEDEX_ENTRIES = [
     "stellar_defense": 1,
     "water_defense": 0.5,
     "sprite": "https://play.pokemonshowdown.com/sprites/gen5/zekrom.png",
-    "displayNumber": "#0644"
+    "displayNumber": "#0644",
+    "names": {
+      "de": "Zekrom"
+    }
   },
   {
     "speciesId": "landorus",
@@ -624259,7 +625195,10 @@ window.POKEDEX_ENTRIES = [
     "stellar_defense": 1,
     "water_defense": 0.5,
     "sprite": "https://play.pokemonshowdown.com/sprites/gen5/kyurem.png",
-    "displayNumber": "#0646"
+    "displayNumber": "#0646",
+    "names": {
+      "de": "Kyurem"
+    }
   },
   {
     "speciesId": "kyuremblack",
@@ -624283,7 +625222,10 @@ window.POKEDEX_ENTRIES = [
         "id": "teravolt",
         "name": "Teravolt",
         "shortDesc": "This Pokemon's moves and their effects ignore the Abilities of other Pokemon.",
-        "desc": "This Pokemon's moves and their effects ignore certain Abilities of other Pokemon. The Abilities that can be negated are Armor Tail, Aroma Veil, Aura Break, Battle Armor, Big Pecks, Bulletproof, Clear Body, Contrary, Damp, Dazzling, Disguise, Dry Skin, Earth Eater, Filter, Flash Fire, Flower Gift, Flower Veil, Fluffy, Friend Guard, Fur Coat, Good as Gold, Grass Pelt, Guard Dog, Heatproof, Heavy Metal, Hyper Cutter, Ice Face, Ice Scales, Illuminate, Immunity, Inner Focus, Insomnia, Keen Eye, Leaf Guard, Levitate, Light Metal, Lightning Rod, Limber, Magic Bounce, Magma Armor, Marvel Scale, Mind's Eye, Mirror Armor, Motor Drive, Multiscale, Oblivious, Overcoat, Own Tempo, Pastel Veil, Punk Rock, Purifying Salt, Queenly Majesty, Sand Veil, Sap Sipper, Shell Armor, Shield Dust, Simple, Snow Cloak, Solid Rock, Soundproof, Sticky Hold, Storm Drain, Sturdy, Suction Cups, Sweet Veil, Tangled Feet, Telepathy, Tera Shell, Thermal Exchange, Thick Fat, Unaware, Vital Spirit, Volt Absorb, Water Absorb, Water Bubble, Water Veil, Well-Baked Body, White Smoke, Wind Rider, Wonder Guard, and Wonder Skin. This affects every other Pokemon on the field, whether or not it is a target of this Pokemon's move, and whether or not their Ability is beneficial to this Pokemon."
+        "desc": "This Pokemon's moves and their effects ignore certain Abilities of other Pokemon. The Abilities that can be negated are Armor Tail, Aroma Veil, Aura Break, Battle Armor, Big Pecks, Bulletproof, Clear Body, Contrary, Damp, Dazzling, Disguise, Dry Skin, Earth Eater, Filter, Flash Fire, Flower Gift, Flower Veil, Fluffy, Friend Guard, Fur Coat, Good as Gold, Grass Pelt, Guard Dog, Heatproof, Heavy Metal, Hyper Cutter, Ice Face, Ice Scales, Illuminate, Immunity, Inner Focus, Insomnia, Keen Eye, Leaf Guard, Levitate, Light Metal, Lightning Rod, Limber, Magic Bounce, Magma Armor, Marvel Scale, Mind's Eye, Mirror Armor, Motor Drive, Multiscale, Oblivious, Overcoat, Own Tempo, Pastel Veil, Punk Rock, Purifying Salt, Queenly Majesty, Sand Veil, Sap Sipper, Shell Armor, Shield Dust, Simple, Snow Cloak, Solid Rock, Soundproof, Sticky Hold, Storm Drain, Sturdy, Suction Cups, Sweet Veil, Tangled Feet, Telepathy, Tera Shell, Thermal Exchange, Thick Fat, Unaware, Vital Spirit, Volt Absorb, Water Absorb, Water Bubble, Water Veil, Well-Baked Body, White Smoke, Wind Rider, Wonder Guard, and Wonder Skin. This affects every other Pokemon on the field, whether or not it is a target of this Pokemon's move, and whether or not their Ability is beneficial to this Pokemon.",
+        "names": {
+          "de": "Teravolt"
+        }
       }
     ],
     "baseStats": {
@@ -626367,7 +627309,10 @@ window.POKEDEX_ENTRIES = [
     "stellar_defense": 1,
     "water_defense": 0.5,
     "sprite": "https://play.pokemonshowdown.com/sprites/gen5/keldeo.png",
-    "displayNumber": "#0647"
+    "displayNumber": "#0647",
+    "names": {
+      "de": "Keldeo"
+    }
   },
   {
     "speciesId": "keldeoresolute",
@@ -627031,7 +627976,10 @@ window.POKEDEX_ENTRIES = [
     "stellar_defense": 1,
     "water_defense": 0.5,
     "sprite": "https://play.pokemonshowdown.com/sprites/gen5/keldeo-resolute.png",
-    "displayNumber": "#0647"
+    "displayNumber": "#0647",
+    "names": {
+      "de": "Keldeo-Resolute"
+    }
   },
   {
     "speciesId": "meloetta",
@@ -627818,7 +628766,10 @@ window.POKEDEX_ENTRIES = [
     "stellar_defense": 1,
     "water_defense": 1,
     "sprite": "https://play.pokemonshowdown.com/sprites/gen5/meloetta.png",
-    "displayNumber": "#0648"
+    "displayNumber": "#0648",
+    "names": {
+      "de": "Meloetta"
+    }
   },
   {
     "speciesId": "meloettapirouette",
@@ -628598,7 +629549,10 @@ window.POKEDEX_ENTRIES = [
     "stellar_defense": 1,
     "water_defense": 1,
     "sprite": "https://play.pokemonshowdown.com/sprites/gen5/meloetta-pirouette.png",
-    "displayNumber": "#0648"
+    "displayNumber": "#0648",
+    "names": {
+      "de": "Meloetta-Pirouette"
+    }
   },
   {
     "speciesId": "genesect",
@@ -628619,7 +629573,10 @@ window.POKEDEX_ENTRIES = [
         "id": "download",
         "name": "Download",
         "shortDesc": "On switch-in, Attack or Sp. Atk is raised 1 stage based on the foes' weaker Defense.",
-        "desc": "On switch-in, this Pokemon's Attack or Special Attack is raised by 1 stage based on the weaker combined defensive stat of all opposing Pokemon. Attack is raised if their Defense is lower, and Special Attack is raised if their Special Defense is the same or lower."
+        "desc": "On switch-in, this Pokemon's Attack or Special Attack is raised by 1 stage based on the weaker combined defensive stat of all opposing Pokemon. Attack is raised if their Defense is lower, and Special Attack is raised if their Special Defense is the same or lower.",
+        "names": {
+          "de": "Download"
+        }
       }
     ],
     "baseStats": {
@@ -629245,7 +630202,10 @@ window.POKEDEX_ENTRIES = [
     "stellar_defense": 1,
     "water_defense": 1,
     "sprite": "https://play.pokemonshowdown.com/sprites/gen5/genesect.png",
-    "displayNumber": "#0649"
+    "displayNumber": "#0649",
+    "names": {
+      "de": "Genesect"
+    }
   },
   {
     "speciesId": "genesectdouse",
@@ -629266,7 +630226,10 @@ window.POKEDEX_ENTRIES = [
         "id": "download",
         "name": "Download",
         "shortDesc": "On switch-in, Attack or Sp. Atk is raised 1 stage based on the foes' weaker Defense.",
-        "desc": "On switch-in, this Pokemon's Attack or Special Attack is raised by 1 stage based on the weaker combined defensive stat of all opposing Pokemon. Attack is raised if their Defense is lower, and Special Attack is raised if their Special Defense is the same or lower."
+        "desc": "On switch-in, this Pokemon's Attack or Special Attack is raised by 1 stage based on the weaker combined defensive stat of all opposing Pokemon. Attack is raised if their Defense is lower, and Special Attack is raised if their Special Defense is the same or lower.",
+        "names": {
+          "de": "Download"
+        }
       }
     ],
     "baseStats": {
@@ -629879,7 +630842,10 @@ window.POKEDEX_ENTRIES = [
     "stellar_defense": 1,
     "water_defense": 1,
     "sprite": "https://play.pokemonshowdown.com/sprites/gen5/genesect-douse.png",
-    "displayNumber": "#0649"
+    "displayNumber": "#0649",
+    "names": {
+      "de": "Genesect-Douse"
+    }
   },
   {
     "speciesId": "genesectshock",
@@ -629900,7 +630866,10 @@ window.POKEDEX_ENTRIES = [
         "id": "download",
         "name": "Download",
         "shortDesc": "On switch-in, Attack or Sp. Atk is raised 1 stage based on the foes' weaker Defense.",
-        "desc": "On switch-in, this Pokemon's Attack or Special Attack is raised by 1 stage based on the weaker combined defensive stat of all opposing Pokemon. Attack is raised if their Defense is lower, and Special Attack is raised if their Special Defense is the same or lower."
+        "desc": "On switch-in, this Pokemon's Attack or Special Attack is raised by 1 stage based on the weaker combined defensive stat of all opposing Pokemon. Attack is raised if their Defense is lower, and Special Attack is raised if their Special Defense is the same or lower.",
+        "names": {
+          "de": "Download"
+        }
       }
     ],
     "baseStats": {
@@ -630513,7 +631482,10 @@ window.POKEDEX_ENTRIES = [
     "stellar_defense": 1,
     "water_defense": 1,
     "sprite": "https://play.pokemonshowdown.com/sprites/gen5/genesect-shock.png",
-    "displayNumber": "#0649"
+    "displayNumber": "#0649",
+    "names": {
+      "de": "Genesect-Shock"
+    }
   },
   {
     "speciesId": "genesectburn",
@@ -630534,7 +631506,10 @@ window.POKEDEX_ENTRIES = [
         "id": "download",
         "name": "Download",
         "shortDesc": "On switch-in, Attack or Sp. Atk is raised 1 stage based on the foes' weaker Defense.",
-        "desc": "On switch-in, this Pokemon's Attack or Special Attack is raised by 1 stage based on the weaker combined defensive stat of all opposing Pokemon. Attack is raised if their Defense is lower, and Special Attack is raised if their Special Defense is the same or lower."
+        "desc": "On switch-in, this Pokemon's Attack or Special Attack is raised by 1 stage based on the weaker combined defensive stat of all opposing Pokemon. Attack is raised if their Defense is lower, and Special Attack is raised if their Special Defense is the same or lower.",
+        "names": {
+          "de": "Download"
+        }
       }
     ],
     "baseStats": {
@@ -631147,7 +632122,10 @@ window.POKEDEX_ENTRIES = [
     "stellar_defense": 1,
     "water_defense": 1,
     "sprite": "https://play.pokemonshowdown.com/sprites/gen5/genesect-burn.png",
-    "displayNumber": "#0649"
+    "displayNumber": "#0649",
+    "names": {
+      "de": "Genesect-Burn"
+    }
   },
   {
     "speciesId": "genesectchill",
@@ -631168,7 +632146,10 @@ window.POKEDEX_ENTRIES = [
         "id": "download",
         "name": "Download",
         "shortDesc": "On switch-in, Attack or Sp. Atk is raised 1 stage based on the foes' weaker Defense.",
-        "desc": "On switch-in, this Pokemon's Attack or Special Attack is raised by 1 stage based on the weaker combined defensive stat of all opposing Pokemon. Attack is raised if their Defense is lower, and Special Attack is raised if their Special Defense is the same or lower."
+        "desc": "On switch-in, this Pokemon's Attack or Special Attack is raised by 1 stage based on the weaker combined defensive stat of all opposing Pokemon. Attack is raised if their Defense is lower, and Special Attack is raised if their Special Defense is the same or lower.",
+        "names": {
+          "de": "Download"
+        }
       }
     ],
     "baseStats": {
@@ -631781,7 +632762,10 @@ window.POKEDEX_ENTRIES = [
     "stellar_defense": 1,
     "water_defense": 1,
     "sprite": "https://play.pokemonshowdown.com/sprites/gen5/genesect-chill.png",
-    "displayNumber": "#0649"
+    "displayNumber": "#0649",
+    "names": {
+      "de": "Genesect-Chill"
+    }
   },
   {
     "speciesId": "chespin",
@@ -638497,7 +639481,7 @@ window.POKEDEX_ENTRIES = [
     "sourceIndex": 875,
     "num": 658,
     "name": "Greninja-Bond",
-    "searchText": "0658 658 greninjabond water dark",
+    "searchText": "0658 658 greninjabond water dark quajutsubond",
     "types": [
       "Water",
       "Dark"
@@ -638978,14 +639962,17 @@ window.POKEDEX_ENTRIES = [
     "stellar_defense": 1,
     "water_defense": 0.5,
     "sprite": "https://play.pokemonshowdown.com/sprites/gen5/greninja-bond.png",
-    "displayNumber": "#0658"
+    "displayNumber": "#0658",
+    "names": {
+      "de": "Quajutsu-Bond"
+    }
   },
   {
     "speciesId": "greninjaash",
     "sourceIndex": 876,
     "num": 658,
     "name": "Greninja-Ash",
-    "searchText": "0658 658 greninjaash water dark",
+    "searchText": "0658 658 greninjaash water dark quajutsuash",
     "types": [
       "Water",
       "Dark"
@@ -639559,7 +640546,10 @@ window.POKEDEX_ENTRIES = [
     "stellar_defense": 1,
     "water_defense": 0.5,
     "sprite": "https://play.pokemonshowdown.com/sprites/gen5/greninja-ash.png",
-    "displayNumber": "#0658"
+    "displayNumber": "#0658",
+    "names": {
+      "de": "Quajutsu-Ash"
+    }
   },
   {
     "speciesId": "greninjamega",
@@ -641705,9 +642695,9 @@ window.POKEDEX_ENTRIES = [
     "num": 662,
     "name": "Fletchinder",
     "names": {
-      "de": "Fletiamo"
+      "de": "Dartignis"
     },
-    "searchText": "0662 662 fletchinder fletiamo fire flying",
+    "searchText": "0662 662 fletchinder fletiamo fire flying dartignis",
     "types": [
       "Fire",
       "Flying"
@@ -643500,7 +644490,10 @@ window.POKEDEX_ENTRIES = [
     "stellar_defense": 1,
     "water_defense": 1,
     "sprite": "https://play.pokemonshowdown.com/sprites/gen5/vivillon.png",
-    "displayNumber": "#0666"
+    "displayNumber": "#0666",
+    "names": {
+      "de": "Vivillon"
+    }
   },
   {
     "speciesId": "vivillonfancy",
@@ -643967,7 +644960,10 @@ window.POKEDEX_ENTRIES = [
     "stellar_defense": 1,
     "water_defense": 1,
     "sprite": "https://play.pokemonshowdown.com/sprites/gen5/vivillon-fancy.png",
-    "displayNumber": "#0666"
+    "displayNumber": "#0666",
+    "names": {
+      "de": "Vivillon-Fancy"
+    }
   },
   {
     "speciesId": "vivillonpokeball",
@@ -644431,7 +645427,10 @@ window.POKEDEX_ENTRIES = [
     "stellar_defense": 1,
     "water_defense": 1,
     "sprite": "https://play.pokemonshowdown.com/sprites/gen5/vivillon-pokeball.png",
-    "displayNumber": "#0666"
+    "displayNumber": "#0666",
+    "names": {
+      "de": "Vivillon-Pokeball"
+    }
   },
   {
     "speciesId": "litleo",
@@ -645952,7 +646951,7 @@ window.POKEDEX_ENTRIES = [
         "id": "symbiosis",
         "name": "Symbiosis",
         "names": {
-          "de": "Nutznießer"
+          "de": "Symbiose"
         },
         "shortDesc": "If an ally uses its item, this Pokemon gives its item to that ally immediately.",
         "desc": "If an ally uses its item, this Pokemon gives its item to that ally immediately. Does not activate if the ally's item was stolen or knocked off, or if the ally used an Eject Button or Eject Pack."
@@ -646428,7 +647427,7 @@ window.POKEDEX_ENTRIES = [
         "id": "symbiosis",
         "name": "Symbiosis",
         "names": {
-          "de": "Nutznießer"
+          "de": "Symbiose"
         },
         "shortDesc": "If an ally uses its item, this Pokemon gives its item to that ally immediately.",
         "desc": "If an ally uses its item, this Pokemon gives its item to that ally immediately. Does not activate if the ally's item was stolen or knocked off, or if the ally used an Eject Button or Eject Pack."
@@ -646861,7 +647860,10 @@ window.POKEDEX_ENTRIES = [
     "stellar_defense": 1,
     "water_defense": 1,
     "sprite": "https://play.pokemonshowdown.com/sprites/gen5/floette.png",
-    "displayNumber": "#0670"
+    "displayNumber": "#0670",
+    "names": {
+      "de": "Floette"
+    }
   },
   {
     "speciesId": "floetteeternal",
@@ -646892,7 +647894,7 @@ window.POKEDEX_ENTRIES = [
         "id": "symbiosis",
         "name": "Symbiosis",
         "names": {
-          "de": "Nutznießer"
+          "de": "Symbiose"
         },
         "shortDesc": "If an ally uses its item, this Pokemon gives its item to that ally immediately.",
         "desc": "If an ally uses its item, this Pokemon gives its item to that ally immediately. Does not activate if the ally's item was stolen or knocked off, or if the ally used an Eject Button or Eject Pack."
@@ -647203,7 +648205,10 @@ window.POKEDEX_ENTRIES = [
     "stellar_defense": 1,
     "water_defense": 1,
     "sprite": "https://play.pokemonshowdown.com/sprites/gen5/floette-eternal.png",
-    "displayNumber": "#0670"
+    "displayNumber": "#0670",
+    "names": {
+      "de": "Floette-Eternal"
+    }
   },
   {
     "speciesId": "floettemega",
@@ -647677,7 +648682,7 @@ window.POKEDEX_ENTRIES = [
         "id": "symbiosis",
         "name": "Symbiosis",
         "names": {
-          "de": "Nutznießer"
+          "de": "Symbiose"
         },
         "shortDesc": "If an ally uses its item, this Pokemon gives its item to that ally immediately.",
         "desc": "If an ally uses its item, this Pokemon gives its item to that ally immediately. Does not activate if the ally's item was stolen or knocked off, or if the ally used an Eject Button or Eject Pack."
@@ -648114,7 +649119,10 @@ window.POKEDEX_ENTRIES = [
     "stellar_defense": 1,
     "water_defense": 1,
     "sprite": "https://play.pokemonshowdown.com/sprites/gen5/florges.png",
-    "displayNumber": "#0671"
+    "displayNumber": "#0671",
+    "names": {
+      "de": "Florges"
+    }
   },
   {
     "speciesId": "skiddo",
@@ -650903,7 +651911,7 @@ window.POKEDEX_ENTRIES = [
         "id": "owntempo",
         "name": "Own Tempo",
         "names": {
-          "de": "Tempomacher"
+          "de": "Gleichmut"
         },
         "shortDesc": "This Pokemon cannot be confused. Immune to Intimidate.",
         "desc": "This Pokemon cannot be confused. Gaining this Ability while confused cures it. This Pokemon is immune to the effect of the Intimidate Ability."
@@ -651438,7 +652446,7 @@ window.POKEDEX_ENTRIES = [
     "sourceIndex": 919,
     "num": 678,
     "name": "Meowstic",
-    "searchText": "0678 678 meowstic psychic",
+    "searchText": "0678 678 meowstic psychic psiaugon",
     "types": [
       "Psychic"
     ],
@@ -652100,7 +653108,10 @@ window.POKEDEX_ENTRIES = [
     "stellar_defense": 1,
     "water_defense": 1,
     "sprite": "https://play.pokemonshowdown.com/sprites/gen5/meowstic.png",
-    "displayNumber": "#0678"
+    "displayNumber": "#0678",
+    "names": {
+      "de": "Psiaugon"
+    }
   },
   {
     "speciesId": "meowsticf",
@@ -652108,9 +653119,9 @@ window.POKEDEX_ENTRIES = [
     "num": 678,
     "name": "Meowstic-F",
     "names": {
-      "de": "Meowstic-F"
+      "de": "Psiaugon-F"
     },
-    "searchText": "0678 678 meowsticf meowsticf psychic",
+    "searchText": "0678 678 meowsticf meowsticf psychic psiaugonf",
     "types": [
       "Psychic"
     ],
@@ -652752,7 +653763,7 @@ window.POKEDEX_ENTRIES = [
     "sourceIndex": 921,
     "num": 678,
     "name": "Meowstic-M-Mega",
-    "searchText": "0678 678 meowsticmmega psychic",
+    "searchText": "0678 678 meowsticmmega psychic psiaugonmmega",
     "types": [
       "Psychic"
     ],
@@ -652765,7 +653776,7 @@ window.POKEDEX_ENTRIES = [
         "id": "trace",
         "name": "Trace",
         "names": {
-          "de": "Fährte"
+          "de": "Erfassen"
         },
         "shortDesc": "On switch-in, or when it can, this Pokemon copies a random adjacent foe's Ability.",
         "desc": "On switch-in, this Pokemon copies a random opposing Pokemon's Ability. Abilities that cannot be copied are As One, Battle Bond, Comatose, Commander, Disguise, Embody Aspect, Flower Gift, Forecast, Hunger Switch, Ice Face, Illusion, Imposter, Multitype, Neutralizing Gas, Poison Puppeteer, Power Construct, Power of Alchemy, Protosynthesis, Quark Drive, Receiver, RKS System, Schooling, Shields Down, Stance Change, Teraform Zero, Tera Shell, Tera Shift, Trace, Zen Mode, and Zero to Hero. If no opposing Pokemon has an Ability that can be copied, this Ability will activate as soon as one does."
@@ -653383,7 +654394,10 @@ window.POKEDEX_ENTRIES = [
     "stellar_defense": 1,
     "water_defense": 1,
     "sprite": "https://play.pokemonshowdown.com/sprites/gen5/meowstic-mmega.png",
-    "displayNumber": "#0678"
+    "displayNumber": "#0678",
+    "names": {
+      "de": "Psiaugon-M-Mega"
+    }
   },
   {
     "speciesId": "meowsticfmega",
@@ -653391,9 +654405,9 @@ window.POKEDEX_ENTRIES = [
     "num": 678,
     "name": "Meowstic-F-Mega",
     "names": {
-      "de": "Meowstic-F-Mega"
+      "de": "Psiaugon-F-Mega"
     },
-    "searchText": "0678 678 meowsticfmega meowsticfmega psychic",
+    "searchText": "0678 678 meowsticfmega meowsticfmega psychic psiaugonfmega",
     "types": [
       "Psychic"
     ],
@@ -653406,7 +654420,7 @@ window.POKEDEX_ENTRIES = [
         "id": "trace",
         "name": "Trace",
         "names": {
-          "de": "Fährte"
+          "de": "Erfassen"
         },
         "shortDesc": "On switch-in, or when it can, this Pokemon copies a random adjacent foe's Ability.",
         "desc": "On switch-in, this Pokemon copies a random opposing Pokemon's Ability. Abilities that cannot be copied are As One, Battle Bond, Comatose, Commander, Disguise, Embody Aspect, Flower Gift, Forecast, Hunger Switch, Ice Face, Illusion, Imposter, Multitype, Neutralizing Gas, Poison Puppeteer, Power Construct, Power of Alchemy, Protosynthesis, Quark Drive, Receiver, RKS System, Schooling, Shields Down, Stance Change, Teraform Zero, Tera Shell, Tera Shift, Trace, Zen Mode, and Zero to Hero. If no opposing Pokemon has an Ability that can be copied, this Ability will activate as soon as one does."
@@ -655281,7 +656295,7 @@ window.POKEDEX_ENTRIES = [
     "sourceIndex": 926,
     "num": 681,
     "name": "Aegislash-Blade",
-    "searchText": "0681 681 aegislashblade steel ghost",
+    "searchText": "0681 681 aegislashblade steel ghost durengardblade",
     "types": [
       "Steel",
       "Ghost"
@@ -655710,7 +656724,10 @@ window.POKEDEX_ENTRIES = [
     "stellar_defense": 1,
     "water_defense": 1,
     "sprite": "https://play.pokemonshowdown.com/sprites/gen5/aegislash-blade.png",
-    "displayNumber": "#0681"
+    "displayNumber": "#0681",
+    "names": {
+      "de": "Durengard-Blade"
+    }
   },
   {
     "speciesId": "spritzee",
@@ -656175,7 +657192,7 @@ window.POKEDEX_ENTRIES = [
     "sourceIndex": 928,
     "num": 683,
     "name": "Aromatisse",
-    "searchText": "0683 683 aromatisse fairy",
+    "searchText": "0683 683 aromatisse fairy parfinesse",
     "types": [
       "Fairy"
     ],
@@ -656657,7 +657674,10 @@ window.POKEDEX_ENTRIES = [
     "stellar_defense": 1,
     "water_defense": 1,
     "sprite": "https://play.pokemonshowdown.com/sprites/gen5/aromatisse.png",
-    "displayNumber": "#0683"
+    "displayNumber": "#0683",
+    "names": {
+      "de": "Parfinesse"
+    }
   },
   {
     "speciesId": "swirlix",
@@ -666124,7 +667144,7 @@ window.POKEDEX_ENTRIES = [
         "id": "snowwarning",
         "name": "Snow Warning",
         "names": {
-          "de": "Hagelalarm"
+          "de": "Schneeschauer"
         },
         "shortDesc": "On switch-in, this Pokemon summons Snow.",
         "desc": "On switch-in, this Pokemon summons Snow."
@@ -666688,7 +667708,7 @@ window.POKEDEX_ENTRIES = [
         "id": "snowwarning",
         "name": "Snow Warning",
         "names": {
-          "de": "Hagelalarm"
+          "de": "Schneeschauer"
         },
         "shortDesc": "On switch-in, this Pokemon summons Snow.",
         "desc": "On switch-in, this Pokemon summons Snow."
@@ -669386,7 +670406,10 @@ window.POKEDEX_ENTRIES = [
         "id": "plus",
         "name": "Plus",
         "shortDesc": "If an active ally has this Ability or the Minus Ability, this Pokemon's Sp. Atk is 1.5x.",
-        "desc": "If an active ally has this Ability or the Minus Ability, this Pokemon's Special Attack is multiplied by 1.5."
+        "desc": "If an active ally has this Ability or the Minus Ability, this Pokemon's Special Attack is multiplied by 1.5.",
+        "names": {
+          "de": "Plus"
+        }
       }
     ],
     "baseStats": {
@@ -669913,7 +670936,10 @@ window.POKEDEX_ENTRIES = [
     "stellar_defense": 1,
     "water_defense": 1,
     "sprite": "https://play.pokemonshowdown.com/sprites/gen5/dedenne.png",
-    "displayNumber": "#0702"
+    "displayNumber": "#0702",
+    "names": {
+      "de": "Dedenne"
+    }
   },
   {
     "speciesId": "carbink",
@@ -670517,7 +671543,10 @@ window.POKEDEX_ENTRIES = [
         "id": "hydration",
         "name": "Hydration",
         "shortDesc": "This Pokemon has its status cured at the end of each turn if Rain Dance is active.",
-        "desc": "This Pokemon has its non-volatile status condition cured at the end of each turn if Rain Dance is active. This effect is prevented if this Pokemon is holding a Utility Umbrella."
+        "desc": "This Pokemon has its non-volatile status condition cured at the end of each turn if Rain Dance is active. This effect is prevented if this Pokemon is holding a Utility Umbrella.",
+        "names": {
+          "de": "Hydration"
+        }
       },
       {
         "slot": "H",
@@ -670952,7 +671981,10 @@ window.POKEDEX_ENTRIES = [
         "id": "hydration",
         "name": "Hydration",
         "shortDesc": "This Pokemon has its status cured at the end of each turn if Rain Dance is active.",
-        "desc": "This Pokemon has its non-volatile status condition cured at the end of each turn if Rain Dance is active. This effect is prevented if this Pokemon is holding a Utility Umbrella."
+        "desc": "This Pokemon has its non-volatile status condition cured at the end of each turn if Rain Dance is active. This effect is prevented if this Pokemon is holding a Utility Umbrella.",
+        "names": {
+          "de": "Hydration"
+        }
       },
       {
         "slot": "H",
@@ -671690,7 +672722,10 @@ window.POKEDEX_ENTRIES = [
         "id": "hydration",
         "name": "Hydration",
         "shortDesc": "This Pokemon has its status cured at the end of each turn if Rain Dance is active.",
-        "desc": "This Pokemon has its non-volatile status condition cured at the end of each turn if Rain Dance is active. This effect is prevented if this Pokemon is holding a Utility Umbrella."
+        "desc": "This Pokemon has its non-volatile status condition cured at the end of each turn if Rain Dance is active. This effect is prevented if this Pokemon is holding a Utility Umbrella.",
+        "names": {
+          "de": "Hydration"
+        }
       },
       {
         "slot": "H",
@@ -674553,7 +675588,10 @@ window.POKEDEX_ENTRIES = [
         "id": "insomnia",
         "name": "Insomnia",
         "shortDesc": "This Pokemon cannot fall asleep. Gaining this Ability while asleep cures it.",
-        "desc": "This Pokemon cannot fall asleep. Gaining this Ability while asleep cures it."
+        "desc": "This Pokemon cannot fall asleep. Gaining this Ability while asleep cures it.",
+        "names": {
+          "de": "Insomnia"
+        }
       }
     ],
     "baseStats": {
@@ -675044,7 +676082,7 @@ window.POKEDEX_ENTRIES = [
     "sourceIndex": 962,
     "num": 710,
     "name": "Pumpkaboo-Small",
-    "searchText": "0710 710 pumpkaboosmall ghost grass",
+    "searchText": "0710 710 pumpkaboosmall ghost grass irrbissmall",
     "types": [
       "Ghost",
       "Grass"
@@ -675080,7 +676118,10 @@ window.POKEDEX_ENTRIES = [
         "id": "insomnia",
         "name": "Insomnia",
         "shortDesc": "This Pokemon cannot fall asleep. Gaining this Ability while asleep cures it.",
-        "desc": "This Pokemon cannot fall asleep. Gaining this Ability while asleep cures it."
+        "desc": "This Pokemon cannot fall asleep. Gaining this Ability while asleep cures it.",
+        "names": {
+          "de": "Insomnia"
+        }
       }
     ],
     "baseStats": {
@@ -675555,14 +676596,17 @@ window.POKEDEX_ENTRIES = [
     "stellar_defense": 1,
     "water_defense": 0.5,
     "sprite": "https://play.pokemonshowdown.com/sprites/gen5/pumpkaboo-small.png",
-    "displayNumber": "#0710"
+    "displayNumber": "#0710",
+    "names": {
+      "de": "Irrbis-Small"
+    }
   },
   {
     "speciesId": "pumpkaboolarge",
     "sourceIndex": 963,
     "num": 710,
     "name": "Pumpkaboo-Large",
-    "searchText": "0710 710 pumpkaboolarge ghost grass",
+    "searchText": "0710 710 pumpkaboolarge ghost grass irrbislarge",
     "types": [
       "Ghost",
       "Grass"
@@ -675598,7 +676642,10 @@ window.POKEDEX_ENTRIES = [
         "id": "insomnia",
         "name": "Insomnia",
         "shortDesc": "This Pokemon cannot fall asleep. Gaining this Ability while asleep cures it.",
-        "desc": "This Pokemon cannot fall asleep. Gaining this Ability while asleep cures it."
+        "desc": "This Pokemon cannot fall asleep. Gaining this Ability while asleep cures it.",
+        "names": {
+          "de": "Insomnia"
+        }
       }
     ],
     "baseStats": {
@@ -676073,14 +677120,17 @@ window.POKEDEX_ENTRIES = [
     "stellar_defense": 1,
     "water_defense": 0.5,
     "sprite": "https://play.pokemonshowdown.com/sprites/gen5/pumpkaboo-large.png",
-    "displayNumber": "#0710"
+    "displayNumber": "#0710",
+    "names": {
+      "de": "Irrbis-Large"
+    }
   },
   {
     "speciesId": "pumpkaboosuper",
     "sourceIndex": 964,
     "num": 710,
     "name": "Pumpkaboo-Super",
-    "searchText": "0710 710 pumpkaboosuper ghost grass",
+    "searchText": "0710 710 pumpkaboosuper ghost grass irrbissuper",
     "types": [
       "Ghost",
       "Grass"
@@ -676116,7 +677166,10 @@ window.POKEDEX_ENTRIES = [
         "id": "insomnia",
         "name": "Insomnia",
         "shortDesc": "This Pokemon cannot fall asleep. Gaining this Ability while asleep cures it.",
-        "desc": "This Pokemon cannot fall asleep. Gaining this Ability while asleep cures it."
+        "desc": "This Pokemon cannot fall asleep. Gaining this Ability while asleep cures it.",
+        "names": {
+          "de": "Insomnia"
+        }
       }
     ],
     "baseStats": {
@@ -676595,7 +677648,10 @@ window.POKEDEX_ENTRIES = [
     "stellar_defense": 1,
     "water_defense": 0.5,
     "sprite": "https://play.pokemonshowdown.com/sprites/gen5/pumpkaboo-super.png",
-    "displayNumber": "#0710"
+    "displayNumber": "#0710",
+    "names": {
+      "de": "Irrbis-Super"
+    }
   },
   {
     "speciesId": "gourgeist",
@@ -676641,7 +677697,10 @@ window.POKEDEX_ENTRIES = [
         "id": "insomnia",
         "name": "Insomnia",
         "shortDesc": "This Pokemon cannot fall asleep. Gaining this Ability while asleep cures it.",
-        "desc": "This Pokemon cannot fall asleep. Gaining this Ability while asleep cures it."
+        "desc": "This Pokemon cannot fall asleep. Gaining this Ability while asleep cures it.",
+        "names": {
+          "de": "Insomnia"
+        }
       }
     ],
     "baseStats": {
@@ -677153,7 +678212,7 @@ window.POKEDEX_ENTRIES = [
     "sourceIndex": 966,
     "num": 711,
     "name": "Gourgeist-Small",
-    "searchText": "0711 711 gourgeistsmall ghost grass",
+    "searchText": "0711 711 gourgeistsmall ghost grass pumpdjinnsmall",
     "types": [
       "Ghost",
       "Grass"
@@ -677189,7 +678248,10 @@ window.POKEDEX_ENTRIES = [
         "id": "insomnia",
         "name": "Insomnia",
         "shortDesc": "This Pokemon cannot fall asleep. Gaining this Ability while asleep cures it.",
-        "desc": "This Pokemon cannot fall asleep. Gaining this Ability while asleep cures it."
+        "desc": "This Pokemon cannot fall asleep. Gaining this Ability while asleep cures it.",
+        "names": {
+          "de": "Insomnia"
+        }
       }
     ],
     "baseStats": {
@@ -677685,14 +678747,17 @@ window.POKEDEX_ENTRIES = [
     "stellar_defense": 1,
     "water_defense": 0.5,
     "sprite": "https://play.pokemonshowdown.com/sprites/gen5/gourgeist-small.png",
-    "displayNumber": "#0711"
+    "displayNumber": "#0711",
+    "names": {
+      "de": "Pumpdjinn-Small"
+    }
   },
   {
     "speciesId": "gourgeistlarge",
     "sourceIndex": 967,
     "num": 711,
     "name": "Gourgeist-Large",
-    "searchText": "0711 711 gourgeistlarge ghost grass",
+    "searchText": "0711 711 gourgeistlarge ghost grass pumpdjinnlarge",
     "types": [
       "Ghost",
       "Grass"
@@ -677728,7 +678793,10 @@ window.POKEDEX_ENTRIES = [
         "id": "insomnia",
         "name": "Insomnia",
         "shortDesc": "This Pokemon cannot fall asleep. Gaining this Ability while asleep cures it.",
-        "desc": "This Pokemon cannot fall asleep. Gaining this Ability while asleep cures it."
+        "desc": "This Pokemon cannot fall asleep. Gaining this Ability while asleep cures it.",
+        "names": {
+          "de": "Insomnia"
+        }
       }
     ],
     "baseStats": {
@@ -678224,14 +679292,17 @@ window.POKEDEX_ENTRIES = [
     "stellar_defense": 1,
     "water_defense": 0.5,
     "sprite": "https://play.pokemonshowdown.com/sprites/gen5/gourgeist-large.png",
-    "displayNumber": "#0711"
+    "displayNumber": "#0711",
+    "names": {
+      "de": "Pumpdjinn-Large"
+    }
   },
   {
     "speciesId": "gourgeistsuper",
     "sourceIndex": 968,
     "num": 711,
     "name": "Gourgeist-Super",
-    "searchText": "0711 711 gourgeistsuper ghost grass",
+    "searchText": "0711 711 gourgeistsuper ghost grass pumpdjinnsuper",
     "types": [
       "Ghost",
       "Grass"
@@ -678267,7 +679338,10 @@ window.POKEDEX_ENTRIES = [
         "id": "insomnia",
         "name": "Insomnia",
         "shortDesc": "This Pokemon cannot fall asleep. Gaining this Ability while asleep cures it.",
-        "desc": "This Pokemon cannot fall asleep. Gaining this Ability while asleep cures it."
+        "desc": "This Pokemon cannot fall asleep. Gaining this Ability while asleep cures it.",
+        "names": {
+          "de": "Insomnia"
+        }
       }
     ],
     "baseStats": {
@@ -678763,7 +679837,10 @@ window.POKEDEX_ENTRIES = [
     "stellar_defense": 1,
     "water_defense": 0.5,
     "sprite": "https://play.pokemonshowdown.com/sprites/gen5/gourgeist-super.png",
-    "displayNumber": "#0711"
+    "displayNumber": "#0711",
+    "names": {
+      "de": "Pumpdjinn-Super"
+    }
   },
   {
     "speciesId": "bergmite",
@@ -678788,7 +679865,7 @@ window.POKEDEX_ENTRIES = [
         "id": "owntempo",
         "name": "Own Tempo",
         "names": {
-          "de": "Tempomacher"
+          "de": "Gleichmut"
         },
         "shortDesc": "This Pokemon cannot be confused. Immune to Intimidate.",
         "desc": "This Pokemon cannot be confused. Gaining this Ability while confused cures it. This Pokemon is immune to the effect of the Intimidate Ability."
@@ -679285,7 +680362,7 @@ window.POKEDEX_ENTRIES = [
         "id": "owntempo",
         "name": "Own Tempo",
         "names": {
-          "de": "Tempomacher"
+          "de": "Gleichmut"
         },
         "shortDesc": "This Pokemon cannot be confused. Immune to Intimidate.",
         "desc": "This Pokemon cannot be confused. Gaining this Ability while confused cures it. This Pokemon is immune to the effect of the Intimidate Ability."
@@ -681909,7 +682986,10 @@ window.POKEDEX_ENTRIES = [
     "stellar_defense": 1,
     "water_defense": 1,
     "sprite": "https://play.pokemonshowdown.com/sprites/gen5/xerneas.png",
-    "displayNumber": "#0716"
+    "displayNumber": "#0716",
+    "names": {
+      "de": "Xerneas"
+    }
   },
   {
     "speciesId": "xerneasneutral",
@@ -682414,7 +683494,10 @@ window.POKEDEX_ENTRIES = [
     "stellar_defense": 1,
     "water_defense": 1,
     "sprite": "https://play.pokemonshowdown.com/sprites/gen5/xerneas-neutral.png",
-    "displayNumber": "#0716"
+    "displayNumber": "#0716",
+    "names": {
+      "de": "Xerneas-Neutral"
+    }
   },
   {
     "speciesId": "yveltal",
@@ -682435,7 +683518,7 @@ window.POKEDEX_ENTRIES = [
         "id": "darkaura",
         "name": "Dark Aura",
         "names": {
-          "de": "Dankelaura"
+          "de": "Dunkelaura"
         },
         "shortDesc": "While this Pokemon is active, a Dark move used by any Pokemon has 1.33x power.",
         "desc": "While this Pokemon is active, the power of Dark-type moves used by active Pokemon is multiplied by 1.33."
@@ -682916,7 +683999,10 @@ window.POKEDEX_ENTRIES = [
     "stellar_defense": 1,
     "water_defense": 1,
     "sprite": "https://play.pokemonshowdown.com/sprites/gen5/yveltal.png",
-    "displayNumber": "#0717"
+    "displayNumber": "#0717",
+    "names": {
+      "de": "Yveltal"
+    }
   },
   {
     "speciesId": "zygarde",
@@ -683466,7 +684552,10 @@ window.POKEDEX_ENTRIES = [
     "stellar_defense": 1,
     "water_defense": 1,
     "sprite": "https://play.pokemonshowdown.com/sprites/gen5/zygarde.png",
-    "displayNumber": "#0718"
+    "displayNumber": "#0718",
+    "names": {
+      "de": "Zygarde"
+    }
   },
   {
     "speciesId": "zygarde10",
@@ -683620,7 +684709,10 @@ window.POKEDEX_ENTRIES = [
     "stellar_defense": 1,
     "water_defense": 1,
     "sprite": "https://play.pokemonshowdown.com/sprites/gen5/zygarde-10.png",
-    "displayNumber": "#0718"
+    "displayNumber": "#0718",
+    "names": {
+      "de": "Zygarde-10%"
+    }
   },
   {
     "speciesId": "zygardecomplete",
@@ -684146,7 +685238,10 @@ window.POKEDEX_ENTRIES = [
     "stellar_defense": 1,
     "water_defense": 1,
     "sprite": "https://play.pokemonshowdown.com/sprites/gen5/zygarde-complete.png",
-    "displayNumber": "#0718"
+    "displayNumber": "#0718",
+    "names": {
+      "de": "Zygarde-Complete"
+    }
   },
   {
     "speciesId": "zygardemega",
@@ -685314,7 +686409,10 @@ window.POKEDEX_ENTRIES = [
     "stellar_defense": 1,
     "water_defense": 2,
     "sprite": "https://play.pokemonshowdown.com/sprites/gen5/diancie.png",
-    "displayNumber": "#0719"
+    "displayNumber": "#0719",
+    "names": {
+      "de": "Diancie"
+    }
   },
   {
     "speciesId": "dianciemega",
@@ -686606,7 +687704,10 @@ window.POKEDEX_ENTRIES = [
     "stellar_defense": 1,
     "water_defense": 1,
     "sprite": "https://play.pokemonshowdown.com/sprites/gen5/hoopa.png",
-    "displayNumber": "#0720"
+    "displayNumber": "#0720",
+    "names": {
+      "de": "Hoopa"
+    }
   },
   {
     "speciesId": "hoopaunbound",
@@ -687873,7 +688974,10 @@ window.POKEDEX_ENTRIES = [
     "stellar_defense": 1,
     "water_defense": 0,
     "sprite": "https://play.pokemonshowdown.com/sprites/gen5/volcanion.png",
-    "displayNumber": "#0721"
+    "displayNumber": "#0721",
+    "names": {
+      "de": "Volcanion"
+    }
   },
   {
     "speciesId": "rowlet",
@@ -695684,7 +696788,10 @@ window.POKEDEX_ENTRIES = [
         "id": "battery",
         "name": "Battery",
         "shortDesc": "This Pokemon's allies have the power of their special attacks multiplied by 1.3.",
-        "desc": "This Pokemon's allies have the power of their special attacks multiplied by 1.3."
+        "desc": "This Pokemon's allies have the power of their special attacks multiplied by 1.3.",
+        "names": {
+          "de": "Batterie"
+        }
       }
     ],
     "baseStats": {
@@ -698676,7 +699783,7 @@ window.POKEDEX_ENTRIES = [
     "sourceIndex": 1010,
     "num": 741,
     "name": "Oricorio-Pom-Pom",
-    "searchText": "0741 741 oricoriopompom electric flying",
+    "searchText": "0741 741 oricoriopompom electric flying choreogelpompom",
     "types": [
       "Electric",
       "Flying"
@@ -699059,14 +700166,17 @@ window.POKEDEX_ENTRIES = [
     "stellar_defense": 1,
     "water_defense": 1,
     "sprite": "https://play.pokemonshowdown.com/sprites/gen5/oricorio-pompom.png",
-    "displayNumber": "#0741"
+    "displayNumber": "#0741",
+    "names": {
+      "de": "Choreogel-Pom-Pom"
+    }
   },
   {
     "speciesId": "oricoriopau",
     "sourceIndex": 1011,
     "num": 741,
     "name": "Oricorio-Pa'u",
-    "searchText": "0741 741 oricoriopau psychic flying",
+    "searchText": "0741 741 oricoriopau psychic flying choreogelpau",
     "types": [
       "Psychic",
       "Flying"
@@ -699449,14 +700559,17 @@ window.POKEDEX_ENTRIES = [
     "stellar_defense": 1,
     "water_defense": 1,
     "sprite": "https://play.pokemonshowdown.com/sprites/gen5/oricorio-pau.png",
-    "displayNumber": "#0741"
+    "displayNumber": "#0741",
+    "names": {
+      "de": "Choreogel-Pa'u"
+    }
   },
   {
     "speciesId": "oricoriosensu",
     "sourceIndex": 1012,
     "num": 741,
     "name": "Oricorio-Sensu",
-    "searchText": "0741 741 oricoriosensu ghost flying",
+    "searchText": "0741 741 oricoriosensu ghost flying choreogelsensu",
     "types": [
       "Ghost",
       "Flying"
@@ -699839,7 +700952,10 @@ window.POKEDEX_ENTRIES = [
     "stellar_defense": 1,
     "water_defense": 1,
     "sprite": "https://play.pokemonshowdown.com/sprites/gen5/oricorio-sensu.png",
-    "displayNumber": "#0741"
+    "displayNumber": "#0741",
+    "names": {
+      "de": "Choreogel-Sensu"
+    }
   },
   {
     "speciesId": "cutiefly",
@@ -701227,9 +702343,9 @@ window.POKEDEX_ENTRIES = [
     "num": 744,
     "name": "Rockruff",
     "names": {
-      "de": "Wufffels"
+      "de": "Wuffels"
     },
-    "searchText": "0744 744 rockruff wufffels rock",
+    "searchText": "0744 744 rockruff wufffels rock wuffels",
     "types": [
       "Rock"
     ],
@@ -701275,7 +702391,7 @@ window.POKEDEX_ENTRIES = [
         "id": "owntempo",
         "name": "Own Tempo",
         "names": {
-          "de": "Tempomacher"
+          "de": "Gleichmut"
         },
         "shortDesc": "This Pokemon cannot be confused. Immune to Intimidate.",
         "desc": "This Pokemon cannot be confused. Gaining this Ability while confused cures it. This Pokemon is immune to the effect of the Intimidate Ability."
@@ -701704,9 +702820,9 @@ window.POKEDEX_ENTRIES = [
     "num": 744,
     "name": "Rockruff-Dusk",
     "names": {
-      "de": "Wufffels-Zwielicht"
+      "de": "Wuffels-Zwielicht"
     },
-    "searchText": "0744 744 rockruffdusk wufffelszwielicht rock",
+    "searchText": "0744 744 rockruffdusk wufffelszwielicht rock wuffelszwielicht",
     "types": [
       "Rock"
     ],
@@ -701719,7 +702835,7 @@ window.POKEDEX_ENTRIES = [
         "id": "owntempo",
         "name": "Own Tempo",
         "names": {
-          "de": "Tempomacher"
+          "de": "Gleichmut"
         },
         "shortDesc": "This Pokemon cannot be confused. Immune to Intimidate.",
         "desc": "This Pokemon cannot be confused. Gaining this Ability while confused cures it. This Pokemon is immune to the effect of the Intimidate Ability."
@@ -704136,7 +705252,7 @@ window.POKEDEX_ENTRIES = [
     "sourceIndex": 1022,
     "num": 746,
     "name": "Wishiwashi-School",
-    "searchText": "0746 746 wishiwashischool water",
+    "searchText": "0746 746 wishiwashischool water lusardinschool",
     "types": [
       "Water"
     ],
@@ -704467,7 +705583,10 @@ window.POKEDEX_ENTRIES = [
     "stellar_defense": 1,
     "water_defense": 0.5,
     "sprite": "https://play.pokemonshowdown.com/sprites/gen5/wishiwashi-school.png",
-    "displayNumber": "#0746"
+    "displayNumber": "#0746",
+    "names": {
+      "de": "Lusardin-School"
+    }
   },
   {
     "speciesId": "mareanie",
@@ -705451,7 +706570,7 @@ window.POKEDEX_ENTRIES = [
         "id": "owntempo",
         "name": "Own Tempo",
         "names": {
-          "de": "Tempomacher"
+          "de": "Gleichmut"
         },
         "shortDesc": "This Pokemon cannot be confused. Immune to Intimidate.",
         "desc": "This Pokemon cannot be confused. Gaining this Ability while confused cures it. This Pokemon is immune to the effect of the Intimidate Ability."
@@ -705878,7 +706997,7 @@ window.POKEDEX_ENTRIES = [
         "id": "owntempo",
         "name": "Own Tempo",
         "names": {
-          "de": "Tempomacher"
+          "de": "Gleichmut"
         },
         "shortDesc": "This Pokemon cannot be confused. Immune to Intimidate.",
         "desc": "This Pokemon cannot be confused. Gaining this Ability while confused cures it. This Pokemon is immune to the effect of the Intimidate Ability."
@@ -706303,7 +707422,7 @@ window.POKEDEX_ENTRIES = [
     "sourceIndex": 1027,
     "num": 751,
     "name": "Dewpider",
-    "searchText": "0751 751 dewpider water bug",
+    "searchText": "0751 751 dewpider water bug araqua",
     "types": [
       "Water",
       "Bug"
@@ -706735,7 +707854,10 @@ window.POKEDEX_ENTRIES = [
       0.5
     ],
     "sprite": "https://play.pokemonshowdown.com/sprites/gen5/dewpider.png",
-    "displayNumber": "#0751"
+    "displayNumber": "#0751",
+    "names": {
+      "de": "Araqua"
+    }
   },
   {
     "speciesId": "araquanid",
@@ -710898,9 +712020,9 @@ window.POKEDEX_ENTRIES = [
     "num": 759,
     "name": "Stufful",
     "names": {
-      "de": "Velirsi"
+      "de": "Velursi"
     },
-    "searchText": "0759 759 stufful velirsi normal fighting",
+    "searchText": "0759 759 stufful velirsi normal fighting velursi",
     "types": [
       "Normal",
       "Fighting"
@@ -713745,7 +714867,7 @@ window.POKEDEX_ENTRIES = [
         "id": "symbiosis",
         "name": "Symbiosis",
         "names": {
-          "de": "Nutznießer"
+          "de": "Symbiose"
         },
         "shortDesc": "If an ally uses its item, this Pokemon gives its item to that ally immediately.",
         "desc": "If an ally uses its item, this Pokemon gives its item to that ally immediately. Does not activate if the ally's item was stolen or knocked off, or if the ally used an Eject Button or Eject Pack."
@@ -714333,14 +715455,17 @@ window.POKEDEX_ENTRIES = [
         "id": "receiver",
         "name": "Receiver",
         "shortDesc": "This Pokemon copies the Ability of an ally that faints.",
-        "desc": "This Pokemon copies the Ability of an ally that faints. Abilities that cannot be copied are As One, Battle Bond, Comatose, Commander, Disguise, Embody Aspect, Flower Gift, Forecast, Hunger Switch, Ice Face, Illusion, Imposter, Multitype, Neutralizing Gas, Poison Puppeteer, Power Construct, Power of Alchemy, Protosynthesis, Quark Drive, Receiver, RKS System, Schooling, Shields Down, Stance Change, Tera Shell, Tera Shift, Teraform Zero, Trace, Wonder Guard, Zen Mode, and Zero to Hero."
+        "desc": "This Pokemon copies the Ability of an ally that faints. Abilities that cannot be copied are As One, Battle Bond, Comatose, Commander, Disguise, Embody Aspect, Flower Gift, Forecast, Hunger Switch, Ice Face, Illusion, Imposter, Multitype, Neutralizing Gas, Poison Puppeteer, Power Construct, Power of Alchemy, Protosynthesis, Quark Drive, Receiver, RKS System, Schooling, Shields Down, Stance Change, Tera Shell, Tera Shift, Teraform Zero, Trace, Wonder Guard, Zen Mode, and Zero to Hero.",
+        "names": {
+          "de": "Receiver"
+        }
       },
       {
         "slot": "H",
         "id": "defiant",
         "name": "Defiant",
         "names": {
-          "de": "Seigeswille"
+          "de": "Siegeswille"
         },
         "shortDesc": "This Pokemon's Attack is raised by 2 for each of its stats that is lowered by a foe.",
         "desc": "This Pokemon's Attack is raised by 2 stages for each of its stat stages that is lowered by an opposing Pokemon."
@@ -727514,7 +728639,7 @@ window.POKEDEX_ENTRIES = [
     "sourceIndex": 1078,
     "num": 774,
     "name": "Minior-Meteor",
-    "searchText": "0774 774 miniormeteor rock flying",
+    "searchText": "0774 774 miniormeteor rock flying metenometeor",
     "types": [
       "Rock",
       "Flying"
@@ -727900,7 +729025,10 @@ window.POKEDEX_ENTRIES = [
     "stellar_defense": 1,
     "water_defense": 2,
     "sprite": "https://play.pokemonshowdown.com/sprites/gen5/minior-meteor.png",
-    "displayNumber": "#0774"
+    "displayNumber": "#0774",
+    "names": {
+      "de": "Meteno-Meteor"
+    }
   },
   {
     "speciesId": "komala",
@@ -727908,9 +729036,9 @@ window.POKEDEX_ENTRIES = [
     "num": 775,
     "name": "Komala",
     "names": {
-      "de": "Koaleul"
+      "de": "Koalelu"
     },
-    "searchText": "0775 775 komala koaleul normal",
+    "searchText": "0775 775 komala koaleul normal koalelu",
     "types": [
       "Normal"
     ],
@@ -728335,7 +729463,7 @@ window.POKEDEX_ENTRIES = [
     "sourceIndex": 1080,
     "num": 776,
     "name": "Turtonator",
-    "searchText": "0776 776 turtonator fire dragon",
+    "searchText": "0776 776 turtonator fire dragon tortunator",
     "types": [
       "Fire",
       "Dragon"
@@ -728809,7 +729937,10 @@ window.POKEDEX_ENTRIES = [
     "stellar_defense": 1,
     "water_defense": 1,
     "sprite": "https://play.pokemonshowdown.com/sprites/gen5/turtonator.png",
-    "displayNumber": "#0776"
+    "displayNumber": "#0776",
+    "names": {
+      "de": "Tortunator"
+    }
   },
   {
     "speciesId": "togedemaru",
@@ -729295,7 +730426,10 @@ window.POKEDEX_ENTRIES = [
     "stellar_defense": 1,
     "water_defense": 1,
     "sprite": "https://play.pokemonshowdown.com/sprites/gen5/togedemaru.png",
-    "displayNumber": "#0777"
+    "displayNumber": "#0777",
+    "names": {
+      "de": "Togedemaru"
+    }
   },
   {
     "speciesId": "togedemarutotem",
@@ -730210,7 +731344,7 @@ window.POKEDEX_ENTRIES = [
     "sourceIndex": 1084,
     "num": 778,
     "name": "Mimikyu-Busted",
-    "searchText": "0778 778 mimikyubusted ghost fairy",
+    "searchText": "0778 778 mimikyubusted ghost fairy mimigmabusted",
     "types": [
       "Ghost",
       "Fairy"
@@ -730767,7 +731901,10 @@ window.POKEDEX_ENTRIES = [
     "stellar_defense": 1,
     "water_defense": 1,
     "sprite": "https://play.pokemonshowdown.com/sprites/gen5/mimikyu-busted.png",
-    "displayNumber": "#0778"
+    "displayNumber": "#0778",
+    "names": {
+      "de": "Mimigma-Busted"
+    }
   },
   {
     "speciesId": "mimikyutotem",
@@ -731135,9 +732272,9 @@ window.POKEDEX_ENTRIES = [
     "num": 778,
     "name": "Mimikyu-Busted-Totem",
     "names": {
-      "de": "Mimikyu-Busted-Totem"
+      "de": "Mimigma-Busted-Totem"
     },
-    "searchText": "0778 778 mimikyubustedtotem mimikyubustedtotem ghost fairy",
+    "searchText": "0778 778 mimikyubustedtotem mimikyubustedtotem ghost fairy mimigmabustedtotem",
     "types": [
       "Ghost",
       "Fairy"
@@ -733764,7 +734901,7 @@ window.POKEDEX_ENTRIES = [
         "id": "overcoat",
         "name": "Overcoat",
         "names": {
-          "de": "Wetterfest"
+          "de": "Partikelschutz"
         },
         "shortDesc": "This Pokemon is immune to powder moves, Sandstorm damage, and Effect Spore.",
         "desc": "This Pokemon is immune to powder moves, damage from Sandstorm, and the effects of Rage Powder and the Effect Spore Ability."
@@ -734250,7 +735387,7 @@ window.POKEDEX_ENTRIES = [
         "id": "overcoat",
         "name": "Overcoat",
         "names": {
-          "de": "Wetterfest"
+          "de": "Partikelschutz"
         },
         "shortDesc": "This Pokemon is immune to powder moves, Sandstorm damage, and Effect Spore.",
         "desc": "This Pokemon is immune to powder moves, damage from Sandstorm, and the effects of Rage Powder and the Effect Spore Ability."
@@ -734789,7 +735926,7 @@ window.POKEDEX_ENTRIES = [
         "id": "overcoat",
         "name": "Overcoat",
         "names": {
-          "de": "Wetterfest"
+          "de": "Partikelschutz"
         },
         "shortDesc": "This Pokemon is immune to powder moves, Sandstorm damage, and Effect Spore.",
         "desc": "This Pokemon is immune to powder moves, damage from Sandstorm, and the effects of Rage Powder and the Effect Spore Ability."
@@ -735455,7 +736592,7 @@ window.POKEDEX_ENTRIES = [
         "id": "overcoat",
         "name": "Overcoat",
         "names": {
-          "de": "Wetterfest"
+          "de": "Partikelschutz"
         },
         "shortDesc": "This Pokemon is immune to powder moves, Sandstorm damage, and Effect Spore.",
         "desc": "This Pokemon is immune to powder moves, damage from Sandstorm, and the effects of Rage Powder and the Effect Spore Ability."
@@ -737820,14 +738957,17 @@ window.POKEDEX_ENTRIES = [
     "stellar_defense": 1,
     "water_defense": 1,
     "sprite": "https://play.pokemonshowdown.com/sprites/gen5/cosmog.png",
-    "displayNumber": "#0789"
+    "displayNumber": "#0789",
+    "names": {
+      "de": "Cosmog"
+    }
   },
   {
     "speciesId": "cosmoem",
     "sourceIndex": 1100,
     "num": 790,
     "name": "Cosmoem",
-    "searchText": "0790 790 cosmoem psychic",
+    "searchText": "0790 790 cosmoem psychic cosmovum",
     "types": [
       "Psychic"
     ],
@@ -737913,7 +739053,10 @@ window.POKEDEX_ENTRIES = [
     "stellar_defense": 1,
     "water_defense": 1,
     "sprite": "https://play.pokemonshowdown.com/sprites/gen5/cosmoem.png",
-    "displayNumber": "#0790"
+    "displayNumber": "#0790",
+    "names": {
+      "de": "Cosmovum"
+    }
   },
   {
     "speciesId": "solgaleo",
@@ -738511,7 +739654,10 @@ window.POKEDEX_ENTRIES = [
     "stellar_defense": 1,
     "water_defense": 1,
     "sprite": "https://play.pokemonshowdown.com/sprites/gen5/solgaleo.png",
-    "displayNumber": "#0791"
+    "displayNumber": "#0791",
+    "names": {
+      "de": "Solgaleo"
+    }
   },
   {
     "speciesId": "lunala",
@@ -739088,7 +740234,10 @@ window.POKEDEX_ENTRIES = [
     "stellar_defense": 1,
     "water_defense": 1,
     "sprite": "https://play.pokemonshowdown.com/sprites/gen5/lunala.png",
-    "displayNumber": "#0792"
+    "displayNumber": "#0792",
+    "names": {
+      "de": "Lunala"
+    }
   },
   {
     "speciesId": "nihilego",
@@ -742589,7 +743738,10 @@ window.POKEDEX_ENTRIES = [
     "stellar_defense": 1,
     "water_defense": 1,
     "sprite": "https://play.pokemonshowdown.com/sprites/gen5/necrozma.png",
-    "displayNumber": "#0800"
+    "displayNumber": "#0800",
+    "names": {
+      "de": "Necrozma"
+    }
   },
   {
     "speciesId": "necrozmaduskmane",
@@ -742854,7 +744006,10 @@ window.POKEDEX_ENTRIES = [
     "stellar_defense": 1,
     "water_defense": 0.5,
     "sprite": "https://play.pokemonshowdown.com/sprites/gen5/necrozma-ultra.png",
-    "displayNumber": "#0800"
+    "displayNumber": "#0800",
+    "names": {
+      "de": "Necrozma-Ultra"
+    }
   },
   {
     "speciesId": "magearna",
@@ -743481,7 +744636,10 @@ window.POKEDEX_ENTRIES = [
     "stellar_defense": 1,
     "water_defense": 1,
     "sprite": "https://play.pokemonshowdown.com/sprites/gen5/magearna.png",
-    "displayNumber": "#0801"
+    "displayNumber": "#0801",
+    "names": {
+      "de": "Magearna"
+    }
   },
   {
     "speciesId": "magearnaoriginal",
@@ -745714,7 +746872,10 @@ window.POKEDEX_ENTRIES = [
     "stellar_defense": 1,
     "water_defense": 1,
     "sprite": "https://play.pokemonshowdown.com/sprites/gen5/marshadow.png",
-    "displayNumber": "#0802"
+    "displayNumber": "#0802",
+    "names": {
+      "de": "Marshadow"
+    }
   },
   {
     "speciesId": "poipole",
@@ -747775,7 +748936,10 @@ window.POKEDEX_ENTRIES = [
     "stellar_defense": 1,
     "water_defense": 1,
     "sprite": "https://play.pokemonshowdown.com/sprites/gen5/zeraora.png",
-    "displayNumber": "#0807"
+    "displayNumber": "#0807",
+    "names": {
+      "de": "Zeraora"
+    }
   },
   {
     "speciesId": "zeraoramega",
@@ -748457,7 +749621,10 @@ window.POKEDEX_ENTRIES = [
     "stellar_defense": 1,
     "water_defense": 1,
     "sprite": "https://play.pokemonshowdown.com/sprites/gen5/meltan.png",
-    "displayNumber": "#0808"
+    "displayNumber": "#0808",
+    "names": {
+      "de": "Meltan"
+    }
   },
   {
     "speciesId": "melmetal",
@@ -748801,7 +749968,10 @@ window.POKEDEX_ENTRIES = [
     "stellar_defense": 1,
     "water_defense": 1,
     "sprite": "https://play.pokemonshowdown.com/sprites/gen5/melmetal.png",
-    "displayNumber": "#0809"
+    "displayNumber": "#0809",
+    "names": {
+      "de": "Melmetal"
+    }
   },
   {
     "speciesId": "melmetalgmax",
@@ -750857,7 +752027,10 @@ window.POKEDEX_ENTRIES = [
         "id": "libero",
         "name": "Libero",
         "shortDesc": "This Pokemon's type changes to the type of the move it is using. Once per switch-in.",
-        "desc": "This Pokemon's type changes to match the type of the move it is about to use. This effect comes after all effects that change a move's type. This effect can only happen once per switch-in, and only if this Pokemon is not Terastallized."
+        "desc": "This Pokemon's type changes to match the type of the move it is about to use. This effect comes after all effects that change a move's type. This effect can only happen once per switch-in, and only if this Pokemon is not Terastallized.",
+        "names": {
+          "de": "Libero"
+        }
       }
     ],
     "baseStats": {
@@ -751224,7 +752397,10 @@ window.POKEDEX_ENTRIES = [
         "id": "libero",
         "name": "Libero",
         "shortDesc": "This Pokemon's type changes to the type of the move it is using. Once per switch-in.",
-        "desc": "This Pokemon's type changes to match the type of the move it is about to use. This effect comes after all effects that change a move's type. This effect can only happen once per switch-in, and only if this Pokemon is not Terastallized."
+        "desc": "This Pokemon's type changes to match the type of the move it is about to use. This effect comes after all effects that change a move's type. This effect can only happen once per switch-in, and only if this Pokemon is not Terastallized.",
+        "names": {
+          "de": "Libero"
+        }
       }
     ],
     "baseStats": {
@@ -751589,7 +752765,10 @@ window.POKEDEX_ENTRIES = [
         "id": "libero",
         "name": "Libero",
         "shortDesc": "This Pokemon's type changes to the type of the move it is using. Once per switch-in.",
-        "desc": "This Pokemon's type changes to match the type of the move it is about to use. This effect comes after all effects that change a move's type. This effect can only happen once per switch-in, and only if this Pokemon is not Terastallized."
+        "desc": "This Pokemon's type changes to match the type of the move it is about to use. This effect comes after all effects that change a move's type. This effect can only happen once per switch-in, and only if this Pokemon is not Terastallized.",
+        "names": {
+          "de": "Libero"
+        }
       }
     ],
     "baseStats": {
@@ -752048,7 +753227,10 @@ window.POKEDEX_ENTRIES = [
         "id": "libero",
         "name": "Libero",
         "shortDesc": "This Pokemon's type changes to the type of the move it is using. Once per switch-in.",
-        "desc": "This Pokemon's type changes to match the type of the move it is about to use. This effect comes after all effects that change a move's type. This effect can only happen once per switch-in, and only if this Pokemon is not Terastallized."
+        "desc": "This Pokemon's type changes to match the type of the move it is about to use. This effect comes after all effects that change a move's type. This effect can only happen once per switch-in, and only if this Pokemon is not Terastallized.",
+        "names": {
+          "de": "Libero"
+        }
       }
     ],
     "baseStats": {
@@ -760572,9 +761754,9 @@ window.POKEDEX_ENTRIES = [
     "num": 837,
     "name": "Rolycoly",
     "names": {
-      "de": "Klonkette"
+      "de": "Klonkett"
     },
-    "searchText": "0837 837 rolycoly klonkette rock",
+    "searchText": "0837 837 rolycoly klonkette rock klonkett",
     "types": [
       "Rock"
     ],
@@ -766766,7 +767948,10 @@ window.POKEDEX_ENTRIES = [
         "id": "static",
         "name": "Static",
         "shortDesc": "30% chance a Pokemon making contact with this Pokemon will be paralyzed.",
-        "desc": "30% chance a Pokemon making contact with this Pokemon will be paralyzed."
+        "desc": "30% chance a Pokemon making contact with this Pokemon will be paralyzed.",
+        "names": {
+          "de": "Statik"
+        }
       },
       {
         "slot": "H",
@@ -766941,7 +768126,10 @@ window.POKEDEX_ENTRIES = [
     "stellar_defense": 1,
     "water_defense": 1,
     "sprite": "https://play.pokemonshowdown.com/sprites/gen5/toxel.png",
-    "displayNumber": "#0848"
+    "displayNumber": "#0848",
+    "names": {
+      "de": "Toxel"
+    }
   },
   {
     "speciesId": "toxtricity",
@@ -766967,14 +768155,20 @@ window.POKEDEX_ENTRIES = [
         "id": "punkrock",
         "name": "Punk Rock",
         "shortDesc": "This Pokemon receives 1/2 damage from sound moves. Its own have 1.3x power.",
-        "desc": "This Pokemon's sound-based moves have their power multiplied by 1.3. This Pokemon takes halved damage from sound-based moves."
+        "desc": "This Pokemon's sound-based moves have their power multiplied by 1.3. This Pokemon takes halved damage from sound-based moves.",
+        "names": {
+          "de": "Punk Rock"
+        }
       },
       {
         "slot": "1",
         "id": "plus",
         "name": "Plus",
         "shortDesc": "If an active ally has this Ability or the Minus Ability, this Pokemon's Sp. Atk is 1.5x.",
-        "desc": "If an active ally has this Ability or the Minus Ability, this Pokemon's Special Attack is multiplied by 1.5."
+        "desc": "If an active ally has this Ability or the Minus Ability, this Pokemon's Special Attack is multiplied by 1.5.",
+        "names": {
+          "de": "Plus"
+        }
       },
       {
         "slot": "H",
@@ -767467,14 +768661,20 @@ window.POKEDEX_ENTRIES = [
         "id": "punkrock",
         "name": "Punk Rock",
         "shortDesc": "This Pokemon receives 1/2 damage from sound moves. Its own have 1.3x power.",
-        "desc": "This Pokemon's sound-based moves have their power multiplied by 1.3. This Pokemon takes halved damage from sound-based moves."
+        "desc": "This Pokemon's sound-based moves have their power multiplied by 1.3. This Pokemon takes halved damage from sound-based moves.",
+        "names": {
+          "de": "Punk Rock"
+        }
       },
       {
         "slot": "1",
         "id": "minus",
         "name": "Minus",
         "shortDesc": "If an active ally has this Ability or the Plus Ability, this Pokemon's Sp. Atk is 1.5x.",
-        "desc": "If an active ally has this Ability or the Plus Ability, this Pokemon's Special Attack is multiplied by 1.5."
+        "desc": "If an active ally has this Ability or the Plus Ability, this Pokemon's Special Attack is multiplied by 1.5.",
+        "names": {
+          "de": "Minus"
+        }
       },
       {
         "slot": "H",
@@ -767961,14 +769161,20 @@ window.POKEDEX_ENTRIES = [
         "id": "punkrock",
         "name": "Punk Rock",
         "shortDesc": "This Pokemon receives 1/2 damage from sound moves. Its own have 1.3x power.",
-        "desc": "This Pokemon's sound-based moves have their power multiplied by 1.3. This Pokemon takes halved damage from sound-based moves."
+        "desc": "This Pokemon's sound-based moves have their power multiplied by 1.3. This Pokemon takes halved damage from sound-based moves.",
+        "names": {
+          "de": "Punk Rock"
+        }
       },
       {
         "slot": "1",
         "id": "plus",
         "name": "Plus",
         "shortDesc": "If an active ally has this Ability or the Minus Ability, this Pokemon's Sp. Atk is 1.5x.",
-        "desc": "If an active ally has this Ability or the Minus Ability, this Pokemon's Special Attack is multiplied by 1.5."
+        "desc": "If an active ally has this Ability or the Minus Ability, this Pokemon's Special Attack is multiplied by 1.5.",
+        "names": {
+          "de": "Plus"
+        }
       },
       {
         "slot": "H",
@@ -768456,14 +769662,20 @@ window.POKEDEX_ENTRIES = [
         "id": "punkrock",
         "name": "Punk Rock",
         "shortDesc": "This Pokemon receives 1/2 damage from sound moves. Its own have 1.3x power.",
-        "desc": "This Pokemon's sound-based moves have their power multiplied by 1.3. This Pokemon takes halved damage from sound-based moves."
+        "desc": "This Pokemon's sound-based moves have their power multiplied by 1.3. This Pokemon takes halved damage from sound-based moves.",
+        "names": {
+          "de": "Punk Rock"
+        }
       },
       {
         "slot": "1",
         "id": "minus",
         "name": "Minus",
         "shortDesc": "If an active ally has this Ability or the Plus Ability, this Pokemon's Sp. Atk is 1.5x.",
-        "desc": "If an active ally has this Ability or the Plus Ability, this Pokemon's Special Attack is multiplied by 1.5."
+        "desc": "If an active ally has this Ability or the Plus Ability, this Pokemon's Special Attack is multiplied by 1.5.",
+        "names": {
+          "de": "Minus"
+        }
       },
       {
         "slot": "H",
@@ -774997,7 +776209,7 @@ window.POKEDEX_ENTRIES = [
         "id": "reckless",
         "name": "Reckless",
         "names": {
-          "de": "Atchlos"
+          "de": "Achtlos"
         },
         "shortDesc": "This Pokemon's attacks with recoil or crash damage have 1.2x power; not Struggle.",
         "desc": "This Pokemon's attacks with recoil or crash damage have their power multiplied by 1.2. Does not affect Struggle."
@@ -775017,7 +776229,7 @@ window.POKEDEX_ENTRIES = [
         "id": "defiant",
         "name": "Defiant",
         "names": {
-          "de": "Seigeswille"
+          "de": "Siegeswille"
         },
         "shortDesc": "This Pokemon's Attack is raised by 2 for each of its stats that is lowered by a foe.",
         "desc": "This Pokemon's Attack is raised by 2 stages for each of its stat stages that is lowered by an opposing Pokemon."
@@ -776601,7 +777813,7 @@ window.POKEDEX_ENTRIES = [
         "id": "tangledfeet",
         "name": "Tangled Feet",
         "names": {
-          "de": "Fußangel"
+          "de": "Taumelschritt"
         },
         "shortDesc": "This Pokemon's evasiveness is doubled as long as it is confused.",
         "desc": "This Pokemon's evasiveness is doubled as long as it is confused."
@@ -778426,7 +779638,7 @@ window.POKEDEX_ENTRIES = [
         "id": "defiant",
         "name": "Defiant",
         "names": {
-          "de": "Seigeswille"
+          "de": "Siegeswille"
         },
         "shortDesc": "This Pokemon's Attack is raised by 2 for each of its stats that is lowered by a foe.",
         "desc": "This Pokemon's Attack is raised by 2 stages for each of its stat stages that is lowered by an opposing Pokemon."
@@ -778796,7 +780008,7 @@ window.POKEDEX_ENTRIES = [
         "id": "defiant",
         "name": "Defiant",
         "names": {
-          "de": "Seigeswille"
+          "de": "Siegeswille"
         },
         "shortDesc": "This Pokemon's Attack is raised by 2 for each of its stats that is lowered by a foe.",
         "desc": "This Pokemon's Attack is raised by 2 stages for each of its stat stages that is lowered by an opposing Pokemon."
@@ -779530,7 +780742,7 @@ window.POKEDEX_ENTRIES = [
     "sourceIndex": 1219,
     "num": 872,
     "name": "Snom",
-    "searchText": "0872 872 snom ice bug",
+    "searchText": "0872 872 snom ice bug snomnom",
     "types": [
       "Ice",
       "Bug"
@@ -779718,7 +780930,10 @@ window.POKEDEX_ENTRIES = [
     "stellar_defense": 1,
     "water_defense": 1,
     "sprite": "https://play.pokemonshowdown.com/sprites/gen5/snom.png",
-    "displayNumber": "#0872"
+    "displayNumber": "#0872",
+    "names": {
+      "de": "Snomnom"
+    }
   },
   {
     "speciesId": "frosmoth",
@@ -780820,7 +782035,7 @@ window.POKEDEX_ENTRIES = [
     "sourceIndex": 1223,
     "num": 875,
     "name": "Eiscue-Noice",
-    "searchText": "0875 875 eiscuenoice ice",
+    "searchText": "0875 875 eiscuenoice ice kubuinnoice",
     "types": [
       "Ice"
     ],
@@ -781166,7 +782381,10 @@ window.POKEDEX_ENTRIES = [
     "stellar_defense": 1,
     "water_defense": 1,
     "sprite": "https://play.pokemonshowdown.com/sprites/gen5/eiscue-noice.png",
-    "displayNumber": "#0875"
+    "displayNumber": "#0875",
+    "names": {
+      "de": "Kubuin-Noice"
+    }
   },
   {
     "speciesId": "indeedee",
@@ -781202,7 +782420,10 @@ window.POKEDEX_ENTRIES = [
         "id": "synchronize",
         "name": "Synchronize",
         "shortDesc": "If another Pokemon burns/poisons/paralyzes this Pokemon, it also gets that status.",
-        "desc": "If another Pokemon burns, paralyzes, poisons, or badly poisons this Pokemon, that Pokemon receives the same non-volatile status condition."
+        "desc": "If another Pokemon burns, paralyzes, poisons, or badly poisons this Pokemon, that Pokemon receives the same non-volatile status condition.",
+        "names": {
+          "de": "Synchro"
+        }
       },
       {
         "slot": "H",
@@ -781583,7 +782804,7 @@ window.POKEDEX_ENTRIES = [
         "id": "owntempo",
         "name": "Own Tempo",
         "names": {
-          "de": "Tempomacher"
+          "de": "Gleichmut"
         },
         "shortDesc": "This Pokemon cannot be confused. Immune to Intimidate.",
         "desc": "This Pokemon cannot be confused. Gaining this Ability while confused cures it. This Pokemon is immune to the effect of the Intimidate Ability."
@@ -781593,7 +782814,10 @@ window.POKEDEX_ENTRIES = [
         "id": "synchronize",
         "name": "Synchronize",
         "shortDesc": "If another Pokemon burns/poisons/paralyzes this Pokemon, it also gets that status.",
-        "desc": "If another Pokemon burns, paralyzes, poisons, or badly poisons this Pokemon, that Pokemon receives the same non-volatile status condition."
+        "desc": "If another Pokemon burns, paralyzes, poisons, or badly poisons this Pokemon, that Pokemon receives the same non-volatile status condition.",
+        "names": {
+          "de": "Synchro"
+        }
       },
       {
         "slot": "H",
@@ -782400,7 +783624,10 @@ window.POKEDEX_ENTRIES = [
     "stellar_defense": 1,
     "water_defense": 1,
     "sprite": "https://play.pokemonshowdown.com/sprites/gen5/morpeko.png",
-    "displayNumber": "#0877"
+    "displayNumber": "#0877",
+    "names": {
+      "de": "Morpeko"
+    }
   },
   {
     "speciesId": "morpekohangry",
@@ -782848,7 +784075,10 @@ window.POKEDEX_ENTRIES = [
     "stellar_defense": 1,
     "water_defense": 1,
     "sprite": "https://play.pokemonshowdown.com/sprites/gen5/morpeko-hangry.png",
-    "displayNumber": "#0877"
+    "displayNumber": "#0877",
+    "names": {
+      "de": "Morpeko-Hangry"
+    }
   },
   {
     "speciesId": "cufant",
@@ -784450,7 +785680,10 @@ window.POKEDEX_ENTRIES = [
         "id": "static",
         "name": "Static",
         "shortDesc": "30% chance a Pokemon making contact with this Pokemon will be paralyzed.",
-        "desc": "30% chance a Pokemon making contact with this Pokemon will be paralyzed."
+        "desc": "30% chance a Pokemon making contact with this Pokemon will be paralyzed.",
+        "names": {
+          "de": "Statik"
+        }
       },
       {
         "slot": "H",
@@ -785784,7 +787017,10 @@ window.POKEDEX_ENTRIES = [
     "stellar_defense": 1,
     "water_defense": 0.5,
     "sprite": "https://play.pokemonshowdown.com/sprites/gen5/duraludon.png",
-    "displayNumber": "#0884"
+    "displayNumber": "#0884",
+    "names": {
+      "de": "Duraludon"
+    }
   },
   {
     "speciesId": "duraludongmax",
@@ -787714,7 +788950,10 @@ window.POKEDEX_ENTRIES = [
     "stellar_defense": 1,
     "water_defense": 1,
     "sprite": "https://play.pokemonshowdown.com/sprites/gen5/zacian.png",
-    "displayNumber": "#0888"
+    "displayNumber": "#0888",
+    "names": {
+      "de": "Zacian"
+    }
   },
   {
     "speciesId": "zaciancrowned",
@@ -788229,7 +789468,10 @@ window.POKEDEX_ENTRIES = [
     "stellar_defense": 1,
     "water_defense": 1,
     "sprite": "https://play.pokemonshowdown.com/sprites/gen5/zamazenta.png",
-    "displayNumber": "#0889"
+    "displayNumber": "#0889",
+    "names": {
+      "de": "Zamazenta"
+    }
   },
   {
     "speciesId": "zamazentacrowned",
@@ -791735,7 +792977,10 @@ window.POKEDEX_ENTRIES = [
     "stellar_defense": 1,
     "water_defense": 0.5,
     "sprite": "https://play.pokemonshowdown.com/sprites/gen5/zarude.png",
-    "displayNumber": "#0893"
+    "displayNumber": "#0893",
+    "names": {
+      "de": "Zarude"
+    }
   },
   {
     "speciesId": "zarudedada",
@@ -792220,7 +793465,10 @@ window.POKEDEX_ENTRIES = [
     "stellar_defense": 1,
     "water_defense": 0.5,
     "sprite": "https://play.pokemonshowdown.com/sprites/gen5/zarude-dada.png",
-    "displayNumber": "#0893"
+    "displayNumber": "#0893",
+    "names": {
+      "de": "Zarude-Dada"
+    }
   },
   {
     "speciesId": "regieleki",
@@ -792240,7 +793488,10 @@ window.POKEDEX_ENTRIES = [
         "id": "transistor",
         "name": "Transistor",
         "shortDesc": "This Pokemon's offensive stat is multiplied by 1.3 while using an Electric-type attack.",
-        "desc": "This Pokemon's offensive stat is multiplied by 1.3 while using an Electric-type attack."
+        "desc": "This Pokemon's offensive stat is multiplied by 1.3 while using an Electric-type attack.",
+        "names": {
+          "de": "Transistor"
+        }
       }
     ],
     "baseStats": {
@@ -792535,7 +793786,10 @@ window.POKEDEX_ENTRIES = [
     "stellar_defense": 1,
     "water_defense": 1,
     "sprite": "https://play.pokemonshowdown.com/sprites/gen5/regieleki.png",
-    "displayNumber": "#0894"
+    "displayNumber": "#0894",
+    "names": {
+      "de": "Regieleki"
+    }
   },
   {
     "speciesId": "regidrago",
@@ -792839,7 +794093,10 @@ window.POKEDEX_ENTRIES = [
     "stellar_defense": 1,
     "water_defense": 0.5,
     "sprite": "https://play.pokemonshowdown.com/sprites/gen5/regidrago.png",
-    "displayNumber": "#0895"
+    "displayNumber": "#0895",
+    "names": {
+      "de": "Regidrago"
+    }
   },
   {
     "speciesId": "glastrier",
@@ -794016,7 +795273,10 @@ window.POKEDEX_ENTRIES = [
         "id": "asoneglastrier",
         "name": "As One (Glastrier)",
         "shortDesc": "Combination of the Unnerve and Chilling Neigh Abilities.",
-        "desc": "Combination of the Unnerve and Chilling Neigh Abilities."
+        "desc": "Combination of the Unnerve and Chilling Neigh Abilities.",
+        "names": {
+          "de": "Reitgespann"
+        }
       }
     ],
     "baseStats": {
@@ -794648,7 +795908,10 @@ window.POKEDEX_ENTRIES = [
         "id": "asonespectrier",
         "name": "As One (Spectrier)",
         "shortDesc": "Combination of the Unnerve and Grim Neigh Abilities.",
-        "desc": "Combination of the Unnerve and Grim Neigh Abilities."
+        "desc": "Combination of the Unnerve and Grim Neigh Abilities.",
+        "names": {
+          "de": "Reitgespann"
+        }
       }
     ],
     "baseStats": {
@@ -796350,7 +797613,10 @@ window.POKEDEX_ENTRIES = [
     "stellar_defense": 1,
     "water_defense": 2,
     "sprite": "https://play.pokemonshowdown.com/sprites/gen5/ursaluna.png",
-    "displayNumber": "#0901"
+    "displayNumber": "#0901",
+    "names": {
+      "de": "Ursaluna"
+    }
   },
   {
     "speciesId": "ursalunabloodmoon",
@@ -798518,7 +799784,7 @@ window.POKEDEX_ENTRIES = [
         "id": "overcoat",
         "name": "Overcoat",
         "names": {
-          "de": "Wetterfest"
+          "de": "Partikelschutz"
         },
         "shortDesc": "This Pokemon is immune to powder moves, Sandstorm damage, and Effect Spore.",
         "desc": "This Pokemon is immune to powder moves, damage from Sandstorm, and the effects of Rage Powder and the Effect Spore Ability."
@@ -802559,7 +803825,10 @@ window.POKEDEX_ENTRIES = [
         "id": "insomnia",
         "name": "Insomnia",
         "shortDesc": "This Pokemon cannot fall asleep. Gaining this Ability while asleep cures it.",
-        "desc": "This Pokemon cannot fall asleep. Gaining this Ability while asleep cures it."
+        "desc": "This Pokemon cannot fall asleep. Gaining this Ability while asleep cures it.",
+        "names": {
+          "de": "Insomnia"
+        }
       },
       {
         "slot": "H",
@@ -802836,7 +804105,10 @@ window.POKEDEX_ENTRIES = [
         "id": "insomnia",
         "name": "Insomnia",
         "shortDesc": "This Pokemon cannot fall asleep. Gaining this Ability while asleep cures it.",
-        "desc": "This Pokemon cannot fall asleep. Gaining this Ability while asleep cures it."
+        "desc": "This Pokemon cannot fall asleep. Gaining this Ability while asleep cures it.",
+        "names": {
+          "de": "Insomnia"
+        }
       },
       {
         "slot": "H",
@@ -803167,7 +804439,7 @@ window.POKEDEX_ENTRIES = [
         "id": "tintedlens",
         "name": "Tinted Lens",
         "names": {
-          "de": "Finalschlag"
+          "de": "Aufwertung"
         },
         "shortDesc": "This Pokemon's attacks that are not very effective on a target deal double damage.",
         "desc": "This Pokemon's attacks that are not very effective on a target deal double damage."
@@ -803395,7 +804667,7 @@ window.POKEDEX_ENTRIES = [
         "id": "tintedlens",
         "name": "Tinted Lens",
         "names": {
-          "de": "Finalschlag"
+          "de": "Aufwertung"
         },
         "shortDesc": "This Pokemon's attacks that are not very effective on a target deal double damage.",
         "desc": "This Pokemon's attacks that are not very effective on a target deal double damage."
@@ -803690,7 +804962,10 @@ window.POKEDEX_ENTRIES = [
         "id": "static",
         "name": "Static",
         "shortDesc": "30% chance a Pokemon making contact with this Pokemon will be paralyzed.",
-        "desc": "30% chance a Pokemon making contact with this Pokemon will be paralyzed."
+        "desc": "30% chance a Pokemon making contact with this Pokemon will be paralyzed.",
+        "names": {
+          "de": "Statik"
+        }
       },
       {
         "slot": "1",
@@ -804318,7 +805593,7 @@ window.POKEDEX_ENTRIES = [
     "sourceIndex": 1288,
     "num": 923,
     "name": "Pawmot",
-    "searchText": "0923 923 pawmot electric fighting",
+    "searchText": "0923 923 pawmot electric fighting pamomamo",
     "types": [
       "Electric",
       "Fighting"
@@ -804718,7 +805993,10 @@ window.POKEDEX_ENTRIES = [
     "stellar_defense": 1,
     "water_defense": 1,
     "sprite": "https://play.pokemonshowdown.com/sprites/gen5/pawmot.png",
-    "displayNumber": "#0923"
+    "displayNumber": "#0923",
+    "names": {
+      "de": "Pamomamo"
+    }
   },
   {
     "speciesId": "tandemaus",
@@ -804763,7 +806041,7 @@ window.POKEDEX_ENTRIES = [
         "id": "owntempo",
         "name": "Own Tempo",
         "names": {
-          "de": "Tempomacher"
+          "de": "Gleichmut"
         },
         "shortDesc": "This Pokemon cannot be confused. Immune to Intimidate.",
         "desc": "This Pokemon cannot be confused. Gaining this Ability while confused cures it. This Pokemon is immune to the effect of the Intimidate Ability."
@@ -805373,7 +806651,7 @@ window.POKEDEX_ENTRIES = [
     "sourceIndex": 1291,
     "num": 925,
     "name": "Maushold-Four",
-    "searchText": "0925 925 mausholdfour normal",
+    "searchText": "0925 925 mausholdfour normal famiepsfour",
     "types": [
       "Normal"
     ],
@@ -805681,7 +806959,10 @@ window.POKEDEX_ENTRIES = [
     "stellar_defense": 1,
     "water_defense": 1,
     "sprite": "https://play.pokemonshowdown.com/sprites/gen5/maushold-four.png",
-    "displayNumber": "#0925"
+    "displayNumber": "#0925",
+    "names": {
+      "de": "Famieps-Four"
+    }
   },
   {
     "speciesId": "fidough",
@@ -805705,7 +806986,7 @@ window.POKEDEX_ENTRIES = [
         "id": "owntempo",
         "name": "Own Tempo",
         "names": {
-          "de": "Tempomacher"
+          "de": "Gleichmut"
         },
         "shortDesc": "This Pokemon cannot be confused. Immune to Intimidate.",
         "desc": "This Pokemon cannot be confused. Gaining this Ability while confused cures it. This Pokemon is immune to the effect of the Intimidate Ability."
@@ -810151,7 +811432,7 @@ window.POKEDEX_ENTRIES = [
         "id": "owntempo",
         "name": "Own Tempo",
         "names": {
-          "de": "Tempomacher"
+          "de": "Gleichmut"
         },
         "shortDesc": "This Pokemon cannot be confused. Immune to Intimidate.",
         "desc": "This Pokemon cannot be confused. Gaining this Ability while confused cures it. This Pokemon is immune to the effect of the Intimidate Ability."
@@ -810161,7 +811442,10 @@ window.POKEDEX_ENTRIES = [
         "id": "static",
         "name": "Static",
         "shortDesc": "30% chance a Pokemon making contact with this Pokemon will be paralyzed.",
-        "desc": "30% chance a Pokemon making contact with this Pokemon will be paralyzed."
+        "desc": "30% chance a Pokemon making contact with this Pokemon will be paralyzed.",
+        "names": {
+          "de": "Statik"
+        }
       },
       {
         "slot": "H",
@@ -810433,7 +811717,10 @@ window.POKEDEX_ENTRIES = [
         "id": "static",
         "name": "Static",
         "shortDesc": "30% chance a Pokemon making contact with this Pokemon will be paralyzed.",
-        "desc": "30% chance a Pokemon making contact with this Pokemon will be paralyzed."
+        "desc": "30% chance a Pokemon making contact with this Pokemon will be paralyzed.",
+        "names": {
+          "de": "Statik"
+        }
       },
       {
         "slot": "H",
@@ -814153,14 +815440,20 @@ window.POKEDEX_ENTRIES = [
         "id": "chlorophyll",
         "name": "Chlorophyll",
         "shortDesc": "If Sunny Day is active, this Pokemon's Speed is doubled.",
-        "desc": "If Sunny Day is active, this Pokemon's Speed is doubled. This effect is prevented if this Pokemon is holding a Utility Umbrella."
+        "desc": "If Sunny Day is active, this Pokemon's Speed is doubled. This effect is prevented if this Pokemon is holding a Utility Umbrella.",
+        "names": {
+          "de": "Chlorophyll"
+        }
       },
       {
         "slot": "1",
         "id": "insomnia",
         "name": "Insomnia",
         "shortDesc": "This Pokemon cannot fall asleep. Gaining this Ability while asleep cures it.",
-        "desc": "This Pokemon cannot fall asleep. Gaining this Ability while asleep cures it."
+        "desc": "This Pokemon cannot fall asleep. Gaining this Ability while asleep cures it.",
+        "names": {
+          "de": "Insomnia"
+        }
       },
       {
         "slot": "H",
@@ -814419,14 +815712,20 @@ window.POKEDEX_ENTRIES = [
         "id": "chlorophyll",
         "name": "Chlorophyll",
         "shortDesc": "If Sunny Day is active, this Pokemon's Speed is doubled.",
-        "desc": "If Sunny Day is active, this Pokemon's Speed is doubled. This effect is prevented if this Pokemon is holding a Utility Umbrella."
+        "desc": "If Sunny Day is active, this Pokemon's Speed is doubled. This effect is prevented if this Pokemon is holding a Utility Umbrella.",
+        "names": {
+          "de": "Chlorophyll"
+        }
       },
       {
         "slot": "1",
         "id": "insomnia",
         "name": "Insomnia",
         "shortDesc": "This Pokemon cannot fall asleep. Gaining this Ability while asleep cures it.",
-        "desc": "This Pokemon cannot fall asleep. Gaining this Ability while asleep cures it."
+        "desc": "This Pokemon cannot fall asleep. Gaining this Ability while asleep cures it.",
+        "names": {
+          "de": "Insomnia"
+        }
       },
       {
         "slot": "H",
@@ -815242,7 +816541,10 @@ window.POKEDEX_ENTRIES = [
         "id": "synchronize",
         "name": "Synchronize",
         "shortDesc": "If another Pokemon burns/poisons/paralyzes this Pokemon, it also gets that status.",
-        "desc": "If another Pokemon burns, paralyzes, poisons, or badly poisons this Pokemon, that Pokemon receives the same non-volatile status condition."
+        "desc": "If another Pokemon burns, paralyzes, poisons, or badly poisons this Pokemon, that Pokemon receives the same non-volatile status condition.",
+        "names": {
+          "de": "Synchro"
+        }
       },
       {
         "slot": "H",
@@ -816294,7 +817596,7 @@ window.POKEDEX_ENTRIES = [
         "id": "owntempo",
         "name": "Own Tempo",
         "names": {
-          "de": "Tempomacher"
+          "de": "Gleichmut"
         },
         "shortDesc": "This Pokemon cannot be confused. Immune to Intimidate.",
         "desc": "This Pokemon cannot be confused. Gaining this Ability while confused cures it. This Pokemon is immune to the effect of the Intimidate Ability."
@@ -816568,7 +817870,7 @@ window.POKEDEX_ENTRIES = [
     "sourceIndex": 1328,
     "num": 958,
     "name": "Tinkatuff",
-    "searchText": "0958 958 tinkatuff fairy steel",
+    "searchText": "0958 958 tinkatuff fairy steel tafforgita",
     "types": [
       "Fairy",
       "Steel"
@@ -816594,7 +817896,7 @@ window.POKEDEX_ENTRIES = [
         "id": "owntempo",
         "name": "Own Tempo",
         "names": {
-          "de": "Tempomacher"
+          "de": "Gleichmut"
         },
         "shortDesc": "This Pokemon cannot be confused. Immune to Intimidate.",
         "desc": "This Pokemon cannot be confused. Gaining this Ability while confused cures it. This Pokemon is immune to the effect of the Intimidate Ability."
@@ -816852,14 +818154,17 @@ window.POKEDEX_ENTRIES = [
     "stellar_defense": 1,
     "water_defense": 1,
     "sprite": "https://play.pokemonshowdown.com/sprites/gen5/tinkatuff.png",
-    "displayNumber": "#0958"
+    "displayNumber": "#0958",
+    "names": {
+      "de": "Tafforgita"
+    }
   },
   {
     "speciesId": "tinkaton",
     "sourceIndex": 1329,
     "num": 959,
     "name": "Tinkaton",
-    "searchText": "0959 959 tinkaton fairy steel",
+    "searchText": "0959 959 tinkaton fairy steel granforgita",
     "types": [
       "Fairy",
       "Steel"
@@ -816885,7 +818190,7 @@ window.POKEDEX_ENTRIES = [
         "id": "owntempo",
         "name": "Own Tempo",
         "names": {
-          "de": "Tempomacher"
+          "de": "Gleichmut"
         },
         "shortDesc": "This Pokemon cannot be confused. Immune to Intimidate.",
         "desc": "This Pokemon cannot be confused. Gaining this Ability while confused cures it. This Pokemon is immune to the effect of the Intimidate Ability."
@@ -817162,7 +818467,10 @@ window.POKEDEX_ENTRIES = [
     "stellar_defense": 1,
     "water_defense": 1,
     "sprite": "https://play.pokemonshowdown.com/sprites/gen5/tinkaton.png",
-    "displayNumber": "#0959"
+    "displayNumber": "#0959",
+    "names": {
+      "de": "Granforgita"
+    }
   },
   {
     "speciesId": "wiglett",
@@ -819070,7 +820378,7 @@ window.POKEDEX_ENTRIES = [
         "id": "overcoat",
         "name": "Overcoat",
         "names": {
-          "de": "Wetterfest"
+          "de": "Partikelschutz"
         },
         "shortDesc": "This Pokemon is immune to powder moves, Sandstorm damage, and Effect Spore.",
         "desc": "This Pokemon is immune to powder moves, damage from Sandstorm, and the effects of Rage Powder and the Effect Spore Ability."
@@ -819366,7 +820674,7 @@ window.POKEDEX_ENTRIES = [
         "id": "overcoat",
         "name": "Overcoat",
         "names": {
-          "de": "Wetterfest"
+          "de": "Partikelschutz"
         },
         "shortDesc": "This Pokemon is immune to powder moves, Sandstorm damage, and Effect Spore.",
         "desc": "This Pokemon is immune to powder moves, damage from Sandstorm, and the effects of Rage Powder and the Effect Spore Ability."
@@ -819376,7 +820684,10 @@ window.POKEDEX_ENTRIES = [
         "id": "filter",
         "name": "Filter",
         "shortDesc": "This Pokemon receives 3/4 damage from supereffective attacks.",
-        "desc": "This Pokemon receives 3/4 damage from supereffective attacks."
+        "desc": "This Pokemon receives 3/4 damage from supereffective attacks.",
+        "names": {
+          "de": "Filter"
+        }
       }
     ],
     "baseStats": {
@@ -821816,7 +823127,7 @@ window.POKEDEX_ENTRIES = [
         "id": "tangledfeet",
         "name": "Tangled Feet",
         "names": {
-          "de": "Fußangel"
+          "de": "Taumelschritt"
         },
         "shortDesc": "This Pokemon's evasiveness is doubled as long as it is confused.",
         "desc": "This Pokemon's evasiveness is doubled as long as it is confused."
@@ -824921,7 +826232,7 @@ window.POKEDEX_ENTRIES = [
         "id": "defiant",
         "name": "Defiant",
         "names": {
-          "de": "Seigeswille"
+          "de": "Siegeswille"
         },
         "shortDesc": "This Pokemon's Attack is raised by 2 for each of its stats that is lowered by a foe.",
         "desc": "This Pokemon's Attack is raised by 2 stages for each of its stat stages that is lowered by an opposing Pokemon."
@@ -826077,7 +827388,10 @@ window.POKEDEX_ENTRIES = [
     "stellar_defense": 1,
     "water_defense": 1,
     "sprite": "https://play.pokemonshowdown.com/sprites/gen5/farigiraf.png",
-    "displayNumber": "#0981"
+    "displayNumber": "#0981",
+    "names": {
+      "de": "Farigiraf"
+    }
   },
   {
     "speciesId": "dudunsparce",
@@ -827042,7 +828356,7 @@ window.POKEDEX_ENTRIES = [
         "id": "defiant",
         "name": "Defiant",
         "names": {
-          "de": "Seigeswille"
+          "de": "Siegeswille"
         },
         "shortDesc": "This Pokemon's Attack is raised by 2 for each of its stats that is lowered by a foe.",
         "desc": "This Pokemon's Attack is raised by 2 stages for each of its stat stages that is lowered by an opposing Pokemon."
@@ -833157,7 +834471,7 @@ window.POKEDEX_ENTRIES = [
     "sourceIndex": 1381,
     "num": 1001,
     "name": "Wo-Chien",
-    "searchText": "1001 1001 wochien dark grass",
+    "searchText": "1001 1001 wochien dark grass chongjian",
     "types": [
       "Dark",
       "Grass"
@@ -833460,14 +834774,17 @@ window.POKEDEX_ENTRIES = [
     "stellar_defense": 1,
     "water_defense": 0.5,
     "sprite": "https://play.pokemonshowdown.com/sprites/gen5/wochien.png",
-    "displayNumber": "#1001"
+    "displayNumber": "#1001",
+    "names": {
+      "de": "Chongjian"
+    }
   },
   {
     "speciesId": "chienpao",
     "sourceIndex": 1382,
     "num": 1002,
     "name": "Chien-Pao",
-    "searchText": "1002 1002 chienpao dark ice",
+    "searchText": "1002 1002 chienpao dark ice baojian",
     "types": [
       "Dark",
       "Ice"
@@ -833741,14 +835058,17 @@ window.POKEDEX_ENTRIES = [
     "stellar_defense": 1,
     "water_defense": 1,
     "sprite": "https://play.pokemonshowdown.com/sprites/gen5/chienpao.png",
-    "displayNumber": "#1002"
+    "displayNumber": "#1002",
+    "names": {
+      "de": "Baojian"
+    }
   },
   {
     "speciesId": "tinglu",
     "sourceIndex": 1383,
     "num": 1003,
     "name": "Ting-Lu",
-    "searchText": "1003 1003 tinglu dark ground",
+    "searchText": "1003 1003 tinglu dark ground dinglu",
     "types": [
       "Dark",
       "Ground"
@@ -834030,14 +835350,17 @@ window.POKEDEX_ENTRIES = [
     "stellar_defense": 1,
     "water_defense": 2,
     "sprite": "https://play.pokemonshowdown.com/sprites/gen5/tinglu.png",
-    "displayNumber": "#1003"
+    "displayNumber": "#1003",
+    "names": {
+      "de": "Dinglu"
+    }
   },
   {
     "speciesId": "chiyu",
     "sourceIndex": 1384,
     "num": 1004,
     "name": "Chi-Yu",
-    "searchText": "1004 1004 chiyu dark fire",
+    "searchText": "1004 1004 chiyu dark fire yuyu",
     "types": [
       "Dark",
       "Fire"
@@ -834314,7 +835637,10 @@ window.POKEDEX_ENTRIES = [
     "stellar_defense": 1,
     "water_defense": 2,
     "sprite": "https://play.pokemonshowdown.com/sprites/gen5/chiyu.png",
-    "displayNumber": "#1004"
+    "displayNumber": "#1004",
+    "names": {
+      "de": "Yuyu"
+    }
   },
   {
     "speciesId": "roaringmoon",
@@ -835535,7 +836861,10 @@ window.POKEDEX_ENTRIES = [
     "stellar_defense": 1,
     "water_defense": 0.5,
     "sprite": "https://play.pokemonshowdown.com/sprites/gen5/koraidon.png",
-    "displayNumber": "#1007"
+    "displayNumber": "#1007",
+    "names": {
+      "de": "Koraidon"
+    }
   },
   {
     "speciesId": "miraidon",
@@ -835871,7 +837200,10 @@ window.POKEDEX_ENTRIES = [
     "stellar_defense": 1,
     "water_defense": 0.5,
     "sprite": "https://play.pokemonshowdown.com/sprites/gen5/miraidon.png",
-    "displayNumber": "#1008"
+    "displayNumber": "#1008",
+    "names": {
+      "de": "Miraidon"
+    }
   },
   {
     "speciesId": "walkingwake",
@@ -836563,7 +837895,7 @@ window.POKEDEX_ENTRIES = [
         "id": "stickyhold",
         "name": "Sticky Hold",
         "names": {
-          "de": "Wertehalter"
+          "de": "Klebekörper"
         },
         "shortDesc": "This Pokemon cannot lose its held item due to another Pokemon's Ability or attack.",
         "desc": "This Pokemon cannot lose its held item due to another Pokemon's Ability or attack, unless the attack knocks out this Pokemon. A Sticky Barb will be transferred to other Pokemon regardless of this Ability."
@@ -836822,7 +838154,7 @@ window.POKEDEX_ENTRIES = [
         "id": "hospitality",
         "name": "Hospitality",
         "names": {
-          "de": "Gastlichkei"
+          "de": "Gastlichkeit"
         },
         "shortDesc": "On switch-in, this Pokemon restores 1/4 of its ally's maximum HP, rounded down.",
         "desc": "On switch-in, this Pokemon restores 1/4 of its ally's maximum HP, rounded down."
@@ -837085,7 +838417,7 @@ window.POKEDEX_ENTRIES = [
         "id": "hospitality",
         "name": "Hospitality",
         "names": {
-          "de": "Gastlichkei"
+          "de": "Gastlichkeit"
         },
         "shortDesc": "On switch-in, this Pokemon restores 1/4 of its ally's maximum HP, rounded down.",
         "desc": "On switch-in, this Pokemon restores 1/4 of its ally's maximum HP, rounded down."
@@ -837343,7 +838675,7 @@ window.POKEDEX_ENTRIES = [
         "id": "hospitality",
         "name": "Hospitality",
         "names": {
-          "de": "Gastlichkei"
+          "de": "Gastlichkeit"
         },
         "shortDesc": "On switch-in, this Pokemon restores 1/4 of its ally's maximum HP, rounded down.",
         "desc": "On switch-in, this Pokemon restores 1/4 of its ally's maximum HP, rounded down."
@@ -837615,7 +838947,7 @@ window.POKEDEX_ENTRIES = [
         "id": "hospitality",
         "name": "Hospitality",
         "names": {
-          "de": "Gastlichkei"
+          "de": "Gastlichkeit"
         },
         "shortDesc": "On switch-in, this Pokemon restores 1/4 of its ally's maximum HP, rounded down.",
         "desc": "On switch-in, this Pokemon restores 1/4 of its ally's maximum HP, rounded down."
@@ -838949,7 +840281,7 @@ window.POKEDEX_ENTRIES = [
         "id": "defiant",
         "name": "Defiant",
         "names": {
-          "de": "Seigeswille"
+          "de": "Siegeswille"
         },
         "shortDesc": "This Pokemon's Attack is raised by 2 for each of its stats that is lowered by a foe.",
         "desc": "This Pokemon's Attack is raised by 2 stages for each of its stat stages that is lowered by an opposing Pokemon."
@@ -839291,7 +840623,10 @@ window.POKEDEX_ENTRIES = [
     "stellar_defense": 1,
     "water_defense": 0.5,
     "sprite": "https://play.pokemonshowdown.com/sprites/gen5/ogerpon.png",
-    "displayNumber": "#1017"
+    "displayNumber": "#1017",
+    "names": {
+      "de": "Ogerpon"
+    }
   },
   {
     "speciesId": "ogerponwellspring",
@@ -840352,7 +841687,10 @@ window.POKEDEX_ENTRIES = [
         "id": "embodyaspectteal",
         "name": "Embody Aspect (Teal)",
         "shortDesc": "On switch-in, this Pokemon's Speed is raised by 1 stage.",
-        "desc": "On switch-in, this Pokemon's Speed is raised by 1 stage."
+        "desc": "On switch-in, this Pokemon's Speed is raised by 1 stage.",
+        "names": {
+          "de": "Erinnerungskraft"
+        }
       }
     ],
     "baseStats": {
@@ -840672,7 +842010,10 @@ window.POKEDEX_ENTRIES = [
     "stellar_defense": 1,
     "water_defense": 0.5,
     "sprite": "https://play.pokemonshowdown.com/sprites/gen5/ogerpon-tealtera.png",
-    "displayNumber": "#1017"
+    "displayNumber": "#1017",
+    "names": {
+      "de": "Ogerpon-Teal-Tera"
+    }
   },
   {
     "speciesId": "ogerponwellspringtera",
@@ -840696,7 +842037,10 @@ window.POKEDEX_ENTRIES = [
         "id": "embodyaspectwellspring",
         "name": "Embody Aspect (Wellspring)",
         "shortDesc": "On switch-in, this Pokemon's Special Defense is raised by 1 stage.",
-        "desc": "On switch-in, this Pokemon's Special Defense is raised by 1 stage."
+        "desc": "On switch-in, this Pokemon's Special Defense is raised by 1 stage.",
+        "names": {
+          "de": "Erinnerungskraft"
+        }
       }
     ],
     "baseStats": {
@@ -841040,7 +842384,10 @@ window.POKEDEX_ENTRIES = [
         "id": "embodyaspecthearthflame",
         "name": "Embody Aspect (Hearthflame)",
         "shortDesc": "On switch-in, this Pokemon's Attack is raised by 1 stage.",
-        "desc": "On switch-in, this Pokemon's Attack is raised by 1 stage."
+        "desc": "On switch-in, this Pokemon's Attack is raised by 1 stage.",
+        "names": {
+          "de": "Erinnerungskraft"
+        }
       }
     ],
     "baseStats": {
@@ -841384,7 +842731,10 @@ window.POKEDEX_ENTRIES = [
         "id": "embodyaspectcornerstone",
         "name": "Embody Aspect (Cornerstone)",
         "shortDesc": "On switch-in, this Pokemon's Defense is raised by 1 stage.",
-        "desc": "On switch-in, this Pokemon's Defense is raised by 1 stage."
+        "desc": "On switch-in, this Pokemon's Defense is raised by 1 stage.",
+        "names": {
+          "de": "Erinnerungskraft"
+        }
       }
     ],
     "baseStats": {
@@ -842093,7 +843443,7 @@ window.POKEDEX_ENTRIES = [
         "id": "stickyhold",
         "name": "Sticky Hold",
         "names": {
-          "de": "Wertehalter"
+          "de": "Klebekörper"
         },
         "shortDesc": "This Pokemon cannot lose its held item due to another Pokemon's Ability or attack.",
         "desc": "This Pokemon cannot lose its held item due to another Pokemon's Ability or attack, unless the attack knocks out this Pokemon. A Sticky Barb will be transferred to other Pokemon regardless of this Ability."
@@ -843994,7 +845344,10 @@ window.POKEDEX_ENTRIES = [
     "stellar_defense": 1,
     "water_defense": 1,
     "sprite": "https://play.pokemonshowdown.com/sprites/gen5/terapagos.png",
-    "displayNumber": "#1024"
+    "displayNumber": "#1024",
+    "names": {
+      "de": "Terapagos"
+    }
   },
   {
     "speciesId": "terapagosterastal",
@@ -844330,7 +845683,10 @@ window.POKEDEX_ENTRIES = [
     "stellar_defense": 1,
     "water_defense": 1,
     "sprite": "https://play.pokemonshowdown.com/sprites/gen5/terapagos-terastal.png",
-    "displayNumber": "#1024"
+    "displayNumber": "#1024",
+    "names": {
+      "de": "Terapagos-Terastal"
+    }
   },
   {
     "speciesId": "terapagosstellar",
@@ -844666,7 +846022,10 @@ window.POKEDEX_ENTRIES = [
     "stellar_defense": 1,
     "water_defense": 1,
     "sprite": "https://play.pokemonshowdown.com/sprites/gen5/terapagos-stellar.png",
-    "displayNumber": "#1024"
+    "displayNumber": "#1024",
+    "names": {
+      "de": "Terapagos-Stellar"
+    }
   },
   {
     "speciesId": "pecharunt",
@@ -844934,7 +846293,10 @@ window.POKEDEX_ENTRIES = [
         "id": "teravolt",
         "name": "Teravolt",
         "shortDesc": "This Pokemon's moves and their effects ignore the Abilities of other Pokemon.",
-        "desc": "This Pokemon's moves and their effects ignore certain Abilities of other Pokemon. The Abilities that can be negated are Armor Tail, Aroma Veil, Aura Break, Battle Armor, Big Pecks, Bulletproof, Clear Body, Contrary, Damp, Dazzling, Disguise, Dry Skin, Earth Eater, Filter, Flash Fire, Flower Gift, Flower Veil, Fluffy, Friend Guard, Fur Coat, Good as Gold, Grass Pelt, Guard Dog, Heatproof, Heavy Metal, Hyper Cutter, Ice Face, Ice Scales, Illuminate, Immunity, Inner Focus, Insomnia, Keen Eye, Leaf Guard, Levitate, Light Metal, Lightning Rod, Limber, Magic Bounce, Magma Armor, Marvel Scale, Mind's Eye, Mirror Armor, Motor Drive, Multiscale, Oblivious, Overcoat, Own Tempo, Pastel Veil, Punk Rock, Purifying Salt, Queenly Majesty, Sand Veil, Sap Sipper, Shell Armor, Shield Dust, Simple, Snow Cloak, Solid Rock, Soundproof, Sticky Hold, Storm Drain, Sturdy, Suction Cups, Sweet Veil, Tangled Feet, Telepathy, Tera Shell, Thermal Exchange, Thick Fat, Unaware, Vital Spirit, Volt Absorb, Water Absorb, Water Bubble, Water Veil, Well-Baked Body, White Smoke, Wind Rider, Wonder Guard, and Wonder Skin. This affects every other Pokemon on the field, whether or not it is a target of this Pokemon's move, and whether or not their Ability is beneficial to this Pokemon."
+        "desc": "This Pokemon's moves and their effects ignore certain Abilities of other Pokemon. The Abilities that can be negated are Armor Tail, Aroma Veil, Aura Break, Battle Armor, Big Pecks, Bulletproof, Clear Body, Contrary, Damp, Dazzling, Disguise, Dry Skin, Earth Eater, Filter, Flash Fire, Flower Gift, Flower Veil, Fluffy, Friend Guard, Fur Coat, Good as Gold, Grass Pelt, Guard Dog, Heatproof, Heavy Metal, Hyper Cutter, Ice Face, Ice Scales, Illuminate, Immunity, Inner Focus, Insomnia, Keen Eye, Leaf Guard, Levitate, Light Metal, Lightning Rod, Limber, Magic Bounce, Magma Armor, Marvel Scale, Mind's Eye, Mirror Armor, Motor Drive, Multiscale, Oblivious, Overcoat, Own Tempo, Pastel Veil, Punk Rock, Purifying Salt, Queenly Majesty, Sand Veil, Sap Sipper, Shell Armor, Shield Dust, Simple, Snow Cloak, Solid Rock, Soundproof, Sticky Hold, Storm Drain, Sturdy, Suction Cups, Sweet Veil, Tangled Feet, Telepathy, Tera Shell, Thermal Exchange, Thick Fat, Unaware, Vital Spirit, Volt Absorb, Water Absorb, Water Bubble, Water Veil, Well-Baked Body, White Smoke, Wind Rider, Wonder Guard, and Wonder Skin. This affects every other Pokemon on the field, whether or not it is a target of this Pokemon's move, and whether or not their Ability is beneficial to this Pokemon.",
+        "names": {
+          "de": "Teravolt"
+        }
       },
       {
         "slot": "H",
@@ -845002,6 +846364,7 @@ window.POKEDEX_ENTRIES = [
     "displayNumber": "#2000"
   }
 ];
+
 window.POKEDEX_META = {
   "abilities": [
     "",
@@ -845417,12 +846780,18 @@ window.POKEDEX_META = {
     {
       "id": "asoneglastrier",
       "name": "As One (Glastrier)",
-      "searchText": "asoneglastrier"
+      "searchText": "asoneglastrier reitgespann",
+      "names": {
+        "de": "Reitgespann"
+      }
     },
     {
       "id": "asonespectrier",
       "name": "As One (Spectrier)",
-      "searchText": "asonespectrier"
+      "searchText": "asonespectrier reitgespann",
+      "names": {
+        "de": "Reitgespann"
+      }
     },
     {
       "id": "aurabreak",
@@ -845451,7 +846820,10 @@ window.POKEDEX_META = {
     {
       "id": "battery",
       "name": "Battery",
-      "searchText": "battery"
+      "searchText": "battery batterie",
+      "names": {
+        "de": "Batterie"
+      }
     },
     {
       "id": "battlearmor",
@@ -845536,7 +846908,10 @@ window.POKEDEX_META = {
     {
       "id": "chlorophyll",
       "name": "Chlorophyll",
-      "searchText": "chlorophyll"
+      "searchText": "chlorophyll",
+      "names": {
+        "de": "Chlorophyll"
+      }
     },
     {
       "id": "clearbody",
@@ -845678,9 +847053,9 @@ window.POKEDEX_META = {
       "id": "darkaura",
       "name": "Dark Aura",
       "names": {
-        "de": "Dankelaura"
+        "de": "Dunkelaura"
       },
-      "searchText": "darkaura dankelaura"
+      "searchText": "darkaura dankelaura dunkelaura"
     },
     {
       "id": "dauntlessshield",
@@ -845710,9 +847085,9 @@ window.POKEDEX_META = {
       "id": "defiant",
       "name": "Defiant",
       "names": {
-        "de": "Seigeswille"
+        "de": "Siegeswille"
       },
-      "searchText": "defiant seigeswille"
+      "searchText": "defiant seigeswille siegeswille"
     },
     {
       "id": "deltastream",
@@ -845741,7 +847116,10 @@ window.POKEDEX_META = {
     {
       "id": "download",
       "name": "Download",
-      "searchText": "download"
+      "searchText": "download",
+      "names": {
+        "de": "Download"
+      }
     },
     {
       "id": "dragonsmaw",
@@ -845826,22 +847204,34 @@ window.POKEDEX_META = {
     {
       "id": "embodyaspectcornerstone",
       "name": "Embody Aspect (Cornerstone)",
-      "searchText": "embodyaspectcornerstone"
+      "searchText": "embodyaspectcornerstone erinnerungskraft",
+      "names": {
+        "de": "Erinnerungskraft"
+      }
     },
     {
       "id": "embodyaspecthearthflame",
       "name": "Embody Aspect (Hearthflame)",
-      "searchText": "embodyaspecthearthflame"
+      "searchText": "embodyaspecthearthflame erinnerungskraft",
+      "names": {
+        "de": "Erinnerungskraft"
+      }
     },
     {
       "id": "embodyaspectteal",
       "name": "Embody Aspect (Teal)",
-      "searchText": "embodyaspectteal"
+      "searchText": "embodyaspectteal erinnerungskraft",
+      "names": {
+        "de": "Erinnerungskraft"
+      }
     },
     {
       "id": "embodyaspectwellspring",
       "name": "Embody Aspect (Wellspring)",
-      "searchText": "embodyaspectwellspring"
+      "searchText": "embodyaspectwellspring erinnerungskraft",
+      "names": {
+        "de": "Erinnerungskraft"
+      }
     },
     {
       "id": "emergencyexit",
@@ -845862,7 +847252,10 @@ window.POKEDEX_META = {
     {
       "id": "filter",
       "name": "Filter",
-      "searchText": "filter"
+      "searchText": "filter",
+      "names": {
+        "de": "Filter"
+      }
     },
     {
       "id": "flamebody",
@@ -846108,9 +847501,9 @@ window.POKEDEX_META = {
       "id": "hospitality",
       "name": "Hospitality",
       "names": {
-        "de": "Gastlichkei"
+        "de": "Gastlichkeit"
       },
-      "searchText": "hospitality gastlichkei"
+      "searchText": "hospitality gastlichkei gastlichkeit"
     },
     {
       "id": "hugepower",
@@ -846139,7 +847532,10 @@ window.POKEDEX_META = {
     {
       "id": "hydration",
       "name": "Hydration",
-      "searchText": "hydration"
+      "searchText": "hydration",
+      "names": {
+        "de": "Hydration"
+      }
     },
     {
       "id": "hypercutter",
@@ -846232,7 +847628,10 @@ window.POKEDEX_META = {
     {
       "id": "insomnia",
       "name": "Insomnia",
-      "searchText": "insomnia"
+      "searchText": "insomnia",
+      "names": {
+        "de": "Insomnia"
+      }
     },
     {
       "id": "intimidate",
@@ -846309,7 +847708,10 @@ window.POKEDEX_META = {
     {
       "id": "libero",
       "name": "Libero",
-      "searchText": "libero"
+      "searchText": "libero",
+      "names": {
+        "de": "Libero"
+      }
     },
     {
       "id": "lightmetal",
@@ -846458,7 +847860,10 @@ window.POKEDEX_META = {
     {
       "id": "minus",
       "name": "Minus",
-      "searchText": "minus"
+      "searchText": "minus",
+      "names": {
+        "de": "Minus"
+      }
     },
     {
       "id": "mirrorarmor",
@@ -846613,9 +848018,9 @@ window.POKEDEX_META = {
       "id": "overcoat",
       "name": "Overcoat",
       "names": {
-        "de": "Wetterfest"
+        "de": "Partikelschutz"
       },
-      "searchText": "overcoat wetterfest"
+      "searchText": "overcoat wetterfest partikelschutz"
     },
     {
       "id": "overgrow",
@@ -846629,9 +848034,9 @@ window.POKEDEX_META = {
       "id": "owntempo",
       "name": "Own Tempo",
       "names": {
-        "de": "Tempomacher"
+        "de": "Gleichmut"
       },
-      "searchText": "owntempo tempomacher"
+      "searchText": "owntempo tempomacher gleichmut"
     },
     {
       "id": "parentalbond",
@@ -846697,15 +848102,18 @@ window.POKEDEX_META = {
     {
       "id": "plus",
       "name": "Plus",
-      "searchText": "plus"
+      "searchText": "plus",
+      "names": {
+        "de": "Plus"
+      }
     },
     {
       "id": "poisonheal",
       "name": "Poison Heal",
       "names": {
-        "de": "Aufheber"
+        "de": "Giftheilung"
       },
-      "searchText": "poisonheal aufheber"
+      "searchText": "poisonheal aufheber giftheilung"
     },
     {
       "id": "poisonpoint",
@@ -846822,7 +848230,10 @@ window.POKEDEX_META = {
     {
       "id": "punkrock",
       "name": "Punk Rock",
-      "searchText": "punkrock"
+      "searchText": "punkrock",
+      "names": {
+        "de": "Punk Rock"
+      }
     },
     {
       "id": "purepower",
@@ -846896,15 +848307,18 @@ window.POKEDEX_META = {
     {
       "id": "receiver",
       "name": "Receiver",
-      "searchText": "receiver"
+      "searchText": "receiver",
+      "names": {
+        "de": "Receiver"
+      }
     },
     {
       "id": "reckless",
       "name": "Reckless",
       "names": {
-        "de": "Atchlos"
+        "de": "Achtlos"
       },
-      "searchText": "reckless atchlos"
+      "searchText": "reckless atchlos achtlos"
     },
     {
       "id": "refrigerate",
@@ -847182,9 +848596,9 @@ window.POKEDEX_META = {
       "id": "snowwarning",
       "name": "Snow Warning",
       "names": {
-        "de": "Hagelalarm"
+        "de": "Schneeschauer"
       },
-      "searchText": "snowwarning hagelalarm"
+      "searchText": "snowwarning hagelalarm schneeschauer"
     },
     {
       "id": "solarpower",
@@ -847277,7 +848691,10 @@ window.POKEDEX_META = {
     {
       "id": "static",
       "name": "Static",
-      "searchText": "static"
+      "searchText": "static statik",
+      "names": {
+        "de": "Statik"
+      }
     },
     {
       "id": "steadfast",
@@ -847323,9 +848740,9 @@ window.POKEDEX_META = {
       "id": "stickyhold",
       "name": "Sticky Hold",
       "names": {
-        "de": "Wertehalter"
+        "de": "Klebekörper"
       },
-      "searchText": "stickyhold wertehalter"
+      "searchText": "stickyhold wertehalter klebekorper"
     },
     {
       "id": "stormdrain",
@@ -847427,14 +848844,17 @@ window.POKEDEX_META = {
       "id": "symbiosis",
       "name": "Symbiosis",
       "names": {
-        "de": "Nutznießer"
+        "de": "Symbiose"
       },
-      "searchText": "symbiosis nutznieer"
+      "searchText": "symbiosis nutznieer symbiose"
     },
     {
       "id": "synchronize",
       "name": "Synchronize",
-      "searchText": "synchronize"
+      "searchText": "synchronize synchro",
+      "names": {
+        "de": "Synchro"
+      }
     },
     {
       "id": "tabletsofruin",
@@ -847448,9 +848868,9 @@ window.POKEDEX_META = {
       "id": "tangledfeet",
       "name": "Tangled Feet",
       "names": {
-        "de": "Fußangel"
+        "de": "Taumelschritt"
       },
-      "searchText": "tangledfeet fuangel"
+      "searchText": "tangledfeet fuangel taumelschritt"
     },
     {
       "id": "tanglinghair",
@@ -847503,7 +848923,10 @@ window.POKEDEX_META = {
     {
       "id": "teravolt",
       "name": "Teravolt",
-      "searchText": "teravolt"
+      "searchText": "teravolt",
+      "names": {
+        "de": "Teravolt"
+      }
     },
     {
       "id": "thermalexchange",
@@ -847525,9 +848948,9 @@ window.POKEDEX_META = {
       "id": "tintedlens",
       "name": "Tinted Lens",
       "names": {
-        "de": "Finalschlag"
+        "de": "Aufwertung"
       },
-      "searchText": "tintedlens finalschlag"
+      "searchText": "tintedlens finalschlag aufwertung"
     },
     {
       "id": "torrent",
@@ -847573,14 +848996,17 @@ window.POKEDEX_META = {
       "id": "trace",
       "name": "Trace",
       "names": {
-        "de": "Fährte"
+        "de": "Erfassen"
       },
-      "searchText": "trace fahrte"
+      "searchText": "trace fahrte erfassen"
     },
     {
       "id": "transistor",
       "name": "Transistor",
-      "searchText": "transistor"
+      "searchText": "transistor",
+      "names": {
+        "de": "Transistor"
+      }
     },
     {
       "id": "triage",
@@ -847803,7 +849229,10 @@ window.POKEDEX_META = {
     {
       "id": "absorb",
       "name": "Absorb",
-      "searchText": "absorb"
+      "searchText": "absorb absorber",
+      "names": {
+        "de": "Absorber"
+      }
     },
     {
       "id": "accelerock",
@@ -847849,9 +849278,9 @@ window.POKEDEX_META = {
       "id": "acrobatics",
       "name": "Acrobatics",
       "names": {
-        "de": "Acrobatik"
+        "de": "Akrobatik"
       },
-      "searchText": "acrobatics acrobatik"
+      "searchText": "acrobatics acrobatik akrobatik"
     },
     {
       "id": "acupressure",
@@ -848336,7 +849765,10 @@ window.POKEDEX_META = {
     {
       "id": "blizzard",
       "name": "Blizzard",
-      "searchText": "blizzard"
+      "searchText": "blizzard",
+      "names": {
+        "de": "Blizzard"
+      }
     },
     {
       "id": "block",
@@ -848349,7 +849781,10 @@ window.POKEDEX_META = {
     {
       "id": "bloodmoon",
       "name": "Blood Moon",
-      "searchText": "bloodmoon"
+      "searchText": "bloodmoon blutmond",
+      "names": {
+        "de": "Blutmond"
+      }
     },
     {
       "id": "bloomdoom",
@@ -848370,7 +849805,10 @@ window.POKEDEX_META = {
     {
       "id": "bodypress",
       "name": "Body Press",
-      "searchText": "bodypress"
+      "searchText": "bodypress",
+      "names": {
+        "de": "Body Press"
+      }
     },
     {
       "id": "bodyslam",
@@ -848504,9 +849942,9 @@ window.POKEDEX_META = {
       "id": "bubble",
       "name": "Bubble",
       "names": {
-        "de": "Bubbler"
+        "de": "Blubber"
       },
-      "searchText": "bubble bubbler"
+      "searchText": "bubble bubbler blubber"
     },
     {
       "id": "bubblebeam",
@@ -848663,7 +850101,10 @@ window.POKEDEX_META = {
     {
       "id": "charm",
       "name": "Charm",
-      "searchText": "charm"
+      "searchText": "charm charme",
+      "names": {
+        "de": "Charme"
+      }
     },
     {
       "id": "chatter",
@@ -848764,7 +850205,10 @@ window.POKEDEX_META = {
     {
       "id": "coaching",
       "name": "Coaching",
-      "searchText": "coaching"
+      "searchText": "coaching",
+      "names": {
+        "de": "Coaching"
+      }
     },
     {
       "id": "coil",
@@ -848802,9 +850246,9 @@ window.POKEDEX_META = {
       "id": "comeuppance",
       "name": "Comeuppance",
       "names": {
-        "de": "Vandetta"
+        "de": "Vendetta"
       },
-      "searchText": "comeuppance vandetta"
+      "searchText": "comeuppance vandetta vendetta"
     },
     {
       "id": "confide",
@@ -848857,7 +850301,10 @@ window.POKEDEX_META = {
     {
       "id": "conversion2",
       "name": "Conversion 2",
-      "searchText": "conversion2"
+      "searchText": "conversion2 umwandlung2",
+      "names": {
+        "de": "Umwandlung 2"
+      }
     },
     {
       "id": "copycat",
@@ -849030,7 +850477,10 @@ window.POKEDEX_META = {
     {
       "id": "darkestlariat",
       "name": "Darkest Lariat",
-      "searchText": "darkestlariat"
+      "searchText": "darkestlariat darklariat",
+      "names": {
+        "de": "Dark Lariat"
+      }
     },
     {
       "id": "dazzlinggleam",
@@ -849235,7 +850685,10 @@ window.POKEDEX_META = {
     {
       "id": "dracometeor",
       "name": "Draco Meteor",
-      "searchText": "dracometeor"
+      "searchText": "dracometeor",
+      "names": {
+        "de": "Draco Meteor"
+      }
     },
     {
       "id": "dragonascent",
@@ -849433,9 +850886,9 @@ window.POKEDEX_META = {
       "id": "echoedvoice",
       "name": "Echoed Voice",
       "names": {
-        "de": "Widerfall"
+        "de": "Widerhall"
       },
-      "searchText": "echoedvoice widerfall"
+      "searchText": "echoedvoice widerfall widerhall"
     },
     {
       "id": "eerieimpulse",
@@ -849568,7 +851021,10 @@ window.POKEDEX_META = {
     {
       "id": "eruption",
       "name": "Eruption",
-      "searchText": "eruption"
+      "searchText": "eruption",
+      "names": {
+        "de": "Eruption"
+      }
     },
     {
       "id": "esperwing",
@@ -849597,7 +851053,10 @@ window.POKEDEX_META = {
     {
       "id": "explosion",
       "name": "Explosion",
-      "searchText": "explosion"
+      "searchText": "explosion",
+      "names": {
+        "de": "Explosion"
+      }
     },
     {
       "id": "extrasensory",
@@ -849962,7 +851421,10 @@ window.POKEDEX_META = {
     {
       "id": "flyingpress",
       "name": "Flying Press",
-      "searchText": "flyingpress"
+      "searchText": "flyingpress",
+      "names": {
+        "de": "Flying Press"
+      }
     },
     {
       "id": "focusblast",
@@ -849991,7 +851453,10 @@ window.POKEDEX_META = {
     {
       "id": "followme",
       "name": "Follow Me",
-      "searchText": "followme"
+      "searchText": "followme spotlight",
+      "names": {
+        "de": "Spotlight"
+      }
     },
     {
       "id": "forcepalm",
@@ -850076,7 +851541,10 @@ window.POKEDEX_META = {
     {
       "id": "frustration",
       "name": "Frustration",
-      "searchText": "frustration"
+      "searchText": "frustration",
+      "names": {
+        "de": "Frustration"
+      }
     },
     {
       "id": "furyattack",
@@ -850530,9 +851998,9 @@ window.POKEDEX_META = {
       "id": "grassyglide",
       "name": "Grassy Glide",
       "names": {
-        "de": "Grasrutche"
+        "de": "Grasrutsche"
       },
-      "searchText": "grassyglide grasrutche"
+      "searchText": "grassyglide grasrutche grasrutsche"
     },
     {
       "id": "grassyterrain",
@@ -850609,7 +852077,10 @@ window.POKEDEX_META = {
     {
       "id": "guillotine",
       "name": "Guillotine",
-      "searchText": "guillotine"
+      "searchText": "guillotine",
+      "names": {
+        "de": "Guillotine"
+      }
     },
     {
       "id": "gunkshot",
@@ -850822,82 +852293,130 @@ window.POKEDEX_META = {
     {
       "id": "hiddenpowerbug",
       "name": "Hidden Power Bug",
-      "searchText": "hiddenpowerbug"
+      "searchText": "hiddenpowerbug kraftreservekafer",
+      "names": {
+        "de": "Kraftreserve (Käfer)"
+      }
     },
     {
       "id": "hiddenpowerdark",
       "name": "Hidden Power Dark",
-      "searchText": "hiddenpowerdark"
+      "searchText": "hiddenpowerdark kraftreserveunlicht",
+      "names": {
+        "de": "Kraftreserve (Unlicht)"
+      }
     },
     {
       "id": "hiddenpowerdragon",
       "name": "Hidden Power Dragon",
-      "searchText": "hiddenpowerdragon"
+      "searchText": "hiddenpowerdragon kraftreservedrache",
+      "names": {
+        "de": "Kraftreserve (Drache)"
+      }
     },
     {
       "id": "hiddenpowerelectric",
       "name": "Hidden Power Electric",
-      "searchText": "hiddenpowerelectric"
+      "searchText": "hiddenpowerelectric kraftreserveelektro",
+      "names": {
+        "de": "Kraftreserve (Elektro)"
+      }
     },
     {
       "id": "hiddenpowerfighting",
       "name": "Hidden Power Fighting",
-      "searchText": "hiddenpowerfighting"
+      "searchText": "hiddenpowerfighting kraftreservekampf",
+      "names": {
+        "de": "Kraftreserve (Kampf)"
+      }
     },
     {
       "id": "hiddenpowerfire",
       "name": "Hidden Power Fire",
-      "searchText": "hiddenpowerfire"
+      "searchText": "hiddenpowerfire kraftreservefeuer",
+      "names": {
+        "de": "Kraftreserve (Feuer)"
+      }
     },
     {
       "id": "hiddenpowerflying",
       "name": "Hidden Power Flying",
-      "searchText": "hiddenpowerflying"
+      "searchText": "hiddenpowerflying kraftreserveflug",
+      "names": {
+        "de": "Kraftreserve (Flug)"
+      }
     },
     {
       "id": "hiddenpowerghost",
       "name": "Hidden Power Ghost",
-      "searchText": "hiddenpowerghost"
+      "searchText": "hiddenpowerghost kraftreservegeist",
+      "names": {
+        "de": "Kraftreserve (Geist)"
+      }
     },
     {
       "id": "hiddenpowergrass",
       "name": "Hidden Power Grass",
-      "searchText": "hiddenpowergrass"
+      "searchText": "hiddenpowergrass kraftreservepflanze",
+      "names": {
+        "de": "Kraftreserve (Pflanze)"
+      }
     },
     {
       "id": "hiddenpowerground",
       "name": "Hidden Power Ground",
-      "searchText": "hiddenpowerground"
+      "searchText": "hiddenpowerground kraftreserveboden",
+      "names": {
+        "de": "Kraftreserve (Boden)"
+      }
     },
     {
       "id": "hiddenpowerice",
       "name": "Hidden Power Ice",
-      "searchText": "hiddenpowerice"
+      "searchText": "hiddenpowerice kraftreserveeis",
+      "names": {
+        "de": "Kraftreserve (Eis)"
+      }
     },
     {
       "id": "hiddenpowerpoison",
       "name": "Hidden Power Poison",
-      "searchText": "hiddenpowerpoison"
+      "searchText": "hiddenpowerpoison kraftreservegift",
+      "names": {
+        "de": "Kraftreserve (Gift)"
+      }
     },
     {
       "id": "hiddenpowerpsychic",
       "name": "Hidden Power Psychic",
-      "searchText": "hiddenpowerpsychic"
+      "searchText": "hiddenpowerpsychic kraftreservepsycho",
+      "names": {
+        "de": "Kraftreserve (Psycho)"
+      }
     },
     {
       "id": "hiddenpowerrock",
       "name": "Hidden Power Rock",
-      "searchText": "hiddenpowerrock"
+      "searchText": "hiddenpowerrock kraftreservegestein",
+      "names": {
+        "de": "Kraftreserve (Gestein)"
+      }
     },
     {
       "id": "hiddenpowersteel",
       "name": "Hidden Power Steel",
-      "searchText": "hiddenpowersteel"
+      "searchText": "hiddenpowersteel kraftreservestahl",
+      "names": {
+        "de": "Kraftreserve (Stahl)"
+      }
     },
     {
       "id": "hiddenpowerwater",
       "name": "Hidden Power Water",
-      "searchText": "hiddenpowerwater"
+      "searchText": "hiddenpowerwater kraftreservewasser",
+      "names": {
+        "de": "Kraftreserve (Wasser)"
+      }
     },
     {
       "id": "highhorsepower",
@@ -851062,7 +852581,10 @@ window.POKEDEX_META = {
     {
       "id": "hypnosis",
       "name": "Hypnosis",
-      "searchText": "hypnosis"
+      "searchText": "hypnosis hypnose",
+      "names": {
+        "de": "Hypnose"
+      }
     },
     {
       "id": "iceball",
@@ -851179,7 +852701,10 @@ window.POKEDEX_META = {
     {
       "id": "inferno",
       "name": "Inferno",
-      "searchText": "inferno"
+      "searchText": "inferno",
+      "names": {
+        "de": "Inferno"
+      }
     },
     {
       "id": "infernooverdrive",
@@ -851912,7 +853437,10 @@ window.POKEDEX_META = {
     {
       "id": "memento",
       "name": "Memento",
-      "searchText": "memento"
+      "searchText": "memento mementomori",
+      "names": {
+        "de": "Memento-Mori"
+      }
     },
     {
       "id": "menacingmoonrazemaelstrom",
@@ -851942,9 +853470,9 @@ window.POKEDEX_META = {
       "id": "metalsound",
       "name": "Metal Sound",
       "names": {
-        "de": "Metalsound"
+        "de": "Metallsound"
       },
-      "searchText": "metalsound metalsound"
+      "searchText": "metalsound metalsound metallsound"
     },
     {
       "id": "meteorassault",
@@ -851973,7 +853501,10 @@ window.POKEDEX_META = {
     {
       "id": "metronome",
       "name": "Metronome",
-      "searchText": "metronome"
+      "searchText": "metronome metronom",
+      "names": {
+        "de": "Metronom"
+      }
     },
     {
       "id": "mightycleave",
@@ -852346,7 +853877,10 @@ window.POKEDEX_META = {
     {
       "id": "octazooka",
       "name": "Octazooka",
-      "searchText": "octazooka"
+      "searchText": "octazooka",
+      "names": {
+        "de": "Octazooka"
+      }
     },
     {
       "id": "octolock",
@@ -852399,7 +853933,10 @@ window.POKEDEX_META = {
     {
       "id": "overdrive",
       "name": "Overdrive",
-      "searchText": "overdrive"
+      "searchText": "overdrive",
+      "names": {
+        "de": "Overdrive"
+      }
     },
     {
       "id": "overheat",
@@ -852614,7 +854151,10 @@ window.POKEDEX_META = {
     {
       "id": "poltergeist",
       "name": "Poltergeist",
-      "searchText": "poltergeist"
+      "searchText": "poltergeist",
+      "names": {
+        "de": "Poltergeist"
+      }
     },
     {
       "id": "populationbomb",
@@ -852844,9 +854384,9 @@ window.POKEDEX_META = {
       "id": "psyshock",
       "name": "Psyshock",
       "names": {
-        "de": "Psychoshock"
+        "de": "Psychoschock"
       },
-      "searchText": "psyshock psychoshock"
+      "searchText": "psyshock psychoshock psychoschock"
     },
     {
       "id": "psystrike",
@@ -852956,9 +854496,9 @@ window.POKEDEX_META = {
       "id": "ragepowder",
       "name": "Rage Powder",
       "names": {
-        "de": "Wulpulver"
+        "de": "Wutpulver"
       },
-      "searchText": "ragepowder wulpulver"
+      "searchText": "ragepowder wulpulver wutpulver"
     },
     {
       "id": "ragingbull",
@@ -853036,9 +854576,9 @@ window.POKEDEX_META = {
       "id": "reflect",
       "name": "Reflect",
       "names": {
-        "de": "Reflecktor"
+        "de": "Reflektor"
       },
-      "searchText": "reflect reflecktor"
+      "searchText": "reflect reflecktor reflektor"
     },
     {
       "id": "reflecttype",
@@ -853332,9 +854872,9 @@ window.POKEDEX_META = {
       "id": "sappyseed",
       "name": "Sappy Seed",
       "names": {
-        "de": "Sprießomben"
+        "de": "Sprießbomben"
       },
-      "searchText": "sappyseed sprieomben"
+      "searchText": "sappyseed sprieomben spriebomben"
     },
     {
       "id": "savagespinout",
@@ -853720,7 +855260,10 @@ window.POKEDEX_META = {
     {
       "id": "slam",
       "name": "Slam",
-      "searchText": "slam"
+      "searchText": "slam",
+      "names": {
+        "de": "Slam"
+      }
     },
     {
       "id": "slash",
@@ -853797,7 +855340,10 @@ window.POKEDEX_META = {
     {
       "id": "smog",
       "name": "Smog",
-      "searchText": "smog"
+      "searchText": "smog",
+      "names": {
+        "de": "Smog"
+      }
     },
     {
       "id": "smokescreen",
@@ -853835,9 +855381,9 @@ window.POKEDEX_META = {
       "id": "snipeshot",
       "name": "Snipe Shot",
       "names": {
-        "de": "Präisionsschuss"
+        "de": "Präzisionsschuss"
       },
-      "searchText": "snipeshot praisionsschuss"
+      "searchText": "snipeshot praisionsschuss prazisionsschuss"
     },
     {
       "id": "snore",
@@ -854083,9 +855629,9 @@ window.POKEDEX_META = {
       "id": "stealthrock",
       "name": "Stealth Rock",
       "names": {
-        "de": "Tarnstein"
+        "de": "Tarnsteine"
       },
-      "searchText": "stealthrock tarnstein"
+      "searchText": "stealthrock tarnstein tarnsteine"
     },
     {
       "id": "steameruption",
@@ -854354,7 +855900,10 @@ window.POKEDEX_META = {
     {
       "id": "surf",
       "name": "Surf",
-      "searchText": "surf"
+      "searchText": "surf surfer",
+      "names": {
+        "de": "Surfer"
+      }
     },
     {
       "id": "surgingstrikes",
@@ -854384,9 +855933,9 @@ window.POKEDEX_META = {
       "id": "sweetkiss",
       "name": "Sweet Kiss",
       "names": {
-        "de": "Bitterkaus"
+        "de": "Bitterkuss"
       },
-      "searchText": "sweetkiss bitterkaus"
+      "searchText": "sweetkiss bitterkaus bitterkuss"
     },
     {
       "id": "sweetscent",
@@ -854455,7 +856004,10 @@ window.POKEDEX_META = {
     {
       "id": "tackle",
       "name": "Tackle",
-      "searchText": "tackle"
+      "searchText": "tackle",
+      "names": {
+        "de": "Tackle"
+      }
     },
     {
       "id": "tailglow",
@@ -854532,7 +856084,10 @@ window.POKEDEX_META = {
     {
       "id": "teatime",
       "name": "Teatime",
-      "searchText": "teatime"
+      "searchText": "teatime",
+      "names": {
+        "de": "Teatime"
+      }
     },
     {
       "id": "technoblast",
@@ -854569,7 +856124,10 @@ window.POKEDEX_META = {
     {
       "id": "teleport",
       "name": "Teleport",
-      "searchText": "teleport"
+      "searchText": "teleport",
+      "names": {
+        "de": "Teleport"
+      }
     },
     {
       "id": "temperflare",
@@ -854806,7 +856364,10 @@ window.POKEDEX_META = {
     {
       "id": "trick",
       "name": "Trick",
-      "searchText": "trick"
+      "searchText": "trick trickbetrug",
+      "names": {
+        "de": "Trickbetrug"
+      }
     },
     {
       "id": "trickroom",
@@ -854819,7 +856380,10 @@ window.POKEDEX_META = {
     {
       "id": "trickortreat",
       "name": "Trick-or-Treat",
-      "searchText": "trickortreat"
+      "searchText": "trickortreat halloween",
+      "names": {
+        "de": "Halloween"
+      }
     },
     {
       "id": "triplearrows",
@@ -855081,9 +856645,9 @@ window.POKEDEX_META = {
       "id": "wavecrash",
       "name": "Wave Crash",
       "names": {
-        "de": "Wallentackle"
+        "de": "Wellentackle"
       },
-      "searchText": "wavecrash wallentackle"
+      "searchText": "wavecrash wallentackle wellentackle"
     },
     {
       "id": "weatherball",
@@ -855096,7 +856660,10 @@ window.POKEDEX_META = {
     {
       "id": "whirlpool",
       "name": "Whirlpool",
-      "searchText": "whirlpool"
+      "searchText": "whirlpool",
+      "names": {
+        "de": "Whirlpool"
+      }
     },
     {
       "id": "whirlwind",
@@ -855297,7 +856864,10 @@ window.POKEDEX_META = {
       "basePower": 20,
       "accuracy": 100,
       "shortDesc": "User recovers 50% of the damage dealt.",
-      "desc": "The user recovers 1/2 the HP lost by the target, rounded half up. If Big Root is held by the user, the HP recovered is 1.3x normal, rounded half down."
+      "desc": "The user recovers 1/2 the HP lost by the target, rounded half up. If Big Root is held by the user, the HP recovered is 1.3x normal, rounded half down.",
+      "names": {
+        "de": "Absorber"
+      }
     },
     "accelerock": {
       "id": "accelerock",
@@ -855368,7 +856938,7 @@ window.POKEDEX_META = {
       "id": "acrobatics",
       "name": "Acrobatics",
       "names": {
-        "de": "Acrobatik"
+        "de": "Akrobatik"
       },
       "type": "Flying",
       "category": "Physical",
@@ -856165,7 +857735,10 @@ window.POKEDEX_META = {
       "basePower": 110,
       "accuracy": 70,
       "shortDesc": "10% chance to freeze foe(s). Can't miss in Snow.",
-      "desc": "Has a 10% chance to freeze the target. If the weather is Snow, this move does not check accuracy."
+      "desc": "Has a 10% chance to freeze the target. If the weather is Snow, this move does not check accuracy.",
+      "names": {
+        "de": "Blizzard"
+      }
     },
     "block": {
       "id": "block",
@@ -856188,7 +857761,10 @@ window.POKEDEX_META = {
       "basePower": 140,
       "accuracy": 100,
       "shortDesc": "Cannot be selected the turn after it's used.",
-      "desc": null
+      "desc": null,
+      "names": {
+        "de": "Blutmond"
+      }
     },
     "bloomdoom": {
       "id": "bloomdoom",
@@ -856224,7 +857800,10 @@ window.POKEDEX_META = {
       "basePower": 80,
       "accuracy": 100,
       "shortDesc": "Uses user's Def stat as Atk in damage calculation.",
-      "desc": "Damage is calculated using the user's Defense stat as its Attack, including stat stage changes. Other effects that modify the Attack stat are used as normal."
+      "desc": "Damage is calculated using the user's Defense stat as its Attack, including stat stage changes. Other effects that modify the Attack stat are used as normal.",
+      "names": {
+        "de": "Body Press"
+      }
     },
     "bodyslam": {
       "id": "bodyslam",
@@ -856438,7 +858017,7 @@ window.POKEDEX_META = {
       "id": "bubble",
       "name": "Bubble",
       "names": {
-        "de": "Bubbler"
+        "de": "Blubber"
       },
       "type": "Water",
       "category": "Special",
@@ -856702,7 +858281,10 @@ window.POKEDEX_META = {
       "basePower": 0,
       "accuracy": 100,
       "shortDesc": "Lowers the target's Attack by 2.",
-      "desc": "Lowers the target's Attack by 2 stages."
+      "desc": "Lowers the target's Attack by 2 stages.",
+      "names": {
+        "de": "Charme"
+      }
     },
     "chatter": {
       "id": "chatter",
@@ -856868,7 +858450,10 @@ window.POKEDEX_META = {
       "basePower": 0,
       "accuracy": null,
       "shortDesc": "Raises an ally's Attack and Defense by 1.",
-      "desc": "Raises the target's Attack and Defense by 1 stage. Fails if there is no ally adjacent to the user."
+      "desc": "Raises the target's Attack and Defense by 1 stage. Fails if there is no ally adjacent to the user.",
+      "names": {
+        "de": "Coaching"
+      }
     },
     "coil": {
       "id": "coil",
@@ -856926,7 +858511,7 @@ window.POKEDEX_META = {
       "id": "comeuppance",
       "name": "Comeuppance",
       "names": {
-        "de": "Vandetta"
+        "de": "Vendetta"
       },
       "type": "Dark",
       "category": "Physical",
@@ -857021,7 +858606,10 @@ window.POKEDEX_META = {
       "basePower": 0,
       "accuracy": null,
       "shortDesc": "Changes user's type to resist target's last move.",
-      "desc": "The user's type changes to match a type that resists or is immune to the type of the last move used by the target, but not either of its current types. The determined type of the move is used rather than the original type. Fails if the target has not made a move, if the user cannot change its type, or if this move would only be able to select one of the user's current types."
+      "desc": "The user's type changes to match a type that resists or is immune to the type of the last move used by the target, but not either of its current types. The determined type of the move is used rather than the original type. Fails if the target has not made a move, if the user cannot change its type, or if this move would only be able to select one of the user's current types.",
+      "names": {
+        "de": "Umwandlung 2"
+      }
     },
     "copycat": {
       "id": "copycat",
@@ -857278,7 +858866,10 @@ window.POKEDEX_META = {
       "basePower": 85,
       "accuracy": 100,
       "shortDesc": "Ignores the target's stat stage changes.",
-      "desc": "Ignores the target's stat stage changes, including evasiveness."
+      "desc": "Ignores the target's stat stage changes, including evasiveness.",
+      "names": {
+        "de": "Dark Lariat"
+      }
     },
     "darkpulse": {
       "id": "darkpulse",
@@ -857639,7 +859230,10 @@ window.POKEDEX_META = {
       "basePower": 130,
       "accuracy": 90,
       "shortDesc": "Lowers the user's Sp. Atk by 2.",
-      "desc": "Lowers the user's Special Attack by 2 stages."
+      "desc": "Lowers the user's Special Attack by 2 stages.",
+      "names": {
+        "de": "Draco Meteor"
+      }
     },
     "dragonascent": {
       "id": "dragonascent",
@@ -857957,7 +859551,7 @@ window.POKEDEX_META = {
       "id": "echoedvoice",
       "name": "Echoed Voice",
       "names": {
-        "de": "Widerfall"
+        "de": "Widerhall"
       },
       "type": "Normal",
       "category": "Special",
@@ -858182,7 +859776,10 @@ window.POKEDEX_META = {
       "basePower": 150,
       "accuracy": 100,
       "shortDesc": "Less power as user's HP decreases. Hits foe(s).",
-      "desc": "Power is equal to (user's current HP * 150 / user's maximum HP), rounded down, but not less than 1."
+      "desc": "Power is equal to (user's current HP * 150 / user's maximum HP), rounded down, but not less than 1.",
+      "names": {
+        "de": "Eruption"
+      }
     },
     "esperwing": {
       "id": "esperwing",
@@ -858231,7 +859828,10 @@ window.POKEDEX_META = {
       "basePower": 250,
       "accuracy": 100,
       "shortDesc": "Hits adjacent Pokemon. The user faints.",
-      "desc": "The user faints after using this move, even if this move fails for having no target. This move is prevented from executing if any active Pokemon has the Damp Ability."
+      "desc": "The user faints after using this move, even if this move fails for having no target. This move is prevented from executing if any active Pokemon has the Damp Ability.",
+      "names": {
+        "de": "Explosion"
+      }
     },
     "extrasensory": {
       "id": "extrasensory",
@@ -858826,7 +860426,10 @@ window.POKEDEX_META = {
       "basePower": 100,
       "accuracy": 95,
       "shortDesc": "Combines Flying in its type effectiveness.",
-      "desc": "This move combines Flying in its type effectiveness against the target. Damage doubles and no accuracy check is done if the target has used Minimize while active."
+      "desc": "This move combines Flying in its type effectiveness against the target. Damage doubles and no accuracy check is done if the target has used Minimize while active.",
+      "names": {
+        "de": "Flying Press"
+      }
     },
     "focusblast": {
       "id": "focusblast",
@@ -858875,7 +860478,10 @@ window.POKEDEX_META = {
       "basePower": 0,
       "accuracy": null,
       "shortDesc": "The foes' moves target the user on the turn used.",
-      "desc": "Until the end of the turn, all single-target attacks from the opposing side are redirected to the user. Such attacks are redirected to the user before they can be reflected by Magic Coat or the Magic Bounce Ability, or drawn in by the Lightning Rod or Storm Drain Abilities. Fails if it is not a Double Battle or Battle Royal. This effect is ignored while the user is under the effect of Sky Drop."
+      "desc": "Until the end of the turn, all single-target attacks from the opposing side are redirected to the user. Such attacks are redirected to the user before they can be reflected by Magic Coat or the Magic Bounce Ability, or drawn in by the Lightning Rod or Storm Drain Abilities. Fails if it is not a Double Battle or Battle Royal. This effect is ignored while the user is under the effect of Sky Drop.",
+      "names": {
+        "de": "Spotlight"
+      }
     },
     "forcepalm": {
       "id": "forcepalm",
@@ -859015,7 +860621,10 @@ window.POKEDEX_META = {
       "basePower": 0,
       "accuracy": 100,
       "shortDesc": "Max 102 power at minimum Happiness.",
-      "desc": "Power is equal to the greater of ((255 - user's Happiness) * 2/5), rounded down, or 1."
+      "desc": "Power is equal to the greater of ((255 - user's Happiness) * 2/5), rounded down, or 1.",
+      "names": {
+        "de": "Frustration"
+      }
     },
     "furyattack": {
       "id": "furyattack",
@@ -859749,7 +861358,7 @@ window.POKEDEX_META = {
       "id": "grassyglide",
       "name": "Grassy Glide",
       "names": {
-        "de": "Grasrutche"
+        "de": "Grasrutsche"
       },
       "type": "Grass",
       "category": "Physical",
@@ -859883,7 +861492,10 @@ window.POKEDEX_META = {
       "basePower": 0,
       "accuracy": 30,
       "shortDesc": "OHKOs the target. Fails if user is a lower level.",
-      "desc": "Deals damage to the target equal to the target's maximum HP. Ignores accuracy and evasiveness modifiers. This attack's accuracy is equal to (user's level - target's level + 30)%, and fails if the target is at a higher level. Pokemon with the Sturdy Ability are immune."
+      "desc": "Deals damage to the target equal to the target's maximum HP. Ignores accuracy and evasiveness modifiers. This attack's accuracy is equal to (user's level - target's level + 30)%, and fails if the target is at a higher level. Pokemon with the Sturdy Ability are immune.",
+      "names": {
+        "de": "Guillotine"
+      }
     },
     "gunkshot": {
       "id": "gunkshot",
@@ -860231,7 +861843,10 @@ window.POKEDEX_META = {
       "basePower": 60,
       "accuracy": 100,
       "shortDesc": null,
-      "desc": null
+      "desc": null,
+      "names": {
+        "de": "Kraftreserve (Käfer)"
+      }
     },
     "hiddenpowerdark": {
       "id": "hiddenpowerdark",
@@ -860241,7 +861856,10 @@ window.POKEDEX_META = {
       "basePower": 60,
       "accuracy": 100,
       "shortDesc": null,
-      "desc": null
+      "desc": null,
+      "names": {
+        "de": "Kraftreserve (Unlicht)"
+      }
     },
     "hiddenpowerdragon": {
       "id": "hiddenpowerdragon",
@@ -860251,7 +861869,10 @@ window.POKEDEX_META = {
       "basePower": 60,
       "accuracy": 100,
       "shortDesc": null,
-      "desc": null
+      "desc": null,
+      "names": {
+        "de": "Kraftreserve (Drache)"
+      }
     },
     "hiddenpowerelectric": {
       "id": "hiddenpowerelectric",
@@ -860261,7 +861882,10 @@ window.POKEDEX_META = {
       "basePower": 60,
       "accuracy": 100,
       "shortDesc": null,
-      "desc": null
+      "desc": null,
+      "names": {
+        "de": "Kraftreserve (Elektro)"
+      }
     },
     "hiddenpowerfighting": {
       "id": "hiddenpowerfighting",
@@ -860271,7 +861895,10 @@ window.POKEDEX_META = {
       "basePower": 60,
       "accuracy": 100,
       "shortDesc": null,
-      "desc": null
+      "desc": null,
+      "names": {
+        "de": "Kraftreserve (Kampf)"
+      }
     },
     "hiddenpowerfire": {
       "id": "hiddenpowerfire",
@@ -860281,7 +861908,10 @@ window.POKEDEX_META = {
       "basePower": 60,
       "accuracy": 100,
       "shortDesc": null,
-      "desc": null
+      "desc": null,
+      "names": {
+        "de": "Kraftreserve (Feuer)"
+      }
     },
     "hiddenpowerflying": {
       "id": "hiddenpowerflying",
@@ -860291,7 +861921,10 @@ window.POKEDEX_META = {
       "basePower": 60,
       "accuracy": 100,
       "shortDesc": null,
-      "desc": null
+      "desc": null,
+      "names": {
+        "de": "Kraftreserve (Flug)"
+      }
     },
     "hiddenpowerghost": {
       "id": "hiddenpowerghost",
@@ -860301,7 +861934,10 @@ window.POKEDEX_META = {
       "basePower": 60,
       "accuracy": 100,
       "shortDesc": null,
-      "desc": null
+      "desc": null,
+      "names": {
+        "de": "Kraftreserve (Geist)"
+      }
     },
     "hiddenpowergrass": {
       "id": "hiddenpowergrass",
@@ -860311,7 +861947,10 @@ window.POKEDEX_META = {
       "basePower": 60,
       "accuracy": 100,
       "shortDesc": null,
-      "desc": null
+      "desc": null,
+      "names": {
+        "de": "Kraftreserve (Pflanze)"
+      }
     },
     "hiddenpowerground": {
       "id": "hiddenpowerground",
@@ -860321,7 +861960,10 @@ window.POKEDEX_META = {
       "basePower": 60,
       "accuracy": 100,
       "shortDesc": null,
-      "desc": null
+      "desc": null,
+      "names": {
+        "de": "Kraftreserve (Boden)"
+      }
     },
     "hiddenpowerice": {
       "id": "hiddenpowerice",
@@ -860331,7 +861973,10 @@ window.POKEDEX_META = {
       "basePower": 60,
       "accuracy": 100,
       "shortDesc": null,
-      "desc": null
+      "desc": null,
+      "names": {
+        "de": "Kraftreserve (Eis)"
+      }
     },
     "hiddenpowerpoison": {
       "id": "hiddenpowerpoison",
@@ -860341,7 +861986,10 @@ window.POKEDEX_META = {
       "basePower": 60,
       "accuracy": 100,
       "shortDesc": null,
-      "desc": null
+      "desc": null,
+      "names": {
+        "de": "Kraftreserve (Gift)"
+      }
     },
     "hiddenpowerpsychic": {
       "id": "hiddenpowerpsychic",
@@ -860351,7 +861999,10 @@ window.POKEDEX_META = {
       "basePower": 60,
       "accuracy": 100,
       "shortDesc": null,
-      "desc": null
+      "desc": null,
+      "names": {
+        "de": "Kraftreserve (Psycho)"
+      }
     },
     "hiddenpowerrock": {
       "id": "hiddenpowerrock",
@@ -860361,7 +862012,10 @@ window.POKEDEX_META = {
       "basePower": 60,
       "accuracy": 100,
       "shortDesc": null,
-      "desc": null
+      "desc": null,
+      "names": {
+        "de": "Kraftreserve (Gestein)"
+      }
     },
     "hiddenpowersteel": {
       "id": "hiddenpowersteel",
@@ -860371,7 +862025,10 @@ window.POKEDEX_META = {
       "basePower": 60,
       "accuracy": 100,
       "shortDesc": null,
-      "desc": null
+      "desc": null,
+      "names": {
+        "de": "Kraftreserve (Stahl)"
+      }
     },
     "hiddenpowerwater": {
       "id": "hiddenpowerwater",
@@ -860381,7 +862038,10 @@ window.POKEDEX_META = {
       "basePower": 60,
       "accuracy": 100,
       "shortDesc": null,
-      "desc": null
+      "desc": null,
+      "names": {
+        "de": "Kraftreserve (Wasser)"
+      }
     },
     "highhorsepower": {
       "id": "highhorsepower",
@@ -860651,7 +862311,10 @@ window.POKEDEX_META = {
       "basePower": 0,
       "accuracy": 60,
       "shortDesc": "Causes the target to fall asleep.",
-      "desc": null
+      "desc": null,
+      "names": {
+        "de": "Hypnose"
+      }
     },
     "iceball": {
       "id": "iceball",
@@ -860843,7 +862506,10 @@ window.POKEDEX_META = {
       "basePower": 100,
       "accuracy": 50,
       "shortDesc": "100% chance to burn the target.",
-      "desc": "Has a 100% chance to burn the target."
+      "desc": "Has a 100% chance to burn the target.",
+      "names": {
+        "de": "Inferno"
+      }
     },
     "infernooverdrive": {
       "id": "infernooverdrive",
@@ -862036,7 +863702,10 @@ window.POKEDEX_META = {
       "basePower": 0,
       "accuracy": 100,
       "shortDesc": "Lowers target's Attack, Sp. Atk by 2. User faints.",
-      "desc": "Lowers the target's Attack and Special Attack by 2 stages. The user faints unless this move misses or there is no target. Fails entirely if this move hits a substitute, but does not fail if the target's stats cannot be changed."
+      "desc": "Lowers the target's Attack and Special Attack by 2 stages. The user faints unless this move misses or there is no target. Fails entirely if this move hits a substitute, but does not fail if the target's stats cannot be changed.",
+      "names": {
+        "de": "Memento-Mori"
+      }
     },
     "menacingmoonrazemaelstrom": {
       "id": "menacingmoonrazemaelstrom",
@@ -862081,7 +863750,7 @@ window.POKEDEX_META = {
       "id": "metalsound",
       "name": "Metal Sound",
       "names": {
-        "de": "Metalsound"
+        "de": "Metallsound"
       },
       "type": "Steel",
       "category": "Status",
@@ -862137,7 +863806,10 @@ window.POKEDEX_META = {
       "basePower": 0,
       "accuracy": null,
       "shortDesc": "Picks a random move.",
-      "desc": "A random move is selected for use, other than After You, Apple Acid, Armor Cannon, Assist, Astral Barrage, Aura Wheel, Baneful Bunker, Beak Blast, Behemoth Bash, Behemoth Blade, Belch, Bestow, Blazing Torque, Body Press, Branch Poke, Breaking Swipe, Celebrate, Chatter, Chilling Water, Chilly Reception, Clangorous Soul, Collision Course, Combat Torque, Comeuppance, Copycat, Counter, Covet, Crafty Shield, Decorate, Destiny Bond, Detect, Diamond Storm, Doodle, Double Iron Bash, Double Shock, Dragon Ascent, Dragon Energy, Drum Beating, Dynamax Cannon, Electro Drift, Endure, Eternabeam, False Surrender, Feint, Fiery Wrath, Fillet Away, Fleur Cannon, Focus Punch, Follow Me, Freeze Shock, Freezing Glare, Glacial Lance, Grav Apple, Helping Hand, Hold Hands, Hyper Drill, Hyperspace Fury, Hyperspace Hole, Ice Burn, Instruct, Jet Punch, Jungle Healing, King's Shield, Life Dew, Light of Ruin, Magical Torque, Make It Rain, Mat Block, Me First, Meteor Assault, Metronome, Mimic, Mind Blown, Mirror Coat, Mirror Move, Moongeist Beam, Nature Power, Nature's Madness, Noxious Torque, Obstruct, Order Up, Origin Pulse, Overdrive, Photon Geyser, Plasma Fists, Population Bomb, Pounce, Power Shift, Precipice Blades, Protect, Pyro Ball, Quash, Quick Guard, Rage Fist, Rage Powder, Raging Bull, Raging Fury, Relic Song, Revival Blessing, Ruination, Salt Cure, Secret Sword, Shed Tail, Shell Trap, Silk Trap, Sketch, Sleep Talk, Snap Trap, Snarl, Snatch, Snore, Snowscape, Spectral Thief, Spicy Extract, Spiky Shield, Spirit Break, Spotlight, Springtide Storm, Steam Eruption, Steel Beam, Strange Steam, Struggle, Sunsteel Strike, Surging Strikes, Switcheroo, Techno Blast, Tera Starstorm, Thief, Thousand Arrows, Thousand Waves, Thunder Cage, Thunderous Kick, Tidy Up, Trailblaze, Transform, Trick, Twin Beam, V-create, Wicked Blow, Wicked Torque, or Wide Guard."
+      "desc": "A random move is selected for use, other than After You, Apple Acid, Armor Cannon, Assist, Astral Barrage, Aura Wheel, Baneful Bunker, Beak Blast, Behemoth Bash, Behemoth Blade, Belch, Bestow, Blazing Torque, Body Press, Branch Poke, Breaking Swipe, Celebrate, Chatter, Chilling Water, Chilly Reception, Clangorous Soul, Collision Course, Combat Torque, Comeuppance, Copycat, Counter, Covet, Crafty Shield, Decorate, Destiny Bond, Detect, Diamond Storm, Doodle, Double Iron Bash, Double Shock, Dragon Ascent, Dragon Energy, Drum Beating, Dynamax Cannon, Electro Drift, Endure, Eternabeam, False Surrender, Feint, Fiery Wrath, Fillet Away, Fleur Cannon, Focus Punch, Follow Me, Freeze Shock, Freezing Glare, Glacial Lance, Grav Apple, Helping Hand, Hold Hands, Hyper Drill, Hyperspace Fury, Hyperspace Hole, Ice Burn, Instruct, Jet Punch, Jungle Healing, King's Shield, Life Dew, Light of Ruin, Magical Torque, Make It Rain, Mat Block, Me First, Meteor Assault, Metronome, Mimic, Mind Blown, Mirror Coat, Mirror Move, Moongeist Beam, Nature Power, Nature's Madness, Noxious Torque, Obstruct, Order Up, Origin Pulse, Overdrive, Photon Geyser, Plasma Fists, Population Bomb, Pounce, Power Shift, Precipice Blades, Protect, Pyro Ball, Quash, Quick Guard, Rage Fist, Rage Powder, Raging Bull, Raging Fury, Relic Song, Revival Blessing, Ruination, Salt Cure, Secret Sword, Shed Tail, Shell Trap, Silk Trap, Sketch, Sleep Talk, Snap Trap, Snarl, Snatch, Snore, Snowscape, Spectral Thief, Spicy Extract, Spiky Shield, Spirit Break, Spotlight, Springtide Storm, Steam Eruption, Steel Beam, Strange Steam, Struggle, Sunsteel Strike, Surging Strikes, Switcheroo, Techno Blast, Tera Starstorm, Thief, Thousand Arrows, Thousand Waves, Thunder Cage, Thunderous Kick, Tidy Up, Trailblaze, Transform, Trick, Twin Beam, V-create, Wicked Blow, Wicked Torque, or Wide Guard.",
+      "names": {
+        "de": "Metronom"
+      }
     },
     "mightycleave": {
       "id": "mightycleave",
@@ -862745,7 +864417,10 @@ window.POKEDEX_META = {
       "basePower": 65,
       "accuracy": 85,
       "shortDesc": "50% chance to lower the target's accuracy by 1.",
-      "desc": "Has a 50% chance to lower the target's accuracy by 1 stage."
+      "desc": "Has a 50% chance to lower the target's accuracy by 1 stage.",
+      "names": {
+        "de": "Octazooka"
+      }
     },
     "octolock": {
       "id": "octolock",
@@ -862833,7 +864508,10 @@ window.POKEDEX_META = {
       "basePower": 80,
       "accuracy": 100,
       "shortDesc": "No additional effect. Hits foe(s).",
-      "desc": "No additional effect."
+      "desc": "No additional effect.",
+      "names": {
+        "de": "Overdrive"
+      }
     },
     "overheat": {
       "id": "overheat",
@@ -863168,7 +864846,10 @@ window.POKEDEX_META = {
       "basePower": 110,
       "accuracy": 90,
       "shortDesc": "Fails if the target has no held item.",
-      "desc": null
+      "desc": null,
+      "names": {
+        "de": "Poltergeist"
+      }
     },
     "populationbomb": {
       "id": "populationbomb",
@@ -863538,7 +865219,7 @@ window.POKEDEX_META = {
       "id": "psyshock",
       "name": "Psyshock",
       "names": {
-        "de": "Psychoshock"
+        "de": "Psychoschock"
       },
       "type": "Psychic",
       "category": "Special",
@@ -863720,7 +865401,7 @@ window.POKEDEX_META = {
       "id": "ragepowder",
       "name": "Rage Powder",
       "names": {
-        "de": "Wulpulver"
+        "de": "Wutpulver"
       },
       "type": "Bug",
       "category": "Status",
@@ -863850,7 +865531,7 @@ window.POKEDEX_META = {
       "id": "reflect",
       "name": "Reflect",
       "names": {
-        "de": "Reflecktor"
+        "de": "Reflektor"
       },
       "type": "Psychic",
       "category": "Status",
@@ -864331,7 +866012,7 @@ window.POKEDEX_META = {
       "id": "sappyseed",
       "name": "Sappy Seed",
       "names": {
-        "de": "Sprießomben"
+        "de": "Sprießbomben"
       },
       "type": "Grass",
       "category": "Physical",
@@ -864959,7 +866640,10 @@ window.POKEDEX_META = {
       "basePower": 80,
       "accuracy": 75,
       "shortDesc": "No additional effect.",
-      "desc": null
+      "desc": null,
+      "names": {
+        "de": "Slam"
+      }
     },
     "slash": {
       "id": "slash",
@@ -865086,7 +866770,10 @@ window.POKEDEX_META = {
       "basePower": 30,
       "accuracy": 70,
       "shortDesc": "40% chance to poison the target.",
-      "desc": "Has a 40% chance to poison the target."
+      "desc": "Has a 40% chance to poison the target.",
+      "names": {
+        "de": "Smog"
+      }
     },
     "smokescreen": {
       "id": "smokescreen",
@@ -865144,7 +866831,7 @@ window.POKEDEX_META = {
       "id": "snipeshot",
       "name": "Snipe Shot",
       "names": {
-        "de": "Präisionsschuss"
+        "de": "Präzisionsschuss"
       },
       "type": "Water",
       "category": "Special",
@@ -865547,7 +867234,7 @@ window.POKEDEX_META = {
       "id": "stealthrock",
       "name": "Stealth Rock",
       "names": {
-        "de": "Tarnstein"
+        "de": "Tarnsteine"
       },
       "type": "Rock",
       "category": "Status",
@@ -865993,7 +867680,10 @@ window.POKEDEX_META = {
       "basePower": 90,
       "accuracy": 100,
       "shortDesc": "Hits adjacent Pokemon. Double damage on Dive.",
-      "desc": "Damage doubles if the target is using Dive."
+      "desc": "Damage doubles if the target is using Dive.",
+      "names": {
+        "de": "Surfer"
+      }
     },
     "surgingstrikes": {
       "id": "surgingstrikes",
@@ -866038,7 +867728,7 @@ window.POKEDEX_META = {
       "id": "sweetkiss",
       "name": "Sweet Kiss",
       "names": {
-        "de": "Bitterkaus"
+        "de": "Bitterkuss"
       },
       "type": "Fairy",
       "category": "Status",
@@ -866159,7 +867849,10 @@ window.POKEDEX_META = {
       "basePower": 40,
       "accuracy": 100,
       "shortDesc": "No additional effect.",
-      "desc": null
+      "desc": null,
+      "names": {
+        "de": "Tackle"
+      }
     },
     "tailglow": {
       "id": "tailglow",
@@ -866286,7 +867979,10 @@ window.POKEDEX_META = {
       "basePower": 0,
       "accuracy": null,
       "shortDesc": "All active Pokemon consume held Berries.",
-      "desc": "All active Pokemon consume their held Berries. This effect is not prevented by substitutes, the Klutz or Unnerve Abilities, or the effects of Embargo or Magic Room. Fails if no active Pokemon is holding a Berry."
+      "desc": "All active Pokemon consume their held Berries. This effect is not prevented by substitutes, the Klutz or Unnerve Abilities, or the effects of Embargo or Magic Room. Fails if no active Pokemon is holding a Berry.",
+      "names": {
+        "de": "Teatime"
+      }
     },
     "technoblast": {
       "id": "technoblast",
@@ -866348,7 +868044,10 @@ window.POKEDEX_META = {
       "basePower": 0,
       "accuracy": null,
       "shortDesc": "User switches out.",
-      "desc": "If this move is successful and the user has not fainted, the user switches out even if it is trapped and is replaced immediately by a selected party member. The user does not switch out if there are no unfainted party members."
+      "desc": "If this move is successful and the user has not fainted, the user switches out even if it is trapped and is replaced immediately by a selected party member. The user does not switch out if there are no unfainted party members.",
+      "names": {
+        "de": "Teleport"
+      }
     },
     "temperflare": {
       "id": "temperflare",
@@ -866735,7 +868434,10 @@ window.POKEDEX_META = {
       "basePower": 0,
       "accuracy": 100,
       "shortDesc": "User switches its held item with the target's.",
-      "desc": "The user swaps its held item with the target's held item. Fails if either the user or the target is holding a Mail or Z-Crystal, if neither is holding an item, if the user is trying to give or take a Mega Stone to or from the species that can Mega Evolve with it, or if the user is trying to give or take a Blue Orb, a Red Orb, a Griseous Orb, a Plate, a Drive, or a Memory to or from a Kyogre, a Groudon, a Giratina, an Arceus, a Genesect, or a Silvally, respectively. The target is immune to this move if it has the Sticky Hold Ability."
+      "desc": "The user swaps its held item with the target's held item. Fails if either the user or the target is holding a Mail or Z-Crystal, if neither is holding an item, if the user is trying to give or take a Mega Stone to or from the species that can Mega Evolve with it, or if the user is trying to give or take a Blue Orb, a Red Orb, a Griseous Orb, a Plate, a Drive, or a Memory to or from a Kyogre, a Groudon, a Giratina, an Arceus, a Genesect, or a Silvally, respectively. The target is immune to this move if it has the Sticky Hold Ability.",
+      "names": {
+        "de": "Trickbetrug"
+      }
     },
     "trickortreat": {
       "id": "trickortreat",
@@ -866745,7 +868447,10 @@ window.POKEDEX_META = {
       "basePower": 0,
       "accuracy": 100,
       "shortDesc": "Adds Ghost to the target's type(s).",
-      "desc": "Causes the Ghost type to be added to the target, effectively making it have two or three types. Fails if the target is already a Ghost type. If Forest's Curse adds a type to the target, it replaces the type added by this move and vice versa."
+      "desc": "Causes the Ghost type to be added to the target, effectively making it have two or three types. Fails if the target is already a Ghost type. If Forest's Curse adds a type to the target, it replaces the type added by this move and vice versa.",
+      "names": {
+        "de": "Halloween"
+      }
     },
     "trickroom": {
       "id": "trickroom",
@@ -867180,7 +868885,7 @@ window.POKEDEX_META = {
       "id": "wavecrash",
       "name": "Wave Crash",
       "names": {
-        "de": "Wallentackle"
+        "de": "Wellentackle"
       },
       "type": "Water",
       "category": "Physical",
@@ -867210,7 +868915,10 @@ window.POKEDEX_META = {
       "basePower": 35,
       "accuracy": 85,
       "shortDesc": "Traps and damages the target for 4-5 turns.",
-      "desc": "Prevents the target from switching for four or five turns (seven turns if the user is holding Grip Claw). Causes damage to the target equal to 1/8 of its maximum HP (1/6 if the user is holding Binding Band), rounded down, at the end of each turn during effect. The target can still switch out if it is holding Shed Shell or uses Baton Pass, Flip Turn, Parting Shot, Shed Tail, Teleport, U-turn, or Volt Switch. The effect ends if either the user or the target leaves the field, or if the target uses Mortal Spin, Rapid Spin, or Substitute successfully. This effect is not stackable or reset by using this or another binding move."
+      "desc": "Prevents the target from switching for four or five turns (seven turns if the user is holding Grip Claw). Causes damage to the target equal to 1/8 of its maximum HP (1/6 if the user is holding Binding Band), rounded down, at the end of each turn during effect. The target can still switch out if it is holding Shed Shell or uses Baton Pass, Flip Turn, Parting Shot, Shed Tail, Teleport, U-turn, or Volt Switch. The effect ends if either the user or the target leaves the field, or if the target uses Mortal Spin, Rapid Spin, or Substitute successfully. This effect is not stackable or reset by using this or another binding move.",
+      "names": {
+        "de": "Whirlpool"
+      }
     },
     "whirlwind": {
       "id": "whirlwind",
